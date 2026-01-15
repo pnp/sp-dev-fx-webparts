@@ -181,9 +181,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/AccessibleChart.png",
-        "alt": "Accessible Chart"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Accessible_Chart.webp"
       }
     ]
   },
@@ -234,9 +232,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/AreaChart.png",
-        "alt": "Area Chart"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Area_Chart.webp"
       }
     ]
   },
@@ -287,9 +283,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/BarChartStatic.png",
-        "alt": "Bar Chart (Static Data)"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Bar_Chart__Static_Data_.webp"
       }
     ]
   },
@@ -340,9 +334,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/BarChart.png",
-        "alt": "Bar Chart"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Bar_Chart.webp"
       }
     ]
   },
@@ -393,9 +385,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/BubbleChart.png",
-        "alt": "Bubble Chart"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Bubble_Chart.webp"
       }
     ]
   },
@@ -446,9 +436,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/Chartinator.png",
-        "alt": "Chartinator"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Chartinator.webp"
       }
     ]
   },
@@ -499,9 +487,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/ComboBar.png",
-        "alt": "Combo Chart"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Combo_Chart.webp"
       }
     ]
   },
@@ -552,9 +538,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/CustomPlugin.png",
-        "alt": "Custom Plugin"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Custom_Plugin.webp"
       }
     ]
   },
@@ -605,9 +589,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/DoughnutPatterns.png",
-        "alt": "Doughnut with Patterns"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Doughnut_with_Patterns.webp"
       }
     ]
   },
@@ -711,9 +693,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/DynamicDataConsumer.png",
-        "alt": "Dynamic Data Consumer"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Dynamic_Data_Consumer.webp"
       }
     ]
   },
@@ -764,9 +744,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/HorizontalBarChart.png",
-        "alt": "Horizontal Bar"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Horizontal_Bar.webp"
       }
     ]
   },
@@ -817,9 +795,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/LineChart.png",
-        "alt": "Line Chart"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Line_Chart.webp"
       }
     ]
   },
@@ -870,9 +846,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/PieChart.png",
-        "alt": "Pie Chart"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Pie_Chart.webp"
       }
     ]
   },
@@ -923,9 +897,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/PolarChart.png",
-        "alt": "Polar Chart"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Polar_Chart.webp"
       }
     ]
   },
@@ -976,9 +948,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/RadarChart.png",
-        "alt": "Radar Chart"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Radar_Chart.webp"
       }
     ]
   },
@@ -1029,9 +999,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/RealTime.png",
-        "alt": "Real-Time Chart"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Real-Time_Chart.webp"
       }
     ]
   },
@@ -1082,9 +1050,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/ScatterChart.png",
-        "alt": "Scatter Chart"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Scatter_Chart.webp"
       }
     ]
   },
@@ -1140,9 +1106,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-global-news/assets/GlobalNews.png",
-        "alt": "Global News"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Global_News_Web_Part.webp"
       }
     ]
   },
@@ -1219,11 +1183,8 @@
     ],
     "thumbnails": [
       {
-        "name": "Screenshot 2025-09-26 at 21.30.22.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-schema-extensions/assets/Screenshot 2025-09-26 at 21.30.22.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Schema_Extensions_Manager.webp"
       }
     ]
   },
@@ -1260,11 +1221,8 @@
     ],
     "thumbnails": [
       {
-        "name": "ui-webpart.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-data-access-options/assets/ui-webpart.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/SharePoint_-_Use_different_options_to_access_SharePoint_data.webp"
       }
     ]
   },
@@ -1302,9 +1260,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-lob-integration.png",
-        "alt": "LOB Integration web part"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/LOB_Integration_web_part.webp"
       }
     ]
   },
@@ -1342,9 +1298,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-star-ratings/assets/react-star-ratings.png",
-        "alt": "Web part in action"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Star_Ratings_Web_Part.webp"
       }
     ]
   },
@@ -1381,11 +1335,8 @@
     ],
     "thumbnails": [
       {
-        "name": "qr-code-generator-preview-room.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-qr-code-generator/assets/qr-code-generator-preview-room.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/QR_Code_Generator_Web_Part.webp"
       }
     ]
   },
@@ -1663,9 +1614,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-telemetry-event-sender-sample/assets/preview.png",
-        "alt": "Telemetry Event Sender web part preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Telemetry_Event_Sender_Web_Part.webp"
       }
     ]
   },
@@ -1751,9 +1700,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/e92d0dac567cc4d59cdfc94186a52a3b776c6d21/samples/js-gitHubBadge/assets/1.png",
-        "alt": "GitHub Badge"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/GitHub_Badge_Web_Part.webp"
       }
     ]
   },
@@ -1793,9 +1740,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-officegraph/assets/trendinginthissite-preview.png",
-        "alt": "Office Graph Web Part samples"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Office_Graph_Web_Part_samples.webp"
       }
     ]
   },
@@ -1832,11 +1777,8 @@
     ],
     "thumbnails": [
       {
-        "name": "webParts.png",
         "type": "image",
-        "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-M365-Planner-Timeline/assets/webParts.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/M365_Planner_Timeline_Web_Part.webp"
       }
     ]
   },
@@ -1883,9 +1825,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-events-dynamicdata/assets/dynamic-data-webparts.png",
-        "alt": "Dynamic data"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Dynamic_data_Web_Part.webp"
       }
     ]
   },
@@ -1924,9 +1864,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png",
-        "alt": "Using PnP JS Core custom objects with @select and @expand decorators"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Using_PnP_JS_Core_custom_objects_with__select_and__expand_decorators.webp"
       }
     ]
   },
@@ -2088,9 +2026,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-outlook-copy2teams/assets/addin_overall.png",
-        "alt": "Outlook to Teams"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Outlook_to_Teams_Web_Part.webp"
       }
     ]
   },
@@ -2129,9 +2065,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-react-query/assets/_nopreview.png",
-        "alt": "No preview available"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Query_Microsoft_Graph_Web_Part.webp"
       }
     ]
   },
@@ -2210,9 +2144,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-auto-batching/assets/_nopreview.png",
-        "alt": "No preview available"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Graph_Auto_Batching_Web_Part.webp"
       }
     ]
   },
@@ -2427,9 +2359,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://avatars2.githubusercontent.com/u/11164679?s=460&v=4",
-        "alt": "Angular & ngOfficeUIFabric Client-Side Web Part"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Angular___ngOfficeUIFabric_Client-Side_Web_Part.webp"
       }
     ]
   },
@@ -2468,9 +2398,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-async-await-sp-pnp-js/assets/async-await-sp-pnp-js.png",
-        "alt": "Using @pnp/js with Async / Await"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Using__pnp_js_with_Async___Await.webp"
       }
     ]
   },
@@ -2508,9 +2436,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-hooks/assets/webpart.PNG",
-        "alt": "React Hooks Form Web Part"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/React_Hooks_Form_Web_Part.webp"
       }
     ]
   },
@@ -2631,9 +2557,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-redux/assets/nonreactive.png",
-        "alt": "Using React and Redux"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Using_React_and_Redux.webp"
       }
     ]
   },
@@ -2672,9 +2596,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-videolibrary/src/assets/react-3d-carousel.PNG",
-        "alt": "Video Library"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Video_Library_Web_Part.webp"
       }
     ]
   },
@@ -2722,9 +2644,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quotes/assets/react-quotes-sample.png",
-        "alt": "Quote of the Day"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Quote_of_the_Day_Web_Part.webp"
       }
     ]
   },
@@ -2974,11 +2894,8 @@
     ],
     "thumbnails": [
       {
-        "name": "react-csv-importer.gif",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-csv-importer/assets/react-csv-importer.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/CSV_Importer.webp"
       }
     ]
   },
@@ -3016,9 +2933,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-openai-summarise-page-content/assets/page_summary.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Multilingual_SharePoint_Page_Summarization_Web_Part_with_Open_AI_API_and_Microsoft_Graph_Pages_API.webp"
       }
     ]
   },
@@ -3057,9 +2972,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/bootstrap-slider/assets/slider_image_1.png",
-        "alt": "Bootstrap Slider Built with jQuery v1.x and Boostrap v3.x"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Bootstrap_Slider_Web_Part_Built_with_jQuery_v1.x_and_Boostrap_v3.x.webp"
       }
     ]
   },
@@ -3096,11 +3009,8 @@
     ],
     "thumbnails": [
       {
-        "name": "dataverseclient.PNG",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dataverse/assets/dataverseclient.PNG",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Consuming_Dataverse_API_using_SPFx.webp"
       }
     ]
   },
@@ -3139,9 +3049,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-schema-extensions/assets/webpart.png",
-        "alt": "Read / update MS Graph Custom Schema Extensions"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Read___update_MS_Graph_Custom_Schema_Extensions_Web_Part.webp"
       }
     ]
   },
@@ -3220,11 +3128,8 @@
     ],
     "thumbnails": [
       {
-        "name": "PiCanvas Screenshot",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-pi-canvas/assets/screenshot.png",
-        "alt": "PiCanvas web part showing tabbed interface with multiple tabs organizing page content"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/PiCanvas_-_Tabbed_Page_Sections.webp"
       }
     ]
   },
@@ -3264,9 +3169,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-pnpjs/assets/summary.png",
-        "alt": "Using PnPJS with MS Graph"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Web_Part_Using_PnPJS_with_MS_Graph.webp"
       }
     ]
   },
@@ -3304,9 +3207,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-instagram/assets/instagram-feed.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Instagram_Feed_Web_Part.webp"
       }
     ]
   },
@@ -3436,9 +3337,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-msgraph-extension/assets/create-graph-extension.png",
-        "alt": "Manage Microsoft Graph Open Extension in SPFx"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Manage_Microsoft_Graph_Open_Extension_in_SPFx.webp"
       }
     ]
   },
@@ -3475,11 +3374,8 @@
     ],
     "thumbnails": [
       {
-        "name": "promptGallery.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-prompt-gallery/assets/promptGallery.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/PnP_Copilot_Prompt_Gallery.webp"
       }
     ]
   },
@@ -3519,9 +3415,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-configure-tab/documentation/images/SPTabAppStudioTeamsTab006.png",
-        "alt": "Teams Configuration Tab"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Teams_Configuration_Tab.webp"
       }
     ]
   },
@@ -3600,9 +3494,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-lists-hide/assets/ListHideWebPart.jpg",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Hide_Lists_Web_Part.webp"
       }
     ]
   },
@@ -3648,9 +3540,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png",
-        "alt": "Extending webpack in the SharePoint Framework toolchain"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Extending_webpack_in_the_SharePoint_Framework_toolchain.webp"
       }
     ]
   },
@@ -3687,11 +3577,8 @@
     ],
     "thumbnails": [
       {
-        "name": "sample.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-carbon-footprint-calculator/assets/sample.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Carbon_Footprint_Calculator.webp"
       }
     ]
   },
@@ -3728,11 +3615,8 @@
     ],
     "thumbnails": [
       {
-        "name": "donutchart.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-file-type-distribution/assets/donutchart.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/File_Type_Distribution.webp"
       }
     ]
   },
@@ -3770,9 +3654,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-interactive-map/assets/WPPreview.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Interactive_Map_Web_Part.webp"
       }
     ]
   },
@@ -3852,9 +3734,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-save-to-onedrive-app-personal-folder/assets/in-sharepoint.png",
-        "alt": "Web Part Preview in SharePoint"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Save_to_User_Application_Personal_Folder_in_OneDrive.webp"
       }
     ]
   },
@@ -3894,9 +3774,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/aad-api-spo-cookie/assets/preview-orders.png",
-        "alt": "Call custom APIs secured with Azure Active Directory without ADAL JS"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Call_custom_APIs_secured_with_Azure_Active_Directory_without_ADAL_JS.webp"
       }
     ]
   },
@@ -3934,9 +3812,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-invoice-generator/assets/invoice.PNG",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Invoice_Generator_Web_Part.webp"
       }
     ]
   },
@@ -3976,9 +3852,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-aad-webapi/assets/preview.png",
-        "alt": "Call custom Web API secured with AAD from SharePoint Framework client-side web part"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Call_custom_Web_API_secured_with_AAD_from_SharePoint_Framework_client-side_web_part.webp"
       }
     ]
   },
@@ -4016,9 +3890,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-ppp-pnp-controls/assets/React-PPP-PnP-Controls-Sample.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Property_Pane_Portal_PnP_Controls_Web_Part.webp"
       }
     ]
   },
@@ -4055,11 +3927,8 @@
     ],
     "thumbnails": [
       {
-        "name": "webpart-german.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-svg-to-json-converter/assets/webpart-german.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/SVG_to_JSON_Converter.webp"
       }
     ]
   },
@@ -4230,9 +4099,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/jquery-cdn/assets/preview_weather.png",
-        "alt": "Using jQuery loaded from CDN"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Web_Part_Using_jQuery_loaded_from_CDN.webp"
       }
     ]
   },
@@ -4272,9 +4139,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-msal-msgraph/assets/msal-wp-output.png",
-        "alt": "Microsoft Authentication Library (MSAL JS) authentication sample"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Microsoft_Authentication_Library__MSAL_JS__authentication_sample.webp"
       }
     ]
   },
@@ -4331,11 +4196,8 @@
     ],
     "thumbnails": [
       {
-        "name": "react-directory-teams1.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-directory/assets/react-directory-teams1.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Organization_Directory.webp"
       }
     ]
   },
@@ -4373,9 +4235,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-office-offer-creation/assets/15CreateOfferForm_FluentUI_SPFx.png",
-        "alt": "Create Offer Form with FluentUI controls"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/SharePoint_document_generator_-_Offer_Creation_Web_Part.webp"
       }
     ]
   },
@@ -4462,9 +4322,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png",
-        "alt": "Angular Elements in SharePoint Framework"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Angular_Elements_in_SPFx_web_parts.webp"
       }
     ]
   },
@@ -4589,9 +4447,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnp-controls-list-view-fields/assets/web-part.png",
-        "alt": "PnP ListView with PnP Field Controls Web Part"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/PnP_ListView_with_PnP_Field_Controls_Web_Part.webp"
       }
     ]
   },
@@ -4635,9 +4491,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-soccer-highlights/assets/SoccerHighlightsV1.png",
-        "alt": "Soccer Highlights"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Soccer_Highlights_Web_Part.webp"
       }
     ]
   },
@@ -4675,9 +4529,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-property-bag-editor/assets/PropertyBagEditorDisplay.PNG",
-        "alt": "Property Bag Navigation Web parts"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Property_Bag_Navigation_Web_parts.webp"
       }
     ]
   },
@@ -4717,9 +4569,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-apis/assets/preview-chat.png",
-        "alt": "Microsoft 365 Copilot Chat Web Part with conversation history"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Microsoft_365_Copilot_Chat_and_Search_with_Work_IQ_in_SPFx.webp"
       }
     ]
   },
@@ -4798,11 +4648,8 @@
     ],
     "thumbnails": [
       {
-        "name": "gameplay.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-office-breakout/assets/gameplay.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Office_Breakout.webp"
       }
     ]
   },
@@ -4866,9 +4713,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-personal-apps/assets/Image1.png",
-        "alt": "My Personal Apps"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/My_Personal_Apps_Web_Part.webp"
       }
     ]
   },
@@ -4911,9 +4756,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-tagging/assets/webpart.JPG",
-        "alt": "Tag Teams using a TermSet in SharePoint"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Tag_Teams_using_a_TermSet_in_SharePoint.webp"
       }
     ]
   },
@@ -5006,9 +4849,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/e92d0dac567cc4d59cdfc94186a52a3b776c6d21/samples/react-rhythm-of-business-calendar/assets/screenshot-edit-refiner.png",
-        "alt": "Edit refiners"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Rhythm_of_Business_Calendar_Web_Part.webp"
       }
     ]
   },
@@ -5047,9 +4888,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-yet-another-FAQ-webpart/assets/preview.png",
-        "alt": "FAQ Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/SPFx_FAQ_Accordion_Web_Part.webp"
       }
     ]
   },
@@ -5286,9 +5125,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azure-openai-api-stream/assets/screenshot.png",
-        "alt": "Sample in action"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Calling_Azure_OpenAI_API_in_streaming_mode_web_part.webp"
       }
     ]
   },
@@ -5383,9 +5220,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-modern-calendar/assets/14b88f34-0121-11e7-8c91-56ecff9343e1.png",
-        "alt": "Modern Calendar"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Modern_Calendar_Web_Part.webp"
       }
     ]
   },
@@ -5469,9 +5304,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-dashboard/assets/MyDashboard_default.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/My_Dashboard_Web_Part.webp"
       }
     ]
   },
@@ -5511,9 +5344,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-tab-field-visit-mashup/documentation/FieldVisitDemo.png",
-        "alt": "Teams Tab - Field Visit Demo (Mashup)"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Teams_Tab_-_Field_Visit_Web_Part__Mashup_.webp"
       }
     ]
   },
@@ -5596,11 +5427,8 @@
     ],
     "thumbnails": [
       {
-        "name": "Screenshot.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-bubble-template/assets/Screenshot.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/React_Bubble_Template.webp"
       }
     ]
   },
@@ -5694,11 +5522,8 @@
     ],
     "thumbnails": [
       {
-        "name": "Screenshot.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-flag-template/assets/Screenshot.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/React_Flag_Template.webp"
       }
     ]
   },
@@ -5777,9 +5602,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-followed-drag-and-drop-grid/assets/mainImage.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Followed_Drag_and_Drop_Grid_Web_Part.webp"
       }
     ]
   },
@@ -5816,11 +5639,8 @@
     ],
     "thumbnails": [
       {
-        "name": "GroupMembersUI.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-group-members-webpart/assets/GroupMembersUI.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Group_Members_Web_Part___Microsoft_365_Group_User_Management.webp"
       }
     ]
   },
@@ -5985,9 +5805,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-myflows/assets/Screenshot4.png",
-        "alt": "My Flows Web Part"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/My_Flows_Web_Part.webp"
       }
     ]
   },
@@ -6026,9 +5844,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-organisationchart/assets/orgchart.png",
-        "alt": "Organisation Chart"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Organisation_Chart_Web_Part.webp"
       }
     ]
   },
@@ -6120,9 +5936,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-calendar/assets/react-calendar-categories.png",
-        "alt": "Calendar"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Calendar_Web_Part.webp"
       }
     ]
   },
@@ -6159,11 +5973,8 @@
     ],
     "thumbnails": [
       {
-        "name": "MainDisplay.PNG",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-securitygrid/assets/MainDisplay.PNG",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Security_Grid.webp"
       }
     ]
   },
@@ -6440,9 +6251,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-faqapp/assets/FAQWebpart.png",
-        "alt": "Frequently Asked Questions"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Frequently_Asked_Questions_Web_Part.webp"
       }
     ]
   },
@@ -6528,9 +6337,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-migration/assets/angular-todo-spfx-preview.png",
-        "alt": "Migrating existing Angular applications to SharePoint Framework sample"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Migrating_existing_Angular_applications_to_SPFx_web_parts.webp"
       }
     ]
   },
@@ -6568,9 +6375,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-site-secure-function-call/assets/SetSiteDescreption.png",
-        "alt": "App in action"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Site_Secure_Function_Call.webp"
       }
     ]
   },
@@ -6833,9 +6638,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-display-list/assets/display-list-preview.png",
-        "alt": "Display List JavaScript Client-Side Web Part"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Display_List_JavaScript_Client-Side_Web_Part.webp"
       }
     ]
   },
@@ -6957,9 +6760,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-team-creator/assets/teams-creator.png",
-        "alt": "Teams Creator Web Part"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Teams_Creator_Web_Part.webp"
       }
     ]
   },
@@ -7121,11 +6922,8 @@
     ],
     "thumbnails": [
       {
-        "name": "form-builder-screen-01.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-form-builder/assets/form-builder-screen-01.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/SharePoint_-_Dynamic_Form_Builder__WebPart_.webp"
       }
     ]
   },
@@ -7169,9 +6967,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-datatable/assets/preview.png",
-        "alt": "Data Table"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Data_Table_Web_Part.webp"
       }
     ]
   },
@@ -7215,9 +7011,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-personal-app-settings/assets/teams-personal-app-settings.png",
-        "alt": "Teams Personal App Settings Web Part"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Teams_Personal_App_Settings_Web_Part.webp"
       }
     ]
   },
@@ -7299,9 +7093,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-functional-servicescope-hooks/webpart.png",
-        "alt": "Consuming SPFX Service Scopes using React Hooks"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Consuming_SPFX_Service_Scopes_using_React_Hooks.webp"
       }
     ]
   },
@@ -7340,9 +7132,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-ioc-tests/assets/preview.jpg",
-        "alt": "React Inversion Of Control Web Part with Unit Tests using Jest and Enzyme"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/React_Inversion_Of_Control_Web_Part_with_Unit_Tests_using_Jest_and_Enzyme.webp"
       }
     ]
   },
@@ -7422,9 +7212,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-tailwindcss3/assets/example.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Tailwind_3_Web_Part.webp"
       }
     ]
   },
@@ -7542,9 +7330,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-twitter/assets/twitter-timeline.png",
-        "alt": "Twitter Timeline"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Twitter_Timeline_Web_Part.webp"
       }
     ]
   },
@@ -7638,9 +7424,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-migrate-settings-approot/assets/migrate-personal-settings-01.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/SPFx_Legacy_App_Files_Browser.webp"
       }
     ]
   },
@@ -7779,9 +7563,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-global-news-sp2019/assets/GlobalNews02.png",
-        "alt": "Global News"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Global_News_Web_Part__SP2019_.webp"
       }
     ]
   },
@@ -7820,9 +7602,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pagecontributors/assets/pagecontributors_inaction.PNG",
-        "alt": "Page Contributors Web Part"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Page_Contributors_Web_Part.webp"
       }
     ]
   },
@@ -7991,9 +7771,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-sitedesigns/assets/screen1.jpg",
-        "alt": "Site Designs Manager"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Site_Designs_Manager_Web_Part.webp"
       }
     ]
   },
@@ -8036,9 +7814,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-adaptivecards-hooks/assets/preview.png",
-        "alt": "Adaptive Cards Viewer using Hooks"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Adaptive_Cards_Viewer_Web_Parts_using_Hooks.webp"
       }
     ]
   },
@@ -8077,9 +7853,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-jest-testing/assets/Jest-Typescript-VSCode-debugging.png",
-        "alt": "React Jest Testing sample"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/React_Jest_Testing_sample_Web_Part.webp"
       }
     ]
   },
@@ -8122,9 +7896,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-conversationview/assets/1.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Teams_Tab_Conversation_View.webp"
       }
     ]
   },
@@ -8208,9 +7980,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-message-user/assets/webPart-preview.png",
-        "alt": "Message Teams User"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Message_Teams_User_Web_Part.webp"
       }
     ]
   },
@@ -8250,9 +8020,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png",
-        "alt": "Angular Elements with HTML Template File in SharePoint Framework"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Angular_Elements_with_HTML_Template_File_in_SharePoint_Framework.webp"
       }
     ]
   },
@@ -8403,11 +8171,8 @@
     ],
     "thumbnails": [
       {
-        "name": "screenshot.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-richtext-editor/assets/screenshot.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Rich_Text_Editor_-_Fluent_UI.webp"
       }
     ]
   },
@@ -8447,9 +8212,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/knockout-taxonomy/assets/Taxonomy.png",
-        "alt": "Taxonomy Web Part"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Taxonomy_Web_Part.webp"
       }
     ]
   },
@@ -8583,9 +8346,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-accordion-with-richtext/assets/TabAccordionWebpart.PNG",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Tab_Accordion_Web_Part.webp"
       }
     ]
   },
@@ -8623,9 +8384,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-m365-services-health/assets/M365ServiceHealthDetail.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Service_Health_for_Microsoft_365_Web_Part.webp"
       }
     ]
   },
@@ -8750,9 +8509,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-ppw-html/assets/React-PPW-HTML-Sample.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Property_Pane_Wrapper_for_HTML_Controls.webp"
       }
     ]
   },
@@ -8800,9 +8557,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnp-js-sample/assets/react-pnp-js-sample.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Using__pnp_js_and_ReactJS.webp"
       }
     ]
   },
@@ -8989,9 +8744,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tree-orgchart/assets/Screenshot1.png",
-        "alt": "Tree Organization Web Part"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Tree_Organization_Web_Part.webp"
       }
     ]
   },
@@ -9068,11 +8821,8 @@
     ],
     "thumbnails": [
       {
-        "name": "HubSiteNavigator.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-hub-site-navigator/assets/HubSiteNavigator.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Hub_Site_Navigator.webp"
       }
     ]
   },
@@ -9110,9 +8860,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnpjs-http-client/assets/UpdateAPICall.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/GitHub_Profile_Web_Part_Display_via_API.webp"
       }
     ]
   },
@@ -9325,11 +9073,8 @@
     ],
     "thumbnails": [
       {
-        "name": "image.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-custom-action-manager/assets/image.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/SharePoint_Custom_Action_Manager.webp"
       }
     ]
   },
@@ -9373,9 +9118,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-teams-tabs-graph/assets/screenshots/react-teams-tabs-graph-webpart.png",
-        "alt": "MS Teams Channels and Tabs from Modern Team site"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/MS_Teams_Channels_and_Tabs_from_Modern_Team_site.webp"
       }
     ]
   },
@@ -9554,9 +9297,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mobx/assets/mobxreactive.png",
-        "alt": "Using React and Mobx"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Using_React_and_Mobx_Web_Part.webp"
       }
     ]
   },
@@ -9636,9 +9377,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-realtime-incidentdashboard/assets/list-notification-dashboard.jpg",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/List_notifications___Microsoft_Teams_Integrations.webp"
       }
     ]
   },
@@ -9719,9 +9458,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://avatars3.githubusercontent.com/u/7882052?s=460&v=4",
-        "alt": "Integrating custom gulp tasks to SharePoint Framwork toolchain"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Integrating_custom_gulp_tasks_to_SharePoint_Framework_toolchain.webp"
       }
     ]
   },
@@ -9807,9 +9544,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-events/assets/preview.png",
-        "alt": "react-my-events"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/My_Events_Web_Part.webp"
       }
     ]
   },
@@ -9846,11 +9581,8 @@
     ],
     "thumbnails": [
       {
-        "name": "modernlink-01.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-link-presenter/assets/modernlink-01.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Modern_Link_Presenter.webp"
       }
     ]
   },
@@ -9936,9 +9668,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-groups/assets/React-MyGroups_Grid.png",
-        "alt": "My Groups"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/My_Groups_Web_Part.webp"
       }
     ]
   },
@@ -10060,9 +9790,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-aad-webapi/assets/preview.jpg",
-        "alt": "Call custom Web API secured with AAD from SharePoint Framework client-side web part using Angular v1.x"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Call_custom_Web_API_secured_with_AAD_from_SharePoint_Framework_client-side_web_part_using_Angular_v1.x.webp"
       }
     ]
   },
@@ -10249,9 +9977,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azfunc-vimeo/assets/_nopreview.png",
-        "alt": "No preview available"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Local_Azure_Function_and_SPFx_Web_Part_Development_to_consume_third_party_APIs.webp"
       }
     ]
   },
@@ -10289,9 +10015,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-listview-context-ecb/assets/02_employeelistview_ecb3.png",
-        "alt": "Context or ECB menu"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Employee_ListView_Contextual_Menu.webp"
       }
     ]
   },
@@ -10371,9 +10095,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-personalemail/assets/preview.png",
-        "alt": "Personal e-mail"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Personal_e-mail_Web_Part.webp"
       }
     ]
   },
@@ -10490,11 +10212,8 @@
     ],
     "thumbnails": [
       {
-        "name": "SiteContent.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-site-content/assets/SiteContentWebpart.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Site_Content_Web_Part.webp"
       }
     ]
   },
@@ -10532,9 +10251,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-calendar/assets/moderCalendar1.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/New_Modern_Calendar_Web_Part.webp"
       }
     ]
   },
@@ -10578,9 +10295,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-spfx-control-iframepanel/assets/preview.png",
-        "alt": "Spfx control iframepanel"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/IFramePanel_Web_Part.webp"
       }
     ]
   },
@@ -10617,11 +10332,8 @@
     ],
     "thumbnails": [
       {
-        "name": "page.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-retrieval-api/assets/page.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Copilot_Retrieval_API_Playground.webp"
       }
     ]
   },
@@ -10752,9 +10464,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-groups-teams/assets/Card-Display.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/All_Microsoft_365_Groups_and_Teams_Web_Part.webp"
       }
     ]
   },
@@ -10793,9 +10503,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-search/assets/angularSearch.png",
-        "alt": "Search Client-Side Web Part Built with Angular v1.x"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Search_Client-Side_Web_Part_Built_with_Angular_v1.x.webp"
       }
     ]
   },
@@ -10879,11 +10587,8 @@
     ],
     "thumbnails": [
       {
-        "name": "Govenor_Sharing_SharedItemsExample.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/Govenor_Sharing_SharedItemsExample.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Governor_Sharing_Web_Part.webp"
       }
     ]
   },
@@ -11016,11 +10721,8 @@
     ],
     "thumbnails": [
       {
-        "name": "screenshot.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-countdown-timer/assets/screenshot.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Countdown_Timer_Web_Part.webp"
       }
     ]
   },
@@ -11057,11 +10759,8 @@
     ],
     "thumbnails": [
       {
-        "name": "copilot-studio-client-api.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-microsoft-learn-agent/assets/copilot-studio-client-api.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Microsoft_Learn_Agent__Copilot_Studio__for_SPFx.webp"
       }
     ]
   },
@@ -11146,11 +10845,8 @@
     ],
     "thumbnails": [
       {
-        "name": "Screenshot.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-okr-tracker/assets/Screenshot.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Goals_OKR_Tracker.webp"
       }
     ]
   },
@@ -11187,11 +10883,8 @@
     ],
     "thumbnails": [
       {
-        "name": "js-mermaid.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-mermaid-diagram/assets/js-mermaid.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Mermaid_Diagram_Web_Part_for_SharePoint_Online.webp"
       }
     ]
   },
@@ -11321,9 +11014,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-teams/assets/react-my-teams.png",
-        "alt": "My Teams"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/My_Teams_Web_Part.webp"
       }
     ]
   },
@@ -11444,9 +11135,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-news/assets/Single-View-Default.png",
-        "alt": "Single view default"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/News_Web_Part.webp"
       }
     ]
   },
@@ -11539,9 +11228,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-bot-framework/assets/bot-frameworkv4-webpart-preview.png",
-        "alt": "Microsoft Bot Framework Web Chat"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Microsoft_Bot_Framework_Web_Chat_Web_Part.webp"
       }
     ]
   },
@@ -11707,11 +11394,8 @@
     ],
     "thumbnails": [
       {
-        "name": "result.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-associated-sites-links/assets/result.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Associated_Sites_Links.webp"
       }
     ]
   },
@@ -11751,9 +11435,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://avatars3.githubusercontent.com/u/17036219?s=460&v=4",
-        "alt": "Handling Multiple Editions of SPFx Solution"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Handling_Multiple_Editions_of_SPFx_Solution.webp"
       }
     ]
   },
@@ -11801,9 +11483,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-organization-chart/assets/Screenshot1.png",
-        "alt": "Modern Organization Chart"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Modern_Organization_Chart.webp"
       }
     ]
   },
@@ -11883,9 +11563,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-dynamic-bundling-libraries/assets/WebPart-Preview-PostjQueryClick.jpg",
-        "alt": "Dynamic Bundling & Loading of SPFx Packages"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Dynamic_Bundling_Web_Parts___Loading_of_SPFx_Packages.webp"
       }
     ]
   },
@@ -11925,9 +11603,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-google-fit/assets/webpart-preview.png",
-        "alt": "Web part displaying Google Fit information"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Web_part_displaying_Google_Fit_information.webp"
       }
     ]
   },
@@ -11967,9 +11643,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/knockout-dependent-properties/assets/dep-props.png",
-        "alt": "Knockout Dependent Properties"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Knockout_Dependent_Properties.webp"
       }
     ]
   },
@@ -12047,9 +11721,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-password-vault/assets/PasswordVaultDisplayMode.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Password_Vault_Web_Part.webp"
       }
     ]
   },
@@ -12255,9 +11927,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-realtime-documents/assets/list-subscription-webpart.png",
-        "alt": "List subscription"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/List_Subscription_Web_Part.webp"
       }
     ]
   },
@@ -12294,11 +11964,8 @@
     ],
     "thumbnails": [
       {
-        "name": "demo1.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/demo1.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Employee_Onboarding.webp"
       }
     ]
   },
@@ -12338,9 +12005,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-feature-framework/assets/screenshot.png",
-        "alt": "Deployment of SharePoint assets as part of SPFx package"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Deployment_of_SharePoint_assets_as_part_of_SPFx_package.webp"
       }
     ]
   },
@@ -12380,9 +12045,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-aad-implicitflow/assets/upcoming-meetings-preview.png",
-        "alt": "Azure Active Directory implicit flow authentication samples"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Azure_Active_Directory_implicit_flow_authentication_sample_web_parts.webp"
       }
     ]
   },
@@ -12419,11 +12082,8 @@
     ],
     "thumbnails": [
       {
-        "name": "kernel-memory-architecture.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-document-ai-chat/assets/kernel-memory-architecture.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Document_AI_Chat_using_Kernel_Memory.webp"
       }
     ]
   },
@@ -12516,9 +12176,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-profile-card-properties/assets/Screenshot5.png",
-        "alt": "Manage Profile Card Properties"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Manage_Profile_Card_Properties_Web_Part.webp"
       }
     ]
   },
@@ -12707,11 +12365,8 @@
     ],
     "thumbnails": [
       {
-        "name": "default-behavior.png",
         "type": "image",
-        "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-custom-localization/assets/default-behavior.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Custom_Localization.webp"
       }
     ]
   },
@@ -12791,9 +12446,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-private-libraries/assets/HomeScreen.png",
-        "alt": "Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Private_Library_Folder_Manager_Web_Part.webp"
       }
     ]
   },
@@ -12832,9 +12485,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-item-History/Capture.PNG",
-        "alt": "Item History"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Item_History_Web_Part.webp"
       }
     ]
   },
@@ -12975,9 +12626,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-ngofficeuifabric-file-upload/assets/NG%20File%20Upload.png",
-        "alt": "File Upload using AngularJs"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/File_Upload_web_part_using_AngularJs.webp"
       }
     ]
   },
@@ -13014,11 +12663,8 @@
     ],
     "thumbnails": [
       {
-        "name": "engage_hub1.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-engage-hub/assets/engage_hub1.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Engage_Hub.webp"
       }
     ]
   },
@@ -13055,11 +12701,8 @@
     ],
     "thumbnails": [
       {
-        "name": "screenshot1.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-styled-list/assets/screenshot1.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Styled_List.webp"
       }
     ]
   },
@@ -13188,9 +12831,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://raw.githubusercontent.com/jcoleman-pcprofessional/Modern-Charts/master/assets/modern-chart2.png",
-        "alt": "Modern Charts"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Modern_Charts.webp"
       }
     ]
   },
@@ -13249,9 +12890,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-advanced-page-properties/assets/diff-screencap.png",
-        "alt": "Web part in action"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Advanced_Page_Properties_Web_Part.webp"
       }
     ]
   },
@@ -13419,9 +13058,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-easter-egg-hunt-game/assets/huntgame.png",
-        "alt": "Easter Egg Hunt Game"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Easter_Egg_Hunt_Game_SPFx_Web_Part.webp"
       }
     ]
   },
@@ -13553,9 +13190,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-kiota-custom-api-client/assets/react-kiota-custom-api-client.png",
-        "alt": "React Kiota Custom API Client architecture"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/React_Kiota_Custom_API_Client_Web_Part.webp"
       }
     ]
   },
@@ -13636,9 +13271,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-elevatedprivileges/assets/preview.png",
-        "alt": "Communicate using elevated privileges with SharePoint"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Communicate_using_elevated_privileges_with_SharePoint.webp"
       }
     ]
   },
@@ -13683,9 +13316,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-facebook-plugin/assets/preview.png",
-        "alt": "SharePoint Framework Facebook Page Social Plugin web part sample"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/SharePoint_Framework_Facebook_Page_Social_Plugin_web_part.webp"
       }
     ]
   },
@@ -13767,11 +13398,8 @@
     ],
     "thumbnails": [
       {
-        "name": "List.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-org-chart/assets/List.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Building_Org_Chart_using_a_SharePoint_list.webp"
       }
     ]
   },
@@ -13851,9 +13479,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-zod/assets/data-usage.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Zod_Web_Part.webp"
       }
     ]
   },
@@ -13893,9 +13519,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-github-badge/assets/githubbadge.png",
-        "alt": "GitHub Badge (React)"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/GitHub_Badge_Web_Part__React_.webp"
       }
     ]
   },
@@ -13935,9 +13559,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/handlebarsjs-webpack-loader/assets/_nopreview.png",
-        "alt": "No preview available"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Web_Part_with_Handlebars.js.webp"
       }
     ]
   },
@@ -13976,9 +13598,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular2-prototype/assets/preview.png",
-        "alt": "Angular2 Web Part Prototype"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Angular2_Web_Part_Prototype.webp"
       }
     ]
   },
@@ -14018,9 +13638,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-upgrade-me/assets/react-upgrade-me.png",
-        "alt": "Upgrade Me"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Upgrade_Me_Web_Part.webp"
       }
     ]
   },
@@ -14072,9 +13690,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-lead-dashboard/assets/LeadAssistDashboard_overview.png",
-        "alt": "Lead Dashboard"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Lead_Dashboard_Web_Part.webp"
       }
     ]
   },
@@ -14108,9 +13724,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-pro/assets/cards-view.png",
-        "alt": "Cards display style"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Quick_Links_Pro.webp"
       }
     ]
   },
@@ -14321,9 +13935,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-birthdays-per-month/assets/app.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Birthdays_Per_Month.webp"
       }
     ]
   },
@@ -14375,9 +13987,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-accordion/assets/AccordionPreview.png",
-        "alt": "Accordion Web Part"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Accordion_Web_Part.webp"
       }
     ]
   },
@@ -14498,11 +14108,8 @@
     ],
     "thumbnails": [
       {
-        "name": "demo-1.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mcs-hr-assistant/assets/demo-1.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Copilot_Agent_-_HR_Assistant.webp"
       }
     ]
   },
@@ -14592,9 +14199,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-theme-manager/assets/create-a-theme.png",
-        "alt": "Modern Experience Theme Manager"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Modern_Experience_Theme_Manager_Web_Part.webp"
       }
     ]
   },
@@ -14673,9 +14278,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnp-js-hooks/assets/react-pnp-js-sample.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp_js_and_ReactJS_Functional_Components.webp"
       }
     ]
   },
@@ -14754,11 +14357,8 @@
     ],
     "thumbnails": [
       {
-        "name": "screenshot.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-whos-in/assets/screenshot.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/React_Who_s_In.webp"
       }
     ]
   },
@@ -14850,9 +14450,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://avatars3.githubusercontent.com/u/6962857?s=460&v=4",
-        "alt": "Design Patterns applied to Sharepoint Framework"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Design_Patterns_applied_to_Sharepoint_Framework.webp"
       }
     ]
   },
@@ -15116,9 +14714,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azure-devops-tasks/assets/react-azure-devops-tasks.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Azure_DevOps_Tasks_Adaptive_Card_Extension.webp"
       }
     ]
   },
@@ -15202,9 +14798,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/section-backgrounds/assets/webpartexample3.png",
-        "alt": "Supporting section backgrounds in your web parts"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Supporting_section_backgrounds_in_your_web_parts.webp"
       }
     ]
   },
@@ -15242,9 +14836,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-page-properties/assets/app.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Enhanced_Page_Properties_Web_Part.webp"
       }
     ]
   },
@@ -15417,11 +15009,8 @@
     ],
     "thumbnails": [
       {
-        "name": "propertypane.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-cascadingdropdowns/assets/propertypane.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Cascading_Dropdowns.webp"
       }
     ]
   },
@@ -15464,9 +15053,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-app-settings/assets/app-settings-class.PNG",
-        "alt": "App settings web part"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/App_settings_web_part.webp"
       }
     ]
   },
@@ -15506,9 +15093,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png",
-        "alt": "Todo Client Web Part built with Vue.js and Vue's single-file components"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Todo_Client_Web_Part_built_with_Vue.js_and_Vue_s_single-file_components.webp"
       }
     ]
   },
@@ -15705,9 +15290,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-faqs/assets/FAQWebpart.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Frequently_Asked_Questions_Web_Part.webp"
       }
     ]
   },
@@ -15744,11 +15327,8 @@
     ],
     "thumbnails": [
       {
-        "name": "AwardRecognition.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-carousel/assets/AwardRecognition.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Modern_Carousel.webp"
       }
     ]
   },
@@ -15785,11 +15365,8 @@
     ],
     "thumbnails": [
       {
-        "name": "preview_01.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-use-reducer-hook/assets/preview_01.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/React_UseReducer_Hook_with_PnPjs.webp"
       }
     ]
   },
@@ -15883,9 +15460,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-cherry-picked-content/assets/React-Cherry-Picked-Content-Sample.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Cherry_picked_content_web_part.webp"
       }
     ]
   },
@@ -15925,9 +15500,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-settings-approot/assets/webpart-screenshot.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/SPFx_Personal_Settings_Solution.webp"
       }
     ]
   },
@@ -15979,9 +15552,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/sharepoint-crud/assets/preview.png",
-        "alt": "SharePoint CRUD operations"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/SharePoint_CRUD_operations.webp"
       }
     ]
   },
@@ -16061,9 +15632,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-fluentui-9/assets/FQzNLB4XwAIFMRh.jpg",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Using_Fluent_UI_9_in_SPFx_web_part.webp"
       }
     ]
   },
@@ -16100,11 +15669,8 @@
     ],
     "thumbnails": [
       {
-        "name": "sample.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-public-holidays-global/assets/sample.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Public_Holidays_Global.webp"
       }
     ]
   },
@@ -16183,9 +15749,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dashboards/assets/AppInsights.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Application_Insights_and_Cost_Management_Dashboards_Web_Part.webp"
       }
     ]
   },
@@ -16224,9 +15788,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-employee-spotlight/assets/Employee-spotlight-priview.png",
-        "alt": "Display Employee Spotlight JavaScript Client-Side Web Part"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Display_Employee_Spotlight_JavaScript_Client-Side_Web_Part.webp"
       }
     ]
   },
@@ -16265,9 +15827,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-yammer-api/assets/spfx-yammer-api-webpart.jpg",
-        "alt": "Yammer REST API web part"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Yammer_REST_API_web_part.webp"
       }
     ]
   },
@@ -16306,9 +15866,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-powerbi-embedded/assets/screenshot_powerbi_embedded_spfx.png",
-        "alt": "Embed a PowerBI report in a Client-Side Web Part"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Embed_a_PowerBI_report_in_a_Client-Side_Web_Part.webp"
       }
     ]
   },
@@ -16346,9 +15904,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-button/assets/app.jpeg",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Enhanced_Button.webp"
       }
     ]
   },
@@ -16392,9 +15948,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-functional-component-with-data-fetch/assets/Screenshot.png",
-        "alt": "React Functional Component web part with data fetch"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/React_Functional_Component_web_part_with_data_fetch.webp"
       }
     ]
   },
@@ -16474,9 +16028,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-flighttracker/assets/Flight-Tracker-Preview-01.png",
-        "alt": "Flight tracker preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Flight_Tracker.webp"
       }
     ]
   },
@@ -16564,9 +16116,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-webpartdetails/assets/webpartDetails.png",
-        "alt": "Web Part Details"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Web_Part_Details.webp"
       }
     ]
   },
@@ -16620,9 +16170,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-theme-manager-2019/assets/apply-a-theme.png",
-        "alt": "Modern Experience Theme Manager 2019"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Modern_Experience_Theme_Manager_2019_Web_Part.webp"
       }
     ]
   },
@@ -16726,11 +16274,8 @@
     ],
     "thumbnails": [
       {
-        "name": "209691123-03ac3c5d-cc8e-490e-8cb2-837539914db8.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-holidays-calendar/assets/209691123-03ac3c5d-cc8e-490e-8cb2-837539914db8.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Holiday_calendar.webp"
       }
     ]
   },
@@ -16881,9 +16426,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mgtevents/assets/mgtevents.jpg",
-        "alt": "MGT Events"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/MGT_Events_Web_Part.webp"
       }
     ]
   },
@@ -16923,9 +16466,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-search/assets/preview.png",
-        "alt": "Search Client-Side Web Part built with React and Flux"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Search_Client-Side_Web_Part_built_with_React_and_Flux.webp"
       }
     ]
   },
@@ -17061,9 +16602,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-themes/assets/themes.png",
-        "alt": "SharePoint Themes Client Side Web Part"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/SharePoint_Themes_Client_Side_Web_Part.webp"
       }
     ]
   },
@@ -17102,9 +16641,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-tab-suggested-members/assets/SuggestedMembersTeamsTab.jpg",
-        "alt": "Group members suggestion"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Group_members_suggestion_Web_Part.webp"
       }
     ]
   },
@@ -17191,9 +16728,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-news-extension/assets/curated-news.png",
-        "alt": "Curated news"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Targeted_News_Web_Part_using_Microsoft_Graph_Open_Extension.webp"
       }
     ]
   },
@@ -17231,9 +16766,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-cross-device-data/assets/Preview.jpg",
-        "alt": "Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Cross-Device_Data_Web_Part.webp"
       }
     ]
   },
@@ -17275,9 +16808,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-datatable-using-mui-tables/assets/first.png",
-        "alt": "Data Table with MUI"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/DataTable_Web_Part_Using_MUI_table.webp"
       }
     ]
   },
@@ -17400,11 +16931,8 @@
     ],
     "thumbnails": [
       {
-        "name": "trainingchecklist.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-training-checklist/assets/trainingchecklist.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Training_Checklist.webp"
       }
     ]
   },
@@ -17486,11 +17014,8 @@
     ],
     "thumbnails": [
       {
-        "name": "new ticket.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-ticket-mgnt/assets/new ticket.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Ticket_Management_App.webp"
       }
     ]
   },
@@ -17530,9 +17055,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-todo/assets/preview.png",
-        "alt": "Angular client-side web part"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Angular_client-side_web_part.webp"
       }
     ]
   },
@@ -17612,9 +17135,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-multilist-grid/src/images/ColumnTypes.PNG",
-        "alt": "Multi-list Grid"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Multi-list_Grid_Web_Part.webp"
       }
     ]
   },
@@ -17654,9 +17175,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/knockout-sp-pnp-js/assets/screenshot.png",
-        "alt": "Sample showing the use of @pnp/sp library with Knockoutjs"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Sample_web_part_showing_the_use_of__pnp_sp_library_with_Knockoutjs.webp"
       }
     ]
   },
@@ -17737,9 +17256,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-daterangepicker/assets/daterange1.png",
-        "alt": "Date range picker in SPFx"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Date_range_picker_in_SPFx_Web_Part.webp"
       }
     ]
   },
@@ -17777,9 +17294,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chatgpt-app/assets/ChatGPT.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Chat_GPT_App_Web_Part.webp"
       }
     ]
   },
@@ -17864,9 +17379,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-functional-component/Screenshot.png",
-        "alt": "React Functional Component web part"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/React_Functional_Component_Web_Part.webp"
       }
     ]
   },
@@ -17985,11 +17498,8 @@
     ],
     "thumbnails": [
       {
-        "name": "asset1.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-list-view-metrics/assets/asset1.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/List_View_Metrics_Web_Part.webp"
       }
     ]
   },
@@ -18027,9 +17537,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azurefunction-northwind2/assets/FAPP.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Consume_Northwind_Microsoft_database_from_Azure_using_a_Function_App_.webp"
       }
     ]
   },
@@ -18107,11 +17615,8 @@
     ],
     "thumbnails": [
       {
-        "name": "Add recognition.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-emp-recognition/assets/Add recognition.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/rEmployee_Recognition.webp"
       }
     ]
   },
@@ -18277,9 +17782,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-birthdays/assets/birthdays.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Birthdays_Timeline_Web_Part.webp"
       }
     ]
   },
@@ -18322,9 +17825,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-birthdays/assets/birthdays_teams.jpg",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Birthdays_Web_Part.webp"
       }
     ]
   },
@@ -18370,9 +17871,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-display-hierarchy/assets/webpart-preview.png",
-        "alt": "Web part displaying hierarchical information from SharePoint list"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Web_part_displaying_hierarchical_information_from_SharePoint_list.webp"
       }
     ]
   },
@@ -18411,9 +17910,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-workbench-customizer/assets/Preview.png",
-        "alt": "Workbench customizer"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Workbench_customizer_Web_Part.webp"
       }
     ]
   },
@@ -18455,11 +17952,8 @@
     ],
     "thumbnails": [
       {
-        "name": "dpstep1.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-powerapps/assets/dpstep1.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Enhanced_Power_App.webp"
       }
     ]
   },
@@ -18586,9 +18080,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-functional-stateful-component/Screenshot.png",
-        "alt": "React Functional Stateful Component web part"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/React_Functional_Stateful_Component_web_part.webp"
       }
     ]
   },
@@ -18627,9 +18119,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dev-radar/dev-radar.png",
-        "alt": "Dev-Radar for SharePoint Online"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Dev-Radar_for_SharePoint_Online.webp"
       }
     ]
   },
@@ -18714,9 +18204,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-visio/assets/Preview.PNG",
-        "alt": "Visio Embed"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Visio_Embed_Web_Part.webp"
       }
     ]
   },
@@ -18755,9 +18243,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-msgraph/assets/Connect.png",
-        "alt": "Angular MS Graph Web Part Built with Angular v1.x"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Angular_MS_Graph_Web_Part_Built_with_Angular_v1.x.webp"
       }
     ]
   },
@@ -18796,9 +18282,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-webcam/assets/4.png",
-        "alt": "Web/Mobile Camera Demo"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Web_Mobile_Camera_Demo_Web_Part.webp"
       }
     ]
   },
@@ -19178,9 +18662,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chat-gpt/assets/example2.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Chat_GPT_inside_SPFx.webp"
       }
     ]
   },
@@ -19312,11 +18794,8 @@
     ],
     "thumbnails": [
       {
-        "name": "Screenshot 2023-12-25-main.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-my-webinars/assets/Screenshot 2023-12-25-main.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Teams_My_Webinars_Web_Part.webp"
       }
     ]
   },
@@ -19354,9 +18833,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-pnpjs-spsite-er-diagram/assets/SPERasAppPageFullScreen.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/SP_Site_ER_Diagram.webp"
       }
     ]
   },
@@ -19722,11 +19199,8 @@
     ],
     "thumbnails": [
       {
-        "name": "ChatUI.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chat-sk/assets/ChatUI.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Chat_with_Semantic_Kernel_with_Tools.webp"
       }
     ]
   },
@@ -19810,9 +19284,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tenant-properties/assets/TenantProperties2.jpg",
-        "alt": "Tenant Properties Web Part"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Tenant_Properties_Web_Part.webp"
       }
     ]
   },
@@ -19886,11 +19358,8 @@
     ],
     "thumbnails": [
       {
-        "name": "alerttule.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-applicationinsights-api-calls-tracking/assets/alerttule.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/External_API_calls_tracking_with_Application_Insights.webp"
       }
     ]
   },
@@ -19930,9 +19399,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-site-user-groups/assets/screen1.png",
-        "alt": "Site User and Group Information"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Site_User_and_Group_Information_Web_Part.webp"
       }
     ]
   },
@@ -19969,11 +19436,8 @@
     ],
     "thumbnails": [
       {
-        "name": "ACEScreenshot1.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-onedrive-info/assets/ACEScreenshot1.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/My_OneDrive_Info.webp"
       }
     ]
   },
@@ -20062,9 +19526,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-membership-updater/assets/Screenshot-2020-05-01.png",
-        "alt": "Web part in action"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Teams_Membership_Updater_Web_Part.webp"
       }
     ]
   },
@@ -20365,9 +19827,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-field-conditionalformatting/assets/conditionalformatting-preview.png",
-        "alt": "Conditional formatting SharePoint Framework field customizer"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Conditional_formatting_SharePoint_Framework_field_customizer.webp"
       }
     ]
   },
@@ -20690,9 +20150,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-tenant-telemetry-listener/assets/preview.png",
-        "alt": "Tenant Telemetry Application Customizer preview screenshot"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Tenant_Telemetry_Application_Customizer.webp"
       }
     ]
   },
@@ -20727,11 +20185,8 @@
     ],
     "thumbnails": [
       {
-        "name": "architecture.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-ai-document-assistant/assets/architecture.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/AI_Document_Assistant.webp"
       }
     ]
   },
@@ -20769,9 +20224,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-app-announcements/assets/announcements-preview.png",
-        "alt": "Announcements SharePoint Framework application customizer"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Announcements_SharePoint_Framework_application_customizer.webp"
       }
     ]
   },
@@ -20808,9 +20261,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-movedoc2blob/assets/select_move_document.png",
-        "alt": "Move Document to Blob Storage Command"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Move_Document_to_Blob_Storage_Command.webp"
       }
     ]
   },
@@ -20927,9 +20378,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-formcustomizer-customers/assets/viewform.png",
-        "alt": "View Form"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/React_Form_Customizer__Customers_.webp"
       }
     ]
   },
@@ -21005,9 +20454,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-botframework-chat/assets/bf_app_customizer01.png",
-        "alt": "Bot Framework Chat App Customizer"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Bot_Framework_Chat_App_Customizer.webp"
       }
     ]
   },
@@ -21043,9 +20490,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-field-animated-progress/assets/progressfield.png",
-        "alt": "Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Animated_Progress_Field.webp"
       }
     ]
   },
@@ -21082,9 +20527,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-dialog/assets/screenshot.png",
-        "alt": "Custom Dialog Sample with Command View Set"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Custom_Dialog_Sample_with_Command_View_Set.webp"
       }
     ]
   },
@@ -21161,9 +20604,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-command-hide-commands/CssSelector.PNG",
-        "alt": "Hide Commands"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Hide_Commands.webp"
       }
     ]
   },
@@ -21236,11 +20677,8 @@
     ],
     "thumbnails": [
       {
-        "name": "fastregisterappointment.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-quick-register-to-appointment/assets/fastregisterappointment.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Quick_Register_to_Appointment__SharePoint_Event_page_.webp"
       }
     ]
   },
@@ -21277,9 +20715,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-listdrivenplaceholders/assets/placeholders.jpg",
-        "alt": "List-Driven Placeholders"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/List-Driven_Placeholders.webp"
       }
     ]
   },
@@ -21316,9 +20752,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-grouplinks/assets/react-application-grouplinks.jpg",
-        "alt": "Groups external links"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Groups_external_links.webp"
       }
     ]
   },
@@ -21353,11 +20787,8 @@
     ],
     "thumbnails": [
       {
-        "name": "DriveItemProperties.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-driveitem-properties/assets/DriveItemProperties.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Drive_Item_Properties_List_view_command_set_extension.webp"
       }
     ]
   },
@@ -21511,9 +20942,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-sitepagecoremetadata/assets/SitePageMetadataExtension.png",
-        "alt": "Tenant Global NavBar"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Tenant_Global_NavBar.webp"
       }
     ]
   },
@@ -21589,9 +21018,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-slider/assets/slider.png",
-        "alt": "Slider Field Customizer"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Slider_Field_Customizer.webp"
       }
     ]
   },
@@ -21676,9 +21103,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-copy-move-items/assets/CopyMoveItems.png",
-        "alt": "Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Copy_Move_Item_s_.webp"
       }
     ]
   },
@@ -21804,11 +21229,8 @@
     ],
     "thumbnails": [
       {
-        "name": "1.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-collab-footer/assets/10.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/SharePoint_Collaboration_Footer_v8.0.0.webp"
       }
     ]
   },
@@ -21846,9 +21268,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-attachment-info/assets/react-field-attachment-info.png",
-        "alt": "Field Attachment Info"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Field_Attachment_Info.webp"
       }
     ]
   },
@@ -21885,9 +21305,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-page-comments-sentiment/assets/react-application-page-comments-sentiment.png",
-        "alt": "Application Customiser sample using Text Analytics API"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Application_Customiser_sample_using_Text_Analytics_API.webp"
       }
     ]
   },
@@ -21989,9 +21407,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-messagebanner/assets/BannerMessageAdminView.png",
-        "alt": "Admin View"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/React_Message_Banner.webp"
       }
     ]
   },
@@ -22028,9 +21444,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-graph-client/assets/screenshot.png",
-        "alt": "GraphClient from Modern Teamsite"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/GraphClient_from_Modern_Teamsite.webp"
       }
     ]
   },
@@ -22066,9 +21480,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-unique-permissions/assets/currentUserPermissions.png",
-        "alt": "Extension preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Unique_permissions_on_list_items.webp"
       }
     ]
   },
@@ -22103,11 +21515,8 @@
     ],
     "thumbnails": [
       {
-        "name": "preview-01.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-copy-page/assets/preview-01.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Copy_Page_SPFx_Application_Customizer.webp"
       }
     ]
   },
@@ -22143,9 +21552,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-qna-chat/assets/qnachatbot.png",
-        "alt": "QnA Chatbot"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/QnA_Chatbot.webp"
       }
     ]
   },
@@ -22182,9 +21589,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-field-taskpriority/assets/js-field-taskpriority-preview.jpg",
-        "alt": "Priority Field SharePoint Framework field customizer"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Priority_Field_SharePoint_Framework_field_customizer.webp"
       }
     ]
   },
@@ -22299,9 +21704,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-vision-api/assets/react-command-vision-api.png",
-        "alt": "Image Metadata from Cognitive Services Vision API List View Command Set"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Image_Metadata_from_Cognitive_Services_Vision_API_List_View_Command_Set.webp"
       }
     ]
   },
@@ -22339,9 +21742,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-command-lock-item/assets/lock-item.png",
-        "alt": "Lock Item Command Set Customizer"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Lock_Item_Command_Set_Customizer.webp"
       }
     ]
   },
@@ -22379,9 +21780,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-directions/assets/directions-preview.png",
-        "alt": "Directions SharePoint Framework list view command set"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Directions_SharePoint_Framework_list_view_command_set.webp"
       }
     ]
   },
@@ -22459,9 +21858,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-image-editor/assets/Screenshot1.png",
-        "alt": "Image Editor Command Set"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Image_Editor_Command_Set.webp"
       }
     ]
   },
@@ -22498,9 +21895,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-share-pnpjs/assets/share.png",
-        "alt": "Multishare Command Extension with PnPJs"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Multishare_Command_Extension_with_PnPJs.webp"
       }
     ]
   },
@@ -22534,9 +21929,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-copilot-aprils-fool/assets/sample.png",
-        "alt": "Extension Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Copilot_April_s_Fool.webp"
       }
     ]
   },
@@ -22574,9 +21967,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-tenant-global-navbar/assets/Tenant-Global-NavBar.png",
-        "alt": "Tenant Global NavBar Application Customizer"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Tenant_Global_NavBar_Application_Customizer.webp"
       }
     ]
   },
@@ -22611,11 +22002,8 @@
     ],
     "thumbnails": [
       {
-        "name": "m365ServiceHealth01.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-m365-service-health/assets/m365ServiceHealth01.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Microsoft_365_Service_Health_Extension.webp"
       }
     ]
   },
@@ -22778,9 +22166,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-sites-hubsite-switcher/assets/react-application-sites-hubsite-switcher.png",
-        "alt": "Sites in Hub site switcher"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Sites_in_Hub_site_switcher.webp"
       }
     ]
   },
@@ -22818,9 +22204,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-office-groups-nav/assets/office-groups-nav.png",
-        "alt": "Modern Team Sites (Office Groups) Navigation"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Modern_Team_Sites__Office_Groups__Navigation.webp"
       }
     ]
   },
@@ -22900,9 +22284,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-manage-list-subscriptions/assets/ManageSubscription.png",
-        "alt": "Manage Subscriptions"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/React-Manage-List-Subscriptions.webp"
       }
     ]
   },
@@ -23015,11 +22397,8 @@
     ],
     "thumbnails": [
       {
-        "name": "screenshot1.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-my-sites-hub/assets/screenshot1.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/My_Sites_Hub.webp"
       }
     ]
   },
@@ -23056,9 +22435,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-page-related-bing-news/assets/related-bing-news.png",
-        "alt": "Application Customiser sample using Bing Search API"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Application_Customiser_sample_using_Bing_Search_API.webp"
       }
     ]
   },
@@ -23174,9 +22551,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-command-selecteditems-export/assets/excel-export-preview.png",
-        "alt": "Export Selected Items to Excel"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Export_Selected_Items_to_Excel.webp"
       }
     ]
   },
@@ -23291,9 +22666,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-dynamically-importing-styles/assets/DynamicImportingResultsInBrwoser.png",
-        "alt": "Optimize CSS/SCSS Style Bundling and Dynamic Loading of Styles"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Optimize_CSS_SCSS_Style_Bundling_and_Dynamic_Loading_of_Styles.webp"
       }
     ]
   },
@@ -23367,11 +22740,8 @@
     ],
     "thumbnails": [
       {
-        "name": "CopyPathCopyNameExtenstions.png",
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-utility-extensions/assets/CopyPathCopyNameExtenstions.png",
-        "alt": "Web Part Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Copy_Path_and_Copy_Name_List_view_command_set_extensions.webp"
       }
     ]
   },
@@ -23567,9 +22937,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-direct-link/assets/directlink.png",
-        "alt": "Get a direct link to a document or folder"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Get_a_direct_link_to_a_document_or_folder.webp"
       }
     ]
   },
@@ -23647,9 +23015,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-discuss-now/assets/Discuss-Now-Command-Set.png",
-        "alt": "Discuss Now Command Set"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Discuss_Now_Command_Set.webp"
       }
     ]
   },
@@ -23693,9 +23059,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-appinsights-advanced/assets/Performance.png",
-        "alt": "JS Application AppInsights Advanced"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/JS_Application_AppInsights_Advanced.webp"
       }
     ]
   },
@@ -23778,9 +23142,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-team-archived-notification/assets/screenshot.png",
-        "alt": "Displaying notification if a team is set as archived"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Displaying_notification_if_a_team_is_set_as_archived.webp"
       }
     ]
   },
@@ -23818,9 +23180,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-injectcss/assets/sampleresults.png",
-        "alt": "CSS Injection"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/CSS_Injection.webp"
       }
     ]
   },
@@ -23896,9 +23256,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-reporting/assets/app-charts.png",
-        "alt": "Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/React_Document_Reporting_Field_Customizer.webp"
       }
     ]
   },
@@ -23935,9 +23293,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-item-History/Capture.PNG",
-        "alt": "Item History"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Item_History.webp"
       }
     ]
   },
@@ -24009,9 +23365,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-share-to-teams/assets/preview.PNG",
-        "alt": "Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Associated_Sites_Links.webp"
       }
     ]
   },
@@ -24080,9 +23434,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/jquery-application-toastr/assets/spfxToastr-Preview.PNG",
-        "alt": "Toastr Application Customizer"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Toastr_Application_Customizer.webp"
       }
     ]
   },
@@ -24120,9 +23472,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-menu-footer-classic-modern/Documentation/images/ClassicFullHeaderFooter.png",
-        "alt": "Menu Footer Classic Modern"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Menu_Footer_Classic_Modern.webp"
       }
     ]
   },
@@ -24160,9 +23510,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-logo-festoon/assets/festoon-shot.png",
-        "alt": "Logo Festoon"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Logo_Festoon.webp"
       }
     ]
   },
@@ -24200,9 +23548,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-duetasks/assets/app-customizer.png",
-        "alt": "Overdue Tasks Application Customizer"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Overdue_Tasks_Application_Customizer.webp"
       }
     ]
   },
@@ -24239,9 +23585,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-guest-message/assets/externalmessage.png",
-        "alt": "Guest Message"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Guest_Message.webp"
       }
     ]
   },
@@ -24278,9 +23622,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-change-page-layouttype/assets/FileSelection.png",
-        "alt": "Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Change_Page_Layout_Command_Extension.webp"
       }
     ]
   },
@@ -24363,9 +23705,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-customizer-feedback-widget/assets/Feedback_Widget1.png",
-        "alt": "Preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Sticky_Feedback_Widget_Application_Customizer.webp"
       }
     ]
   },
@@ -24403,9 +23743,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-custom-command-bar/assets/command-bar.png",
-        "alt": "Custom Command Bar Command Set Customizer"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Custom_Command_Bar_Command_Set_Customizer.webp"
       }
     ]
   },
@@ -24442,9 +23780,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-user-permission/assets/react-field-user-permission.png",
-        "alt": "Displaying the current user permission with PNPJs"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Displaying_the_current_user_permission_with_PNPJs.webp"
       }
     ]
   },
@@ -24480,9 +23816,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-nav-search-driven/assets/01SearchDrivenNavigation.png",
-        "alt": "Menu navigation"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Search_driven_navigation.webp"
       }
     ]
   },
@@ -24571,9 +23905,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-announcements/assets/announcements-MUI.png",
-        "alt": "Announcements SharePoint Framework Application Customizer"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Announcements_SharePoint_Framework_Application_Customizer.webp"
       }
     ]
   },
@@ -24782,9 +24114,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-text-analytics-api/assets/react-field-text-analytics-api.png",
-        "alt": "Field Customiser sample using Text Analytics API"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Field_Customiser_sample_using_Text_Analytics_API.webp"
       }
     ]
   },
@@ -24821,9 +24151,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-send-document/assets/preview.PNG",
-        "alt": "Send Document With E-Mail"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Send_Document_With_E-Mail.webp"
       }
     ]
   },
@@ -24861,9 +24189,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-regions-footer/assets/Regions-Footer.png",
-        "alt": "Regions Footer Application Customizer"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Regions_Footer_Application_Customizer.webp"
       }
     ]
   },
@@ -24983,9 +24309,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-pnp-file-type-renderer/assets/file-type-renderer.png",
-        "alt": "PnP File Type Renderer"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/PnP_File_Type_Renderer.webp"
       }
     ]
   },
@@ -25061,9 +24385,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-weather-widget/assets/weatherwidget.PNG",
-        "alt": "Extension preview"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Weather_Application_Customizer_Extension.webp"
       }
     ]
   },
@@ -25108,9 +24430,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-breadcrumb/assets/breadcrumb-sample.png",
-        "alt": "Breadcrumb application customizer"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Breadcrumb_application_customizer.webp"
       }
     ]
   },
@@ -25148,9 +24468,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-field-weather/assets/weather-preview.png",
-        "alt": "Weather SharePoint Framework field customizer"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Weather_SharePoint_Framework_field_customizer.webp"
       }
     ]
   },
@@ -25227,9 +24545,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-command-item-permissions/assets/item-permissions.png",
-        "alt": "Unique Item Permissions Command Set Customizer"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Unique_Item_Permissions_Command_Set_Customizer.webp"
       }
     ]
   },
@@ -25266,9 +24582,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-mega-menu/assets/mega.png",
-        "alt": "Mega Menu Application Customizer Extension"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Mega_Menu_Application_Customizer_Extension.webp"
       }
     ]
   },
@@ -25317,9 +24631,7 @@
     "thumbnails": [
       {
         "type": "image",
-        "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-appinsights/assets/appinsights-1.png",
-        "alt": "Injecting Javascript with Sharepoint Framework Extensions - Azure Application Insights"
+        "url": "/sp-dev-fx-webparts/images/thumbnails/Injecting_Javascript_with_Sharepoint_Framework_Extensions_-_Azure_Application_Insights.webp"
       }
     ]
   },

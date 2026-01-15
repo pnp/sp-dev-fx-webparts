@@ -1,1 +1,938 @@
-{}
+{
+  "Accessible_Chart.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/AccessibleChart.png"
+  },
+  "Area_Chart.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/AreaChart.png"
+  },
+  "Bar_Chart__Static_Data_.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/BarChartStatic.png"
+  },
+  "Bar_Chart.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/BarChart.png"
+  },
+  "Bubble_Chart.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/BubbleChart.png"
+  },
+  "Chartinator.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/Chartinator.png"
+  },
+  "Combo_Chart.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/ComboBar.png"
+  },
+  "Custom_Plugin.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/CustomPlugin.png"
+  },
+  "Doughnut_with_Patterns.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/DoughnutPatterns.png"
+  },
+  "Dynamic_Data_Consumer.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/DynamicDataConsumer.png"
+  },
+  "Horizontal_Bar.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/HorizontalBarChart.png"
+  },
+  "Line_Chart.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/LineChart.png"
+  },
+  "Pie_Chart.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/PieChart.png"
+  },
+  "Polar_Chart.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/PolarChart.png"
+  },
+  "Radar_Chart.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/RadarChart.png"
+  },
+  "Real-Time_Chart.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/RealTime.png"
+  },
+  "Scatter_Chart.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chartcontrol/assets/ScatterChart.png"
+  },
+  "Global_News_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-global-news/assets/GlobalNews.png"
+  },
+  "Schema_Extensions_Manager.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-schema-extensions/assets/Screenshot 2025-09-26 at 21.30.22.png"
+  },
+  "SharePoint_-_Use_different_options_to_access_SharePoint_data.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-data-access-options/assets/ui-webpart.png"
+  },
+  "LOB_Integration_web_part.webp": {
+    "source": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-lob-integration.png"
+  },
+  "Star_Ratings_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-star-ratings/assets/react-star-ratings.png"
+  },
+  "QR_Code_Generator_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-qr-code-generator/assets/qr-code-generator-preview-room.png"
+  },
+  "Telemetry_Event_Sender_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-telemetry-event-sender-sample/assets/preview.png"
+  },
+  "GitHub_Badge_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/e92d0dac567cc4d59cdfc94186a52a3b776c6d21/samples/js-gitHubBadge/assets/1.png"
+  },
+  "Office_Graph_Web_Part_samples.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-officegraph/assets/trendinginthissite-preview.png"
+  },
+  "M365_Planner_Timeline_Web_Part.webp": {
+    "source": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-M365-Planner-Timeline/assets/webParts.png"
+  },
+  "Dynamic_data_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-events-dynamicdata/assets/dynamic-data-webparts.png"
+  },
+  "Using_PnP_JS_Core_custom_objects_with__select_and__expand_decorators.webp": {
+    "source": "https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png"
+  },
+  "Outlook_to_Teams_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-outlook-copy2teams/assets/addin_overall.png"
+  },
+  "Query_Microsoft_Graph_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-react-query/assets/_nopreview.png"
+  },
+  "Graph_Auto_Batching_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-auto-batching/assets/_nopreview.png"
+  },
+  "Angular___ngOfficeUIFabric_Client-Side_Web_Part.webp": {
+    "source": "https://avatars2.githubusercontent.com/u/11164679?s=460&v=4"
+  },
+  "Using__pnp_js_with_Async___Await.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-async-await-sp-pnp-js/assets/async-await-sp-pnp-js.png"
+  },
+  "React_Hooks_Form_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-hooks/assets/webpart.PNG"
+  },
+  "Using_React_and_Redux.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-redux/assets/nonreactive.png"
+  },
+  "Video_Library_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-videolibrary/src/assets/react-3d-carousel.PNG"
+  },
+  "Quote_of_the_Day_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quotes/assets/react-quotes-sample.png"
+  },
+  "CSV_Importer.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-csv-importer/assets/react-csv-importer.png"
+  },
+  "Multilingual_SharePoint_Page_Summarization_Web_Part_with_Open_AI_API_and_Microsoft_Graph_Pages_API.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-openai-summarise-page-content/assets/page_summary.png"
+  },
+  "Bootstrap_Slider_Web_Part_Built_with_jQuery_v1.x_and_Boostrap_v3.x.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/bootstrap-slider/assets/slider_image_1.png"
+  },
+  "Consuming_Dataverse_API_using_SPFx.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dataverse/assets/dataverseclient.PNG"
+  },
+  "Read___update_MS_Graph_Custom_Schema_Extensions_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-schema-extensions/assets/webpart.png"
+  },
+  "PiCanvas_-_Tabbed_Page_Sections.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-pi-canvas/assets/screenshot.png"
+  },
+  "Web_Part_Using_PnPJS_with_MS_Graph.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-pnpjs/assets/summary.png"
+  },
+  "Instagram_Feed_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-instagram/assets/instagram-feed.png"
+  },
+  "Manage_Microsoft_Graph_Open_Extension_in_SPFx.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-msgraph-extension/assets/create-graph-extension.png"
+  },
+  "PnP_Copilot_Prompt_Gallery.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-prompt-gallery/assets/promptGallery.png"
+  },
+  "Teams_Configuration_Tab.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-configure-tab/documentation/images/SPTabAppStudioTeamsTab006.png"
+  },
+  "Hide_Lists_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-lists-hide/assets/ListHideWebPart.jpg"
+  },
+  "Extending_webpack_in_the_SharePoint_Framework_toolchain.webp": {
+    "source": "https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png"
+  },
+  "Carbon_Footprint_Calculator.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-carbon-footprint-calculator/assets/sample.png"
+  },
+  "File_Type_Distribution.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-file-type-distribution/assets/donutchart.png"
+  },
+  "Interactive_Map_Web_Part.webp": {
+    "source": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-interactive-map/assets/WPPreview.png"
+  },
+  "Save_to_User_Application_Personal_Folder_in_OneDrive.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-save-to-onedrive-app-personal-folder/assets/in-sharepoint.png"
+  },
+  "Call_custom_APIs_secured_with_Azure_Active_Directory_without_ADAL_JS.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/aad-api-spo-cookie/assets/preview-orders.png"
+  },
+  "Invoice_Generator_Web_Part.webp": {
+    "source": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-invoice-generator/assets/invoice.PNG"
+  },
+  "Call_custom_Web_API_secured_with_AAD_from_SharePoint_Framework_client-side_web_part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-aad-webapi/assets/preview.png"
+  },
+  "Property_Pane_Portal_PnP_Controls_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-ppp-pnp-controls/assets/React-PPP-PnP-Controls-Sample.png"
+  },
+  "SVG_to_JSON_Converter.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-svg-to-json-converter/assets/webpart-german.png"
+  },
+  "Web_Part_Using_jQuery_loaded_from_CDN.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/jquery-cdn/assets/preview_weather.png"
+  },
+  "Microsoft_Authentication_Library__MSAL_JS__authentication_sample.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-msal-msgraph/assets/msal-wp-output.png"
+  },
+  "Organization_Directory.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-directory/assets/react-directory-teams1.png"
+  },
+  "SharePoint_document_generator_-_Offer_Creation_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-office-offer-creation/assets/15CreateOfferForm_FluentUI_SPFx.png"
+  },
+  "Angular_Elements_in_SPFx_web_parts.webp": {
+    "source": "https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png"
+  },
+  "PnP_ListView_with_PnP_Field_Controls_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnp-controls-list-view-fields/assets/web-part.png"
+  },
+  "Soccer_Highlights_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-soccer-highlights/assets/SoccerHighlightsV1.png"
+  },
+  "Property_Bag_Navigation_Web_parts.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-property-bag-editor/assets/PropertyBagEditorDisplay.PNG"
+  },
+  "Microsoft_365_Copilot_Chat_and_Search_with_Work_IQ_in_SPFx.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-apis/assets/preview-chat.png"
+  },
+  "Office_Breakout.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-office-breakout/assets/gameplay.png"
+  },
+  "My_Personal_Apps_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-personal-apps/assets/Image1.png"
+  },
+  "Tag_Teams_using_a_TermSet_in_SharePoint.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-tagging/assets/webpart.JPG"
+  },
+  "Rhythm_of_Business_Calendar_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/e92d0dac567cc4d59cdfc94186a52a3b776c6d21/samples/react-rhythm-of-business-calendar/assets/screenshot-edit-refiner.png"
+  },
+  "SPFx_FAQ_Accordion_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-yet-another-FAQ-webpart/assets/preview.png"
+  },
+  "Calling_Azure_OpenAI_API_in_streaming_mode_web_part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azure-openai-api-stream/assets/screenshot.png"
+  },
+  "Modern_Calendar_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-modern-calendar/assets/14b88f34-0121-11e7-8c91-56ecff9343e1.png"
+  },
+  "My_Dashboard_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-dashboard/assets/MyDashboard_default.png"
+  },
+  "Teams_Tab_-_Field_Visit_Web_Part__Mashup_.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-tab-field-visit-mashup/documentation/FieldVisitDemo.png"
+  },
+  "React_Bubble_Template.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-bubble-template/assets/Screenshot.png"
+  },
+  "React_Flag_Template.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-flag-template/assets/Screenshot.png"
+  },
+  "Followed_Drag_and_Drop_Grid_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-followed-drag-and-drop-grid/assets/mainImage.png"
+  },
+  "Group_Members_Web_Part___Microsoft_365_Group_User_Management.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-group-members-webpart/assets/GroupMembersUI.png"
+  },
+  "My_Flows_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-myflows/assets/Screenshot4.png"
+  },
+  "Organisation_Chart_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-organisationchart/assets/orgchart.png"
+  },
+  "Calendar_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-calendar/assets/react-calendar-categories.png"
+  },
+  "Security_Grid.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-securitygrid/assets/MainDisplay.PNG"
+  },
+  "Frequently_Asked_Questions_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-faqs/assets/FAQWebpart.png"
+  },
+  "Migrating_existing_Angular_applications_to_SPFx_web_parts.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-migration/assets/angular-todo-spfx-preview.png"
+  },
+  "Site_Secure_Function_Call.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-site-secure-function-call/assets/SetSiteDescreption.png"
+  },
+  "Display_List_JavaScript_Client-Side_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-display-list/assets/display-list-preview.png"
+  },
+  "Teams_Creator_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-team-creator/assets/teams-creator.png"
+  },
+  "SharePoint_-_Dynamic_Form_Builder__WebPart_.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-form-builder/assets/form-builder-screen-01.png"
+  },
+  "Data_Table_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-datatable/assets/preview.png"
+  },
+  "Teams_Personal_App_Settings_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-personal-app-settings/assets/teams-personal-app-settings.png"
+  },
+  "Consuming_SPFX_Service_Scopes_using_React_Hooks.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-functional-servicescope-hooks/webpart.png"
+  },
+  "React_Inversion_Of_Control_Web_Part_with_Unit_Tests_using_Jest_and_Enzyme.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-ioc-tests/assets/preview.jpg"
+  },
+  "Tailwind_3_Web_Part.webp": {
+    "source": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-tailwindcss3/assets/example.png"
+  },
+  "Twitter_Timeline_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-twitter/assets/twitter-timeline.png"
+  },
+  "SPFx_Legacy_App_Files_Browser.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-migrate-settings-approot/assets/migrate-personal-settings-01.png"
+  },
+  "Global_News_Web_Part__SP2019_.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-global-news-sp2019/assets/GlobalNews02.png"
+  },
+  "Page_Contributors_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pagecontributors/assets/pagecontributors_inaction.PNG"
+  },
+  "Site_Designs_Manager_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-sitedesigns/assets/screen1.jpg"
+  },
+  "Adaptive_Cards_Viewer_Web_Parts_using_Hooks.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-adaptivecards-hooks/assets/preview.png"
+  },
+  "React_Jest_Testing_sample_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-jest-testing/assets/Jest-Typescript-VSCode-debugging.png"
+  },
+  "Teams_Tab_Conversation_View.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-conversationview/assets/1.png"
+  },
+  "Message_Teams_User_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-message-user/assets/webPart-preview.png"
+  },
+  "Angular_Elements_with_HTML_Template_File_in_SharePoint_Framework.webp": {
+    "source": "https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png"
+  },
+  "Rich_Text_Editor_-_Fluent_UI.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-richtext-editor/assets/screenshot.png"
+  },
+  "Taxonomy_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/knockout-taxonomy/assets/Taxonomy.png"
+  },
+  "Tab_Accordion_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-accordion-with-richtext/assets/TabAccordionWebpart.PNG"
+  },
+  "Service_Health_for_Microsoft_365_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-m365-services-health/assets/M365ServiceHealthDetail.png"
+  },
+  "Property_Pane_Wrapper_for_HTML_Controls.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-ppw-html/assets/React-PPW-HTML-Sample.png"
+  },
+  "Using__pnp_js_and_ReactJS.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnp-js-sample/assets/react-pnp-js-sample.png"
+  },
+  "Tree_Organization_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tree-orgchart/assets/Screenshot1.png"
+  },
+  "Hub_Site_Navigator.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-hub-site-navigator/assets/HubSiteNavigator.png"
+  },
+  "GitHub_Profile_Web_Part_Display_via_API.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnpjs-http-client/assets/UpdateAPICall.png"
+  },
+  "SharePoint_Custom_Action_Manager.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-custom-action-manager/assets/image.png"
+  },
+  "MS_Teams_Channels_and_Tabs_from_Modern_Team_site.webp": {
+    "source": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-teams-tabs-graph/assets/screenshots/react-teams-tabs-graph-webpart.png"
+  },
+  "Using_React_and_Mobx_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mobx/assets/mobxreactive.png"
+  },
+  "List_notifications___Microsoft_Teams_Integrations.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-realtime-incidentdashboard/assets/list-notification-dashboard.jpg"
+  },
+  "Integrating_custom_gulp_tasks_to_SharePoint_Framework_toolchain.webp": {
+    "source": "https://avatars3.githubusercontent.com/u/7882052?s=460&v=4"
+  },
+  "My_Events_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-events/assets/preview.png"
+  },
+  "Modern_Link_Presenter.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-link-presenter/assets/modernlink-01.png"
+  },
+  "My_Groups_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-groups/assets/React-MyGroups_Grid.png"
+  },
+  "Call_custom_Web_API_secured_with_AAD_from_SharePoint_Framework_client-side_web_part_using_Angular_v1.x.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-aad-webapi/assets/preview.jpg"
+  },
+  "Local_Azure_Function_and_SPFx_Web_Part_Development_to_consume_third_party_APIs.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azfunc-vimeo/assets/_nopreview.png"
+  },
+  "Employee_ListView_Contextual_Menu.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-listview-context-ecb/assets/02_employeelistview_ecb3.png"
+  },
+  "Personal_e-mail_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-personalemail/assets/preview.png"
+  },
+  "Site_Content_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-site-content/assets/SiteContentWebpart.png"
+  },
+  "New_Modern_Calendar_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-calendar/assets/moderCalendar1.png"
+  },
+  "IFramePanel_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-spfx-control-iframepanel/assets/preview.png"
+  },
+  "Copilot_Retrieval_API_Playground.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-retrieval-api/assets/page.png"
+  },
+  "All_Microsoft_365_Groups_and_Teams_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-groups-teams/assets/Card-Display.png"
+  },
+  "Search_Client-Side_Web_Part_Built_with_Angular_v1.x.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-search/assets/angularSearch.png"
+  },
+  "Governor_Sharing_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-governor-sharing/assets/Govenor_Sharing_SharedItemsExample.png"
+  },
+  "Countdown_Timer_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-countdown-timer/assets/screenshot.png"
+  },
+  "Microsoft_Learn_Agent__Copilot_Studio__for_SPFx.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-microsoft-learn-agent/assets/copilot-studio-client-api.png"
+  },
+  "Goals_OKR_Tracker.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-okr-tracker/assets/Screenshot.png"
+  },
+  "Mermaid_Diagram_Web_Part_for_SharePoint_Online.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-mermaid-diagram/assets/js-mermaid.png"
+  },
+  "My_Teams_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-teams/assets/react-my-teams.png"
+  },
+  "News_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-news/assets/Single-View-Default.png"
+  },
+  "Microsoft_Bot_Framework_Web_Chat_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-bot-framework/assets/bot-frameworkv4-webpart-preview.png"
+  },
+  "Associated_Sites_Links.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-share-to-teams/assets/preview.PNG"
+  },
+  "Handling_Multiple_Editions_of_SPFx_Solution.webp": {
+    "source": "https://avatars3.githubusercontent.com/u/17036219?s=460&v=4"
+  },
+  "Modern_Organization_Chart.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-organization-chart/assets/Screenshot1.png"
+  },
+  "Dynamic_Bundling_Web_Parts___Loading_of_SPFx_Packages.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-dynamic-bundling-libraries/assets/WebPart-Preview-PostjQueryClick.jpg"
+  },
+  "Web_part_displaying_Google_Fit_information.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-google-fit/assets/webpart-preview.png"
+  },
+  "Knockout_Dependent_Properties.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/knockout-dependent-properties/assets/dep-props.png"
+  },
+  "Password_Vault_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-password-vault/assets/PasswordVaultDisplayMode.png"
+  },
+  "List_Subscription_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-realtime-documents/assets/list-subscription-webpart.png"
+  },
+  "Employee_Onboarding.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/demo1.png"
+  },
+  "Deployment_of_SharePoint_assets_as_part_of_SPFx_package.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-feature-framework/assets/screenshot.png"
+  },
+  "Azure_Active_Directory_implicit_flow_authentication_sample_web_parts.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-aad-implicitflow/assets/upcoming-meetings-preview.png"
+  },
+  "Document_AI_Chat_using_Kernel_Memory.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-document-ai-chat/assets/kernel-memory-architecture.png"
+  },
+  "Manage_Profile_Card_Properties_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-manage-profile-card-properties/assets/Screenshot5.png"
+  },
+  "Custom_Localization.webp": {
+    "source": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-custom-localization/assets/default-behavior.png"
+  },
+  "Private_Library_Folder_Manager_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-private-libraries/assets/HomeScreen.png"
+  },
+  "Item_History_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-item-History/Capture.PNG"
+  },
+  "File_Upload_web_part_using_AngularJs.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-ngofficeuifabric-file-upload/assets/NG%20File%20Upload.png"
+  },
+  "Engage_Hub.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-engage-hub/assets/engage_hub1.png"
+  },
+  "Styled_List.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-styled-list/assets/screenshot1.png"
+  },
+  "Modern_Charts.webp": {
+    "source": "https://raw.githubusercontent.com/jcoleman-pcprofessional/Modern-Charts/master/assets/modern-chart2.png"
+  },
+  "Advanced_Page_Properties_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-advanced-page-properties/assets/diff-screencap.png"
+  },
+  "Easter_Egg_Hunt_Game_SPFx_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-easter-egg-hunt-game/assets/huntgame.png"
+  },
+  "React_Kiota_Custom_API_Client_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-kiota-custom-api-client/assets/react-kiota-custom-api-client.png"
+  },
+  "Communicate_using_elevated_privileges_with_SharePoint.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-elevatedprivileges/assets/preview.png"
+  },
+  "SharePoint_Framework_Facebook_Page_Social_Plugin_web_part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-facebook-plugin/assets/preview.png"
+  },
+  "Building_Org_Chart_using_a_SharePoint_list.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-org-chart/assets/List.png"
+  },
+  "Zod_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-zod/assets/data-usage.png"
+  },
+  "GitHub_Badge_Web_Part__React_.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-github-badge/assets/githubbadge.png"
+  },
+  "Web_Part_with_Handlebars.js.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/handlebarsjs-webpack-loader/assets/_nopreview.png"
+  },
+  "Angular2_Web_Part_Prototype.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular2-prototype/assets/preview.png"
+  },
+  "Upgrade_Me_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-upgrade-me/assets/react-upgrade-me.png"
+  },
+  "Lead_Dashboard_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-lead-dashboard/assets/LeadAssistDashboard_overview.png"
+  },
+  "Quick_Links_Pro.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quick-links-pro/assets/cards-view.png"
+  },
+  "Birthdays_Per_Month.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-birthdays-per-month/assets/app.png"
+  },
+  "Accordion_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-accordion/assets/AccordionPreview.png"
+  },
+  "Copilot_Agent_-_HR_Assistant.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mcs-hr-assistant/assets/demo-1.png"
+  },
+  "Modern_Experience_Theme_Manager_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-theme-manager/assets/create-a-theme.png"
+  },
+  "pnp_js_and_ReactJS_Functional_Components.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-pnp-js-hooks/assets/react-pnp-js-sample.png"
+  },
+  "React_Who_s_In.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-whos-in/assets/screenshot.png"
+  },
+  "Design_Patterns_applied_to_Sharepoint_Framework.webp": {
+    "source": "https://avatars3.githubusercontent.com/u/6962857?s=460&v=4"
+  },
+  "Azure_DevOps_Tasks_Adaptive_Card_Extension.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azure-devops-tasks/assets/react-azure-devops-tasks.png"
+  },
+  "Supporting_section_backgrounds_in_your_web_parts.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/section-backgrounds/assets/webpartexample3.png"
+  },
+  "Enhanced_Page_Properties_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-page-properties/assets/app.png"
+  },
+  "Cascading_Dropdowns.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-cascadingdropdowns/assets/propertypane.png"
+  },
+  "App_settings_web_part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-app-settings/assets/app-settings-class.PNG"
+  },
+  "Todo_Client_Web_Part_built_with_Vue.js_and_Vue_s_single-file_components.webp": {
+    "source": "https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png"
+  },
+  "Modern_Carousel.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-carousel/assets/AwardRecognition.png"
+  },
+  "React_UseReducer_Hook_with_PnPjs.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-use-reducer-hook/assets/preview_01.png"
+  },
+  "Cherry_picked_content_web_part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-cherry-picked-content/assets/React-Cherry-Picked-Content-Sample.png"
+  },
+  "SPFx_Personal_Settings_Solution.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-settings-approot/assets/webpart-screenshot.png"
+  },
+  "SharePoint_CRUD_operations.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/sharepoint-crud/assets/preview.png"
+  },
+  "Using_Fluent_UI_9_in_SPFx_web_part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-fluentui-9/assets/FQzNLB4XwAIFMRh.jpg"
+  },
+  "Public_Holidays_Global.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-public-holidays-global/assets/sample.png"
+  },
+  "Application_Insights_and_Cost_Management_Dashboards_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dashboards/assets/AppInsights.png"
+  },
+  "Display_Employee_Spotlight_JavaScript_Client-Side_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-employee-spotlight/assets/Employee-spotlight-priview.png"
+  },
+  "Yammer_REST_API_web_part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-yammer-api/assets/spfx-yammer-api-webpart.jpg"
+  },
+  "Embed_a_PowerBI_report_in_a_Client-Side_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-powerbi-embedded/assets/screenshot_powerbi_embedded_spfx.png"
+  },
+  "Enhanced_Button.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-button/assets/app.jpeg"
+  },
+  "React_Functional_Component_web_part_with_data_fetch.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-functional-component-with-data-fetch/assets/Screenshot.png"
+  },
+  "Flight_Tracker.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-flighttracker/assets/Flight-Tracker-Preview-01.png"
+  },
+  "Web_Part_Details.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-webpartdetails/assets/webpartDetails.png"
+  },
+  "Modern_Experience_Theme_Manager_2019_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-theme-manager-2019/assets/apply-a-theme.png"
+  },
+  "Holiday_calendar.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-holidays-calendar/assets/209691123-03ac3c5d-cc8e-490e-8cb2-837539914db8.png"
+  },
+  "MGT_Events_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mgtevents/assets/mgtevents.jpg"
+  },
+  "Search_Client-Side_Web_Part_built_with_React_and_Flux.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-search/assets/preview.png"
+  },
+  "SharePoint_Themes_Client_Side_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-themes/assets/themes.png"
+  },
+  "Group_members_suggestion_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-tab-suggested-members/assets/SuggestedMembersTeamsTab.jpg"
+  },
+  "Targeted_News_Web_Part_using_Microsoft_Graph_Open_Extension.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-news-extension/assets/curated-news.png"
+  },
+  "Cross-Device_Data_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-cross-device-data/assets/Preview.jpg"
+  },
+  "DataTable_Web_Part_Using_MUI_table.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-datatable-using-mui-tables/assets/first.png"
+  },
+  "Training_Checklist.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-training-checklist/assets/trainingchecklist.png"
+  },
+  "Ticket_Management_App.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-ticket-mgnt/assets/new ticket.png"
+  },
+  "Angular_client-side_web_part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-todo/assets/preview.png"
+  },
+  "Multi-list_Grid_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-multilist-grid/src/images/ColumnTypes.PNG"
+  },
+  "Sample_web_part_showing_the_use_of__pnp_sp_library_with_Knockoutjs.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/knockout-sp-pnp-js/assets/screenshot.png"
+  },
+  "Date_range_picker_in_SPFx_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-daterangepicker/assets/daterange1.png"
+  },
+  "Chat_GPT_App_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chatgpt-app/assets/ChatGPT.png"
+  },
+  "React_Functional_Component_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-functional-component/Screenshot.png"
+  },
+  "List_View_Metrics_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-list-view-metrics/assets/asset1.png"
+  },
+  "Consume_Northwind_Microsoft_database_from_Azure_using_a_Function_App_.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-azurefunction-northwind2/assets/FAPP.png"
+  },
+  "rEmployee_Recognition.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-emp-recognition/assets/Add recognition.png"
+  },
+  "Birthdays_Timeline_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-birthdays/assets/birthdays.png"
+  },
+  "Birthdays_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-birthdays/assets/birthdays_teams.jpg"
+  },
+  "Web_part_displaying_hierarchical_information_from_SharePoint_list.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-display-hierarchy/assets/webpart-preview.png"
+  },
+  "Workbench_customizer_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-workbench-customizer/assets/Preview.png"
+  },
+  "Enhanced_Power_App.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-enhanced-powerapps/assets/dpstep1.png"
+  },
+  "React_Functional_Stateful_Component_web_part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-functional-stateful-component/Screenshot.png"
+  },
+  "Dev-Radar_for_SharePoint_Online.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dev-radar/dev-radar.png"
+  },
+  "Visio_Embed_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-visio/assets/Preview.PNG"
+  },
+  "Angular_MS_Graph_Web_Part_Built_with_Angular_v1.x.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/angular-msgraph/assets/Connect.png"
+  },
+  "Web_Mobile_Camera_Demo_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-webcam/assets/4.png"
+  },
+  "Chat_GPT_inside_SPFx.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chat-gpt/assets/example2.png"
+  },
+  "Teams_My_Webinars_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-my-webinars/assets/Screenshot 2023-12-25-main.png"
+  },
+  "SP_Site_ER_Diagram.webp": {
+    "source": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-pnpjs-spsite-er-diagram/assets/SPERasAppPageFullScreen.png"
+  },
+  "Chat_with_Semantic_Kernel_with_Tools.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-chat-sk/assets/ChatUI.png"
+  },
+  "Tenant_Properties_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tenant-properties/assets/TenantProperties2.jpg"
+  },
+  "External_API_calls_tracking_with_Application_Insights.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-applicationinsights-api-calls-tracking/assets/alerttule.png"
+  },
+  "Site_User_and_Group_Information_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-site-user-groups/assets/screen1.png"
+  },
+  "My_OneDrive_Info.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-onedrive-info/assets/ACEScreenshot1.png"
+  },
+  "Teams_Membership_Updater_Web_Part.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-membership-updater/assets/Screenshot-2020-05-01.png"
+  },
+  "Conditional_formatting_SharePoint_Framework_field_customizer.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-field-conditionalformatting/assets/conditionalformatting-preview.png"
+  },
+  "Tenant_Telemetry_Application_Customizer.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-tenant-telemetry-listener/assets/preview.png"
+  },
+  "AI_Document_Assistant.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-ai-document-assistant/assets/architecture.png"
+  },
+  "Announcements_SharePoint_Framework_application_customizer.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-app-announcements/assets/announcements-preview.png"
+  },
+  "Move_Document_to_Blob_Storage_Command.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-movedoc2blob/assets/select_move_document.png"
+  },
+  "React_Form_Customizer__Customers_.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-formcustomizer-customers/assets/viewform.png"
+  },
+  "Bot_Framework_Chat_App_Customizer.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-botframework-chat/assets/bf_app_customizer01.png"
+  },
+  "Animated_Progress_Field.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-field-animated-progress/assets/progressfield.png"
+  },
+  "Custom_Dialog_Sample_with_Command_View_Set.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-dialog/assets/screenshot.png"
+  },
+  "Hide_Commands.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-command-hide-commands/CssSelector.PNG"
+  },
+  "Quick_Register_to_Appointment__SharePoint_Event_page_.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-quick-register-to-appointment/assets/fastregisterappointment.png"
+  },
+  "List-Driven_Placeholders.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-listdrivenplaceholders/assets/placeholders.jpg"
+  },
+  "Groups_external_links.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-grouplinks/assets/react-application-grouplinks.jpg"
+  },
+  "Drive_Item_Properties_List_view_command_set_extension.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-driveitem-properties/assets/DriveItemProperties.png"
+  },
+  "Tenant_Global_NavBar.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-sitepagecoremetadata/assets/SitePageMetadataExtension.png"
+  },
+  "Slider_Field_Customizer.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-slider/assets/slider.png"
+  },
+  "Copy_Move_Item_s_.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-copy-move-items/assets/CopyMoveItems.png"
+  },
+  "SharePoint_Collaboration_Footer_v8.0.0.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-collab-footer/assets/10.png"
+  },
+  "Field_Attachment_Info.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-attachment-info/assets/react-field-attachment-info.png"
+  },
+  "Application_Customiser_sample_using_Text_Analytics_API.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-page-comments-sentiment/assets/react-application-page-comments-sentiment.png"
+  },
+  "React_Message_Banner.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-messagebanner/assets/BannerMessageAdminView.png"
+  },
+  "GraphClient_from_Modern_Teamsite.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-graph-client/assets/screenshot.png"
+  },
+  "Unique_permissions_on_list_items.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-unique-permissions/assets/currentUserPermissions.png"
+  },
+  "Copy_Page_SPFx_Application_Customizer.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-copy-page/assets/preview-01.png"
+  },
+  "QnA_Chatbot.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-qna-chat/assets/qnachatbot.png"
+  },
+  "Priority_Field_SharePoint_Framework_field_customizer.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-field-taskpriority/assets/js-field-taskpriority-preview.jpg"
+  },
+  "Image_Metadata_from_Cognitive_Services_Vision_API_List_View_Command_Set.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-vision-api/assets/react-command-vision-api.png"
+  },
+  "Lock_Item_Command_Set_Customizer.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-command-lock-item/assets/lock-item.png"
+  },
+  "Directions_SharePoint_Framework_list_view_command_set.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-directions/assets/directions-preview.png"
+  },
+  "Image_Editor_Command_Set.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-image-editor/assets/Screenshot1.png"
+  },
+  "Multishare_Command_Extension_with_PnPJs.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-share-pnpjs/assets/share.png"
+  },
+  "Copilot_April_s_Fool.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-copilot-aprils-fool/assets/sample.png"
+  },
+  "Tenant_Global_NavBar_Application_Customizer.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-tenant-global-navbar/assets/Tenant-Global-NavBar.png"
+  },
+  "Microsoft_365_Service_Health_Extension.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-m365-service-health/assets/m365ServiceHealth01.png"
+  },
+  "Sites_in_Hub_site_switcher.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-sites-hubsite-switcher/assets/react-application-sites-hubsite-switcher.png"
+  },
+  "Modern_Team_Sites__Office_Groups__Navigation.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-office-groups-nav/assets/office-groups-nav.png"
+  },
+  "React-Manage-List-Subscriptions.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-manage-list-subscriptions/assets/ManageSubscription.png"
+  },
+  "My_Sites_Hub.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-my-sites-hub/assets/screenshot1.png"
+  },
+  "Application_Customiser_sample_using_Bing_Search_API.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-page-related-bing-news/assets/related-bing-news.png"
+  },
+  "Export_Selected_Items_to_Excel.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-command-selecteditems-export/assets/excel-export-preview.png"
+  },
+  "Optimize_CSS_SCSS_Style_Bundling_and_Dynamic_Loading_of_Styles.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-dynamically-importing-styles/assets/DynamicImportingResultsInBrwoser.png"
+  },
+  "Copy_Path_and_Copy_Name_List_view_command_set_extensions.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-utility-extensions/assets/CopyPathCopyNameExtenstions.png"
+  },
+  "Get_a_direct_link_to_a_document_or_folder.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-direct-link/assets/directlink.png"
+  },
+  "Discuss_Now_Command_Set.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-discuss-now/assets/Discuss-Now-Command-Set.png"
+  },
+  "JS_Application_AppInsights_Advanced.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-appinsights-advanced/assets/Performance.png"
+  },
+  "Displaying_notification_if_a_team_is_set_as_archived.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-team-archived-notification/assets/screenshot.png"
+  },
+  "CSS_Injection.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-injectcss/assets/sampleresults.png"
+  },
+  "React_Document_Reporting_Field_Customizer.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-reporting/assets/app-charts.png"
+  },
+  "Item_History.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-item-History/Capture.PNG"
+  },
+  "Toastr_Application_Customizer.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/jquery-application-toastr/assets/spfxToastr-Preview.PNG"
+  },
+  "Menu_Footer_Classic_Modern.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-menu-footer-classic-modern/Documentation/images/ClassicFullHeaderFooter.png"
+  },
+  "Logo_Festoon.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-logo-festoon/assets/festoon-shot.png"
+  },
+  "Overdue_Tasks_Application_Customizer.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-duetasks/assets/app-customizer.png"
+  },
+  "Guest_Message.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-guest-message/assets/externalmessage.png"
+  },
+  "Change_Page_Layout_Command_Extension.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-change-page-layouttype/assets/FileSelection.png"
+  },
+  "Sticky_Feedback_Widget_Application_Customizer.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-customizer-feedback-widget/assets/Feedback_Widget1.png"
+  },
+  "Custom_Command_Bar_Command_Set_Customizer.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-custom-command-bar/assets/command-bar.png"
+  },
+  "Displaying_the_current_user_permission_with_PNPJs.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-user-permission/assets/react-field-user-permission.png"
+  },
+  "Search_driven_navigation.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-nav-search-driven/assets/01SearchDrivenNavigation.png"
+  },
+  "Announcements_SharePoint_Framework_Application_Customizer.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-announcements/assets/announcements-MUI.png"
+  },
+  "Field_Customiser_sample_using_Text_Analytics_API.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-text-analytics-api/assets/react-field-text-analytics-api.png"
+  },
+  "Send_Document_With_E-Mail.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-send-document/assets/preview.PNG"
+  },
+  "Regions_Footer_Application_Customizer.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-regions-footer/assets/Regions-Footer.png"
+  },
+  "PnP_File_Type_Renderer.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-field-pnp-file-type-renderer/assets/file-type-renderer.png"
+  },
+  "Weather_Application_Customizer_Extension.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-weather-widget/assets/weatherwidget.PNG"
+  },
+  "Breadcrumb_application_customizer.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-breadcrumb/assets/breadcrumb-sample.png"
+  },
+  "Weather_SharePoint_Framework_field_customizer.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-field-weather/assets/weather-preview.png"
+  },
+  "Unique_Item_Permissions_Command_Set_Customizer.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-command-item-permissions/assets/item-permissions.png"
+  },
+  "Mega_Menu_Application_Customizer_Extension.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-mega-menu/assets/mega.png"
+  },
+  "Injecting_Javascript_with_Sharepoint_Framework_Extensions_-_Azure_Application_Insights.webp": {
+    "source": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-appinsights/assets/appinsights-1.png"
+  }
+}
