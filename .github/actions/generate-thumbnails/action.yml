@@ -161,20 +161,19 @@ runs:
         }
 
         async function writeWebp(inputPath, outPath) {
-          // For GIFs (often animated), reliably take the first frame
-          const ext = path.extname(inputPath).toLowerCase();
-          const isGif = ext === ".gif";
-
-          // sharp animated:true will load frames; we just want frame 0.
-          // If libvips can't decode animation, sharp still usually decodes first frame.
-          const pipeline = isGif
-            ? sharp(inputPath, { animated: true }).extractFrame(0)
-            : sharp(inputPath);
-
-          await pipeline
-            .resize({ width: 640, withoutEnlargement: true })
+          await sharp(inputPath)
+            .resize({ width: 420, withoutEnlargement: true })
             .webp({ quality: 80 })
             .toFile(outPath);
+        }
+
+
+        function outFileForSample(sample) {
+          if (!sample?.name || typeof sample.name !== "string") return null;
+
+          // Exactly like sample name; no transformation besides adding extension.
+          // (We assume sample.name is already a safe filename, which it is in your data.)
+          return `${sample.name}.webp`;
         }
 
         async function optimizeOne(sample) {
@@ -190,9 +189,12 @@ runs:
           }
 
           const outNameBase = safeFileName(sample.sample || sample.title || path.basename(inputPath));
-          const outFile = `${outNameBase}.webp`;
+          const outFile = outFileForSample(sample);
+          if (!outFile) {
+            failures.push({ reason: "missing_sample_name", sample: sample?.name ?? null, url: thumbUrl });
+            return;
+          }
           const outPath = path.join(thumbsDir, outFile);
-
           try {
             await writeWebp(inputPath, outPath);
             generatedCount += 1;
