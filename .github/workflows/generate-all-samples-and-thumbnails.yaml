@@ -191,21 +191,21 @@ jobs:
               f.write(f"file_stats={json.dumps(file_stats)}\n")
           EOF
 
-          - name: Generate thumbnails
-      uses: ./.github/actions/generate-thumbnails
-      with:
-        docs-path: Docs
-        all-samples-path: .metadata/all-samples.json
-        node-version: "20"
-        install-deps: "true"
+      - name: Generate thumbnails
+        uses: ./.github/actions/generate-thumbnails
+        with:
+          docs-path: Docs
+          all-samples-path: .metadata/all-samples.json
+          node-version: "20"
+          install-deps: "true"
 
-    - name: Generate avatars
-      uses: ./.github/actions/generate-avatars
-      with:
-        docs-path: Docs
-        all-samples-path: .metadata/all-samples.json
-        node-version: "20"
-        install-deps: "true"
+      - name: Generate avatars
+        uses: ./.github/actions/generate-avatars
+        with:
+          docs-path: Docs
+          all-samples-path: .metadata/all-samples.json
+          node-version: "20"
+          install-deps: "true"
 
       - name: Write published JSON files into Docs/docs/data
         id: publish_json
