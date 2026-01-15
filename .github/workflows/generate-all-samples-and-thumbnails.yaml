@@ -304,14 +304,14 @@ jobs:
           |--------|-------|
           | **Total Samples** | ${{ steps.merge.outputs.total_samples }} |
           | **Merge Errors** | ${{ steps.merge.outputs.has_errors == 'true' && '⚠️ Yes' || '✅ No' }} |
-          
+
           ## 🧑‍🎨 Avatar Normalization
 
           | Metric | Count |
           |--------|-------|
-          | **Processed** | ${{ steps.avatars.outputs.avatars_processed }} |
+          | **Processed** | ${{ steps.avatars.outputs.avatars_generated }} |
           | **Skipped (cached)** | ${{ steps.avatars.outputs.avatars_skipped }} |
-          | **Failed** | ${{ steps.avatars.outputs.avatars_failed }} |
+          | **Updated** | ${{ steps.avatars.outputs.authors_updated }} |
           | **Deleted (orphaned)** | ${{ steps.avatars.outputs.avatars_deleted }} |
 
           ### Source Files
@@ -350,10 +350,10 @@ jobs:
           
           | Metric | Count |
           |--------|-------|
-          | **Processed** | ${{ steps.thumbs.outputs.thumbs_processed }} |
-          | **Skipped (cached)** | ${{ steps.thumbs.outputs.thumbs_skipped }} |
-          | **Failed** | ${{ steps.thumbs.outputs.thumbs_failed }} |
-          | **Deleted (orphaned)** | ${{ steps.thumbs.outputs.thumbs_deleted }} |
+          | **Samples with thumbnails|${{ steps.thumbs.outputs.samples_with_thumbnails }}|
+          | **Generated**| ${{ steps.thumbs.outputs.thumbnails_generated }}|
+          | **Failed**|${{ steps.thumbs.outputs.thumbnails_failed }}|
+
           
           EOF
           

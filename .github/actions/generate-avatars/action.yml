@@ -1,22 +1,33 @@
 name: Generate author avatars
 description: Normalize author avatars + rewrite all-samples.json authors.pictureUrl (publish to Docs branch)
+
 inputs:
   node-version:
-    description: Node version to use
     required: false
     default: "20"
   docs-path:
-    description: Path where the Docs branch is checked out
     required: false
     default: "Docs"
   all-samples-path:
-    description: Path to .metadata/all-samples.json
     required: false
     default: ".metadata/all-samples.json"
   install-deps:
-    description: Whether to npm install sharp (and init a minimal package.json)
     required: false
     default: "true"
+
+outputs:
+  avatars_generated:
+    description: Number of avatar files generated/updated
+    value: ${{ steps.metrics.outputs.avatars_generated }}
+  authors_updated:
+    description: Number of author entries whose pictureUrl was set/rewritten
+    value: ${{ steps.metrics.outputs.authors_updated }}
+  avatars_skipped:
+    description: Number skipped (missing/unsupported)
+    value: ${{ steps.metrics.outputs.avatars_skipped }}
+  avatars_deleted:
+    description: Number of avatar images deleted as orphans
+    value: ${{ steps.metrics.outputs.avatars_deleted }}
 
 runs:
   using: composite
@@ -33,13 +44,13 @@ runs:
         npm init -y >/dev/null 2>&1
         npm install sharp >/dev/null 2>&1
 
-    - name: Normalize author avatars + rewrite all-samples.json authors.pictureUrl (publish to Docs branch)
+    - id: metrics
+      name: Normalize author avatars + rewrite all-samples.json authors.pictureUrl (publish to Docs branch)
       shell: bash
       run: |
         node << 'EOF'
         const fs = require("fs");
         const path = require("path");
-        const crypto = require("crypto");
         const sharp = require("sharp");
 
         const docsPath = process.env.DOCS_PATH || "Docs";
@@ -52,61 +63,64 @@ runs:
 
         const samples = JSON.parse(fs.readFileSync(allSamplesPath, "utf8"));
 
-        // Write directly into Docs branch published site output
         const avatarsDir = path.resolve(docsPath, "docs/images/avatars");
         fs.mkdirSync(avatarsDir, { recursive: true });
+
+        let avatarsGenerated = 0;
+        let authorsUpdated = 0;
+        let avatarsSkipped = 0;
+        let avatarsDeleted = 0;
+
+        // Track which files should exist after generation
+        const expectedFiles = new Set([".gitkeep"]); // keep if you use one; safe even if it doesn't exist
 
         function safeFileName(name) {
           return String(name).replace(/[^a-zA-Z0-9._-]/g, "_");
         }
 
-        function sha1(s) {
-          return crypto.createHash("sha1").update(String(s)).digest("hex");
-        }
-
         function getAllAuthors(sample) {
-          // supports both "authors" array and "author" single, depending on schema
           if (Array.isArray(sample.authors)) return sample.authors;
           if (sample.author) return [sample.author];
           return [];
         }
 
+        // If you want remote avatar downloading, we can add it. For now: skip remote.
         async function normalizeAvatar(url) {
-          if (!url || typeof url !== "string") return null;
-
-          // If remote, keep it remote (or you can add download logic if your original script did)
-          if (url.startsWith("http://") || url.startsWith("https://")) {
-            // Produce a stable local filename based on URL
-            const outFile = `${sha1(url)}.webp`;
-            const outPath = path.join(avatarsDir, outFile);
-
-            // If already generated, skip
-            if (fs.existsSync(outPath)) return outFile;
-
-            // No downloader included here (to avoid adding extra deps).
-            // Keep behavior conservative: do not fail the build, but do not rewrite either.
+          if (!url || typeof url !== "string") {
+            avatarsSkipped += 1;
             return null;
           }
 
-          // local file path
+          if (url.startsWith("http://") || url.startsWith("https://")) {
+            avatarsSkipped += 1;
+            return null;
+          }
+
           const inputPath = path.resolve(url);
-          if (!fs.existsSync(inputPath)) return null;
+          if (!fs.existsSync(inputPath)) {
+            avatarsSkipped += 1;
+            return null;
+          }
 
           const base = safeFileName(path.basename(inputPath, path.extname(inputPath)));
           const outFile = `${base}.webp`;
           const outPath = path.join(avatarsDir, outFile);
 
-          // Skip if already exists
-          if (fs.existsSync(outPath)) return outFile;
+          expectedFiles.add(outFile);
 
-          try {
-            await sharp(inputPath)
-              .resize({ width: 160, height: 160, fit: "cover" })
-              .webp({ quality: 82 })
-              .toFile(outPath);
-          } catch (e) {
-            console.log(`Avatar failed for ${inputPath}: ${String(e)}`);
-            return null;
+          if (!fs.existsSync(outPath)) {
+            try {
+              await sharp(inputPath)
+                .resize({ width: 160, height: 160, fit: "cover" })
+                .webp({ quality: 82 })
+                .toFile(outPath);
+              avatarsGenerated += 1;
+            } catch (e) {
+              avatarsSkipped += 1;
+              // If generation failed, don't treat output as expected
+              expectedFiles.delete(outFile);
+              return null;
+            }
           }
 
           return outFile;
@@ -120,7 +134,6 @@ runs:
             for (const a of authors) {
               if (!a) continue;
 
-              // Common fields: pictureUrl / image / avatar / etc.
               const current =
                 a.pictureUrl ||
                 a.avatarUrl ||
@@ -132,16 +145,45 @@ runs:
               if (!outFile) continue;
 
               a.pictureUrl = `${avatarUrlBase}${outFile}`;
+              authorsUpdated += 1;
             }
 
-            // write back (in case schema expects authors array)
             s.authors = authors;
           }
 
           fs.writeFileSync(allSamplesPath, JSON.stringify(samples, null, 2) + "\n");
 
-          console.log(`Avatars generated into: ${avatarsDir}`);
-          console.log(`Updated: ${allSamplesPath}`);
+          // Delete orphaned avatar images (anything not in expectedFiles)
+          if (fs.existsSync(avatarsDir)) {
+            for (const f of fs.readdirSync(avatarsDir)) {
+              // Ignore directories + non-images if needed
+              const full = path.join(avatarsDir, f);
+              if (!fs.statSync(full).isFile()) continue;
+
+              // If you have a manifest.json or other keepers, add them to expectedFiles
+              if (!expectedFiles.has(f)) {
+                fs.unlinkSync(full);
+                avatarsDeleted += 1;
+              }
+            }
+          }
+
+          // Outputs
+          const outPath = process.env.GITHUB_OUTPUT;
+          fs.appendFileSync(outPath, `avatars_generated=${avatarsGenerated}\n`);
+          fs.appendFileSync(outPath, `authors_updated=${authorsUpdated}\n`);
+          fs.appendFileSync(outPath, `avatars_skipped=${avatarsSkipped}\n`);
+          fs.appendFileSync(outPath, `avatars_deleted=${avatarsDeleted}\n`);
+
+          // Step summary
+          const summaryPath = process.env.GITHUB_STEP_SUMMARY;
+          const lines = [];
+          lines.push(`## Avatars`);
+          lines.push(`- Avatars generated/updated: **${avatarsGenerated}**`);
+          lines.push(`- Author entries updated: **${authorsUpdated}**`);
+          lines.push(`- Skipped: **${avatarsSkipped}**`);
+          lines.push(`- Deleted (orphans): **${avatarsDeleted}**`);
+          fs.appendFileSync(summaryPath, lines.join("\n") + "\n");
         })().catch(err => {
           console.error(err);
           process.exit(1);
