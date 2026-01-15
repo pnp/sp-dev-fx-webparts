@@ -255,12 +255,15 @@ jobs:
             if (d) {
               s.reactions = {
                 total: d.totalReactions ?? 0,
-                counts: d.reactionCounts ?? {},
                 url: d.url ?? ""
-                // reactors: d.allReactors ?? []   // optional; include only if you need it on the site
+                allReactors: Array.isArray(d.allReactors) ? d.allReactors : []  
               };
             } else {
-              s.reactions = { total: 0, counts: {}, url: "" };
+              s.reactions = {
+                url: "",
+                totalReactions: 0,
+                allReactors: []
+              };
             }
           }
 
