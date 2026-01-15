@@ -66,11 +66,18 @@ runs:
         const pagesBase = `/${repoName}/`;
         const thumbUrlBase = `${pagesBase}images/thumbnails/`;
 
+        // define thumbsDir + manifestPath BEFORE reading old manifest
+        const thumbsDir = path.resolve(docsPath, "docs/images/thumbnails");
+        fs.mkdirSync(thumbsDir, { recursive: true });
+        const manifestPath = path.join(thumbsDir, "manifest.json");
+
         const samples = JSON.parse(fs.readFileSync(allSamplesPath, "utf8"));
 
         const oldManifest = fs.existsSync(manifestPath)
-          ? JSON.parse(fs.readFileSync(manifestPath, "utf8"))         
+          ? JSON.parse(fs.readFileSync(manifestPath, "utf8"))
           : {};
+        const newManifest = {};
+
         const newManifest = {};
 
         // Keep-list + orphan cleanup
