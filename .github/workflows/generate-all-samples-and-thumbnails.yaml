@@ -370,6 +370,7 @@ jobs:
             echo "|--------|-------|"
             echo "| **Generated/updated** | ${{ steps.thumbs.outputs.thumbnails_generated }} |"
             echo "| **Failed** | ${{ steps.thumbs.outputs.thumbnails_failed }} |"
+            echo "| **Skipped** | ${{ steps.thumbs.outputs.thumbnails_skipped }} |"
             echo "| **Samples with thumbnail URL set** | ${{ steps.thumbs.outputs.samples_with_thumbnails }} |"
             echo
             echo "## 🧑‍🎨 Avatars"

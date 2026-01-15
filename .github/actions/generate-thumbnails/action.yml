@@ -68,16 +68,17 @@ runs:
 
         const samples = JSON.parse(fs.readFileSync(allSamplesPath, "utf8"));
 
-        const thumbsDir = path.resolve(docsPath, "docs/images/thumbnails");
-        fs.mkdirSync(thumbsDir, { recursive: true });
+        const oldManifest = fs.existsSync(manifestPath)
+          ? JSON.parse(fs.readFileSync(manifestPath, "utf8"))         
+          : {};
+        const newManifest = {};
 
         // Keep-list + orphan cleanup
-        const expectedFiles = new Set(["manifest.json", ".gitkeep"].filter(f => true));
-        const manifestPath = path.join(thumbsDir, "manifest.json");
-        const newManifest = {};
+        const expectedFiles = new Set(["manifest.json"]);
 
         const failures = [];
         let generatedCount = 0;
+        let skippedCount = 0;
         let samplesWithThumb = 0;
         let deletedCount = 0;
 
@@ -167,47 +168,90 @@ runs:
             .toFile(outPath);
         }
 
+        function safeFileName(name) {
+          return String(name).replace(/[^a-zA-Z0-9._-]/g, "_");
+        }
 
         function outFileForSample(sample) {
           if (!sample?.name || typeof sample.name !== "string") return null;
-
-          // Exactly like sample name; no transformation besides adding extension.
-          // (We assume sample.name is already a safe filename, which it is in your data.)
-          return `${sample.name}.webp`;
+          return `${safeFileName(sample.name)}.webp`;
         }
 
         async function optimizeOne(sample) {
           const thumbUrl = pickThumb(sample);
-          if (!thumbUrl) return;
+          if (!sample?.name) return;
+
+          // Match old behavior: if no thumbnail URL, clear thumbnails.
+          if (!thumbUrl) {
+            sample.thumbnails = [];
+            return;
+          }
 
           let inputPath;
+
+          const outFile = outFileForSample(sample);
+          if (!outFile) return;
+          const outPath = path.join(thumbsDir, outFile);
+
+          // Manifest tracks by sample name (match old)
+          newManifest[sample.name] = { sourceUrl: thumbUrl, file: outFile };
+
+          // Skip if unchanged AND output already exists (match old)
+          const prev = oldManifest[sample.name];
+          const unchanged = prev && prev.sourceUrl === thumbUrl && fs.existsSync(outPath);
+
+          // Always publish the optimized URL when available (even if skipped)
+          const alt = sample?.title || "Sample thumbnail";
+          expectedFiles.add(outFile);
+          sample.thumbnails = [{
+            type: "image",
+            order: 100,
+            url: `${thumbUrlBase}${encodeURIComponent(outFile)}`,
+            alt
+          }];
+          samplesWithThumb += 1;
+
+          if (unchanged) {
+            skippedCount += 1;
+            return;
+          }
           try {
             inputPath = await resolveInputPath(thumbUrl);
           } catch (e) {
-            failures.push({ sample: sample.sample, reason: "input_unavailable", url: thumbUrl, error: String(e?.message || e) });
+            failures.push({
+            sample: sample.name,
+            reason: "resolve_input_failed",
+            url: thumbUrl,
+            inputPath: null,
+            error: String(e?.message || e)
+          });
+
+            // Match old behavior: keep original URL if processing fails
+            sample.thumbnails = [{ type: "image", order: 100, url: thumbUrl, alt }];
+
             return;
           }
 
           const outNameBase = safeFileName(sample.sample || sample.title || path.basename(inputPath));
-          const outFile = outFileForSample(sample);
-          if (!outFile) {
-            failures.push({ reason: "missing_sample_name", sample: sample?.name ?? null, url: thumbUrl });
-            return;
-          }
-          const outPath = path.join(thumbsDir, outFile);
+          
           try {
             await writeWebp(inputPath, outPath);
             generatedCount += 1;
           } catch (e) {
-            failures.push({ sample: sample.sample, reason: "sharp_failed", url: thumbUrl, inputPath, error: String(e?.message || e) });
-            return;
+            failures.push({
+              sample: sample.name,
+              reason: "sharp_failed",
+              url: thumbUrl,
+              inputPath,
+              error: String(e?.message || e)
+            });
+
+            // Match old behavior: keep original URL if processing fails
+            sample.thumbnails = [{ type: "image", order: 100, url: thumbUrl, alt }];
+               return;
           }
 
-          expectedFiles.add(outFile);
-          newManifest[outFile] = { source: thumbUrl, sample: sample.sample };
-
-          sample.thumbnails = [{ type: "image", url: `${thumbUrlBase}${outFile}` }];
-          samplesWithThumb += 1;
+          
         }
 
         (async () => {
@@ -233,6 +277,7 @@ runs:
 
           // outputs
           fs.appendFileSync(process.env.GITHUB_OUTPUT, `thumbnails_generated=${generatedCount}\n`);
+          fs.appendFileSync(process.env.GITHUB_OUTPUT, `thumbnails_skipped=${skippedCount}\n`);
           fs.appendFileSync(process.env.GITHUB_OUTPUT, `thumbnails_failed=${failures.length}\n`);
           fs.appendFileSync(process.env.GITHUB_OUTPUT, `samples_with_thumbnails=${samplesWithThumb}\n`);
           fs.appendFileSync(process.env.GITHUB_OUTPUT, `thumbnails_deleted=${deletedCount}\n`);
