@@ -5,6 +5,12 @@ outputs:
   result:
     description: 'JSON string with reaction tallies'
     value: ${{ steps.tally.outputs.result }}
+  matched_discussions:
+    description: 'How many sample:* discussions had reactions'
+    value: ${{ steps.tally.outputs.matched_discussions }}
+  total_reactions:
+    description: 'Total reaction count across matched discussions'
+    value: ${{ steps.tally.outputs.total_reactions }}
 
 runs:
   using: "composite"
@@ -219,6 +225,11 @@ runs:
           console.log(`Matched ${Object.keys(tally).length} discussions`);
           console.log('Reaction Tally:', JSON.stringify(result, null, 2));
 
+          const matchedDiscussions = Object.keys(tally).length;
+          const totalReactions = Object.values(tally).reduce((sum, x) => sum + (x.totalReactions || 0), 0);
+
           core.setOutput('result', JSON.stringify(result));
+          core.setOutput('matched_discussions', String(matchedDiscussions));
+          core.setOutput('total_reactions', String(totalReactions));
           
           return result;

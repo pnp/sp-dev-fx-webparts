@@ -25,6 +25,7 @@ jobs:
 
     permissions:
       contents: write
+      discussions: read
 
     steps:
       - name: Checkout main (source JSON)
@@ -210,6 +211,20 @@ jobs:
           node-version: "20"
           install-deps: "true"
 
+      - name: Tally discussion reactions
+        id: reactions
+        uses: ./.github/actions/tally-reactions
+
+      - name: Save likes.json into Docs/docs/data
+        shell: bash
+        run: |
+          mkdir -p Docs/docs/data
+          echo '${{ steps.reactions.outputs.result }}' > Docs/docs/data/likes.json
+
+          # Validate JSON (fail fast if the action output got truncated)
+          jq empty Docs/docs/data/likes.json
+
+
       - name: Write published JSON files into Docs/docs/data
         id: publish_json
         run: |
@@ -219,6 +234,34 @@ jobs:
 
           const allSamplesPath = path.resolve(".metadata/all-samples.json");
           const samples = JSON.parse(fs.readFileSync(allSamplesPath, "utf8"));
+
+          // ----- Merge reactions from Docs/docs/data/likes.json into each sample -----
+          const likesPath = path.resolve("Docs/docs/data/likes.json");
+          let likes = null;
+
+          if (fs.existsSync(likesPath)) {
+            likes = JSON.parse(fs.readFileSync(likesPath, "utf8"));
+          }
+
+          const discussions = likes?.discussions && typeof likes.discussions === "object"
+            ? likes.discussions
+            : {};
+
+          for (const s of samples) {
+            const key = `sample:${s.name}`;   // join key matches tally action title convention
+            const d = discussions[key];
+
+            if (d) {
+              s.reactions = {
+                total: d.totalReactions ?? 0,
+                counts: d.reactionCounts ?? {},
+                url: d.url ?? ""
+                // reactors: d.allReactors ?? []   // optional; include only if you need it on the site
+              };
+            } else {
+              s.reactions = { total: 0, counts: {}, url: "" };
+            }
+          }
 
           const dataDir = path.resolve("Docs/docs/data");
           fs.mkdirSync(dataDir, { recursive: true });
@@ -335,6 +378,13 @@ jobs:
             echo "| **Updated** | ${{ steps.avatars.outputs.authors_updated }} |"
             echo "| **Skipped** | ${{ steps.avatars.outputs.avatars_skipped }} |"
             echo "| **Deleted (orphans)** | ${{ steps.avatars.outputs.avatars_deleted }} |"
+            echo
+
+            echo "## 👍 Reactions"
+            echo "| Metric | Count |"
+            echo "|--------|-------|"
+            echo "| **Matched discussions** | ${{ steps.reactions.outputs.matched_discussions }} |"
+            echo "| **Total reactions** | ${{ steps.reactions.outputs.total_reactions }} |"
             echo
             echo "## 📝 Git Changes"
             echo "| Status | Result |"
