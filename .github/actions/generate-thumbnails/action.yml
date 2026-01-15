@@ -1,0 +1,172 @@
+name: Generate thumbnails
+description: Optimize thumbnails + rewrite all-samples.json thumbnails (publish to Docs branch)
+inputs:
+  node-version:
+    description: Node version to use
+    required: false
+    default: "20"
+  docs-path:
+    description: Path where the Docs branch is checked out
+    required: false
+    default: "Docs"
+  all-samples-path:
+    description: Path to .metadata/all-samples.json
+    required: false
+    default: ".metadata/all-samples.json"
+  install-deps:
+    description: Whether to npm install sharp (and init a minimal package.json)
+    required: false
+    default: "true"
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+
+    - name: Install image optimizer deps
+      if: ${{ inputs.install-deps == 'true' }}
+      shell: bash
+      run: |
+        npm init -y >/dev/null 2>&1
+        npm install sharp >/dev/null 2>&1
+
+    - name: Optimize thumbnails + rewrite all-samples.json thumbnails (publish to Docs branch)
+      shell: bash
+      run: |
+        node << 'EOF'
+        const fs = require("fs");
+        const path = require("path");
+        const sharp = require("sharp");
+
+        const docsPath = process.env.DOCS_PATH || "Docs";
+        const allSamplesPath = path.resolve(process.env.ALL_SAMPLES_PATH || ".metadata/all-samples.json");
+
+        const repo = process.env.GITHUB_REPOSITORY;        // owner/name
+        const repoName = repo.split("/")[1];               // name
+        const pagesBase = `/${repoName}/`;                 // GitHub Pages project base
+        const thumbUrlBase = `${pagesBase}images/thumbnails/`;
+
+        const samples = JSON.parse(fs.readFileSync(allSamplesPath, "utf8"));
+
+        // Write directly into Docs branch published site output
+        const thumbsDir = path.resolve(docsPath, "docs/images/thumbnails");
+        fs.mkdirSync(thumbsDir, { recursive: true });
+
+        const manifestPath = path.join(thumbsDir, "manifest.json");
+        const manifest = fs.existsSync(manifestPath)
+          ? JSON.parse(fs.readFileSync(manifestPath, "utf8"))
+          : {};
+
+        const newManifest = {};
+        const expectedFiles = new Set(["manifest.json"]);
+        const failedThumbs = [];
+
+        function safeFileName(name) {
+          return String(name).replace(/[^a-zA-Z0-9._-]/g, "_");
+        }
+
+        function pickThumb(sample) {
+          const thumbs = Array.isArray(sample.thumbnails) ? sample.thumbnails : [];
+          const img = thumbs
+            .filter(t => t && t.type === "image" && typeof t.url === "string")
+            .find(t => t.url.length > 0);
+
+          return img?.url || null;
+        }
+
+        async function optimizeOne(sample) {
+          // Choose the thumbnail input (from metadata)
+          const thumbUrl = pickThumb(sample);
+          if (!thumbUrl) return null;
+
+          // Convert URL into local path (your workflow assumes thumbs live in repo or are already local)
+          // If your existing script handled more cases, keep the same logic here.
+          // This keeps behavior aligned with your original workflow.
+          let inputPath;
+          if (thumbUrl.startsWith("http://") || thumbUrl.startsWith("https://")) {
+            // If your all-samples.json stores remote URLs, original workflow would fail unless you downloaded them.
+            // Keep consistent: mark as failed.
+            failedThumbs.push({ sample: sample.sample, reason: "remote_url_not_supported_in_action", url: thumbUrl });
+            return null;
+          } else {
+            // relative path in repo
+            inputPath = path.resolve(thumbUrl);
+          }
+
+          if (!fs.existsSync(inputPath)) {
+            failedThumbs.push({ sample: sample.sample, reason: "missing_input_file", path: inputPath });
+            return null;
+          }
+
+          // Derive output name (stable)
+          const outNameBase = safeFileName(sample.sample || sample.title || path.basename(inputPath));
+          const outFile = `${outNameBase}.webp`;
+          const outPath = path.join(thumbsDir, outFile);
+
+          // Optimize -> webp
+          try {
+            await sharp(inputPath)
+              .resize({ width: 640, withoutEnlargement: true })
+              .webp({ quality: 80 })
+              .toFile(outPath);
+          } catch (e) {
+            failedThumbs.push({ sample: sample.sample, reason: "sharp_failed", error: String(e) });
+            return null;
+          }
+
+          expectedFiles.add(outFile);
+          newManifest[outFile] = {
+            source: thumbUrl,
+            sample: sample.sample
+          };
+
+          // Rewrite sample thumbnails to the published URL
+          sample.thumbnails = [
+            {
+              type: "image",
+              url: `${thumbUrlBase}${outFile}`
+            }
+          ];
+
+          return outFile;
+        }
+
+        (async () => {
+          // Process sequentially (matches typical GH runner constraints)
+          for (const s of samples) {
+            // eslint-disable-next-line no-await-in-loop
+            await optimizeOne(s);
+          }
+
+          // Write updated all-samples.json back
+          fs.writeFileSync(allSamplesPath, JSON.stringify(samples, null, 2) + "\n");
+
+          // Write manifest
+          fs.writeFileSync(manifestPath, JSON.stringify(newManifest, null, 2) + "\n");
+
+          // Delete old files no longer referenced
+          for (const f of fs.readdirSync(thumbsDir)) {
+            if (!expectedFiles.has(f)) {
+              fs.unlinkSync(path.join(thumbsDir, f));
+            }
+          }
+
+          // Report failures (non-fatal; matches typical workflow style)
+          if (failedThumbs.length) {
+            const out = failedThumbs.map(x => JSON.stringify(x)).join("\n");
+            console.log("Some thumbnails could not be generated:\n" + out);
+          }
+
+          console.log(`Thumbnails generated into: ${thumbsDir}`);
+          console.log(`Updated: ${allSamplesPath}`);
+        })().catch(err => {
+          console.error(err);
+          process.exit(1);
+        });
+        EOF
+      env:
+        DOCS_PATH: ${{ inputs.docs-path }}
+        ALL_SAMPLES_PATH: ${{ inputs.all-samples-path }}

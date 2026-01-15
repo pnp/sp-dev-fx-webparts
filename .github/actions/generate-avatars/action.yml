@@ -1,0 +1,152 @@
+name: Generate author avatars
+description: Normalize author avatars + rewrite all-samples.json authors.pictureUrl (publish to Docs branch)
+inputs:
+  node-version:
+    description: Node version to use
+    required: false
+    default: "20"
+  docs-path:
+    description: Path where the Docs branch is checked out
+    required: false
+    default: "Docs"
+  all-samples-path:
+    description: Path to .metadata/all-samples.json
+    required: false
+    default: ".metadata/all-samples.json"
+  install-deps:
+    description: Whether to npm install sharp (and init a minimal package.json)
+    required: false
+    default: "true"
+
+runs:
+  using: composite
+  steps:
+    - name: Set up Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: ${{ inputs.node-version }}
+
+    - name: Install avatar deps
+      if: ${{ inputs.install-deps == 'true' }}
+      shell: bash
+      run: |
+        npm init -y >/dev/null 2>&1
+        npm install sharp >/dev/null 2>&1
+
+    - name: Normalize author avatars + rewrite all-samples.json authors.pictureUrl (publish to Docs branch)
+      shell: bash
+      run: |
+        node << 'EOF'
+        const fs = require("fs");
+        const path = require("path");
+        const crypto = require("crypto");
+        const sharp = require("sharp");
+
+        const docsPath = process.env.DOCS_PATH || "Docs";
+        const allSamplesPath = path.resolve(process.env.ALL_SAMPLES_PATH || ".metadata/all-samples.json");
+
+        const repo = process.env.GITHUB_REPOSITORY;
+        const repoName = repo.split("/")[1];
+        const pagesBase = `/${repoName}/`;
+        const avatarUrlBase = `${pagesBase}images/avatars/`;
+
+        const samples = JSON.parse(fs.readFileSync(allSamplesPath, "utf8"));
+
+        // Write directly into Docs branch published site output
+        const avatarsDir = path.resolve(docsPath, "docs/images/avatars");
+        fs.mkdirSync(avatarsDir, { recursive: true });
+
+        function safeFileName(name) {
+          return String(name).replace(/[^a-zA-Z0-9._-]/g, "_");
+        }
+
+        function sha1(s) {
+          return crypto.createHash("sha1").update(String(s)).digest("hex");
+        }
+
+        function getAllAuthors(sample) {
+          // supports both "authors" array and "author" single, depending on schema
+          if (Array.isArray(sample.authors)) return sample.authors;
+          if (sample.author) return [sample.author];
+          return [];
+        }
+
+        async function normalizeAvatar(url) {
+          if (!url || typeof url !== "string") return null;
+
+          // If remote, keep it remote (or you can add download logic if your original script did)
+          if (url.startsWith("http://") || url.startsWith("https://")) {
+            // Produce a stable local filename based on URL
+            const outFile = `${sha1(url)}.webp`;
+            const outPath = path.join(avatarsDir, outFile);
+
+            // If already generated, skip
+            if (fs.existsSync(outPath)) return outFile;
+
+            // No downloader included here (to avoid adding extra deps).
+            // Keep behavior conservative: do not fail the build, but do not rewrite either.
+            return null;
+          }
+
+          // local file path
+          const inputPath = path.resolve(url);
+          if (!fs.existsSync(inputPath)) return null;
+
+          const base = safeFileName(path.basename(inputPath, path.extname(inputPath)));
+          const outFile = `${base}.webp`;
+          const outPath = path.join(avatarsDir, outFile);
+
+          // Skip if already exists
+          if (fs.existsSync(outPath)) return outFile;
+
+          try {
+            await sharp(inputPath)
+              .resize({ width: 160, height: 160, fit: "cover" })
+              .webp({ quality: 82 })
+              .toFile(outPath);
+          } catch (e) {
+            console.log(`Avatar failed for ${inputPath}: ${String(e)}`);
+            return null;
+          }
+
+          return outFile;
+        }
+
+        (async () => {
+          for (const s of samples) {
+            const authors = getAllAuthors(s);
+            if (!authors.length) continue;
+
+            for (const a of authors) {
+              if (!a) continue;
+
+              // Common fields: pictureUrl / image / avatar / etc.
+              const current =
+                a.pictureUrl ||
+                a.avatarUrl ||
+                a.image ||
+                a.picture ||
+                null;
+
+              const outFile = await normalizeAvatar(current);
+              if (!outFile) continue;
+
+              a.pictureUrl = `${avatarUrlBase}${outFile}`;
+            }
+
+            // write back (in case schema expects authors array)
+            s.authors = authors;
+          }
+
+          fs.writeFileSync(allSamplesPath, JSON.stringify(samples, null, 2) + "\n");
+
+          console.log(`Avatars generated into: ${avatarsDir}`);
+          console.log(`Updated: ${allSamplesPath}`);
+        })().catch(err => {
+          console.error(err);
+          process.exit(1);
+        });
+        EOF
+      env:
+        DOCS_PATH: ${{ inputs.docs-path }}
+        ALL_SAMPLES_PATH: ${{ inputs.all-samples-path }}
