@@ -9,7 +9,7 @@
     "watch": "concurrently \"tsc -b -w\" \"vite build --watch\"",
     "watch:copy": "npx chokidar \"dist/*.{js,css}\" -c \"npx cpy \"dist/*.js\" \"dist/*.css\" \"../static/vendor/pnp-samples-gallery/\" --flat\"",
     "test": "vitest",
-    "postbuild": "npx cpy \"dist/*.js\" \"dist/*.css\" \"../static/vendor/pnp-samples-gallery/\" --flat",
+    "postbuild": "npx cpy \"dist/*.*\" \"../static/vendor/pnp-samples-gallery/\" --flat",
     "lint": "eslint .",
     "preview": "vite preview"
   },

@@ -666,7 +666,9 @@ figure.pnp-card__thumb-figure {
     width: 100% !important;
     margin: 0 !important;
     --card-h: auto !important;
-    height: auto !important;
+    height: 340px !important;
+    min-height: 340px;
+    max-height: 340px;
 }
 
 /* Skeleton-specific sizing: cap skeleton card width to 320px and make it fill the grid cell */

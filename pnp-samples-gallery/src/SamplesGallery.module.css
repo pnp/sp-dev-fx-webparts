@@ -13,10 +13,29 @@
   display: none;
 }
 
+.mobileFiltersHeader button {
+  line-height: 9px;
+}
+
+.filterIcon {
+  display: inline-block;
+  transition: transform 180ms ease;
+  transform-origin: 50% 50%;
+}
+
+.filterIcon--open {
+  transform: rotate(180deg);
+}
+
+.mobileFiltersHeader button {
+  line-height: 9px;
+}
+
 .filters {
   background: var(--pnp-surface, #fff);
   padding: 12px;
   border-radius: 6px;
+  overflow: visible;
 }
 
 .filterSort {
@@ -46,7 +65,7 @@
 
 
 .filtersHidden {
-  display: none;
+  /* default: keep visible for desktop; mobile-specific collapse handled in media query */
 }
 
 .results {
@@ -63,12 +82,20 @@
 
 .resultsCount {
   font-weight: 600;
+  background: rgba(255, 255, 255, .95);
+    padding: 1rem;
+    border-radius: var(--pnp-radius);
 }
 
 .resultsActive {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+}
+
+.resultsActive button {
+  background-color: rgba(255, 255, 255, .95);
+  cursor: pointer;
 }
 
 .cardGridWrapper {
@@ -79,6 +106,58 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 16px;
+}
+
+/* Hide the Muuri-bound grid visually while keeping DOM/layout for Muuri
+   Use visibility to avoid layout shifts; pointer-events none to prevent interactions */
+.cardGridHidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Skeleton overlay: positioned above the real grid so skeletons remain visible
+   until Muuri finishes layout. Uses absolute positioning to match grid container. */
+.cardGridOverlay {
+  position: absolute;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  display: grid;
+  grid-template-columns: inherit;
+  gap: 16px;
+  padding: 0; /* inherit spacing from grid wrapper */
+  pointer-events: none;
+  background: transparent;
+}
+
+.cardGridOverlay .pnp-sample-item--skeleton {
+  pointer-events: none;
+}
+
+/* Cross-fade transitions: overlay fades out, real grid fades in */
+.cardGridOverlayVisible {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 240ms ease-in-out;
+  z-index: 10;
+}
+
+.cardGridOverlayHidden {
+  opacity: 0;
+  visibility: hidden; /* keep hidden after fade */
+  transition: opacity 240ms ease-in-out, visibility 0s linear 240ms;
+  z-index: 10;
+}
+
+.cardGridFadeIn {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 320ms ease-in-out, visibility 0s linear 0s;
+}
+
+.cardGridFadeOut {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 320ms ease-in-out, visibility 0s linear 320ms;
 }
 
 .empty {
@@ -95,5 +174,21 @@
   .mobileFiltersHeader {
     display: block;
     margin-bottom: 8px;
+  }
+
+  /* Animate filters opening/closing on mobile using max-height + opacity */
+  .filters {
+    overflow: hidden;
+    max-height: 2000px; /* large enough to contain content when open */
+    opacity: 1;
+    transform: translateY(0);
+    transition: max-height 260ms ease, opacity 200ms ease, transform 200ms ease;
+  }
+
+  .filtersHidden {
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
   }
 }

@@ -51,6 +51,7 @@ function makeScopedKey(base: string) {
 }
 
 export function SamplesGallery(props: SamplesGalleryProps) {
+    console.debug(`[SamplesGallery] render start`);
     const [sortModeInternal, setSortModeInternal] = useState<'new' | 'popular'>(() => {
         try {
             if (typeof window !== 'undefined' && window.localStorage) {
@@ -84,6 +85,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
     const [error, setError] = useState<string | null>(null);
     const gridRef = useRef<HTMLDivElement | null>(null);
     const muuriRef = useRef<Muuri | null>(null);
+    const initialMuuriSortDoneRef = useRef<boolean>(false);
     const [fullscreen, setFullscreen] = useState<boolean>(() => {
         try {
             if (typeof window !== "undefined" && window.location && window.location.search) {
@@ -184,13 +186,15 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
                 // Always sort newest-first by updateDateTime before storing
                 // Robust sort: newest-first by parsed date, fallback to title/name
-                deduped.sort((a, b) => {
-                    const da = Date.parse(a.updateDateTime ?? "") || 0;
-                    const db = Date.parse(b.updateDateTime ?? "") || 0;
-                    if (db !== da) return db - da; // newest first
-                    const ta = (a.title ?? a.name ?? "").localeCompare(b.title ?? b.name ?? "");
-                    return ta;
-                });
+                
+                // //TODO: investigate why debugger here seems to cause issues with Muuri later on
+                // deduped.sort((a, b) => {
+                //     const da = Date.parse(a.updateDateTime ?? "") || 0;
+                //     const db = Date.parse(b.updateDateTime ?? "") || 0;
+                //     if (db !== da) return db - da; // newest first
+                //     const ta = (a.title ?? a.name ?? "").localeCompare(b.title ?? b.name ?? "");
+                //     return ta;
+                // });
 
                 if (!cancelled) setSamples(deduped);
             } catch (e) {
@@ -211,6 +215,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
     
     // Helper to sort a Muuri grid newest-first by `data-date` attribute
     const applyGridSort = useCallback((grid: Muuri) => {
+
         grid.sort((a, b) => {
             const ea = a.getElement();
             const eb = b.getElement();
@@ -237,66 +242,6 @@ export function SamplesGallery(props: SamplesGalleryProps) {
             return ta.localeCompare(tb);
         });
     }, [sortMode]);
-
-
-    useEffect(() => {
-        if (!gridRef.current) return;
-        if (loading) return;
-        if (samples.length === 0) return;
-
-        // If on mobile, don't initialize Muuri (use CSS grid flow)
-        if (isMobile) {
-            muuriRef.current?.destroy();
-            muuriRef.current = null;
-            // Without Muuri, grid is ready instantly
-            setGridReady(true);
-            // Clear inline styles Muuri may have left on items
-            if (gridRef.current) {
-                const els = Array.from(gridRef.current.querySelectorAll<HTMLElement>(".pnp-sample-item"));
-                for (const el of els) {
-                    el.style.position = "";
-                    el.style.left = "";
-                    el.style.top = "";
-                    el.style.transform = "";
-                    el.style.width = "";
-                    el.style.height = "";
-                }
-            }
-            return;
-        }
-
-        // Recreate Muuri so it attaches to the current DOM node (useful when moved into a portal)
-        muuriRef.current?.destroy();
-        muuriRef.current = new Muuri(gridRef.current, {
-            items: ".pnp-sample-item",
-            layoutDuration: 400,
-            layoutEasing: "ease",
-        });
-
-        // mark grid as not-yet-ready while Muuri performs its first layout
-        setGridReady(false);
-
-        // initial layout will be handled below by the filter/sort effect
-        // When Muuri finishes layout, mark grid as ready so shadows/transitions can be enabled
-        const onLayoutEnd = () => setGridReady(true);
-        // Muuri emits events; listen for layoutEnd
-        muuriRef.current.on?.("layoutEnd", onLayoutEnd);
-
-        // initial layout will be triggered by the filter/sort effect below
-
-        return () => {
-            if (muuriRef.current) {
-                try {
-                    muuriRef.current.off?.("layoutEnd", onLayoutEnd);
-                } catch {
-                    // ignore
-                }
-                muuriRef.current.destroy();
-                muuriRef.current = null;
-            }
-        };
-    }, [loading, samples.length, fullscreen, isMobile, applyGridSort]);
-
 
     const facets = useMemo(() => {
         const spfxBuckets = samples
@@ -328,85 +273,6 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
         return { spfx, tech, categories };
     }, [samples]);
-
-    // Compute disabled options: for each option in a facet, determine if selecting it
-    // (in combination with the other currently selected facets) would yield zero results.
-    const disabledOptions = useMemo(() => {
-        const disabled = {
-            spfx: new Set<string>(),
-            tech: new Set<string>(),
-            category: new Set<string>(),
-        };
-
-        // Helper: check if any sample would match when we apply candidate selections
-        const anyMatchWhen = (candidate: { spfx?: string | null; tech?: string | null; category?: string | null }) => {
-            const q = norm(state.q);
-            for (const s of samples) {
-                const sspfx = spfxToBucket(metaFirst(s, "SPFX-VERSION"));
-                const stech = techKey(metaFirst(s, "CLIENT-SIDE-DEV") ?? "");
-                const scats = getCategories(s);
-
-                if (candidate.spfx !== undefined && candidate.spfx !== null && sspfx !== candidate.spfx) continue;
-                if (candidate.tech !== undefined && candidate.tech !== null && stech !== candidate.tech) continue;
-                if (candidate.category !== undefined && candidate.category !== null && !scats.includes(candidate.category)) continue;
-
-                // apply existing other state filters (but not the facet we're testing)
-                if (state.spfx && candidate.spfx === undefined) {
-                    if (sspfx !== state.spfx) continue;
-                }
-                if (state.tech && candidate.tech === undefined) {
-                    if (stech !== state.tech) continue;
-                }
-                if (state.category && candidate.category === undefined) {
-                    if (!scats.includes(state.category)) continue;
-                }
-
-                // text search
-                if (q) {
-                    const authorText = (s.authors ?? []).map((a) => {
-                        const name = a.name ?? "";
-                        const gh = a.gitHubAccount ?? "";
-                        const atGh = gh ? (gh.startsWith("@") ? gh : `@${gh}`) : "";
-                        return [name, gh, atGh].filter(Boolean).join(" ");
-                    }).join(" ");
-
-                    const hay = [
-                        s.title,
-                        s.shortDescription ?? "",
-                        s.name,
-                        sspfx,
-                        stech,
-                        scats.join(" "),
-                        authorText,
-                    ]
-                        .join(" | ")
-                        .toLowerCase();
-
-                    if (!hay.includes(q)) continue;
-                }
-
-                return true;
-            }
-            return false;
-        };
-
-        // For each spfx option, see if any sample matches when selecting it
-        for (const opt of facets.spfx) {
-            if (!anyMatchWhen({ spfx: opt })) disabled.spfx.add(opt);
-        }
-
-        // For each tech option
-        for (const opt of facets.tech) {
-            if (!anyMatchWhen({ tech: opt })) disabled.tech.add(opt);
-        }
-
-        // For each category option
-        for (const opt of facets.categories) {
-            if (!anyMatchWhen({ category: opt })) disabled.category.add(opt);
-        }
-
-        return disabled;
-    }, [samples, facets, state]);
 
     const byId = useMemo(() => {
         const m = new Map<string, PnPSample>();
@@ -458,6 +324,70 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         for (const s of samples) if (matchesSample(s)) n++;
         return n;
     }, [samples, matchesSample]);
+
+    // Compute disabled options: for each option in a facet, determine if selecting it
+    // (in combination with the other currently selected facets) would yield zero results.
+    const disabledOptions = useMemo(() => {
+        const disabled = {
+            spfx: new Set<string>(),
+            tech: new Set<string>(),
+            category: new Set<string>(),
+        };
+
+        const anyMatchWhen = (candidate: { spfx?: string | null; tech?: string | null; category?: string | null }) => {
+            const q = norm(candidate?.spfx ? state.q : state.q);
+
+            for (const s of samples) {
+                const sspfx = spfxToBucket(metaFirst(s, "SPFX-VERSION"));
+                const stech = techKey(metaFirst(s, "CLIENT-SIDE-DEV") ?? "");
+                const scats = getCategories(s);
+
+                if (candidate.spfx && sspfx !== candidate.spfx) continue;
+                if (candidate.tech && stech !== candidate.tech) continue;
+                if (candidate.category && !scats.includes(candidate.category)) continue;
+
+                // text search
+                if (q) {
+                    const authorText = (s.authors ?? []).map((a) => {
+                        const name = a.name ?? "";
+                        const gh = a.gitHubAccount ?? "";
+                        const atGh = gh ? (gh.startsWith("@") ? gh : `@${gh}`) : "";
+                        return [name, gh, atGh].filter(Boolean).join(" ");
+                    }).join(" ");
+
+                    const hay = [
+                        s.title,
+                        s.shortDescription ?? "",
+                        s.name,
+                        sspfx,
+                        stech,
+                        scats.join(" "),
+                        authorText,
+                    ].join(" | ").toLowerCase();
+
+                    if (!hay.includes(q)) continue;
+                }
+
+                return true;
+            }
+
+            return false;
+        };
+
+        for (const opt of facets.spfx) {
+            if (!anyMatchWhen({ spfx: opt, tech: state.tech, category: state.category })) disabled.spfx.add(opt);
+        }
+
+        for (const opt of facets.tech) {
+            if (!anyMatchWhen({ spfx: state.spfx, tech: opt, category: state.category })) disabled.tech.add(opt);
+        }
+
+        for (const opt of facets.categories) {
+            if (!anyMatchWhen({ spfx: state.spfx, tech: state.tech, category: opt })) disabled.category.add(opt);
+        }
+
+        return disabled;
+    }, [samples, facets, state.q, state.spfx, state.tech, state.category]);
 
 
 
@@ -569,6 +499,79 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         totalReactionsByIdRef.current = totalReactionsById;
     }, [totalReactionsById]);
 
+    // Initialize Muuri only after samples and likes totals have been computed.
+    useEffect(() => {
+        if (!gridRef.current) return;
+        if (loading) return;
+        if (samples.length === 0) return;
+
+        // If totals not ready yet, wait (this prevents binding Muuri
+        // before likes overrides are applied)
+        if (!totalReactionsById || totalReactionsById.size === 0) {
+            console.debug('[SamplesGallery] waiting for totals before Muuri init');
+            return;
+        }
+
+        // If on mobile, don't initialize Muuri (use CSS grid flow)
+        if (isMobile) {
+            muuriRef.current?.destroy();
+            muuriRef.current = null;
+            // Without Muuri, grid is ready instantly
+            setGridReady(true);
+            // Clear inline styles Muuri may have left on items
+            if (gridRef.current) {
+                const els = Array.from(gridRef.current.querySelectorAll<HTMLElement>(".pnp-sample-item"));
+                for (const el of els) {
+                    el.style.position = "";
+                    el.style.left = "";
+                    el.style.top = "";
+                    el.style.transform = "";
+                    el.style.width = "";
+                    el.style.height = "";
+                }
+            }
+            return;
+        }
+
+        // Recreate Muuri so it attaches to the current DOM node (useful when moved into a portal)
+        muuriRef.current?.destroy();
+        muuriRef.current = new Muuri(gridRef.current, {
+            items: ".pnp-sample-item",
+            layoutDuration: 400,
+            layoutEasing: "ease",
+            layoutOnInit: false,
+        });
+
+        // mark grid as not-yet-ready while Muuri performs its first layout
+        setGridReady(false);
+
+        // When Muuri finishes layout, mark grid as ready so transitions can be enabled
+        const onLayoutEnd = () => {
+            initialMuuriSortDoneRef.current = true;
+            setGridReady(true);
+        };
+        muuriRef.current.on?.("layoutEnd", onLayoutEnd);
+
+        // Programmatic initial sort: refresh items, apply sort, then layout.
+        // This ensures we only sort once and that the visible layout is already sorted.
+        try {
+            muuriRef.current.refreshItems();
+            applyGridSort(muuriRef.current);
+            muuriRef.current.layout();
+        } catch (e) {
+            // ignore - fallback behavior will let subsequent effects handle sorting
+            console.warn('[SamplesGallery] initial muuri sort failed', e);
+        }
+
+        return () => {
+            if (muuriRef.current) {
+                try { muuriRef.current.off?.("layoutEnd", onLayoutEnd); } catch { /* ignore */ }
+                muuriRef.current.destroy();
+                muuriRef.current = null;
+            }
+        };
+    }, [loading, samples.length, fullscreen, isMobile, applyGridSort, totalReactionsById]);
+
 
     // Precompute filtered samples for mobile (we re-render the list on mobile)
     const filteredSamples = useMemo(() => {
@@ -609,7 +612,10 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
             // Ensure newest-first sorting after filter
             grid.refreshItems();
-            applyGridSort(grid);
+            if (initialMuuriSortDoneRef.current) {
+                applyGridSort(grid);
+                console.debug('[SamplesGallery] layout after filtering', { timestamp: Date.now() });
+            }
             grid.layout();
             return;
         }
@@ -617,6 +623,26 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         // No Muuri (mobile): mobile re-renders the list via React; nothing to do here
         return;
     }, [state, byId, matchesSample, applyGridSort, totalReactionsById]);
+
+    // When sort mode changes, prefer Muuri's sorting on desktop rather than
+    // re-rendering/re-ordering DOM via React. This keeps items in the DOM and
+    // lets Muuri animate the sort smoothly.
+    useEffect(() => {
+        if (isMobile) return; // mobile uses React-sorted list
+        const grid = muuriRef.current;
+        if (!grid) return;
+
+        try {
+            if (!initialMuuriSortDoneRef.current) return; // wait for initial programmatic sort
+            console.debug('[SamplesGallery] applying Muuri sort for sortMode change', { sortMode });
+            grid.refreshItems();
+            applyGridSort(grid);
+            grid.layout();
+        } catch (e) {
+            // swallow errors — fallback to React re-render ordering
+            console.warn('[SamplesGallery] Muuri sort failed, falling back', e);
+        }
+    }, [sortMode, isMobile, applyGridSort]);
 
 
     // Fullscreen: lock body scroll and restore on exit
@@ -726,6 +752,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
     // Ensure Muuri recalculates after fullscreen toggles (both enter and exit)
     useEffect(() => {
         const id = setTimeout(() => {
+            console.debug('[SamplesGallery] fullscreen effect -> refreshItems().layout()', { timestamp: Date.now() });
             muuriRef.current?.refreshItems().layout();
         }, 80);
         return () => clearTimeout(id);
@@ -827,15 +854,19 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                             aria-expanded={showFilters}
                             aria-controls="pnp-mobile-filters"
                             onClick={() => setShowFilters(s => !s)}
+                            aria-label={showFilters ? "Hide filters" : "Show filters"}
                         >
-                            {showFilters ? "Hide filters" : "Show filters"}
+                            <span style={{display: 'inline-flex', alignItems: 'center', gap: '0.5rem'}}>
+                                <svg className={[styles.filterIcon, showFilters ? styles['filterIcon--open'] : ''].join(' ').trim()} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" role="img" aria-hidden="true" focusable="false">
+                                    <path d="M12.25 13.5C12.6642 13.5 13 13.8358 13 14.25C13 14.6642 12.6642 15 12.25 15H7.75C7.33579 15 7 14.6642 7 14.25C7 13.8358 7.33579 13.5 7.75 13.5H12.25ZM14.25 9.25C14.6642 9.25 15 9.58579 15 10C15 10.4142 14.6642 10.75 14.25 10.75H5.75C5.33579 10.75 5 10.4142 5 10C5 9.58579 5.33579 9.25 5.75 9.25H14.25ZM16.25 5C16.6642 5 17 5.33579 17 5.75C17 6.16421 16.6642 6.5 16.25 6.5H3.75C3.33579 6.5 3 6.16421 3 5.75C3 5.33579 3.33579 5 3.75 5H16.25Z" fill="currentColor"></path>
+                                </svg>
+                                <span>Filters</span>
+                            </span>
                         </button>
-
-
                     </div>
                 ) : null}
 
-                <aside id="pnp-mobile-filters" className={[styles.filters, "pnp-filters", (isMobile && !showFilters) ? styles.filtersHidden : "", (isMobile && !showFilters) ? 'pnp-filters--hidden' : ''].join(" ").trim()} aria-label="Sample filters" aria-hidden={isMobile && !showFilters}  hidden={isMobile && !showFilters}>
+                <aside id="pnp-mobile-filters" className={[styles.filters, "pnp-filters", (isMobile && !showFilters) ? styles.filtersHidden : "", (isMobile && !showFilters) ? 'pnp-filters--hidden' : ''].join(" ").trim()} aria-label="Sample filters" aria-hidden={isMobile && !showFilters}>
 
                     <div className={[styles.filterSort, "pnp-filter__sort"].join(" ")}>
                         <label htmlFor="pnpSort" className="pnp-label">Sort</label>
@@ -952,19 +983,19 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                     ) : null}
 
                     <div className={styles.cardGridWrapper}>
-                        {loading ? (
-                            <div className={[styles.cardGrid, "pnp-card-grid pnp-skeleton-grid"].join(" ")} aria-label="Sample cards">
+                        {/* Always render the real grid (Muuri needs the DOM). Hide visually until Muuri is ready. */}
+                        <div ref={gridRef} className={[styles.cardGrid, gridReady ? styles.cardGridFadeIn : styles.cardGridFadeOut, !gridReady ? styles.cardGridHidden : "", "pnp-card-grid pnp-muuri-grid"].filter(Boolean).join(" ")} aria-label="Sample cards">
+                            {(isMobile ? filteredSamples : samplesWithLikes).map(s => (
+                                <SampleCard key={s.name} sample={s} iconBasePath={props.iconBasePath} techIconBasePath={props.techIconBasePath} muuriRef={muuriRef} onOpen={(sample) => setSelected(sample)} reactionsSupported={reactionsSupported} config={props.config} />
+                            ))}
+                        </div>
+
+                        {/* Skeleton overlay sits above the real grid until Muuri completes layout. */}
+                        <div className={[styles.cardGrid, styles.cardGridOverlay, gridReady ? styles.cardGridOverlayHidden : styles.cardGridOverlayVisible, "pnp-card-grid pnp-skeleton-grid"].filter(Boolean).join(" ")} aria-hidden={!loading ? "false" : "true"}>
                                 {Array.from({ length: isMobile ? 3 : 9 }).map((_, i) => (
                                     <SkeletonCard key={`skeleton-${i}`} />
                                 ))}
                             </div>
-                        ) : (
-                            <div ref={gridRef} className={[styles.cardGrid, "pnp-card-grid pnp-muuri-grid"].join(" ")} aria-label="Sample cards">
-                                {(isMobile ? filteredSamples : samplesWithLikes).map(s => (
-                                    <SampleCard key={s.name} sample={s} iconBasePath={props.iconBasePath} techIconBasePath={props.techIconBasePath} muuriRef={muuriRef} onOpen={(sample) => setSelected(sample)} reactionsSupported={reactionsSupported} config={props.config} />
-                                ))}
-                            </div>
-                        )}
 
                         {/* Toggle button: becomes Collapse (X) when fullscreen */}
                         {!isMobile ? (

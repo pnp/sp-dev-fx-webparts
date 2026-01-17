@@ -188,8 +188,9 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                         onLoad={() => {
                             const g = muuriRef?.current;
                             if (g) {
-                                g.refreshItems().layout();
-                            }
+                                    console.debug('[SampleCard] image onLoad -> refreshItems().layout()', { id: s.name });
+                                    g.refreshItems().layout();
+                                }
                         }}
                     />
                 </figure>
@@ -203,8 +204,9 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                         onLoad={() => {
                             const g = muuriRef?.current;
                             if (g) {
-                                g.refreshItems().layout();
-                            }
+                                    console.debug('[SampleCard] fallback image onLoad -> refreshItems().layout()', { id: s.name });
+                                    g.refreshItems().layout();
+                                }
                         }}
                     />
                 </figure>
