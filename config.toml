@@ -74,7 +74,6 @@ url = "https://discord.com/channels/1095788595010338956/1096363629680529418"
     repoId = "MDEwOlJlcG9zaXRvcnk2Njk2MjE3OQ=="
     category = "Likes"
     categoryId = "DIC_kwDOA_3DA84C0m26"
-    likesFeed = "/sp-dev-fx-webparts/data/likes.json"
     enabled = true
 
   # Filters configuration: declare filter groups used by the gallery UI

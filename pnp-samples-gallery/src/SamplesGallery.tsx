@@ -3,6 +3,7 @@ import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore
 import { createPortal } from "react-dom";
 import Muuri from "muuri";
 import type { PnPSample, TechKey } from "./types/index";
+import type { SamplesGalleryProps, FacetState } from "./types/samplesGallery";
 import { metaFirst, getCategories, spfxToBucket, spfxBucketSortKeyDesc } from "./types/index";
 
 import { categoryToIcon, prettyCategory } from "./types/index";
@@ -15,40 +16,14 @@ import { FacetGroup } from "./components";
 import SamplePanel from "./components/SamplePanel/SamplePanel";
 
 import { LayoutGroup } from "framer-motion";
-import type { LikesJson } from "./types/likes";
-import { reconcilePendingLikesWithGeneratedAt } from "./types/pendingLikes";
-import { setScope as setLikesScope, clearOverridesOlderThan, subscribe as subscribeLikesOverrides } from "./utils/likesOverrides";
+import { setScope as setLikesScope, subscribe as subscribeLikesOverrides } from "./utils/likesOverrides";
 import type { OverrideEntry } from "./utils/likesOverrides";
-import normalizeLikes from "./utils/likesNormalizer";
 
 
 
 import "./styles.css";
 
-export interface SamplesGalleryProps {
-    src: string; // JSON URL
-    initialSearch?: string;
-    className?: string;
-    iconBasePath?: string;
-    techIconBasePath?: string;
-    baseUrl?: string;
-    giscusSettings?: {
-        repo?: string;
-        repoId?: string;
-        category?: string;
-        categoryId?: string;
-        reactionsSupported?: boolean | string;
-    };
-    reactionsSupported?: boolean;
-    config?: Record<string, unknown>;
-}
 
-type FacetState = {
-    q: string;
-    spfx: string | null;
-    tech: string | null;
-    category: string | null;
-};
 
 
 function norm(s: string): string {
@@ -179,54 +154,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         };
     }, []);
 
-    // Attempt to resolve session alias on load and when the stored hash changes
-    useEffect(() => {
-        if (typeof window === 'undefined') return;
-        let cancelled = false;
-
-        // Reconcile local overrides against the generatedAt timestamp from likes.json
-        const reconcile = async () => {
-            try {
-                const res = await fetch('/sp-dev-fx-webparts/data/likes.json', { cache: 'no-cache' });
-                if (!res.ok) return;
-                const feed = await res.json() as { generatedAt?: string };
-                const gen = feed?.generatedAt;
-                if (gen && typeof gen === 'string' && !isNaN(Date.parse(gen))) {
-                    clearOverridesOlderThan(new Date(gen).toISOString());
-                    try { console.debug('[SamplesGallery] reconciled overrides with likes.json generatedAt', { generatedAt: gen }); } catch { /* ignore */}  
-                }
-            } catch (err) {
-                try { console.debug('[SamplesGallery] failed to fetch likes.json for reconciliation', err); } catch {  /* ignore */}
-            }
-        };
-        void reconcile();
-
-        const runLookup = async () => {
-            try {
-                const storage = await import('./utils/githubIdStorage');
-                const stored = storage.getStoredHash();
-                if (!stored) return;
-                const res = await fetch('/sp-dev-fx-webparts/data/likes.json', { cache: 'no-cache' });
-                if (!res.ok) return;
-                const feed = await res.json();
-                const alias = await storage.lookupAliasFromDiscussionFeed(feed);
-                if (!cancelled) {
-                    try { console.debug('[SamplesGallery] lookupAliasFromDiscussionFeed result', { alias }); } catch {
-                        /* ignore */
-                    }
-                }
-            } catch (err) {
-                try { console.debug('[SamplesGallery] lookupAliasFromDiscussionFeed failed', err); } catch {
-                    /* ignore */
-                }
-            }
-        };
-
-        void runLookup();
-        const onChanged = () => { void runLookup(); };
-        window.addEventListener('pnp:githubLoginChanged', onChanged as EventListener);
-        return () => { cancelled = true; window.removeEventListener('pnp:githubLoginChanged', onChanged as EventListener); };
-    }, []);
+    // Note: reactions are now embedded on each sample; we no longer fetch likes.json separately.
 
     useEffect(() => {
         let cancelled = false;
@@ -348,15 +276,13 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         // mark grid as not-yet-ready while Muuri performs its first layout
         setGridReady(false);
 
-        // initial sort + layout
-        applyGridSort(muuriRef.current);
+        // initial layout will be handled below by the filter/sort effect
         // When Muuri finishes layout, mark grid as ready so shadows/transitions can be enabled
         const onLayoutEnd = () => setGridReady(true);
         // Muuri emits events; listen for layoutEnd
         muuriRef.current.on?.("layoutEnd", onLayoutEnd);
 
-        // trigger first layout
-        muuriRef.current.refreshItems().layout();
+        // initial layout will be triggered by the filter/sort effect below
 
         return () => {
             if (muuriRef.current) {
@@ -533,10 +459,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         return n;
     }, [samples, matchesSample]);
 
-    const [likesData, setLikesData] = useState<LikesJson | null>(null);
 
-    // Use typed normalizer helper
-    const normalizeLikesData = normalizeLikes;
 
     const [, setPendingLikesVersion] = useState(0);
     const likesOverridesRaw = useSyncExternalStore(
@@ -559,10 +482,9 @@ export function SamplesGallery(props: SamplesGalleryProps) {
     }, [likesOverridesRaw]);
 
 
-    // Derive a samples array enriched with totalReactions from the likes feed (if available)
+    // Derive a samples array enriched with totalReactions from each sample's embedded `reactions` field
     const samplesWithLikes = useMemo(() => {
         if (!samples || samples.length === 0) return samples;
-        const { totals, reactorsMap } = normalizeLikesData(likesData);
 
         // Get the session alias (viewer) if available from sessionStorage
         let sessionAlias: string | null = null;
@@ -583,12 +505,17 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         return samples.map(s => {
             const key = (s.name ?? '').toString();
             const shortKey = key.replace(/^sample:/, '');
-            const total = totals.get(shortKey) ?? totals.get(key) ?? 0;
+
+            // Base totals come from the sample's `reactions.totalReactions` when present
+            const totalFromSample = (s as any)?.reactions && typeof (s as any).reactions.totalReactions === 'number' ? (s as any).reactions.totalReactions : 0;
+
             const ov = overridesBySample.get(shortKey) ?? overridesBySample.get(key);
-            const mergedTotal = (typeof ov?.count === "number") ? ov.count : total;
+            const mergedTotal = (typeof ov?.count === "number") ? ov.count : totalFromSample;
+
             let userHas = false;
             try {
-                const reactors = reactorsMap.get(shortKey) ?? reactorsMap.get(key) ?? [];
+                const reactorsRaw = (s as any)?.reactions?.allReactors;
+                const reactors = Array.isArray(reactorsRaw) ? reactorsRaw.map((r: string) => String(r).toLowerCase()) : [];
                 if (sessionAlias && reactors.length > 0) userHas = reactors.includes(sessionAlias.toLowerCase());
             } catch {
                 userHas = false;
@@ -598,7 +525,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
             return { ...s, totalReactions: mergedTotal, userHasReactions: mergedUserHas } as PnPSample;
         });
-    }, [samples, likesData, likesOverrides, normalizeLikesData]);
+    }, [samples, likesOverrides]);
 
     const totalReactionsById = useMemo(() => {
         const map = new Map<string, number>();
@@ -785,14 +712,14 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         try {
             const mainSection = gridRef.current?.closest('section') ?? document.querySelector('section.pnp-samples');
             if (mainSection && selected) mainSection.setAttribute('aria-hidden', 'true');
-        } catch { }
+        } catch { /* ignore */ }
 
         return () => {
             document.removeEventListener('keydown', onKeyDown, true);
             try {
                 const mainSection = gridRef.current?.closest('section') ?? document.querySelector('section.pnp-samples');
                 if (mainSection) mainSection.removeAttribute('aria-hidden');
-            } catch { }
+            } catch { /* ignore */ }
         };
     }, [selected]);
 
@@ -874,38 +801,6 @@ export function SamplesGallery(props: SamplesGalleryProps) {
             // ignore
         }
     }, [mergedGiscusSettings?.repo]);
-
-    // Ensure pendingLikesVersion is read so React includes it in render dependencies
-    // (used by SampleCard to recompute pending state)
-    useEffect(() => {
-        let cancelled = false;
-        async function loadLikes() {
-            if (!reactionsSupported) return;
-            try {
-                // Determine likes feed URL from config, then props.baseUrl, then public
-                const cfg = (props.config as any) ?? {};
-                const likesFeed = cfg.likesFeed as string | undefined;
-                const likesUrl = likesFeed ? likesFeed : (props.baseUrl ? `${props.baseUrl.replace(/\/$/, '')}/data/discussion-reactions.json` : 'https://pnp.github.io/sp-dev-fx-webparts/data/discussion-reactions.json');
-                const res = await fetch(likesUrl, { cache: 'no-cache' });
-                if (!res.ok) return;
-                const json = (await res.json()) as LikesJson;
-                if (!cancelled) setLikesData(json);
-                // reconcile any pending likes timestamps that are older than generatedAt
-                try {
-                    reconcilePendingLikesWithGeneratedAt(json.generatedAt ?? null);
-                } catch {
-                    // ignore
-                }
-            } catch {
-                // ignore
-            }
-        }
-
-        // load once on mount and then periodically every 10 minutes
-        void loadLikes();
-        const id = setInterval(loadLikes, 10 * 60 * 1000);
-        return () => { cancelled = true; clearInterval(id); };
-    }, []);
 
     // Ensure `gridReady` is read (used by the render path). Assigning to a local
     // prevents a TypeScript "declared but its value is never read" error.
