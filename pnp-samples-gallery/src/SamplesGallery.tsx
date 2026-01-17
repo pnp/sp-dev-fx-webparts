@@ -325,6 +325,53 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         return n;
     }, [samples, matchesSample]);
 
+    // Animated display count: smoothly transition numeric changes
+    const [displayCount, setDisplayCount] = useState<number>(matchCount);
+    const countAnimationRef = useRef<number | null>(null);
+    const countStartRef = useRef<number>(matchCount);
+    const countStartTimeRef = useRef<number>(0);
+
+    useEffect(() => {
+        // Cancel any existing animation
+        if (countAnimationRef.current) cancelAnimationFrame(countAnimationRef.current);
+
+        const duration = 350; // ms
+        const from = displayCount;
+        const to = matchCount;
+        if (from === to) return;
+
+        countStartRef.current = from;
+        countStartTimeRef.current = performance.now();
+
+        const step = (ts: number) => {
+            const elapsed = ts - countStartTimeRef.current;
+            const t = Math.min(1, elapsed / duration);
+            const eased = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t; // easeInOutQuad-ish
+            const current = Math.round(countStartRef.current + (to - countStartRef.current) * eased);
+            setDisplayCount(current);
+            if (t < 1) {
+                countAnimationRef.current = requestAnimationFrame(step);
+            } else {
+                countAnimationRef.current = null;
+                setDisplayCount(to);
+            }
+        };
+
+        countAnimationRef.current = requestAnimationFrame(step);
+
+        // trigger a brief pulse class on change
+        setCountPulse(true);
+        const pulseTimer = setTimeout(() => setCountPulse(false), 420);
+
+        return () => {
+            if (countAnimationRef.current) cancelAnimationFrame(countAnimationRef.current);
+            countAnimationRef.current = null;
+            clearTimeout(pulseTimer);
+        };
+    }, [matchCount]);
+
+    const [countPulse, setCountPulse] = useState<boolean>(false);
+
     // Compute disabled options: for each option in a facet, determine if selecting it
     // (in combination with the other currently selected facets) would yield zero results.
     const disabledOptions = useMemo(() => {
@@ -959,11 +1006,11 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
                 <main className={[styles.results, "pnp-results"].join(" ")} aria-label="Sample results" aria-busy={loading ? "true" : "false"}>
                     <div className={[styles.resultsMeta, "pnp-results__meta"].join(" ")} role="status" aria-live="polite">
-                        <div className={[styles.resultsCount, "pnp-results__count"].join(" ")}>
+                        <div className={[styles.resultsCount, countPulse ? styles.countPulse : '', "pnp-results__count"].filter(Boolean).join(" ")}>
                             {loading ? null : (
-                                matchCount === 1
+                                displayCount === 1
                                     ? `Showing 1 item`
-                                    : `Showing ${matchCount.toLocaleString()} items`
+                                    : `Showing ${displayCount.toLocaleString()} items`
                             )}
                         </div>
                         <div className={[styles.resultsActive, "pnp-results__active"].join(" ")} aria-label="Active filters">

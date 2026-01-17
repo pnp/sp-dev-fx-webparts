@@ -333,18 +333,6 @@ a:hover {
   }
 }
 
-/* Ensure the samples gallery filter scrolls with the page on narrow
-   desktop/tablet sizes (between mobile toggle and desktop two-column)
-   Keep mobile (<=640px) behavior unchanged. */
-@media screen and (max-width: 980px) and (min-width: 641px) {
-  .pnp-filters {
-    position: static !important;
-    top: auto !important;
-    z-index: auto !important;
-    transform: none !important;
-  }
-}
-
 .fa-pp {
   font-size: 1.02em;
 }
@@ -1303,7 +1291,7 @@ a:hover {
 @media screen and (max-width: 1024px) {
   .hero-main {
     margin-top: 10svh;
-    margin-bottom: unset;
+    margin-bottom: 25svh;
   }
 }
 
