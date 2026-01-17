@@ -29,7 +29,7 @@
     "clean-css": ">=4.1.11",
     "cryptiles": ">=4.1.2",
     "deep-extend": ">=0.5.1",
-    "diff": ">=3.5.0",
+    "diff": ">=8.0.3",
     "extend": ">=3.0.2",
     "fresh": ">=0.5.2",
     "fstream": ">=1.0.12",
@@ -82,7 +82,7 @@
     "eslint-plugin-react-hooks": "4.3.0",
     "gulp": "4.0.2",
     "gulp-sequence": "1.0.0",
-    "jest": "^23.6.0",
+    "jest": "^30.2.0",
     "typescript": "4.7.4"
   }
 }
