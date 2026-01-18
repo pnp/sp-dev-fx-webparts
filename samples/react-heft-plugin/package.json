@@ -9,6 +9,7 @@
     "heft-plugins/version-incrementer-plugin"
   ],
   "scripts": {
+    "prepare": "cd heft-plugins/version-incrementer-plugin && npm run build",
     "build": "heft test --clean --production && heft package-solution --production",
     "start": "heft start --clean",
     "clean": "heft clean",
