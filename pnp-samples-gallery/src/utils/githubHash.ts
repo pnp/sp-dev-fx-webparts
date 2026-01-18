@@ -192,11 +192,6 @@ export async function findUsernameForHashInFeed(feed: Array<{ sampleId: string; 
   return found;
 }
 
-export function clearMemoryCaches() {
-  memoryHashCache.clear();
-  memoryFeedIndexCache.clear();
-}
-
 export default {
   normalizeUsername,
   sha256Hex,
@@ -204,6 +199,5 @@ export default {
   setCachedHashForUsername,
   computeFeedKey,
   buildUsernameToSamplesIndex,
-  findUsernameForHashInFeed,
-  clearMemoryCaches,
+  findUsernameForHashInFeed
 };

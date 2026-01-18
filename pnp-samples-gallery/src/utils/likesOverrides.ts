@@ -23,9 +23,6 @@ export function setScope(repo?: string | null) {
     STORAGE_OVERRIDES_KEY = `pnp:likes:overrides:${scope}`;
 }
 
-export function getStorageKey() {
-    return STORAGE_OVERRIDES_KEY;
-}
 
 export function readAllOverrides(): OverrideEntry[] {
     try {

@@ -11,19 +11,6 @@
     margin: 1.25rem 0 2rem;
 }
 
-/* .pnp-samples__header {
-    margin-bottom: 1rem;
-} */
-
-/* .pnp-samples__title {
-    margin: 0 0 0.25rem;
-} */
-
-/* .pnp-samples__subtitle {
-    margin: 0;
-    color: var(--pnp-muted);
-} */
-
 .pnp-samples__layout {
     display: grid;
     grid-template-columns: 320px 1fr;
@@ -155,35 +142,6 @@
     }
 }
 
-
-
-/* .pnp-label {
-    display: inline-block;
-    font-weight: 600;
-    margin-bottom: 0.35rem;
-} */
-
-/* .pnp-search {
-    display: flex;
-    gap: 0.5rem;
-    align-items: center;
-} */
-
-/* .pnp-search__input {
-    width: 100%;
-    padding: 0.65rem 0.75rem;
-    border: 1px solid var(--pnp-border);
-    border-radius: 12px;
-    background: var(--pnp-bg);
-    color: var(--pnp-fg);
-} */
-
-/* .pnp-filters__actions {
-    margin-top: 0.75rem;
-    display: flex;
-    gap: 0.5rem;
-} */
-
 .pnp-btn {
     border: 1px solid var(--pnp-border);
     background: var(--pnp-bg);
@@ -201,12 +159,6 @@
     padding: 0.55rem 0.65rem;
 }
 
-/* .pnp-filter-group {
-    margin-top: 1rem;
-} */
-
-
-
 /* Ensure interactive pills show pointer cursor */
 button.pnp-pill,
 .pnp-pill[role="button"],
@@ -219,25 +171,6 @@ button.pnp-pill,
     border-color: rgba(0, 0, 0, 0.45);
     /* box-shadow: var(--pnp-shadow); */
 }
-
-/* .pnp-results__meta {
-    display: flex;
-    gap: 0.75rem;
-    align-items: baseline;
-    justify-content: space-between;
-    margin-bottom: 0.75rem;
-    flex-wrap: wrap;
-} */
-
-/* .pnp-results__count {
-    font-weight: 600;
-} */
-
-/* .pnp-results__active {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-} */
 
 .pnp-card-grid {
     display: grid;
@@ -317,11 +250,6 @@ button.pnp-pill,
     padding-top: 1rem;
     text-align: left;
 }
-
-/* .pnp-card__footer,
-.pnp-card__desc {
-    padding: 0.95rem;
-} */
 
 .pnp-card:hover {
     box-shadow: var(--pnp-shadow);
@@ -444,8 +372,6 @@ figure.pnp-card__thumb-figure {
     place-items: center;
     /* box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08); */
 }
-
-/* Sample panel styles migrated to SamplePanel.module.css */
 
 .pnp-facepile__avatar {
     margin-left: calc(var(--pnp-face-size) * -0.28);
@@ -579,11 +505,6 @@ figure.pnp-card__thumb-figure {
     height: 100%;
 }
 
-/* Grid holds the CSS variable */
-/* .pnp-muuri-grid {
-    --card-h: auto;
-} */
-
 /* Muuri positions this */
 .pnp-sample-item {
     height: var(--card-h);
@@ -670,17 +591,6 @@ figure.pnp-card__thumb-figure {
     min-height: 340px;
     max-height: 340px;
 }
-
-
-
-/* .pnp-card::before {
-    border-width: 1px;
-    border-style: solid;
-    border-color: white;
-    border-image: initial;
-    border-radius: 1rem;
-    pointer-events: none;
-} */
 
 .pnp-card::before {
     position: absolute;
