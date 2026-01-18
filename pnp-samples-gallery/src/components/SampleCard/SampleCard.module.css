@@ -85,6 +85,29 @@
     margin-left: 1rem;
 }
 
+/* Local replacements for global pnp- utility classes */
+.pill {
+    font-size: .82rem;
+    border: 1px solid var(--pnp-border);
+    border-radius: 999px;
+    padding: .25rem .5rem;
+    background: var(--pnp-bg);
+}
+
+.pillIcon {
+    display: inline-flex;
+    align-items: center;
+    gap: .25rem;
+}
+
+.icon {
+    vertical-align: middle;
+}
+
+.footerRight {
+    /* matches previous placement for pnp-card__footer-right */
+}
+
 .body {
 
 }

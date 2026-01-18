@@ -11,18 +11,18 @@
     margin: 1.25rem 0 2rem;
 }
 
-.pnp-samples__header {
+/* .pnp-samples__header {
     margin-bottom: 1rem;
-}
+} */
 
-.pnp-samples__title {
+/* .pnp-samples__title {
     margin: 0 0 0.25rem;
-}
+} */
 
-.pnp-samples__subtitle {
+/* .pnp-samples__subtitle {
     margin: 0;
     color: var(--pnp-muted);
-}
+} */
 
 .pnp-samples__layout {
     display: grid;
@@ -157,32 +157,32 @@
 
 
 
-.pnp-label {
+/* .pnp-label {
     display: inline-block;
     font-weight: 600;
     margin-bottom: 0.35rem;
-}
+} */
 
-.pnp-search {
+/* .pnp-search {
     display: flex;
     gap: 0.5rem;
     align-items: center;
-}
+} */
 
-.pnp-search__input {
+/* .pnp-search__input {
     width: 100%;
     padding: 0.65rem 0.75rem;
     border: 1px solid var(--pnp-border);
     border-radius: 12px;
     background: var(--pnp-bg);
     color: var(--pnp-fg);
-}
+} */
 
-.pnp-filters__actions {
+/* .pnp-filters__actions {
     margin-top: 0.75rem;
     display: flex;
     gap: 0.5rem;
-}
+} */
 
 .pnp-btn {
     border: 1px solid var(--pnp-border);
@@ -201,9 +201,9 @@
     padding: 0.55rem 0.65rem;
 }
 
-.pnp-filter-group {
+/* .pnp-filter-group {
     margin-top: 1rem;
-}
+} */
 
 
 
@@ -220,24 +220,24 @@ button.pnp-pill,
     /* box-shadow: var(--pnp-shadow); */
 }
 
-.pnp-results__meta {
+/* .pnp-results__meta {
     display: flex;
     gap: 0.75rem;
     align-items: baseline;
     justify-content: space-between;
     margin-bottom: 0.75rem;
     flex-wrap: wrap;
-}
+} */
 
-.pnp-results__count {
+/* .pnp-results__count {
     font-weight: 600;
-}
+} */
 
-.pnp-results__active {
+/* .pnp-results__active {
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-}
+} */
 
 .pnp-card-grid {
     display: grid;
@@ -671,70 +671,7 @@ figure.pnp-card__thumb-figure {
     max-height: 340px;
 }
 
-/* Skeleton-specific sizing: cap skeleton card width to 320px and make it fill the grid cell */
-.pnp-sample-item--skeleton {
-    max-width: 320px !important;
-    width: 100% !important;
-}
 
-/* Ensure skeleton thumbs visually match expected aspect ratio */
-.pnp-sample-item--skeleton .skeleton-thumb {
-    height: 180px;
-}
-
-/* Skeleton / shimmer styles for minimal loading placeholders */
-.skeleton-thumb {
-    background: linear-gradient(90deg, #f3f3f3 25%, #e8e8e8 37%, #f3f3f3 63%);
-    /* background-size: 400% 100%; */
-    animation: shimmer 1.4s ease-in-out infinite;
-    height: 180px;
-    border-radius: 12px 12px 0 0;
-    aspect-ratio: 16 / 9;
-    padding: 0;
-}
-
-.skeleton-line {
-    display: inline-block;
-    height: 14px;
-    background: linear-gradient(90deg, #f3f3f3 25%, #e8e8e8 37%, #f3f3f3 63%);
-    background-size: 400% 100%;
-    animation: shimmer 1.4s ease-in-out infinite;
-    border-radius: 6px;
-}
-
-.skeleton-title {
-    width: 60%;
-    height: 20px;
-    display: block;
-    margin: 8px 0;
-}
-
-.skeleton-desc {
-    width: 90%;
-    height: 14px;
-    display: block;
-    margin: 6px 0;
-}
-
-.skeleton-pill {
-    width: 72px;
-    height: 28px;
-    display: inline-block;
-    border-radius: 999px;
-    vertical-align: middle;
-    animation: shimmer 1.4s ease-in-out infinite;
-    background: linear-gradient(90deg, #f3f3f3 25%, #e8e8e8 37%, #f3f3f3 63%);
-}
-
-@keyframes shimmer {
-    0% {
-        background-position: 200% 0;
-    }
-
-    100% {
-        background-position: -200% 0;
-    }
-}
 
 /* .pnp-card::before {
     border-width: 1px;

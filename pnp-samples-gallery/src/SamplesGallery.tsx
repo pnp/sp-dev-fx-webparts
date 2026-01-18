@@ -926,11 +926,11 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                     </div>
 
                     <div style={{ marginTop: isMobile ? '' : '1rem' }}>
-                        <label className="pnp-label" htmlFor="pnpSearch">Search</label>
-                        <div className="pnp-search">
+                        <label className={styles.label} htmlFor="pnpSearch">Search</label>
+                        <div className={styles.search}>
                             <input
                                 id="pnpSearch"
-                                className="pnp-search__input"
+                                className={styles.searchInput}
                                 type="search"
                                 placeholder="Search title, description, authors…"
                                 value={state.q}
@@ -947,7 +947,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                         </div></div>
 
 
-                    <div className="pnp-filters__actions">
+                    <div className={styles.filterActions}>
                         <button type="button" className="pnp-btn" onClick={clearAll} aria-label='Clear all filters' title="Clear all filters">
                             Clear all
                         </button>
@@ -1004,16 +1004,16 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
                 </aside>
 
-                <main className={[styles.results, "pnp-results"].join(" ")} aria-label="Sample results" aria-busy={loading ? "true" : "false"}>
-                    <div className={[styles.resultsMeta, "pnp-results__meta"].join(" ")} role="status" aria-live="polite">
-                        <div className={[styles.resultsCount, countPulse ? styles.countPulse : '', "pnp-results__count"].filter(Boolean).join(" ")}>
+                <main className={styles.results} aria-label="Sample results" aria-busy={loading ? "true" : "false"}>
+                    <div className={styles.resultsMeta} role="status" aria-live="polite">
+                        <div className={[styles.resultsCount, countPulse ? styles.countPulse : ''].filter(Boolean).join(" ")}>
                             {loading ? null : (
                                 displayCount === 1
                                     ? `Showing 1 item`
                                     : `Showing ${displayCount.toLocaleString()} items`
                             )}
                         </div>
-                        <div className={[styles.resultsActive, "pnp-results__active"].join(" ")} aria-label="Active filters">
+                        <div className={styles.resultsActive} aria-label="Active filters">
                             {state.q ? <Pill label={`Search: ${state.q}`} onRemove={() => setState(p => ({ ...p, q: "" }))} /> : null}
                             {state.spfx ? <Pill label={`SPFx: ${state.spfx}`} onRemove={() => setFacet("spfx", null)} /> : null}
                             {state.tech ? <Pill label={`Tech: ${state.tech}`} onRemove={() => setFacet("tech", null)} /> : null}
