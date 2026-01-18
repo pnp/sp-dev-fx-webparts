@@ -81,6 +81,7 @@ This sample illustrates the following concepts:
     ```bash
     cd heft-plugins/version-incrementer-plugin
     npm install
+    npm run prepare
     npm run build
     cd ../..
     ```
@@ -100,6 +101,7 @@ This sample illustrates the following concepts:
 5. Build for production (triggers version increment)
 
     ```bash
+    npm run prepare
     npm run build
     ```
 
