@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "heft-toolchain-client-side-solution",
+    "id": "35081967-0edb-4420-bcee-d4206f3e9341",
+    "version": "0.0.4.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.22.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "HeftToolchain description"
+      },
+      "longDescription": {
+        "default": "HeftToolchain description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "heft-toolchain Feature",
+        "description": "The feature that activates elements of the heft-toolchain solution.",
+        "id": "ee357c6d-12d9-4175-b72f-eaa3b1077025",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/heft-toolchain.sppkg"
+  }
+}

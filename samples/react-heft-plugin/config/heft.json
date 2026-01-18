@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/heft/v0/heft.schema.json",
+  "extends": "@microsoft/spfx-web-build-rig/profiles/default/config/heft.json",
+  
+  "phasesByName": {
+    "build": {
+      "tasksByName": {
+        "version-incrementer": {
+          "taskDependencies": ["set-browserslist-ignore-old-data-env-var"],
+          "taskPlugin": {
+            "pluginPackage": "version-incrementer-plugin",
+            "pluginName": "version-incrementer-plugin",
+            "options": {
+              "strategy": "patch",
+              "productionOnly": true,
+              "updatePackageSolution": true
+            }
+          }
+        }
+      }
+    }
+  }
+}
