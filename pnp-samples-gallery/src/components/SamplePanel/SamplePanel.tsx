@@ -649,19 +649,19 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
                     <h3>Actions</h3>
                     <div className={styles.actionRow}>
                         <button className={`${styles.actionsButton} pnp-btn pnp-btn--action`} onClick={openGitHub} title="View on GitHub">
-                            <Icon icon="github" size={16} />
+                            <Icon icon="github" basePath={baseUrl ? baseUrl.replace(/\/$/, '') : '.'} size={16} />
                             <span className={styles.actionLabel}>View on GitHub</span>
                         </button>
                     </div>
                     <div className={styles.actionRow}>
                         <button className={`${styles.actionsButton} pnp-btn pnp-btn--action`} onClick={download} title="Download as ZIP">
-                            <Icon icon="download" size={16} />
+                            <Icon icon="download" basePath={baseUrl ? baseUrl.replace(/\/$/, '') : '.'} size={16} />
                             <span className={styles.actionLabel}>Download as ZIP</span>
                         </button>
                     </div>
                     <div className={styles.actionRow}>
                         <button className={`${styles.actionsButton} pnp-btn pnp-btn--action`} onClick={downloadUsingCli} title="Download using command-line (experimental)">
-                            <Icon icon="cli" size={16} />
+                            <Icon icon="cli" basePath={baseUrl ? baseUrl.replace(/\/$/, '') : '.'} size={16} />
                             <span className={styles.actionLabel}>Download using command-line (experimental)</span>
                         </button>
                         <button className={`${styles.actionsButton} pnp-btn pnp-btn--ghost`} onClick={copyCli} aria-label="Copy CLI command">
@@ -721,9 +721,10 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
                                     const techIcon = techToIcon(k);
                                     const labelText = k === 'other' ? t : techLabel(k);
                                     return (
-                                        <span key={t} className="pnp-pill">
-                                            <Icon icon={techIcon} basePath="/sp-dev-fx-webparts/tech-icons" size={16} />
-                                            {labelText}
+                                        <span key={t} className="pnp-pill pnp-pill--icon" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
+                                            {/* prefer techIconBasePath provided via props or baseUrl; default to ./tech-icons */}
+                                            <Icon icon={techIcon} basePath={baseUrl ? `${baseUrl.replace(/\/$/, '')}/tech-icons` : './tech-icons'} size={16} />
+                                            <span>{labelText}</span>
                                         </span>
                                     );
                                 })}
@@ -747,7 +748,7 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
                                 <strong className={styles.pillLabel}>Category:</strong>
                                 <div className={styles.pillValueValue}>
                                     <span className="pnp-pill pnp-pill--icon" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-                                        <Icon icon={categoryToIcon(primary)} size={16} />
+                                        <Icon icon={categoryToIcon(primary)} basePath={baseUrl ?? '.'} size={16} />
                                         <span>{catLabel}</span>
                                     </span>
                                 </div>

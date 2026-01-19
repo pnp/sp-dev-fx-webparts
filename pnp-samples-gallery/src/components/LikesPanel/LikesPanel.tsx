@@ -1,6 +1,6 @@
 import Giscus from "@giscus/react";
 import { useEffect, useState } from "react";
-import { getPendingLike, setPendingLike } from "../../types/pendingLikes";
+import { setPendingLike } from "../../types/pendingLikes";
 import { readOverrideFor, upsertOverride } from '../../utils/likesOverrides';
 import { useRef } from "react";
 import styles from './LikesPanel.module.css';
@@ -261,15 +261,6 @@ export function LikesPanel({ sampleName, baseUrl, giscusSettings }: { sampleName
                 } catch {
                     // ignore
                 }
-
-                // If giscus reports a total and it's different from likes.json baseline, we would persist an override here.
-                // The repository may not include the giscusOverrides helper, so we avoid a hard dependency and simply log.
-                try {
-                    const viewerReacted = currentReactedCount > 0;
-                    console.debug('[LikesPanel] giscus reported', { sample: key.replace(/^sample:/, ''), reportedTotal, viewerReacted });
-                } catch {
-                    // ignore
-                }
             } catch {
                 // ignore
             }
@@ -278,13 +269,9 @@ export function LikesPanel({ sampleName, baseUrl, giscusSettings }: { sampleName
         window.addEventListener("message", onMessage);
         // subscribe to pendingLikesChanged to update debug view
         const onPending = () => {
-            try {
-                const p = getPendingLike(sampleName);
-                try { console.debug('[LikesPanel] pending debug updated', { sampleName, p }); } catch { }
-            } catch (err) {
-                try { console.error('[LikesPanel] failed reading pending for debug', { sampleName, err }); } catch { }
-            }
-        };
+            // console.debug('[LikesPanel] pendingLikesChanged event received', { sampleName, pending });
+        }
+            
         window.addEventListener('pendingLikesChanged', onPending as EventListener);
         // populate initial
         onPending();

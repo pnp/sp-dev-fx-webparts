@@ -35,8 +35,6 @@ export function mount(el: Element, options: MountOptions): void {
         src={options.src}
         initialSearch={options.initialSearch}
         baseUrl={options.baseUrl}
-        iconBasePath={options.baseUrl ? `${options.baseUrl.replace(/\/$/, '')}/` : undefined}
-        techIconBasePath={options.baseUrl ? `${options.baseUrl.replace(/\/$/, '')}/tech-icons` : undefined}
         giscusSettings={options.giscusSettings}
         config={options.config}
       />

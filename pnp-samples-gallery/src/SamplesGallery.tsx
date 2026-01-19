@@ -849,8 +849,6 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
     const setQ = (q: string) =>
         setState(prev => ({ ...prev, q }));
-    const techBase = (props.techIconBasePath ?? (props.baseUrl ? `${props.baseUrl.replace(/\/$/, '')}/tech-icons` : "/sp-dev-fx-webparts/tech-icons")).replace(/\/$/, "");
-
     const toggleFullscreen = () => setFullscreen(f => !f);
 
     
@@ -1009,7 +1007,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                             disabledOptions={disabledOptions.tech}
                             renderLabel={(t) => {
                                 const label = techLabel(t as TechKey);
-                                const src = `${techBase}/${techToIcon(t as TechKey)}.svg`;
+                                const src = `${props.baseUrl}/${techToIcon(t as TechKey)}.svg`;
                                 return (<><Icon src={src} size={18} />&nbsp;{label}</>);
                             }}
                             mobile={isMobile}
@@ -1027,7 +1025,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                             disabledOptions={disabledOptions.category}
                             renderLabel={(cat) => (
                                 <>
-                                    <Icon icon={categoryToIcon(cat)} basePath={props.iconBasePath} size={18} />&nbsp;{prettyCategory(cat)}
+                                    <Icon icon={categoryToIcon(cat)} basePath={props.baseUrl} size={18} />&nbsp;{prettyCategory(cat)}
                                 </>
                             )}
                             mobile={isMobile}
@@ -1067,7 +1065,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                         {/* Always render the real grid (Muuri needs the DOM). Hide visually until Muuri is ready. */}
                         <div ref={gridRef} className={[styles.cardGrid, gridReady ? styles.cardGridFadeIn : styles.cardGridFadeOut, !gridReady ? styles.cardGridHidden : "", "pnp-card-grid pnp-muuri-grid"].filter(Boolean).join(" ")} aria-label="Sample cards">
                             {(isMobile ? filteredSamples : samplesWithLikes).map(s => (
-                                <SampleCard key={s.name} sample={s} iconBasePath={props.iconBasePath} techIconBasePath={props.techIconBasePath} muuriRef={muuriRef} onOpen={(sample) => setSelected(sample)} reactionsSupported={reactionsSupported} config={props.config} />
+                                <SampleCard key={s.name} sample={s} basePath={props.baseUrl} muuriRef={muuriRef} onOpen={(sample) => setSelected(sample)} reactionsSupported={reactionsSupported} config={props.config} />
                             ))}
                         </div>
 

@@ -7,22 +7,21 @@ import styles from './SampleCard.module.css';
 
 export interface SampleCardProps {
     sample: PnPSample;
-    iconBasePath?: string | undefined;
-    techIconBasePath?: string | undefined;
+    basePath?: string;
     muuriRef?: React.MutableRefObject<any>;
     onOpen?: (sample: PnPSample) => void;
     reactionsSupported?: boolean;
     config?: Record<string, unknown>;
 }
-export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef, onOpen, reactionsSupported = true }: SampleCardProps) {
+export function SampleCard({ sample: s, basePath, muuriRef, onOpen, reactionsSupported = true }: SampleCardProps) {
     const thumb = bestThumb(s);
     const spfxBucket = (metaFirst(s, "SPFX-VERSION") as string) ?? "";
     const tech = techKey(metaFirst(s, "CLIENT-SIDE-DEV")) ?? "";
     const cats = getCategories(s);
 
-    const techBase = (techIconBasePath ?? "/sp-dev-fx-webparts").replace(/\/$/, "");
     const techText = techLabel(tech);
-    const techSrc = `${techBase}/${techToIcon(tech)}.svg`;
+    const resolvedBase = (basePath ?? '/').replace(/\/$/, '');
+    const techSrc = `${resolvedBase}/${techToIcon(tech)}.svg`;
 
     const primaryCat = cats[0] ?? "SPFX-WEB-PART";
     const catLabel = prettyCategory(primaryCat);
@@ -227,7 +226,7 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                 <figure className={styles.thumbFigure}>
                     <img
                         className={styles.thumb}
-                        src={'/sp-dev-fx-webparts/_nopreview.png'}
+                            src={`${basePath}/spfx-samples-black.svg`}
                         alt={"No preview available"}
                         loading="lazy"
                         onLoad={() => {
@@ -253,7 +252,7 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                 >
                     <Icon
                         icon={categoryToIcon(primaryCat)}
-                        basePath={iconBasePath}
+                        basePath={basePath}
                         size={16}
                         className="pnp-icon"
                     />

@@ -24,7 +24,8 @@ export function Icon(props: IconSrcProps | IconNamedProps) {
     if ("src" in props) {
         src = props.src;
     } else {
-        const base = (props.basePath ?? "/sp-dev-fx-webparts").replace(/\/$/, "");
+        // Prefer an explicitly provided basePath; otherwise default to root-relative
+        const base = (props.basePath ?? "/").replace(/\/$/, "");
         src = `${base}/${props.icon}.svg`;
     }
 

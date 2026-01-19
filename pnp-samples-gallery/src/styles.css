@@ -688,7 +688,7 @@ article.main {
     background-attachment: fixed;
     background-size: contain;
     background-size: cover;
-    background-image: url(/sp-dev-fx-webparts/images/keyart-bg.webp);
+    background-image: url(./images/keyart-bg.webp);
     background-position: bottom left;
 }
 
