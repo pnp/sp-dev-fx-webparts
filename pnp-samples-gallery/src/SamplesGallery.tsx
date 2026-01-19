@@ -504,6 +504,43 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         });
     }, [samples, likesOverrides]);
 
+    // If a stored hashed id exists but no session alias is set, try to
+    // resolve the alias from the loaded samples' `reactions.allReactors`.
+    // The helper `lookupAliasFromDiscussionFeed` will set
+    // `sessionStorage['pnp.github.alias']` when it finds a match. When
+    // resolved we increment a small state (`setPendingLikesVersion`) so
+    // that the memoized `samplesWithLikes` recomputes and picks up the
+    // newly-set session alias.
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+        try {
+            const sessionAlias = window.sessionStorage.getItem('pnp.github.alias');
+            const storedHash = window.localStorage.getItem('pnp:github.id');
+            if (sessionAlias || !storedHash) return; // nothing to do
+            if (!samples || samples.length === 0) return;
+
+            (async () => {
+                try {
+                    const storage = await import('./utils/githubIdStorage');
+
+                    const feed = samples.map(s => ({
+                        sampleId: String(s.name ?? '').replace(/^sample:/, ''),
+                        allReactors: ((s as any)?.reactions?.allReactors ?? []) as string[]
+                    }));
+
+                    const found = storage.lookupAliasFromDiscussionFeed ? await storage.lookupAliasFromDiscussionFeed(feed) : null;
+                    if (found) {
+                        setPendingLikesVersion(v => v + 1);
+                    }
+                } catch {
+                    // ignore
+                }
+            })();
+        } catch {
+            // ignore
+        }
+    }, [samples]);
+
     const totalReactionsById = useMemo(() => {
         const map = new Map<string, number>();
 

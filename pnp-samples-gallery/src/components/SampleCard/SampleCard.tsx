@@ -138,6 +138,35 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
         const isMouse = 'button' in e;
         const isLeft = isMouse ? (e as React.MouseEvent).button === 0 : false;
         const hasModifier = ('ctrlKey' in e && (e as any).ctrlKey) || ('metaKey' in e && (e as any).metaKey) || ('shiftKey' in e && (e as any).shiftKey) || ('altKey' in e && (e as any).altKey);
+
+        // Modifier-click behavior: if the user ctrl/cmd/shift/alt clicks and the
+        // sample has a URL, open it in a new tab instead of opening the panel.
+        if (hasModifier) {
+            try {
+                const el = (e.currentTarget as HTMLElement | null);
+                const tag = el?.tagName?.toLowerCase() ?? '';
+
+                // If the clickable element is an anchor, allow the browser to handle
+                // the modifier-click (it will open in a new tab). For non-anchor
+                // elements (buttons), explicitly open the link in a new tab.
+                if (s.url) {
+                    if (tag === 'a') {
+                        // Do nothing — let the default anchor behavior occur
+                        return;
+                    }
+
+                    try {
+                        window.open(s.url, '_blank', 'noopener,noreferrer');
+                    } catch {
+                        window.location.href = s.url;
+                    }
+                    return;
+                }
+            } catch {
+                // ignore and continue
+            }
+        }
+
         if (isLeft && !hasModifier) {
             if (isMobile) {
                 e.preventDefault();
