@@ -68,7 +68,7 @@ export async function runExample(feed: FeedItem[]) {
       return;
     }
 
-    console.log('Searching for username that matches stored hash...');
+    // console.log('Searching for username that matches stored hash...');
     let username: string | null = null;
     // Try to use Vite's bundled module worker via dynamic import with '?worker'.
     if (window.Worker) {
@@ -81,23 +81,23 @@ export async function runExample(feed: FeedItem[]) {
         if (!WorkerCtor) throw new Error('Worker constructor not found from module');
         const worker: Worker = new WorkerCtor();
         username = await new Promise<string | null>((resolve) => {
-          const t = setTimeout(() => { try { worker.terminate(); } catch {} ; resolve(null); }, 30_000);
+          const t = setTimeout(() => { try { worker.terminate(); } catch { /* ignore */ } ; resolve(null); }, 30_000);
           worker.onmessage = (ev) => {
             const m = ev.data || {};
             if (m.type === 'found') {
               clearTimeout(t);
-              try { worker.terminate(); } catch {}
+              try { worker.terminate(); } catch { /* ignore */ }
               resolve(m.username ?? null);
             } else if (m.type === 'error') {
               clearTimeout(t);
-              try { worker.terminate(); } catch {}
+              try { worker.terminate(); } catch { /* ignore */ }
               console.error('Worker reported error:', m.error);
               resolve(null);
             }
           };
           worker.onerror = (ev) => {
             clearTimeout(t);
-            try { worker.terminate(); } catch {}
+            try { worker.terminate(); } catch { /* ignore */ }
             console.error('Worker runtime error event:', ev);
             resolve(null);
           };
@@ -105,7 +105,7 @@ export async function runExample(feed: FeedItem[]) {
             worker.postMessage({ type: 'find-username', feed: coercedFeed, targetHash: storedHash, concurrency: 6 });
           } catch (err) {
             clearTimeout(t);
-            try { worker.terminate(); } catch {}
+            try { worker.terminate(); } catch { /* ignore */ }
             console.error('Failed to postMessage to worker:', err);
             resolve(null);
           }
@@ -118,7 +118,7 @@ export async function runExample(feed: FeedItem[]) {
       username = await findUsernameForHashInFeed(coercedFeed, storedHash, 6);
     }
     if (!username) {
-      console.log('No matching username found in this feed for the stored hash.');
+      // console.log('No matching username found in this feed for the stored hash.');
 
       try {
         // Dump diagnostics: list first 200 unique normalized usernames and their computed hashes (truncated)
@@ -131,7 +131,7 @@ export async function runExample(feed: FeedItem[]) {
           }
         }
         const sample = flatUsers.slice(0, 200);
-        console.debug('Diagnostic: first normalized usernames (up to 200):', sample);
+        // console.debug('Diagnostic: first normalized usernames (up to 200):', sample);
         // compute hashes sequentially (avoid worker) for these samples so we can compare
         const mod = await import('./githubHash');
         const { sha256Hex } = mod as { sha256Hex: (v: string) => Promise<string> };
@@ -144,14 +144,14 @@ export async function runExample(feed: FeedItem[]) {
             // ignore
           }
         }
-        console.debug('Diagnostic: normalized username -> sha256:', pairs.slice(0, 50));
+        // console.debug('Diagnostic: normalized username -> sha256:', pairs.slice(0, 50));
       } catch (e) {
         console.debug('Diagnostic hashing failed:', e);
       }
 
       return;
     }
-    console.log('Matched username:', username);
+    // console.log('Matched username:', username);
 
     // Build or reuse index to find which samples the user reacted to
     const index = await buildUsernameToSamplesIndex(coercedFeed as any, true);

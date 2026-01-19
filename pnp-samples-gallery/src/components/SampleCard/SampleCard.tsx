@@ -217,7 +217,7 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                         onLoad={() => {
                             const g = muuriRef?.current;
                             if (g) {
-                                    console.debug('[SampleCard] image onLoad -> refreshItems().layout()', { id: s.name });
+                                    // console.debug('[SampleCard] image onLoad -> refreshItems().layout()', { id: s.name });
                                     g.refreshItems().layout();
                                 }
                         }}
@@ -233,7 +233,7 @@ export function SampleCard({ sample: s, iconBasePath, techIconBasePath, muuriRef
                         onLoad={() => {
                             const g = muuriRef?.current;
                             if (g) {
-                                    console.debug('[SampleCard] fallback image onLoad -> refreshItems().layout()', { id: s.name });
+                                    // console.debug('[SampleCard] fallback image onLoad -> refreshItems().layout()', { id: s.name });
                                     g.refreshItems().layout();
                                 }
                         }}

@@ -45,7 +45,7 @@ export async function storeHashForUsername(username: string): Promise<{ oldId: s
       const oldId = existing ?? null;
       setStoredHash(h);
       try { window.sessionStorage.setItem(SESSION_ALIAS_KEY, normalizeUsername(username)); } catch {}
-      try { console.debug('[githubIdStorage] storeHashForUsername: updated stored hash', { storageKey: STORAGE_KEY, oldId, newId: h, alias: normalizeUsername(username) }); } catch {}
+      // try { console.debug('[githubIdStorage] storeHashForUsername: updated stored hash', { storageKey: STORAGE_KEY, oldId, newId: h, alias: normalizeUsername(username) }); } catch {}
       return { oldId, newId: h };
     }
     return { oldId: existing, newId: existing };
@@ -57,7 +57,7 @@ export async function storeHashForUsername(username: string): Promise<{ oldId: s
 export function getSessionAlias(): string | null {
   try {
     const a = window.sessionStorage.getItem(SESSION_ALIAS_KEY);
-    try { console.debug('[githubIdStorage] getSessionAlias:', { alias: a }); } catch {}
+    // try { console.debug('[githubIdStorage] getSessionAlias:', { alias: a }); } catch {}
     return a;
   } catch { return null; }
 }
@@ -66,7 +66,7 @@ export function setSessionAlias(alias: string | null): void {
   try {
     if (alias === null) window.sessionStorage.removeItem(SESSION_ALIAS_KEY);
     else window.sessionStorage.setItem(SESSION_ALIAS_KEY, alias);
-    try { console.debug('[githubIdStorage] setSessionAlias:', { alias }); } catch {}
+    // try { console.debug('[githubIdStorage] setSessionAlias:', { alias }); } catch {}
   } catch {
     // ignore
   }

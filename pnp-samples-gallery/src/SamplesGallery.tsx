@@ -51,7 +51,7 @@ function makeScopedKey(base: string) {
 }
 
 export function SamplesGallery(props: SamplesGalleryProps) {
-    console.debug(`[SamplesGallery] render start`);
+
     const [sortModeInternal, setSortModeInternal] = useState<'new' | 'popular'>(() => {
         try {
             if (typeof window !== 'undefined' && window.localStorage) {
@@ -592,7 +592,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         // If totals not ready yet, wait (this prevents binding Muuri
         // before likes overrides are applied)
         if (!totalReactionsById || totalReactionsById.size === 0) {
-            console.debug('[SamplesGallery] waiting for totals before Muuri init');
+
             return;
         }
 
@@ -698,7 +698,6 @@ export function SamplesGallery(props: SamplesGalleryProps) {
             grid.refreshItems();
             if (initialMuuriSortDoneRef.current) {
                 applyGridSort(grid);
-                console.debug('[SamplesGallery] layout after filtering', { timestamp: Date.now() });
             }
             grid.layout();
             return;
@@ -718,7 +717,6 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
         try {
             if (!initialMuuriSortDoneRef.current) return; // wait for initial programmatic sort
-            console.debug('[SamplesGallery] applying Muuri sort for sortMode change', { sortMode });
             grid.refreshItems();
             applyGridSort(grid);
             grid.layout();
@@ -836,7 +834,6 @@ export function SamplesGallery(props: SamplesGalleryProps) {
     // Ensure Muuri recalculates after fullscreen toggles (both enter and exit)
     useEffect(() => {
         const id = setTimeout(() => {
-            console.debug('[SamplesGallery] fullscreen effect -> refreshItems().layout()', { timestamp: Date.now() });
             muuriRef.current?.refreshItems().layout();
         }, 80);
         return () => clearTimeout(id);

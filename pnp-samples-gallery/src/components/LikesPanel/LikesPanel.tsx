@@ -44,7 +44,6 @@ export function LikesPanel({ sampleName, baseUrl, giscusSettings }: { sampleName
                 const gd = (data as Record<string, unknown>)['giscus'];
                 if (gd && typeof gd === 'object') {
                     giscusData = gd as GiscusReactionPayload;
-                    console.debug('[LikesPanel] giscus payload', giscusData);
                 }
             }
 
@@ -63,11 +62,11 @@ export function LikesPanel({ sampleName, baseUrl, giscusSettings }: { sampleName
                         const newHash = await storage.computeHashForUsername ? await storage.computeHashForUsername(viewerLogin) : null;
                         if (!newHash) {
                             // couldn't compute hash -- skip
-                            console.debug('[LikesPanel] could not compute hash for viewer login, skipping store');
+                           
                         } else if (!existing || existing !== newHash) {
                             const res = await storage.storeHashForUsername(viewerLogin);
                             if (res) {
-                                console.debug('[LikesPanel] viewer.login hashed and stored', { oldId: res.oldId, newId: res.newId });
+                                // console.debug('[LikesPanel] viewer.login hashed and stored', { oldId: res.oldId, newId: res.newId });
                                 try {
                                     const storage2 = await import('../../utils/githubIdStorage');
                                     try { console.debug('[LikesPanel] session alias after store', { alias: storage2.getSessionAlias() }); } catch { }
@@ -75,19 +74,19 @@ export function LikesPanel({ sampleName, baseUrl, giscusSettings }: { sampleName
                                 try {
                                     const ev = new CustomEvent('pnp:githubLoginChanged', { detail: { oldId: res.oldId, newId: res.newId } });
                                     window.dispatchEvent(ev);
-                                    console.info('[LikesPanel] dispatched pnp:githubLoginChanged (hashed)', { oldId: res.oldId, newId: res.newId });
+                                    // console.info('[LikesPanel] dispatched pnp:githubLoginChanged (hashed)', { oldId: res.oldId, newId: res.newId });
                                 } catch (err) {
                                     console.warn('[LikesPanel] failed to dispatch pnp:githubLoginChanged (hashed)', err);
                                 }
                             }
                         } else {
-                            console.debug('[LikesPanel] stored viewer hash matches computed hash — no action');
+                            // console.debug('[LikesPanel] stored viewer hash matches computed hash — no action');
                         }
                     } catch (err) {
                         console.warn('[LikesPanel] error hashing/storing login', err);
                     }
                 } else {
-                    console.debug('[LikesPanel] no viewer.login present in payload');
+                    // console.debug('[LikesPanel] no viewer.login present in payload');
                 }
             } catch (err) {
                 console.warn('[LikesPanel] error handling viewer login', err);
@@ -135,7 +134,7 @@ export function LikesPanel({ sampleName, baseUrl, giscusSettings }: { sampleName
                     const id = giscusData.discussion && giscusData.discussion.id ? String(giscusData.discussion.id) : undefined;
                     const reactionsSnapshot = getReactionsFrom(giscusData) ?? null;
                     baseRef.current = { discussionId: id, reactionsSnapshot, viewerReactedCount: baseCountAuto };
-                    console.debug('📌[LikesPanel] captured baseline event (auto)', baseRef.current, { sampleName });
+                    // console.debug('📌[LikesPanel] captured baseline event (auto)', baseRef.current, { sampleName });
 
                     // Persist authoritative giscus totals/viewer state on first full event.
                     try {
@@ -150,13 +149,13 @@ export function LikesPanel({ sampleName, baseUrl, giscusSettings }: { sampleName
 
                         if (reportedTotal !== null) {
                             upsertOverride(key, { count: reportedTotal, updatedAt: new Date().toISOString() });
-                            console.debug('[LikesPanel] wrote initial override count from giscus', { key, reportedTotal });
+                            // console.debug('[LikesPanel] wrote initial override count from giscus', { key, reportedTotal });
                         }
 
                         // If viewerHasReacted is available at top-level or per-reaction, compute boolean
                         const viewerReacted = computeReactedBase(giscusData) > 0 || computeReactedBase(giscusData.discussion) > 0;
                         upsertOverride(key, { viewerReacted, updatedAt: new Date().toISOString() });
-                        console.debug('[LikesPanel] wrote initial viewer reacted override from giscus', { key, viewerReacted });
+                        // console.debug('[LikesPanel] wrote initial viewer reacted override from giscus', { key, viewerReacted });
                     } catch (err) {
                         console.warn('[LikesPanel] failed persisting initial giscus overrides', err);
                     }
@@ -175,7 +174,7 @@ export function LikesPanel({ sampleName, baseUrl, giscusSettings }: { sampleName
                         const baseCount = computeReactedBase(giscusData) || computeReactedBase(giscusData.discussion) || 0;
                         const reactionsSnapshot = (giscusData.discussion?.reactions ?? null) as ReactionsPayload | null;
                         baseRef.current = { discussionId: id, reactionsSnapshot, viewerReactedCount: baseCount };
-                        console.debug("LikesPanel: captured base event (with id)", baseRef.current, { sampleName });
+                        // console.debug("LikesPanel: captured base event (with id)", baseRef.current, { sampleName });
 
                         // Persist updated totals/viewer state if giscus differs from local overrides
                         try {
@@ -189,12 +188,12 @@ export function LikesPanel({ sampleName, baseUrl, giscusSettings }: { sampleName
 
                             if (reportedTotal !== null) {
                                 upsertOverride(key, { count: reportedTotal, updatedAt: new Date().toISOString() });
-                                console.debug('[LikesPanel] wrote id-specific override count from giscus', { key, reportedTotal });
+                                // console.debug('[LikesPanel] wrote id-specific override count from giscus', { key, reportedTotal });
                             }
 
                             const viewerReacted = computeReactedBase(giscusData) > 0 || computeReactedBase(giscusData.discussion) > 0;
                             upsertOverride(key, { viewerReacted, updatedAt: new Date().toISOString() });
-                            console.debug('[LikesPanel] wrote id-specific viewer override from giscus', { key, viewerReacted });
+                            // console.debug('[LikesPanel] wrote id-specific viewer override from giscus', { key, viewerReacted });
                         } catch (err) {
                             console.warn('[LikesPanel] failed persisting id-specific giscus overrides', err);
                         }
@@ -243,7 +242,7 @@ export function LikesPanel({ sampleName, baseUrl, giscusSettings }: { sampleName
                         const now = new Date().toISOString();
                         if (!local || local.count !== reportedTotal) {
                             upsertOverride(key, { count: reportedTotal, updatedAt: now });
-                            console.debug('[LikesPanel] updated local override count from giscus', { key, reportedTotal });
+                            // console.debug('[LikesPanel] updated local override count from giscus', { key, reportedTotal });
                         }
                     }
                 } catch {
@@ -257,7 +256,7 @@ export function LikesPanel({ sampleName, baseUrl, giscusSettings }: { sampleName
                     const now = new Date().toISOString();
                     if (!localViewer || localViewer.viewerReacted !== viewerReacted) {
                         upsertOverride(key, { viewerReacted, updatedAt: now });
-                        console.debug('[LikesPanel] updated local viewer reacted from giscus', { key, viewerReacted });
+                        // console.debug('[LikesPanel] updated local viewer reacted from giscus', { key, viewerReacted });
                     }
                 } catch {
                     // ignore
