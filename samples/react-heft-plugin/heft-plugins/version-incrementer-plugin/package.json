@@ -4,7 +4,7 @@
   "description": "Heft plugin to auto-increment version for SPFx production builds",
   "main": "lib/VersionIncrementerPlugin.js",
   "scripts": {
-     "build": "tsc && copy src\\version-incrementer-plugin.schema.json lib\\"
+     "build": "tsc && node -e \"require('fs').copyFileSync('src/version-incrementer-plugin.schema.json','lib/version-incrementer-plugin.schema.json')\""
   },
   "dependencies": {
     "@rushstack/heft": "^1.1.2",
