@@ -76,33 +76,35 @@ This sample illustrates the following concepts:
     cd sp-dev-fx-webparts/samples/react-heft-plugin
     ```
 
-2. Build the version incrementer plugin
+2. Install dependencies
+
+    ```bash    
+    npm install
+    ```
+
+3. Build the custom Heft plugin
+
+    The version incrementer plugin must be built before the SPFx project can use it:
 
     ```bash
-    cd heft-plugins/version-incrementer-plugin
-    npm install
     npm run prepare
-    npm run build
-    cd ../..
     ```
 
-3. Install dependencies
+    This command compiles the TypeScript plugin code and copies the schema file to the output directory.
+
+4. Build the SPFx project
 
     ```bash
-    npm install
+    npm run build
     ```
 
-4. Run the development server
+    This production build will automatically trigger the version incrementer plugin.
+
+5. Run the development server
 
     ```bash
     heft start --clean
     ```
-
-5. Build for production (triggers version increment)
-
-    ```bash
-    npm run prepare
-    npm run build
     ```
 
 ## Project Structure
