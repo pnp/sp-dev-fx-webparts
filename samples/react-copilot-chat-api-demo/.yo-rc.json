@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.21.1",
+    "sdksVersions": {},
+    "version": "1.22.1",
+    "libraryName": "chat-api-playground",
+    "libraryId": "a1e6de8e-70ad-48c5-aa24-991d8975932a",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "chat-api-playground",
+    "solutionShortDescription": "chat-api-playground description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
