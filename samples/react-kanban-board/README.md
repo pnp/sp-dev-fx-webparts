@@ -20,8 +20,8 @@ The web part uses the default columns of the SharePoint Tasks list for showing t
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
-![Node.js v18 ](https://img.shields.io/badge/Node.js-v18-green.svg) 
+![SPFx 1.22.1](https://img.shields.io/badge/SPFx-1.22.1-green.svg)
+![Node.js v22 ](https://img.shields.io/badge/Node.js-v22-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -64,7 +64,8 @@ Version|Date|Comments
 2.0.0.0|July 10, 2020| jqwidgets replaced with a custom Kanban Board based on Office UI Component and IE11 Support
 3.0.0.0|October 29, 2021| SPFx 1.13, PnPJS v2, PnP Controls v3
 4.0.0.0|Jun 1, 2024| SPFx 1.19, PnPJS v4, Node 18 (Property-ListPicker and Property-Order not used from @pnp/spfx-property-controls because of an issue )
-5.0.0.0|Okt 1, 2024| SPFx 1.20, PnPJS v4, Node 18
+5.0.0.0|Oct 1, 2024| SPFx 1.20, PnPJS v4, Node 18
+6.0.0.0|Jan 23, 2026| SPFx 1.22.1, Heft-based build, PnPJS v4, Node 22
 
 
 [Read More about the implementation of this Board](./src/kanban/README.md)
@@ -92,7 +93,7 @@ Version|Date|Comments
 - Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-kanban-board) then unzip it)
 * in the command line run:
   * `npm install`
-  * `gulp serve`
+  * `heft start`
 
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.

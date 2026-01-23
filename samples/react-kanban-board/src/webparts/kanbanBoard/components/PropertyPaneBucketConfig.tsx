@@ -30,7 +30,7 @@ class PropertyPaneBucketConfigBuilder implements IPropertyPaneField<IPropertyPan
     public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
     public targetProperty: string;
     public properties: IPropertyPaneBucketConfigInternal;
-    private elem: HTMLElement;
+    private elem: HTMLElement|undefined;
     // Custom properties
     private customProperties: any;
     private onPropertyChange: (propertyPath: string, oldValue: any, newValue: any) => void;

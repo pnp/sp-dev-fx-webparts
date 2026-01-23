@@ -17,7 +17,7 @@ const EMPTY_LIST_KEY = 'NO_LIST_SELECTED';
  */
 export default class PropertyFieldListPickerHost extends React.Component<IPropertyFieldListPickerHostProps, IPropertyFieldListPickerHostState> {
 
-  private latestValidateValue: string;
+  private latestValidateValue: string|undefined;
   private async: Async;
   private delayedValidate: (value: string) => void;
 
