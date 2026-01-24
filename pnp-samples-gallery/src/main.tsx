@@ -67,7 +67,23 @@ function autoMount(): void {
       }
     }
 
-    const admin = adminFlag === "true" || adminFlag === "1";
+    // Treat explicit true/1 values or the presence of the attribute as admin.
+    // Coerce explicitly to a boolean so `SamplesGallery` always receives a boolean.
+    const admin = Boolean(adminFlag === "true" || adminFlag === "1" || el.hasAttribute('data-admin'));
+
+    // Force a console log for every mount so debugging is always visible.
+    try {
+      console.log("PnpSamplesGallery: autoMount element", { src, adminFlag, admin, el });
+    } catch {
+      // swallow logging errors
+    }
+
+    // Always write a debug attribute (stringified boolean) so DOM inspection shows the computed value.
+    try {
+      el.setAttribute('data-pnp-admin-detected', String(admin));
+    } catch {
+      // ignore DOM write errors
+    }
     if (!src) {
       return;
     }

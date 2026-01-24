@@ -50,37 +50,8 @@ function makeScopedKey(base: string) {
     return `${base}:${scope}`;
 }
 
-function normalizeSampleName(n: string | undefined | null) {
-    try {
-        return String(n ?? '').trim().toLowerCase();
-    } catch {
-        return '';
-    }
-}
-
-function sampleNameInSet(rawName: string | undefined | null, set: Set<string> | string[] | null | undefined) {
-    if (!rawName) return false;
-    const name = normalizeSampleName(rawName);
-    if (!set) return false;
-    const arr = Array.isArray(set) ? set : Array.from(set);
-    const s = new Set(arr.map(a => normalizeSampleName(String(a))));
-    if (s.has(name)) return true;
-    // also try without a leading "sample:" segment
-    const noPrefix = name.replace(/^sample:/, '');
-    if (s.has(noPrefix)) return true;
-    // try a canonicalized form (collapse non-alphanumerics)
-    const canonical = (v: string) => String(v).toLowerCase().replace(/^sample:/, '').replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/(^-|-$)/g, '');
-    const cname = canonical(name);
-    if (!cname) return false;
-    for (const v of s) {
-        if (canonical(String(v)) === cname) return true;
-    }
-    return false;
-}
-
 export function SamplesGallery(props: SamplesGalleryProps) {
 
-    
     const [sortModeInternal, setSortModeInternal] = useState<'new' | 'popular'>(() => {
         try {
             if (typeof window !== 'undefined' && window.localStorage) {
@@ -112,8 +83,6 @@ export function SamplesGallery(props: SamplesGalleryProps) {
     const [loading, setLoading] = useState<boolean>(true);
     const [gridReady, setGridReady] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
-    const [adminSampleNames, setAdminSampleNames] = useState<string[] | null>(null);
-    const [adminFilterApplied, setAdminFilterApplied] = useState<boolean>(false);
     const gridRef = useRef<HTMLDivElement | null>(null);
     const muuriRef = useRef<Muuri | null>(null);
     const initialMuuriSortDoneRef = useRef<boolean>(false);
@@ -162,6 +131,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
         return { q, spfx, tech, category };
     });
+
 
     useEffect(() => {
         if (typeof window === "undefined") return;
@@ -224,7 +194,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
                 // Always sort newest-first by updateDateTime before storing
                 // Robust sort: newest-first by parsed date, fallback to title/name
-                
+
                 // //TODO: investigate why debugger here seems to cause issues with Muuri later on
                 // deduped.sort((a, b) => {
                 //     const da = Date.parse(a.updateDateTime ?? "") || 0;
@@ -250,7 +220,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
     // Helper to sort a Muuri grid newest-first by `data-date` attribute
     const totalReactionsByIdRef = useRef<Map<string, number>>(new Map());
-    
+
     // Helper to sort a Muuri grid newest-first by `data-date` attribute
     const applyGridSort = useCallback((grid: Muuri) => {
 
@@ -615,7 +585,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         return map;
     }, [samplesWithLikes, likesOverrides]);
 
-    
+
     useEffect(() => {
         // keep the ref in sync so applyGridSort can read the latest totals
         totalReactionsByIdRef.current = totalReactionsById;
@@ -635,9 +605,6 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         }
 
         // If on mobile, don't initialize Muuri (use CSS grid flow)
-        // Note: previously Muuri was disabled in admin mode which caused cards to stack.
-        // Keep Muuri active on desktop (including admin) so it can manage layout; we still
-        // control which samples are present via `setSamples` in admin mode.
         if (isMobile) {
             muuriRef.current?.destroy();
             muuriRef.current = null;
@@ -698,17 +665,9 @@ export function SamplesGallery(props: SamplesGalleryProps) {
     }, [loading, samples.length, fullscreen, isMobile, applyGridSort, totalReactionsById]);
 
 
-    // Compute visible samples (applies search/facets and admin PR filtering).
-    const visibleSamples = useMemo(() => {
-        let out = samplesWithLikes.filter(s => matchesSample(s));
-
-        // If admin mode, restrict to samples that were identified from PR bodies
-        if (props.admin) {
-            // If adminSampleNames is null, treat as not-yet-loaded -> empty list
-            const allowed = new Set((adminSampleNames ?? []).map(n => normalizeSampleName(n)));
-            out = out.filter(s => sampleNameInSet(s.name, allowed));
-        }
-
+    // Precompute filtered samples for mobile (we re-render the list on mobile)
+    const filteredSamples = useMemo(() => {
+        const out = samplesWithLikes.filter(s => matchesSample(s));
         if (sortMode === 'popular') {
             return out.slice().sort((a, b) => {
                 const ta = a.totalReactions ?? 0;
@@ -727,7 +686,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
             if (db !== da) return db - da;
             return (a.title ?? a.name ?? "").localeCompare(b.title ?? b.name ?? "");
         });
-    }, [samplesWithLikes, matchesSample, sortMode, props.admin, adminSampleNames]);
+    }, [samplesWithLikes, matchesSample, sortMode]);
 
     // applyGridSort moved earlier to ensure it's declared before use
 
@@ -735,25 +694,16 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         const grid = muuriRef.current;
         // If we have a Muuri grid, use its filtering (with animation)
         if (grid) {
-            // Ensure items reflect the current DOM before filtering
-            try {
-                grid.refreshItems();
-            } catch { /* ignore */ }
-
             // Filter: hide/show items with animation
             grid.filter((item) => {
                 const el = item.getElement();
                 const id = el?.getAttribute("data-id") ?? "";
                 const s = byId.get(id);
-                if (!s) return false;
-                if (!matchesSample(s)) return false;
-                if (props.admin) {
-                    if (!sampleNameInSet(s.name, adminSampleNames)) return false;
-                }
-                return true;
+                return s ? matchesSample(s) : false;
             });
 
             // Ensure newest-first sorting after filter
+            grid.refreshItems();
             if (initialMuuriSortDoneRef.current) {
                 applyGridSort(grid);
             }
@@ -763,7 +713,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
         // No Muuri (mobile): mobile re-renders the list via React; nothing to do here
         return;
-    }, [state, byId, matchesSample, applyGridSort, totalReactionsById, adminSampleNames, props.admin]);
+    }, [state, byId, matchesSample, applyGridSort, totalReactionsById]);
 
     // When sort mode changes, prefer Muuri's sorting on desktop rather than
     // re-rendering/re-ordering DOM via React. This keeps items in the DOM and
@@ -909,8 +859,9 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         setState(prev => ({ ...prev, q }));
     const toggleFullscreen = () => setFullscreen(f => !f);
 
+
+
     const reactionsSupported = (() => {
-        if (props.admin) return false;
         // Priority: explicit prop -> config.reactionsSupported -> giscusSettings.reactionsSupported -> default true
         if (typeof props.reactionsSupported === 'boolean') return props.reactionsSupported;
         const cfg = (props.config as any) ?? {};
@@ -944,168 +895,6 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         return out as { repo?: string; repoId?: string; category?: string; categoryId?: string; mapping?: string; reactionsEnabled?: string; emitMetadata?: string; inputPosition?: string; lang?: string };
     }, [props.config, props.giscusSettings]);
 
-    // Admin: fetch merged pull requests from the GitHub repo in the last 2 weeks and log to console
-    useEffect(() => {
-
-        if (!props.admin) return;
-
-        console.log('[SamplesGallery][admin] Admin mode enabled: fetching merged PRs from GitHub...');
-        let cancelled = false;
-
-        (async () => {
-            try {
-                // Default window for merged PRs is 14 days, but allow override
-                // via `?numdays=` query parameter (integer > 0).
-                const params = (typeof window !== 'undefined' && window.location && window.location.search)
-                    ? new URLSearchParams(window.location.search)
-                    : null;
-
-                let numDays = 14;
-                try {
-                    const q = params?.get('numdays');
-                    if (q !== null && q !== undefined && q !== '') {
-                        const parsed = Number.parseInt(q, 10);
-                        if (!Number.isNaN(parsed) && parsed > 0) {
-                            numDays = parsed;
-                        } else {
-                            console.warn('[SamplesGallery][admin] invalid numdays query param, using default 14', q);
-                        }
-                    }
-                } catch (e) {
-                    void e; // ignore
-                }
-
-                const twoWeeksAgo = new Date();
-                twoWeeksAgo.setDate(twoWeeksAgo.getDate() - numDays);
-                const sinceIso = twoWeeksAgo.toISOString();
-
-                // Repo derived from mergedGiscusSettings.repo if present, otherwise fallback to pnp/sp-dev-fx-webparts
-                const repo = 'pnp/sp-dev-fx-webparts';
-
-                // Use GitHub Search API to find merged PRs since the date
-                // Example query: repo:pnp/sp-dev-fx-webparts is:pr is:merged merged:>2025-01-05
-                const datePart = sinceIso.split('T')[0];
-                const q = `repo:${repo} is:pr is:merged -author:"dependabot[bot]" merged:>${datePart}`;
-                const url = `https://api.github.com/search/issues?q=${encodeURIComponent(q)}&sort=updated&order=desc&per_page=100`;
-console.log('[SamplesGallery][admin] Fetching merged PRs from GitHub Search API', url);
-                const res = await fetch(url, { headers: { 'Accept': 'application/vnd.github.v3+json' } });
-                if (!res.ok) {
-                    console.warn('[SamplesGallery][admin] Failed to fetch PRs', res.status, res.statusText);
-                    return;
-                }
-
-                const body = await res.json();
-                if (cancelled) return;
-
-                const items = Array.isArray(body.items) ? body.items : [];
-                console.log(`[SamplesGallery][admin] Fetched ${items.length} merged PRs since ${datePart}`, items);
-
-                // expose raw fetch results for debugging
-                try { (window as any).__pnp_admin_pr_fetch_body = body; } catch { /* ignore */ }
-                try { (window as any).__pnp_admin_pr_items_count = items.length; } catch { /* ignore */ }
-                try {
-                    (window as any).__pnp_admin_pr_items_preview = items.map((it: any) => ({ number: it.number ?? it.id, title: it.title, bodyPreview: String(it.body ?? '').slice(0, 200) }));
-                } catch { /* ignore */ }
-
-                // Map to concise results and log
-                const results = items.map((it: any) => ({
-                    number: it.number,
-                    title: it.title,
-                    user: it.user?.login,
-                    html_url: it.html_url,
-                    merged_at: it.closed_at || null // search API doesn't return merged_at; closed_at is close approximation
-                }));
-
-                console.group('[SamplesGallery][admin] Merged PRs (last 2 weeks)');
-                if (results.length === 0) console.info('No merged PRs in the last 2 weeks');
-                for (const r of results) console.info(`#${r.number} ${r.title} — ${r.user} — ${r.html_url} — closed_at:${r.merged_at}`);
-
-                // Extract sample tags directly from the search results' `body` field (no extra fetches)
-                try {
-                    const sampleNames = new Set<string>();
-
-                    for (const it of items) {
-                        try {
-                            const bodyText = String(it.body ?? "");
-                            const id = it.number ?? it.id ?? '(unknown)';
-                            if (!bodyText || bodyText.trim().length === 0) {
-                                console.debug(`[SamplesGallery][admin] item ${id} body empty (length=${String(bodyText).length})`);
-                                continue;
-                            }
-                            console.debug(`[SamplesGallery][admin] item ${id} body preview:`, bodyText.slice(0, 200).replace(/\n/g, ' '));
-
-                            // Match <!-- sample: value --> or <!-- sample: {value} -->
-                            const m = bodyText.match(/<!--\s*sample:\s*(?:\{([^}]+)\}|([^<\n\r]+?))\s*-->/i);
-                            const raw = m ? (m[1] ?? m[2]) : null;
-                            if (raw) {
-                                console.log(`[SamplesGallery][admin] item ${id} sample tag: '${raw}'` );
-                                const cleaned = String(raw).trim();
-                                if (cleaned) {
-                                    const canonical = String(cleaned).toLowerCase().replace(/^sample:\s*/i, '').replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/(^-|-$)/g, '');
-                                    sampleNames.add(canonical);
-                                }
-                            } else {
-                                console.log(`[SamplesGallery][admin] item ${id} has no sample tag`);
-                            }
-                        } catch (e) {
-                            void e; // ignore per-item failures
-                        }
-                    }
-
-                    // expose for debugging in dev
-                    try { (window as any).__pnp_admin_sample_names = Array.from(sampleNames); } catch { /* ignore */ }
-
-                    setAdminSampleNames(Array.from(sampleNames));
-                } catch (e) {
-                    console.warn('[SamplesGallery][admin] error extracting sample tags from PRs', e);
-                }
-
-                console.groupEnd();
-            } catch (e) {
-                console.warn('[SamplesGallery][admin] Error fetching PRs', e);
-            }
-        })();
-
-        return () => { cancelled = true; };
-    }, [props.admin]);
-
-    // When adminSampleNames becomes available, override `samples` to only include matching items.
-    useEffect(() => {
-        if (!props.admin) return;
-        if (!adminSampleNames || adminSampleNames.length === 0) return;
-        if (!samples || samples.length === 0) return;
-        if (adminFilterApplied) return;
-
-        try {
-            const canonical = (v: string | undefined | null) => String(v ?? '').toLowerCase().replace(/^sample:\s*/i, '').replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/(^-|-$)/g, '');
-            const allowedCanon = new Set(adminSampleNames.map(n => canonical(n)));
-            const filtered = samples.filter(s => {
-                const sc = canonical(s.name ?? s.title ?? s.name);
-                return allowedCanon.has(sc);
-            });
-            setSamples(filtered);
-            setAdminFilterApplied(true);
-            console.log(`[SamplesGallery][admin] filtered samples list to ${filtered.length} items based on PRs`, { allowedCanon: Array.from(allowedCanon), samplesCount: samples.length });
-        } catch (e) {
-            console.warn('[SamplesGallery][admin] failed to apply admin sample filter', e);
-        }
-    }, [props.admin, adminSampleNames, samples, adminFilterApplied]);
-
-    // Expose all samples for debugging (raw and with likes) and canonical names
-    useEffect(() => {
-        if (typeof window === 'undefined') return;
-        try {
-            (window as any).__pnp_all_samples = samples ?? [];
-            (window as any).__pnp_all_samples_with_likes = samplesWithLikes ?? [];
-            (window as any).__pnp_all_sample_canonical = (samples ?? []).map(s => ({
-                name: s?.name ?? s?.title ?? '',
-                canonical: String(s?.name ?? s?.title ?? '').toLowerCase().replace(/^sample:\s*/i, '').replace(/[^a-z0-9]+/g, '-').replace(/-+/g, '-').replace(/(^-|-$)/g, ''),
-            }));
-        } catch {
-            // ignore
-        }
-    }, [samples, samplesWithLikes]);
-
     useEffect(() => {
         const onPendingLikes = () => {
             try {
@@ -1131,13 +920,14 @@ console.log('[SamplesGallery][admin] Fetching merged PRs from GitHub Search API'
     // prevents a TypeScript "declared but its value is never read" error.
     const isLoadingClass = loading || !gridReady;
 
+
     const renderContent = () => (
         <section
             className={[styles.root, "pnp-samples", props.className ?? "", isLoadingClass ? "pnp-samples--loading" : ""].join(" ").trim()}
             aria-modal={fullscreen}
             role={fullscreen ? "dialog" : undefined}
             aria-labelledby={fullscreen ? 'pnp-gallery-fullscreen-title' : undefined}
-            aria-hidden={ (selected || fullscreen) ? true : undefined }
+            aria-hidden={(selected || fullscreen) ? true : undefined}
         >
             {fullscreen ? <h2 id="pnp-gallery-fullscreen-title" className="sr-only">Samples gallery — fullscreen</h2> : null}
             <div className={[styles.layout, "pnp-samples__layout"].join(" ")}
@@ -1153,7 +943,7 @@ console.log('[SamplesGallery][admin] Fetching merged PRs from GitHub Search API'
                             onClick={() => setShowFilters(s => !s)}
                             aria-label={showFilters ? "Hide filters" : "Show filters"}
                         >
-                            <span style={{display: 'inline-flex', alignItems: 'center', gap: '0.5rem'}}>
+                            <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
                                 <svg className={[styles.filterIcon, showFilters ? styles['filterIcon--open'] : ''].join(' ').trim()} xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" role="img" aria-hidden="true" focusable="false">
                                     <path d="M12.25 13.5C12.6642 13.5 13 13.8358 13 14.25C13 14.6642 12.6642 15 12.25 15H7.75C7.33579 15 7 14.6642 7 14.25C7 13.8358 7.33579 13.5 7.75 13.5H12.25ZM14.25 9.25C14.6642 9.25 15 9.58579 15 10C15 10.4142 14.6642 10.75 14.25 10.75H5.75C5.33579 10.75 5 10.4142 5 10C5 9.58579 5.33579 9.25 5.75 9.25H14.25ZM16.25 5C16.6642 5 17 5.33579 17 5.75C17 6.16421 16.6642 6.5 16.25 6.5H3.75C3.33579 6.5 3 6.16421 3 5.75C3 5.33579 3.33579 5 3.75 5H16.25Z" fill="currentColor"></path>
                                 </svg>
@@ -1282,17 +1072,17 @@ console.log('[SamplesGallery][admin] Fetching merged PRs from GitHub Search API'
                     <div className={styles.cardGridWrapper}>
                         {/* Always render the real grid (Muuri needs the DOM). Hide visually until Muuri is ready. */}
                         <div ref={gridRef} className={[styles.cardGrid, gridReady ? styles.cardGridFadeIn : styles.cardGridFadeOut, !gridReady ? styles.cardGridHidden : "", "pnp-card-grid pnp-muuri-grid"].filter(Boolean).join(" ")} aria-label="Sample cards">
-                            {visibleSamples.map(s => (
+                            {(isMobile ? filteredSamples : samplesWithLikes).map(s => (
                                 <SampleCard key={s.name} sample={s} basePath={props.baseUrl} muuriRef={muuriRef} onOpen={(sample) => setSelected(sample)} reactionsSupported={reactionsSupported} config={props.config} />
                             ))}
                         </div>
 
                         {/* Skeleton overlay sits above the real grid until Muuri completes layout. */}
                         <div className={[styles.cardGrid, styles.cardGridOverlay, gridReady ? styles.cardGridOverlayHidden : styles.cardGridOverlayVisible, "pnp-card-grid pnp-skeleton-grid"].filter(Boolean).join(" ")} aria-hidden={!loading ? "false" : "true"}>
-                                {Array.from({ length: isMobile ? 3 : 9 }).map((_, i) => (
-                                    <SkeletonCard key={`skeleton-${i}`} />
-                                ))}
-                            </div>
+                            {Array.from({ length: isMobile ? 3 : 9 }).map((_, i) => (
+                                <SkeletonCard key={`skeleton-${i}`} />
+                            ))}
+                        </div>
 
                         {/* Toggle button: becomes Collapse (X) when fullscreen */}
                         {(isMobile || props.admin) ? (null) : (
