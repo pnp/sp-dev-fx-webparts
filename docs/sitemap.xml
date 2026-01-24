@@ -1,1 +1,21 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml"><url><loc>https://pnp.github.io/sp-dev-fx-webparts/home/home/</loc></url><url><loc>https://pnp.github.io/sp-dev-fx-webparts/categories/</loc></url><url><loc>https://pnp.github.io/sp-dev-fx-webparts/contributing/</loc></url><url><loc>https://pnp.github.io/sp-dev-fx-webparts/gettingstarted/</loc></url><url><loc>https://pnp.github.io/sp-dev-fx-webparts/home/</loc></url><url><loc>https://pnp.github.io/sp-dev-fx-webparts/</loc></url><url><loc>https://pnp.github.io/sp-dev-fx-webparts/tags/</loc></url></urlset>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>http://localhost:1313/sp-dev-fx-webparts/admin/</loc>
+  </url><url>
+    <loc>http://localhost:1313/sp-dev-fx-webparts/home/home/</loc>
+  </url><url>
+    <loc>http://localhost:1313/sp-dev-fx-webparts/categories/</loc>
+  </url><url>
+    <loc>http://localhost:1313/sp-dev-fx-webparts/contributing/</loc>
+  </url><url>
+    <loc>http://localhost:1313/sp-dev-fx-webparts/gettingstarted/</loc>
+  </url><url>
+    <loc>http://localhost:1313/sp-dev-fx-webparts/home/</loc>
+  </url><url>
+    <loc>http://localhost:1313/sp-dev-fx-webparts/</loc>
+  </url><url>
+    <loc>http://localhost:1313/sp-dev-fx-webparts/tags/</loc>
+  </url>
+</urlset>

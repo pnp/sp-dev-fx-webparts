@@ -13,6 +13,7 @@ export type MountOptions = {
     category?: string;
     categoryId?: string;
   };
+  admin?: boolean;
   config?: Record<string, unknown>;
 };
 
@@ -35,6 +36,7 @@ export function mount(el: Element, options: MountOptions): void {
         src={options.src}
         initialSearch={options.initialSearch}
         baseUrl={options.baseUrl}
+        admin={options.admin}
         giscusSettings={options.giscusSettings}
         config={options.config}
       />
@@ -48,6 +50,7 @@ function autoMount(): void {
   els.forEach((el) => {
     const src = el.dataset.src;
     const baseUrl = (el.getAttribute('data-base-url') || el.dataset.baseUrl || undefined) as string | undefined;
+  const adminFlag = (el.getAttribute('data-admin') || el.dataset.admin) as string | undefined;
     const giscusSettings = {
       repo: (el.getAttribute('data-giscus-repo') || el.dataset.giscusRepo) as string | undefined,
       repoId: (el.getAttribute('data-giscus-repo-id') || el.dataset.giscusRepoId) as string | undefined,
@@ -64,11 +67,12 @@ function autoMount(): void {
       }
     }
 
+    const admin = adminFlag === "true" || adminFlag === "1";
     if (!src) {
       return;
     }
 
-    mount(el, { src, initialSearch: el.dataset.initialSearch, baseUrl, giscusSettings, config });
+    mount(el, { src, initialSearch: el.dataset.initialSearch, baseUrl, giscusSettings, config, admin });
   });
 }
 

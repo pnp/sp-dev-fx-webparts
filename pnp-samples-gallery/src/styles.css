@@ -1134,3 +1134,11 @@ select#pnpSort {
     color: var(--pnp-fg)
 
 }
+
+.admin .pnp-samples__layout {
+    grid-template-columns: 1fr;
+}
+
+.admin .pnp-card:hover {
+    transform: none;
+}

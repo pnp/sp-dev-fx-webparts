@@ -3,6 +3,7 @@ export interface SamplesGalleryProps {
     initialSearch?: string;
     className?: string;
     baseUrl?: string;
+    admin?: boolean;
     giscusSettings?: {
         repo?: string;
         repoId?: string;
