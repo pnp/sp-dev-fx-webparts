@@ -31,7 +31,7 @@ Search People from Organization Directory and show live persona card on hover.
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node. |
 | Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.                                                                                                                                                                                                             |
 
-![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
+![SPFx 1.22.1](https://img.shields.io/badge/SPFx-1.22.1-green.svg)
 ![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg 'SharePoint Server 2019 requires SPFx 1.4.1 or lower')
@@ -81,6 +81,7 @@ Search People from Organization Directory and show live persona card on hover.
 | 3.0.5   | Oct 05 2024   | Upgrade to SPFx 1.20.0                                                                    |
 | 4.0.0   | Apr 06 2025   | Upgrade to Fluent UI v9 & other improvements                                              |
 | 4.0.1   | Oct 22 2025   | Upgrade to SPFx 1.21.1                                                                    |
+| 5.0.0   | Jan 24 2026   | Upgrade to SPFx 1.22.1                                                                    |
 
 ## Minimal Path to Awesome
 
