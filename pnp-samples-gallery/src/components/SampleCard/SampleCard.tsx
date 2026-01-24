@@ -12,8 +12,9 @@ export interface SampleCardProps {
     onOpen?: (sample: PnPSample) => void;
     reactionsSupported?: boolean;
     config?: Record<string, unknown>;
+    admin?: boolean;
 }
-export function SampleCard({ sample: s, basePath, muuriRef, onOpen, reactionsSupported = true }: SampleCardProps) {
+export function SampleCard({ sample: s, basePath, muuriRef, onOpen, reactionsSupported = true, admin = false }: SampleCardProps) {
     const thumb = bestThumb(s);
     const spfxBucket = (metaFirst(s, "SPFX-VERSION") as string) ?? "";
     const tech = techKey(metaFirst(s, "CLIENT-SIDE-DEV")) ?? "";
@@ -216,9 +217,9 @@ export function SampleCard({ sample: s, basePath, muuriRef, onOpen, reactionsSup
                         onLoad={() => {
                             const g = muuriRef?.current;
                             if (g) {
-                                    // console.debug('[SampleCard] image onLoad -> refreshItems().layout()', { id: s.name });
-                                    g.refreshItems().layout();
-                                }
+                                // console.debug('[SampleCard] image onLoad -> refreshItems().layout()', { id: s.name });
+                                g.refreshItems().layout();
+                            }
                         }}
                     />
                 </figure>
@@ -226,15 +227,15 @@ export function SampleCard({ sample: s, basePath, muuriRef, onOpen, reactionsSup
                 <figure className={styles.thumbFigure}>
                     <img
                         className={styles.thumb}
-                            src={`${basePath}/spfx-samples-black.svg`}
+                        src={`${basePath}/spfx-samples-black.svg`}
                         alt={"No preview available"}
                         loading="lazy"
                         onLoad={() => {
                             const g = muuriRef?.current;
                             if (g) {
-                                    // console.debug('[SampleCard] fallback image onLoad -> refreshItems().layout()', { id: s.name });
-                                    g.refreshItems().layout();
-                                }
+                                // console.debug('[SampleCard] fallback image onLoad -> refreshItems().layout()', { id: s.name });
+                                g.refreshItems().layout();
+                            }
                         }}
                     />
                 </figure>
@@ -259,44 +260,44 @@ export function SampleCard({ sample: s, basePath, muuriRef, onOpen, reactionsSup
                 </span>
             </div>
 
-<div className={styles.container}>
-            <div className={styles.body}>
-                <h2 id={titleId} className={`pnp-card__title ${styles.title}`}>{s.title}</h2>
-                <Facepile authors={s.authors} maxVisible={4} size={28} linkToGithub={false} />
+            <div className={styles.container}>
+                <div className={styles.body}>
+                    <h2 id={titleId} className={`pnp-card__title ${styles.title}`}>{s.title}</h2>
+                    <Facepile authors={s.authors} maxVisible={4} size={28} linkToGithub={false} />
 
-            </div>
-            <div className={styles.footer}>
-                <div className={`${styles.footerLeft} ${styles.date}`}>
-                    {(() => {
-                        const raw = s.updateDateTime ?? "";
-                        if (!raw) return null;
-                        const d = new Date(raw);
-                        if (isNaN(d.getTime())) return null;
-                        return (
-                            <time dateTime={d.toISOString()} title={d.toUTCString()}>
-                                {d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}
-                            </time>
-                        );
-                    })()}
                 </div>
+                <div className={styles.footer}>
+                    <div className={`${styles.footerLeft} ${styles.date}`}>
+                        {(() => {
+                            const raw = s.updateDateTime ?? "";
+                            if (!raw) return null;
+                            const d = new Date(raw);
+                            if (isNaN(d.getTime())) return null;
+                            return (
+                                <time dateTime={d.toISOString()} title={d.toUTCString()}>
+                                    {d.toLocaleDateString(undefined, { year: 'numeric', month: 'short', day: 'numeric' })}
+                                </time>
+                            );
+                        })()}
+                    </div>
 
-                <div className={styles.footerRight} aria-hidden>
-                    {
-                        // Accessible label: indicate total reactions and whether the viewer has reacted
-                    }
-                    {reactionsSupported ? (
-                        <span
-                            className={`${styles.likes} ${isLiked ? styles.likesActive : ''}`.trim()}
-                            title={isLiked ? `${displayedCount} total reaction${displayedCount === 1 ? '' : 's'} — you reacted` : `${displayedCount} total reaction${displayedCount === 1 ? '' : 's'}`}
-                            aria-label={isLiked ? `You reacted. ${displayedCount} total reaction${displayedCount === 1 ? '' : 's'}` : `${displayedCount} total reaction${displayedCount === 1 ? '' : 's'}`}>
-                            <svg width="18" height="18" viewBox="0 0 24 24" className={styles.likesIcon} role="img" aria-hidden="true">
-                                <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"></path>
-                            </svg>
-                            <span className={styles.likesCount}>{displayedCount > 0 ? displayedCount.toLocaleString() : null}</span>
-                        </span>
-                    ) : null}
+                    <div className={styles.footerRight} aria-hidden>
+                        {
+                            // Accessible label: indicate total reactions and whether the viewer has reacted
+                        }
+                        {reactionsSupported && !admin ? (
+                            <span
+                                className={`${styles.likes} ${isLiked ? styles.likesActive : ''}`.trim()}
+                                title={isLiked ? `${displayedCount} total reaction${displayedCount === 1 ? '' : 's'} — you reacted` : `${displayedCount} total reaction${displayedCount === 1 ? '' : 's'}`}
+                                aria-label={isLiked ? `You reacted. ${displayedCount} total reaction${displayedCount === 1 ? '' : 's'}` : `${displayedCount} total reaction${displayedCount === 1 ? '' : 's'}`}>
+                                <svg width="18" height="18" viewBox="0 0 24 24" className={styles.likesIcon} role="img" aria-hidden="true">
+                                    <path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"></path>
+                                </svg>
+                                <span className={styles.likesCount}>{displayedCount > 0 ? displayedCount.toLocaleString() : null}</span>
+                            </span>
+                        ) : null}
+                    </div>
                 </div>
-            </div>
             </div>
         </article>
     );

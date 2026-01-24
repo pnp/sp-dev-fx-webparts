@@ -33,4 +33,5 @@ export interface PnPSample {
     categories?: string[];
     totalReactions?: number;
     userHasReactions?: boolean;
+    isNew?: boolean;
 }

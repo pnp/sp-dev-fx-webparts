@@ -192,17 +192,11 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                     deduped.push(s);
                 }
 
-                // Always sort newest-first by updateDateTime before storing
-                // Robust sort: newest-first by parsed date, fallback to title/name
+                if (props.admin) {
+                    // In admin mode, zero out reactions data
 
-                // //TODO: investigate why debugger here seems to cause issues with Muuri later on
-                // deduped.sort((a, b) => {
-                //     const da = Date.parse(a.updateDateTime ?? "") || 0;
-                //     const db = Date.parse(b.updateDateTime ?? "") || 0;
-                //     if (db !== da) return db - da; // newest first
-                //     const ta = (a.title ?? a.name ?? "").localeCompare(b.title ?? b.name ?? "");
-                //     return ta;
-                // });
+  
+                }
 
                 if (!cancelled) setSamples(deduped);
             } catch (e) {
@@ -862,6 +856,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
 
     const reactionsSupported = (() => {
+        if (props.admin === true) return false; // disable reactions in admin mode
         // Priority: explicit prop -> config.reactionsSupported -> giscusSettings.reactionsSupported -> default true
         if (typeof props.reactionsSupported === 'boolean') return props.reactionsSupported;
         const cfg = (props.config as any) ?? {};
@@ -1073,7 +1068,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                         {/* Always render the real grid (Muuri needs the DOM). Hide visually until Muuri is ready. */}
                         <div ref={gridRef} className={[styles.cardGrid, gridReady ? styles.cardGridFadeIn : styles.cardGridFadeOut, !gridReady ? styles.cardGridHidden : "", "pnp-card-grid pnp-muuri-grid"].filter(Boolean).join(" ")} aria-label="Sample cards">
                             {(isMobile ? filteredSamples : samplesWithLikes).map(s => (
-                                <SampleCard key={s.name} sample={s} basePath={props.baseUrl} muuriRef={muuriRef} onOpen={(sample) => setSelected(sample)} reactionsSupported={reactionsSupported} config={props.config} />
+                                <SampleCard key={s.name} sample={s} basePath={props.baseUrl} muuriRef={muuriRef} onOpen={(sample) => setSelected(sample)} reactionsSupported={reactionsSupported} config={props.config}  admin={props.admin} />
                             ))}
                         </div>
 
