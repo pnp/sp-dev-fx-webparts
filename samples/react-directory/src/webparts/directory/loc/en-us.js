@@ -1,11 +1,11 @@
 define([], function() {
   return {
-    DropDownPlaceLabelMessage: "Sort People by ",
+    DropDownPlaceLabelMessage: "Sort people by ",
     DropDownPlaceHolderMessage: "Sort by",
-    SearchPlaceHolder: "Search for People",
-    "PropertyPaneDescription": "Search People from Organization Directory",
+    SearchPlaceHolder: "Search for people",
+    "PropertyPaneDescription": "Search people from organization directory",
     "BasicGroupName": "Properties",
-    "TitleFieldLabel": "Web Part Title",
+    "TitleFieldLabel": "Web part title",
     "DirectoryMessage": "No users found in directory",
     "LoadingText": "Searching for user. Please wait...",
     "SearchPropsLabel": "Properties to search",

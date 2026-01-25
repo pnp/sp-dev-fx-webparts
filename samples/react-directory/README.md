@@ -89,10 +89,9 @@ Search People from Organization Directory and show live persona card on hover.
 - From your command line, change your current directory to the directory containing this sample (`react-directory`, located under `samples`)
 - in the command line run:
   - `npm install`
-  - `gulp build`
-  - `gulp bundle --ship`
-  - `gulp package-solution --ship`
-  - Add to AppCatalog and deploy
+  - `heft build`
+  - `heft package-solution --production`
+  - Upload the generated `.sppkg` from the `sharepoint/solution` folder to your tenant App Catalog and deploy.
 
 > This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 

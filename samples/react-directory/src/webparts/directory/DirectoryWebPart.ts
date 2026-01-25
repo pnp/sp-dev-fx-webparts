@@ -173,11 +173,11 @@ export default class DirectoryWebPart extends BaseClientSideWebPart<IDirectoryWe
                 }),
                 PropertyPaneToggle('searchFirstName', {
                   checked: false,
-                  label: 'Search on First Name ?',
+                  label: 'Search on first name ?',
                 }),
                 PropertyPaneToggle('justifycontent', {
                   checked: false,
-                  label: 'Result Layout',
+                  label: 'Result layout',
                   onText: 'SpaceBetween',
                   offText: 'Center',
                 }),
