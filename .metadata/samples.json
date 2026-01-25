@@ -17352,6 +17352,59 @@
         ]
     },
     {
+        "name": "pnp-sp-dev-spfx-web-parts-react-copilot-chat-api-demo",
+        "source": "pnp",
+        "title": "Copilot chat-api-playground",
+        "shortDescription": "The Copilot Chat API Demo is a SharePoint Framework (SPFx) web part that demonstrates how to consume the Microsoft 365 Copilot Chat API (beta) using the native MSGraphClientV3 HTTP client. This sample showcases best practices for integrating Microsoft Graph endpoints in SharePoint Framework solutions.",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-chat-api-demo",
+        "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-chat-api-demo",
+        "longDescription": [
+            "The Copilot Chat API Demo is a SharePoint Framework (SPFx) web part that demonstrates how to consume the Microsoft 365 Copilot Chat API (beta) using the native MSGraphClientV3 HTTP client. This sample showcases best practices for integrating Microsoft Graph endpoints in SharePoint Framework solutions."
+        ],
+        "creationDateTime": "2026-01-22",
+        "updateDateTime": "2026-01-22",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "SAMPLE-TYPE",
+                "value": "SPFx-WebPart"
+            },
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.22.1"
+            }
+        ],
+        "thumbnails": [
+            {
+                "name": "copilot-chat-api-demo-screenshot.png",
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-chat-api-demo/assets/copilot-chat-api-demo-screenshot.png",
+                "alt": "Web Part Preview"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "siddharth-vaghasia",
+                "pictureUrl": "https://github.com/siddharth-vaghasia.png",
+                "name": "Siddharth Vaghasia"
+            }
+        ],
+        "references": [
+            {
+                "name": "Build your first SharePoint client-side web part",
+                "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+                "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+            }
+        ]
+    },
+    {
         "name": "pnp-sp-dev-spfx-web-parts-react-bot-framework",
         "source": "pnp",
         "title": "Microsoft Bot Framework Web Chat Web Part",
