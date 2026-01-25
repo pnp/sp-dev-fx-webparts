@@ -21505,7 +21505,7 @@
             "This solution contains an SPFx web part which shows a Kanban board. The web part uses the default columns of the SharePoint Tasks list for showing the board's columns and the tasks."
         ],
         "creationDateTime": "2020-07-02",
-        "updateDateTime": "2024-10-01",
+        "updateDateTime": "2026-01-23",
         "products": [
             "SharePoint"
         ],
@@ -21520,7 +21520,7 @@
             },
             {
                 "key": "SPFX-VERSION",
-                "value": "1.20.0"
+                "value": "1.22.1"
             },
             {
                 "key": "SPFX-TEAMSTAB",
