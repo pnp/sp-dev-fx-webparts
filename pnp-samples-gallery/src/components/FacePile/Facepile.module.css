@@ -4,9 +4,18 @@
     justify-content: flex-start;
     width: 100%;
     --pnp-face-size: 28px;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.root.compact {
+    /* preserve original non-wrapping overlapped avatar layout when compact */
+    flex-wrap: nowrap;
 }
 
 .avatar,
+.root.compact .avatar,
+.root.compact .more,
 .more {
     width: var(--pnp-face-size);
     height: var(--pnp-face-size);
@@ -14,17 +23,22 @@
     overflow: hidden;
     border: 2px solid var(--pnp-bg);
     background: var(--pnp-surface);
-    display: grid;
+    display: inline-grid;
     place-items: center;
+    vertical-align: middle;
 }
 
 .avatar {
-    margin-left: calc(var(--pnp-face-size) * -0.28);
+    margin-left: 0;
     text-decoration: none;
     color: inherit;
 }
 
-.avatar:first-child {
+.root.compact .avatar {
+    margin-left: calc(var(--pnp-face-size) * -0.28);
+}
+
+.root.compact .avatar:first-child {
     margin-left: 0;
 }
 
@@ -43,22 +57,39 @@
 }
 
 .more {
-    margin-left: calc(var(--pnp-face-size) * -0.28);
+    margin-left: 0;
     font-size: calc(var(--pnp-face-size) * 0.34);
     font-weight: 700;
     color: var(--pnp-fg);
     opacity: 0.9;
 }
 
+.root.compact .more {
+    margin-left: calc(var(--pnp-face-size) * -0.28);
+}
+
+.item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    white-space: nowrap; /* keep avatar + name together */
+}
+
 .socialDivider {
-    margin: 0 4px;
+    /* margin: 0 4px; */
     color: var(--blue);
     font-weight: bold;
-    padding-right: 0.125rem;
+    /* padding-right: 0.125rem; */
+    font-size:1rem;
 }
 
 .name {
     font-weight: bold;
-    padding-left: 0.5rem;
-    padding-right: 0.125rem;
+    /* padding-left: 0.5rem;
+    padding-right: 0.125rem; */
+    font-size:1rem;
+}
+
+.social {
+    font-size:1rem;
 }

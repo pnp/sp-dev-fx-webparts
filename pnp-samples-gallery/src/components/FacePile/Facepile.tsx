@@ -38,7 +38,7 @@ export function Facepile(props: FacepileProps) {
 
     return (
         <div
-            className={styles.root}
+            className={`${styles.root} ${props.showNames ? '' : styles.compact}`}
             role="group"
             aria-label={`Authors: ${authors.map(displayName).join(", ")}`}
             style={{ ["--pnp-face-size" as any]: `${size}px` }}
@@ -53,31 +53,56 @@ export function Facepile(props: FacepileProps) {
                     ? { href: url, target: "_blank", rel: "noopener", "aria-label": name, title: name }
                     : { "aria-label": name, title: name };
 
+                if (!props.showNames) {
+                    // Preserve original avatar-only layout exactly when showNames is false
+                    return (
+                        <AvatarTag
+                            key={`${a.gitHubAccount ?? a.name ?? "author"}-${idx}`}
+                            className={styles.avatar}
+                            {...avatarProps}
+                        >
+                            {a.pictureUrl ? (
+                                <img
+                                    src={a.pictureUrl}
+                                    alt={name}
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer"
+                                />
+                            ) : (
+                                <span className={styles.initials}>{initials(name)}</span>
+                            )}
+                        </AvatarTag>
+                    );
+                }
+
                 return (
-                    <>
-                    <AvatarTag
+                    <div
                         key={`${a.gitHubAccount ?? a.name ?? "author"}-${idx}`}
-                        className={styles.avatar}
-                        {...avatarProps}
+                        className={styles.item}
                     >
-                        {a.pictureUrl ? (
-                            <img
-                                src={a.pictureUrl}
-                                alt={name}
-                                loading="lazy"
-                                referrerPolicy="no-referrer"
-                            />
-                        ) : (
-                            <span className={styles.initials}>{initials(name)}</span>
-                        )}
-                    </AvatarTag>
-                    {props.showNames ? (
+                        <AvatarTag
+                            className={styles.avatar}
+                            {...avatarProps}
+                        >
+                            {a.pictureUrl ? (
+                                <img
+                                    src={a.pictureUrl}
+                                    alt={name}
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer"
+                                />
+                            ) : (
+                                <span className={styles.initials}>{initials(name)}</span>
+                            )}
+                        </AvatarTag>
+                        {props.showNames ? (
                             <>
-                            <span className={styles.name} title={name}>{name}</span>
-                            <span className={styles.socialDivider}>|</span>
-                            <span className={styles.social}>{social}</span>
-                            </>) : null}   
-                    </>
+                                <span className={styles.name} title={name}>{name}</span>
+                                <span className={styles.socialDivider}>|</span>
+                                <span className={styles.social}>{social}</span>
+                            </>
+                        ) : null}
+                    </div>
                 );
             })}
 
