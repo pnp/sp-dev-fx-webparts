@@ -16221,7 +16221,7 @@
     "shortDescription": "This solution contains an SPFx web part which shows a Kanban board using Fluent UI. The web part uses the default columns of the SharePoint Tasks list for showing the board's columns and the tasks.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-kanban-board",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-kanban-board",
-    "updateDateTime": "2024-10-01",
+    "updateDateTime": "2026-01-23",
     "metadata": [
       {
         "key": "SAMPLE-TYPE",
@@ -16233,7 +16233,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.20.0"
+        "value": "1.22.1"
       },
       {
         "key": "SPFX-TEAMSTAB",
