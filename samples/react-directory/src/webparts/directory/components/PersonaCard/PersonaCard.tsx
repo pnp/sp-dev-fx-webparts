@@ -127,8 +127,9 @@ export class PersonaCard extends React.Component<
       );
       return component;
     } catch (error) {
-      Log.error(EXP_SOURCE, error);
-      throw new Error(error);
+      const err = error instanceof Error ? error : new Error(String(error));
+      Log.error(EXP_SOURCE, err);
+      throw err;
     }
   }
 

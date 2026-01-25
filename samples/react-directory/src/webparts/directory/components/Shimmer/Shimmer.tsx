@@ -13,7 +13,7 @@ const useFluentStyles = makeStyles({
   },
 });
 
-export const Shimmer = () => {
+export const Shimmer = (): JSX.Element => {
   const styles = useFluentStyles();
   return (
     <Skeleton

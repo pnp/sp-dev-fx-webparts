@@ -17,8 +17,8 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "SPFx WebParts" },
-    "title": { "default": "Search Directory" },
-    "description": { "default": "Search Directory" },
+    "title": { "default": "Search directory" },
+    "description": { "default": "Search directory" },
     "officeFabricIconFontName": "ProfileSearch",
     "properties": {
       "title": "Directory",

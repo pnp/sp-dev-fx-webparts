@@ -10,7 +10,7 @@
       "Search People from Organization Directory and show live persona card on hover."
     ],
     "creationDateTime": "2019-07-29",
-    "updateDateTime": "2025-10-22",
+    "updateDateTime": "2026-01-24",
     "products": [
       "SharePoint"
     ],
@@ -25,7 +25,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.21.1"
+        "value": "1.22.1"
       }
     ],
     "thumbnails": [
