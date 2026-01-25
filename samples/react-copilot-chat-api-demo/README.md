@@ -12,7 +12,7 @@ The Copilot Chat API Demo is a SharePoint Framework (SPFx) web part that demonst
 - **Reset Functionality**: Clear conversation state and start fresh with a single button click
 - **Error Handling**: Comprehensive error handling and user feedback
 
-### Technologies Used:
+### Technologies Used
 
 - **MSGraphClientV3**: Native Microsoft Graph client for SPFx (no external dependencies like PnPjs)
 - **Microsoft Graph Beta API**: Copilot conversations endpoint
@@ -22,7 +22,6 @@ The Copilot Chat API Demo is a SharePoint Framework (SPFx) web part that demonst
 ## Screen Demo
 
 ![Copilot Chat API Demo Web Part](./assets/copilot-chat-api-demo-screenshot.png)
-
 
 ## Compatibility
 
@@ -42,6 +41,7 @@ This sample is optimally compatible with the following environment configuration
 ![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
 ## Applies to
 
 - [SharePoint Framework](https://aka.ms/spfx)
@@ -57,14 +57,13 @@ This sample is optimally compatible with the following environment configuration
 
 ## Contributors
 
-[Siddharth Vaghasia](https://github.com/siddharth-vaghasia)
+- [Siddharth Vaghasia](https://github.com/siddharth-vaghasia)
 
 ## Version history
 
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
 | 1.0     | January 22, 2026 | Initial release |
-
 
 
 ## Minimal Path to Awesome
@@ -92,15 +91,16 @@ This web part demonstrates the following concepts and best practices:
 - **API Permission Configuration**: Demonstrates how to declare required Graph API scopes in package-solution.json
 - **Beta API Usage**: Shows how to version API calls to beta endpoints
 
-### Copilot Chat API Workflow:
+### Copilot Chat API Workflow
 
 1. **Create Conversation**: `POST /beta/copilot/conversations` - Initiates a new conversation
 2. **Send Message**: `POST /beta/copilot/conversations/{id}/chat` - Sends a message with optional location hints
 3. **Receive Response**: Gets Copilot's response with adaptive cards and attributions
 
-### Required Permissions:
+### Required Permissions
 
 The web part requires the following Microsoft Graph scopes:
+
 - `Chat.Read`
 - `Mail.Read`
 - `People.Read.All`
@@ -118,7 +118,6 @@ Search for:
 @siddharth-vaghasia
 
 
-
 - [Use MSGraphClientV3 to connect to Microsoft Graph](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/use-msgraph)
 - [Consume Microsoft Graph in SharePoint Framework](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/use-aad-tutorial#consume-microsoft-graph)
 - [Microsoft Graph Copilot API Documentation](https://learn.microsoft.com/en-us/graph/api/resources/copilot?view=graph-rest-beta)
@@ -127,8 +126,6 @@ Search for:
 - [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/sharepoint/dev/spfx/publish-to-marketplace-overview)
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
 - [Heft Documentation](https://heft.rushstack.io/)
-
-## Disclaimer
 
 We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
 
