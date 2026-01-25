@@ -57,6 +57,13 @@ When you submit a new sample, please follow these guidelines:
 * For security reasons, we do not accept pull requests containing `.sppkg` files. We only accept source code files for applications. 
 * Make sure to place the root of your solution's source code in sample folder
 
+### No unnecessary files
+
+Remember that those using your samples may be new to SPFx, and they may not quite know what files are needed or not -- yet. As such, try to remove unecessary files to help them.
+
+* No `upgrade-reports.md`: thanks for upgrading the sample, but nobody else needs to know what steps you had to take.
+* No default/unused assets: I'm looking at you, `welcome-dark.png‎` and `welcome-light.png‎`. If you don't need them in your sample, remove them!
+
 ### README.md
 
 * You will need to have a `README.md` file for your contribution, which is based on [the provided template](../main/templates/README-template.md) under the `samples` folder. Please copy this template to your project and update it accordingly. Your `README.md` must be named exactly `README.md` -- with capital letters -- as this is the information we use to make your sample public.
