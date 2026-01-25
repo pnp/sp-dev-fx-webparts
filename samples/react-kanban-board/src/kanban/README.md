@@ -1,10 +1,8 @@
 # KanbanComponent Control
 
-This control renders a KanbanBoard  which can be used to show Tasks and move it from one State to an Other.   
+This control renders a Kanban board  which can be used to show Tasks and move it from one State to an Other.
 
-**Control in Action**
-
-![KanbanBoard control](../../assets/kanbanofficeUI.gif)
+![Kanban board control](../../assets/kanbanofficeUI.gif)
 
 
 ## How to use this control in your solutions

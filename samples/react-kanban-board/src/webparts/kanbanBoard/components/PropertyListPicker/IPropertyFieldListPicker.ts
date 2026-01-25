@@ -94,7 +94,7 @@ export interface IPropertyFieldListPickerProps {
    *   - The rejected, the value is thrown away.
    *
    */
-  onGetErrorMessage?: (value: string) => string | Promise<string>;
+  onGetErrorMessage?: (value: string | string[]) => string | Promise<string>;
   /**
    * Custom Field will start to validate after users stop typing for `deferredValidationTime` milliseconds.
    * Default value is 200.

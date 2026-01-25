@@ -41,7 +41,7 @@ export interface IKanbanBoardWebPartProps {
 
 export default class KanbanBoardWebPart extends BaseClientSideWebPart<IKanbanBoardWebPartProps> {
   //private kanbanComponent = null;
-  private dataService: ISPKanbanService;
+  private dataService: ISPKanbanService = undefined as any;
   private statekey: string = Date.now().toString();
   public onInit(): Promise<void> {
 

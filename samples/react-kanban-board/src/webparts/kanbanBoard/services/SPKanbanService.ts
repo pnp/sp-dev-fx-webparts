@@ -9,9 +9,7 @@ import * as strings from 'KanbanBoardWebPartStrings';
 import { IFieldInfo } from "@pnp/sp/fields";
 import { SPFI } from "@pnp/sp";
 
-interface IFieldChoiceInfo extends IFieldInfo {
-    Choices: string[];
-}
+
 
 export default class SPKanbanService implements ISPKanbanService {
     private sp:SPFI;
@@ -62,9 +60,9 @@ export default class SPKanbanService implements ISPKanbanService {
     }
     public getBuckets(listId: string, ): Promise<string[]> {
         return this.sp.web.lists.getById(listId).fields.getByInternalNameOrTitle("Status")()
-            .then((status: IFieldChoiceInfo) => status.Choices.map((val) => {
-                return val;
-            }));
+            .then((status: IFieldInfo) => {
+                return status.Choices ? status.Choices.map((val) => val) : [];
+            });
     }
 
 

@@ -217,8 +217,9 @@ export class KanbanComponent extends React.Component<IKanbanComponentProps, IKan
 
 
 
-    private internalTaskDetailRenderer(task: IKanbanTask): JSX.Element {
+    private internalTaskDetailRenderer(task?: IKanbanTask, bucket?: IKanbanBucket): JSX.Element {
         const { tasksettings } = this.props;
+        if (!task) return (<div>No task provided</div>);
         return (<Stack>
             {tasksettings && tasksettings.showPriority && (
                 <KanbanTaskManagedProp
@@ -254,7 +255,7 @@ export class KanbanComponent extends React.Component<IKanbanComponentProps, IKan
     }
 
 
-    private internalTaskEditRenderer(task: IKanbanTask): JSX.Element {
+    private internalTaskEditRenderer(task?: IKanbanTask, bucket?: IKanbanBucket): JSX.Element {
         //  const schema = this.props.editSchema; //TODO
         return (<div>Edit</div>);
     }
@@ -263,7 +264,7 @@ export class KanbanComponent extends React.Component<IKanbanComponentProps, IKan
         return (<div>New</div>);
     }
 
-    private internalCloseDialog(ev?: React.MouseEvent<HTMLButtonElement>): void {
+    private internalCloseDialog(): void {
         this.setState({
             openDialog: false,
             openTaskId: undefined,
@@ -399,7 +400,7 @@ export class KanbanComponent extends React.Component<IKanbanComponentProps, IKan
                     iconProps: {
                         iconName: 'Add'
                     },
-                    onClick: () => this.internalAddTask.bind(this)
+                    onClick: () => this.internalAddTask()
                 }];
         }
         return [];
