@@ -192,3 +192,9 @@
 .likesCount {
     font-size: 0.95rem;
 }
+
+.newBadge {
+        position: relative;
+            top: -10px;
+            color: var(--blue);
+}

@@ -262,8 +262,17 @@ export function SampleCard({ sample: s, basePath, muuriRef, onOpen, reactionsSup
 
             <div className={styles.container}>
                 <div className={styles.body}>
-                    <h2 id={titleId} className={`pnp-card__title ${styles.title}`}>{s.title}</h2>
-                    <Facepile authors={s.authors} maxVisible={4} size={28} linkToGithub={false} />
+                    <h2 id={titleId} className={`pnp-card__title ${styles.title}`}>
+                        {s.isNew ? (
+                            <span className={styles.newBadge} aria-label="New sample">
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" height={16} width={16}>
+                                    <path d="M1792 0h256v1280h-256V0zM0 2048v-256h1280v256H0zM486 666l180-180 896 896-180 180-896-896z" fill="currentColor">
+                                    </path>
+                                </svg>
+                            </span>
+                        ) : null} {s.title}
+                    </h2>
+                    <Facepile authors={s.authors} maxVisible={4} size={28} linkToGithub={false} showNames={admin} />
 
                 </div>
                 <div className={styles.footer}>

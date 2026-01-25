@@ -49,3 +49,16 @@
     color: var(--pnp-fg);
     opacity: 0.9;
 }
+
+.socialDivider {
+    margin: 0 4px;
+    color: var(--blue);
+    font-weight: bold;
+    padding-right: 0.125rem;
+}
+
+.name {
+    font-weight: bold;
+    padding-left: 0.5rem;
+    padding-right: 0.125rem;
+}

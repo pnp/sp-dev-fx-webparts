@@ -2,7 +2,7 @@ import styles from './SamplesGallery.module.css';
 import { useCallback, useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import { createPortal } from "react-dom";
 import Muuri from "muuri";
-import type { PnPSample, TechKey } from "./types/index";
+import type { PnPSample, TechKey, SampleAuthor } from "./types/index";
 import type { SamplesGalleryProps, FacetState } from "./types/samplesGallery";
 import { metaFirst, getCategories, spfxToBucket, spfxBucketSortKeyDesc } from "./types/index";
 
@@ -193,9 +193,150 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                 }
 
                 if (props.admin) {
-                    // In admin mode, zero out reactions data
+                    console.log('[SamplesGallery][admin] Admin mode enabled: fetching merged PRs from GitHub...');
+                    // Fetch merged PRs in a short window and extract sample tags from PR bodies
+                    try {
+                        const params = (typeof window !== 'undefined' && window.location && window.location.search)
+                            ? new URLSearchParams(window.location.search)
+                            : null;
 
-  
+                        let numDays = 14;
+                        try {
+                            const q = params?.get('numdays');
+                            if (q && q !== '') {
+                                const parsed = Number.parseInt(q, 10);
+                                if (!Number.isNaN(parsed) && parsed > 0) numDays = parsed;
+                                else console.warn('[SamplesGallery][admin] invalid numdays query param, using default 14', q);
+                            }
+                        } catch { /* ignore */ }
+
+                        const windowDate = new Date();
+                        windowDate.setDate(windowDate.getDate() - numDays);
+                        const sinceIso = windowDate.toISOString();
+                        const datePart = sinceIso.split('T')[0];
+
+                        const repo = 'pnp/sp-dev-fx-webparts';
+                        const qStr = `repo:${repo} is:pr is:merged -author:dependabot[bot] merged:>${datePart}`;
+                        const url = `https://api.github.com/search/issues?q=${encodeURIComponent(qStr)}&sort=updated&order=desc&per_page=100`;
+                        console.log('[SamplesGallery][admin] Fetching merged PRs from GitHub Search API', url);
+
+                        const res = await fetch(url, { headers: { Accept: 'application/vnd.github.v3+json' } });
+                        if (!res.ok) {
+                            console.warn('[SamplesGallery][admin] Failed to fetch PRs', res.status, res.statusText);
+                        } else {
+                            const body = await res.json();
+                            if (cancelled) return;
+
+                            const items = Array.isArray(body.items) ? body.items : [];
+                            console.log(`[SamplesGallery][admin] Fetched ${items.length} merged PRs since ${datePart}`);
+
+                            // Helper to canonicalize a sample name to a predictable slug
+                            const canonicalize = (raw: string) => {
+                                if (!raw) return '';
+                                let s = String(raw).trim().toLowerCase();
+                                s = s.replace(/^sample:\s*/i, '');
+                                s = s.replace(/[^a-z0-9]+/g, '-');
+                                s = s.replace(/-+/g, '-');
+                                s = s.replace(/^-+|-+$/g, '');
+                                return s;
+                            };
+
+                            // Collect one entry per PR occurrence so a single sample may
+                            // appear multiple times if touched by multiple PRs.
+                            const prSampleEntries: Array<{ canonical: string; cleaned: string; isNew: boolean; created: string | null; author?: SampleAuthor }> = [];
+                            const tagRegex = /<!--\s*sample:\s*(?:\{([^}]+)\}|([^<\n\r]+?))\s*-->/i;
+
+                            for (const it of items) {
+                                try {
+                                    const bodyText = String(it.body ?? '');
+                                    if (!bodyText || bodyText.trim().length === 0) continue;
+
+                                    const m = bodyText.match(tagRegex);
+                                    const raw = m ? (m[1] ?? m[2]) : null;
+                                    if (raw) {
+                                        const cleaned = String(raw).trim();
+                                        if (cleaned) {
+                                            const canonical = canonicalize(cleaned);
+                                            console.log(`[SamplesGallery][admin] item #${it.number} sample tag: '${cleaned}' (canonical: '${canonical}')`);
+
+
+                                            const newMatch = /\[x\]\s*New\s+sample/i.test(bodyText);
+                                            const created = String(it.created_at ?? it.closed_at ?? '') || null;
+
+                                            // Try to fetch the PR author's GitHub profile to build a SampleAuthor
+                                            let author: SampleAuthor | undefined = undefined;
+                                            try {
+                                                const userUrl = (it.user && (it.user as any).url) ? String((it.user as any).url) : null;
+                                                if (userUrl) {
+                                                    const ures = await fetch(userUrl, { headers: { Accept: 'application/vnd.github.v3+json' } });
+                                                    if (ures.ok) {
+                                                        const profile = await ures.json();
+                                                        const login = String(profile.login ?? (it.user && it.user.login) ?? '').trim();
+                                                        const name = (profile.name ?? login) || undefined;
+                                                        const twitter = profile.twitter_username ? String(profile.twitter_username).replace(/^@/, '') : null;
+                                                        const avatar = profile.avatar_url ?? profile.avatar_url ?? undefined;
+
+                                                        const social = twitter ? `@${twitter}` : (login || undefined);
+
+                                                        author = {
+                                                            gitHubAccount: login || undefined,
+                                                            name: name || undefined,
+                                                            pictureUrl: avatar || undefined,
+                                                            social: social || undefined,
+                                                        };
+                                                    }
+                                                }
+                                            } catch {
+                                                // ignore profile fetch failures
+                                            }
+
+                                            prSampleEntries.push({ canonical, cleaned, isNew: Boolean(newMatch), created, author });
+                                        }
+                                    }
+                                } catch { /* ignore per-item failures */ }
+                            }
+
+                            if (prSampleEntries.length > 0) {
+                                // Build lookup from canonical -> sample for quick resolution
+                                const sampleByCanonical = new Map<string, PnPSample>();
+                                for (const s of deduped) {
+                                    const rawName = String(s.name ?? '').trim();
+                                    const short = rawName.replace(/^sample:\s*/i, '').trim();
+                                    const c1 = canonicalize(rawName);
+                                    const c2 = canonicalize(short);
+                                    if (!sampleByCanonical.has(c1)) sampleByCanonical.set(c1, s);
+                                    if (!sampleByCanonical.has(c2)) sampleByCanonical.set(c2, s);
+                                }
+
+                                const filtered: PnPSample[] = [];
+                                for (const entry of prSampleEntries) {
+                                    const s = sampleByCanonical.get(entry.canonical);
+                                    if (s) {
+                                        const authors = entry.author ? [entry.author] : s.authors;
+                                        filtered.push({ ...s, isNew: entry.isNew, updateDateTime: entry.created ?? s.updateDateTime, authors });
+                                    }
+                                }
+
+                                console.log('[SamplesGallery][admin] kept', filtered.length, 'samples (including duplicates) of', deduped.length);
+                                if (!cancelled) setSamples(filtered);
+                            } else {
+                                console.info('[SamplesGallery][admin] no sample tags found in merged PRs; clearing samples');
+                                if (!cancelled) setSamples([]);
+                            }
+                        }
+                    } catch (e) {
+                        console.warn('[SamplesGallery][admin] admin PR processing failed', e);
+                        if (!cancelled) setSamples(deduped);
+                    }
+
+                    // skip the default setSamples(deduped) below since we've already set samples
+                    if (!cancelled) {
+                        setLoading(false);
+                        setGridReady(false);
+                    }
+
+                    // early return to avoid calling setSamples(deduped) again
+                    return;
                 }
 
                 if (!cancelled) setSamples(deduped);
@@ -437,8 +578,6 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
         return disabled;
     }, [samples, facets, state.q, state.spfx, state.tech, state.category]);
-
-
 
     const [, setPendingLikesVersion] = useState(0);
     const likesOverridesRaw = useSyncExternalStore(

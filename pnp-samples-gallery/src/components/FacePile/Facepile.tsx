@@ -5,6 +5,7 @@ export type FacepileProps = {
     maxVisible?: number; // e.g. 3 or 4
     size?: number; // px
     linkToGithub?: boolean;
+    showNames?: boolean;
 };
 
 function initials(name: string): string {
@@ -44,6 +45,7 @@ export function Facepile(props: FacepileProps) {
         >
             {visible.map((a, idx) => {
                 const name = displayName(a);
+                const social = a.social;
                 const url = props.linkToGithub ? githubUrl(a) : null;
 
                 const AvatarTag = url ? "a" : "div";
@@ -52,6 +54,7 @@ export function Facepile(props: FacepileProps) {
                     : { "aria-label": name, title: name };
 
                 return (
+                    <>
                     <AvatarTag
                         key={`${a.gitHubAccount ?? a.name ?? "author"}-${idx}`}
                         className={styles.avatar}
@@ -68,6 +71,13 @@ export function Facepile(props: FacepileProps) {
                             <span className={styles.initials}>{initials(name)}</span>
                         )}
                     </AvatarTag>
+                    {props.showNames ? (
+                            <>
+                            <span className={styles.name} title={name}>{name}</span>
+                            <span className={styles.socialDivider}>|</span>
+                            <span className={styles.social}>{social}</span>
+                            </>) : null}   
+                    </>
                 );
             })}
 
