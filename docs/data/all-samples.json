@@ -4898,7 +4898,7 @@
     "shortDescription": "Search People from Organization Directory and show live persona card on hover.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-directory",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-directory",
-    "updateDateTime": "2025-10-22",
+    "updateDateTime": "2026-01-24",
     "metadata": [
       {
         "key": "SAMPLE-TYPE",
@@ -4910,7 +4910,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.21.1"
+        "value": "1.22.1"
       }
     ],
     "tags": [],
