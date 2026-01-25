@@ -1142,3 +1142,7 @@ select#pnpSort {
 .admin .pnp-card:hover {
     transform: none;
 }
+
+.section-base.samples.admin {
+    padding-left: 2vw;
+}

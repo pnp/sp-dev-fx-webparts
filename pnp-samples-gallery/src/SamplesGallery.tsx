@@ -18,6 +18,7 @@ import SamplePanel from "./components/SamplePanel/SamplePanel";
 import { LayoutGroup } from "framer-motion";
 import { setScope as setLikesScope, subscribe as subscribeLikesOverrides } from "./utils/likesOverrides";
 import type { OverrideEntry } from "./utils/likesOverrides";
+import { captureFullDocument } from "./utils/captureDocumentImage";
 
 
 
@@ -913,6 +914,40 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         window.addEventListener("keydown", onKey);
         return () => window.removeEventListener("keydown", onKey);
     }, [fullscreen, selected]);
+
+
+    useEffect(() => {
+        if (!props.admin) return;
+
+        const onKey = async (e: KeyboardEvent) => {
+            const isCtrlAltS =
+                e.ctrlKey && e.altKey && !e.shiftKey && !e.metaKey && e.key.toLowerCase() === "s";
+
+            if (!isCtrlAltS) return;
+
+            // Avoid triggering while typing
+            const el = document.activeElement as HTMLElement | null;
+            if (el) {
+                const tag = el.tagName;
+                if (tag === "INPUT" || tag === "TEXTAREA" || el.isContentEditable) return;
+            }
+
+            e.preventDefault();
+
+            await captureFullDocument({
+                format: "png",
+                filenameBase: "slide-1920x1080",
+                pixelRatio: 1,
+                tileHeightPx: 1080,
+                backgroundColor: "#ffffff",
+            });
+
+        };
+
+        window.addEventListener("keydown", onKey);
+        return () => window.removeEventListener("keydown", onKey);
+    }, [props.admin]);
+
 
     // Focus management & simple focus-trap for the panel modal
     useEffect(() => {
