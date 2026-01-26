@@ -16289,9 +16289,11 @@
       }
     ],
     "reactions": {
-      "url": "",
-      "totalReactions": 0,
-      "allReactors": []
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5767",
+      "totalReactions": 1,
+      "allReactors": [
+        "hugoabernier"
+      ]
     }
   },
   {
