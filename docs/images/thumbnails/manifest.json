@@ -2322,5 +2322,9 @@
   "pnp-sp-dev-spfx-extensions-react-application-quick-create": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-quick-create/assets/QuickCreateDemo.gif",
     "file": "pnp-sp-dev-spfx-extensions-react-application-quick-create.webp"
+  },
+  "pnp-sp-dev-spfx-extensions-react-command-authenticated-flowtrigger": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-authenticated-flowtrigger/assets/power-automate-trigger.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-authenticated-flowtrigger.webp"
   }
 }

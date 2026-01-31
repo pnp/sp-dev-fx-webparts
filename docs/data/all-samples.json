@@ -29132,5 +29132,49 @@
       "totalReactions": 0,
       "allReactors": []
     }
+  },
+  {
+    "name": "pnp-sp-dev-spfx-extensions-react-command-authenticated-flowtrigger",
+    "source": "pnp",
+    "title": "Authenticated Power Automate Flow Trigger - SPFx CommandSet Extension",
+    "shortDescription": "This sample demonstrates how to trigger an authenticated Power Automate flow from a SharePoint document library using an SPFx ListView CommandSet extension. The extension uses the AadHttpClient to make authenticated HTTP requests to Power Automate flows configured with the \"When an HTTP request is received\" trigger and \"Any user in my tenant\" authentication.",
+    "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-authenticated-flowtrigger",
+    "downloadUrl": null,
+    "updateDateTime": "2026-01-26",
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.22.1"
+      }
+    ],
+    "tags": [],
+    "categories": [
+      "SPFX-APPLICATION-EXTENSION"
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "ejazhussain",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/ejazhussain.1f40dda40472.webp",
+        "name": "Ejaz Hussain",
+        "avatarSourceUrl": "https://github.com/ejazhussain.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-authenticated-flowtrigger.webp",
+        "alt": "Authenticated Power Automate Flow Trigger - SPFx CommandSet Extension"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
   }
 ]
