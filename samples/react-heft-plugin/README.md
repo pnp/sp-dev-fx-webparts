@@ -105,7 +105,6 @@ This sample illustrates the following concepts:
     ```bash
     heft start --clean
     ```
-    ```
 
 ## Project Structure
 
