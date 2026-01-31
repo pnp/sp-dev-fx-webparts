@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@microsoft/rush-stack-compiler-5.3": "0.1.0",
-    "@microsoft/sp-build-web": "1.21.1",
+    "@microsoft/sp-build-web": "1.22.2",
     "@microsoft/sp-module-interfaces": "1.21.1",
     "@microsoft/sp-tslint-rules": "1.21.1",
     "@types/papaparse": "^5.3.16",
