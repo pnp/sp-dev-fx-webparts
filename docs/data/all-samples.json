@@ -5401,6 +5401,52 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-heft-plugin",
+    "source": "pnp",
+    "title": "Building Custom Heft Plugins for SharePoint Framework",
+    "shortDescription": "This sample demonstrates how to build and integrate custom Heft plugins into SharePoint Framework 1.22 projects. It includes a practical Version Incrementer Plugin that automatically manages version numbers during production builds.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-heft-plugin",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-heft-plugin",
+    "updateDateTime": "2026-01-15",
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.22.0"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "ejazhussain",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/ejazhussain.1f40dda40472.webp",
+        "name": "Ejaz Hussain",
+        "avatarSourceUrl": "https://github.com/ejazhussain.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-heft-plugin.webp",
+        "alt": "Building Custom Heft Plugins for SharePoint Framework"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-js-public-unjoined-teams",
     "source": "pnp",
     "title": "Public teams I'm not a member of Web Part",

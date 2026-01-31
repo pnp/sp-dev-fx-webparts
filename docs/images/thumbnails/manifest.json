@@ -415,6 +415,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-apis/assets/preview-chat.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-copilot-apis.webp"
   },
+  "pnp-sp-dev-spfx-web-parts-react-heft-plugin": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-heft-plugin/assets/screenshot.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-heft-plugin.webp"
+  },
   "pnp-sp-dev-spfx-web-parts-js-public-unjoined-teams": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-public-unjoined-teams/assets/js-public-unjoined-teams.gif",
     "file": "pnp-sp-dev-spfx-web-parts-js-public-unjoined-teams.webp"
