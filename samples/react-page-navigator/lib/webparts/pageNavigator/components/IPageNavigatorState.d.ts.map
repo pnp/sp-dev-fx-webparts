@@ -1,1 +1,0 @@
-{"version":3,"file":"IPageNavigatorState.d.ts","sourceRoot":"","sources":["../../../../src/webparts/pageNavigator/components/IPageNavigatorState.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,QAAQ,EAAE,MAAM,yBAAyB,CAAC;AAEnD,MAAM,WAAW,mBAAmB;IAClC,WAAW,EAAE,QAAQ,EAAE,CAAC;IACxB,WAAW,EAAE,MAAM,CAAC;CACrB"}

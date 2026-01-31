@@ -216,20 +216,36 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                         const sinceIso = windowDate.toISOString();
                         const datePart = sinceIso.split('T')[0];
 
-                        const repo = 'pnp/sp-dev-fx-webparts';
-                        const qStr = `repo:${repo} is:pr is:merged -author:dependabot[bot] merged:>${datePart}`;
-                        const url = `https://api.github.com/search/issues?q=${encodeURIComponent(qStr)}&sort=updated&order=desc&per_page=100`;
-                        console.log('[SamplesGallery][admin] Fetching merged PRs from GitHub Search API', url);
+                        // GitHub Search API can return 422 when combining multiple `repo:` qualifiers
+                        // in a single query for some tokens/accounts. To avoid that, query each
+                        // repository separately and merge the results client-side.
+                        const repos = ['pnp/sp-dev-fx-webparts', 'pnp/sp-dev-fx-extensions'];
+                        console.log("Repos", repos);
 
-                        const res = await fetch(url, { headers: { Accept: 'application/vnd.github.v3+json' } });
-                        if (!res.ok) {
-                            console.warn('[SamplesGallery][admin] Failed to fetch PRs', res.status, res.statusText);
-                        } else {
-                            const body = await res.json();
-                            if (cancelled) return;
+                        const perRepoItems = await Promise.all(repos.map(async (r) => {
+                            const qStr = `repo:${r} is:pr is:merged -author:dependabot[bot] merged:>${datePart}`;
+                            const url = `https://api.github.com/search/issues?q=${encodeURIComponent(qStr)}&sort=updated&order=desc&per_page=100`;
+                            console.log('[SamplesGallery][admin] Fetching merged PRs from GitHub Search API', url);
 
-                            const items = Array.isArray(body.items) ? body.items : [];
-                            console.log(`[SamplesGallery][admin] Fetched ${items.length} merged PRs since ${datePart}`);
+                            try {
+                                const rres = await fetch(url, { headers: { Accept: 'application/vnd.github.v3+json' } });
+                                if (!rres.ok) {
+                                    console.warn('[SamplesGallery][admin] Failed to fetch PRs for', r, rres.status, rres.statusText);
+                                    return [] as unknown[];
+                                }
+                                const body = await rres.json();
+                                return Array.isArray(body.items) ? body.items : [];
+                            } catch (e) {
+                                console.warn('[SamplesGallery][admin] Error fetching PRs for', r, e);
+                                return [] as unknown[];
+                            }
+                        }));
+
+                        if (cancelled) return;
+
+                        // Flatten results from all repos into a single items array
+                        const items = perRepoItems.flat();
+                        console.log(`[SamplesGallery][admin] Fetched ${items.length} merged PRs since ${datePart} across ${repos.length} repos`);
 
                             // Helper to canonicalize a sample name to a predictable slug
                             const canonicalize = (raw: string) => {
@@ -261,7 +277,8 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                                             console.log(`[SamplesGallery][admin] item #${it.number} sample tag: '${cleaned}' (canonical: '${canonical}')`);
 
 
-                                            const newMatch = /\[x\]\s*New\s+sample/i.test(bodyText);
+                                            const newMatch = (/\[x\]\s*New\s+sample/i.test(bodyText)
+                                                || /\|\s*New\s+sample\?\s*\|\s*yes\b/i.test(bodyText));
                                             const created = String(it.created_at ?? it.closed_at ?? '') || null;
 
                                             // Try to fetch the PR author's GitHub profile to build a SampleAuthor
@@ -324,7 +341,6 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                                 console.info('[SamplesGallery][admin] no sample tags found in merged PRs; clearing samples');
                                 if (!cancelled) setSamples([]);
                             }
-                        }
                     } catch (e) {
                         console.warn('[SamplesGallery][admin] admin PR processing failed', e);
                         if (!cancelled) setSamples(deduped);
