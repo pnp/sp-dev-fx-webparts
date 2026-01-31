@@ -29,7 +29,7 @@
     "@types/react": "16.8.8",
     "@types/react-dom": "16.8.3",
     "@types/webpack-env": "1.13.1",
-    "csvtojson": "^2.0.10",
+    "csvtojson": "^2.0.13",
     "json2csv": "^5.0.0",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
