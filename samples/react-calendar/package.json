@@ -28,7 +28,7 @@
     "@pnp/spfx-property-controls": "3.18.0",
     "@uifabric/fluent-theme": "^0.16.7",
     "draftjs-to-html": "^0.9.1",
-    "fast-xml-parser": "^4.5.0",
+    "fast-xml-parser": "^5.3.4",
     "globalize": "^1.4.2",
     "immutable": "4.3.6",
     "jquery": "3.7.1",
