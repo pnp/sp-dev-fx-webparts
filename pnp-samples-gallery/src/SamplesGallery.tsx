@@ -260,7 +260,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
                             // Collect one entry per PR occurrence so a single sample may
                             // appear multiple times if touched by multiple PRs.
-                            const prSampleEntries: Array<{ canonical: string; cleaned: string; isNew: boolean; created: string | null; author?: SampleAuthor }> = [];
+                            const prSampleEntries: Array<{ canonical: string; cleaned: string; isNew: boolean; created: string | null; author?: SampleAuthor; prNumber?: number }> = [];
                             const tagRegex = /<!--\s*sample:\s*(?:\{([^}]+)\}|([^<\n\r]+?))\s*-->/i;
 
                             for (const it of items) {
@@ -308,7 +308,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                                                 // ignore profile fetch failures
                                             }
 
-                                            prSampleEntries.push({ canonical, cleaned, isNew: Boolean(newMatch), created, author });
+                                            prSampleEntries.push({ canonical, cleaned, isNew: Boolean(newMatch), created, author, prNumber: (typeof it.number === 'number' ? it.number : (it.number ? Number(it.number) : undefined)) });
                                         }
                                     }
                                 } catch { /* ignore per-item failures */ }
@@ -331,7 +331,9 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                                     const s = sampleByCanonical.get(entry.canonical);
                                     if (s) {
                                         const authors = entry.author ? [entry.author] : s.authors;
-                                        filtered.push({ ...s, isNew: entry.isNew, updateDateTime: entry.created ?? s.updateDateTime, authors });
+                                        // Create a unique instance name per PR so duplicates don't collide
+                                        const instanceName = entry.prNumber ? `${s.name}::pr:${entry.prNumber}` : `${s.name}::pr:${entry.created ?? Date.now()}`;
+                                        filtered.push({ ...s, name: instanceName, isNew: entry.isNew, updateDateTime: entry.created ?? s.updateDateTime, authors });
                                     }
                                 }
 
