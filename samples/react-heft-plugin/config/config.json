@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "hello-heft-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/helloHeft/HelloHeftWebPart.js",
+          "manifest": "./src/webparts/helloHeft/HelloHeftWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "HelloHeftWebPartStrings": "lib/webparts/helloHeft/loc/{locale}.js"
+  }
+}
