@@ -1047,6 +1047,112 @@
         ]
     },
     {
+        "name": "pnp-sp-dev-spfx-extensions-react-application-smart-context",
+        "source": "pnp",
+        "title": "Smart Context - AI-Powered Page Insights",
+        "shortDescription": "Get instant, personalized insights on any SharePoint page. This Application Customizer leverages the Microsoft Graph Copilot API to analyze page content alongside your emails, chats, meetings, and files — surfacing key people, pending actions, decisions, and context that matter to you.",
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-smart-context",
+        "longDescription": [
+            "Get instant, personalized insights on any SharePoint page. This Application Customizer leverages the Microsoft Graph Copilot API to analyze page content alongside your emails, chats, meetings, and files — surfacing key people, pending actions, decisions, and context that matter to you."
+        ],
+        "creationDateTime": "2026-02-01",
+        "updateDateTime": "2026-02-01",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.22.1"
+            }
+        ],
+        "tags": [],
+        "categories": [
+            "SPFX-APPLICATION-EXTENSION"
+        ],
+        "thumbnails": [
+            {
+                "name": "smart-context-preview-1.png",
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-smart-context/assets/smart-context-preview-1.png",
+                "alt": "Web Part Preview"
+            },
+            {
+                "name": "smart-context-preview-2.png",
+                "type": "image",
+                "order": 101,
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-smart-context/assets/smart-context-preview-2.png",
+                "alt": "Web Part Preview"
+            },
+            {
+                "name": "smart-context-preview-3.png",
+                "type": "image",
+                "order": 102,
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-smart-context/assets/smart-context-preview-3.png",
+                "alt": "Web Part Preview"
+            },
+            {
+                "name": "smart-context-preview-4.png",
+                "type": "image",
+                "order": 103,
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-smart-context/assets/smart-context-preview-4.png",
+                "alt": "Web Part Preview"
+            },
+            {
+                "name": "smart-context-preview-5.png",
+                "type": "image",
+                "order": 104,
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-smart-context/assets/smart-context-preview-5.png",
+                "alt": "Web Part Preview"
+            },
+            {
+                "name": "smart-context-preview-6.png",
+                "type": "image",
+                "order": 105,
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-smart-context/assets/smart-context-preview-6.png",
+                "alt": "Web Part Preview"
+            },
+            {
+                "name": "smart-context-preview.gif",
+                "type": "image",
+                "order": 106,
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-smart-context/assets/smart-context-preview.gif",
+                "alt": "Web Part Preview"
+            },
+            {
+                "name": "smart-context-preview.png",
+                "type": "image",
+                "order": 107,
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-smart-context/assets/smart-context-preview.png",
+                "alt": "Web Part Preview"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "fredupstair",
+                "pictureUrl": "https://github.com/fredupstair.png",
+                "name": "Federico Porceddu"
+            }
+        ],
+        "references": [
+            {
+                "name": "Overview of SharePoint Framework Extensions",
+                "description": "You can use SharePoint Framework (SPFx) Extensions to extend the SharePoint user experience. With SPFx Extensions, you can customize more facets of the SharePoint experience, including notification areas, toolbars, and list data views. SPFx Extensions are available in all Microsoft 365 subscriptions for production usage.",
+                "url": "https://learn.microsoft.com/sharepoint/dev/spfx/extensions/overview-extensions?WT.mc_id=m365-15741-cxa"
+            },
+            {
+                "name": "Use page placeholders from Application Customizer",
+                "description": "Application Customizers provide access to well-known locations on SharePoint pages that you can modify based on your business and functional requirements. For example, you can create dynamic header and footer experiences that render across all the pages in SharePoint Online.",
+                "url": "https://learn.microsoft.com/sharepoint/dev/spfx/extensions/get-started/using-page-placeholder-with-extensions?WT.mc_id=m365-15741-cxa"
+            }
+        ]
+    },
+    {
         "name": "pnp-sp-dev-fx-extensions-react-formcustomizer-customers",
         "source": "pnp",
         "title": "React Form Customizer (Customers)",
