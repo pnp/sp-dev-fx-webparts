@@ -23931,6 +23931,50 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-extensions-react-application-smart-context",
+    "source": "pnp",
+    "title": "Smart Context - AI-Powered Page Insights",
+    "shortDescription": "Get instant, personalized insights on any SharePoint page. This Application Customizer leverages the Microsoft Graph Copilot API to analyze page content alongside your emails, chats, meetings, and files — surfacing key people, pending actions, decisions, and context that matter to you.",
+    "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-smart-context",
+    "downloadUrl": null,
+    "updateDateTime": "2026-02-01",
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.22.1"
+      }
+    ],
+    "tags": [],
+    "categories": [
+      "SPFX-APPLICATION-EXTENSION"
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "fredupstair",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/fredupstair.73c948d7c785.webp",
+        "name": "Federico Porceddu",
+        "avatarSourceUrl": "https://github.com/fredupstair.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-application-smart-context.webp",
+        "alt": "Smart Context - AI-Powered Page Insights"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-fx-extensions-react-formcustomizer-customers",
     "source": "pnp",
     "title": "React Form Customizer (Customers)",

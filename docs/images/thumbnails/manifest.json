@@ -1879,6 +1879,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-customizer-notification/assets/Light theme.gif",
     "file": "pnp-sp-dev-spfx-extensions-react-application-customizer-notification.webp"
   },
+  "pnp-sp-dev-spfx-extensions-react-application-smart-context": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-smart-context/assets/smart-context-preview-1.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-smart-context.webp"
+  },
   "pnp-sp-dev-fx-extensions-react-formcustomizer-customers": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-formcustomizer-customers/assets/viewform.png",
     "file": "pnp-sp-dev-fx-extensions-react-formcustomizer-customers.webp"
