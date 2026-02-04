@@ -34,8 +34,8 @@ define([], function() {
     
     // Access Information
     "AccessRestrictedTitle": "Acesso Restrito",
-    "AccessRestrictedMessage": "A gestão de Extensões de Esquema requer que o utilizador tenha acesso total ao Catálogo de Aplicações do Site do inquilino Microsoft 365.",
-    "AccessRestrictedDetails": "Esta Aplicação utiliza funcionalidades que requerem acesso de leitura e escrita às propriedades do inquilino.",
+    "AccessRestrictedMessage": "A gestão de Extensões de Esquema requer acesso total ao site do Catálogo de Aplicações do inquilino Microsoft 365.",
+    "AccessRestrictedDetails": "Esta aplicação requer acesso de leitura e escrita para gerir a configuração das extensões de esquema.",
     
     // Schema Extensions Toolbar
     "NewButtonLabel": "Novo",

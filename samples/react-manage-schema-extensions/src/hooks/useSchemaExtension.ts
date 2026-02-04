@@ -5,7 +5,8 @@ import {
   ISchemaExtension,
   ISchemaExtensionCreateRequest,
 } from "../models/ISchemaExtension";
-import { useAppCatalog, useLogging } from "@spteck/m365-hooks";
+import { useLogging } from "@spteck/m365-hooks";
+import { useSchemaExtensionStorage } from "./useSchemaExtensionStorage";
 
 import { BaseComponentContext } from "@microsoft/sp-component-base";
 import { ISchemaTenantProperty } from "../models/ISchemaTeantProperty";
@@ -46,9 +47,9 @@ export const useSchemaExtension = ({
       return await context.msGraphClientFactory.getClient("3");
     }, [context]);
 
-  // Initialize app catalog hook for tenant properties management
-  const { getTenantProperty, updateTenantProperty, getAppCatalogUrl } =
-    useAppCatalog(context);
+  // Initialize storage hook for schema extension configuration (replaces tenant properties)
+  const { getProperty, setProperty, removeProperty, getAppCatalogUrl } =
+    useSchemaExtensionStorage(context);
 
   // Initialize logging hook
   const { logError, logWarning, logInfo } = useLogging();
@@ -72,7 +73,7 @@ export const useSchemaExtension = ({
     []
   );
 
-  // Get created schema extension IDs from SharePoint tenant properties
+  // Get created schema extension IDs from SharePoint list storage
   const getCreatedSchemaIds = React.useCallback(async (): Promise<
     ISchemaTenantProperty[]
   > => {
@@ -81,7 +82,7 @@ export const useSchemaExtension = ({
       if (!appCatalogUrl) {
         throw new Error("App catalog URL not available");
       }
-      const property = await getTenantProperty(TENANT_PROPERTY_KEY);
+      const property = await getProperty(TENANT_PROPERTY_KEY);
       if (!property?.Value) {
         return [];
       }
@@ -98,14 +99,14 @@ export const useSchemaExtension = ({
     } catch (error) {
       logError(
         "getCreatedSchemaIds",
-        "Failed to get created schema IDs from tenant properties:",
+        "Failed to get created schema IDs from storage:",
         JSON.stringify(error)
       );
       return [];
     }
-  }, [getAppCatalogUrl, getTenantProperty]);
+  }, [getAppCatalogUrl, getProperty]);
 
-  // Save schema extension ID to SharePoint tenant properties
+  // Save schema extension ID to SharePoint list storage
   const saveSchemaIdToTenantProperty = React.useCallback(
     async (schemaId: string): Promise<void> => {
       try {
@@ -116,7 +117,7 @@ export const useSchemaExtension = ({
 
         logInfo(
           "saveSchemaIdToTenantProperty",
-          `Saving schema extension ID ${schemaId} to SharePoint tenant properties`,
+          `Saving schema extension ID ${schemaId} to SharePoint storage`,
           { schemaId }
         );
 
@@ -128,7 +129,7 @@ export const useSchemaExtension = ({
         if (currentSchemaIds.some((item) => item.schemaId === schemaId)) {
           logInfo(
             "saveSchemaIdToTenantProperty",
-            `Schema ID ${schemaId} already exists in tenant properties`,
+            `Schema ID ${schemaId} already exists in storage`,
             { schemaId }
           );
           return;
@@ -137,22 +138,22 @@ export const useSchemaExtension = ({
         const updatedSchemaIds = [...currentSchemaIds, { schemaId: schemaId }];
         const schemaIdsJson = JSON.stringify(updatedSchemaIds);
 
-        await updateTenantProperty(TENANT_PROPERTY_KEY, schemaIdsJson);
+        await setProperty(TENANT_PROPERTY_KEY, schemaIdsJson);
 
         logInfo(
           "saveSchemaIdToTenantProperty",
-          `Saved schema ID ${schemaId} to tenant properties`,
+          `Saved schema ID ${schemaId} to storage`,
           { schemaId }
         );
       } catch (error) {
         logError(
           "saveSchemaIdToTenantProperty",
-          "Failed to save schema ID to tenant properties:",
+          "Failed to save schema ID to storage:",
           JSON.stringify(error)
         );
 
         throw new Error(
-          "Unable to save schema ID to SharePoint tenant properties. App catalog access may be required."
+          "Unable to save schema ID to SharePoint storage. App catalog access may be required."
         );
       }
     },
@@ -160,7 +161,7 @@ export const useSchemaExtension = ({
   );
 
   /**
-   * Remove a schema extension ID from SharePoint tenant properties
+   * Remove a schema extension ID from SharePoint list storage
    */
   const removeSchemaIdFromTenantProperty = React.useCallback(
     async (schemaId: string): Promise<void> => {
@@ -172,7 +173,7 @@ export const useSchemaExtension = ({
 
         logInfo(
           "removeSchemaIdFromTenantProperty",
-          `Removing schema extension ID ${schemaId} from SharePoint tenant properties`
+          `Removing schema extension ID ${schemaId} from SharePoint storage`
         );
 
         // Get current list of schema IDs
@@ -186,35 +187,35 @@ export const useSchemaExtension = ({
         if (updatedSchemaIds.length === currentSchemaIds.length) {
           logInfo(
             "removeSchemaIdFromTenantProperty",
-            `Schema ID ${schemaId} was not found in tenant properties`
+            `Schema ID ${schemaId} was not found in storage`
           );
           return;
         }
         if (updatedSchemaIds.length === 0) {
           // Remove the entire property by setting empty value
-          await updateTenantProperty(TENANT_PROPERTY_KEY, "");
+          await removeProperty(TENANT_PROPERTY_KEY);
           logInfo(
             "removeSchemaIdFromTenantProperty",
-            `Removed tenant property entirely as no schema IDs remain`
+            `Removed storage property entirely as no schema IDs remain`
           );
         } else {
           // Update the property with remaining IDs
           const schemaIdsJson = JSON.stringify(updatedSchemaIds);
-          await updateTenantProperty(TENANT_PROPERTY_KEY, schemaIdsJson);
+          await setProperty(TENANT_PROPERTY_KEY, schemaIdsJson);
           logInfo(
             "removeSchemaIdFromTenantProperty",
-            `Updated tenant properties, removed schema ID ${schemaId}`
+            `Updated storage, removed schema ID ${schemaId}`
           );
         }
       } catch (error) {
         logError(
           "removeSchemaIdFromTenantProperty",
-          "Failed to remove schema extension ID from tenant properties:",
+          "Failed to remove schema extension ID from storage:",
           JSON.stringify(error)
         );
 
         throw new Error(
-          "Unable to remove schema ID from SharePoint tenant properties."
+          "Unable to remove schema ID from SharePoint storage."
         );
       }
     },

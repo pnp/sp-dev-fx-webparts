@@ -34,8 +34,8 @@ define([], function() {
     
     // Access Information
     "AccessRestrictedTitle": "Access Restricted",
-    "AccessRestrictedMessage": "The Schema Extensions management required that user has full access to the Microsoft 365 tenant Site Appcatalog.",
-    "AccessRestrictedDetails": "This Application use features that required read and write access to the tenant properties.",
+    "AccessRestrictedMessage": "Schema Extensions management requires full access to the Microsoft 365 tenant App Catalog site.",
+    "AccessRestrictedDetails": "This application requires read and write access to manage schema extension configuration.",
     
     // Schema Extensions Toolbar
     "NewButtonLabel": "New",

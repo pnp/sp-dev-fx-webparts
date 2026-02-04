@@ -3,7 +3,6 @@ import * as strings from "ManageSchemaExtensionsWebPartStrings";
 
 import {
   ErrorType,
-  useAppCatalog,
   useAppToast,
   useLogging,
   useSharePointPermission,
@@ -28,6 +27,7 @@ import { ShowError } from "@spteck/react-controls";
 import { appGlobalStateAtom } from "../../atoms/appGlobalState";
 import { createV9Theme } from "@fluentui/react-migration-v8-v9";
 import { useHydrateAtoms } from "jotai/utils";
+import { useSchemaExtensionStorage } from "../../hooks/useSchemaExtensionStorage";
 
 const HydrateAtoms: React.FC<{
   initialValues: Array<[atom: unknown, value: unknown]>;
@@ -46,7 +46,7 @@ export const ManageSchemaExtensions: React.FunctionComponent<
   const { checkPermissionsWithObjectId } = useSharePointPermission(
     context.spHttpClient
   );
-  const { getAppCatalogUrl } = useAppCatalog(context);
+  const { getAppCatalogUrl } = useSchemaExtensionStorage(context);
   const [isLoadingData, setIsLoadingData] = React.useState(true);
   const [error, setError] = React.useState<string | undefined>(undefined);
   const [userHasPermissions, setUserHasPermissions] =
@@ -110,20 +110,20 @@ export const ManageSchemaExtensions: React.FunctionComponent<
         if (!appCatalogUrl) {
           throw new Error(strings.AppCatalogNotFoundError);
         }
-        // Check permissions for managing tenant properties in the app catalog
+        // Check permissions for managing configuration in the app catalog
         const permissions = await checkPermissionsWithObjectId(
           appCatalogUrl,
           "site",
           ""
         );
-        // If user has only ManageWeb or FullMask, they lack sufficient permissions
+        // User needs ManageWeb or FullMask permissions to manage the configuration list
         if (
           permissions.includes("ManageWeb") ||
           permissions.includes("FullMask")
         ) {
-          setUserHasPermissions(false);
-        } else {
           setUserHasPermissions(true);
+        } else {
+          setUserHasPermissions(false);
         }
       } catch (err) {
         const errorMessage =
