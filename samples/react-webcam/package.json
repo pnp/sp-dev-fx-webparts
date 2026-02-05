@@ -32,14 +32,14 @@
   },
   "devDependencies": {
     "@microsoft/rush-stack-compiler-2.9": "0.7.16",
-    "@microsoft/sp-build-web": "1.9.1",
+    "@microsoft/sp-build-web": "1.12.0",
     "@microsoft/sp-module-interfaces": "1.9.1",
     "@microsoft/sp-tslint-rules": "1.9.1",
-    "@microsoft/sp-webpart-workbench": "1.9.1",
+    "@microsoft/sp-webpart-workbench": "1.11.0",
     "@types/chai": "3.4.34",
     "@types/mocha": "2.2.38",
     "ajv": "~5.2.2",
-    "gulp": "~3.9.1",
+    "gulp": "~5.0.1",
     "webpack": "^4.39.3"
   }
 }
