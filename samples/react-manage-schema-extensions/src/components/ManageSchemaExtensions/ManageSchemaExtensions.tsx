@@ -116,10 +116,10 @@ export const ManageSchemaExtensions: React.FunctionComponent<
           "site",
           ""
         );
-        // User needs ManageWeb or FullMask permissions to manage the configuration list
+        // User needs manageWeb or fullMask permissions to manage the configuration list
         if (
-          permissions.includes("ManageWeb") ||
-          permissions.includes("FullMask")
+          permissions.includes("manageWeb") ||
+          permissions.includes("fullMask")
         ) {
           setUserHasPermissions(true);
         } else {

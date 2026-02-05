@@ -474,6 +474,7 @@ export const SchemaExtensionDrawer: React.FunctionComponent<
       onOpenChange={(_, { open }) => !open && handleClose()}
       size="medium"
       position="end"
+      modalType="alert"
     >
       <DrawerHeader>
         <DrawerHeaderTitle

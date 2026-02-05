@@ -3,8 +3,11 @@
 /* eslint-disable require-atomic-updates */
 import * as React from "react";
 
+import { useLogging } from "@spteck/m365-hooks";
+
 import { BaseComponentContext } from "@microsoft/sp-component-base";
-import { SPHttpClient, ISPHttpClientOptions } from "@microsoft/sp-http";
+import { SPHttpClient } from "@microsoft/sp-http";
+import { MSGraphClientV3 } from "@microsoft/sp-http";
 
 export interface IStorageProperty {
   Key: string;
@@ -32,6 +35,7 @@ const LIST_DESCRIPTION = "Hidden configuration list for Schema Extensions manage
  * This replaces tenant properties with a list-based approach that works with Site Collection Admin permissions.
  * 
  * The list is automatically provisioned on the App Catalog site if it doesn't exist.
+ * All operations use Microsoft Graph API for better compatibility and reliability.
  */
 export const useSchemaExtensionStorage = (
   context: BaseComponentContext
@@ -40,7 +44,11 @@ export const useSchemaExtensionStorage = (
   const [error, setError] = React.useState<string | undefined>(undefined);
   const [isListReady, setIsListReady] = React.useState<boolean>(false);
   const appCatalogUrlRef = React.useRef<string | undefined>(undefined);
+  const siteIdRef = React.useRef<string | undefined>(undefined);
+  const listIdRef = React.useRef<string | undefined>(undefined);
   const listEnsuredRef = React.useRef<boolean>(false);
+
+  const { logError, logInfo, logWarning } = useLogging();
 
   /**
    * Get the tenant App Catalog URL
@@ -65,113 +73,125 @@ export const useSchemaExtensionStorage = (
       appCatalogUrlRef.current = data.CorporateCatalogUrl;
       return appCatalogUrlRef.current;
     } catch (err) {
-      console.error("Failed to get App Catalog URL:", err);
+      logError("getAppCatalogUrl", "Failed to get App Catalog URL", { error: (err as Error).message });
       setError(`Failed to get App Catalog URL: ${(err as Error).message}`);
       return undefined;
     }
-  }, [context]);
+  }, [context, logError]);
 
   /**
-   * Check if the hidden list exists
+   * Get the site ID for the App Catalog using Graph API
    */
-  const checkListExists = React.useCallback(async (appCatalogUrl: string): Promise<boolean> => {
-    try {
-      const response = await context.spHttpClient.get(
-        `${appCatalogUrl}/_api/web/lists/getbytitle('${LIST_TITLE}')`,
-        SPHttpClient.configurations.v1
-      );
-      return response.ok;
-    } catch {
-      return false;
+  const getSiteId = React.useCallback(async (appCatalogUrl: string): Promise<string | undefined> => {
+    if (siteIdRef.current) {
+      return siteIdRef.current;
     }
-  }, [context]);
+
+    try {
+      // Extract hostname and site path from URL
+      const url = new URL(appCatalogUrl);
+      const hostname = url.hostname;
+      const sitePath = url.pathname;
+
+      const graphClient: MSGraphClientV3 = await context.msGraphClientFactory.getClient("3");
+      const site = await graphClient
+        .api(`/sites/${hostname}:${sitePath}`)
+        .version("v1.0")
+        .get();
+
+      siteIdRef.current = site.id;
+      return site.id;
+    } catch (err) {
+      logError("getSiteId", "Failed to get site ID", { error: (err as Error).message });
+      return undefined;
+    }
+  }, [context, logError]);
 
   /**
-   * Create the hidden list with required columns
+   * Get list ID by title using Graph API
    */
-  const createList = React.useCallback(async (appCatalogUrl: string): Promise<boolean> => {
+  const getListId = React.useCallback(async (siteId: string): Promise<string | undefined> => {
+    if (listIdRef.current) {
+      return listIdRef.current;
+    }
+
     try {
-      // Create the list
-      const listCreationBody = JSON.stringify({
-        __metadata: { type: "SP.List" },
-        Title: LIST_TITLE,
-        Description: LIST_DESCRIPTION,
-        BaseTemplate: 100, // Generic list
-        Hidden: true,
-        NoCrawl: true
-      });
+      const graphClient: MSGraphClientV3 = await context.msGraphClientFactory.getClient("3");
+      const lists = await graphClient
+        .api(`/sites/${siteId}/lists`)
+        .version("v1.0")
+        .filter(`displayName eq '${LIST_TITLE}'`)
+        .get();
 
-      const listOptions: ISPHttpClientOptions = {
-        headers: {
-          "Content-Type": "application/json;odata=verbose",
-          Accept: "application/json;odata=verbose"
-        },
-        body: listCreationBody
-      };
-
-      const createListResponse = await context.spHttpClient.post(
-        `${appCatalogUrl}/_api/web/lists`,
-        SPHttpClient.configurations.v1,
-        listOptions
-      );
-
-      if (!createListResponse.ok) {
-        const errorData = await createListResponse.json();
-        throw new Error(errorData?.error?.message?.value || `Failed to create list: ${createListResponse.status}`);
+      if (lists.value && lists.value.length > 0) {
+        listIdRef.current = lists.value[0].id;
+        return listIdRef.current;
       }
+      return undefined;
+    } catch (err) {
+      logError("getListId", "Failed to get list ID", { error: (err as Error).message });
+      return undefined;
+    }
+  }, [context, logError]);
 
-      // Add Value column (Note/Multi-line text for large JSON values)
-      const valueColumnBody = JSON.stringify({
-        __metadata: { type: "SP.FieldCreationInformation" },
-        Title: "Value",
-        FieldTypeKind: 3, // Note (multi-line text)
-        Required: false
-      });
+  /**
+   * Check if the hidden list exists using Graph API
+   */
+  const checkListExists = React.useCallback(async (siteId: string): Promise<boolean> => {
+    const listId = await getListId(siteId);
+    return listId !== undefined;
+  }, [getListId]);
 
-      const valueColumnOptions: ISPHttpClientOptions = {
-        headers: {
-          "Content-Type": "application/json;odata=verbose",
-          Accept: "application/json;odata=verbose"
+  /**
+   * Create the hidden list with required columns using Microsoft Graph API
+   */
+  const createList = React.useCallback(async (siteId: string): Promise<boolean> => {
+    try {
+      const graphClient: MSGraphClientV3 = await context.msGraphClientFactory.getClient("3");
+
+      // Create the list using Graph API
+      const listDefinition = {
+        displayName: LIST_TITLE,
+        description: LIST_DESCRIPTION,
+        list: {
+          template: "genericList",
+          hidden: false // Create visible first, hide later if needed
         },
-        body: valueColumnBody
+        columns: [
+          {
+            name: "Value",
+            text: {
+              allowMultipleLines: true,
+              maxLength: 0 // Unlimited for multi-line
+            }
+          },
+          {
+            name: "Description",
+            text: {
+              allowMultipleLines: false,
+              maxLength: 255
+            }
+          }
+        ]
       };
 
-      await context.spHttpClient.post(
-        `${appCatalogUrl}/_api/web/lists/getbytitle('${LIST_TITLE}')/fields`,
-        SPHttpClient.configurations.v1,
-        valueColumnOptions
-      );
+      logInfo("createList", "Creating list via Graph API...");
+      const createdList = await graphClient
+        .api(`/sites/${siteId}/lists`)
+        .version("v1.0")
+        .post(listDefinition);
 
-      // Add Description column
-      const descriptionColumnBody = JSON.stringify({
-        __metadata: { type: "SP.FieldCreationInformation" },
-        Title: "Description",
-        FieldTypeKind: 2, // Single line text
-        Required: false
-      });
+      logInfo("createList", "List created successfully", { listId: createdList.id });
+      listIdRef.current = createdList.id;
 
-      const descriptionColumnOptions: ISPHttpClientOptions = {
-        headers: {
-          "Content-Type": "application/json;odata=verbose",
-          Accept: "application/json;odata=verbose"
-        },
-        body: descriptionColumnBody
-      };
-
-      await context.spHttpClient.post(
-        `${appCatalogUrl}/_api/web/lists/getbytitle('${LIST_TITLE}')/fields`,
-        SPHttpClient.configurations.v1,
-        descriptionColumnOptions
-      );
-
-      console.log(`Successfully created hidden list '${LIST_TITLE}' on App Catalog`);
+      logInfo("createList", `Successfully created and configured list '${LIST_TITLE}' on App Catalog`);
       return true;
     } catch (err) {
-      console.error("Failed to create list:", err);
+      logError("createList", "Failed to create list", { error: (err as Error).message });
       setError(`Failed to create configuration list: ${(err as Error).message}`);
       return false;
     }
-  }, [context]);
+  }, [context, logInfo, logError]);
 
   /**
    * Ensure the list exists, creating it if necessary
@@ -190,11 +210,21 @@ export const useSchemaExtensionStorage = (
         throw new Error("App Catalog URL not available");
       }
 
-      const exists = await checkListExists(appCatalogUrl);
+      const siteId = await getSiteId(appCatalogUrl);
+      if (!siteId) {
+        throw new Error("Could not get site ID for App Catalog");
+      }
+
+      const exists = await checkListExists(siteId);
       if (!exists) {
-        const created = await createList(appCatalogUrl);
+        const created = await createList(siteId);
         if (!created) {
-          return false;
+          // Try checking again - maybe it was created by someone else or the creation partially succeeded
+          const existsAfterCreate = await checkListExists(siteId);
+          if (!existsAfterCreate) {
+            logError("ensureList", "List creation failed and list does not exist");
+            return false;
+          }
         }
       }
 
@@ -202,16 +232,17 @@ export const useSchemaExtensionStorage = (
       setIsListReady(true);
       return true;
     } catch (err) {
-      console.error("Failed to ensure list:", err);
+      logError("ensureList", "Failed to ensure list", { error: (err as Error).message });
       setError(`Failed to ensure configuration list: ${(err as Error).message}`);
       return false;
     } finally {
       setLoading(false);
     }
-  }, [getAppCatalogUrl, checkListExists, createList]);
+  }, [getAppCatalogUrl, getSiteId, checkListExists, createList, logError]);
 
   /**
-   * Get a property value from the list
+   * Get a property value from the list using Graph API
+   * Note: We get all items and filter client-side since Title is not indexed by default
    */
   const getProperty = React.useCallback(async (key: string): Promise<IStorageProperty | undefined> => {
     try {
@@ -222,35 +253,50 @@ export const useSchemaExtensionStorage = (
 
       await ensureList();
 
-      const response = await context.spHttpClient.get(
-        `${appCatalogUrl}/_api/web/lists/getbytitle('${LIST_TITLE}')/items?$filter=Title eq '${encodeURIComponent(key)}'&$select=Id,Title,Value,Description`,
-        SPHttpClient.configurations.v1
-      );
-
-      if (!response.ok) {
-        throw new Error(`Failed to get property: ${response.status}`);
+      const siteId = await getSiteId(appCatalogUrl);
+      if (!siteId) {
+        throw new Error("Could not get site ID");
       }
 
-      const data = await response.json();
-      const items = data.value;
+      const listId = await getListId(siteId);
+      if (!listId) {
+        throw new Error("Could not get list ID");
+      }
 
-      if (!items || items.length === 0) {
+      const graphClient: MSGraphClientV3 = await context.msGraphClientFactory.getClient("3");
+      
+      // Get all items and filter client-side (small config list, no need for server-side filter on non-indexed column)
+      const items = await graphClient
+        .api(`/sites/${siteId}/lists/${listId}/items`)
+        .version("v1.0")
+        .expand("fields($select=Title,Value,Description)")
+        .get();
+
+      if (!items.value || items.value.length === 0) {
         return undefined;
       }
 
+      // Filter client-side by Title
+      const matchingItem = items.value.find((item: { fields: { Title: string } }) => item.fields?.Title === key);
+      if (!matchingItem) {
+        return undefined;
+      }
+
+      const fields = matchingItem.fields;
       return {
-        Key: items[0].Title,
-        Value: items[0].Value || "",
-        Description: items[0].Description || ""
+        Key: fields.Title,
+        Value: fields.Value || "",
+        Description: fields.Description || ""
       };
     } catch (err) {
-      console.error(`Failed to get property '${key}':`, err);
+      logError("getProperty", `Failed to get property '${key}'`, { error: (err as Error).message });
       return undefined;
     }
-  }, [context, getAppCatalogUrl, ensureList]);
+  }, [context, getAppCatalogUrl, getSiteId, getListId, ensureList, logError]);
 
   /**
-   * Set a property value in the list (creates or updates)
+   * Set a property value in the list using Graph API (creates or updates)
+   * Note: We get all items and filter client-side since Title is not indexed by default
    */
   const setProperty = React.useCallback(async (
     key: string,
@@ -268,89 +314,67 @@ export const useSchemaExtensionStorage = (
 
       await ensureList();
 
-      // Check if item exists
-      const existingResponse = await context.spHttpClient.get(
-        `${appCatalogUrl}/_api/web/lists/getbytitle('${LIST_TITLE}')/items?$filter=Title eq '${encodeURIComponent(key)}'&$select=Id`,
-        SPHttpClient.configurations.v1
-      );
-
-      if (!existingResponse.ok) {
-        throw new Error(`Failed to check existing property: ${existingResponse.status}`);
+      const siteId = await getSiteId(appCatalogUrl);
+      if (!siteId) {
+        throw new Error("Could not get site ID");
       }
 
-      const existingData = await existingResponse.json();
-      const existingItems = existingData.value;
+      const listId = await getListId(siteId);
+      if (!listId) {
+        throw new Error("Could not get list ID");
+      }
 
-      if (existingItems && existingItems.length > 0) {
+      const graphClient: MSGraphClientV3 = await context.msGraphClientFactory.getClient("3");
+      
+      // Get all items and filter client-side (small config list)
+      const existingItems = await graphClient
+        .api(`/sites/${siteId}/lists/${listId}/items`)
+        .version("v1.0")
+        .expand("fields($select=Title)")
+        .get();
+
+      // Find existing item by Title client-side
+      const matchingItem = existingItems.value?.find((item: { fields: { Title: string } }) => item.fields?.Title === key);
+
+      if (matchingItem) {
         // Update existing item
-        const itemId = existingItems[0].Id;
-        const updateBody = JSON.stringify({
-          __metadata: { type: "SP.Data.SchemaExtensionsConfigListItem" },
-          Value: value,
-          Description: description || ""
-        });
-
-        const updateOptions: ISPHttpClientOptions = {
-          headers: {
-            "Content-Type": "application/json;odata=verbose",
-            Accept: "application/json;odata=verbose",
-            "IF-MATCH": "*",
-            "X-HTTP-Method": "MERGE"
-          },
-          body: updateBody
-        };
-
-        const updateResponse = await context.spHttpClient.post(
-          `${appCatalogUrl}/_api/web/lists/getbytitle('${LIST_TITLE}')/items(${itemId})`,
-          SPHttpClient.configurations.v1,
-          updateOptions
-        );
-
-        if (!updateResponse.ok) {
-          const errorData = await updateResponse.json();
-          throw new Error(errorData?.error?.message?.value || `Failed to update property: ${updateResponse.status}`);
-        }
+        const itemId = matchingItem.id;
+        await graphClient
+          .api(`/sites/${siteId}/lists/${listId}/items/${itemId}/fields`)
+          .version("v1.0")
+          .patch({
+            Value: value,
+            Description: description || ""
+          });
+        logInfo("setProperty", `Updated property '${key}'`);
       } else {
         // Create new item
-        const createBody = JSON.stringify({
-          __metadata: { type: "SP.Data.SchemaExtensionsConfigListItem" },
-          Title: key,
-          Value: value,
-          Description: description || ""
-        });
-
-        const createOptions: ISPHttpClientOptions = {
-          headers: {
-            "Content-Type": "application/json;odata=verbose",
-            Accept: "application/json;odata=verbose"
-          },
-          body: createBody
-        };
-
-        const createResponse = await context.spHttpClient.post(
-          `${appCatalogUrl}/_api/web/lists/getbytitle('${LIST_TITLE}')/items`,
-          SPHttpClient.configurations.v1,
-          createOptions
-        );
-
-        if (!createResponse.ok) {
-          const errorData = await createResponse.json();
-          throw new Error(errorData?.error?.message?.value || `Failed to create property: ${createResponse.status}`);
-        }
+        await graphClient
+          .api(`/sites/${siteId}/lists/${listId}/items`)
+          .version("v1.0")
+          .post({
+            fields: {
+              Title: key,
+              Value: value,
+              Description: description || ""
+            }
+          });
+        logInfo("setProperty", `Created property '${key}'`);
       }
 
-      console.log(`Successfully set property '${key}'`);
+      logInfo("setProperty", `Successfully set property '${key}'`);
     } catch (err) {
-      console.error(`Failed to set property '${key}':`, err);
+      logError("setProperty", `Failed to set property '${key}'`, { error: (err as Error).message });
       setError(`Failed to set property: ${(err as Error).message}`);
       throw err;
     } finally {
       setLoading(false);
     }
-  }, [context, getAppCatalogUrl, ensureList]);
+  }, [context, getAppCatalogUrl, getSiteId, getListId, ensureList, logInfo, logError]);
 
   /**
-   * Remove a property from the list
+   * Remove a property from the list using Graph API
+   * Note: We get all items and filter client-side since Title is not indexed by default
    */
   const removeProperty = React.useCallback(async (key: string): Promise<void> => {
     setLoading(true);
@@ -364,53 +388,49 @@ export const useSchemaExtensionStorage = (
 
       await ensureList();
 
-      // Find the item
-      const response = await context.spHttpClient.get(
-        `${appCatalogUrl}/_api/web/lists/getbytitle('${LIST_TITLE}')/items?$filter=Title eq '${encodeURIComponent(key)}'&$select=Id`,
-        SPHttpClient.configurations.v1
-      );
-
-      if (!response.ok) {
-        throw new Error(`Failed to find property: ${response.status}`);
+      const siteId = await getSiteId(appCatalogUrl);
+      if (!siteId) {
+        throw new Error("Could not get site ID");
       }
 
-      const data = await response.json();
-      const items = data.value;
+      const listId = await getListId(siteId);
+      if (!listId) {
+        throw new Error("Could not get list ID");
+      }
 
-      if (!items || items.length === 0) {
-        console.log(`Property '${key}' not found, nothing to delete`);
+      const graphClient: MSGraphClientV3 = await context.msGraphClientFactory.getClient("3");
+      
+      // Get all items and filter client-side (small config list)
+      const items = await graphClient
+        .api(`/sites/${siteId}/lists/${listId}/items`)
+        .version("v1.0")
+        .expand("fields($select=Title)")
+        .get();
+
+      // Find item by Title client-side
+      const matchingItem = items.value?.find((item: { fields: { Title: string } }) => item.fields?.Title === key);
+
+      if (!matchingItem) {
+        logWarning("removeProperty", `Property '${key}' not found, nothing to delete`);
         return;
       }
 
       // Delete the item
-      const itemId = items[0].Id;
-      const deleteOptions: ISPHttpClientOptions = {
-        headers: {
-          Accept: "application/json;odata=verbose",
-          "IF-MATCH": "*",
-          "X-HTTP-Method": "DELETE"
-        }
-      };
+      const itemId = matchingItem.id;
+      await graphClient
+        .api(`/sites/${siteId}/lists/${listId}/items/${itemId}`)
+        .version("v1.0")
+        .delete();
 
-      const deleteResponse = await context.spHttpClient.post(
-        `${appCatalogUrl}/_api/web/lists/getbytitle('${LIST_TITLE}')/items(${itemId})`,
-        SPHttpClient.configurations.v1,
-        deleteOptions
-      );
-
-      if (!deleteResponse.ok) {
-        throw new Error(`Failed to delete property: ${deleteResponse.status}`);
-      }
-
-      console.log(`Successfully removed property '${key}'`);
+      logInfo("removeProperty", `Successfully removed property '${key}'`);
     } catch (err) {
-      console.error(`Failed to remove property '${key}':`, err);
+      logError("removeProperty", `Failed to remove property '${key}'`, { error: (err as Error).message });
       setError(`Failed to remove property: ${(err as Error).message}`);
       throw err;
     } finally {
       setLoading(false);
     }
-  }, [context, getAppCatalogUrl, ensureList]);
+  }, [context, getAppCatalogUrl, getSiteId, getListId, ensureList, logInfo, logWarning, logError]);
 
   return {
     loading,
