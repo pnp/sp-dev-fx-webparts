@@ -1,0 +1,71 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-dragmatch-game",
+    "source": "pnp",
+    "title": "Drag Match",
+    "shortDescription": "An interactive drag-and-drop matching game for SharePoint with time-based scoring and rank bonuses.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-dragmatch-game",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-dragmatch-game",
+    "longDescription": [
+      "This web part provides an engaging drag-and-drop game where users match questions with their correct answers. Features include a countdown timer, instant visual feedback, time-based bonus scoring, and rewards for the first 100 completers. Each user can play only once, and all scores are saved to a SharePoint list for leaderboard tracking."
+    ],
+    "creationDateTime": "2026-02-07",
+    "updateDateTime": "2026-02-07",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      },
+      {
+        "key": "PNPCONTROLS",
+        "value": "no"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dragmatch-game/assets/dragmatch-preview.gif",
+        "alt": "Drag Match Game in action"
+      },
+      {
+        "type": "image",
+        "order": 200,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dragmatch-game/assets/dragmatch-completion.png",
+        "alt": "Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "yourgithub",
+        "pictureUrl": "https://github.com/yourgithub.png",
+        "name": "Your Name"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Supporting section backgrounds",
+        "description": "Starting with SharePoint Framework v1.8, web parts can be made aware of any section backgrounds and use these colors to improve the appearance of a web part when hosted in a section with a different background.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds"
+      },
+      {
+        "name": "Building Microsoft Teams Tabs using SharePoint Framework",
+        "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/integrate-with-teams-introduction"
+      }
+    ]
+  }
+]

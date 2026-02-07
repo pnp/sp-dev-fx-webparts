@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "dragmatch-webpart-client-side-solution",
+    "id": "dc14ff2a-6107-47de-b6ff-bbe9c1ffd917",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Your Name",
+      "websiteUrl": "https://yourwebsite.com",
+      "privacyUrl": "https://yourwebsite.com/privacy",
+      "termsOfUseUrl": "https://yourwebsite.com/terms",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Interactive drag-and-drop matching game"
+      },
+      "longDescription": {
+        "default": "An interactive drag-and-drop matching game with time-based scoring and rank bonuses"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "dragmatch-webpart-client-side-solution Feature",
+        "description": "The feature that activates elements of the dragmatch-webpart-client-side-solution solution.",
+        "id": "dc14ff2a-6107-47de-b6ff-bbe9c1ffd918",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/dragmatch-webpart.sppkg"
+  }
+}
