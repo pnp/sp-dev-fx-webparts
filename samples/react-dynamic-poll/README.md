@@ -52,7 +52,7 @@
      * IsActive (Yes/No)
  * A SharePoint list named **Poll Answers** with the following columns:
      * Title (Single line of text) - *Used to store User Email*
-     * PollId (Number)
+     * Poll (Lookup to Polls list)
      * Answer (Single line of text)
  
  ## Minimal path to awesome
