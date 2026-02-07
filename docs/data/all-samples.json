@@ -3743,6 +3743,48 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-dynamic-poll",
+    "source": "pnp",
+    "title": "React Dynamic Poll",
+    "shortDescription": "This web part allows users to vote on an active poll and immediately see the results. It is built using the SharePoint Framework (SPFx), React, and Fluent UI. The web part fetches the active poll question and options from a SharePoint list named 'Polls' and stores user answers in a 'Poll Answers' list.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-dynamic-poll",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-dynamic-poll",
+    "updateDateTime": "2026-02-07",
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.0"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "arigunawan",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/arigunawan.d8e771e0c819.webp",
+        "name": "Ari Gunawan",
+        "avatarSourceUrl": "https://github.com/arigunawan.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-dynamic-poll.webp",
+        "alt": "React Dynamic Poll"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-instagram",
     "source": "pnp",
     "title": "Instagram Feed Web Part",

@@ -287,6 +287,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-pnpjs/assets/summary.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-graph-pnpjs.webp"
   },
+  "pnp-sp-dev-spfx-web-parts-react-dynamic-poll": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dynamic-poll/assets/Answered.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-dynamic-poll.webp"
+  },
   "pnp-sp-dev-spfx-web-parts-react-instagram": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-instagram/assets/instagram-feed.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-instagram.webp"
