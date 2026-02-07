@@ -2115,6 +2115,10 @@
     "sourceUrl": "https://raw.githubusercontent.com/pnp/sp-dev-fx-extensions/main/samples/react-application-teams-chats-sharepoint/assets/Microsoft%20Teams%20chat%20in%20SharePoint%20sites.gif",
     "file": "pnp-sp-dev-spfx-extensions-react-application-teams-chats-sharepoint.webp"
   },
+  "pnp-sp-dev-spfx-extensions-react-application-page-indexer": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-page-indexer/assets/page-indexer-demo.gif",
+    "file": "pnp-sp-dev-spfx-extensions-react-application-page-indexer.webp"
+  },
   "pnp-sp-dev-spfx-extensions-react-command-singlepartapppage": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-singlepartapppage/assets/demo.gif",
     "file": "pnp-sp-dev-spfx-extensions-react-command-singlepartapppage.webp"

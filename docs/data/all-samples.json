@@ -26652,6 +26652,48 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-extensions-react-application-page-indexer",
+    "source": "pnp",
+    "title": "SharePoint Page Indexer",
+    "shortDescription": "An SPFx Application Customizer that automatically indexes SharePoint modern pages, extracting page content, web parts, and metadata into a centralized SharePoint list.",
+    "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-page-indexer",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-page-indexer",
+    "updateDateTime": "2025-02-06",
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "TypeScript"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "saiiiiiii",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/saiiiiiii.b1e132237a67.webp",
+        "name": "Sai Siva Ram Bandaru",
+        "avatarSourceUrl": "https://avatars.githubusercontent.com/u/46020510?v=4"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-application-page-indexer.webp",
+        "alt": "SharePoint Page Indexer"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-extensions-react-command-singlepartapppage",
     "source": "pnp",
     "title": "configure a Page as Single App Part page",
