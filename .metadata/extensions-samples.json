@@ -4826,6 +4826,78 @@
         ]
     },
     {
+        "name": "pnp-sp-dev-spfx-extensions-react-application-page-indexer",
+        "source": "pnp",
+        "title": "SharePoint Page Indexer",
+        "shortDescription": "An SPFx Application Customizer that automatically indexes SharePoint modern pages, extracting page content, web parts, and metadata into a centralized SharePoint list.",
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-page-indexer",
+        "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-page-indexer",
+        "longDescription": [
+            "This SPFx Application Customizer automatically indexes SharePoint Site Pages when they load. It captures complete page content including lazy-loaded sections, catalogs all SPFx web parts, calculates word counts, and stores everything in a centralized PageIndex SharePoint list. The solution includes intelligent deduplication, auto-scroll functionality for complete content capture, and debug tools for manual testing."
+        ],
+        "creationDateTime": "2025-02-06",
+        "updateDateTime": "2025-02-06",
+        "products": [
+            "SharePoint",
+            "Office"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "TypeScript"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.20.0"
+            }
+        ],
+        "thumbnails": [
+            {
+                "name": "page-indexer-demo.gif",
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-page-indexer/assets/page-indexer-demo.gif",
+                "alt": "SharePoint Page Indexer - Automatic page content indexing"
+            },
+            {
+                "name": "papageindex-list.png",
+                "type": "image",
+                "order": 101,
+                "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-page-indexer/assets/pageindex-list.png",
+                "alt": "PageIndex SharePoint List with indexed content"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "saiiiiiii",
+                "pictureUrl": "https://avatars.githubusercontent.com/u/46020510?v=4",
+                "name": "Sai Siva Ram Bandaru"
+            }
+        ],
+        "references": [
+            {
+                "name": "Getting started with SharePoint Framework",
+                "description": "Introduction about how to develop Microsoft 365 extensions using SharePoint Framework.",
+                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant"
+            },
+            {
+                "name": "Build your first SharePoint Framework Extension",
+                "description": "Learn how to build your first SharePoint Framework Application Customizer.",
+                "url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/extensions/get-started/build-a-hello-world-extension"
+            },
+            {
+                "name": "Microsoft 365 Patterns and Practices",
+                "description": "Guidance, tooling, samples and open-source controls for your Microsoft 365 development.",
+                "url": "https://aka.ms/m365pnp"
+            },
+            {
+                "name": "PnPjs Documentation",
+                "description": "PnPjs is a collection of fluent libraries for consuming SharePoint, Graph, and Office 365 REST APIs.",
+                "url": "https://pnp.github.io/pnpjs/"
+            }
+        ]
+    },
+    {
         "name": "pnp-sp-dev-spfx-extensions-react-command-singlepartapppage",
         "source": "pnp",
         "title": "configure a Page as Single App Part page",
