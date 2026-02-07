@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-dynamic-poll-client-side-solution",
+    "id": "0e07225f-c309-401c-ab47-1fed99cfc551",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-dynamic-poll description"
+      },
+      "longDescription": {
+        "default": "react-dynamic-poll description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-dynamic-poll Feature",
+        "description": "The feature that activates elements of the react-dynamic-poll solution.",
+        "id": "532d75f2-5107-4c0c-a1f7-7a500d5b4996",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-dynamic-poll.sppkg"
+  }
+}
