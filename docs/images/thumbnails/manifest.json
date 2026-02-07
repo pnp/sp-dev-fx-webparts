@@ -407,6 +407,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-soccer-highlights/assets/SoccerHighlightsV1.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-soccer-highlights.webp"
   },
+  "pnp-sp-dev-spfx-web-parts-react-dragmatch-game": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-dragmatch-game/assets/dragmatch-preview.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-dragmatch-game.webp"
+  },
   "pnp-sp-dev-spfx-web-parts-react-property-bag-editor": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-property-bag-editor/assets/PropertyBagEditorDisplay.PNG",
     "file": "pnp-sp-dev-spfx-web-parts-react-property-bag-editor.webp"
