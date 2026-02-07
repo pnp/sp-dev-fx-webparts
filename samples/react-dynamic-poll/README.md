@@ -4,10 +4,11 @@
  
  This web part allows users to vote on an active poll and immediately see the results. It is built using the SharePoint Framework (SPFx), React, and Fluent UI. The web part fetches the active poll question and options from a SharePoint list named 'Polls' and stores user answers in a 'Poll Answers' list.
  
+ ![Questions List](assets/Questions.png)
  ![Question](assets/Question.png)
  ![Answered](assets/Answered.png)
- ![Results](assets/Result.png)
  ![List](assets/List.png)
+ ![Results](assets/Result.png)
  
  ## Compatibility
  
