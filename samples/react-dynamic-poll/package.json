@@ -13,32 +13,33 @@
     "serve": "fast-serve"
   },
   "dependencies": {
-    "tslib": "2.3.1",
-    "react": "17.0.1",
-    "react-dom": "17.0.1",
     "@fluentui/react": "^8.106.4",
-    "@microsoft/sp-core-library": "1.21.0",
     "@microsoft/sp-component-base": "1.21.0",
+    "@microsoft/sp-core-library": "1.21.0",
+    "@microsoft/sp-lodash-subset": "1.21.0",
+    "@microsoft/sp-office-ui-fabric-core": "1.21.0",
     "@microsoft/sp-property-pane": "1.21.0",
     "@microsoft/sp-webpart-base": "1.21.0",
-    "@microsoft/sp-lodash-subset": "1.21.0",
-    "@microsoft/sp-office-ui-fabric-core": "1.21.0"
+    "@pnp/sp": "^4.17.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "tslib": "2.3.1"
   },
   "devDependencies": {
-    "@microsoft/rush-stack-compiler-5.3": "0.1.0",
-    "@rushstack/eslint-config": "4.0.1",
-    "@microsoft/eslint-plugin-spfx": "1.21.0",
     "@microsoft/eslint-config-spfx": "1.21.0",
+    "@microsoft/eslint-plugin-spfx": "1.21.0",
+    "@microsoft/rush-stack-compiler-5.3": "0.1.0",
     "@microsoft/sp-build-web": "1.21.0",
+    "@microsoft/sp-module-interfaces": "1.21.0",
+    "@rushstack/eslint-config": "4.0.1",
+    "@types/react": "17.0.45",
+    "@types/react-dom": "17.0.17",
     "@types/webpack-env": "~1.15.2",
     "ajv": "^6.12.5",
     "eslint": "8.57.1",
-    "gulp": "4.0.2",
-    "typescript": "~5.3.3",
-    "@types/react": "17.0.45",
-    "@types/react-dom": "17.0.17",
     "eslint-plugin-react-hooks": "4.3.0",
-    "@microsoft/sp-module-interfaces": "1.21.0",
-    "spfx-fast-serve-helpers": "~1.21.0"
+    "gulp": "4.0.2",
+    "spfx-fast-serve-helpers": "~1.21.0",
+    "typescript": "~5.3.3"
   }
 }
