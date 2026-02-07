@@ -23,7 +23,7 @@ export class SharePointGameService {
   public async getMatchQuestions(): Promise<IMatchQuestion[]> {
     try {
       const items = await this.sp.web.lists
-        .getByTitle("MatchQuestions1")
+        .getByTitle("MatchQuestions")
         .items.filter("IsActive eq 1")
         .select("Id", "Question", "Answer", "Difficulty", "IsActive")
         .top(5000)();
