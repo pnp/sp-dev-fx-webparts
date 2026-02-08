@@ -1,0 +1,22 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.20.0",
+    "libraryName": "spin-wheel-solution",
+    "libraryId": "dcdd81fc-e9c1-4df0-9284-992f716a3f27",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "spin-wheel-solution",
+    "solutionShortDescription": "An interactive daily spin wheel game with probability-based rewards",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart",
+    "nodeVersion": "18.20.4",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.9.0"
+    },
+    "template": "react"
+  }
+}

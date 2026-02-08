@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "spin-wheel-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/spinWheel/SpinWheelWebPart.js",
+          "manifest": "./src/webparts/spinWheel/SpinWheelWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SpinWheelWebPartStrings": "lib/webparts/spinWheel/loc/{locale}.js"
+  }
+}
