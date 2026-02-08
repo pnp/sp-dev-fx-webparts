@@ -176,7 +176,8 @@ export function SamplesGallery(props: SamplesGalleryProps) {
             setError(null);
 
             try {
-                const res = await fetch(props.src, { cache: "force-cache" });
+                const srcWithTs = typeof props.src === 'string' ? `${props.src}${props.src.includes('?') ? '&' : '?'}t=${Date.now()}` : props.src;
+                const res = await fetch(srcWithTs, { cache: "no-store" });
                 if (!res.ok) throw new Error(`Failed to load samples: ${res.status}`);
                 const data = (await res.json()) as unknown;
 
