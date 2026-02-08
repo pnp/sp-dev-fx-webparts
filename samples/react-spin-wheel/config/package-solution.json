@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spin-wheel-solution",
+    "id": "dcdd81fc-e9c1-4df0-9284-992f716a3f27",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Your Company",
+      "websiteUrl": "https://yourcompany.com",
+      "privacyUrl": "https://yourcompany.com/privacy",
+      "termsOfUseUrl": "https://yourcompany.com/terms",
+      "mpnId": "Undefined-1.19.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "A fun and interactive spin wheel game"
+      },
+      "longDescription": {
+        "default": "Spin the wheel daily to earn points and rewards. An engaging gamification solution for SharePoint."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "spin-wheel-solution Feature",
+        "description": "The feature that activates elements of the spin-wheel-solution solution.",
+        "id": "dcdd81fc-e9c1-4df0-9284-992f716a3f28",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/spin-wheel-solution.sppkg"
+  }
+}
