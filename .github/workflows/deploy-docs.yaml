@@ -3,7 +3,7 @@ name: Deploy Docs to GitHub Pages
 on:
   push:
     branches:
-      - docs  # Trigger on pushes to docs branch
+      - Docs  # Trigger on pushes to docs branch
   workflow_dispatch:  # Allow manual triggers
 
 # Prevent multiple deployments from running at the same time
@@ -25,7 +25,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          ref: docs  # Checkout the docs branch
+          ref: Docs  # Checkout the docs branch
       
       - name: Setup Pages
         uses: actions/configure-pages@v5
