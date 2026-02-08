@@ -1,0 +1,48 @@
+name: Deploy Docs to GitHub Pages
+
+on:
+  push:
+    branches:
+      - docs  # Trigger on pushes to docs branch
+  workflow_dispatch:  # Allow manual triggers
+
+# Prevent multiple deployments from running at the same time
+concurrency:
+  group: "pages"
+  cancel-in-progress: true  # Cancel older runs when new one starts
+
+# Sets permissions of the GITHUB_TOKEN
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  # Build job
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          ref: docs  # Checkout the docs branch
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './docs'  # Changed from '.' to './docs'
+
+  # Deployment job
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build  # Wait for build to complete
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
