@@ -32,7 +32,7 @@
     "@pnp/sp": "^4.2.0",
     "@pnp/spfx-controls-react": "3.18.1",
     "@pnp/spfx-property-controls": "^3.17.1",
-    "axios": "^1.7.2",
+    "axios": "^1.13.5",
     "moment-range": "^4.0.2",
     "moment-timezone": "^0.5.45",
     "office-ui-fabric-react": "^7.204.0",
