@@ -31,7 +31,7 @@
     "date-fns": "^2.29.3",
     "gpt3-tokenizer": "^1.1.5",
     "jotai": "^2.0.0",
-    "markdown-it": "^13.0.1",
+    "markdown-it": "^14.1.1",
     "office-ui-fabric-react": "^7.199.1",
     "openai": "^4.55.5",
     "react": "17.0.1",
