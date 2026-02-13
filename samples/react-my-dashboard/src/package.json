@@ -36,7 +36,7 @@
     "data-fns": "^1.1.0",
     "date-fns-tz": "^2.0.0",
     "jotai": "^2.1.0",
-    "markdown-it": "^13.0.1",
+    "markdown-it": "^14.1.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "swiper": "^8.4.7",
