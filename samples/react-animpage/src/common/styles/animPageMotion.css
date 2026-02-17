@@ -1,0 +1,87 @@
+/* Highlight when navigating from property pane to webparts */
+@keyframes apm-highlight-soft {
+  /* Initial state: no shadow, normal scale */
+  0% {
+    box-shadow: 0 0 0 rgba(0, 120, 212, 0);
+    transform: scale(1);
+  }
+  /* Mid state: visible shadow and slightly zoomed */
+  50% {
+    box-shadow: 0 0 10px rgba(0, 120, 212, 0.5);
+    transform: scale(1.02);
+  }
+  /* End state: back to normal with no shadow */
+  100% {
+    box-shadow: 0 0 0 rgba(0, 120, 212, 0);
+    transform: scale(1);
+  }
+}
+
+/* Temporary highlight style applied when jumping to a web part */
+.apm-highlight {
+  outline: 2px solid #0078d4; /* Blue outline to mark the element */
+  outline-offset: 4px;        /* Space between outline and element */
+  border-radius: 0;
+  animation: apm-highlight-soft 0.6s ease-in-out; /* Use the keyframes defined above */
+  transition: outline 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Spring-like easing */
+/* Global CSS variable used for animation timing functions */
+:root {
+  --apm-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Fade */
+/* Basic fade and slight upward motion */
+.apm-fade {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+/* Slide */
+/* Slide in from the left with fade */
+.apm-slide {
+  opacity: 0;
+  transform: translateX(-60px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+/* Scale */
+/* Zoom-in effect with fade */
+.apm-scale {
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+/* Premium soft */
+/* Gentle upward movement using spring easing */
+.apm-fade-soft {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s var(--apm-spring), transform 0.8s var(--apm-spring);
+}
+
+/* Premium strong */
+/* Stronger upward + slight scale animation using spring easing */
+.apm-fade-strong {
+  opacity: 0;
+  transform: translateY(80px) scale(0.96);
+  transition: opacity 0.9s var(--apm-spring), transform 0.9s var(--apm-spring);
+}
+
+/* Card pop */
+/* Card-like pop-in with scale and upward motion */
+.apm-card-pop {
+  opacity: 0;
+  transform: scale(0.8) translateY(40px);
+  transition: opacity 0.7s var(--apm-spring), transform 0.7s var(--apm-spring);
+}
+
+/* Final visible state applied by RevealOnScrollService */
+.apm-visible {
+  opacity: 1;
+  transform: none;
+}
