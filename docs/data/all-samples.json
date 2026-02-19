@@ -1182,6 +1182,52 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-spin-wheel",
+    "source": "pnp",
+    "title": "Spin Wheel Game",
+    "shortDescription": "An interactive daily spin wheel game with probability-based rewards, built with React and PnPjs v4",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-spin-wheel",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-spin-wheel",
+    "updateDateTime": "2026-02-08",
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      },
+      {
+        "key": "PNPJS-VERSION",
+        "value": "4.7.0"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "saiiiiiii",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/saiiiiiii.b1e132237a67.webp",
+        "name": "Sai Siva Ram Bandaru",
+        "avatarSourceUrl": "https://github.com/saiiiiiii.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-spin-wheel.webp",
+        "alt": "Spin Wheel Game"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-tinymce",
     "source": "pnp",
     "title": "TinyMCE Editor Web Part Integration with SharePoint",

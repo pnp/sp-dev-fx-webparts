@@ -95,6 +95,10 @@
     "sourceUrl": "https://github.com/pnp/media/raw/master/parker/pnp/300w/parker.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-sp-pnp-js-property-decorators.webp"
   },
+  "pnp-sp-dev-spfx-web-parts-react-spin-wheel": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-spin-wheel/assets/spin-wheel-demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-spin-wheel.webp"
+  },
   "pnp-sp-dev-spfx-web-parts-react-tinymce": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tinymce/assets/preview.gif",
     "file": "pnp-sp-dev-spfx-web-parts-react-tinymce.webp"
