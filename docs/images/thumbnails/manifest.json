@@ -1451,6 +1451,10 @@
     "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-banner.gif",
     "file": "pnp-sp-dev-spfx-web-parts-react-banner.webp"
   },
+  "pnp-sp-dev-spfx-web-parts-react-copilot-apis-explorer": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-apis-explorer/assets/copilot-chat-api.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-copilot-apis-explorer.webp"
+  },
   "pnp-sp-dev-spfx-web-parts-react-fluentui-9": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-fluentui-9/assets/FQzNLB4XwAIFMRh.jpg",
     "file": "pnp-sp-dev-spfx-web-parts-react-fluentui-9.webp"
