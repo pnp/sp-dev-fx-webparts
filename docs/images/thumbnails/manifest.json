@@ -495,6 +495,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-tab-field-visit-mashup/documentation/FieldVisitDemo.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-teams-tab-field-visit-mashup.webp"
   },
+  "pnp-sp-dev-spfx-web-parts-react-navigation-tabs": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-navigation-tabs/assets/card-layout-tabs.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-navigation-tabs.webp"
+  },
   "pnp-sp-dev-spfx-web-parts-react-world-clocks": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-world-clocks/assets/ClocksInAction.gif?raw=true",
     "file": "pnp-sp-dev-spfx-web-parts-react-world-clocks.webp"

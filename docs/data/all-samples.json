@@ -6432,6 +6432,52 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-navigation-tabs",
+    "source": "pnp",
+    "title": "Navigation Tabs",
+    "shortDescription": "A SharePoint Framework (SPFx 1.22) web part that displays navigation links organized by tabbed categories. Links are stored in a SharePoint list and rendered in one of three layout styles: Card, Compact, and Tile.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-navigation-tabs",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-navigation-tabs",
+    "updateDateTime": "2026-02-20",
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.22.1"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "wkwolff",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/wkwolff.3277042fb560.webp",
+        "name": "W. Kevin Wolff",
+        "avatarSourceUrl": "https://github.com/wkwolff.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-navigation-tabs.webp",
+        "alt": "Navigation Tabs"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-world-clocks",
     "source": "pnp",
     "title": "World Clocks Web Part",
