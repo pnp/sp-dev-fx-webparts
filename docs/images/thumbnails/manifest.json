@@ -1051,6 +1051,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-poll/assets/react-poll.gif",
     "file": "pnp-sp-dev-spfx-web-parts-react-poll.webp"
   },
+  "pnp-sp-dev-spfx-web-parts-react-animpage": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-animpage/assets/Animation.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-animpage.webp"
+  },
   "pnp-sp-dev-spfx-web-parts-react-links": {
     "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-links.gif",
     "file": "pnp-sp-dev-spfx-web-parts-react-links.webp"

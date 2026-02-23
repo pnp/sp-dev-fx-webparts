@@ -13490,6 +13490,52 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-animpage",
+    "source": "pnp",
+    "title": "AnimPage Motion - Page Scroll Animations for Web Parts",
+    "shortDescription": "This is a sample web part that illustrates how to use PnPjs, the IntersectionObserver API, and CSS animations to build a SharePoint Framework client-side web part that adds reveal-on-scroll animations to other web parts on a modern SharePoint page.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-animpage",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-animpage",
+    "updateDateTime": "2026-02-17",
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.22.1"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "dhiabedoui",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/dhiabedoui.69c22c24ae3c.webp",
+        "name": "dhiabedoui",
+        "avatarSourceUrl": "https://github.com/dhiabedoui.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-animpage.webp",
+        "alt": "AnimPage Motion - Page Scroll Animations for Web Parts"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-links",
     "source": "pnp",
     "title": "Links web part",
