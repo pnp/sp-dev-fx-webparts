@@ -34,7 +34,7 @@ This sample is optimally compatible with the following environment configuration
 ## Applies to
 
 - [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+- [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Contributors
 
@@ -82,9 +82,10 @@ Using data-* attributes to store configuration (data-apm-mode, data-apm-delay).
 Implementing a highlight animation (apm-highlight) when navigating from the property pane to a web part.
 
 ## Setup / How it works
-This webpart detects other webparts present on the **current modern page**.
-To see results, add **at least one additional webpart** to the page (e.g., Text, Image, Quick Links), then open this webpart's property pane.
-If the page contains no other webparts, the list will be empty (this is expected).
+
+This web part detects other web parts present on the **current modern page**.
+To see results, add **at least one additional web part** to the page (e.g., Text, Image, Quick Links), then open this web part's property pane.
+If the page contains no other web parts, the list will be empty (this is expected).
 
 ## Help
 
