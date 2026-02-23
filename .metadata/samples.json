@@ -17948,6 +17948,73 @@
         ]
     },
     {
+        "name": "pnp-sp-dev-spfx-web-parts-react-animpage",
+        "source": "pnp",
+        "title": "AnimPage Motion - Page Scroll Animations for Web Parts",
+        "shortDescription": "This is a sample web part that illustrates how to use PnPjs, the IntersectionObserver API, and CSS animations to build a SharePoint Framework client-side web part that adds reveal-on-scroll animations to other web parts on a modern SharePoint page.",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-animpage",
+        "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-animpage",
+        "longDescription": [
+            "This is a sample web part that illustrates how to use PnPjs, the IntersectionObserver API, and CSS animations to build a SharePoint Framework client-side web part that adds reveal-on-scroll animations to other web parts on a modern SharePoint page."
+        ],
+        "creationDateTime": "2026-02-17",
+        "updateDateTime": "2026-02-17",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "SAMPLE-TYPE",
+                "value": "SPFx-WebPart"
+            },
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.22.1"
+            }
+        ],
+        "thumbnails": [
+            {
+                "name": "Animation.gif",
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-animpage/assets/Animation.gif",
+                "alt": "Web Part Preview"
+            },
+            {
+                "name": "ScreenShot1.png",
+                "type": "image",
+                "order": 101,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-animpage/assets/ScreenShot1.png",
+                "alt": "Web Part Preview"
+            },
+            {
+                "name": "ScreenShot2.png",
+                "type": "image",
+                "order": 102,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-animpage/assets/ScreenShot2.png",
+                "alt": "Web Part Preview"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "dhiabedoui",
+                "pictureUrl": "https://github.com/dhiabedoui.png",
+                "name": "dhiabedoui"
+            }
+        ],
+        "references": [
+            {
+                "name": "Build your first SharePoint client-side web part",
+                "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+                "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+            }
+        ]
+    },
+    {
         "name": "pnp-sp-dev-spfx-web-parts-react-links",
         "source": "pnp",
         "title": "Links web part",
