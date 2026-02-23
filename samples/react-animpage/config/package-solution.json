@@ -33,8 +33,6 @@
         "version": "1.0.0.0",
         "assets": {
           "elementManifests": [
-            "elements.xml",
-            "ClientSideInstance.xml"
           ]
         }
       }

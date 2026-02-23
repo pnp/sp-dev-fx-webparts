@@ -10,7 +10,8 @@ import {
   PropertyPaneSlider,
   PropertyPaneHorizontalRule,
   PropertyPaneButton,
-  PropertyPaneButtonType
+  PropertyPaneButtonType,
+  PropertyPaneTextField
 } from "@microsoft/sp-property-pane";
 // Import base class for client-side web parts
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
@@ -180,67 +181,84 @@ export default class AnimPageMotionWebPart extends BaseClientSideWebPart<IAnimPa
 
   // Build the configuration of the property pane
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
-    // Build a group of controls for each web part detected on the page
-    const groups = this.pageWebParts.map((wp) => ({
-      groupName: "",
-      groupFields: [
-        
-        // Button to scroll to the associated web part
-        PropertyPaneButton("",{
-          
-          text:wp.title || "Web Part",     // Button text uses the web part title when available
-          icon:"ChevronRight",            // Icon displayed on the button
-
-          buttonType:PropertyPaneButtonType.Command,
-          ariaDescription:"Scroll to web part",
-          // On click, scroll to the corresponding web part on the page
-          onClick:()=>this.scrollToWebPart(wp.id)
-        }),
-        // Toggle to enable or disable animation for this web part
-        PropertyPaneToggle(`webPartsConfig.${wp.id}.enabled`, {
-          label: "Enable animation",
-        }),
-        // Dropdown to select the animation preset
-        PropertyPaneDropdown(`webPartsConfig.${wp.id}.preset`, {
-          label: "Animation type",
-          options: [
-            { key: "fade", text: "Fade" },
-            { key: "slide", text: "Slide" },
-            { key: "scale", text: "Scale" },
-            { key: "fadeUpSoft", text: "Fade Up (Soft)" },
-            { key: "fadeUpStrong", text: "Fade Up (Strong)" },
-            { key: "cardPop", text: "Card Pop" },
-          ],
-        }),
-        // Dropdown to choose animation mode (once vs always)
-        PropertyPaneDropdown(`webPartsConfig.${wp.id}.mode`, {
-          label: "Animation mode",
-          options: [
-            { key: "once", text: "Once" },
-            { key: "always", text: "On every scroll" },
-          ],
-        }),
-
-        // Slider to configure delay before animation starts
-        PropertyPaneSlider(`webPartsConfig.${wp.id}.delayMs`, {
-          label: "Delay (ms)",
-          min: 0,
-          max: 1000,
-          step: 50,
-        }),
-        // Horizontal rule to visually separate web parts in the property pane
-         PropertyPaneHorizontalRule()
-      ],
-    }));
-
-    // Return final property pane configuration
+  // If no other web parts are detected on the page
+  if (!this.pageWebParts || this.pageWebParts.length === 0) {
     return {
       pages: [
         {
           header: { description: "" },
-          groups,
-        },
-      ],
+          groups: [
+            {
+              groupName: "Info",
+              groupFields: [
+                PropertyPaneTextField("infoMessage", {
+                  label: "",
+                  description: "",
+                  value:
+                    "No other web parts were detected on this page. " +
+                    "Add at least one other web part and reopen this property pane " +
+                    "to configure animations.",
+                  multiline: true,
+                  disabled: true
+                })
+              ]
+            }
+          ]
+        }
+      ]
     };
   }
+
+  // Existing logic when web parts are found
+  const groups = this.pageWebParts.map((wp) => ({
+    groupName: "",
+    groupFields: [
+      PropertyPaneButton("", {
+        text: wp.title || "Web Part",
+        icon: "ChevronRight",
+        buttonType: PropertyPaneButtonType.Command,
+        ariaDescription: "Scroll to web part",
+        onClick: () => this.scrollToWebPart(wp.id)
+      }),
+      PropertyPaneToggle(`webPartsConfig.${wp.id}.enabled`, {
+        label: "Enable animation"
+      }),
+      PropertyPaneDropdown(`webPartsConfig.${wp.id}.preset`, {
+        label: "Animation type",
+        options: [
+          { key: "fade", text: "Fade" },
+          { key: "slide", text: "Slide" },
+          { key: "scale", text: "Scale" },
+          { key: "fadeUpSoft", text: "Fade Up (Soft)" },
+          { key: "fadeUpStrong", text: "Fade Up (Strong)" },
+          { key: "cardPop", text: "Card Pop" }
+        ]
+      }),
+      PropertyPaneDropdown(`webPartsConfig.${wp.id}.mode`, {
+        label: "Animation mode",
+        options: [
+          { key: "once", text: "Once" },
+          { key: "always", text: "On every scroll" }
+        ]
+      }),
+      PropertyPaneSlider(`webPartsConfig.${wp.id}.delayMs`, {
+        label: "Delay (ms)",
+        min: 0,
+        max: 1000,
+        step: 50
+      }),
+      PropertyPaneHorizontalRule()
+    ]
+  }));
+
+  return {
+    pages: [
+      {
+        header: { description: "" },
+        groups
+      }
+    ]
+  };
+}
+
 }

@@ -81,6 +81,11 @@ apm-fade, apm-slide, apm-scale, apm-fade-soft, apm-fade-strong, apm-card-pop
 Using data-* attributes to store configuration (data-apm-mode, data-apm-delay).
 Implementing a highlight animation (apm-highlight) when navigating from the property pane to a web part.
 
+## Setup / How it works
+This webpart detects other webparts present on the **current modern page**.
+To see results, add **at least one additional webpart** to the page (e.g., Text, Image, Quick Links), then open this webpart's property pane.
+If the page contains no other webparts, the list will be empty (this is expected).
+
 ## Help
 
 We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
@@ -102,3 +107,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 <img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-animpage" />
+
