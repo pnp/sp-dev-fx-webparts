@@ -10,57 +10,62 @@ This sample creates an Adaptive Cards Host web part that you can use to display 
 
 ![Adaptive Cards Host](./assets/AdaptiveCardsHostAllSamples.gif)
 
-
 ## Compatibility
 
-| :warning: Important          |
-|:---------------------------|
-| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
-|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+| :warning: Important                                                                                                                                                                                                                                                                           |
+| :-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node. |
+| Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.                                                                                                                                                                                                             |
 
-![SPFx 1.12.1](https://img.shields.io/badge/SPFx-1.12.1-green.svg)
-![Node.js v14 | v12 | v10](https://img.shields.io/badge/Node.js-v14%20%7C%20v12%20%7C%20v10-green.svg) 
+![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
+![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
-![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Does not work with SharePoint 2016 (Feature Pack 2)](<https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg> "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Local Workbench Partially)](https://img.shields.io/badge/Local%20Workbench-Partially-yellow.svg "Some of the functionality may not work.")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
 
-* [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-* [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+- [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+- [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
 
 ## Prerequisites
 
-There are no pre-requisites, but you'll probably want to have some [Adaptive Cards samples](https://adaptivecards.io/samples/) ready to try out the web part.
+- [Node.js](https://nodejs.org) v22.x
+- [SharePoint Framework development tools](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment)
+
+There are no additional pre-requisites, but you'll probably want to have some [Adaptive Cards samples](https://adaptivecards.io/samples/) ready to try out the web part.
 
 ## Contributors
 
-* [Hugo Bernier](https://github.com/hugoabernier)
-* [Paul Schaeflein](https://github.com/pschaeflein) 
+- [Hugo Bernier](https://github.com/hugoabernier)
+- [Paul Schaeflein](https://github.com/pschaeflein)
+- [Gretchun Kim](https://github.com/gretchunkim)
 
 ## Version history
 
-Version|Date|Comments
--------|----|--------
-1.0.0|March 24, 2020|Initial release
-2.0.0|April 06, 2020|Added data and template URLs
-2.1.0|June 11, 2020|Fixed breaking changes introduced with Adaptive Card Templating in May update
-2.2.0|August 25, 2020|Upgraded to SPFx 1.11
-2.2.1|February 23, 2021|Fixed FluentUI dependencies introduced with newer versions of Adaptive Cards React.
-2.3.0|August 2, 2021|Upgraded to SPFx 1.12.1
+| Version | Date              | Comments                                                                            |
+| ------- | ----------------- | ----------------------------------------------------------------------------------- |
+| 2.3.1   | February 25, 2026 | Upgraded to SPFx 1.21. Fixed TypeScript compilation errors and build configuration. |
+| 2.3.0   | August 2, 2021    | Upgraded to SPFx 1.12.1                                                             |
+| 2.2.1   | February 23, 2021 | Fixed FluentUI dependencies introduced with newer versions of Adaptive Cards React. |
+| 2.2.0   | August 25, 2020   | Upgraded to SPFx 1.11                                                               |
+| 2.1.0   | June 11, 2020     | Fixed breaking changes introduced with Adaptive Card Templating in May update       |
+| 2.0.0   | April 06, 2020    | Added data and template URLs                                                        |
+| 1.0.0   | March 24, 2020    | Initial release                                                                     |
 
 ## Minimal Path to Awesome
 
-* Clone this repository
-* From your command line, change to the folder for this sample (`react-adaptivecards`)
-* In the command line run:
-  * `npm install`
-  * `gulp serve`
+- Clone this repository
+- From your command line, change to the folder for this sample (`react-adaptivecards`)
+- In the command line run:
+  - `npm install`
+  - `npm run build` (to build the solution)
+  - `npx gulp serve --nobrowser` (to serve the web part)
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 > Don't want to clone the entire repository? Try downloading this folder [as a Zip file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-adaptivecards). Unzip the file, and continue with the command-line instructions.
 
@@ -80,7 +85,7 @@ To use the web part, follow these simple steps:
 
 1. Insert the **Adaptive Cards Host** web part on your page
 2. When prompted to **Configure Adaptive Card Host**, click **Configure** to display the property pane.
-3. Select **Template JSON** code editor and paste your Adaptive Card template JSON.  You can find template JSON samples on the Adaptive Cards [samples and templates page](https://adaptivecards.io/samples/). Alternatively, you can copy the following JSON:
+3. Select **Template JSON** code editor and paste your Adaptive Card template JSON. You can find template JSON samples on the Adaptive Cards [samples and templates page](https://adaptivecards.io/samples/). Alternatively, you can copy the following JSON:
 
 ```json
 {
@@ -204,7 +209,7 @@ To use the web part, follow these simple steps:
 
 ### Adaptive Card Templating
 
-[Adaptive Card Templating](https://learn.microsoft.com/adaptive-cards/templating/) is a new feature that allows you to separate your Adaptive Card data from its layout. 
+[Adaptive Card Templating](https://learn.microsoft.com/adaptive-cards/templating/) is a new feature that allows you to separate your Adaptive Card data from its layout.
 
 The web part allows you to **Use Adaptive Card Templating** features with a simple toggle.
 
@@ -212,8 +217,8 @@ The web part allows you to **Use Adaptive Card Templating** features with a simp
 
 When you use **Adaptive Card Templating**, the web part will prompt you to enter two things:
 
-* Your Adaptive Card template JSON
-* Some data -- either as a JSON structure or by connecting to a SharePoint list or document library.
+- Your Adaptive Card template JSON
+- Some data -- either as a JSON structure or by connecting to a SharePoint list or document library.
 
 ![You Need Data!](./assets/YouNeedData.png)
 
@@ -233,131 +238,131 @@ To do so, follow these steps:
 2. Add the **Adaptive Card Host** web part to a SharePoint page.
 3. Edit the web part's property pane. We'll skip the **Template JSON** and go straight to the **Adaptive Card Templating** section.
 4. Turn on **Use Adaptive Card Templating**
-![Turn on Use Adaptive Card Templating](./assets/EnableTemplating.gif)
+   ![Turn on Use Adaptive Card Templating](./assets/EnableTemplating.gif)
 5. From the **Data Source**, select **List**
 6. From the **Select a list** drop-down, pick your list or document library.
 7. From the **Select a view** drop-down, pick the view you created in **Step 1**
-![Select library and view](./assets/SelectLibrary.gif)
+   ![Select library and view](./assets/SelectLibrary.gif)
 8. To create your template JSON, you'll need to know what data your web part will receive from your list or library. If you need help with finding out what your data looks like, the web part will log your data JSON to your browser's dev tools console when your page is in **Edit** mode. Just look for **Data JSON** on the **Console** tab and copy that JSON.
-![Dev Tools Console](./assets/DevTools.png)
+   ![Dev Tools Console](./assets/DevTools.png)
 9. Armed with your **Data JSON**, go to the [Adaptive Card Designer](https://adaptivecards.io/designer) and paste your **Data JSON** in the **Sample Data Editor** then select the **Copy the structure of this data into the Data Structure toolbox** button to load your sample data into the designer.
-![Sample Data Editor](./assets/SampleDataEditor.png)
+   ![Sample Data Editor](./assets/SampleDataEditor.png)
 10. Create your Adaptive Card template using the editor. For repeating rows of data, make sure to bind your `Container` or `ColumnSet` to the `{$root}` **Data context**. All repeating items within the container/column set should bind to the `{$data}` **Data context**. Make sure to use the **Preview mode** to test your template before continuing.
-![Data context](./assets/DataContext.png)
+    ![Data context](./assets/DataContext.png)
 11. Copy your template JSON from the **Card Payload Editor**
 12. Back on your SharePoint page, paste your JSON in the web parts **Template JSON**
 
 > NOTE: In a future version of this web part, we'll embed an Adaptive Card editor to make this process easier.
 
-For example, this is a very **basic** template JSON for a SharePoint Document Library**:
+For example, this is a very **basic** template JSON for a SharePoint Document Library\*\*:
 
 ```json
 {
-    "type": "AdaptiveCard",
-    "body": [
+  "type": "AdaptiveCard",
+  "body": [
+    {
+      "type": "ColumnSet",
+      "columns": [
         {
-            "type": "ColumnSet",
-            "columns": [
-                {
-                    "type": "Column",
-                    "width": "50px",
-                    "id": "I",
-                    "items": [
-                        {
-                            "type": "TextBlock",
-                            "text": "ID",
-                            "weight": "Bolder"
-                        }
-                    ]
-                },
-                {
-                    "type": "Column",
-                    "width": "stretch",
-                    "items": [
-                        {
-                            "type": "TextBlock",
-                            "text": "File Name",
-                            "weight": "Bolder"
-                        }
-                    ]
-                },
-                {
-                    "type": "Column",
-                    "width": "stretch",
-                    "items": [
-                        {
-                            "type": "TextBlock",
-                            "text": "Editor",
-                            "weight": "Bolder"
-                        }
-                    ]
-                },
-                {
-                    "type": "Column",
-                    "width": "stretch",
-                    "items": [
-                        {
-                            "type": "TextBlock",
-                            "text": "Modified",
-                            "weight": "Bolder"
-                        }
-                    ]
-                }
-            ]
+          "type": "Column",
+          "width": "50px",
+          "id": "I",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "ID",
+              "weight": "Bolder"
+            }
+          ]
         },
         {
-            "type": "ColumnSet",
-            "columns": [
-                {
-                    "type": "Column",
-                    "width": "50px",
-                    "items": [
-                        {
-                            "type": "TextBlock",
-                            "text": "{ID}",
-                            "$data": "{$data}"
-                        }
-                    ]
-                },
-                {
-                    "type": "Column",
-                    "width": "stretch",
-                    "items": [
-                        {
-                            "type": "TextBlock",
-                            "text": "{FileLeafRef}",
-                            "$data": "{$data}"
-                        }
-                    ]
-                },
-                {
-                    "type": "Column",
-                    "width": "stretch",
-                    "items": [
-                        {
-                            "type": "TextBlock",
-                            "text": "{Editor[0].title}",
-                            "$data": "{$data}"
-                        }
-                    ]
-                },
-                {
-                    "type": "Column",
-                    "width": "stretch",
-                    "items": [
-                        {
-                            "type": "TextBlock",
-                            "text": "{Modified}",
-                            "$data": "{$data}"
-                        }
-                    ]
-                }
-            ],
-            "$data": "{$root}"
+          "type": "Column",
+          "width": "stretch",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "File Name",
+              "weight": "Bolder"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Editor",
+              "weight": "Bolder"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "Modified",
+              "weight": "Bolder"
+            }
+          ]
         }
-    ],
-    "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-    "version": "1.0"
+      ]
+    },
+    {
+      "type": "ColumnSet",
+      "columns": [
+        {
+          "type": "Column",
+          "width": "50px",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "{ID}",
+              "$data": "{$data}"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "{FileLeafRef}",
+              "$data": "{$data}"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "{Editor[0].title}",
+              "$data": "{$data}"
+            }
+          ]
+        },
+        {
+          "type": "Column",
+          "width": "stretch",
+          "items": [
+            {
+              "type": "TextBlock",
+              "text": "{Modified}",
+              "$data": "{$data}"
+            }
+          ]
+        }
+      ],
+      "$data": "{$root}"
+    }
+  ],
+  "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+  "version": "1.0"
 }
 ```
 
@@ -365,14 +370,14 @@ For example, this is a very **basic** template JSON for a SharePoint Document Li
 
 ### Adaptive Card Actions
 
-The Adaptive Card schema supports [Actions](https://adaptivecards.io/explorer/Action.OpenUrl.html), which allow you to create interactive Adaptive Cards. 
+The Adaptive Card schema supports [Actions](https://adaptivecards.io/explorer/Action.OpenUrl.html), which allow you to create interactive Adaptive Cards.
 
 The web part supports all Adaptive Card actions, including:
 
-* [`Action.OpenUrl`](https://adaptivecards.io/explorer/Action.OpenUrl.html)
-* [`Action.Submit`](https://adaptivecards.io/explorer/Action.Submit.html)
-* [`Action.ShowCard`](https://adaptivecards.io/explorer/Action.ShowCard.html)
-* [`Action.ToggleVisibility`](https://adaptivecards.io/explorer/Action.ToggleVisibility.html)
+- [`Action.OpenUrl`](https://adaptivecards.io/explorer/Action.OpenUrl.html)
+- [`Action.Submit`](https://adaptivecards.io/explorer/Action.Submit.html)
+- [`Action.ShowCard`](https://adaptivecards.io/explorer/Action.ShowCard.html)
+- [`Action.ToggleVisibility`](https://adaptivecards.io/explorer/Action.ToggleVisibility.html)
 
 However, if you want to support `Action.Submit` in your own web part, we recommend you implement your own `onExecuteAction` event handler on your `AdaptiveCard` control. The sample will simply pop-up an alert instead of performing a submit.
 
@@ -445,16 +450,16 @@ This project contains a CodeTour that will walk you through the areas of interes
 
 If you'd like to read more about the various concepts illustrated in this sample, please refer to the following links:
 
-* [Adaptive Cards](https://adaptivecards.io/)
-* [Adaptive Card Templating](https://learn.microsoft.com/adaptive-cards/templating/)
-* [Adaptive Cards Designer](https://adaptivecards.io/designer/)
-* [Adaptive Cards Viewer for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=tomlm.vscode-adaptivecards)
-* [Dynamic Loading of Property Pane Resources](https://learn.microsoft.com/sharepoint/dev/spfx/dynamic-loading#special-property-pane-dynamic-loading)
-* [Supporting Section Background](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds)
-* [Use cascading dropdowns in web part properties](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/use-cascading-dropdowns-in-web-part-properties)
-* [Using the SharePoint RenderListDataAsStream API to fetch lookup and single managed metadata field values](https://www.eliostruyf.com/using-sharepoint-renderlistdataasstream-api-fetch-lookup-single-managed-metadata-field-values/)
-* [RenderListDataAsStream](https://pnp.github.io/pnpjs/sp/lists/#render-list-data-as-stream)
-* [Introduction to Adaptive Cards](https://poszytek.eu/en/microsoft-en/introduction-to-adaptive-cards/)
+- [Adaptive Cards](https://adaptivecards.io/)
+- [Adaptive Card Templating](https://learn.microsoft.com/adaptive-cards/templating/)
+- [Adaptive Cards Designer](https://adaptivecards.io/designer/)
+- [Adaptive Cards Viewer for Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=tomlm.vscode-adaptivecards)
+- [Dynamic Loading of Property Pane Resources](https://learn.microsoft.com/sharepoint/dev/spfx/dynamic-loading#special-property-pane-dynamic-loading)
+- [Supporting Section Background](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds)
+- [Use cascading dropdowns in web part properties](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/use-cascading-dropdowns-in-web-part-properties)
+- [Using the SharePoint RenderListDataAsStream API to fetch lookup and single managed metadata field values](https://www.eliostruyf.com/using-sharepoint-renderlistdataasstream-api-fetch-lookup-single-managed-metadata-field-values/)
+- [RenderListDataAsStream](https://pnp.github.io/pnpjs/sp/lists/#render-list-data-as-stream)
+- [Introduction to Adaptive Cards](https://poszytek.eu/en/microsoft-en/introduction-to-adaptive-cards/)
 
 ## Video
 
@@ -462,9 +467,9 @@ If you'd like to read more about the various concepts illustrated in this sample
 
 ## Help
 
-We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
+We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for community members to volunteer their time and help resolve issues.
 
-If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+If you're having issues building the solution, please run [m365 spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
 
 You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-adaptivecards") to see if anybody else is having the same issues.
 
@@ -476,10 +481,8 @@ For questions regarding this sample, [create a new question](https://github.com/
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-adaptivecards&template=question.yml&sample=react-adaptivecards&authors=@hugoabernier&title=react-adaptivecards%20-%20).
 
-
 ## Disclaimer
 
-**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
+**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
 <img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-adaptivecards" />
