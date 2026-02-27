@@ -27,8 +27,8 @@ Main features include:
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
-![Node.js v22.15.0](https://img.shields.io/badge/Node.js-%20v22.15.0-green.svg)
+![SPFx 1.22.2](https://img.shields.io/badge/SPFx-1.22.2-green.svg)
+![Node.js v22.15.1](https://img.shields.io/badge/Node.js-%20v22.15.1-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -49,6 +49,7 @@ Tested with: Node.js v22.15.0
 - [Eric Overfield](https://github.com/eoverfield)
 - [Kalle Mansikkaniemi](https://github.com/djsladi)
 - [Lauri Koskimies](https://github.com/koskimiesl)
+- [Nishkalank Bezawada](https://github.com/NishkalankBezawada)
 
 ## Version history
 
@@ -64,6 +65,7 @@ Version|Date|Comments
 1.2.1 | November 20, 2024 | Fixed a bug where loading message doesn't disappear when RSS feed doesn't contain any items.
 1.2.2 | September 12, 2025 | Upgraded to SPFx 1.21.1
 1.2.3 | October 24, 2025 | Updated PnP packages for Node 22 compatibility
+1.2.4 | February 27, 2026 | Upgraded to SPFx 1.22.2 & fixed TypeScript errors after upgrade
 
 ## Minimal Path to Awesome
 
@@ -73,13 +75,14 @@ Version|Date|Comments
 
 ### SPFx
 
-- In the command line, with a version of Node 18, i.e. 18.17.1, run:
+- In the command line, with a version of Node 22, i.e. 22.15.1, run:
   - `npm install`
-  - `gulp serve`
+  - `heft build`
+  - `heft start`
 
 - To bundle and package the installable `.sppkg`, run:
-  - `gulp bundle --ship`
-  - `gulp package-solution --ship`
+  - `heft package-solution --production`
+
 
 ## Web Parts Configuration
 

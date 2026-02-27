@@ -11,13 +11,13 @@ import { DomHelper } from                                  '../../../../helpers/
 
 export default class RssResultsTemplate extends React.Component<IRssResultsTemplateProps, IRssResultsTemplateState> {
 
-  private parentRef: HTMLElement;
+  private parentRef!: HTMLElement;
 
   constructor(props: IRssResultsTemplateProps) {
     super(props);
 
     this.state = {
-      processedTemplate: null
+      processedTemplate: null as unknown as string
     };
   }
 
@@ -27,8 +27,8 @@ export default class RssResultsTemplate extends React.Component<IRssResultsTempl
     if (objectNode) {
         objectNode.style.display = "none";
     }
-    return <div className={styles.templateRoot} ref={el => this.parentRef = el}>
-      <div dangerouslySetInnerHTML={{ __html: this.state.processedTemplate }}></div>
+    return <div className={styles.templateRoot} ref={el => this.parentRef = el as HTMLElement}>
+      <div dangerouslySetInnerHTML={{ __html: this.state.processedTemplate ?? '' }}></div>
     </div>;
 
   }

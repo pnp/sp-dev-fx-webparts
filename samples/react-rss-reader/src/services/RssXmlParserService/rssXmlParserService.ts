@@ -78,7 +78,7 @@ export class RssXmlParserService {
           return reject(new Error("Feed not recognized as RSS 1 or 2."));
         }
 
-        resolve(feed);
+        resolve(feed as any);
       });
     });
     return p;
@@ -103,7 +103,7 @@ export class RssXmlParserService {
       feed.lastBuildDate = xmlObj.feed.updated[0];
     }
 
-    (xmlObj.feed.entry || []).forEach(entry => {
+    (xmlObj.feed.entry || []).forEach((entry: any) => {
       const item:any = {};
       Utils.copyFromXML(entry, item, this.options.customFields.item);
 
@@ -199,7 +199,7 @@ export class RssXmlParserService {
 
     Utils.copyFromXML(channel, feed, feedFields);
 
-    items.forEach(xmlItem => {
+    items.forEach((xmlItem: any) => {
       const item: any = {};
       Utils.copyFromXML(xmlItem, item, itemFields);
       if (xmlItem.enclosure) {
@@ -247,7 +247,7 @@ export class RssXmlParserService {
 
     if (channel['itunes:owner']) {
       const owner:any = {};
-      let image: string;
+      let image: string | null = null;
 
       if(channel['itunes:owner'][0]['itunes:name']) {
         owner.name = channel['itunes:owner'][0]['itunes:name'][0];
@@ -270,7 +270,7 @@ export class RssXmlParserService {
 
     Utils.copyFromXML(channel, feed.itunes, Fields.podcastFeed);
 
-    items.forEach((item, index) => {
+    items.forEach((item: any, index: any) => {
       entry = feed.items[index];
       entry.itunes = {};
       Utils.copyFromXML(item, entry.itunes, Fields.podcastItem);
