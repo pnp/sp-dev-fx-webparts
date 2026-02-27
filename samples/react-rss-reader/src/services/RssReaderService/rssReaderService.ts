@@ -46,7 +46,7 @@ export class RssReaderService implements IRssReaderService {
       const localStorageService: ILocalStorageService = new LocalStorageService();
 
       //attempt to get local storage if needed
-      if (feedRequest.useLocalStorage && feedRequest.useLocalStorageTimeout >= 0) {
+      if (feedRequest.useLocalStorage && (feedRequest.useLocalStorageTimeout ?? 0) >= 0) {
 
         //set up the local storage key to search in local storage for valid stored results
         const localStorageKey:ILocalStorageKey = {
@@ -85,11 +85,11 @@ export class RssReaderService implements IRssReaderService {
 
 
       //if we are here, we need to retrieve from feed service
-      let response: IRssReaderResponse = null;
+      let response: IRssReaderResponse | null = null;
 
       try {
         //set up the base rssHttpClient object
-        let rssHttpClient: IRssHttpClientComponentService;
+        let rssHttpClient: IRssHttpClientComponentService | undefined;
 
         //set up the http client service for each particular feed service
         if (feedRequest.feedService === FeedServiceOption.Default) {
@@ -121,7 +121,7 @@ export class RssReaderService implements IRssReaderService {
       //if we have a valid response, we can attempt to set to local storage as well as return
       if (response) {
 
-        if (feedRequest.useLocalStorage && feedRequest.useLocalStorageTimeout >= 0) {
+        if (feedRequest.useLocalStorage && (feedRequest.useLocalStorageTimeout ?? 0) >= 0) {
 
           const localStorageKeyValue: ILocalStorageKey = {
             keyName: RssReaderService.getFeedStorageKeyName(feedRequest),

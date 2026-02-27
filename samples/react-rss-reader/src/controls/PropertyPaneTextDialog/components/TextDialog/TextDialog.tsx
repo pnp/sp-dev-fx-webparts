@@ -22,7 +22,7 @@ export class TextDialog extends React.Component<ITextDialogProps, ITextDialogSta
      *************************************************************************************/
     constructor(props: ITextDialogProps, state: ITextDialogState) {
         super(props);
-		this.state = { dialogText: this.props.dialogTextFieldValue, showDialog: false };
+		this.state = { dialogText: this.props.dialogTextFieldValue || '', showDialog: false };
     }
 
 
@@ -67,7 +67,7 @@ export class TextDialog extends React.Component<ITextDialogProps, ITextDialogSta
      *************************************************************************************/
     public componentDidUpdate(prevProps: ITextDialogProps, prevState: ITextDialogState): void {
         if (this.props.disabled !== prevProps.disabled || this.props.stateKey !== prevProps.stateKey) {
-            this.setState({ dialogText: this.props.dialogTextFieldValue, showDialog: this.state.showDialog });
+            this.setState({ dialogText: this.props.dialogTextFieldValue || '', showDialog: this.state.showDialog });
         }
     }
 

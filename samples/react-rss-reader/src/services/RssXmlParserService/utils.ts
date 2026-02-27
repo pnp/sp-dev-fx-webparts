@@ -13,8 +13,8 @@ export class Utils {
     return this.stripHtml(str).trim();
   }
 
-  public static getLink (links: any, rel: string, fallbackIdx: number): string {
-    if (!links) return;
+  public static getLink (links: any, rel: string, fallbackIdx: number): string | undefined {
+    if (!links) return undefined;
     for (let i = 0; i < links.length; ++i) {
       if (links[i].$.rel === rel) {
         return links[i].$.href;
@@ -27,7 +27,7 @@ export class Utils {
   }
 
   public static copyFromXML(xml: any, dest: any, fields: any): void {
-    fields.forEach((f) => {
+    fields.forEach((f: any) => {
       let from = f;
       let to = f;
       let options = {};
@@ -50,7 +50,7 @@ export class Utils {
       return content._;
     }
     else if (typeof content === 'object') {
-      const builder = new Builder({headless: true, explicitRoot: true, rootName: 'div', renderOpts: {pretty: false}});
+      const builder = new Builder({headless: true, rootName: 'div', renderOpts: {pretty: false}});
       return builder.buildObject(content);
     }
     else {
