@@ -24,8 +24,49 @@ import { captureFullDocument } from "./utils/captureDocumentImage";
 
 import "./styles.css";
 
+function slugifySampleName(name: string): string {
+    console.log("slugifying sample name:", name);
+    return String(name ?? "")
+        .trim()
+        .toLowerCase()
+        .replace(/['"]/g, "")
+        .replace(/&/g, " and ")
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/-+/g, "-")
+        .replace(/^-|-$/g, "");
+}
 
+function setSampleParam(slug: string): void {
+    if (typeof window === "undefined") return;
 
+    const url = new URL(window.location.href);
+    url.searchParams.set("sample", slug);
+
+    // Use pushState so Back closes the panel (optional, but nice UX)
+    window.history.pushState({}, "", url.toString());
+}
+
+function clearSampleParam(): void {
+    if (typeof window === "undefined") return;
+
+    const url = new URL(window.location.href);
+    url.searchParams.delete("sample");
+
+    // Use replaceState so closing doesn't add extra history entries
+    window.history.replaceState({}, "", url.toString());
+}
+
+function readEmbeddedSamplesArray(): PnPSample[] | null {
+    const el = document.getElementById("samples-data");
+    if (!el?.textContent) return null;
+    try {
+        const first = JSON.parse(el.textContent);
+        const value = typeof first === "string" ? JSON.parse(first) : first;
+        return Array.isArray(value) ? (value as PnPSample[]) : null;
+    } catch {
+        return null;
+    }
+}
 
 function norm(s: string): string {
     return s.trim().toLowerCase();
@@ -80,8 +121,10 @@ export function SamplesGallery(props: SamplesGalleryProps) {
     const sortMode = sortModeInternal;
     const [isMobile, setIsMobile] = useState<boolean>(() => typeof window !== "undefined" ? window.matchMedia('(max-width:640px)').matches : false);
     const [showFilters, setShowFilters] = useState<boolean>(false);
-    const [samples, setSamples] = useState<PnPSample[]>([]);
-    const [loading, setLoading] = useState<boolean>(true);
+    const hasEmbeddedDataAtBoot = useMemo(() => readEmbeddedSamplesArray() !== null, []);
+    const embedded = useMemo(() => readEmbeddedSamplesArray(), []);
+    const [samples, setSamples] = useState<PnPSample[]>(() => embedded ?? []);
+    const [loading, setLoading] = useState<boolean>(() => !embedded);
     const [gridReady, setGridReady] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
     const gridRef = useRef<HTMLDivElement | null>(null);
@@ -102,6 +145,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
         return false;
     });
+
 
     const [state, setState] = useState<FacetState>(() => {
         // Default values
@@ -157,14 +201,6 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         };
     }, []);
 
-    useEffect(() => {
-        try {
-            console.log('[SamplesGallery] admin:', !!props.admin);
-        } catch {
-            // ignore logging failures
-        }
-    }, [props.admin]);
-
     // Note: reactions are now embedded on each sample; we no longer fetch likes.json separately.
 
     useEffect(() => {
@@ -176,13 +212,34 @@ export function SamplesGallery(props: SamplesGalleryProps) {
             setError(null);
 
             try {
-                const srcWithTs = typeof props.src === 'string' ? `${props.src}${props.src.includes('?') ? '&' : '?'}t=${Date.now()}` : props.src;
-                const res = await fetch(srcWithTs, { cache: "no-store" });
-                if (!res.ok) throw new Error(`Failed to load samples: ${res.status}`);
-                const data = (await res.json()) as unknown;
+                let data: unknown = readEmbeddedSamplesArray();
 
-                if (!Array.isArray(data)) throw new Error("Invalid JSON: expected an array");
-                const parsed = data as PnPSample[];
+                if (!data) {
+                    const srcWithTs =
+                        typeof props.src === "string"
+                            ? `${props.src}${props.src.includes("?") ? "&" : "?"}t=${Date.now()}`
+                            : props.src;
+
+                    const res = await fetch(srcWithTs, { cache: "no-store" });
+                    if (!res.ok) throw new Error(`Failed to load samples: ${res.status}`);
+                    data = (await res.json()) as unknown;
+                }
+
+                let list: unknown = data;
+
+                // Accept either:
+                // 1) Array form: [ { ... }, { ... } ]
+                // 2) Map form:   { "key": { ... }, "key2": { ... } }
+                if (!Array.isArray(list) && list && typeof list === "object") {
+                    const values = Object.values(list as Record<string, unknown>);
+                    if (values.length > 0) list = values;
+                }
+
+                if (!Array.isArray(list)) {
+                    throw new Error("Invalid JSON: expected an array (or an object whose values are the array items)");
+                }
+
+                const parsed = list as PnPSample[];
 
                 // Deduplicate by `name` preserving first occurrence
                 const seen = new Set<string>();
@@ -780,40 +837,45 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
         // Recreate Muuri so it attaches to the current DOM node (useful when moved into a portal)
         muuriRef.current?.destroy();
-        muuriRef.current = new Muuri(gridRef.current, {
-            items: ".pnp-sample-item",
-            layoutDuration: 400,
-            layoutEasing: "ease",
-            layoutOnInit: false,
-        });
 
-        // mark grid as not-yet-ready while Muuri performs its first layout
+        const container = gridRef.current;
+
+        // Always start in SSR/CSS-grid mode and switch to Muuri mode after first layout.
+        // IMPORTANT: we do NOT hide the grid anymore.
         setGridReady(false);
 
-        // When Muuri finishes layout, mark grid as ready so transitions can be enabled
-        const onLayoutEnd = () => {
-            initialMuuriSortDoneRef.current = true;
-            setGridReady(true);
-        };
-        muuriRef.current.on?.("layoutEnd", onLayoutEnd);
-
-        // Programmatic initial sort: refresh items, apply sort, then layout.
-        // This ensures we only sort once and that the visible layout is already sorted.
         try {
+            muuriRef.current = new Muuri(container, {
+                items: ".pnp-sample-item",
+                layoutDuration: 400,     // keep animations for later interactions
+                layoutEasing: "ease",
+                layoutOnInit: false,
+            });
+
+            const onLayoutEnd = () => {
+                initialMuuriSortDoneRef.current = true;
+                setGridReady(true); // flips CSS classes: grid -> muuri
+                muuriRef.current?.off?.("layoutEnd", onLayoutEnd);
+            };
+
+            muuriRef.current.on?.("layoutEnd", onLayoutEnd);
+
+            // Initial sort + initial layout
             muuriRef.current.refreshItems();
             applyGridSort(muuriRef.current);
-            muuriRef.current.layout();
+
+            // First layout should be instant to avoid visual jump
+            muuriRef.current.layout(true);
         } catch (e) {
-            // ignore - fallback behavior will let subsequent effects handle sorting
-            console.warn('[SamplesGallery] initial muuri sort failed', e);
+            console.warn("[SamplesGallery] muuri init failed", e);
+            setGridReady(true); // fallback: at least keep content visible
         }
 
         return () => {
-            if (muuriRef.current) {
-                try { muuriRef.current.off?.("layoutEnd", onLayoutEnd); } catch { /* ignore */ }
-                muuriRef.current.destroy();
-                muuriRef.current = null;
-            }
+            try {
+                muuriRef.current?.destroy();
+            } catch { /* ignore */ }
+            muuriRef.current = null;
         };
     }, [loading, samples.length, fullscreen, isMobile, applyGridSort, totalReactionsById]);
 
@@ -904,8 +966,38 @@ export function SamplesGallery(props: SamplesGalleryProps) {
     }, [fullscreen]);
 
     const [selected, setSelected] = useState<PnPSample | null>(null);
+    const closePanel = useCallback(() => {
+        setSelected(null);
+        clearSampleParam();
+    }, []);
+
+    const openPanel = useCallback((sample: PnPSample) => {
+        setSelected(sample);
+        setSampleParam(slugifySampleName(sample.name));
+    }, []);
     const panelRef = useRef<HTMLDivElement | null>(null);
     const lastFocusedRef = useRef<HTMLElement | null>(null);
+
+    useEffect(() => {
+        if (typeof window === "undefined") return;
+
+        const params = new URLSearchParams(window.location.search);
+        const requested = params.get("sample");
+        if (!requested) return;
+
+        // If already open, don't override the user's current selection
+        if (selected) return;
+
+        // Match by slugified sample.name (your generator uses name as slug)
+        const match = samples.find((s) => slugifySampleName(s.name) === requested);
+        if (!match) return;
+
+        openPanel(match);
+
+        // Optional: remove the query string after opening (prevents re-opening on refresh)
+        // Comment this out if you want the URL to stay shareable.
+        // window.history.replaceState({}, "", window.location.pathname + window.location.hash);
+    }, [samples, selected, openPanel]);
 
     // Global key handler: `f` to toggle fullscreen, `Escape` to close panel or fullscreen.
     useEffect(() => {
@@ -923,7 +1015,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
             const k = e.key;
             if (k === "Escape") {
-                if (selected) setSelected(null);
+                if (selected)  closePanel();
                 else if (fullscreen) setFullscreen(false);
             } else if (k.toLowerCase() === "f") {
                 setFullscreen(f => !f);
@@ -988,7 +1080,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
 
         const onKeyDown = (e: KeyboardEvent) => {
             if (e.key === 'Escape') {
-                setSelected(null);
+                 closePanel();
                 e.stopPropagation();
                 return;
             }
@@ -1261,16 +1353,26 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                         {/* Always render the real grid (Muuri needs the DOM). Hide visually until Muuri is ready. */}
                         <div ref={gridRef} className={[styles.cardGrid, gridReady ? styles.cardGridFadeIn : styles.cardGridFadeOut, !gridReady ? styles.cardGridHidden : "", "pnp-card-grid pnp-muuri-grid"].filter(Boolean).join(" ")} aria-label="Sample cards">
                             {(isMobile ? filteredSamples : samplesWithLikes).map(s => (
-                                <SampleCard key={s.name} sample={s} basePath={props.baseUrl} muuriRef={muuriRef} onOpen={(sample) => setSelected(sample)} reactionsSupported={reactionsSupported} config={props.config}  admin={props.admin} />
+                                <SampleCard key={s.name} sample={s} basePath={props.baseUrl} muuriRef={muuriRef} onOpen={(sample) => openPanel(sample)} reactionsSupported={reactionsSupported} config={props.config}  admin={props.admin} />
                             ))}
                         </div>
 
                         {/* Skeleton overlay sits above the real grid until Muuri completes layout. */}
-                        <div className={[styles.cardGrid, styles.cardGridOverlay, gridReady ? styles.cardGridOverlayHidden : styles.cardGridOverlayVisible, "pnp-card-grid pnp-skeleton-grid"].filter(Boolean).join(" ")} aria-hidden={!loading ? "false" : "true"}>
-                            {Array.from({ length: isMobile ? 3 : 9 }).map((_, i) => (
-                                <SkeletonCard key={`skeleton-${i}`} />
-                            ))}
-                        </div>
+                        {!hasEmbeddedDataAtBoot ? (
+                            <div
+                                className={[
+                                    styles.cardGrid,
+                                    styles.cardGridOverlay,
+                                    gridReady ? styles.cardGridOverlayHidden : styles.cardGridOverlayVisible,
+                                    "pnp-card-grid pnp-skeleton-grid",
+                                ].filter(Boolean).join(" ")}
+                                aria-hidden={!loading ? "false" : "true"}
+                            >
+                                {Array.from({ length: isMobile ? 3 : 9 }).map((_, i) => (
+                                    <SkeletonCard key={`skeleton-${i}`} />
+                                ))}
+                            </div>
+                        ) : null}
 
                         {/* Toggle button: becomes Collapse (X) when fullscreen */}
                         {(isMobile || props.admin) ? (null) : (
@@ -1303,9 +1405,9 @@ export function SamplesGallery(props: SamplesGalleryProps) {
     const content = renderContent();
 
     const panelPortal = (typeof document !== "undefined" && selected) ? createPortal(
-        <div className="pnp-sample-panel-overlay" onClick={() => setSelected(null)}>
+        <div className="pnp-sample-panel-overlay" onClick={closePanel}>
             <div className="pnp-sample-panel-container" ref={(el) => { panelRef.current = el; }} onClick={(e) => e.stopPropagation()} role="dialog" aria-modal="true" aria-labelledby="pnp-sample-panel-title">
-                <SamplePanel sample={selected} onClose={() => setSelected(null)} baseUrl={props.baseUrl} giscusSettings={mergedGiscusSettings} reactionsSupported={reactionsSupported} config={props.config} />
+                <SamplePanel sample={selected} onClose={closePanel} baseUrl={props.baseUrl} giscusSettings={mergedGiscusSettings} reactionsSupported={reactionsSupported} config={props.config} />
             </div>
         </div>,
         document.body

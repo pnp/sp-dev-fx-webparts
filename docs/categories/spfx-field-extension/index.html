@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><script src="/sp-dev-fx-webparts/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=sp-dev-fx-webparts/livereload" data-no-instant defer></script>
+    <meta charset="utf-8">
+    <title>SPFx Samples</title>
+    
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+<meta name="description" content='Learn from others how to build apps on Microsoft 365 &amp; Power Platform.'/>
+<meta name="keywords" content=''/>
+
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="SPFX-FIELD-EXTENSION">
+  <meta name="twitter:description" content="Learn from others how to build apps on Microsoft 365 &amp; Power Platform.">
+
+<meta property="og:url" content="http://localhost:1313/sp-dev-fx-webparts/categories/spfx-field-extension/">
+  <meta property="og:site_name" content="SPFx Samples">
+  <meta property="og:title" content="SPFX-FIELD-EXTENSION">
+  <meta property="og:description" content="Learn from others how to build apps on Microsoft 365 &amp; Power Platform.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+
+
+<link rel="canonical" href="http://localhost:1313/sp-dev-fx-webparts/categories/spfx-field-extension/">
+
+
+
+<link rel="stylesheet" href="http://localhost:1313/sp-dev-fx-webparts/css/styles.css" media="screen">
+
+
+<link rel="stylesheet" href="http://localhost:1313/sp-dev-fx-webparts/css/tweaks.css" media="screen">
+
+
+<link rel="prefetch" href='http://localhost:1313/sp-dev-fx-webparts/images/base-assets.svg' as="image" type="image/svg+xml" media="all">
+
+
+
+<link rel="stylesheet" href="http://localhost:1313/sp-dev-fx-webparts/css/custom.css" media="screen">
+
+
+
+
+<meta property="og:url" content="http://localhost:1313/sp-dev-fx-webparts/categories/spfx-field-extension/">
+  <meta property="og:site_name" content="SPFx Samples">
+  <meta property="og:title" content="SPFX-FIELD-EXTENSION">
+  <meta property="og:description" content="Learn from others how to build apps on Microsoft 365 &amp; Power Platform.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="website">
+
+
+  <meta itemprop="name" content="SPFX-FIELD-EXTENSION">
+  <meta itemprop="description" content="Learn from others how to build apps on Microsoft 365 &amp; Power Platform.">
+  <meta itemprop="datePublished" content="2023-12-31T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2023-12-31T00:00:00+00:00">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="SPFX-FIELD-EXTENSION">
+  <meta name="twitter:description" content="Learn from others how to build apps on Microsoft 365 &amp; Power Platform.">
+
+<meta name="msapplication-TileColor" content='#0078d4'/>
+<meta name="theme-color" content='#ffffff'/>
+
+<link rel="apple-touch-icon" sizes="180x180" href='http://localhost:1313/sp-dev-fx-webparts/apple-touch-icon.png' />
+<link rel="icon" type="image/svg+xml" href='http://localhost:1313/sp-dev-fx-webparts/favicon.svg' sizes="any" />
+<link rel="icon" type="image/png" href='http://localhost:1313/sp-dev-fx-webparts/favicon-32x32.png' sizes="32x32" />
+<link rel="icon" type="image/png" href='http://localhost:1313/sp-dev-fx-webparts/favicon-16x16.png' sizes="16x16" />
+
+<link rel="apple-touch-icon" href='http://localhost:1313/sp-dev-fx-webparts/images/apple-touch-icon.png' />
+<link rel="apple-touch-icon" sizes="180x180" href='http://localhost:1313/images/apple-touch-icon.png' />
+
+<link rel="manifest" href='http://localhost:1313/sp-dev-fx-webparts/site.webmanifest' />
+<link rel="mask-icon" href='http://localhost:1313/sp-dev-fx-webparts/safari-pinned-tab.svg' color='#0078d4' />
+
+<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/sp-dev-fx-webparts/categories/spfx-field-extension/index.xml" title="SPFx Samples" />
+
+
+
+    <!-- Made with ❤️ by the PnP team -->
+    <!-- Design: Stefan Bauer (https://n8d.at/)-->
+    <!-- Site: Hugo Bernier (https://tahoeninja.blog/)-->
+</head>
+<body class="pnp-backdrop">
+    <div class="wrapper">
+<header class="page-header">
+    
+
+<a class="site-logo-link" href="http://localhost:1313/sp-dev-fx-webparts/">
+    <div class="site-logo">
+        
+        
+            
+            <span class="u-nowrap">SharePoint Framework</span><br>
+            
+        
+            
+            (SPFx) Samples
+            
+        
+    </div>
+</a>
+
+    <nav class="nav">
+        <button class="hamburger" tabindex="-1">
+            <svg class="active">
+                <title id="ham-title-active">Click to close - Hamburger in form of arrows</title>
+                <use xlink:href="http://localhost:1313/sp-dev-fx-webparts/images/base-assets.svg#hamburger"></use>
+            </svg>
+            <svg class="inactive">
+                <title id="ham-title-inactive">Click to open - Hamburger in form of three stripes</title>
+                <use xlink:href="http://localhost:1313/sp-dev-fx-webparts/images/base-assets.svg#hamburger-inactive"></use>
+            </svg>
+        </button>
+        
+<menu class="nav-menu primary" aria-label="Primary navigation" aria-expanded="true">
+    
+    <li class="nav-item">
+        <a href="http://localhost:1313/sp-dev-fx-webparts/" class="nav-link">
+            Samples</a>
+    </li>
+    
+    <li class="nav-item">
+        <a href="http://localhost:1313/sp-dev-fx-webparts/gettingstarted/" class="nav-link">
+            Getting started</a>
+    </li>
+    
+    <li class="nav-item">
+        <a href="http://localhost:1313/sp-dev-fx-webparts/contributing" class="nav-link">
+            Contributing</a>
+    </li>
+    
+</menu>
+    </nav>
+</header></div>
+    
+    <main>
+<h1>SPFX-FIELD-EXTENSION</h1>
+
+<p>
+<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-field-reporting/">React Document Reporting Field Customizer</a></h3>
+
+
+<i data-feather="calendar"></i>
+<time datetime="2023-12-31">Dec 31, 2023</time>
+
+<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-field-reporting/">
+  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-field-reporting.webp" alt="React Document Reporting Field Customizer"></p>
+<p>A React-based SPFx application for monitoring user activity within SharePoint documents.</p>
+<p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-field-reporting">Open in gallery</a></p>
+<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-reporting">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-reporting</a></p></p>
+</a>
+</p>
+
+<p>
+<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-field-animated-progress/">Animated Progress Field</a></h3>
+
+
+<i data-feather="calendar"></i>
+<time datetime="2021-10-10">Oct 10, 2021</time>
+
+<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-field-animated-progress/">
+  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-js-field-animated-progress.webp" alt="Animated Progress Field"></p>
+<p>Displays an animated progress bar component</p>
+<p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-js-field-animated-progress">Open in gallery</a></p>
+<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-field-animated-progress">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-field-animated-progress</a></p></p>
+</a>
+</p>
+
+<p>
+<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-field-pnp-file-type-renderer/">PnP File Type Renderer</a></h3>
+
+
+<i data-feather="calendar"></i>
+<time datetime="2020-10-01">Oct 1, 2020</time>
+
+<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-field-pnp-file-type-renderer/">
+  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-field-pnp-file-type-renderer.webp" alt="PnP File Type Renderer"></p>
+<p>This field customizer shows how to use PnP FieldFileTypeRenderer controls.</p>
+<p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-field-pnp-file-type-renderer">Open in gallery</a></p>
+<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-pnp-file-type-renderer">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-pnp-file-type-renderer</a></p></p>
+</a>
+</p>
+
+<p>
+<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-field-pnp-field-renderer-helper/">PnP Field Renderer Helper</a></h3>
+
+
+<i data-feather="calendar"></i>
+<time datetime="2020-09-13">Sep 13, 2020</time>
+
+<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-field-pnp-field-renderer-helper/">
+  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-field-pnp-field-renderer-helper.webp" alt="PnP Field Renderer Helper"></p>
+<p>This field customizer shows how to use PnP FieldRendererHelper utility.</p>
+<p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-field-pnp-field-renderer-helper">Open in gallery</a></p>
+<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-pnp-field-renderer-helper">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-pnp-field-renderer-helper</a></p></p>
+</a>
+</p>
+
+<p>
+<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-field-attachment-info/">Field Attachment Info</a></h3>
+
+
+<i data-feather="calendar"></i>
+<time datetime="2020-04-02">Apr 2, 2020</time>
+
+<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-field-attachment-info/">
+  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-field-attachment-info.webp" alt="Field Attachment Info"></p>
+<p>This field customizer will display the attachment related information for a listitem.</p>
+<p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-field-attachment-info">Open in gallery</a></p>
+<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-attachment-info">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-attachment-info</a></p></p>
+</a>
+</p>
+
+<p>
+<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-jquery-field-itemorder/">Item Order</a></h3>
+
+
+<i data-feather="calendar"></i>
+<time datetime="2019-10-10">Oct 10, 2019</time>
+
+<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-jquery-field-itemorder/">
+  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-jquery-field-itemorder.webp" alt="Item Order"></p>
+<p>Sample SharePoint Framework field customizer extension that enables reordering of list items through intuitive drag and drop directly in your list view. Demonstrates the use of jQuery and jQuery UI, custom property JSON, and PnPJS Batching.</p>
+<p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-jquery-field-itemorder">Open in gallery</a></p>
+<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/jquery-field-itemorder">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/jquery-field-itemorder</a></p></p>
+</a>
+</p>
+
+<p>
+<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-field-user-permission/">Displaying the current user permission with PNPJs</a></h3>
+
+
+<i data-feather="calendar"></i>
+<time datetime="2018-10-12">Oct 12, 2018</time>
+
+<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-field-user-permission/">
+  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-field-user-permission.webp" alt="Displaying the current user permission with PNPJs"></p>
+<p>This sample shows how to use PNPJs to get the current users permission on the specific list item. Then a corresponding icon and text is shown in the field. For this sample I&rsquo;m using simplified roles, so the code is is only checking for edit or read permissions.</p>
+<p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-field-user-permission">Open in gallery</a></p>
+<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-user-permission">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-user-permission</a></p></p>
+</a>
+</p>
+
+<p>
+<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-field-weather/">Weather SharePoint Framework field customizer</a></h3>
+
+
+<i data-feather="calendar"></i>
+<time datetime="2018-01-20">Jan 20, 2018</time>
+
+<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-field-weather/">
+  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-js-field-weather.webp" alt="Weather SharePoint Framework field customizer"></p>
+<p>Sample SharePoint Framework field customizer showing weather conditions for the given location.</p>
+<p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-js-field-weather">Open in gallery</a></p>
+<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-field-weather">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-field-weather</a></p></p>
+</a>
+</p>
+
+<p>
+<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-field-text-analytics-api/">Field Customiser sample using Text Analytics API</a></h3>
+
+
+<i data-feather="calendar"></i>
+<time datetime="2018-01-18">Jan 18, 2018</time>
+
+<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-field-text-analytics-api/">
+  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-field-text-analytics-api.webp" alt="Field Customiser sample using Text Analytics API"></p>
+<p>This sample shows how to use the Text Analytics API (Cognitive Services) to render a sentiment icon based on the text of a field in the List. The language is also auto-detected using the API, so it works with text based in any language supported by the API.</p>
+<p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-field-text-analytics-api">Open in gallery</a></p>
+<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-text-analytics-api">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-text-analytics-api</a></p></p>
+</a>
+</p>
+
+<p>
+<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-field-toggle/">Toggle Field Customizer</a></h3>
+
+
+<i data-feather="calendar"></i>
+<time datetime="2017-10-04">Oct 4, 2017</time>
+
+<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-field-toggle/">
+  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-field-toggle.webp" alt="Toggle Field Customizer"></p>
+<p>In this sample is possible to see how to implement Office UI Fabric React Toggle for the field yes/no through SPFx Extensions Field Customizers to modify in a quick way (inline editing) a list without opening the list item.</p>
+<p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-field-toggle">Open in gallery</a></p>
+<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-toggle">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-toggle</a></p></p>
+</a>
+</p>
+
+<p>
+<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-field-slider/">Slider Field Customizer</a></h3>
+
+
+<i data-feather="calendar"></i>
+<time datetime="2017-08-30">Aug 30, 2017</time>
+
+<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-field-slider/">
+  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-field-slider.webp" alt="Slider Field Customizer"></p>
+<p>The sample illustrates how to use Office UI Fabric React Slider in Field Customizer with permissions-base inline editing</p>
+<p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-field-slider">Open in gallery</a></p>
+<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-slider">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-field-slider</a></p></p>
+</a>
+</p>
+
+<p>
+<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-field-taskpriority/">Priority Field SharePoint Framework field customizer</a></h3>
+
+
+<i data-feather="calendar"></i>
+<time datetime="2017-08-24">Aug 24, 2017</time>
+
+<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-field-taskpriority/">
+  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-js-field-taskpriority.webp" alt="Priority Field SharePoint Framework field customizer"></p>
+<p>Sample SharePoint Framework field customizer that shows how to apply conditional color formatting to the values in a Priority field based on their value.</p>
+<p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-js-field-taskpriority">Open in gallery</a></p>
+<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-field-taskpriority">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-field-taskpriority</a></p></p>
+</a>
+</p>
+
+<p>
+<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-field-conditionalformatting/">Conditional formatting SharePoint Framework field customizer</a></h3>
+
+
+<i data-feather="calendar"></i>
+<time datetime="2017-06-29">Jun 29, 2017</time>
+
+<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-field-conditionalformatting/">
+  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-js-field-conditionalformatting.webp" alt="Conditional formatting SharePoint Framework field customizer"></p>
+<p>Sample SharePoint Framework field customizer that applies Excel-like conditional formatting to numeric fields based on their values.</p>
+<p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-js-field-conditionalformatting">Open in gallery</a></p>
+<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-field-conditionalformatting">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-field-conditionalformatting</a></p></p>
+</a>
+</p>
+
+
+    </main>
+
+    </main>
+	
+
+<footer class="footer">
+    <div class="footer-cnt">
+        <menu class="footer-menu">
+            
+            
+            
+            <li class="card-iconbar-item">
+                <a class="card-iconbar-link" href="https://github.com/PnP/sp-dev-fx-webparts" aria-label="GitHub"   >
+                    
+<span class="icon">
+    <svg class="icon-svg icon-github" aria-hidden="true">
+        GitHub
+        <use xlink:href="http://localhost:1313/sp-dev-fx-webparts/images/base-assets.svg#icon-github"></use>
+    </svg>
+</span>
+                </a>
+            </li>
+            
+            
+            
+            <li class="card-iconbar-item">
+                <a class="card-iconbar-link" href="https://discord.com/channels/1095788595010338956/1096363629680529418" aria-label="Discord"   >
+                    
+<span class="icon">
+    <svg class="icon-svg icon-discord" aria-hidden="true">
+        Discord
+        <use xlink:href="http://localhost:1313/sp-dev-fx-webparts/images/base-assets.svg#icon-discord"></use>
+    </svg>
+</span>
+                </a>
+            </li>
+            
+            
+            
+        </menu>
+        
+    </div>
+</footer>
+
+</body>
+</html>
+
+<script src="http://localhost:1313/sp-dev-fx-webparts/js/main.min.js"></script>
+
+    
+
+    
+
+    
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-YZHMBM65MJ"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-YZHMBM65MJ');
+</script>
+    
+    
+
+    <script type="text/javascript">
+    
+    function getCookie(name) {
+        var value = "; " + document.cookie;
+        var parts = value.split("; " + name + "=");
+        if (parts.length == 2) return parts.pop().split(";").shift();
+    }
+    
+    
+    if (getCookie('analytics-consent') === 'true') {
+        (function (c, l, a, r, i, t, y) {
+            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
+            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
+            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
+        })(window, document, "clarity", "script", "a7tyzwydh7");
+    }
+</script>
+
+
+    
+<img src='https://pnptelemetry.azurewebsites.net/localhost:1313/sp-dev-fx-webparts/categories/spfx-field-extension/' alt="">
+
+<div id="cookie-consent-banner">
+    <div class="container">
+        <p>
+            We use cookies and similar technologies to improve your experience and analyze site usage. 
+            <a href="http://localhost:1313/sp-dev-fx-webparts/privacy">Privacy Policy</a>
+        </p>
+        <div>
+            <button id="accept-cookies">Accept All</button>
+            <button id="reject-cookies">Reject All</button>
+            <button id="customize-cookies">Customize</button>
+        </div>
+    </div>
+</div>
+
+
+<div id="cookie-preferences-modal">
+    <div class="modal-content">
+        <h3>Cookie Preferences</h3>
+        <div class="preferences">
+            <label>
+                <input type="checkbox" id="essential-cookies" checked disabled>
+                <strong>Essential Cookies</strong> (Required)
+                <br><small>Necessary for the website to function properly.</small>
+            </label>
+            <label>
+                <input type="checkbox" id="analytics-cookies">
+                <strong>Analytics Cookies</strong>
+                <br><small>Help us understand how visitors use our website (Microsoft Clarity).</small>
+            </label>
+        </div>
+        <div class="buttons">
+            <button id="save-preferences">Save Preferences</button>
+            <button id="close-modal">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<script>
+(function() {
+    
+    function setCookie(name, value, days) {
+        var expires = "";
+        if (days) {
+            var date = new Date();
+            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+            expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Strict";
+    }
+    
+    function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for(var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+    }
+    
+    
+    var consentGiven = getCookie('cookie-consent');
+    if (!consentGiven) {
+        document.getElementById('cookie-consent-banner').style.display = 'block';
+    }
+    
+    
+    document.getElementById('accept-cookies').addEventListener('click', function() {
+        setCookie('cookie-consent', 'accepted', 365);
+        setCookie('analytics-consent', 'true', 365);
+        document.getElementById('cookie-consent-banner').style.display = 'none';
+        
+        location.reload();
+    });
+    
+    document.getElementById('reject-cookies').addEventListener('click', function() {
+        setCookie('cookie-consent', 'rejected', 365);
+        setCookie('analytics-consent', 'false', 365);
+        document.getElementById('cookie-consent-banner').style.display = 'none';
+    });
+    
+    document.getElementById('customize-cookies').addEventListener('click', function() {
+        document.getElementById('cookie-preferences-modal').style.display = 'block';
+        
+        var analyticsConsent = getCookie('analytics-consent');
+        document.getElementById('analytics-cookies').checked = analyticsConsent === 'true';
+    });
+    
+    document.getElementById('save-preferences').addEventListener('click', function() {
+        var analyticsChecked = document.getElementById('analytics-cookies').checked;
+        setCookie('cookie-consent', 'customized', 365);
+        setCookie('analytics-consent', analyticsChecked ? 'true' : 'false', 365);
+        document.getElementById('cookie-consent-banner').style.display = 'none';
+        document.getElementById('cookie-preferences-modal').style.display = 'none';
+        
+        location.reload();
+    });
+    
+    document.getElementById('close-modal').addEventListener('click', function() {
+        document.getElementById('cookie-preferences-modal').style.display = 'none';
+    });
+    
+    
+    document.getElementById('cookie-preferences-modal').addEventListener('click', function(e) {
+        if (e.target === this) {
+            this.style.display = 'none';
+        }
+    });
+})();
+</script></body>
+</html>

@@ -1,0 +1,25 @@
+---
+title: "Recently Used Documents Web Part"
+description: "This web part provides you the ability to display a list of a particular user's recently used documents on a web page. The web part may be configured to display a pre-defined number of documents at a time. This web part is powered by the Microsoft Graph and currently requires that the Office 365 tenant be configured for targeted release for all users."
+type: "sample-panel"
+slug: "pnp-sp-dev-spfx-web-parts-react-recently-used-documents"
+sampleName: "pnp-sp-dev-spfx-web-parts-react-recently-used-documents"
+thumbnail: "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-recently-used-documents.webp"
+images: ["/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-recently-used-documents.webp"]
+thumbnailAlt: "Recently Used Documents Web Part"
+lastmod: "2018-05-01T00:00:00.000Z"
+tags: []
+categories: []
+openInGalleryUrl: "/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-web-parts-react-recently-used-documents"
+redirect_to_gallery: false
+---
+![Recently Used Documents Web Part](/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-recently-used-documents.webp)
+
+
+This web part provides you the ability to display a list of a particular user's recently used documents on a web page. The web part may be configured to display a pre-defined number of documents at a time. This web part is powered by the Microsoft Graph and currently requires that the Office 365 tenant be configured for targeted release for all users.
+
+**Open this sample in the gallery (popup panel)**:
+[Open in gallery](/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-web-parts-react-recently-used-documents)
+
+Source: https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-recently-used-documents
+

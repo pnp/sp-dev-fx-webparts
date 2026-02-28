@@ -1,0 +1,15 @@
+{{- $s := . -}}
+<article class="sample-card" data-sample-slug="{{ $s.slug }}">
+    <a href="/samples/{{ $s.slug }}/">
+        <h3>{{ $s.title }}</h3>
+        <p>{{ $s.description }}</p>
+    </a>
+
+    {{ with $s.authors }}
+    <div class="authors">
+        {{ range . }}
+        <span class="author">{{ . }}</span>
+        {{ end }}
+    </div>
+    {{ end }}
+</article>

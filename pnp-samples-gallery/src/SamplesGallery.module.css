@@ -242,3 +242,17 @@
     display: flex;
     gap: 0.5rem;
 }
+
+/* fallback: looks good before Muuri */
+.pnp-card-grid.ssr-mode {
+  display: grid;
+  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  align-items: start;
+}
+
+/* once Muuri is ready */
+.pnp-card-grid.muuri-mode {
+  display: block;
+  /* Muuri positions items */
+}

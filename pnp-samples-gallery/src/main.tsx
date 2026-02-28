@@ -1,5 +1,5 @@
 import React from "react";
-import { createRoot, type Root } from "react-dom/client";
+import { createRoot, hydrateRoot, type Root } from "react-dom/client";
 import { SamplesGallery } from "./SamplesGallery";
 
 
@@ -27,10 +27,7 @@ export function mount(el: Element, options: MountOptions): void {
     existing.unmount();
   }
 
-  const root = createRoot(el);
-  roots.set(el, root);
-
-  root.render(
+  const app = (
     <React.StrictMode>
       <SamplesGallery
         src={options.src}
@@ -42,6 +39,19 @@ export function mount(el: Element, options: MountOptions): void {
       />
     </React.StrictMode>
   );
+
+  const shouldHydrate = el.hasChildNodes();
+
+  
+  const root = shouldHydrate
+    ? hydrateRoot(el, app)
+    : createRoot(el);
+
+  roots.set(el, root);
+
+  if (!shouldHydrate) {
+    root.render(app);
+  }
 }
 
 function autoMount(): void {

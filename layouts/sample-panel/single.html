@@ -1,0 +1,78 @@
+{{ define "main" }}
+
+{{ $target := .Params.openInGalleryUrl | default "" }}
+
+{{/* Optional soft redirect (NOT bot-detection). Users can cancel. */}}
+{{ if and $target .Params.openInGalleryUrl }}
+<div class="sample-redirect-banner"
+    style="padding:12px;border:1px solid rgba(0,0,0,.12);border-radius:10px;margin:0 0 16px 0;">
+    <strong>Open in gallery</strong>
+    <div style="margin-top:6px;">
+        This sample is best viewed in the interactive gallery.
+        <a href="{{ $target | safeURL }}">Open now</a>
+        ·
+        <a href="#" id="stay-here">Stay on this page</a>
+    </div>
+</div>
+
+<script>
+    (function () {
+        var target = {{ $target | jsonify   }};
+    var cancelled = false;
+
+    var stay = document.getElementById("stay-here");
+    if (stay) {
+        stay.addEventListener("click", function (e) {
+            e.preventDefault();
+            cancelled = true;
+            // Hide the banner if you like
+            var b = document.querySelector(".sample-redirect-banner");
+            if (b) b.style.display = "none";
+        });
+    }
+
+    // Give the browser time to paint content (and let indexers read it).
+    setTimeout(function () {
+        if (!cancelled && target) {
+            window.location.assign(target);
+        }
+    }, 1500);
+    }) ();
+</script>
+
+<noscript>
+    <p><a href="{{ $target | safeURL }}">Open in gallery</a></p>
+</noscript>
+{{ end }}
+
+{{/* JSON-LD for SEO */}}
+{{ $img := .Params.thumbnail | default (index (.Params.images | default (slice)) 0) | default "" }}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": {{ .Title | jsonify }},
+  "description": {{ (.Params.description | default "") | jsonify }},
+  "url": {{ .Permalink | jsonify }}
+  {{- if $img -}},
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": {{ ($img | absURL) | jsonify }}
+  }
+  {{- end -}}
+}
+</script>
+
+<section class="section-base article" id="article">
+    <article itemscope itemtype="https://schema.org/Article">
+        <header>
+            <h1 itemprop="headline">{{ .Title }}</h1>
+        </header>
+
+        <section itemprop="articleBody">
+            {{ .Content }}
+        </section>
+    </article>
+</section>
+
+{{ end }}
