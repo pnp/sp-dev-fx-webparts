@@ -57,7 +57,7 @@ jobs:
         shell: bash
         run: |
           cd Docs
-          npm ci
+          npm install --include=optional
 
       - name: Merge + slim samples files
         id: merge
@@ -346,6 +346,13 @@ jobs:
         run: |
           cd Docs
           npm run generate:pages
+
+      - name: Install deps for pnp-samples-gallery (force optional deps)
+        shell: bash
+        run: |
+          cd Docs
+          rm -rf pnp-samples-gallery/node_modules
+          npm --prefix ./pnp-samples-gallery install --include=optional
 
       - name: Build React gallery and copy assets
         shell: bash
