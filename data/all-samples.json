@@ -1889,7 +1889,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-flighttracker.webp",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-flighttracker/assets/Flight-Tracker-Preview-01.png",
         "alt": "Flight Tracker"
       }
     ],
@@ -10703,7 +10703,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-content-query-online/assets/toolpart.gif",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-content-query-online.webp",
         "alt": "Content Query Web Part (SharePoint Online)"
       }
     ],
