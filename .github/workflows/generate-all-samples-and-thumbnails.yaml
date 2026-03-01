@@ -226,6 +226,7 @@ jobs:
 
       - name: Write published JSON files into Docs/data
         id: publish_json
+        shell: bash
         run: |
           node << 'EOF'
           const fs = require("fs");
@@ -340,27 +341,6 @@ jobs:
           cd Docs
           node ./scripts/generate-sample-pages.mjs --delete-orphans
 
-      - name: Debug verify Hugo output paths
-        shell: bash
-        run: |
-          cd Docs
-          echo "Top-level folders under docs/:"
-          ls -la docs | sed -n '1,200p'
-
-          echo ""
-          echo "Find any generated pages mentioning a known slug:"
-          slug="pnp-sp-dev-fx-extensions-react-application-messagebanner"
-          echo "Looking for slug: $slug"
-          rg -n "$slug" docs --hidden --no-ignore 2>/dev/null | head -n 40 || true
-
-          echo ""
-          echo "Count HTML files under docs/:"
-          find docs -type f -name "*.html" | wc -l
-
-          echo ""
-          echo "List any folder named 'samples' under docs/:"
-          find docs -maxdepth 3 -type d -name "samples" -print || true
-    
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v3
         with:
@@ -392,6 +372,27 @@ jobs:
           git commit -m "chore: regenerate data/assets/site [skip ci]"
           git push origin HEAD:Docs
 
+      - name: Debug verify Hugo output paths
+        shell: bash
+        run: |
+          cd Docs
+          echo "Top-level folders under docs/:"
+          ls -la docs | sed -n '1,200p'
+
+          echo ""
+          echo "Find any generated pages mentioning a known slug:"
+          slug="pnp-sp-dev-fx-extensions-react-application-messagebanner"
+          echo "Looking for slug: $slug"
+          rg -n "$slug" docs --hidden --no-ignore 2>/dev/null | head -n 40 || true
+
+          echo ""
+          echo "Count HTML files under docs/:"
+          find docs -type f -name "*.html" | wc -l
+
+          echo ""
+          echo "List any folder named 'samples' under docs/:"
+          find docs -maxdepth 3 -type d -name "samples" -print || true
+    
       - name: Generate workflow summary
         if: always()
         shell: bash
@@ -434,7 +435,6 @@ jobs:
             echo "| **Matched discussions** | ${{ steps.reactions.outputs.matched_discussions }} |"
             echo "| **Total reactions** | ${{ steps.reactions.outputs.total_reactions }} |"
             echo
-            echo "## 📝 Git Changes"
             echo "| Status | Result |"
             echo "|--------|--------|"
           } >> "$GITHUB_STEP_SUMMARY"
