@@ -362,12 +362,32 @@ jobs:
 
           hugo --minify --destination docs --cleanDestinationDir
 
+          echo "=== DEBUG: find which sample did not render to docs/ ==="
+          # list slugs from generated content vs built output
+          ls -1 content/samples | sort > /tmp/content_slugs.txt
+          ls -1 docs/samples | sort > /tmp/docs_slugs.txt
+
+          echo "In content but missing from docs:"
+          comm -23 /tmp/content_slugs.txt /tmp/docs_slugs.txt | sed -n '1,50p'
+
+          missing_slug="$(comm -23 /tmp/content_slugs.txt /tmp/docs_slugs.txt | head -n 1 || true)"
+          echo "Missing slug: ${missing_slug:-<none>}"
+
+          if [[ -n "$missing_slug" ]]; then
+            echo "---- content front matter for missing slug ----"
+            sed -n '1,80p' "content/samples/$missing_slug/index.md" || true
+
+            echo "---- re-run hugo with verbose logging for this page ----"
+            # rerun once with extra diagnostics (won't change output, but logs warnings)
+            hugo --minify --destination docs --cleanDestinationDir --printPathWarnings --logLevel info || true
+          fi
+
           echo "=== DEBUG: how many sample HTML files exist after build? ==="
           find docs/samples -type f -name "index.html" | wc -l || true
 
           echo "=== DEBUG: did any samples files actually change content? ==="
           git diff --name-only -- docs/samples | head -n 50 || true
-          
+
           echo "docs/samples count:"
           find docs/samples -maxdepth 2 -type f | wc -l || true
 
@@ -379,7 +399,7 @@ jobs:
           echo ""
           echo "=== DEBUG: does git think docs/samples is ignored? ==="
           # pick any file that should exist
-          sample_file="$(find docs/samples -type f | head -n 1 || true)"
+          sample_file="$(find docs/samples -type f -print -quit 2>/dev/null || true)"
           echo "Sample output file: ${sample_file:-<none found>}"
           if [[ -n "$sample_file" ]]; then
             git check-ignore -v "$sample_file" || echo "Not ignored ✅"
