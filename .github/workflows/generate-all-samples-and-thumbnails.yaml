@@ -364,11 +364,22 @@ jobs:
 
           echo "Sitemap loc count:"; grep -c "<loc>" docs/sitemap.xml || true
           echo "Sitemap samples entries:"; grep -c "/samples/" docs/sitemap.xml || true
-          echo "First 20 samples sitemap hits:"; grep -n "/samples/" docs/sitemap.xml | head -n 20 || true
+          echo "First 20 samples sitemap hits:"
+          python3 - << 'PY'
+          import re
+          p = "docs/sitemap.xml"
+          s = open(p, "r", encoding="utf-8").read()
+          hits = re.findall(r'https?://[^<"]*/samples/[^<"]*', s)
+          for i, h in enumerate(hits[:20], 1):
+              print(f"{i}: {h}")
+          PY
 
           echo "Check one generated page front matter (first 60 lines):"
-          slug="$(ls content/samples | head -n 1)"
-          sed -n '1,80p' "content/samples/$slug/index.md"
+          slug="$(find content/samples -mindepth 1 -maxdepth 1 -type d -printf '%f\n' -print -quit 2>/dev/null || true)"
+          echo "Chosen slug: ${slug:-<none>}"
+          if [[ -n "$slug" ]]; then
+            sed -n '1,80p' "content/samples/$slug/index.md" || true
+          fi
 
           echo "=== DEBUG: find which sample did not render to docs/ ==="
           # list slugs from generated content vs built output
@@ -399,8 +410,14 @@ jobs:
           echo "docs/samples count:"
           find docs/samples -maxdepth 2 -type f | wc -l || true
 
-          echo "public/samples count (just to detect wrong output dir):"
-          find public/samples -maxdepth 2 -type f | wc -l || true
+          echo "=== DEBUG: find any sample folder missing index.html ==="
+          missing_dir="$(find docs/samples -mindepth 1 -maxdepth 1 -type d ! -exec test -f '{}/index.html' \; -print -quit 2>/dev/null || true)"
+          echo "Missing HTML dir: ${missing_dir:-<none>}"
+          if [[ -n "$missing_dir" ]]; then
+            echo "Contents:"
+            ls -la "$missing_dir" || true
+          fi
+
 
           echo "=== DEBUG: write build marker into docs/ ==="
           echo "sha=$GITHUB_SHA" > docs/build-info.txt
