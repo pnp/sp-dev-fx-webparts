@@ -1889,7 +1889,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-flighttracker/assets/Flight-Tracker-Preview-01.png",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-flighttracker.webp",
         "alt": "Flight Tracker"
       }
     ],
@@ -4026,7 +4026,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-multimedia-gallery.webp",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-multimedia-gallery/assets/MultimediaGallery.gif",
         "alt": "Image Gallery Web Part"
       }
     ],
