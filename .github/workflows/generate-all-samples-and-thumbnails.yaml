@@ -340,7 +340,7 @@ jobs:
           cd Docs
           node ./scripts/generate-sample-pages.mjs --delete-orphans
 
-      - name: Debug: confirm sample pages exist
+      - name: Debug confirm sample pages exist
         shell: bash
         run: |
           cd Docs
