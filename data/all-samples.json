@@ -10703,7 +10703,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-content-query-online.webp",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-content-query-online/assets/toolpart.gif",
         "alt": "Content Query Web Part (SharePoint Online)"
       }
     ],
