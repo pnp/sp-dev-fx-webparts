@@ -340,6 +340,15 @@ jobs:
           cd Docs
           node ./scripts/generate-sample-pages.mjs --delete-orphans
 
+      - name: Debug: confirm sample pages exist
+        shell: bash
+        run: |
+          cd Docs
+          echo "Listing generated sample content:"
+          ls -la content/samples | head -n 50 || true
+          echo "Git status after generation:"
+          git status --porcelain | sed -n '1,120p'
+    
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v3
         with:
@@ -353,7 +362,13 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
-          hugo --minify
+          hugo --minify --destination docs --cleanDestinationDir
+
+          echo "docs/samples count:"
+          find docs/samples -maxdepth 2 -type f | wc -l || true
+
+          echo "public/samples count (just to detect wrong output dir):"
+          find public/samples -maxdepth 2 -type f | wc -l || true
 
           git add -A data static content docs
 
