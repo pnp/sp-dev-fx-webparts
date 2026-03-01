@@ -218,7 +218,7 @@ jobs:
           node-version: "20"
           install-deps: "true"
 
-      - name: Debug: where did images get generated?
+      - name: Debug where did images get generated?
         shell: bash
         run: |
           cd Docs
