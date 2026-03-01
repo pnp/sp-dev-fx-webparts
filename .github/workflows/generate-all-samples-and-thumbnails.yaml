@@ -362,6 +362,14 @@ jobs:
 
           hugo --minify --destination docs --cleanDestinationDir
 
+          echo "Sitemap loc count:"; grep -c "<loc>" docs/sitemap.xml || true
+          echo "Sitemap samples entries:"; grep -c "/samples/" docs/sitemap.xml || true
+          echo "First 20 samples sitemap hits:"; grep -n "/samples/" docs/sitemap.xml | head -n 20 || true
+
+          echo "Check one generated page front matter (first 60 lines):"
+          slug="$(ls content/samples | head -n 1)"
+          sed -n '1,80p' "content/samples/$slug/index.md"
+
           echo "=== DEBUG: find which sample did not render to docs/ ==="
           # list slugs from generated content vs built output
           ls -1 content/samples | sort > /tmp/content_slugs.txt
@@ -393,6 +401,15 @@ jobs:
 
           echo "public/samples count (just to detect wrong output dir):"
           find public/samples -maxdepth 2 -type f | wc -l || true
+
+          echo "=== DEBUG: write build marker into docs/ ==="
+          echo "sha=$GITHUB_SHA" > docs/build-info.txt
+          echo "builtAt=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> docs/build-info.txt
+          echo "samplesFolders=$(find docs/samples -mindepth 1 -maxdepth 1 -type d | wc -l)" >> docs/build-info.txt
+          echo "sitemapLocs=$(grep -c '<loc>' docs/sitemap.xml || true)" >> docs/build-info.txt
+          echo "sitemapSamples=$(grep -c '/samples/' docs/sitemap.xml || true)" >> docs/build-info.txt
+
+          cat docs/build-info.txt
 
           git add -A data static content docs
 
