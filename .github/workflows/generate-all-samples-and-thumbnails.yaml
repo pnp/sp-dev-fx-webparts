@@ -364,6 +364,27 @@ jobs:
 
           git add -A data static content docs
 
+          echo ""
+          echo "=== DEBUG: does git think docs/samples is ignored? ==="
+          # pick any file that should exist
+          sample_file="$(find docs/samples -type f | head -n 1 || true)"
+          echo "Sample output file: ${sample_file:-<none found>}"
+          if [[ -n "$sample_file" ]]; then
+            git check-ignore -v "$sample_file" || echo "Not ignored ✅"
+          fi
+
+          echo ""
+          echo "=== DEBUG: git status (porcelain) ==="
+          git status --porcelain | sed -n '1,200p'
+
+          echo ""
+          echo "=== DEBUG: staged files (name-only) ==="
+          git diff --cached --name-only | sed -n '1,200p'
+
+          echo ""
+          echo "=== DEBUG: staged docs/samples files count ==="
+          git diff --cached --name-only | grep '^docs/samples/' | wc -l || true
+
           if git diff --cached --exit-code; then
             echo "ℹ️ No changes to publish"
             exit 0
@@ -372,27 +393,6 @@ jobs:
           git commit -m "chore: regenerate data/assets/site [skip ci]"
           git push origin HEAD:Docs
 
-      - name: Debug verify Hugo output paths
-        shell: bash
-        run: |
-          cd Docs
-          echo "Top-level folders under docs/:"
-          ls -la docs | sed -n '1,200p'
-
-          echo ""
-          echo "Find any generated pages mentioning a known slug:"
-          slug="pnp-sp-dev-fx-extensions-react-application-messagebanner"
-          echo "Looking for slug: $slug"
-          rg -n "$slug" docs --hidden --no-ignore 2>/dev/null | head -n 40 || true
-
-          echo ""
-          echo "Count HTML files under docs/:"
-          find docs -type f -name "*.html" | wc -l
-
-          echo ""
-          echo "List any folder named 'samples' under docs/:"
-          find docs -maxdepth 3 -type d -name "samples" -print || true
-    
       - name: Generate workflow summary
         if: always()
         shell: bash
@@ -435,6 +435,4 @@ jobs:
             echo "| **Matched discussions** | ${{ steps.reactions.outputs.matched_discussions }} |"
             echo "| **Total reactions** | ${{ steps.reactions.outputs.total_reactions }} |"
             echo
-            echo "| Status | Result |"
-            echo "|--------|--------|"
           } >> "$GITHUB_STEP_SUMMARY"
