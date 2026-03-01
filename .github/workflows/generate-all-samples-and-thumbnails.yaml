@@ -53,6 +53,12 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Install Docs deps (workspaces)
+        shell: bash
+        run: |
+          cd Docs
+          npm ci
+
       - name: Merge + slim samples files
         id: merge
         run: |
@@ -339,7 +345,13 @@ jobs:
         shell: bash
         run: |
           cd Docs
-          node ./scripts/generate-sample-pages.mjs --delete-orphans
+          npm run generate:pages
+
+      - name: Build React gallery and copy assets
+        shell: bash
+        run: |
+          cd Docs
+          npm run build:react
 
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v3
