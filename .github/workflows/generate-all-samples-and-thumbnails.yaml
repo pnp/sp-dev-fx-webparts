@@ -334,6 +334,12 @@ jobs:
       #     git push origin HEAD:Docs
       #     echo "✅ Changes committed and pushed"
 
+      - name: Generate sample pages (Docs branch)
+        shell: bash
+        run: |
+          cd Docs
+          node ./scripts/generate-sample-pages.mjs --delete-orphans
+
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v3
         with:
@@ -349,7 +355,7 @@ jobs:
 
           hugo --minify
 
-          git add -A data static docs
+          git add -A data static content docs
 
           if git diff --cached --exit-code; then
             echo "ℹ️ No changes to publish"
