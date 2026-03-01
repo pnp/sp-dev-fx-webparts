@@ -5,6 +5,9 @@ on:
     branches:
       - Docs  # Trigger on pushes to docs branch
   workflow_dispatch:  # Allow manual triggers
+  workflow_run:
+    workflows: ["Generate All Samples and Cache Thumbnails"] 
+    types: [completed]
 
 # Prevent multiple deployments from running at the same time
 concurrency:
