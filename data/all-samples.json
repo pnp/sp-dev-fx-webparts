@@ -4026,7 +4026,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-multimedia-gallery/assets/MultimediaGallery.gif",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-multimedia-gallery.webp",
         "alt": "Image Gallery Web Part"
       }
     ],
@@ -27561,7 +27561,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-image-editor.webp",
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-image-editor/assets/Screenshot1.png",
         "alt": "Image Editor Command Set"
       }
     ],
