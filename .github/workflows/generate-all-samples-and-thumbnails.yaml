@@ -216,17 +216,15 @@ jobs:
         id: reactions
         uses: ./.github/actions/tally-reactions
 
-      - name: Save likes.json into Docs/docs/data
+      - name: Save likes.json into Docs/data
         shell: bash
         run: |
-          mkdir -p Docs/docs/data
-          echo '${{ steps.reactions.outputs.result }}' > Docs/docs/data/likes.json
-
-          # Validate JSON (fail fast if the action output got truncated)
-          jq empty Docs/docs/data/likes.json
+          mkdir -p Docs/data
+          echo '${{ steps.reactions.outputs.result }}' > Docs/data/likes.json
+          jq empty Docs/data/likes.json
 
 
-      - name: Write published JSON files into Docs/docs/data
+      - name: Write published JSON files into Docs/data
         id: publish_json
         run: |
           node << 'EOF'
@@ -236,8 +234,9 @@ jobs:
           const allSamplesPath = path.resolve(".metadata/all-samples.json");
           const samples = JSON.parse(fs.readFileSync(allSamplesPath, "utf8"));
 
-          // ----- Merge reactions from Docs/docs/data/likes.json into each sample -----
-          const likesPath = path.resolve("Docs/docs/data/likes.json");
+          // ----- Merge reactions from Docs/data/likes.json into each sample -----
+          const likesPath = path.resolve("Docs/data/likes.json");
+          const dataDir = path.resolve("Docs/data");
           let likes = null;
 
           if (fs.existsSync(likesPath)) {
@@ -266,7 +265,6 @@ jobs:
                 };
           }
 
-          const dataDir = path.resolve("Docs/docs/data");
           fs.mkdirSync(dataDir, { recursive: true });
 
           // all-samples.json
@@ -318,26 +316,13 @@ jobs:
           );
           EOF
 
-      - name: Check Docs working tree changes
-        id: check_changes
-        shell: bash
-        run: |
-          cd Docs
-          if [ -n "$(git status --porcelain)" ]; then
-            echo "changes=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "changes=false" >> "$GITHUB_OUTPUT"
-          fi
-
-
-      - name: Commit + push to Docs branch only
         shell: bash
         run: |
           cd Docs
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
-          git add -A docs/images/thumbnails docs/images/avatars docs/data
+          git add -A docs/images/thumbnails docs/images/avatars data
 
           if git diff --cached --exit-code; then
             echo "ℹ️ No changes to publish to Docs branch"
@@ -347,6 +332,31 @@ jobs:
           git commit -m "chore: publish samples data + images [skip ci]"
           git push origin HEAD:Docs
           echo "✅ Changes committed and pushed"
+
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "latest"
+          extended: true
+
+      - name: Build Hugo site + commit
+        shell: bash
+        run: |
+          cd Docs
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          hugo --minify
+
+          git add -A data static docs
+
+          if git diff --cached --exit-code; then
+            echo "ℹ️ No changes to publish"
+            exit 0
+          fi
+
+          git commit -m "chore: regenerate data/assets/site [skip ci]"
+          git push origin HEAD:Docs
 
       - name: Generate workflow summary
         if: always()
