@@ -315,23 +315,24 @@ jobs:
             "utf8"
           );
           EOF
+          
+      # - name: Commit samples data + images
+      #   shell: bash
+      #   run: |
+      #     cd Docs
+      #     git config --local user.email "github-actions[bot]@users.noreply.github.com"
+      #     git config --local user.name "github-actions[bot]"
 
-        shell: bash
-        run: |
-          cd Docs
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+      #     git add -A docs/images/thumbnails docs/images/avatars data
 
-          git add -A docs/images/thumbnails docs/images/avatars data
+      #     if git diff --cached --exit-code; then
+      #       echo "ℹ️ No changes to publish to Docs branch"
+      #       exit 0
+      #     fi
 
-          if git diff --cached --exit-code; then
-            echo "ℹ️ No changes to publish to Docs branch"
-            exit 0
-          fi
-
-          git commit -m "chore: publish samples data + images [skip ci]"
-          git push origin HEAD:Docs
-          echo "✅ Changes committed and pushed"
+      #     git commit -m "chore: publish samples data + images [skip ci]"
+      #     git push origin HEAD:Docs
+      #     echo "✅ Changes committed and pushed"
 
       - name: Set up Hugo
         uses: peaceiris/actions-hugo@v3
@@ -403,5 +404,4 @@ jobs:
             echo "## 📝 Git Changes"
             echo "| Status | Result |"
             echo "|--------|--------|"
-            echo "| **Changes Detected** | ${{ steps.check_changes.outputs.changes == 'true' && '✅ Yes' || 'ℹ️ No' }} |"
           } >> "$GITHUB_STEP_SUMMARY"
