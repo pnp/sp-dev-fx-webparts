@@ -354,8 +354,20 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
 
+          echo "=== DEBUG: how many samples are tracked in the repo checkout? ==="
+          git ls-files "docs/samples/**" | wc -l || true
+
+          echo "=== DEBUG: does the tracked tree contain docs/samples? ==="
+          git ls-tree -d HEAD docs/samples || true
+
           hugo --minify --destination docs --cleanDestinationDir
 
+          echo "=== DEBUG: how many sample HTML files exist after build? ==="
+          find docs/samples -type f -name "index.html" | wc -l || true
+
+          echo "=== DEBUG: did any samples files actually change content? ==="
+          git diff --name-only -- docs/samples | head -n 50 || true
+          
           echo "docs/samples count:"
           find docs/samples -maxdepth 2 -type f | wc -l || true
 
