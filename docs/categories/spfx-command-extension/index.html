@@ -1,861 +1,107 @@
-<!DOCTYPE html>
-<html lang="en">
-<head><script src="/sp-dev-fx-webparts/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=sp-dev-fx-webparts/livereload" data-no-instant defer></script>
-    <meta charset="utf-8">
-    <title>SPFx Samples</title>
-    
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width">
-
-
-<meta name="description" content='Learn from others how to build apps on Microsoft 365 &amp; Power Platform.'/>
-<meta name="keywords" content=''/>
-
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="SPFX-COMMAND-EXTENSION">
-  <meta name="twitter:description" content="Learn from others how to build apps on Microsoft 365 &amp; Power Platform.">
-
-<meta property="og:url" content="http://localhost:1313/sp-dev-fx-webparts/categories/spfx-command-extension/">
-  <meta property="og:site_name" content="SPFx Samples">
-  <meta property="og:title" content="SPFX-COMMAND-EXTENSION">
-  <meta property="og:description" content="Learn from others how to build apps on Microsoft 365 &amp; Power Platform.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="website">
-
-
-<link rel="canonical" href="http://localhost:1313/sp-dev-fx-webparts/categories/spfx-command-extension/">
-
-
-
-<link rel="stylesheet" href="http://localhost:1313/sp-dev-fx-webparts/css/styles.css" media="screen">
-
-
-<link rel="stylesheet" href="http://localhost:1313/sp-dev-fx-webparts/css/tweaks.css" media="screen">
-
-
-<link rel="prefetch" href='http://localhost:1313/sp-dev-fx-webparts/images/base-assets.svg' as="image" type="image/svg+xml" media="all">
-
-
-
-<link rel="stylesheet" href="http://localhost:1313/sp-dev-fx-webparts/css/custom.css" media="screen">
-
-
-
-
-<meta property="og:url" content="http://localhost:1313/sp-dev-fx-webparts/categories/spfx-command-extension/">
-  <meta property="og:site_name" content="SPFx Samples">
-  <meta property="og:title" content="SPFX-COMMAND-EXTENSION">
-  <meta property="og:description" content="Learn from others how to build apps on Microsoft 365 &amp; Power Platform.">
-  <meta property="og:locale" content="en_us">
-  <meta property="og:type" content="website">
-
-
-  <meta itemprop="name" content="SPFX-COMMAND-EXTENSION">
-  <meta itemprop="description" content="Learn from others how to build apps on Microsoft 365 &amp; Power Platform.">
-  <meta itemprop="datePublished" content="2025-09-03T00:00:00+00:00">
-  <meta itemprop="dateModified" content="2025-09-03T00:00:00+00:00">
-
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="SPFX-COMMAND-EXTENSION">
-  <meta name="twitter:description" content="Learn from others how to build apps on Microsoft 365 &amp; Power Platform.">
-
-<meta name="msapplication-TileColor" content='#0078d4'/>
-<meta name="theme-color" content='#ffffff'/>
-
-<link rel="apple-touch-icon" sizes="180x180" href='http://localhost:1313/sp-dev-fx-webparts/apple-touch-icon.png' />
-<link rel="icon" type="image/svg+xml" href='http://localhost:1313/sp-dev-fx-webparts/favicon.svg' sizes="any" />
-<link rel="icon" type="image/png" href='http://localhost:1313/sp-dev-fx-webparts/favicon-32x32.png' sizes="32x32" />
-<link rel="icon" type="image/png" href='http://localhost:1313/sp-dev-fx-webparts/favicon-16x16.png' sizes="16x16" />
-
-<link rel="apple-touch-icon" href='http://localhost:1313/sp-dev-fx-webparts/images/apple-touch-icon.png' />
-<link rel="apple-touch-icon" sizes="180x180" href='http://localhost:1313/images/apple-touch-icon.png' />
-
-<link rel="manifest" href='http://localhost:1313/sp-dev-fx-webparts/site.webmanifest' />
-<link rel="mask-icon" href='http://localhost:1313/sp-dev-fx-webparts/safari-pinned-tab.svg' color='#0078d4' />
-
-<link rel="alternate" type="application/rss+xml" href="http://localhost:1313/sp-dev-fx-webparts/categories/spfx-command-extension/index.xml" title="SPFx Samples" />
-
-
-
-    <!-- Made with ❤️ by the PnP team -->
-    <!-- Design: Stefan Bauer (https://n8d.at/)-->
-    <!-- Site: Hugo Bernier (https://tahoeninja.blog/)-->
-</head>
-<body class="pnp-backdrop">
-    <div class="wrapper">
-<header class="page-header">
-    
-
-<a class="site-logo-link" href="http://localhost:1313/sp-dev-fx-webparts/">
-    <div class="site-logo">
-        
-        
-            
-            <span class="u-nowrap">SharePoint Framework</span><br>
-            
-        
-            
-            (SPFx) Samples
-            
-        
-    </div>
-</a>
-
-    <nav class="nav">
-        <button class="hamburger" tabindex="-1">
-            <svg class="active">
-                <title id="ham-title-active">Click to close - Hamburger in form of arrows</title>
-                <use xlink:href="http://localhost:1313/sp-dev-fx-webparts/images/base-assets.svg#hamburger"></use>
-            </svg>
-            <svg class="inactive">
-                <title id="ham-title-inactive">Click to open - Hamburger in form of three stripes</title>
-                <use xlink:href="http://localhost:1313/sp-dev-fx-webparts/images/base-assets.svg#hamburger-inactive"></use>
-            </svg>
-        </button>
-        
-<menu class="nav-menu primary" aria-label="Primary navigation" aria-expanded="true">
-    
-    <li class="nav-item">
-        <a href="http://localhost:1313/sp-dev-fx-webparts/" class="nav-link">
-            Samples</a>
-    </li>
-    
-    <li class="nav-item">
-        <a href="http://localhost:1313/sp-dev-fx-webparts/gettingstarted/" class="nav-link">
-            Getting started</a>
-    </li>
-    
-    <li class="nav-item">
-        <a href="http://localhost:1313/sp-dev-fx-webparts/contributing" class="nav-link">
-            Contributing</a>
-    </li>
-    
-</menu>
-    </nav>
-</header></div>
-    
-    <main>
-<h1>SPFX-COMMAND-EXTENSION</h1>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-convert-to-pdf/">Save and convert as PDF by PnP</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2025-09-03">Sep 3, 2025</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-convert-to-pdf/">
-  <p><p><img src="https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-convert-to-pdf/screenshot.gif" alt="Save and convert as PDF by PnP"></p>
-<p>A global list customizer which adds functionality to all document libraries in SharePoint Online to convert one or more documents in-place to PDF, or download one or more documents as a PDF. When selecting multiple documents for download they will be downloaded as a zip file. The converter uses built in API&rsquo;s of converting to PDF.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-convert-to-pdf">Open in gallery</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-print/">Print List Item Command View Set</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2024-10-30">Oct 30, 2024</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-print/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-print.webp" alt="Print List Item Command View Set"></p>
-<p>This sample shows how you can print list items using different templates, site admin can add, edit or remove templates and users can print items based on those templates.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-print">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-print">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-print</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-singlepartapppage/">configure a Page as Single App Part page</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2024-10-09">Oct 9, 2024</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-singlepartapppage/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-singlepartapppage.webp" alt="configure a Page as Single App Part page"></p>
-<p>Custom Command Set that set a Page layout to use the Single App Part page Layout</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-singlepartapppage">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-singlepartapppage">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-singlepartapppage</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-manage-list-subscriptions/">React-Manage-List-Subscriptions</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2024-10-03">Oct 3, 2024</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-manage-list-subscriptions/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-manage-list-subscriptions.webp" alt="React-Manage-List-Subscriptions"></p>
-<p>Demonstrates managing the list subscriptions (sharepoint webhooks) and action to renew the webhook expiration date using Rest calls.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-manage-list-subscriptions">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-manage-list-subscriptions">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-manage-list-subscriptions</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-page-model-pnpjs/">Modern Page Model with PnP/PnPjs</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2023-02-15">Feb 15, 2023</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-page-model-pnpjs/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-page-model-pnpjs.webp" alt="Modern Page Model with PnP/PnPjs"></p>
-<p>A SPFx extension using @pnp/sp that allow creating Modern Pages based on prefilled modern pages marked as &ldquo;Page Model&rdquo;, inside the Site Pages Library, and code defined pages. Users can select a Modern page as Model just setting a custom property page named &ldquo;Is Model&rdquo; to &ldquo;Yes&rdquo;. People often need to create periodically editorial pages with the same composition, sections structure and webpart configuration, in order to give users the same users experience between pages with different contents but with the same communicative purpose</p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-change-page-layouttype/">Change Page Layout Command Extension</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2021-10-25">Oct 25, 2021</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-change-page-layouttype/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-change-page-layouttype.webp" alt="Change Page Layout Command Extension"></p>
-<p>Listview command extension that is available only for the Site Pages library to change the layout type. If the page is Article, it can be changed to Home which will remove the page title placeholder and vice versa.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-change-page-layouttype">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-change-page-layouttype">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-change-page-layouttype</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-js-share-to-teams/">Share to Teams</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2021-08-14">Aug 14, 2021</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-js-share-to-teams/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-js-share-to-teams.webp" alt="Share to Teams"></p>
-<p>Share to teams helps us to share files along with folders in document library it also alows us to share pages in the site pages library and last but not the least it allows sharing list items to teams channels or group.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-js-share-to-teams">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-share-to-teams">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-share-to-teams</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-send-to-teams/">Send-To-Teams - Command Set</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2021-04-05">Apr 5, 2021</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-send-to-teams/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-send-to-teams.webp" alt="Send-To-Teams - Command Set"></p>
-<p>This Command Set allows to create an adaptive card based on list data and send to microsoft teams chanel, The user can select the list fields that will show on the card.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-send-to-teams">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-send-to-teams">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-send-to-teams</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-jump-to-folder/">Jump to folder extension</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2021-03-15">Mar 15, 2021</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-jump-to-folder/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-jump-to-folder.webp" alt="Jump to folder extension"></p>
-<p>Sample solution that facilitates navigation between large collections of SharePoint library folders.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-jump-to-folder">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-jump-to-folder">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-jump-to-folder</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-demote-news/">Demote News to Page</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2021-02-22">Feb 22, 2021</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-demote-news/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-demote-news.webp" alt="Demote News to Page"></p>
-<p>Sample SharePoint Framework list view command set extension to demote a previously promoted News page.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-demote-news">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-demote-news">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-demote-news</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-file-size-viewer/">File Size Viewer sample with Command View Set</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2021-02-21">Feb 21, 2021</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-file-size-viewer/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-file-size-viewer.webp" alt="File Size Viewer sample with Command View Set"></p>
-<p>This sample shows how to create Command View Set working with single and multiple files selection. Once selected some files, it will show file sizes representation using a React D3 TreeMap component. This sample also shows how to integrate D3.js third party components within SharePoint Framework.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-file-size-viewer">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-file-size-viewer">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-file-size-viewer</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-addfolders/">Add Folders Command</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2021-01-17">Jan 17, 2021</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-addfolders/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-addfolders.webp" alt="Add Folders Command"></p>
-<p>Sample SharePoint Framework list view command set extension to create folders that can be all at the current location (parallel) or nested (one after another).</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-addfolders">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-addfolders">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-addfolders</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-copy-classic-link/">Copy Classic Link Extension</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2021-01-03">Jan 3, 2021</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-copy-classic-link/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-js-command-copy-classic-link.webp" alt="Copy Classic Link Extension"></p>
-<p>Sample SharePoint Framework list view command set extension that copies the classic link (path) of a selected item. Uses copy-to-clipboard library, toastr and sweet alert for notifications.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-js-command-copy-classic-link">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-command-copy-classic-link">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-command-copy-classic-link</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-image-editor/">Image Editor Command Set</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2020-06-16">Jun 16, 2020</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-image-editor/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-image-editor.webp" alt="Image Editor Command Set"></p>
-<p>This command set allows quick edit images located in Document Library.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-image-editor">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-image-editor">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-image-editor</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-folder-select/">Folder Selection</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2020-01-03">Jan 3, 2020</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-folder-select/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-folder-select.webp" alt="Folder Selection"></p>
-<p>This extension creates a callout with a dropdown that allows users to select from a list of top level folders in a document library. After selecting the folder they can use the button to navigate to that folder.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-folder-select">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-folder-select">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-folder-select</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-get-thumbnail/">Get Thumbnail List Item Command View Set</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2019-10-25">Oct 25, 2019</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-get-thumbnail/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-get-thumbnail.webp" alt="Get Thumbnail List Item Command View Set"></p>
-<p>This Command Set uses Microsoft Graph API to get the Thumbnail URL, of selected size (small, medium, large), for any file stored in a SharePoint Document Library.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-get-thumbnail">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-get-thumbnail">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-get-thumbnail</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-vision-api/">Image Metadata from Cognitive Services Vision API List View Command Set</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2019-09-01">Sep 1, 2019</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-vision-api/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-vision-api.webp" alt="Image Metadata from Cognitive Services Vision API List View Command Set"></p>
-<p>Custom Command Set that gets metadata information from MS Cognitive Services Vision API for the selected Image</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-vision-api">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-vision-api">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-vision-api</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-qrcode/">Generate QR Code List Item Command View Set</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2019-09-01">Sep 1, 2019</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-qrcode/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-qrcode.webp" alt="Generate QR Code List Item Command View Set"></p>
-<p>Generates a printable QR code which links to a SharePoint list item.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-qrcode">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-qrcode">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-qrcode</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-dialog/">Custom Dialog Sample with Command View Set</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2019-09-01">Sep 1, 2019</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-dialog/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-dialog.webp" alt="Custom Dialog Sample with Command View Set"></p>
-<p>This sample shows how to create Custom Dialogs using @microsoft/sp-dialog package in the context of Command View Set. You can use also custom dialogs with client-side web parts or with any SharePoint Framework component types.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-dialog">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-dialog">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-dialog</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-form-settings/">Form Settings Command View Set</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2019-06-30">Jun 30, 2019</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-form-settings/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-form-settings.webp" alt="Form Settings Command View Set"></p>
-<p>This sample shows how you can redirect default SharePoint list forms (New,Edit,Display) to different pages.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-form-settings">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-form-settings">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-form-settings</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-clone/">Clone ListView Command Set</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2019-05-27">May 27, 2019</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-clone/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-js-command-clone.webp" alt="Clone ListView Command Set"></p>
-<p>Sample SharePoint Framework listview command set extension that allows users to clone one or more list items. Demonstrates conditional visibility, PnPJS requests, PnPJS Batching, and field specific formats for rest operations.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-js-command-clone">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-command-clone">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-command-clone</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-send-document/">Send Document With E-Mail</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2019-02-10">Feb 10, 2019</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-send-document/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-send-document.webp" alt="Send Document With E-Mail"></p>
-<p>This sample shows how to create Custom Dialogs using @microsoft/sp-dialog package in the context of Command View Set and send selected document with e-mail.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-send-document">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-send-document">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-send-document</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-direct-link/">Get a direct link to a document or folder</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2019-01-06">Jan 6, 2019</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-direct-link/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-direct-link.webp" alt="Get a direct link to a document or folder"></p>
-<p>Sample SharePoint Framework (SPFx) solution which gives the end-user the ability to just get a regular, simple link to a document or folder in the modern SharePoint document libraries. This is done using a CommandSet.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-direct-link">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-direct-link">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-direct-link</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-mail-view-as-image/">Mail Current View as Image</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2018-11-13">Nov 13, 2018</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-mail-view-as-image/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-mail-view-as-image.webp" alt="Mail Current View as Image"></p>
-<p>Sample SharePoint Framework list view command set extension that emails the current view to selected (external or internal user) and also saves the same image in SharePoint. Uses html2canvas library, pnp spfx controls, pnp js and office fabric ui react.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-mail-view-as-image">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-mail-view-as-image">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-mail-view-as-image</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-convert-to-pdf/">Convert documents to PDF using Azure function</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2018-10-29">Oct 29, 2018</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-convert-to-pdf/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-js-command-convert-to-pdf.webp" alt="Convert documents to PDF using Azure function"></p>
-<p>Sample SPFx list view command set extension that converts the selected documents to PDF using Microsoft Graph.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-js-command-convert-to-pdf">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-command-convert-to-pdf">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-command-convert-to-pdf</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-share-pnpjs/">Multishare Command Extension with PnPJs</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2018-09-19">Sep 19, 2018</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-share-pnpjs/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-share-pnpjs.webp" alt="Multishare Command Extension with PnPJs"></p>
-<p>The sample is an custom action only active when multiple items are selected.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-share-pnpjs">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-share-pnpjs">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-share-pnpjs</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-discuss-now/">Discuss Now Command Set</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2018-07-18">Jul 18, 2018</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-discuss-now/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-discuss-now.webp" alt="Discuss Now Command Set"></p>
-<p>Sample SharePoint Framework command set showing how to create a new meeting to discuss about a document selected in the current list view of a document library.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-discuss-now">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-discuss-now">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-discuss-now</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-item-history/">Item History</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2018-06-15">Jun 15, 2018</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-item-history/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-item-History.webp" alt="Item History"></p>
-<p>This listview command is used to show the past versions of the selected list item in a grid.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-item-history">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-item-History">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-item-History</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-selecteditems-export/">Export Selected Items to Excel</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2018-02-16">Feb 16, 2018</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-selecteditems-export/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-js-command-selecteditems-export.webp" alt="Export Selected Items to Excel"></p>
-<p>Exports selected items to excel spreadsheet in xlsx format, with the columns from the current modern list view.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-js-command-selecteditems-export">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-command-selecteditems-export">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-command-selecteditems-export</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-lock-item/">Lock Item Command Set Customizer</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2017-12-20">Dec 20, 2017</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-lock-item/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-js-command-lock-item.webp" alt="Lock Item Command Set Customizer"></p>
-<p>The sample illustrates the ability to lock/unlock selected item/document for the current user. The lock is implemented as item&rsquo;s unique permissions set to Full Control for current user only. The lock is available only for items that inherit permissions from the parent. Items with unique permissions can&rsquo;t be locked as we can&rsquo;t unlock them correctly later on. All other permissions are deleted. The Command is available only for users who have &ldquo;Manage Permissions&rdquo; permissions for the list/document library.</p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-item-permissions/">Unique Item Permissions Command Set Customizer</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2017-10-15">Oct 15, 2017</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-item-permissions/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-js-command-item-permissions.webp" alt="Unique Item Permissions Command Set Customizer"></p>
-<p>The sample illustrates creation of a shortcut command to redirect user to selected item&rsquo;s permission page.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-js-command-item-permissions">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-command-item-permissions">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-command-item-permissions</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-custom-command-bar/">Custom Command Bar Command Set Customizer</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2017-09-27">Sep 27, 2017</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-custom-command-bar/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-custom-command-bar.webp" alt="Custom Command Bar Command Set Customizer"></p>
-<p>The sample illustrates how to display custom Command Bar when Command Set Button is pressed.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-custom-command-bar">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-custom-command-bar">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-custom-command-bar</a></p></p>
-</a>
-</p>
-
-<p>
-<h3><a class="title" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-directions/">Directions SharePoint Framework list view command set</a></h3>
-
-
-<i data-feather="calendar"></i>
-<time datetime="2017-06-29">Jun 29, 2017</time>
-
-<a class="summary" href="http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-directions/">
-  <p><p><img src="http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-directions.webp" alt="Directions SharePoint Framework list view command set"></p>
-<p>Sample SharePoint Framework list view command set showing travel directions to the given location using Google Maps.</p>
-<p><strong>Open this sample in the gallery (popup panel)</strong>:
-<a href="http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-directions">Open in gallery</a></p>
-<p>Source: <a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-directions">https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-directions</a></p></p>
-</a>
-</p>
-
-
-    </main>
-
-    </main>
-	
-
-<footer class="footer">
-    <div class="footer-cnt">
-        <menu class="footer-menu">
-            
-            
-            
-            <li class="card-iconbar-item">
-                <a class="card-iconbar-link" href="https://github.com/PnP/sp-dev-fx-webparts" aria-label="GitHub"   >
-                    
-<span class="icon">
-    <svg class="icon-svg icon-github" aria-hidden="true">
-        GitHub
-        <use xlink:href="http://localhost:1313/sp-dev-fx-webparts/images/base-assets.svg#icon-github"></use>
-    </svg>
-</span>
-                </a>
-            </li>
-            
-            
-            
-            <li class="card-iconbar-item">
-                <a class="card-iconbar-link" href="https://discord.com/channels/1095788595010338956/1096363629680529418" aria-label="Discord"   >
-                    
-<span class="icon">
-    <svg class="icon-svg icon-discord" aria-hidden="true">
-        Discord
-        <use xlink:href="http://localhost:1313/sp-dev-fx-webparts/images/base-assets.svg#icon-discord"></use>
-    </svg>
-</span>
-                </a>
-            </li>
-            
-            
-            
-        </menu>
-        
-    </div>
-</footer>
-
-</body>
-</html>
-
-<script src="http://localhost:1313/sp-dev-fx-webparts/js/main.min.js"></script>
-
-    
-
-    
-
-    
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-YZHMBM65MJ"></script>
-<script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-YZHMBM65MJ');
-</script>
-    
-    
-
-    <script type="text/javascript">
-    
-    function getCookie(name) {
-        var value = "; " + document.cookie;
-        var parts = value.split("; " + name + "=");
-        if (parts.length == 2) return parts.pop().split(";").shift();
-    }
-    
-    
-    if (getCookie('analytics-consent') === 'true') {
-        (function (c, l, a, r, i, t, y) {
-            c[a] = c[a] || function () { (c[a].q = c[a].q || []).push(arguments) };
-            t = l.createElement(r); t.async = 1; t.src = "https://www.clarity.ms/tag/" + i;
-            y = l.getElementsByTagName(r)[0]; y.parentNode.insertBefore(t, y);
-        })(window, document, "clarity", "script", "a7tyzwydh7");
-    }
-</script>
-
-
-    
-<img src='https://pnptelemetry.azurewebsites.net/localhost:1313/sp-dev-fx-webparts/categories/spfx-command-extension/' alt="">
-
-<div id="cookie-consent-banner">
-    <div class="container">
-        <p>
-            We use cookies and similar technologies to improve your experience and analyze site usage. 
-            <a href="http://localhost:1313/sp-dev-fx-webparts/privacy">Privacy Policy</a>
-        </p>
-        <div>
-            <button id="accept-cookies">Accept All</button>
-            <button id="reject-cookies">Reject All</button>
-            <button id="customize-cookies">Customize</button>
-        </div>
-    </div>
-</div>
-
-
-<div id="cookie-preferences-modal">
-    <div class="modal-content">
-        <h3>Cookie Preferences</h3>
-        <div class="preferences">
-            <label>
-                <input type="checkbox" id="essential-cookies" checked disabled>
-                <strong>Essential Cookies</strong> (Required)
-                <br><small>Necessary for the website to function properly.</small>
-            </label>
-            <label>
-                <input type="checkbox" id="analytics-cookies">
-                <strong>Analytics Cookies</strong>
-                <br><small>Help us understand how visitors use our website (Microsoft Clarity).</small>
-            </label>
-        </div>
-        <div class="buttons">
-            <button id="save-preferences">Save Preferences</button>
-            <button id="close-modal">Cancel</button>
-        </div>
-    </div>
-</div>
-
-<script>
-(function() {
-    
-    function setCookie(name, value, days) {
-        var expires = "";
-        if (days) {
-            var date = new Date();
-            date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Strict";
-    }
-    
-    function getCookie(name) {
-        var nameEQ = name + "=";
-        var ca = document.cookie.split(';');
-        for(var i = 0; i < ca.length; i++) {
-            var c = ca[i];
-            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-        }
-        return null;
-    }
-    
-    
-    var consentGiven = getCookie('cookie-consent');
-    if (!consentGiven) {
-        document.getElementById('cookie-consent-banner').style.display = 'block';
-    }
-    
-    
-    document.getElementById('accept-cookies').addEventListener('click', function() {
-        setCookie('cookie-consent', 'accepted', 365);
-        setCookie('analytics-consent', 'true', 365);
-        document.getElementById('cookie-consent-banner').style.display = 'none';
-        
-        location.reload();
-    });
-    
-    document.getElementById('reject-cookies').addEventListener('click', function() {
-        setCookie('cookie-consent', 'rejected', 365);
-        setCookie('analytics-consent', 'false', 365);
-        document.getElementById('cookie-consent-banner').style.display = 'none';
-    });
-    
-    document.getElementById('customize-cookies').addEventListener('click', function() {
-        document.getElementById('cookie-preferences-modal').style.display = 'block';
-        
-        var analyticsConsent = getCookie('analytics-consent');
-        document.getElementById('analytics-cookies').checked = analyticsConsent === 'true';
-    });
-    
-    document.getElementById('save-preferences').addEventListener('click', function() {
-        var analyticsChecked = document.getElementById('analytics-cookies').checked;
-        setCookie('cookie-consent', 'customized', 365);
-        setCookie('analytics-consent', analyticsChecked ? 'true' : 'false', 365);
-        document.getElementById('cookie-consent-banner').style.display = 'none';
-        document.getElementById('cookie-preferences-modal').style.display = 'none';
-        
-        location.reload();
-    });
-    
-    document.getElementById('close-modal').addEventListener('click', function() {
-        document.getElementById('cookie-preferences-modal').style.display = 'none';
-    });
-    
-    
-    document.getElementById('cookie-preferences-modal').addEventListener('click', function(e) {
-        if (e.target === this) {
-            this.style.display = 'none';
-        }
-    });
-})();
-</script></body>
-</html>
+<!doctype html><html lang=en><head><meta charset=utf-8><title>SPFx Samples</title><meta charset=utf-8><meta name=viewport content="width=device-width"><meta name=description content='Learn from others how to build apps on Microsoft 365 & Power Platform.'><meta name=keywords content><meta name=twitter:card content="summary"><meta name=twitter:title content="SPFX-COMMAND-EXTENSION"><meta name=twitter:description content="Learn from others how to build apps on Microsoft 365 & Power Platform."><meta property="og:url" content="https://pnp.github.io/sp-dev-fx-webparts/categories/spfx-command-extension/"><meta property="og:site_name" content="SPFx Samples"><meta property="og:title" content="SPFX-COMMAND-EXTENSION"><meta property="og:description" content="Learn from others how to build apps on Microsoft 365 & Power Platform."><meta property="og:locale" content="en_us"><meta property="og:type" content="website"><link rel=canonical href=https://pnp.github.io/sp-dev-fx-webparts/categories/spfx-command-extension/><link rel=stylesheet href=https://pnp.github.io/sp-dev-fx-webparts/css/styles.css media=screen><link rel=stylesheet href=https://pnp.github.io/sp-dev-fx-webparts/css/tweaks.css media=screen><link rel=prefetch href=https://pnp.github.io/sp-dev-fx-webparts/images/base-assets.svg as=image type=image/svg+xml media=all><link rel=stylesheet href=https://pnp.github.io/sp-dev-fx-webparts/css/custom.min.css crossorigin=anonymous media=screen><meta property="og:url" content="https://pnp.github.io/sp-dev-fx-webparts/categories/spfx-command-extension/"><meta property="og:site_name" content="SPFx Samples"><meta property="og:title" content="SPFX-COMMAND-EXTENSION"><meta property="og:description" content="Learn from others how to build apps on Microsoft 365 & Power Platform."><meta property="og:locale" content="en_us"><meta property="og:type" content="website"><meta itemprop=name content="SPFX-COMMAND-EXTENSION"><meta itemprop=description content="Learn from others how to build apps on Microsoft 365 & Power Platform."><meta itemprop=datePublished content="2025-09-03T00:00:00+00:00"><meta itemprop=dateModified content="2025-09-03T00:00:00+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="SPFX-COMMAND-EXTENSION"><meta name=twitter:description content="Learn from others how to build apps on Microsoft 365 & Power Platform."><meta name=msapplication-TileColor content='#0078d4'><meta name=theme-color content='#ffffff'><link rel=apple-touch-icon sizes=180x180 href=https://pnp.github.io/sp-dev-fx-webparts/apple-touch-icon.png><link rel=icon type=image/svg+xml href=https://pnp.github.io/sp-dev-fx-webparts/favicon.svg sizes=any><link rel=icon type=image/png href=https://pnp.github.io/sp-dev-fx-webparts/favicon-32x32.png sizes=32x32><link rel=icon type=image/png href=https://pnp.github.io/sp-dev-fx-webparts/favicon-16x16.png sizes=16x16><link rel=apple-touch-icon href=https://pnp.github.io/sp-dev-fx-webparts/images/apple-touch-icon.png><link rel=apple-touch-icon sizes=180x180 href=https://pnp.github.io/images/apple-touch-icon.png><link rel=manifest href=https://pnp.github.io/sp-dev-fx-webparts/site.webmanifest><link rel=mask-icon href=https://pnp.github.io/sp-dev-fx-webparts/safari-pinned-tab.svg color=#0078d4><link rel=alternate type=application/rss+xml href=https://pnp.github.io/sp-dev-fx-webparts/categories/spfx-command-extension/index.xml title="SPFx Samples"></head><body class=pnp-backdrop><div class=wrapper><header class=page-header><a class=site-logo-link href=https://pnp.github.io/sp-dev-fx-webparts/><div class=site-logo><span class=u-nowrap>SharePoint Framework</span><br>(SPFx) Samples</div></a><nav class=nav><button class=hamburger tabindex=-1>
+<svg class="active"><title id="ham-title-active">Click to close - Hamburger in form of arrows</title><use xlink:href="https://pnp.github.io/sp-dev-fx-webparts/images/base-assets.svg#hamburger"/></svg>
+<svg class="inactive"><title id="ham-title-inactive">Click to open - Hamburger in form of three stripes</title><use xlink:href="https://pnp.github.io/sp-dev-fx-webparts/images/base-assets.svg#hamburger-inactive"/></svg></button><menu class="nav-menu primary" aria-label="Primary navigation" aria-expanded=true><li class=nav-item><a href=https://pnp.github.io/sp-dev-fx-webparts/ class=nav-link>Samples</a></li><li class=nav-item><a href=https://pnp.github.io/sp-dev-fx-webparts/gettingstarted/ class=nav-link>Getting started</a></li><li class=nav-item><a href=https://pnp.github.io/sp-dev-fx-webparts/contributing class=nav-link>Contributing</a></li></menu></nav></header></div><main><h1>SPFX-COMMAND-EXTENSION</h1><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-convert-to-pdf/>Save and convert as PDF by PnP</a></h3><i data-feather=calendar></i>
+<time datetime=2025-09-03>Sep 3, 2025</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-convert-to-pdf/><p><p><img src=https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-convert-to-pdf/screenshot.gif alt="Save and convert as PDF by PnP"></p><p>A global list customizer which adds functionality to all document libraries in SharePoint Online to convert one or more documents in-place to PDF, or download one or more documents as a PDF. When selecting multiple documents for download they will be downloaded as a zip file. The converter uses built in API&rsquo;s of converting to PDF.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-convert-to-pdf">Open in gallery</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-print/>Print List Item Command View Set</a></h3><i data-feather=calendar></i>
+<time datetime=2024-10-30>Oct 30, 2024</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-print/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-print.webp alt="Print List Item Command View Set"></p><p>This sample shows how you can print list items using different templates, site admin can add, edit or remove templates and users can print items based on those templates.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-print">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-print>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-print</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-singlepartapppage/>configure a Page as Single App Part page</a></h3><i data-feather=calendar></i>
+<time datetime=2024-10-09>Oct 9, 2024</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-singlepartapppage/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-singlepartapppage.webp alt="configure a Page as Single App Part page"></p><p>Custom Command Set that set a Page layout to use the Single App Part page Layout</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-singlepartapppage">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-singlepartapppage>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-singlepartapppage</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-manage-list-subscriptions/>React-Manage-List-Subscriptions</a></h3><i data-feather=calendar></i>
+<time datetime=2024-10-03>Oct 3, 2024</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-manage-list-subscriptions/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-manage-list-subscriptions.webp alt=React-Manage-List-Subscriptions></p><p>Demonstrates managing the list subscriptions (sharepoint webhooks) and action to renew the webhook expiration date using Rest calls.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-manage-list-subscriptions">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-manage-list-subscriptions>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-manage-list-subscriptions</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-page-model-pnpjs/>Modern Page Model with PnP/PnPjs</a></h3><i data-feather=calendar></i>
+<time datetime=2023-02-15>Feb 15, 2023</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-page-model-pnpjs/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-page-model-pnpjs.webp alt="Modern Page Model with PnP/PnPjs"></p><p>A SPFx extension using @pnp/sp that allow creating Modern Pages based on prefilled modern pages marked as &ldquo;Page Model&rdquo;, inside the Site Pages Library, and code defined pages. Users can select a Modern page as Model just setting a custom property page named &ldquo;Is Model&rdquo; to &ldquo;Yes&rdquo;. People often need to create periodically editorial pages with the same composition, sections structure and webpart configuration, in order to give users the same users experience between pages with different contents but with the same communicative purpose</p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-change-page-layouttype/>Change Page Layout Command Extension</a></h3><i data-feather=calendar></i>
+<time datetime=2021-10-25>Oct 25, 2021</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-change-page-layouttype/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-change-page-layouttype.webp alt="Change Page Layout Command Extension"></p><p>Listview command extension that is available only for the Site Pages library to change the layout type. If the page is Article, it can be changed to Home which will remove the page title placeholder and vice versa.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-change-page-layouttype">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-change-page-layouttype>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-change-page-layouttype</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-js-share-to-teams/>Share to Teams</a></h3><i data-feather=calendar></i>
+<time datetime=2021-08-14>Aug 14, 2021</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-js-share-to-teams/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-js-share-to-teams.webp alt="Share to Teams"></p><p>Share to teams helps us to share files along with folders in document library it also alows us to share pages in the site pages library and last but not the least it allows sharing list items to teams channels or group.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-js-share-to-teams">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-share-to-teams>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-share-to-teams</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-send-to-teams/>Send-To-Teams - Command Set</a></h3><i data-feather=calendar></i>
+<time datetime=2021-04-05>Apr 5, 2021</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-send-to-teams/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-send-to-teams.webp alt="Send-To-Teams - Command Set"></p><p>This Command Set allows to create an adaptive card based on list data and send to microsoft teams chanel, The user can select the list fields that will show on the card.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-send-to-teams">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-send-to-teams>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-send-to-teams</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-jump-to-folder/>Jump to folder extension</a></h3><i data-feather=calendar></i>
+<time datetime=2021-03-15>Mar 15, 2021</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-jump-to-folder/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-jump-to-folder.webp alt="Jump to folder extension"></p><p>Sample solution that facilitates navigation between large collections of SharePoint library folders.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-jump-to-folder">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-jump-to-folder>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-jump-to-folder</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-demote-news/>Demote News to Page</a></h3><i data-feather=calendar></i>
+<time datetime=2021-02-22>Feb 22, 2021</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-demote-news/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-demote-news.webp alt="Demote News to Page"></p><p>Sample SharePoint Framework list view command set extension to demote a previously promoted News page.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-demote-news">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-demote-news>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-demote-news</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-file-size-viewer/>File Size Viewer sample with Command View Set</a></h3><i data-feather=calendar></i>
+<time datetime=2021-02-21>Feb 21, 2021</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-file-size-viewer/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-file-size-viewer.webp alt="File Size Viewer sample with Command View Set"></p><p>This sample shows how to create Command View Set working with single and multiple files selection. Once selected some files, it will show file sizes representation using a React D3 TreeMap component. This sample also shows how to integrate D3.js third party components within SharePoint Framework.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-file-size-viewer">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-file-size-viewer>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-file-size-viewer</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-addfolders/>Add Folders Command</a></h3><i data-feather=calendar></i>
+<time datetime=2021-01-17>Jan 17, 2021</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-addfolders/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-addfolders.webp alt="Add Folders Command"></p><p>Sample SharePoint Framework list view command set extension to create folders that can be all at the current location (parallel) or nested (one after another).</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-addfolders">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-addfolders>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-addfolders</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-copy-classic-link/>Copy Classic Link Extension</a></h3><i data-feather=calendar></i>
+<time datetime=2021-01-03>Jan 3, 2021</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-copy-classic-link/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-js-command-copy-classic-link.webp alt="Copy Classic Link Extension"></p><p>Sample SharePoint Framework list view command set extension that copies the classic link (path) of a selected item. Uses copy-to-clipboard library, toastr and sweet alert for notifications.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-js-command-copy-classic-link">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-command-copy-classic-link>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-command-copy-classic-link</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-image-editor/>Image Editor Command Set</a></h3><i data-feather=calendar></i>
+<time datetime=2020-06-16>Jun 16, 2020</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-image-editor/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-image-editor.webp alt="Image Editor Command Set"></p><p>This command set allows quick edit images located in Document Library.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-image-editor">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-image-editor>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-image-editor</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-folder-select/>Folder Selection</a></h3><i data-feather=calendar></i>
+<time datetime=2020-01-03>Jan 3, 2020</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-folder-select/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-folder-select.webp alt="Folder Selection"></p><p>This extension creates a callout with a dropdown that allows users to select from a list of top level folders in a document library. After selecting the folder they can use the button to navigate to that folder.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-folder-select">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-folder-select>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-folder-select</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-get-thumbnail/>Get Thumbnail List Item Command View Set</a></h3><i data-feather=calendar></i>
+<time datetime=2019-10-25>Oct 25, 2019</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-get-thumbnail/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-get-thumbnail.webp alt="Get Thumbnail List Item Command View Set"></p><p>This Command Set uses Microsoft Graph API to get the Thumbnail URL, of selected size (small, medium, large), for any file stored in a SharePoint Document Library.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-get-thumbnail">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-get-thumbnail>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-get-thumbnail</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-vision-api/>Image Metadata from Cognitive Services Vision API List View Command Set</a></h3><i data-feather=calendar></i>
+<time datetime=2019-09-01>Sep 1, 2019</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-vision-api/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-vision-api.webp alt="Image Metadata from Cognitive Services Vision API List View Command Set"></p><p>Custom Command Set that gets metadata information from MS Cognitive Services Vision API for the selected Image</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-vision-api">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-vision-api>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-vision-api</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-qrcode/>Generate QR Code List Item Command View Set</a></h3><i data-feather=calendar></i>
+<time datetime=2019-09-01>Sep 1, 2019</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-qrcode/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-qrcode.webp alt="Generate QR Code List Item Command View Set"></p><p>Generates a printable QR code which links to a SharePoint list item.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-qrcode">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-qrcode>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-qrcode</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-dialog/>Custom Dialog Sample with Command View Set</a></h3><i data-feather=calendar></i>
+<time datetime=2019-09-01>Sep 1, 2019</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-dialog/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-dialog.webp alt="Custom Dialog Sample with Command View Set"></p><p>This sample shows how to create Custom Dialogs using @microsoft/sp-dialog package in the context of Command View Set. You can use also custom dialogs with client-side web parts or with any SharePoint Framework component types.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-dialog">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-dialog>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-dialog</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-form-settings/>Form Settings Command View Set</a></h3><i data-feather=calendar></i>
+<time datetime=2019-06-30>Jun 30, 2019</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-form-settings/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-form-settings.webp alt="Form Settings Command View Set"></p><p>This sample shows how you can redirect default SharePoint list forms (New,Edit,Display) to different pages.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-form-settings">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-form-settings>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-form-settings</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-clone/>Clone ListView Command Set</a></h3><i data-feather=calendar></i>
+<time datetime=2019-05-27>May 27, 2019</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-clone/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-js-command-clone.webp alt="Clone ListView Command Set"></p><p>Sample SharePoint Framework listview command set extension that allows users to clone one or more list items. Demonstrates conditional visibility, PnPJS requests, PnPJS Batching, and field specific formats for rest operations.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-js-command-clone">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-command-clone>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-command-clone</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-send-document/>Send Document With E-Mail</a></h3><i data-feather=calendar></i>
+<time datetime=2019-02-10>Feb 10, 2019</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-send-document/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-send-document.webp alt="Send Document With E-Mail"></p><p>This sample shows how to create Custom Dialogs using @microsoft/sp-dialog package in the context of Command View Set and send selected document with e-mail.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-send-document">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-send-document>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-send-document</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-direct-link/>Get a direct link to a document or folder</a></h3><i data-feather=calendar></i>
+<time datetime=2019-01-06>Jan 6, 2019</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-direct-link/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-direct-link.webp alt="Get a direct link to a document or folder"></p><p>Sample SharePoint Framework (SPFx) solution which gives the end-user the ability to just get a regular, simple link to a document or folder in the modern SharePoint document libraries. This is done using a CommandSet.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-direct-link">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-direct-link>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-direct-link</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-mail-view-as-image/>Mail Current View as Image</a></h3><i data-feather=calendar></i>
+<time datetime=2018-11-13>Nov 13, 2018</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-mail-view-as-image/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-mail-view-as-image.webp alt="Mail Current View as Image"></p><p>Sample SharePoint Framework list view command set extension that emails the current view to selected (external or internal user) and also saves the same image in SharePoint. Uses html2canvas library, pnp spfx controls, pnp js and office fabric ui react.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-mail-view-as-image">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-mail-view-as-image>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-mail-view-as-image</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-convert-to-pdf/>Convert documents to PDF using Azure function</a></h3><i data-feather=calendar></i>
+<time datetime=2018-10-29>Oct 29, 2018</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-convert-to-pdf/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-js-command-convert-to-pdf.webp alt="Convert documents to PDF using Azure function"></p><p>Sample SPFx list view command set extension that converts the selected documents to PDF using Microsoft Graph.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-js-command-convert-to-pdf">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-command-convert-to-pdf>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-command-convert-to-pdf</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-share-pnpjs/>Multishare Command Extension with PnPJs</a></h3><i data-feather=calendar></i>
+<time datetime=2018-09-19>Sep 19, 2018</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-share-pnpjs/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-share-pnpjs.webp alt="Multishare Command Extension with PnPJs"></p><p>The sample is an custom action only active when multiple items are selected.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-share-pnpjs">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-share-pnpjs>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-share-pnpjs</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-discuss-now/>Discuss Now Command Set</a></h3><i data-feather=calendar></i>
+<time datetime=2018-07-18>Jul 18, 2018</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-discuss-now/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-discuss-now.webp alt="Discuss Now Command Set"></p><p>Sample SharePoint Framework command set showing how to create a new meeting to discuss about a document selected in the current list view of a document library.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-discuss-now">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-discuss-now>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-discuss-now</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-item-history/>Item History</a></h3><i data-feather=calendar></i>
+<time datetime=2018-06-15>Jun 15, 2018</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-item-history/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-item-History.webp alt="Item History"></p><p>This listview command is used to show the past versions of the selected list item in a grid.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-item-history">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-item-History>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-item-History</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-selecteditems-export/>Export Selected Items to Excel</a></h3><i data-feather=calendar></i>
+<time datetime=2018-02-16>Feb 16, 2018</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-selecteditems-export/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-js-command-selecteditems-export.webp alt="Export Selected Items to Excel"></p><p>Exports selected items to excel spreadsheet in xlsx format, with the columns from the current modern list view.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-js-command-selecteditems-export">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-command-selecteditems-export>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-command-selecteditems-export</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-lock-item/>Lock Item Command Set Customizer</a></h3><i data-feather=calendar></i>
+<time datetime=2017-12-20>Dec 20, 2017</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-lock-item/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-js-command-lock-item.webp alt="Lock Item Command Set Customizer"></p><p>The sample illustrates the ability to lock/unlock selected item/document for the current user. The lock is implemented as item&rsquo;s unique permissions set to Full Control for current user only. The lock is available only for items that inherit permissions from the parent. Items with unique permissions can&rsquo;t be locked as we can&rsquo;t unlock them correctly later on. All other permissions are deleted. The Command is available only for users who have &ldquo;Manage Permissions&rdquo; permissions for the list/document library.</p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-item-permissions/>Unique Item Permissions Command Set Customizer</a></h3><i data-feather=calendar></i>
+<time datetime=2017-10-15>Oct 15, 2017</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-js-command-item-permissions/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-js-command-item-permissions.webp alt="Unique Item Permissions Command Set Customizer"></p><p>The sample illustrates creation of a shortcut command to redirect user to selected item&rsquo;s permission page.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-js-command-item-permissions">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-command-item-permissions>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-command-item-permissions</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-custom-command-bar/>Custom Command Bar Command Set Customizer</a></h3><i data-feather=calendar></i>
+<time datetime=2017-09-27>Sep 27, 2017</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-custom-command-bar/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-custom-command-bar.webp alt="Custom Command Bar Command Set Customizer"></p><p>The sample illustrates how to display custom Command Bar when Command Set Button is pressed.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-custom-command-bar">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-custom-command-bar>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-custom-command-bar</a></p></p></a></p><p><h3><a class=title href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-directions/>Directions SharePoint Framework list view command set</a></h3><i data-feather=calendar></i>
+<time datetime=2017-06-29>Jun 29, 2017</time>
+<a class=summary href=https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-command-directions/><p><p><img src=https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-directions.webp alt="Directions SharePoint Framework list view command set"></p><p>Sample SharePoint Framework list view command set showing travel directions to the given location using Google Maps.</p><p><strong>Open this sample in the gallery (popup panel)</strong>:
+<a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-command-directions">Open in gallery</a></p><p>Source: <a href=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-directions>https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-directions</a></p></p></a></p></main></main><footer class=footer><div class=footer-cnt><menu class=footer-menu><li class=card-iconbar-item><a class=card-iconbar-link href=https://github.com/PnP/sp-dev-fx-webparts aria-label=GitHub><span class=icon><svg class="icon-svg icon-github" aria-hidden="true">GitHub<use xlink:href="https://pnp.github.io/sp-dev-fx-webparts/images/base-assets.svg#icon-github"/></svg></span></a></li><li class=card-iconbar-item><a class=card-iconbar-link href=https://discord.com/channels/1095788595010338956/1096363629680529418 aria-label=Discord><span class=icon><svg class="icon-svg icon-discord" aria-hidden="true">Discord<use xlink:href="https://pnp.github.io/sp-dev-fx-webparts/images/base-assets.svg#icon-discord"/></svg></span></a></li></menu></div></footer></body></html><script src=https://pnp.github.io/sp-dev-fx-webparts/js/main.min.js></script><script async src="https://www.googletagmanager.com/gtag/js?id=G-YZHMBM65MJ"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag("js",new Date),gtag("config","G-YZHMBM65MJ")</script><script type=text/javascript>function getCookie(e){var n="; "+document.cookie,t=n.split("; "+e+"=");if(t.length==2)return t.pop().split(";").shift()}getCookie("analytics-consent")==="true"&&function(e,t,n,s,o,i,a){e[n]=e[n]||function(){(e[n].q=e[n].q||[]).push(arguments)},i=t.createElement(s),i.async=1,i.src="https://www.clarity.ms/tag/"+o,a=t.getElementsByTagName(s)[0],a.parentNode.insertBefore(i,a)}(window,document,"clarity","script","a7tyzwydh7")</script><img src=https://pnptelemetry.azurewebsites.net/pnp.github.io/sp-dev-fx-webparts/categories/spfx-command-extension/ alt><div id=cookie-consent-banner><div class=container><p>We use cookies and similar technologies to improve your experience and analyze site usage.
+<a href=https://pnp.github.io/sp-dev-fx-webparts/privacy>Privacy Policy</a></p><div><button id=accept-cookies>Accept All</button>
+<button id=reject-cookies>Reject All</button>
+<button id=customize-cookies>Customize</button></div></div></div><div id=cookie-preferences-modal><div class=modal-content><h3>Cookie Preferences</h3><div class=preferences><label><input type=checkbox id=essential-cookies checked disabled>
+<strong>Essential Cookies</strong> (Required)<br><small>Necessary for the website to function properly.</small>
+</label><label><input type=checkbox id=analytics-cookies>
+<strong>Analytics Cookies</strong><br><small>Help us understand how visitors use our website (Microsoft Clarity).</small></label></div><div class=buttons><button id=save-preferences>Save Preferences</button>
+<button id=close-modal>Cancel</button></div></div></div><script>(function(){function e(e,t,n){var s,o="";n&&(s=new Date,s.setTime(s.getTime()+n*24*60*60*1e3),o="; expires="+s.toUTCString()),document.cookie=e+"="+(t||"")+o+"; path=/; SameSite=Strict"}function t(e){for(var t,s=e+"=",o=document.cookie.split(";"),n=0;n<o.length;n++){for(t=o[n];t.charAt(0)==" ";)t=t.substring(1,t.length);if(t.indexOf(s)==0)return t.substring(s.length,t.length)}return null}var n=t("cookie-consent");n||(document.getElementById("cookie-consent-banner").style.display="block"),document.getElementById("accept-cookies").addEventListener("click",function(){e("cookie-consent","accepted",365),e("analytics-consent","true",365),document.getElementById("cookie-consent-banner").style.display="none",location.reload()}),document.getElementById("reject-cookies").addEventListener("click",function(){e("cookie-consent","rejected",365),e("analytics-consent","false",365),document.getElementById("cookie-consent-banner").style.display="none"}),document.getElementById("customize-cookies").addEventListener("click",function(){document.getElementById("cookie-preferences-modal").style.display="block";var e=t("analytics-consent");document.getElementById("analytics-cookies").checked=e==="true"}),document.getElementById("save-preferences").addEventListener("click",function(){var t=document.getElementById("analytics-cookies").checked;e("cookie-consent","customized",365),e("analytics-consent",t?"true":"false",365),document.getElementById("cookie-consent-banner").style.display="none",document.getElementById("cookie-preferences-modal").style.display="none",location.reload()}),document.getElementById("close-modal").addEventListener("click",function(){document.getElementById("cookie-preferences-modal").style.display="none"}),document.getElementById("cookie-preferences-modal").addEventListener("click",function(e){e.target===this&&(this.style.display="none")})})()</script></body></html>

@@ -5,20 +5,8 @@
         gap: 12px;
     }
 
-    .sample-card {
-        border: 1px solid rgba(0, 0, 0, .12);
-        border-radius: 10px;
-        padding: 12px;
-    }
-
-    .sample-card h3 {
-        margin: 0 0 6px 0;
-        font-size: 1rem;
-    }
-
-    .sample-card p {
-        margin: 0;
-        opacity: .85;
+    .pnp-sample-item--skeleton {
+        display: none;
     }
 </style>
 <link rel="stylesheet" href="/vendor/pnp-samples-gallery/pnp-samples-gallery.css" />
@@ -40,7 +28,20 @@
     </div>
 </section>
 
-{{ $samples := index site.Data "all-samples" }}
+{{ $raw := index .Site.Data "all-samples" }}
+{{/* if data is a map, turn into a slice: uncomment next line */}}
+{{/* $raw = $raw | values */}}
+
+{{ $scratch := newScratch }}
+{{ $samples := slice }}
+{{ range $raw }}
+    {{ $keyRaw := or .slug .name .title }}
+    {{ $key := printf "%v" $keyRaw }}
+    {{ if and (ne $key "") (ne $key "<no value>") (not ($scratch.Get $key)) }}
+        {{ $scratch.Set $key true }}
+        {{ $samples = $samples | append . }}
+    {{ end }}
+{{ end }}
 
 
 <script id="samples-data" type="application/json">{{ $samples | jsonify | safeHTML }}</script>

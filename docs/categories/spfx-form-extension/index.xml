@@ -1,33 +1,13 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>SPFX-FORM-EXTENSION on SPFx Samples</title>
-    <link>http://localhost:1313/sp-dev-fx-webparts/categories/spfx-form-extension/</link>
-    <description>Recent content in SPFX-FORM-EXTENSION on SPFx Samples</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 28 Jun 2023 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/sp-dev-fx-webparts/categories/spfx-form-extension/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Dynamic Form with location picker</title>
-      <link>http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-dynamic-form-with-location-picker/</link>
-      <pubDate>Wed, 28 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-dynamic-form-with-location-picker/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-dynamic-form-with-location-picker.webp&#34; alt=&#34;Dynamic Form with location picker&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;This solution implements a simple Form Customizer with a Dynamic Form with a location picker, to demonstrate the many usages of a Dynamic Form.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Open this sample in the gallery (popup panel)&lt;/strong&gt;:&#xA;&lt;a href=&#34;http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-dynamic-form-with-location-picker&#34;&gt;Open in gallery&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Source: &lt;a href=&#34;https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-dynamic-form-with-location-picker&#34;&gt;https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-dynamic-form-with-location-picker&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Dynamic Site Form</title>
-      <link>http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-dynamic-site-form/</link>
-      <pubDate>Thu, 22 Jun 2023 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-dynamic-site-form/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-dynamic-site-form.webp&#34; alt=&#34;Dynamic Site Form&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;The Dynamic Site Form solution implements a Form Customizer with a Dynamic Form with field overrides to look like the default SharePoint new site form.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Open this sample in the gallery (popup panel)&lt;/strong&gt;:&#xA;&lt;a href=&#34;http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-dynamic-site-form&#34;&gt;Open in gallery&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Source: &lt;a href=&#34;https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-dynamic-site-form&#34;&gt;https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-dynamic-site-form&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>React Form Customizer (Customers)</title>
-      <link>http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-fx-extensions-react-formcustomizer-customers/</link>
-      <pubDate>Wed, 09 Nov 2022 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/sp-dev-fx-webparts/samples/pnp-sp-dev-fx-extensions-react-formcustomizer-customers/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;http://localhost:1313/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-fx-extensions-react-formcustomizer-customers.webp&#34; alt=&#34;React Form Customizer (Customers)&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;A sample of an SPFx Form Customizer built with React for managing items of a custom list of customers.&lt;/p&gt;&#xA;&lt;p&gt;&lt;strong&gt;Open this sample in the gallery (popup panel)&lt;/strong&gt;:&#xA;&lt;a href=&#34;http://localhost:1313/sp-dev-fx-webparts/?sample=pnp-sp-dev-fx-extensions-react-formcustomizer-customers&#34;&gt;Open in gallery&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Source: &lt;a href=&#34;https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-formcustomizer-customers&#34;&gt;https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-formcustomizer-customers&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-  </channel>
-</rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>SPFX-FORM-EXTENSION on SPFx Samples</title><link>https://pnp.github.io/sp-dev-fx-webparts/categories/spfx-form-extension/</link><description>Recent content in SPFX-FORM-EXTENSION on SPFx Samples</description><generator>Hugo</generator><language>en-us</language><lastBuildDate>Wed, 28 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://pnp.github.io/sp-dev-fx-webparts/categories/spfx-form-extension/index.xml" rel="self" type="application/rss+xml"/><item><title>Dynamic Form with location picker</title><link>https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-dynamic-form-with-location-picker/</link><pubDate>Wed, 28 Jun 2023 00:00:00 +0000</pubDate><guid>https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-dynamic-form-with-location-picker/</guid><description>&lt;p&gt;&lt;img src="https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-dynamic-form-with-location-picker.webp" alt="Dynamic Form with location picker"&gt;&lt;/p&gt;
+&lt;p&gt;This solution implements a simple Form Customizer with a Dynamic Form with a location picker, to demonstrate the many usages of a Dynamic Form.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Open this sample in the gallery (popup panel)&lt;/strong&gt;:
+&lt;a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-dynamic-form-with-location-picker"&gt;Open in gallery&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Source: &lt;a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-dynamic-form-with-location-picker"&gt;https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-dynamic-form-with-location-picker&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Dynamic Site Form</title><link>https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-dynamic-site-form/</link><pubDate>Thu, 22 Jun 2023 00:00:00 +0000</pubDate><guid>https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-spfx-extensions-react-dynamic-site-form/</guid><description>&lt;p&gt;&lt;img src="https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-dynamic-site-form.webp" alt="Dynamic Site Form"&gt;&lt;/p&gt;
+&lt;p&gt;The Dynamic Site Form solution implements a Form Customizer with a Dynamic Form with field overrides to look like the default SharePoint new site form.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Open this sample in the gallery (popup panel)&lt;/strong&gt;:
+&lt;a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-dynamic-site-form"&gt;Open in gallery&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Source: &lt;a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-dynamic-site-form"&gt;https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-dynamic-site-form&lt;/a&gt;&lt;/p&gt;</description></item><item><title>React Form Customizer (Customers)</title><link>https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-fx-extensions-react-formcustomizer-customers/</link><pubDate>Wed, 09 Nov 2022 00:00:00 +0000</pubDate><guid>https://pnp.github.io/sp-dev-fx-webparts/samples/pnp-sp-dev-fx-extensions-react-formcustomizer-customers/</guid><description>&lt;p&gt;&lt;img src="https://pnp.github.io/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-fx-extensions-react-formcustomizer-customers.webp" alt="React Form Customizer (Customers)"&gt;&lt;/p&gt;
+&lt;p&gt;A sample of an SPFx Form Customizer built with React for managing items of a custom list of customers.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Open this sample in the gallery (popup panel)&lt;/strong&gt;:
+&lt;a href="https://pnp.github.io/sp-dev-fx-webparts/?sample=pnp-sp-dev-fx-extensions-react-formcustomizer-customers"&gt;Open in gallery&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Source: &lt;a href="https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-formcustomizer-customers"&gt;https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-formcustomizer-customers&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

@@ -1,15 +1,27 @@
 {{- $s := . -}}
-<article class="sample-card" data-sample-slug="{{ $s.slug }}">
-    <a href="/samples/{{ $s.slug }}/">
-        <h3>{{ $s.title }}</h3>
-        <p>{{ $s.description }}</p>
-    </a>
+<article class="pnp-sample-item pnp-sample-item--skeleton sample-card" data-sample-slug="{{ $s.slug }}">
+    <div class="pnp-sample-item-content">
+        <div class="pnp-card" aria-hidden="true">
+            <figure class="pnp-card__thumb pnp-card__thumb--empty"></figure>
+            <div class="pnp-card__body">
+                <h3 class="pnp-card__title">{{ $s.title }}</h3>
+                <p class="pnp-card__desc">{{ $s.description }}</p>
 
-    {{ with $s.authors }}
-    <div class="authors">
-        {{ range . }}
-        <span class="author">{{ . }}</span>
-        {{ end }}
+                <div class="pnp-card__meta" style="margin-top:8px">
+                    {{ with $s.authors }}
+                    {{ range $i, $a := . }}
+                    {{ if eq $i 0 }}
+                    <span class="pnp-pill">{{ $a }}</span>
+                    {{ end }}
+                    {{ end }}
+                    {{ end }}
+                </div>
+            </div>
+        </div>
+
+        <a class="pnp-card-link ssr-hidden" href="/samples/{{ $s.slug }}/" style="display:none;">
+            <h3>{{ $s.title }}</h3>
+            <p>{{ $s.description }}</p>
+        </a>
     </div>
-    {{ end }}
 </article>
