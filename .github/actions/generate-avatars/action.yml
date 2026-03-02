@@ -66,7 +66,7 @@ runs:
 
         const samples = JSON.parse(fs.readFileSync(allSamplesPath, "utf8"));
 
-        const avatarsDir = path.resolve(docsPath, "docs/images/avatars");
+        const avatarsDir = path.resolve(docsPath, "static/images/avatars");
         fs.mkdirSync(avatarsDir, { recursive: true });
 
         let avatarsGenerated = 0;

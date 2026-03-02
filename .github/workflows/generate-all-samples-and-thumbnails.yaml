@@ -235,6 +235,13 @@ jobs:
           echo "WARNING: if images exist under docs/images BEFORE hugo, they will be deleted:"
           find docs/images -type f 2>/dev/null | head -n 20 || true
 
+      - name: Debug: verify images are in static
+        shell: bash
+        run: |
+          cd Docs
+          echo "avatars:"; find static/images/avatars -type f 2>/dev/null | head -n 10 || true
+          echo "thumbs:"; find static/images/thumbnails -type f 2>/dev/null | head -n 10 || true
+
       - name: Tally discussion reactions
         id: reactions
         uses: ./.github/actions/tally-reactions

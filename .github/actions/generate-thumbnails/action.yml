@@ -67,7 +67,7 @@ runs:
         const thumbUrlBase = `${pagesBase}images/thumbnails/`;
 
         // define thumbsDir + manifestPath BEFORE reading old manifest
-        const thumbsDir = path.resolve(docsPath, "docs/images/thumbnails");
+        const thumbsDir = path.resolve(docsPath, "static/images/thumbnails");
         fs.mkdirSync(thumbsDir, { recursive: true });
         const manifestPath = path.join(thumbsDir, "manifest.json");
 
