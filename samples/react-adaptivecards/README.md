@@ -46,15 +46,15 @@ There are no additional pre-requisites, but you'll probably want to have some [A
 
 ## Version history
 
-| Version | Date              | Comments                                                                            |
-| ------- | ----------------- | ----------------------------------------------------------------------------------- |
-| 2.3.1   | February 25, 2026 | Upgraded to SPFx 1.21. Fixed TypeScript compilation errors and build configuration. |
-| 2.3.0   | August 2, 2021    | Upgraded to SPFx 1.12.1                                                             |
-| 2.2.1   | February 23, 2021 | Fixed FluentUI dependencies introduced with newer versions of Adaptive Cards React. |
-| 2.2.0   | August 25, 2020   | Upgraded to SPFx 1.11                                                               |
-| 2.1.0   | June 11, 2020     | Fixed breaking changes introduced with Adaptive Card Templating in May update       |
-| 2.0.0   | April 06, 2020    | Added data and template URLs                                                        |
-| 1.0.0   | March 24, 2020    | Initial release                                                                     |
+| Version | Date              | Comments                                                                                                                                                                               |
+| ------- | ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 2.3.1   | February 25, 2026 | Upgraded to SPFx 1.21. Fixed TypeScript compilation errors and build configuration. F.ixed PnP JS configuration to resolve list data rendering issues. Improved SharePoint integration |
+| 2.3.0   | August 2, 2021    | Upgraded to SPFx 1.12.1                                                                                                                                                                |
+| 2.2.1   | February 23, 2021 | Fixed FluentUI dependencies introduced with newer versions of Adaptive Cards React.                                                                                                    |
+| 2.2.0   | August 25, 2020   | Upgraded to SPFx 1.11                                                                                                                                                                  |
+| 2.1.0   | June 11, 2020     | Fixed breaking changes introduced with Adaptive Card Templating in May update                                                                                                          |
+| 2.0.0   | April 06, 2020    | Added data and template URLs                                                                                                                                                           |
+| 1.0.0   | March 24, 2020    | Initial release                                                                                                                                                                        |
 
 ## Minimal Path to Awesome
 
@@ -91,7 +91,7 @@ To use the web part, follow these simple steps:
 {
   "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
   "type": "AdaptiveCard",
-  "version": "1.0",
+  "version": "1.3",
   "body": [
     {
       "type": "TextBlock",
@@ -362,7 +362,7 @@ For example, this is a very **basic** template JSON for a SharePoint Document Li
     }
   ],
   "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
-  "version": "1.0"
+  "version": "1.3"
 }
 ```
 
