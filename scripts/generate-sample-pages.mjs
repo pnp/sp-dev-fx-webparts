@@ -99,16 +99,17 @@ function buildMarkdown(sample, slug) {
     const thumbUrl = thumb?.url ?? null;
     const thumbAlt = thumb?.alt ?? (sample.title || sample.name || slug);
 
-    // Normalize gallery root (must be an absolute path from domain root)
+    // Ensure the gallery base has a trailing slash
     const base = String(GALLERY_PATH || "/").trim().startsWith("/")
         ? String(GALLERY_PATH || "/").trim()
         : "/" + String(GALLERY_PATH || "/").trim();
-
-    // Ensure it ends with a trailing slash so "/sp-dev-fx-webparts" becomes "/sp-dev-fx-webparts/"
     const baseWithSlash = base.endsWith("/") ? base : base + "/";
 
-    const cleanSlug = String(slug).replace(/^"+|"+$/g, ""); // strip leading/trailing quotes defensively
-    const openInGalleryUrl = `${baseWithSlash}?${SAMPLE_QUERY_KEY}=${cleanSlug}`;       
+    // Defensive: strip any accidental quotes
+    const cleanSlug = String(slug).trim().replace(/^"+|"+$/g, "").replace(/"/g, "");
+
+    // Build the redirect target from config + key (no hardcoding)
+    const openInGalleryUrl = `${baseWithSlash}?${SAMPLE_QUERY_KEY}=${cleanSlug}`;
 
     // - type "sample" lets you create layouts/sample/single.html if you want
     // - slug is explicit for nice URLs

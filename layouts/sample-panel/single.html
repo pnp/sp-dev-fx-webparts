@@ -16,28 +16,21 @@
 </div>
 
 <script>
-    (function () {
-        var target = {{ $target | jsonify   }};
-    var cancelled = false;
+  (function () {
+    var target = {{ $target | jsonify }};
 
-    var stay = document.getElementById("stay-here");
-    if (stay) {
-        stay.addEventListener("click", function (e) {
-            e.preventDefault();
-            cancelled = true;
-            // Hide the banner if you like
-            var b = document.querySelector(".sample-redirect-banner");
-            if (b) b.style.display = "none";
-        });
+    // Normalize + defend against accidental quotes / relative URLs
+    target = (target || "").toString().trim();
+    target = target.replace(/^"+|"+$/g, "");   // strip leading/trailing quotes
+    target = target.replace(/"/g, "");         // strip any remaining quotes
+
+    // Force absolute-path redirect if it isn't already absolute
+    if (target && !/^https?:\/\//i.test(target) && target[0] !== "/") {
+      target = "/" + target;
     }
 
-    // Give the browser time to paint content (and let indexers read it).
-    setTimeout(function () {
-        if (!cancelled && target) {
-            window.location.assign(target);
-        }
-    }, 1500);
-    }) ();
+    window.location.assign(target);
+  })();
 </script>
 
 <noscript>
