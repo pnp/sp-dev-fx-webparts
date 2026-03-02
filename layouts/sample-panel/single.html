@@ -1,6 +1,6 @@
 {{ define "main" }}
 
-{{ $target := .Params.openInGalleryUrl | default "" }}
+{{ $target := (printf "%s" (.Params.openInGalleryUrl | default "")) }}
 
 {{/* Optional soft redirect (NOT bot-detection). Users can cancel. */}}
 {{ if and $target .Params.openInGalleryUrl }}

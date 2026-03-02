@@ -107,7 +107,8 @@ function buildMarkdown(sample, slug) {
     // Ensure it ends with a trailing slash so "/sp-dev-fx-webparts" becomes "/sp-dev-fx-webparts/"
     const baseWithSlash = base.endsWith("/") ? base : base + "/";
 
-    const openInGalleryUrl = `/sp-dev-fx-webparts/?sample=${encodeURIComponent(slug)}`;
+    const cleanSlug = String(slug).replace(/^"+|"+$/g, ""); // strip leading/trailing quotes defensively
+    const openInGalleryUrl = `${baseWithSlash}?${SAMPLE_QUERY_KEY}=${cleanSlug}`;       
 
     // - type "sample" lets you create layouts/sample/single.html if you want
     // - slug is explicit for nice URLs
