@@ -43,11 +43,11 @@ import {
 } from "@microsoft/sp-component-base";
 
 // Used to retrieve SharePoint items
-import { sp } from "@pnp/sp";
+import { spfi, SPFx, SPFI } from "@pnp/sp";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/views";
-//import '@pnp/sp/items';
+import "@pnp/sp/items";
 
 export type TemplateSourceType = "json" | "url";
 export type DataSourceType = "list" | "json" | "url";
@@ -100,13 +100,14 @@ export interface IAdaptiveCardHostWebPartProps {
 }
 
 export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdaptiveCardHostWebPartProps> {
-  private _themeProvider!: ThemeProvider;
+  private _themeProvider: ThemeProvider;
   private _themeVariant: IReadonlyTheme | undefined;
   private _templatePropertyPaneHelper: any;
   private _dataPropertyPaneHelper: any;
-  private _dataJSON: string = "";
-  private _viewSchema: string = "";
-  private _templateJSON: string = "";
+  private _dataJSON: string;
+  private _viewSchema: string;
+  private _templateJSON: string;
+  private _sp: SPFI;
 
   protected async onInit(): Promise<void> {
     // Consume the new ThemeProvider service
@@ -125,9 +126,8 @@ export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdap
 
     await super.onInit();
 
-    sp.setup({
-      spfxContext: this.context as any,
-    });
+    // Initialize PnP JS with SPFx context
+    this._sp = spfi().using(SPFx(this.context));
 
     await this._loadTemplateFromUrl();
     await this._loadDataFromList();
@@ -146,7 +146,7 @@ export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdap
         this.properties.view) ||
       (this.properties.dataSource === "url" && this.properties.dataUrl)
         ? this._dataJSON
-        : this.properties.data || "";
+        : this.properties.data;
 
     // The Adaptive Card control does not care where the template and data are coming from.
     // Pass a valid template JSON and -- if using -- some data JSON
@@ -162,6 +162,7 @@ export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdap
 
     ReactDom.render(element, this.domElement);
   }
+
 
   protected onDispose(): void {
     ReactDom.unmountComponentAtNode(this.domElement);
@@ -326,7 +327,7 @@ export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdap
                       this.onPropertyPaneFieldChanged.bind(this),
                     properties: this.properties,
                     context: this.context,
-                    onGetErrorMessage: undefined,
+                    onGetErrorMessage: null,
                     deferredValidationTime: 0,
                     key: "listPickerFieldId",
                   }),
@@ -341,7 +342,7 @@ export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdap
                     onPropertyChange:
                       this.onPropertyPaneFieldChanged.bind(this),
                     properties: this.properties,
-                    onGetErrorMessage: undefined,
+                    onGetErrorMessage: null,
                     deferredValidationTime: 0,
                     key: "viewPickerFieldId",
                   }),
@@ -378,7 +379,7 @@ export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdap
       propertyPath === "dataSource"
     ) {
       // Clear the view schema cache
-      this._viewSchema = "";
+      this._viewSchema = undefined;
 
       // Load the data
       await this._loadDataFromList();
@@ -420,8 +421,8 @@ export default class AdaptiveCardHostWebPart extends BaseClientSideWebPart<IAdap
       return;
     }
 
-    // Get the list
-    const list = await sp.web.lists.getById(this.properties.list);
+    // Get the list using the configured SP instance
+    const list = this._sp.web.lists.getById(this.properties.list);
 
     // If we didn't yet load the view schema, do so now
     if (!this._viewSchema) {
