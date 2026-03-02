@@ -235,7 +235,7 @@ jobs:
           echo "WARNING: if images exist under docs/images BEFORE hugo, they will be deleted:"
           find docs/images -type f 2>/dev/null | head -n 20 || true
 
-      - name: Debug: verify images are in static
+      - name: Debug verify images are in static
         shell: bash
         run: |
           cd Docs
