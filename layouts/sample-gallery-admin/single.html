@@ -34,6 +34,26 @@ grid-template-columns: unset;
     </div>
     <div class="hero-link">{{ .Params.link }}</div>
 </section>
+
+{{ $raw := index .Site.Data "all-samples" }}
+{{/* if data is a map, turn into a slice: uncomment next line */}}
+{{/* $raw = $raw | values */}}
+
+{{ $scratch := newScratch }}
+{{ $samples := slice }}
+{{ range $raw }}
+{{ $keyRaw := or .slug .name .title }}
+{{ $key := printf "%v" $keyRaw }}
+{{ if and (ne $key "") (ne $key "<no value>") (not ($scratch.Get $key)) }}
+    {{ $scratch.Set $key true }}
+    {{ $samples = $samples | append . }}
+    {{ end }}
+    {{ end }}
+
+
+    <script id="samples-data" type="application/json">{{ $samples | jsonify | safeHTML }}</script>
+
+    
 <section class="section-base samples admin" id="{{ .File.BaseFileName | safeHTML }}">
 <div class="section-inner">
     <div data-pnp-samples-gallery
