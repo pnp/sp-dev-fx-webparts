@@ -592,6 +592,7 @@ export const SchemaExtensionDrawer: React.FunctionComponent<
       onOpenChange={handleOpenChange}
       size="medium"
       position="end"
+      modalType="alert"
     >
       <DrawerHeader>
         <DrawerHeaderTitle
