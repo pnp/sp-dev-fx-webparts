@@ -18,7 +18,7 @@
     "vue-class-component": "^7.2.3",
     "vue-property-decorator": "^8.4.2",
     "vue-template-compiler": "^2.6.11",
-    "serialize-javascript": ">=6.0.2",
+    "serialize-javascript": ">=7.0.3",
     "lodash.template": ">=4.5.0"
   },
   "devDependencies": {
