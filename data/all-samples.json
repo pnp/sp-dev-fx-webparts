@@ -9653,6 +9653,52 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-gantt",
+    "source": "pnp",
+    "title": "React Gantt Chart Web Part",
+    "shortDescription": "A SharePoint Framework (SPFx) web part that displays project tasks from a SharePoint list as an interactive Gantt chart. Built with @svar-ui/react-gantt and Fluent UI v9, it supports SharePoint pages, Microsoft Teams, and Microsoft 365 (Office) hosts.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-gantt",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-gantt",
+    "updateDateTime": "2026-12-31",
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.22.2"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "joaojmendes",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/joaojmendes.27bf35a0f6fc.webp",
+        "name": "João Mendes",
+        "avatarSourceUrl": "https://github.com/joaojmendes.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-gantt.webp",
+        "alt": "React Gantt Chart Web Part"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-tailwindcss",
     "source": "pnp",
     "title": "Tailwind CSS Web Part",

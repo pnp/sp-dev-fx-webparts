@@ -743,6 +743,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-ppp-pnp-controls/assets/React-PPP-PnP-Controls-Sample.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-ppp-pnp-controls.webp"
   },
+  "pnp-sp-dev-spfx-web-parts-react-gantt": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-gantt/assets/sp-react-gant-prop-pane.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-gantt.webp"
+  },
   "pnp-sp-dev-spfx-web-parts-react-tailwindcss": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tailwindcss/assets/react-tailwindcss-overview.gif",
     "file": "pnp-sp-dev-spfx-web-parts-react-tailwindcss.webp"
