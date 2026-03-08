@@ -1,11 +1,13 @@
 # React Gantt Chart Web Part
 
+## Summary 
+
 A SharePoint Framework (SPFx) web part that displays project tasks from a SharePoint list as an interactive Gantt chart. Built with [**@svar-ui/react-gantt**](https://svar.dev/react/gantt/) and **Fluent UI v9**, it supports SharePoint pages, Microsoft Teams, and Microsoft 365 (Office) hosts.
 
 
-![version](<./src/assets/sp-react-gant.png>)
-![version](<./src/assets/sp-react-gant-prop-pane.png> )
-![version](<./src/assets/teams-react-gantt.png>)
+![version](./assets/sp-react-gant.png)
+![version](./assets/sp-react-gant-prop-pane.png )
+![version](./assets/teams-react-gantt.png)
 
 ## Features
 
@@ -22,9 +24,30 @@ A SharePoint Framework (SPFx) web part that displays project tasks from a ShareP
 - **Thin branded scrollbars** — scrollbar thumb uses the site's brand color
 - **PnP PowerShell provisioning script** — quickly create a sample list with all required fields and demo data
 
-## SharePoint Framework Version
+## Compatibility
 
-![version](https://img.shields.io/badge/SPFx-1.22.2-green.svg)
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is optimally compatible with specific versions of Node.js. In order to be able to Toolchain this sample, you need to ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+This sample is optimally compatible with the following environment configuration:
+
+![SPFx 1.22.2](https://img.shields.io/badge/SPFx-1.22.2-green.svg)
+![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
+![Toolchain: Heft](https://img.shields.io/badge/Toolchain-Heft-green.svg)
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
+
+## Contributors
+
+- [João Mendes](https://github.com/joaojmendes)
+
 
 ## Supported Hosts
 
@@ -237,3 +260,5 @@ scripts/
 - [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/sharepoint/dev/spfx/publish-to-marketplace-overview)
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
 - [Heft Documentation](https://heft.rushstack.io/)
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-gantt" />
