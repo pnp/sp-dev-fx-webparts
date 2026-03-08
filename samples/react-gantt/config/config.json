@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "gantt-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/gantt/GanttWebPart.js",
+          "manifest": "./src/webparts/gantt/GanttWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "GanttWebPartStrings": "lib/webparts/gantt/loc/{locale}.js"
+  }
+}
