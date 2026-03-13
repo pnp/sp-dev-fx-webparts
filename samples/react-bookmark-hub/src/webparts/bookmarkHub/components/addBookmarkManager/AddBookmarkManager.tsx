@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Dialog, DialogType, DialogFooter, PrimaryButton, DefaultButton, TextField, Stack, Text, Dropdown, IDropdownOption, IStackTokens, Checkbox } from '@fluentui/react';
+import { Dialog, DialogType, DialogFooter, PrimaryButton, DefaultButton, TextField, Stack, Dropdown, IDropdownOption, IStackTokens } from '@fluentui/react';
 import { IAddBookmarkManagerProps } from './IAddBookmarkManagerProps';
 import { IAddBookmarkManagerState } from './IAddBookmarkManagerState';
 import { IBookmark, BookmarkType } from '../../../../services/models/IBookmark';
@@ -74,21 +74,25 @@ export default class AddBookmarkManager extends React.Component<
     _: React.FormEvent<HTMLDivElement>,
     option?: IDropdownOption
   ): void => {
-    this.setState({ selectedGroupId: option?.key as string });
+    this.setState({ selectedGroupId: option?.key as string | undefined });
   };
 
-  private _onLabelChange = (labelName: string, checked: boolean): void => {
-    this.setState(prev => ({
-      selectedLabels: checked
-        ? [...prev.selectedLabels, labelName]
-        : prev.selectedLabels.filter(l => l !== labelName),
-    }));
+  private _onLabelsChange = (
+    event: React.FormEvent<HTMLDivElement>,
+    option?: IDropdownOption
+  ): void => {
+    if (option) {
+      this.setState(prev => ({
+        selectedLabels: option.selected
+          ? [...prev.selectedLabels, option.key as string]
+          : prev.selectedLabels.filter(l => l !== option.key),
+      }));
+    }
   };
 
   private _isValidUrl(url: string): boolean {
     if (!url || !url.trim()) return false;
     try {
-      // eslint-disable-next-line no-new
       new URL(url);
       return true;
     } catch {
@@ -110,7 +114,7 @@ export default class AddBookmarkManager extends React.Component<
     }
 
     const selectedLabelObjects = this.props.availableLabels.filter(l => selectedLabels.indexOf(l.name) !== -1);
-    const selectedGroup = this.props.availableGroups.find(g => g.id === selectedGroupId);
+    const selectedGroup = selectedGroupId ? this.props.availableGroups.find(g => g.id === selectedGroupId) : undefined;
 
     const newBookmark: IBookmark = {
       id: crypto.randomUUID(),
@@ -130,10 +134,11 @@ export default class AddBookmarkManager extends React.Component<
   };
 
   private _getGroupOptions(): IDropdownOption[] {
-    return [
-      { key: '', text: 'No group' },
-      ...this.props.availableGroups.map(g => ({ key: g.id, text: g.name })),
-    ];
+    return this.props.availableGroups.map(g => ({ key: g.id, text: g.name }));
+  }
+
+  private _getLabelOptions(): IDropdownOption[] {
+    return this.props.availableLabels.map(l => ({ key: l.name, text: l.name }));
   }
 
   public render(): React.ReactElement<IAddBookmarkManagerProps> {
@@ -183,28 +188,21 @@ export default class AddBookmarkManager extends React.Component<
 
           <Dropdown
             label="Group"
-            selectedKey={selectedGroupId}
+            selectedKey={selectedGroupId || null}
             onChange={this._onGroupChange}
             options={this._getGroupOptions()}
             placeholder="Select a group (optional)"
           />
 
           {availableLabels.length > 0 && (
-            <div>
-              <Text variant="small" block style={{ marginBottom: 8, fontWeight: 600 }}>
-                Labels
-              </Text>
-              <Stack tokens={{ childrenGap: 8 }}>
-                {availableLabels.map(label => (
-                  <Checkbox
-                    key={label.name}
-                    label={label.name}
-                    checked={selectedLabels.indexOf(label.name) !== -1}
-                    onChange={(_, checked) => this._onLabelChange(label.name, checked || false)}
-                  />
-                ))}
-              </Stack>
-            </div>
+            <Dropdown
+              label="Labels"
+              selectedKeys={selectedLabels}
+              onChange={this._onLabelsChange}
+              multiSelect
+              options={this._getLabelOptions()}
+              placeholder="Select labels (optional)"
+            />
           )}
         </Stack>
 
