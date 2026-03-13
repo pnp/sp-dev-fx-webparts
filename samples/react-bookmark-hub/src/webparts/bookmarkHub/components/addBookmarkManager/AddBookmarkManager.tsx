@@ -88,6 +88,7 @@ export default class AddBookmarkManager extends React.Component<
   private _isValidUrl(url: string): boolean {
     if (!url || !url.trim()) return false;
     try {
+      // eslint-disable-next-line no-new
       new URL(url);
       return true;
     } catch {
