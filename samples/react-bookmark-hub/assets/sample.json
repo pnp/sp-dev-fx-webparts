@@ -33,14 +33,14 @@
         "name": "bookmarkHub.png",
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-gantt/assets/bookmarkHub.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-bookmark-hub/assets/bookmarkHub.png",
         "alt": "Web Part Preview"
       },
       {
         "name": "aiCapabilities.png",
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-gantt/assets/aiCapabilities.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-bookmark-hub/assets/aiCapabilities.png",
         "alt": "Web Part Preview"
       }
     ],
