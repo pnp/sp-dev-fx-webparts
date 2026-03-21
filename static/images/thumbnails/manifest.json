@@ -859,6 +859,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-save-attachments/assets/ReactSaveAttachments.gif",
     "file": "pnp-sp-dev-spfx-web-parts-react-save-attachments.webp"
   },
+  "pnp-sp-dev-spfx-web-parts-react-bookmark-hub": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-bookmark-hub/assets/bookmarkHub.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-bookmark-hub.webp"
+  },
   "pnp-sp-dev-spfx-web-parts-react-mobx": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mobx/assets/mobxreactive.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-mobx.webp"
