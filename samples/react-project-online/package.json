@@ -28,13 +28,13 @@
     "react": "16.8.5",
     "react-dom": "16.8.5",
     "lodash.template": ">=4.5.0",
-    "serialize-javascript": ">=3.1.0"
+    "serialize-javascript": ">=7.0.4"
   },
   "resolutions": {
     "@types/react": "16.8.8"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "1.16.1",
+    "@microsoft/sp-build-web": "1.22.2",
     "@microsoft/sp-tslint-rules": "1.10.0",
     "@microsoft/sp-module-interfaces": "1.10.0",
     "@microsoft/sp-webpart-workbench": "1.12.1",
