@@ -11187,6 +11187,64 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-spo-site-game",
+    "source": "pnp",
+    "title": "React SharePoint Online Site Game Web Part",
+    "shortDescription": "This web part turns any SharePoint site content into a 2D game where players discover lists, libraries, and other users in a fun and engaging way.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-spo-site-game",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-spo-site-game",
+    "updateDateTime": "2026-03-13",
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.22.2"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "Adam-it",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/adam-it.38c80c88770d.webp",
+        "name": "Adam Wójcik",
+        "avatarSourceUrl": "https://github.com/Adam-it.png"
+      },
+      {
+        "gitHubAccount": "Saurabh7019",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/saurabh7019.1c80cfa0d82a.webp",
+        "name": "Saurabh Tripathi",
+        "avatarSourceUrl": "https://github.com/Saurabh7019.png"
+      },
+      {
+        "gitHubAccount": "nicodecleyre",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/nicodecleyre.6b802f23b157.webp",
+        "name": "Nico De Cleyre",
+        "avatarSourceUrl": "https://github.com/nicodecleyre.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-spo-site-game.webp",
+        "alt": "React SharePoint Online Site Game Web Part"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-bookmark-hub",
     "source": "pnp",
     "title": "React Bookmark Hub Web Part",
