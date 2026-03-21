@@ -1,0 +1,54 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.groupSection {
+  margin-top: 2em;
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 1.25em;
+  border: 1px solid #edebe9;
+  box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+  cursor: move;
+  transition: opacity 0.2s, transform 0.2s;
+
+  &.dragging {
+    opacity: 0.5;
+    transform: scale(0.98);
+  }
+
+  &.dragOver {
+    border: 2px dashed #0078d4;
+    background-color: #f3f9fd;
+  }
+}
+
+.groupHeader {
+  border-bottom: 2px solid #edebe9;
+  padding-bottom: 0.5em;
+  margin-bottom: 0.75em;
+
+  button {
+    color: #323130;
+  }
+}
+
+.groupTitle {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 600;
+}
+
+.suggestionGroupTitle {
+  margin: 0;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #b07800;
+}
+
+.list {
+  margin-top: 0.5em;
+}
+
+.pagination {
+  margin-top: 0.5em;
+  justify-content: flex-end;
+}
