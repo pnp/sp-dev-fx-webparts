@@ -1,0 +1,58 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "SPFx Room Booking",
+    "id": "a1f90be5-c611-4fc5-8967-546de6852f25",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Swami Nawale",
+      "websiteUrl": "https://www.linkedin.com/in/swaminawale/",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.22.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Book meeting rooms from SharePoint with Microsoft Graph availability checks."
+      },
+      "longDescription": {
+        "default": "A SharePoint Framework room booking web part that discovers rooms, checks real-time availability, creates Outlook bookings, and syncs booking details to a SharePoint list with admin reporting."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Place.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Calendars.ReadWrite"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "MailboxSettings.Read"
+      }
+    ],
+    "features": [
+      {
+        "title": "spfx-room-booking Feature",
+        "description": "The feature that activates elements of the spfx-room-booking solution.",
+        "id": "4058e454-5c55-4a8f-b807-de9eb86e5171",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-room-booking.sppkg"
+  }
+}

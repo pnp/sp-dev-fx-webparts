@@ -1,0 +1,446 @@
+@import "~@fluentui/react/dist/sass/References.scss";
+
+.spFxRoomBooking {
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 24px 10%;
+  background: #f6fbff;
+  color: #252525;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-optical-sizing: auto;
+
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
+  .placeholder {
+    padding: 12px 0;
+    color: #5e5e5e;
+    font-size: 14px;
+  }
+
+  .error {
+    color: #b00020;
+    margin: 8px 0;
+    font-size: 14px;
+  }
+
+  .success {
+    color: #1b5e20;
+    margin: 8px 0;
+    font-size: 14px;
+  }
+
+  .filterBar {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding: 20px;
+    background: #fff;
+    margin-bottom: 24px;
+    box-shadow: 0 7px 29px rgba(100, 100, 111, 0.2);
+  }
+
+  .filterBarRow {
+    display: grid;
+    grid-template-columns: 2.4fr 1.2fr 1fr 1fr auto;
+    gap: 12px;
+    align-items: flex-end;
+
+    @media (max-width: 1024px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 640px) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .meetingNameField {
+    min-width: 280px;
+  }
+
+  .dateField {
+    min-width: 180px;
+  }
+
+  .timeFieldCompact {
+    min-width: 150px;
+  }
+
+  .endTimeError {
+    color: #a4262c;
+    font-size: 12px;
+    margin-top: 4px;
+  }
+
+  .searchButtonWrap {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 1px;
+  }
+
+  .roomsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+  }
+
+  .roomCard {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    background: #fff;
+    border: 1px solid #e1e1e1;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.06);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .roomCard:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 32px rgba(0, 0, 0, 0.08);
+  }
+
+  .cardHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .roomName {
+    font-size: 18px;
+    font-weight: 600;
+  }
+
+  .statusPill {
+    display: inline-block;
+    padding: 6px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: capitalize;
+  }
+
+  .available {
+    background: #e6f7ed;
+    color: #0f9d58;
+  }
+
+  .busy {
+    background: #fdecea;
+    color: #d93025;
+  }
+
+  .unknown {
+    background: #f1f3f4;
+    color: #5f6368;
+  }
+
+  .cardMeta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    font-size: 14px;
+    color: #6b7280;
+  }
+
+  .cardMeta span {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #f8f9fa;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-weight: 500;
+  }
+
+  .tagContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .tag {
+    background: #f3f6ff;
+    color: #3b5bdb;
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-weight: 500;
+    text-transform: capitalize;
+  }
+
+  .deviceInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 4px;
+    font-size: 14px;
+    color: #111827;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 8px;
+  }
+
+  .deviceInfo span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fff;
+    border: 1px solid #e0e3e7;
+    padding: 6px 10px;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: background 0.2s ease;
+  }
+
+  .deviceInfo span:hover {
+    background: #f8fafc;
+  }
+
+  .roomEditHint {
+    padding: 10px 12px;
+    background: #f7f9fc;
+    border: 1px solid #dbe3ef;
+    border-radius: 8px;
+    color: #30445b;
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  .editBanner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+    padding: 12px 16px;
+    border-radius: 4px;
+    border: 1px solid #f5a623;
+    border-left: 4px solid #e67700;
+    background: #fffbf0;
+    font-size: 14px;
+  }
+
+  .editBannerContent {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1 1 320px;
+  }
+
+  .editModeTitle {
+    font-size: 15px;
+    font-weight: 700;
+    color: #8a4b00;
+  }
+
+  .editModeSubtext {
+    color: #5f4b32;
+    line-height: 1.4;
+  }
+
+  .editBannerActions {
+    display: flex;
+    gap: 8px;
+  }
+
+  .myBookingsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 12px 0;
+  }
+
+  .headerActions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .adminFilterBar {
+    display: grid;
+    grid-template-columns: 2fr 1fr auto;
+    gap: 12px;
+    margin-bottom: 16px;
+    padding: 14px;
+    background: #fff;
+    border: 1px solid #e6ebf2;
+    border-radius: 8px;
+
+    @media (max-width: 980px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .statusPillRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .statusFilterPill {
+    border: 1px solid #cfd8e3;
+    background: #fff;
+    color: #30445b;
+    border-radius: 999px;
+    padding: 6px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .statusFilterPillActive {
+    background: #1f6feb;
+    color: #fff;
+    border-color: #1f6feb;
+  }
+
+  .killSwitchButton {
+    border-color: #d13438;
+    color: #a4262c;
+  }
+
+  .adminTableWrap {
+    border: 1px solid #e6ebf2;
+    border-radius: 10px;
+    overflow: hidden;
+    background: #fff;
+  }
+
+  .adminTableHeader,
+  .adminTableRow {
+    display: grid;
+    grid-template-columns: 2fr 1.2fr 1fr 1.4fr 1.2fr 0.9fr;
+    gap: 12px;
+    align-items: center;
+    padding: 12px 14px;
+  }
+
+  .adminTableHeader {
+    background: #f5f8fc;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #556070;
+    text-transform: uppercase;
+  }
+
+  .adminTableRow {
+    border-top: 1px solid #eef2f6;
+    font-size: 14px;
+    color: #1f2937;
+  }
+
+  .adminTableRow:nth-child(odd) {
+    background: #fcfdff;
+  }
+
+  @media (max-width: 980px) {
+    .adminTableHeader {
+      display: none;
+    }
+
+    .adminTableRow {
+      grid-template-columns: 1fr;
+      gap: 6px;
+      padding: 14px;
+    }
+  }
+
+  .bookingTime {
+    font-size: 14px;
+    color: #444;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+
+  .meetingLink {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+    color: #0078d4;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    padding: 4px 0;
+
+    &:hover {
+      color: #106ebe;
+      text-decoration: underline;
+    }
+  }
+
+  .actionRow {
+    display: flex;
+    gap: 8px;
+    margin: 12px 0;
+    flex-wrap: wrap;
+  }
+
+  .deleteIconButton {
+    color: #d13438;
+    border: 1px solid #f3c8c9;
+    border-radius: 6px;
+
+    &:hover {
+      color: #a4262c;
+      border-color: #d13438;
+      background: #fde7e9;
+    }
+  }
+
+  .bookingCardEntry {
+    animation: bookingFadeIn 220ms ease-out;
+  }
+
+  .bookingCardDeleting {
+    animation: bookingFadeOut 220ms ease-in forwards;
+  }
+
+  @keyframes bookingFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes bookingFadeOut {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    to {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+  }
+
+  .statusToday {
+    background: #fff4e5;
+    color: #e67700;
+  }
+
+  .statusTomorrow {
+    background: #e3f2fd;
+    color: #1565c0;
+  }
+
+  .statusUpcoming {
+    background: #f1f3f4;
+    color: #5f6368;
+  }
+}
