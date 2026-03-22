@@ -26345,6 +26345,48 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-extensions-js-application-layout-customizer",
+    "source": "pnp",
+    "title": "SharePoint Page Indexer",
+    "shortDescription": "A SharePoint Framework (SPFx) Application Customizer that applies a responsive 3-column grid layout to SharePoint Modern pages. Provides a Fluent-styled floating toolbar and modal panel for live column-width configuration, persisted via localStorage.",
+    "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-application-layout-customizer",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-application-layout-customizer",
+    "updateDateTime": "2026-03-11",
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "TypeScript"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "saiiiiiii",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/saiiiiiii.b1e132237a67.webp",
+        "name": "Sai Siva Ram Bandaru",
+        "avatarSourceUrl": "https://avatars.githubusercontent.com/u/46020510?v=4"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/saiiiiiii/js-application-layout-customizer/raw/main/assets/layout-customizer-demo.gif",
+        "alt": "SharePoint Page Indexer"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-extensions-react-application-collab-footer",
     "source": "pnp",
     "title": "SharePoint Collaboration Footer v8.0.0",

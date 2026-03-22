@@ -2087,6 +2087,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-utility-extensions/assets/CopyPathCopyNameExtenstions.png",
     "file": "pnp-sp-dev-spfx-extensions-react-utility-extensions.webp"
   },
+  "pnp-sp-dev-spfx-extensions-js-application-layout-customizer": {
+    "sourceUrl": "https://github.com/saiiiiiii/js-application-layout-customizer/raw/main/assets/layout-customizer-demo.gif",
+    "file": "pnp-sp-dev-spfx-extensions-js-application-layout-customizer.webp"
+  },
   "pnp-sp-dev-spfx-extensions-react-application-collab-footer": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-collab-footer/assets/10.png",
     "file": "pnp-sp-dev-spfx-extensions-react-application-collab-footer.webp"
