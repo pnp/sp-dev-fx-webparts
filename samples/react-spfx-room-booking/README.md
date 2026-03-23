@@ -12,11 +12,11 @@ This sample shows how to build a SharePoint Framework web part that lets users:
 
 The sample is built with SPFx, React, Fluent UI v8, Microsoft Graph, and PnPjs.
 
-## ![Room Booking overview](/src/webparts/spFxRoomBooking/assets/img-book-a-room.png)
+## ![Room Booking overview](assets/img-book-a-room.png)
 
-## ![Room Booking overview](/src/webparts/spFxRoomBooking/assets/img-admin-view.png)
+## ![Room Booking overview](assets/img-admin-view.png)
 
-## ![Room Booking overview](/src/webparts/spFxRoomBooking/assets/img-my-bookings.png)
+## ![Room Booking overview](assets/img-my-bookings.png)
 
 _Developed using [GitHub Copilot](https://github.com/features/copilot) and vibe coding 🧑‍💻_
 
