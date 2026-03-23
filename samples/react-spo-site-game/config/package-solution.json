@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-spo-site-world-client-side-solution",
+    "id": "5e708d09-5bfb-46d1-ae25-ba734d347b18",
+    "version": "0.2.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.22.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "spfx-spo-site-world description"
+      },
+      "longDescription": {
+        "default": "spfx-spo-site-world description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "spfx-spo-site-world Feature",
+        "description": "The feature that activates elements of the spfx-spo-site-world solution.",
+        "id": "21fd532f-92ba-4fee-88e8-854ed8d3745a",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-spo-site-world.sppkg"
+  }
+}

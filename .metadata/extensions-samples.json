@@ -3789,6 +3789,71 @@
         ]
     },
     {
+        "name": "pnp-sp-dev-spfx-extensions-js-application-layout-customizer",
+        "source": "pnp",
+        "title": "SharePoint Page Indexer",
+        "shortDescription": "A SharePoint Framework (SPFx) Application Customizer that applies a responsive 3-column grid layout to SharePoint Modern pages. Provides a Fluent-styled floating toolbar and modal panel for live column-width configuration, persisted via localStorage.",
+        "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-application-layout-customizer",
+        "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-application-layout-customizer",
+        "longDescription": [
+            "A SharePoint Framework (SPFx) Application Customizer that applies a responsive 3-column grid layout to SharePoint Modern pages. Provides a Fluent-styled floating toolbar and modal panel for live column-width configuration, persisted via localStorage."
+        ],
+        "creationDateTime": "2026-03-11",
+        "updateDateTime": "2026-03-11",
+        "products": [
+            "SharePoint",
+            "Office"
+        ],
+        "metadata": [
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "TypeScript"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.20.0"
+            }
+        ],
+        "thumbnails": [
+            {
+                "name": "layout-customizer-demo.gif",
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/saiiiiiii/js-application-layout-customizer/raw/main/assets/layout-customizer-demo.gif",
+                "alt": "SharePoint Page Layout Customizer"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "saiiiiiii",
+                "pictureUrl": "https://avatars.githubusercontent.com/u/46020510?v=4",
+                "name": "Sai Siva Ram Bandaru"
+            }
+        ],
+        "references": [
+            {
+                "name": "Getting started with SharePoint Framework",
+                "description": "Introduction about how to develop Microsoft 365 extensions using SharePoint Framework.",
+                "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant"
+            },
+            {
+                "name": "Build your first SharePoint Framework Extension",
+                "description": "Learn how to build your first SharePoint Framework Application Customizer.",
+                "url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/extensions/get-started/build-a-hello-world-extension"
+            },
+            {
+                "name": "Microsoft 365 Patterns and Practices",
+                "description": "Guidance, tooling, samples and open-source controls for your Microsoft 365 development.",
+                "url": "https://aka.ms/m365pnp"
+            },
+            {
+                "name": "PnPjs Documentation",
+                "description": "PnPjs is a collection of fluent libraries for consuming SharePoint, Graph, and Office 365 REST APIs.",
+                "url": "https://pnp.github.io/pnpjs/"
+            }
+        ]
+    },
+    {
         "name": "pnp-sp-dev-spfx-extensions-react-application-collab-footer",
         "source": "pnp",
         "title": "SharePoint Collaboration Footer v8.0.0",
