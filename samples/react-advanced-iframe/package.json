@@ -23,7 +23,7 @@
     "@microsoft/sp-webpart-base": "1.13.1",
     "@pnp/sp": "^3.17.0",
     "@pnp/spfx-property-controls": "3.14.0",
-    "handlebars": "^4.7.8"
+    "handlebars": "^4.7.9"
   },
   "devDependencies": {
     "@microsoft/sp-build-web": "1.21.1",
