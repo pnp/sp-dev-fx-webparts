@@ -15,7 +15,7 @@
     "gitHubAccount": "Abderahman88",
     "name": "Abderahman Moujahid",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/abderahman88.beeaab590de7.webp",
-    "avatarSourceUrl": "https://github.com/Abderahman88.png"
+    "avatarSourceUrl": "https://avatars.githubusercontent.com/u/36161889?s=460&u=afdd5f6681bc375ee3811482dec79824c12d8170&v=4"
   },
   {
     "gitHubAccount": "AbhishekGarg",
@@ -55,7 +55,7 @@
   },
   {
     "gitHubAccount": "albegut",
-    "name": "Alberto Gutierrez perez",
+    "name": "Alberto Gutierrez",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/albegut.474e68c10a82.webp",
     "avatarSourceUrl": "https://github.com/albegut.png"
   },
@@ -367,7 +367,7 @@
   },
   {
     "gitHubAccount": "Eli-Schei",
-    "name": "Eli Schei",
+    "name": "Eli H. Schei",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/eli-schei.3680818ac120.webp",
     "avatarSourceUrl": "https://github.com/Eli-Schei.png"
   },
@@ -553,7 +553,7 @@
   },
   {
     "gitHubAccount": "jtlivio",
-    "name": "Joao Livio",
+    "name": "João LIVIO",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/jtlivio.969fe0dcec53.webp",
     "avatarSourceUrl": "https://github.com/jtlivio.png"
   },
@@ -840,12 +840,6 @@
     "avatarSourceUrl": "https://github.com/techienickb.png"
   },
   {
-    "gitHubAccount": "https://github.com/NicolasKheirallah",
-    "name": "Nico",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/nicolaskheirallah.50f81b9fb5b9.webp",
-    "avatarSourceUrl": "https://github.com/NicolasKheirallah.png"
-  },
-  {
     "gitHubAccount": "nicodecleyre",
     "name": "Nico De Cleyre",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/nicodecleyre.6b802f23b157.webp",
@@ -853,6 +847,12 @@
   },
   {
     "gitHubAccount": "NicolasKheirallah",
+    "name": "Nicolas Kheirallah",
+    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/nicolaskheirallah.50f81b9fb5b9.webp",
+    "avatarSourceUrl": "https://github.com/NicolasKheirallah.png"
+  },
+  {
+    "gitHubAccount": "https://github.com/NicolasKheirallah",
     "name": "Nicolas Kheirallah",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/nicolaskheirallah.50f81b9fb5b9.webp",
     "avatarSourceUrl": "https://github.com/NicolasKheirallah.png"
@@ -1122,10 +1122,10 @@
     "avatarSourceUrl": "https://github.com/sauslash.png"
   },
   {
-    "gitHubAccount": "saurabh7019",
+    "gitHubAccount": "Saurabh7019",
     "name": "Saurabh Tripathi",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/saurabh7019.1c80cfa0d82a.webp",
-    "avatarSourceUrl": "https://github.com/saurabh7019.png"
+    "avatarSourceUrl": "https://github.com/Saurabh7019.png"
   },
   {
     "gitHubAccount": "sebastienlevert",
