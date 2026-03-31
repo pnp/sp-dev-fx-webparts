@@ -21,6 +21,14 @@ export interface ICategoryStats {
     count: number;
 }
 
+export interface IChatMessage {
+    text: string;
+}
+
+export interface IChatResponse {
+    messages?: IChatMessage[];
+}
+
 export interface IPnpCopilotPromptsState {
     samples: ISample[];
     totalSamples?: number;
@@ -31,10 +39,10 @@ export interface IPnpCopilotPromptsState {
     conversationId?: string;
     userQuery?: string;
     error?: string;
-    chatResponse?: any;
+    chatResponse?: IChatResponse;
     rawResponse?: string;
     showPromptInputModal?: boolean;
-    currentSample?: any;
+    currentSample?: ISample;
     placeholders?: string[];
     placeholderValues?: { [key: string]: string };
     generatedPrompt?: string;

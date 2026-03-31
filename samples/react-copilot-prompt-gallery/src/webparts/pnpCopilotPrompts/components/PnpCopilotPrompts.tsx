@@ -290,7 +290,7 @@ export default class PnpCopilotPrompts extends React.Component<IPnpCopilotPrompt
               overflow: 'auto',
               border: '1px solid #ddd'
             }}>
-              <h4 style={{ marginTop: 0, marginBottom: '10px' }}>Copilot's Response:</h4>
+              <h4 style={{ marginTop: 0, marginBottom: '10px' }}>Copilot&apos;s Response:</h4>
               <div style={{ lineHeight: '1.6' }}>
                       {this.state.chatResponse?.messages && this.state.chatResponse.messages[1]?.text 
                         ? <ReactMarkdown remarkPlugins={[remarkGfm]}>{this.state.chatResponse.messages[1].text}</ReactMarkdown>
@@ -488,21 +488,18 @@ export default class PnpCopilotPrompts extends React.Component<IPnpCopilotPrompt
 
 
   private extractPlaceholders = (prompt: string): string[] => {
-    const placeholderRegex = /[\{\[]([^\}\]]+)[\}\]]/g;
+    const placeholderRegex = /[{[]([^}\]]+)[}\]]/g;
     const matches = prompt.match(placeholderRegex) || [];
     return matches.map(match => match.slice(1, -1)); // Remove { } or [ ]
   };
 
   private generatePrompt = (prompt: string, placeholderValues: { [key: string]: string }): string => {
     let generatedPrompt = prompt;
-    for (const placeholder in placeholderValues) {
-      if (placeholderValues.hasOwnProperty(placeholder)) {
-        const value = placeholderValues[placeholder];
-        generatedPrompt = generatedPrompt.replace(
-          new RegExp(`[\\{\\[]${placeholder}[\\}\\]]`, 'g'),
-          value
-        );
-      }
+    for (const placeholder of Object.keys(placeholderValues)) {
+      const value = placeholderValues[placeholder];
+      generatedPrompt = generatedPrompt
+        .split(`{${placeholder}}`).join(value)
+        .split(`[${placeholder}]`).join(value);
     }
     return generatedPrompt;
   };
@@ -519,7 +516,7 @@ export default class PnpCopilotPrompts extends React.Component<IPnpCopilotPrompt
     if (placeholders.length > 0) {
       // Show prompt input modal if there are placeholders
       const placeholderValues: { [key: string]: string } = {};
-      placeholders.forEach(p => placeholderValues[p] = '');
+      placeholders.forEach(p => { placeholderValues[p] = ''; });
       const generatedPrompt = this.generatePrompt(sample.Prompt, placeholderValues);
 
       this.setState({
@@ -535,7 +532,7 @@ export default class PnpCopilotPrompts extends React.Component<IPnpCopilotPrompt
         currentSample: sample,
         generatedPrompt: sample.Prompt
       }, () => {
-        this.sendPromptToCopilot();
+        this.sendPromptToCopilot().catch(console.error);
       });
     }
   };
@@ -551,16 +548,13 @@ export default class PnpCopilotPrompts extends React.Component<IPnpCopilotPrompt
     });
 
     try {
-      let conversationId = this.state.conversationId;
+      const storedConversationId = this.state.conversationId;
 
       // Create conversation if it doesn't exist
-      if (!conversationId) {
-        const client: MSGraphClientV3 = await this.props.context.msGraphClientFactory.getClient('3');
-
-      
-      
-        conversationId = await new Promise<string>((resolve, reject) => {
-          void client
+      const conversationId = storedConversationId ?? await (async () => {
+        const initClient: MSGraphClientV3 = await this.props.context.msGraphClientFactory.getClient('3');
+        return new Promise<string>((resolve, reject) => {
+          initClient
             .api('copilot/conversations')
             .version('beta')
             .post({}, (err: any, res: any) => {
@@ -570,9 +564,10 @@ export default class PnpCopilotPrompts extends React.Component<IPnpCopilotPrompt
                 this.setState({ conversationId: res?.id });
                 resolve(res?.id);
               }
-            });
+            })
+            .catch(reject);
         });
-      }
+      })();
     
       const client: MSGraphClientV3 = await this.props.context.msGraphClientFactory.getClient('3');
 
