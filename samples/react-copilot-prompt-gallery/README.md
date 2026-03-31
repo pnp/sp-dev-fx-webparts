@@ -2,9 +2,11 @@
 
 ## Summary
 
-This solution displays a gallery of Copilot prompts from the PnP copilot-prompts repository and allows users to easily copy prompts for reuse.
+This solution displays a gallery of Copilot prompts from the PnP copilot-prompts repository and allows users to easily copy prompts for reuse and also try the prompts directly using Copilot Chat API.
 
 ![prompt gallery](assets/promptGallery.png)
+![prompt placeholder](assets/PromptPlaceholder.png)
+![prompt response](assets/CopilotResponse.png)
 
 ## Compatibility
 
@@ -34,12 +36,15 @@ This sample is optimally compatible with the following environment configuration
 ## Contributors
 
 * [Saurabh Tripathi](https://github.com/saurabh7019)
+* [Saurabh Tripathi](https://github.com/siddharth-vaghasia)
 
 ## Version history
 
 |Version|Date|Comments|
 |-------|----|--------|
 |1.0|August 21, 2025|Initial release|
+|1.0|March 31, 2026|Update-Integratoin with Copilot Chat API|
+
 
 ## Prerequisites
 
@@ -66,6 +71,10 @@ Key features of this web part:
 - Allows users to filter samples by prerequisite category (e.g., Microsoft 365 Copilot, Github Copilot, etc.).
 - Shows contributor information, published date, preview, and prompt details for each sample.
 - Provides a one-click copy button for each prompt to easily reuse in your own solutions.
+- Provides option to try the Prompt using Copilot Chat API(if user has Copilot License).
+- If the prompts has placeholders, it will ask user the input to enter the placeholder value and dynamically create prompt and then make API call .
+- Displays the Copilot Response with as formatted response.
+
 
 ## Help
 

@@ -27,4 +27,15 @@ export interface IPnpCopilotPromptsState {
     categories: ICategoryStats[];
     copiedPromptIndex?: number;
     selectedCategory?: string;
+    isCalling?: boolean;
+    conversationId?: string;
+    userQuery?: string;
+    error?: string;
+    chatResponse?: any;
+    rawResponse?: string;
+    showPromptInputModal?: boolean;
+    currentSample?: any;
+    placeholders?: string[];
+    placeholderValues?: { [key: string]: string };
+    generatedPrompt?: string;
 }
