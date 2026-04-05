@@ -9181,7 +9181,7 @@
     "shortDescription": "This solution displays a gallery of Copilot prompts from the PnP copilot-prompts repository and allows users to easily copy prompts for reuse.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-prompt-gallery",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-prompt-gallery",
-    "updateDateTime": "2025-08-21",
+    "updateDateTime": "2026-03-31",
     "metadata": [
       {
         "key": "SAMPLE-TYPE",
