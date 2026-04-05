@@ -4,6 +4,10 @@ import styles from './PnpCopilotPrompts.module.scss';
 import type { IPnpCopilotPromptsProps } from './IPnpCopilotPromptsProps';
 import { IPnpCopilotPromptsState, ICategoryStats } from './IPnpCopilotPromptsState';
 import { DataFetcherService } from '../services/DataFetcherService';
+import { MSGraphClientV3 } from '@microsoft/sp-http';
+import { Modal, DefaultButton, PrimaryButton, TextField } from '@fluentui/react';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 
 export default class PnpCopilotPrompts extends React.Component<IPnpCopilotPromptsProps, IPnpCopilotPromptsState> {
   private _apiServiceInstance: DataFetcherService;
@@ -15,8 +19,19 @@ export default class PnpCopilotPrompts extends React.Component<IPnpCopilotPrompt
       totalSamples: 0,
       categories: [],
       copiedPromptIndex: undefined,
-      selectedCategory: undefined
-    };
+      selectedCategory: undefined,
+       isCalling: false,
+       conversationId: undefined,
+       userQuery: '',
+       error: undefined,
+       chatResponse: undefined,
+       rawResponse: undefined,
+       showPromptInputModal: false,
+       currentSample: undefined,
+       placeholders: [],
+       placeholderValues: {},
+       generatedPrompt: ''
+     };
 
     const {
       serviceScope
@@ -138,12 +153,152 @@ export default class PnpCopilotPrompts extends React.Component<IPnpCopilotPrompt
                     >
                       {this.state.copiedPromptIndex === index ? '✅ Copied!' : '📋 Copy Prompt'}
                     </button>
+                    <button
+                      className={`${styles.btn}`}
+                      onClick={() => this.handleTryPrompt(sample)}
+                      title="Try this prompt"
+                      disabled={this.state.isCalling}
+                      style={{
+                        marginLeft: '10px',
+                        backgroundColor: '#107c10',
+                        color: 'white',
+                        padding: '8px 16px',
+                        border: 'none',
+                        borderRadius: '3px',
+                        cursor: this.state.isCalling ? 'not-allowed' : 'pointer',
+                        fontSize: '14px',
+                        opacity: this.state.isCalling ? 0.6 : 1
+                      }}
+                    >
+                      {this.state.isCalling ? '⏳ Processing...' : '🚀 Try this prompt'}
+                    </button>
                   </div>
                 </div>
               </div>
             ))}
           </div>
         </div>
+
+        {/* Prompt Input Modal */}
+        <Modal
+          isOpen={this.state.showPromptInputModal}
+          onDismiss={() => this.setState({ showPromptInputModal: false, placeholders: [], placeholderValues: {} })}
+          isBlocking={false}
+        >
+          <div style={{ padding: '20px', maxWidth: '700px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+              <h2>Configure Prompt</h2>
+              <DefaultButton
+                text="Close"
+                onClick={() => this.setState({ showPromptInputModal: false, placeholders: [], placeholderValues: {} })}
+              />
+            </div>
+
+            {this.state.placeholders && this.state.placeholders.length > 0 && (
+              <div style={{ marginBottom: '20px' }}>
+                <h3>Fill in the placeholders:</h3>
+                {this.state.placeholders.map((placeholder, index) => (
+                  <TextField
+                    key={index}
+                    label={placeholder}
+                    value={this.state.placeholderValues?.[placeholder] || ''}
+                    onChange={(e, value) => this.handlePlaceholderChange(placeholder, value || '')}
+                    placeholder={`Enter ${placeholder}`}
+                    styles={{ root: { marginBottom: '15px' } }}
+                  />
+                ))}
+              </div>
+            )}
+
+            <div style={{
+              backgroundColor: '#f5f5f5',
+              padding: '15px',
+              borderRadius: '5px',
+              marginBottom: '20px',
+              maxHeight: '300px',
+              overflow: 'auto',
+              border: '1px solid #ddd'
+            }}>
+              <h4>Preview:</h4>
+              <div style={{ lineHeight: '1.6', whiteSpace: 'pre-wrap', wordBreak: 'break-word' }}>
+                {this.state.generatedPrompt}
+              </div>
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
+              <DefaultButton
+                text="Cancel"
+                onClick={() => this.setState({ showPromptInputModal: false, placeholders: [], placeholderValues: {} })}
+              />
+              <PrimaryButton
+                text="Send to Copilot"
+                onClick={() => this.sendPromptToCopilot()}
+              />
+            </div>
+          </div>
+        </Modal>
+
+        <Modal
+          isOpen={!!this.state.chatResponse}
+          onDismiss={() => this.setState({ chatResponse: undefined, rawResponse: undefined })}
+          isBlocking={false}
+        >
+          <div style={{ padding: '20px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+              <h2>Copilot Response</h2>
+              <DefaultButton
+                text="Close"
+                onClick={() => this.setState({ chatResponse: undefined, rawResponse: undefined })}
+              />
+            </div>
+            
+            {this.state.error && (
+              <div style={{
+                backgroundColor: '#fee',
+                color: '#c33',
+                padding: '15px',
+                borderRadius: '5px',
+                marginBottom: '15px',
+                border: '1px solid #fcc'
+              }}>
+                <strong>Error:</strong> {this.state.error}
+              </div>
+            )}
+
+            {/* Prompt Preview */}
+            <div style={{
+              backgroundColor: '#e8f4fd',
+              padding: '15px',
+              borderRadius: '5px',
+              marginBottom: '15px',
+              border: '1px solid #b3d9f2',
+              maxHeight: '150px',
+              overflow: 'auto'
+            }}>
+              <h4 style={{ marginTop: 0, marginBottom: '10px', color: '#0078d4' }}>Your Prompt:</h4>
+              <div style={{ lineHeight: '1.6', whiteSpace: 'pre-wrap', wordBreak: 'break-word', color: '#333', maxWidth: '100%' }}>
+                {this.state.generatedPrompt || this.state.currentSample?.Prompt || 'No prompt available'}
+              </div>
+            </div>
+
+            {/* Response */}
+            <div style={{
+              backgroundColor: '#f5f5f5',
+              padding: '15px',
+              borderRadius: '5px',
+              maxHeight: '500px',
+              overflow: 'auto',
+              border: '1px solid #ddd'
+            }}>
+              <h4 style={{ marginTop: 0, marginBottom: '10px' }}>Copilot&apos;s Response:</h4>
+              <div style={{ lineHeight: '1.6' }}>
+                      {this.state.chatResponse?.messages && this.state.chatResponse.messages[1]?.text 
+                        ? <ReactMarkdown remarkPlugins={[remarkGfm]}>{this.state.chatResponse.messages[1].text}</ReactMarkdown>
+                        : 'No response available'}
+                    </div>
+            </div>
+          </div>
+        </Modal>
       </section>
     );
   }
@@ -330,4 +485,123 @@ export default class PnpCopilotPrompts extends React.Component<IPnpCopilotPrompt
       console.error('Failed to copy prompt: ', err);
     }
   };
+
+
+  private extractPlaceholders = (prompt: string): string[] => {
+    const placeholderRegex = /[{[]([^}\]]+)[}\]]/g;
+    const matches = prompt.match(placeholderRegex) || [];
+    return matches.map(match => match.slice(1, -1)); // Remove { } or [ ]
+  };
+
+  private generatePrompt = (prompt: string, placeholderValues: { [key: string]: string }): string => {
+    let generatedPrompt = prompt;
+    for (const placeholder of Object.keys(placeholderValues)) {
+      const value = placeholderValues[placeholder];
+      generatedPrompt = generatedPrompt
+        .split(`{${placeholder}}`).join(value)
+        .split(`[${placeholder}]`).join(value);
+    }
+    return generatedPrompt;
+  };
+
+  private handlePlaceholderChange = (placeholder: string, value: string): void => {
+    const updatedValues = { ...this.state.placeholderValues, [placeholder]: value };
+    const generatedPrompt = this.generatePrompt(this.state.currentSample?.Prompt || '', updatedValues);
+    this.setState({ placeholderValues: updatedValues, generatedPrompt });
+  };
+
+  private handleTryPrompt = (sample: any): void => {
+    const placeholders = this.extractPlaceholders(sample.Prompt || '');
+
+    if (placeholders.length > 0) {
+      // Show prompt input modal if there are placeholders
+      const placeholderValues: { [key: string]: string } = {};
+      placeholders.forEach(p => { placeholderValues[p] = ''; });
+      const generatedPrompt = this.generatePrompt(sample.Prompt, placeholderValues);
+
+      this.setState({
+        showPromptInputModal: true,
+        currentSample: sample,
+        placeholders,
+        placeholderValues,
+        generatedPrompt
+      });
+    } else {
+      // Directly send if no placeholders - set the sample first
+      this.setState({
+        currentSample: sample,
+        generatedPrompt: sample.Prompt
+      }, () => {
+        this.sendPromptToCopilot().catch(console.error);
+      });
+    }
+  };
+
+  private sendPromptToCopilot = async (): Promise<void> => {
+    const finalPrompt = this.state.generatedPrompt || this.state.currentSample?.Prompt;
+
+    this.setState({
+      userQuery: finalPrompt,
+      isCalling: true,
+      error: undefined,
+      showPromptInputModal: false
+    });
+
+    try {
+      const storedConversationId = this.state.conversationId;
+
+      // Create conversation if it doesn't exist
+      const conversationId = storedConversationId ?? await (async () => {
+        const initClient: MSGraphClientV3 = await this.props.context.msGraphClientFactory.getClient('3');
+        return new Promise<string>((resolve, reject) => {
+          initClient
+            .api('copilot/conversations')
+            .version('beta')
+            .post({}, (err: any, res: any) => {
+              if (err) {
+                reject(err);
+              } else {
+                this.setState({ conversationId: res?.id });
+                resolve(res?.id);
+              }
+            })
+            .catch(reject);
+        });
+      })();
+    
+      const client: MSGraphClientV3 = await this.props.context.msGraphClientFactory.getClient('3');
+
+        // Build chat payload
+      const chatPayload: any = {
+        message: { text: finalPrompt },
+        locationHint: { timeZone: "America/New_York" },
+
+      };
+    
+      return new Promise<void>((resolve) => {
+         client
+          .api(`/copilot/conversations/${conversationId}/chat`)
+          .version('beta')
+          .post(chatPayload, (err: any, res: any) => {
+            if (err) {
+              const message = err instanceof Error ? err.message : 'Unexpected error while sending chat message.';
+              this.setState({ isCalling: false, error: message });
+            } else {
+              this.setState({
+                isCalling: false,
+                chatResponse: res,
+                rawResponse: JSON.stringify(res, null, 2),
+                userQuery: ''
+              });
+            }
+            resolve();
+          });
+      });
+    } catch (error) {
+      const message = error instanceof Error ? error.message : 'Failed to initialize chat';
+      this.setState({ isCalling: false, error: message });
+    }
+  };
+
+
 }

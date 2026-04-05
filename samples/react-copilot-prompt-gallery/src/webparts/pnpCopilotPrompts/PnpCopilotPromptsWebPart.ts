@@ -20,7 +20,8 @@ export default class PnpCopilotPromptsWebPart extends BaseClientSideWebPart<IPnp
       PnpCopilotPrompts,
       {
         sampleDataFileUrl: this.properties.sampleDataFileUrl,
-        serviceScope: this.context.serviceScope
+        serviceScope: this.context.serviceScope,
+        context:this.context
       }
     );
 

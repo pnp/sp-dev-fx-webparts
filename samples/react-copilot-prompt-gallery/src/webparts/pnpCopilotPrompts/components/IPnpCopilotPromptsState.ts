@@ -21,10 +21,29 @@ export interface ICategoryStats {
     count: number;
 }
 
+export interface IChatMessage {
+    text: string;
+}
+
+export interface IChatResponse {
+    messages?: IChatMessage[];
+}
+
 export interface IPnpCopilotPromptsState {
     samples: ISample[];
     totalSamples?: number;
     categories: ICategoryStats[];
     copiedPromptIndex?: number;
     selectedCategory?: string;
+    isCalling?: boolean;
+    conversationId?: string;
+    userQuery?: string;
+    error?: string;
+    chatResponse?: IChatResponse;
+    rawResponse?: string;
+    showPromptInputModal?: boolean;
+    currentSample?: ISample;
+    placeholders?: string[];
+    placeholderValues?: { [key: string]: string };
+    generatedPrompt?: string;
 }
