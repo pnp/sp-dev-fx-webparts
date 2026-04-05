@@ -19,7 +19,7 @@
     "vue-property-decorator": "^8.4.2",
     "vue-template-compiler": "^2.6.11",
     "serialize-javascript": ">=7.0.3",
-    "lodash.template": ">=4.5.0"
+    "lodash.template": ">=4.18.1"
   },
   "devDependencies": {
     "@microsoft/rush-stack-compiler-3.3": "0.3.5",

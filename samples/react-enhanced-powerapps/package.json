@@ -24,7 +24,7 @@
         "@pnp/spfx-controls-react": "1.19.0",
         "@pnp/spfx-property-controls": "1.19.0",
         "lodash": ">=4.17.23",
-        "lodash.template": ">=4.5.0",
+        "lodash.template": ">=4.18.1",
         "office-ui-fabric-react": "6.214.0",
         "postcss-selector-parser": "^6.0.13",
         "react": "^16.13.1",
