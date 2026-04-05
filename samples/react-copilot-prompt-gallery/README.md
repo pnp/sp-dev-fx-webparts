@@ -36,14 +36,14 @@ This sample is optimally compatible with the following environment configuration
 ## Contributors
 
 * [Saurabh Tripathi](https://github.com/saurabh7019)
-* [Saurabh Tripathi](https://github.com/siddharth-vaghasia)
+* [Siddharth Vaghasia](https://github.com/siddharth-vaghasia)
 
 ## Version history
 
 |Version|Date|Comments|
 |-------|----|--------|
 |1.0|August 21, 2025|Initial release|
-|1.0|March 31, 2026|Update-Integratoin with Copilot Chat API|
+|1.0|March 31, 2026|Update-Integration with Copilot Chat API|
 
 
 ## Prerequisites
