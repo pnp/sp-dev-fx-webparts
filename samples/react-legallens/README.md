@@ -4,7 +4,8 @@ AI-powered contract management and e-signature platform built on SharePoint Onli
 
 ---
 
-![Document Explorer](./assets/images/placeholder-app-screenshot.png)
+![LegalLens](./assets/images/placeholder-app-screenshot.png)
+![Youtube Video](https://youtu.be/-k96wyi92x4?si=P3R2B6w5H0VG0q9b)
 
 ---
 
