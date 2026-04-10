@@ -1,0 +1,282 @@
+@use '../../mixins' as *;
+
+.stepHeader {
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ll-bd-subtle);
+}
+
+.stepHeaderBackBtn {
+  @include backBtn;
+}
+
+.stepHeaderTitle {
+  @include tabTitle;
+}
+
+.stepHeaderSubtitle {
+  margin: 0;
+  font-size: 11px;
+  color: var(--ll-cl-text-muted);
+}
+
+/* ── Contract selection list (step: select) ── */
+
+.contractList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 520px;
+  overflow-y: auto;
+}
+
+.contractListEmpty {
+  padding: 40px;
+  text-align: center;
+  color: var(--ll-cl-text-faint);
+  font-size: 12px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 12px;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.contractCard {
+  padding: 14px 16px;
+  border-radius: 12px;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  transition: all 0.2s;
+
+  &:hover {
+    background: rgba(99, 102, 241, 0.08);
+  }
+}
+
+.contractCardCompleted {
+  cursor: default;
+  background: rgba(16, 185, 129, 0.04);
+  border-color: rgba(16, 185, 129, 0.25);
+
+  &:hover {
+    background: rgba(16, 185, 129, 0.04);
+  }
+}
+
+.contractCardInProgress {
+  border-color: rgba(245, 158, 11, 0.3);
+
+  &:hover {
+    background: rgba(245, 158, 11, 0.08);
+  }
+}
+
+.contractCardIcon {
+  font-size: 26px;
+  flex-shrink: 0;
+}
+
+.contractCardInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.contractCardNameRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 3px;
+  flex-wrap: wrap;
+}
+
+.contractCardName {
+  font-size: 13px;
+  color: var(--ll-cl-text);
+  font-weight: 600;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.contractBadge {
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 9px;
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.contractBadgeSigned {
+  background: rgba(16, 185, 129, 0.15);
+  color: #10b981;
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.contractBadgeInProgress {
+  background: rgba(245, 158, 11, 0.15);
+  color: #f59e0b;
+  border: 1px solid rgba(245, 158, 11, 0.3);
+}
+
+.contractCardMeta {
+  font-size: 10px;
+  color: var(--ll-cl-text-faint);
+}
+
+.contractMetaAmber {
+  margin-left: 8px;
+  color: #f59e0b;
+}
+
+.contractMetaGreen {
+  margin-left: 8px;
+  color: #10b981;
+}
+
+.contractMetaMuted {
+  margin-left: 8px;
+  color: var(--ll-cl-text-faint);
+}
+
+.contractCardActions {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.contractBtn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.contractBtnView {
+  border: 1px solid rgba(99, 102, 241, 0.35);
+  background: rgba(99, 102, 241, 0.1);
+  color: #818cf8;
+
+  &:hover {
+    background: rgba(99, 102, 241, 0.22);
+    color: #a5b4fc;
+  }
+}
+
+.contractBtnDownload {
+  border: 1px solid rgba(16, 185, 129, 0.35);
+  background: rgba(16, 185, 129, 0.1);
+  color: #10b981;
+
+  &:hover {
+    background: rgba(16, 185, 129, 0.22);
+    color: #34d399;
+  }
+}
+
+.contractBtnDownloadDisabled {
+  background: rgba(16, 185, 129, 0.04) !important;
+  color: #64748b !important;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.contractBadgeSelect {
+  padding: 5px 12px;
+  border-radius: 6px;
+  font-size: 9px;
+  font-weight: 700;
+  background: rgba(99, 102, 241, 0.12);
+  color: #818cf8;
+  flex-shrink: 0;
+}
+
+/* ── Add Signers step (step: author) ── */
+
+.signerList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.signerCard {
+  padding: 16px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.signerCardHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.signerCardLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--ll-cl-text-muted);
+}
+
+.signerCardRemoveBtn {
+  margin-left: auto;
+  padding: 4px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  background: rgba(239, 68, 68, 0.08);
+  color: #ef4444;
+  font-size: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.signerCardGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.signerInput {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--ll-bd-card);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--ll-cl-text);
+  font-size: 12px;
+}
+
+.signerInputFull {
+  grid-column: 1 / -1;
+}
+
+.signerSendBtn {
+  margin-top: 12px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  border: none;
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  justify-content: center;
+  transition: transform 0.15s;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+}

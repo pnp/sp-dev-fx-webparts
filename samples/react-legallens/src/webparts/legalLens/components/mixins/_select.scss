@@ -1,0 +1,21 @@
+// mixin for themed <select> dropdowns
+@mixin llSelect {
+  width: 100%;
+  appearance: none;
+  background-color: var(--ll-bg-dropdown);
+  background-image: var(--ll-icon-select);
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  border: 1px solid var(--ll-bd-dropdown);
+  border-radius: 8px;
+  padding: 10px 36px 10px 14px;
+  color: var(--ll-cl-dropdown);
+  font-size: 12px;
+  outline: none;
+  cursor: pointer;
+
+  option {
+    background: var(--ll-bg-dropdown);
+    color: var(--ll-cl-dropdown);
+  }
+}

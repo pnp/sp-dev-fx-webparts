@@ -1,0 +1,11 @@
+// Shared badge mixins
+@mixin aiBadge {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a78bfa 100%);
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4), 0 0 40px rgba(139, 92, 246, 0.2);
+  color: #fff;
+  border-radius: 4px;
+  padding: 2px 7px;
+}

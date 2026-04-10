@@ -1,0 +1,60 @@
+SOFTWARE AS A SERVICE SUBSCRIPTION AGREEMENT
+
+This SaaS Agreement is entered into as of June 1, 2024, by and between:
+
+CloudOps Platform Inc., Seattle, WA 98101 ("Provider")
+AND
+Enterprise Solutions Group LLC, Austin, TX 78701 ("Customer")
+
+§1. SERVICE AND LICENSE
+
+Provider grants Customer a non-exclusive, worldwide license to access the CloudOps ERP Platform during the Subscription Term for internal business purposes. Includes up to 500 Authorized Users. Additional users available at per-user fee.
+
+Restrictions: Customer shall not copy, modify, reverse engineer, sell, sublicense, or use the Service for third-party purposes.
+
+§2. SUBSCRIPTION TERM AND FEES
+
+Initial Term: Three (3) years from June 1, 2024
+Renewal: Automatic one-year renewals unless 60 days notice given
+Fees: Annual subscription per Order Form, payable within 30 days
+Renewal increases capped at 5% annually with 90 days notice
+
+§3. SERVICE LEVEL
+
+Availability: 99.5% uptime per month (excluding scheduled maintenance)
+Maintenance: 48 hours advance notice via email
+Support: Email and phone during business hours (9 AM - 6 PM Pacific, Monday-Friday)
+
+Service Credits:
+- 99.0%-99.4%: 10% credit
+- 95.0%-98.9%: 25% credit  
+- Below 95%: 50% credit
+
+§4. CUSTOMER DATA
+
+Customer retains ownership of all Customer Data. Provider granted limited license to process data solely to provide Service. Provider maintains security safeguards and backups. Upon termination, Provider returns or deletes data per Customer election within 30 days.
+
+§5. LIABILITY
+
+§5.1 Cap
+TOTAL LIABILITY CAPPED AT FEES PAID IN PRECEDING 12 MONTHS (excluding breaches of restrictions or confidentiality).
+
+§5.2 Exclusions
+NO LIABILITY FOR INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES INCLUDING LOST PROFITS, DATA LOSS, OR COSTS OF COVER.
+
+§6. WARRANTY DISCLAIMER
+
+Service provided "AS IS". PROVIDER DISCLAIMS ALL IMPLIED WARRANTIES INCLUDING MERCHANTABILITY AND FITNESS FOR PARTICULAR PURPOSE.
+
+§7. TERMINATION
+
+Either party may terminate for material breach with 30 days cure period. Customer receives pro-rated refund if Provider breaches. No refund if Customer breaches.
+
+§8. GENERAL
+
+Governed by Washington law. Binding arbitration in Seattle. This Agreement plus Order Forms constitute entire agreement.
+
+CLOUDOPS PLATFORM INC.              ENTERPRISE SOLUTIONS GROUP LLC
+By: David Park                     By: Rebecca Martinez
+Title: Chief Revenue Officer       Title: Chief Technology Officer
+Date: June 1, 2024                Date: June 1, 2024
