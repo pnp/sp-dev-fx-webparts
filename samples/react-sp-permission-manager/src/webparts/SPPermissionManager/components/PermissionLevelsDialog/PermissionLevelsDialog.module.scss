@@ -1,0 +1,81 @@
+.content {
+  padding: 4px 0;
+  min-height: 200px;
+}
+
+.tableWrapper {
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-height: 440px;
+  border: 1px solid var(--colorNeutralStroke2);
+  border-radius: var(--borderRadiusMedium);
+}
+
+.toolbarRow {
+  display: flex;
+  justify-content: flex-start;
+  margin: 8px 0 12px;
+}
+
+.actionsCell {
+  display: flex;
+  gap: 4px;
+  justify-content: flex-start;
+}
+
+.actionsHeader {
+  width: 96px;
+}
+
+.actionsHeaderContent {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.spinner {
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.emptyText {
+  padding: 24px;
+  text-align: center;
+  color: var(--colorNeutralForeground3);
+}
+
+.descriptionText {
+  color: var(--colorNeutralForeground2);
+  max-width: none;
+  white-space: normal;
+}
+
+.dangerIconButton {
+  color: #a4262c;
+
+  &:hover {
+    color: #8a1c21;
+    background-color: #fdf3f2;
+  }
+
+  &:active {
+    color: #8a1c21;
+    background-color: #fbe4e2;
+  }
+}
+
+.dangerPrimary {
+  background-color: #d13438;
+  border-color: #d13438;
+  color: #ffffff;
+
+  &:hover {
+    background-color: #a4262c;
+    border-color: #a4262c;
+  }
+
+  &:active {
+    background-color: #8a1c21;
+    border-color: #8a1c21;
+  }
+}
