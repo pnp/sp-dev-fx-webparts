@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "SharePoint Permissions Manager",
+    "id": "e0443392-dba1-4dfb-b22c-320e4a63ddf8",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Harminder Singh",
+      "websiteUrl": "https://github.com/HarminderSethi",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.22.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "SharePoint Permissions Manager"
+      },
+      "longDescription": {
+        "default": "SharePoint Permissions Manager"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-sp-permission-manager Feature",
+        "description": "The feature that activates elements of the react-sp-permission-manager solution.",
+        "id": "a956b778-cf2f-4deb-8def-264c19766485",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-sp-permission-manager.sppkg"
+  }
+}
