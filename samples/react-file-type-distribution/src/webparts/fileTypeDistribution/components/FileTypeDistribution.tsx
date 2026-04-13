@@ -33,6 +33,14 @@ const FileTypeDistribution = (props: IFileTypeDistributionProps): JSX.Element =>
     })();
   }, []);
 
+  const hash = (str: string): number => {
+    let h = 0;
+    for (let i = 0; i < str.length; i++) {
+      h = Math.trunc(Math.imul(31, h) + str.charCodeAt(i));
+    }
+    return Math.abs(h);
+  };
+
   const analyze = async (): Promise<void> => {
     try {
       setState((prevState) => ({ ...prevState, loading: true }));
@@ -40,14 +48,9 @@ const FileTypeDistribution = (props: IFileTypeDistributionProps): JSX.Element =>
       if (!lib) return;
       const refiners: IRefinerEntry[] = await spService.getFileTypeRefiners(lib.serverRelativeUrl);
       // build deterministic color per extension
-      const hash = (str: string): number => {
-        let h = 0;
-        for (let i = 0; i < str.length; i++) {
-          h = Math.trunc(Math.imul(31, h) + str.charCodeAt(i));
-        }
-        return Math.abs(h);
-      };
+
       const totalDocs = refiners.reduce((acc, curr) => acc + curr.count, 0);
+
       if (chartType === "HorizontalBarChart") {
         const chartData = refiners.map((r) => {
           const index = hash(r.name) % paletteLength;
@@ -72,7 +75,7 @@ const FileTypeDistribution = (props: IFileTypeDistributionProps): JSX.Element =>
           return {
             legend: r.name,
             data: r.count,
-            color: color,
+            color: color ?? getColorFromToken(DataVizPalette.color1),
           };
         });
         setState((prevState) => ({
@@ -114,7 +117,7 @@ const FileTypeDistribution = (props: IFileTypeDistributionProps): JSX.Element =>
         {state.loading ? null : (
           <>
             {!!state.horizontalBarChartData.length && chartType === "HorizontalBarChart" && (
-              <HorizontalBarChart data={state.horizontalBarChartData} chartDataMode={"default"} className={"hbcbasic"} />
+              <HorizontalBarChart data={state.horizontalBarChartData} chartDataMode={"default"} />
             )}
             {chartType === "DonutChart" && state.donutChartData && (
               <DonutChart data={state.donutChartData} innerRadius={55} valueInsideDonut={state.totalDocs} />

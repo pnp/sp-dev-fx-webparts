@@ -24,7 +24,9 @@ export default class SPService {
     const libAbsUrl = `${host}${serverRelativeUrl}`;
 
     const querytext = encodeURIComponent(`* Path:"${libAbsUrl}"`);
+
     const refinersQ = encodeURIComponent("filetype");
+    
     const searchUrl = `${this.context.pageContext.web.absoluteUrl}/_api/search/query?querytext='${querytext}'&rowlimit=0&refiners='${refinersQ}'`;
     const res = await this.context.spHttpClient.get(searchUrl, SPHttpClient.configurations.v1);
     const json = await res.json();
