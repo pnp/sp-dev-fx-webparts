@@ -66,6 +66,7 @@ Tested with: Node.js v22.15.0
 | 1.2.2   | September 12, 2025 | Upgraded to SPFx 1.21.1 |
 | 1.2.3   | October 24, 2025   | Updated PnP packages for Node 22 compatibility |
 | 1.2.4   | February 27, 2026  | Upgraded to SPFx 1.22.2 & fixed TypeScript errors after upgrade |
+| 1.2.5   | April 15, 2026     | Fix Webpart Title render issue |
 
 ## Minimal Path to Awesome
 
