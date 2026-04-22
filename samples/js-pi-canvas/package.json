@@ -46,7 +46,7 @@
     "@microsoft/sp-webpart-base": "1.22.0",
     "@pnp/spfx-property-controls": "^3.18.0",
     "@pnp/telemetry-js": "^2.0.0",
-    "dompurify": "^3.3.1",
+    "dompurify": "^3.4.1",
     "jquery": "^3.7.1",
     "marked": "^15.0.0",
     "mermaid": "^11.4.0",
