@@ -1,0 +1,94 @@
+[
+    {
+      "name": "pnp-sp-dev-spfx-web-parts-react-legallens",
+      "source": "pnp",
+      "title": "LegalLens – AI-Powered Contract Management & E-Signature",
+      "shortDescription": "AI-powered contract management and e-signature platform built on SharePoint Online with Azure AI Foundry integration, multi-signer workflows, and a vendor-facing signing flow that requires no SharePoint access.",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-legallens",
+      "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-legallens",
+      "longDescription": [
+        "LegalLens is a SharePoint Framework (SPFx) web part that delivers an end-to-end AI-powered contract management and e-signature solution built on SharePoint Online. It reads contracts directly from SharePoint document libraries and enriches them with AI-driven classification, risk scoring (0–100), and key clause extraction powered by Azure AI Foundry and Azure Document Intelligence. The Contract Library view gives users a single place to browse all contracts, review metadata, monitor compliance status, and act on AI insights. The built-in Q&A Agent lets users ask natural-language questions about any contract in their preferred language — English is always included, with additional languages configurable via web part properties. The E-Signature module supports multi-signer workflows: internal staff sign directly inside the web part, while external vendors receive a secure one-time link and sign through a standalone static page (sign.html) backed by Azure Functions — no SharePoint login required for external parties. Documents are previewed page-by-page for PDFs, inline for plain-text files, and offered as a download for Word documents. Every signing event is timestamped, logged to an audit trail, and monitored via Application Insights. A PowerShell setup script automates the creation of the Contracts library, Signed Documents library, and Signature Tokens list with all required columns."
+      ],
+      "creationDateTime": "2026-04-10",
+      "updateDateTime": "2026-04-10",
+      "products": [
+        "SharePoint",
+        "Office",
+        "Azure"
+      ],
+      "metadata": [
+        {
+          "key": "CLIENT-SIDE-DEV",
+          "value": "React"
+        },
+        {
+          "key": "SPFX-VERSION",
+          "value": "1.20.0"
+        }
+      ],
+      "thumbnails": [
+        {
+          "type": "image",
+          "order": 200,
+          "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-legallens/assets/images/placeholder-app-screenshot.png",
+          "alt": "Contract library view"
+        },
+        {
+          "type": "image",
+          "order": 300,
+          "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-legallens/assets/images/placeholder-architecture.png",
+          "alt": "Architecture"
+        },
+        {
+          "type": "image",
+          "order": 400,
+          "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-legallens/assets/images/placeholder-business-impact.png",
+          "alt": "Business Impact"
+        }
+      ],
+      "authors": [
+        {
+          "gitHubAccount": "saiiiiiii",
+          "pictureUrl": "https://github.com/saiiiiiii.png",
+          "name": "Sai Siva Ram Bandaru"
+        },
+        {
+          "gitHubAccount": "Ateina",
+          "pictureUrl": "https://github.com/Ateina.png",
+          "name": "Antanina Druzhkina"
+        }
+      ],
+      "references": [
+        {
+          "name": "Build your first SharePoint client-side web part",
+          "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework.",
+          "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        },
+        {
+          "name": "Azure AI Foundry documentation",
+          "description": "Learn how to build, evaluate, and deploy generative AI models and applications using Azure AI Foundry.",
+          "url": "https://learn.microsoft.com/azure/ai-foundry/"
+        },
+        {
+          "name": "Azure Document Intelligence",
+          "description": "Azure Document Intelligence (formerly Form Recognizer) uses AI to extract text, key-value pairs, tables, and structures from documents.",
+          "url": "https://learn.microsoft.com/azure/ai-services/document-intelligence/"
+        },
+        {
+          "name": "Azure Functions — Node.js developer guide",
+          "description": "Learn how to develop and deploy Azure Functions using Node.js for serverless backend logic.",
+          "url": "https://learn.microsoft.com/azure/azure-functions/functions-reference-node"
+        },
+        {
+          "name": "Microsoft Graph — Files API",
+          "description": "Use the Microsoft Graph Files API to access and manage files stored in SharePoint and OneDrive.",
+          "url": "https://learn.microsoft.com/graph/api/resources/onedrive"
+        },
+        {
+          "name": "Fluent UI React Components",
+          "description": "Fluent UI React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Fluent Design Language.",
+          "url": "https://developer.microsoft.com/fluentui#/controls/web"
+        }
+      ]
+    }
+  ]

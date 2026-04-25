@@ -1,0 +1,624 @@
+@use '../../mixins' as *;
+
+.aiBadge {
+  @include aiBadge;
+}
+
+.confidenceScore {
+  background: var(--ll-bg-card);
+  border: 1px solid var(--ll-bd-subtle);
+  border-radius: 10px;
+  padding: 12px 16px;
+}
+
+.confidenceValue {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.confidenceLabel {
+  font-size: 10px;
+  color: var(--ll-cl-text-muted);
+  font-weight: 500;
+}
+
+.confidenceSublabel {
+  font-size: 8.5px;
+  color: var(--ll-cl-text-faint);
+}
+
+// ClassifyProcessing
+
+.processingHeading {
+  @include tabTitle;
+}
+
+.processingSubheading {
+  font-size: 11px;
+  color: var(--ll-cl-text-faint);
+}
+
+.resetButton {
+  background: rgba(16, 185, 129, 0.1) !important;
+  border: 1px solid rgba(16, 185, 129, 0.3) !important;
+  color: #10b981 !important;
+  border-radius: 7px !important;
+  font-size: 11px;
+  font-weight: 600;
+
+  &:hover {
+    background: rgba(16, 185, 129, 0.18) !important;
+  }
+}
+
+.pendingPanel {
+  background: var(--ll-bg-card);
+  border: 1px solid var(--ll-bd-subtle);
+  border-radius: 12px;
+  padding: 36px 20px;
+}
+
+.pendingIcon {
+  font-size: 28px;
+  margin-bottom: 10px;
+  opacity: 0.25;
+  color: var(--ll-cl-text-muted);
+}
+
+.pendingText {
+  font-size: 11px;
+  color: var(--ll-cl-text-faint);
+}
+
+// ProgressSteps
+
+.fileCard {
+  background: var(--ll-bg-card);
+  border: 1px solid var(--ll-bd-card);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+.fileIcon {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  border-radius: 9px;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+  font-size: 16px;
+}
+
+.fileName {
+  font-size: 12px;
+  color: var(--ll-cl-text);
+  font-weight: 600;
+}
+
+.fileSource {
+  font-size: 9.5px;
+  color: var(--ll-cl-text-faint);
+}
+
+.progressTrack {
+  @include progressTrack;
+}
+
+.progressFill {
+  @include progressFill(linear-gradient(90deg, #10b981, #06b6d4), $transition: 0.5s);
+
+  &.progressDone {
+    background: #10b981;
+  }
+}
+
+.stepRow {
+  padding: 9px 12px;
+  border-radius: 8px;
+  transition: all 0.3s;
+  align-items: flex-start;
+}
+
+.stepPending {
+  background: var(--ll-bg-card);
+  border: 1px solid var(--ll-bd-subtle);
+}
+
+.stepActive {
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.stepDone {
+  background: rgba(16, 185, 129, 0.03);
+  border: 1px solid rgba(16, 185, 129, 0.12);
+}
+
+.stepIndicator {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: 50%;
+  margin-top: 1px;
+  background: var(--ll-bg-card);
+
+  &.indicatorDone {
+    background: #10b981;
+  }
+
+  &.indicatorActive {
+    background: rgba(16, 185, 129, 0.15);
+    border: 2px solid #10b981;
+  }
+}
+
+.checkmark {
+  color: #fff;
+  font-size: 10px;
+}
+
+.spinner {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid #10b981;
+  animation: spin 0.8s linear infinite;
+}
+
+.stepPhase {
+  font-size: 11px;
+  color: var(--ll-cl-text-faint);
+  font-weight: 500;
+
+  &.phaseDone {
+    color: #10b981;
+  }
+
+  &.phaseActive {
+    color: var(--ll-cl-text);
+  }
+}
+
+.stepDetail {
+  font-size: 9.5px;
+  color: var(--ll-cl-text-faint);
+  margin-top: 1px;
+
+  &.detailActive {
+    color: var(--ll-cl-text-muted);
+  }
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+// ClassifySelect
+
+.selectHeading {
+  @include tabTitle;
+}
+
+.selectSubheading {
+  margin: 0;
+  font-size: 11px;
+  color: var(--ll-cl-text-faint);
+}
+
+.selectHeadingWrap {
+  margin-bottom: 20px;
+}
+
+.selectForm {
+  max-width: 600px;
+}
+
+.selectStep {
+  margin-bottom: 20px;
+}
+
+.selectTypeStep {
+  margin-bottom: 24px;
+}
+
+.stepLabel {
+  @include sectionLabel(10px, 0.5px);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.selectDropdown {
+  @include llSelect;
+}
+
+.typeCard {
+  padding: 12px 16px;
+  background: var(--ll-bg-card);
+  border: 1px solid var(--ll-bd-subtle);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &.typeCardSelected {
+    background: rgba(99, 102, 241, 0.1);
+    border-color: rgba(99, 102, 241, 0.4);
+  }
+}
+
+.radioOuter {
+  width: 16px;
+  height: 16px;
+  min-width: 16px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &.radioSelected {
+    border-color: var(--ll-cl-accent);
+    background: #818cf8;
+  }
+}
+
+.radioInner {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.typeTitle {
+  font-size: 11px;
+  color: var(--ll-cl-text);
+  font-weight: 600;
+  margin-bottom: 2px;
+
+  &.typeTitleSelected {
+    color: var(--ll-cl-accent);
+  }
+}
+
+.typeDescription {
+  font-size: 9.5px;
+  color: var(--ll-cl-text-faint);
+}
+
+.classifyButton {
+  @include gradientBtn;
+  width: 100%;
+  height: 40px;
+  padding: 12px 20px;
+  font-size: 12px;
+  outline: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 2px 14px rgba(99, 102, 241, 0.35);
+  &:hover {
+    color: #fff;
+    box-shadow: 0 4px 18px rgba(99, 102, 241, 0.45);
+  }
+}
+
+.classifyButtonIcon {
+  font-size: 12px;
+  color: #fff;
+  padding-right: 4px;
+}
+
+// Shared ResultTypes styles
+
+.resultFadeIn {
+  animation: fadeIn 0.4s ease;
+}
+
+.statusDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+}
+
+.resultLabel {
+  @include sectionLabel;
+}
+
+.resultItemTitle {
+  font-size: 11px;
+  color: var(--ll-cl-text);
+  font-weight: 600;
+}
+
+.resultItemMeta {
+  font-size: 9px;
+  color: var(--ll-cl-text-faint);
+}
+
+// ComplianceResults
+
+.compliancePanel {
+  @include coloredPanel(#6366f1);
+}
+
+.complianceScoreRow {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--ll-bd-subtle);
+}
+
+.complianceScoreValue {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.regCard {
+  background: var(--ll-bg-card);
+  border: 1px solid var(--ll-bd-subtle);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.regScore {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.regStatusBadge {
+  font-size: 8px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 3px;
+}
+
+.findingText {
+  font-size: 9px;
+}
+
+.recommendationSection {
+  padding-top: 6px;
+  border-top: 1px solid var(--ll-bd-subtle);
+}
+
+.recommendationText {
+  font-size: 9px;
+  color: #f59e0b;
+}
+
+.issueSummary {
+  padding: 10px;
+  background: var(--ll-bg-card);
+  border-radius: 6px;
+}
+
+.issueSummaryItem {
+  text-align: center;
+}
+
+.issueSummaryCriticalValue {
+  font-size: 16px;
+  font-weight: 700;
+  color: #ef4444;
+}
+
+.issueSummaryWarningValue {
+  font-size: 16px;
+  font-weight: 700;
+  color: #f59e0b;
+}
+
+.issueSummaryLabel {
+  font-size: 9px;
+  color: var(--ll-cl-text-faint);
+}
+
+// ContractTypeResults
+
+.contractPanel {
+  @include coloredPanel(#10b981);
+}
+
+.resultHeader {
+  margin-bottom: 12px;
+}
+
+.contractDot {
+  composes: statusDot;
+  background: #10b981;
+}
+
+.contractLabel {
+  composes: resultLabel;
+  color: #10b981;
+}
+
+.fieldRow {
+  padding: 6px 0;
+}
+
+.fieldRowBorder {
+  border-bottom: 1px solid var(--ll-bd-subtle);
+}
+
+.fieldLabel {
+  font-size: 9.5px;
+  color: var(--ll-cl-text-faint);
+}
+
+.fieldValue {
+  font-size: 10.5px;
+  color: var(--ll-cl-text);
+  font-weight: 500;
+  text-align: right;
+  max-width: 200px;
+}
+
+.autoTag {
+  font-size: 8.5px;
+  font-family: monospace;
+  background: var(--ll-bg-tag);
+  border: 1px solid var(--ll-bd-tag);
+  border-radius: 3px;
+  padding: 1px 5px;
+  color: var(--ll-cl-tag);
+}
+
+.duplicateFlag {
+  font-size: 10.5px;
+  color: #10b981;
+  font-weight: 500;
+}
+
+// RiskAssessmentResults
+
+.riskPanel {
+  @include coloredPanel(#ef4444);
+}
+
+.riskScoreRow {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--ll-bd-subtle);
+}
+
+.riskScoreValue {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.riskFactorCard {
+  background: var(--ll-bg-card);
+  border: 1px solid var(--ll-bd-subtle);
+  border-radius: 6px;
+  padding: 10px;
+}
+
+.riskFactorName {
+  font-size: 10px;
+  color: var(--ll-cl-text);
+  font-weight: 600;
+}
+
+.riskFactorDesc {
+  font-size: 9px;
+  color: var(--ll-cl-text-muted);
+}
+
+.complianceIssuesBox {
+  padding: 10px;
+  background: rgba(239, 68, 68, 0.06);
+  border-radius: 6px;
+}
+
+.complianceIssuesTitle {
+  font-size: 9px;
+  color: #ef4444;
+  font-weight: 600;
+}
+
+.complianceIssueItem {
+  font-size: 9px;
+  color: #f87171;
+}
+
+.mitigationTitle {
+  font-size: 9px;
+  color: #10b981;
+  font-weight: 600;
+}
+
+.mitigationStep {
+  font-size: 9px;
+  color: var(--ll-cl-text-muted);
+}
+
+// EntityExtractionResults
+
+.entityPanel {
+  @include coloredPanel(#06b6d4);
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.entityDot {
+  composes: statusDot;
+  background: #06b6d4;
+}
+
+.entityLabel {
+  composes: resultLabel;
+  color: #06b6d4;
+}
+
+.sectionTitle {
+  font-size: 9px;
+  color: var(--ll-cl-text-faint);
+  font-weight: 600;
+}
+
+.entityCard {
+  background: var(--ll-bg-card);
+  padding: 8px 10px;
+  border-radius: 6px;
+}
+
+.entityName {
+  font-size: 10.5px;
+  color: var(--ll-cl-text);
+  font-weight: 600;
+}
+
+.entityMeta {
+  font-size: 9px;
+  color: var(--ll-cl-text-faint);
+}
+
+.entityContact {
+  font-size: 8.5px;
+  color: var(--ll-cl-tag);
+}
+
+.kvRow {
+  padding: 4px 0;
+}
+
+.kvRowBorder {
+  border-bottom: 1px solid var(--ll-bd-subtle);
+}
+
+.kvKey {
+  font-size: 9px;
+  color: var(--ll-cl-text-muted);
+  text-transform: capitalize;
+}
+
+.kvValue {
+  font-size: 9px;
+  color: var(--ll-cl-text);
+  font-weight: 500;
+}
+
+.kvFinancialValue {
+  font-size: 9px;
+  color: #10b981;
+  font-weight: 600;
+}
+
+.obligationItem {
+  font-size: 9px;
+  color: var(--ll-cl-text);
+  padding: 6px 8px;
+  background: var(--ll-bg-card);
+  border-radius: 4px;
+}
+
+.legalNote {
+  font-size: 9px;
+  color: var(--ll-cl-text-faint);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
