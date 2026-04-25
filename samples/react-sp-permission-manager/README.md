@@ -23,14 +23,25 @@ The implementation uses SharePoint APIs and PnPjs only.
 ![Check Permissions View](./assets/CheckPermissions.png)
 
 
-## Used SharePoint Framework Version
-
-![version](https://img.shields.io/badge/version-1.22.2-green.svg)
-
 ## Compatibility
 
-- SharePoint Online
-- Node.js `>=22.14.0 <23.0.0`
+| :warning: Important          |
+|:---------------------------|
+| Every SPFx version is optimally compatible with specific versions of Node.js. In order to be able to Toolchain this sample, you need to ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
+|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
+
+This sample is optimally compatible with the following environment configuration:
+
+![SPFx 1.22.2](https://img.shields.io/badge/SPFx-1.22.2-green.svg)
+![Node.js >=22.14.0 <23.0.0](https://img.shields.io/badge/Node.js-%3E%3D22.14.0%20%3C23.0.0-green.svg)
+![Toolchain: Heft](https://img.shields.io/badge/Toolchain-Heft-green.svg)
+![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
+![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
+![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
+![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
+![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
 
 ## Applies to
 
