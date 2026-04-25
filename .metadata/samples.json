@@ -24397,6 +24397,87 @@
         "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-graph-schema-extensions"
     },
     {
+        "name": "pnp-sp-dev-spfx-web-parts-react-sp-permission-manager",
+        "source": "pnp",
+        "title": "SharePoint Permissions Manager",
+        "shortDescription": "SharePoint Permissions Manager is a SharePoint Framework web part for administering SharePoint site groups, group membership, and user permissions from a single interface.",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-permission-manager",
+        "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-permission-manager",
+        "longDescription": [
+            "SharePoint Permissions Manager is a SharePoint Framework web part for administering SharePoint site groups, group membership, and user permissions from a single interface."
+        ],
+        "creationDateTime": "2026-04-13",
+        "updateDateTime": "2026-04-13",
+        "products": [
+            "SharePoint"
+        ],
+        "metadata": [
+            {
+                "key": "SAMPLE-TYPE",
+                "value": "SPFx-WebPart"
+            },
+            {
+                "key": "CLIENT-SIDE-DEV",
+                "value": "React"
+            },
+            {
+                "key": "SPFX-VERSION",
+                "value": "1.22.2"
+            }
+        ],
+        "thumbnails": [
+            {
+                "name": "CheckPermissions.png",
+                "type": "image",
+                "order": 100,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-permission-manager/assets/CheckPermissions.png",
+                "alt": "Web Part Preview"
+            },
+            {
+                "name": "MainPage.png",
+                "type": "image",
+                "order": 101,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-permission-manager/assets/MainPage.png",
+                "alt": "Web Part Preview"
+            },
+            {
+                "name": "ManageGroup.png",
+                "type": "image",
+                "order": 102,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-permission-manager/assets/ManageGroup.png",
+                "alt": "Web Part Preview"
+            },
+            {
+                "name": "ManageGroupUsers.png",
+                "type": "image",
+                "order": 103,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-permission-manager/assets/ManageGroupUsers.png",
+                "alt": "Web Part Preview"
+            },
+            {
+                "name": "PermissionsLevels.png",
+                "type": "image",
+                "order": 104,
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-permission-manager/assets/PermissionsLevels.png",
+                "alt": "Web Part Preview"
+            }
+        ],
+        "authors": [
+            {
+                "gitHubAccount": "HarminderSethi",
+                "pictureUrl": "https://github.com/HarminderSethi.png",
+                "name": "Harminder Singh"
+            }
+        ],
+        "references": [
+            {
+                "name": "Build your first SharePoint client-side web part",
+                "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+                "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+            }
+        ]
+    },
+    {
         "name": "pnp-sp-dev-spfx-web-parts-react-github-badge",
         "source": "pnp",
         "title": "GitHub Badge Web Part (React)",
