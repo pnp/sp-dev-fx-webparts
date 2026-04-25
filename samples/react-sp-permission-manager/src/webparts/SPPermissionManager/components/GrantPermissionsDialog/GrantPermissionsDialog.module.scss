@@ -1,0 +1,98 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-height: 200px;
+}
+
+.section {
+  margin-bottom: 16px;
+}
+
+.modeRow {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.permLevelList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 6px;
+  max-height: 200px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.groupList {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-top: 6px;
+  max-height: 220px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.checkRow {
+  margin-bottom: 10px;
+}
+
+.individualUser {
+  padding: 8px 0;
+  border-bottom: 1px solid #edebe9;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.userChipList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.userChipRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.userChip {
+  display: inline-flex;
+  align-items: center;
+  background: #f0f0f0;
+  border: 1px solid #d0d0d0;
+  border-radius: 100px;
+  padding: 2px 10px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #323130;
+  white-space: nowrap;
+}
+
+.currentPermBadge {
+  display: inline-flex;
+  align-items: center;
+  background: #dff6dd;
+  border: 1px solid #57a55a;
+  border-radius: 4px;
+  padding: 1px 8px;
+  font-size: 11px;
+  color: #1f6821;
+}
+
+.currentPermBadgeNone {
+  display: inline-flex;
+  align-items: center;
+  background: #f3f2f1;
+  border: 1px solid #c8c6c4;
+  border-radius: 4px;
+  padding: 1px 8px;
+  font-size: 11px;
+  color: #3b3b3b;
+}

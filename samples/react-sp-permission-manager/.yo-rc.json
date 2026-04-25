@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.14.0",
+    "sdksVersions": {},
+    "version": "1.22.2",
+    "libraryName": "react-sp-permission-manager",
+    "libraryId": "e0443392-dba1-4dfb-b22c-320e4a63ddf8",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-sp-permission-manager",
+    "solutionShortDescription": "react-sp-permission-manager description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
