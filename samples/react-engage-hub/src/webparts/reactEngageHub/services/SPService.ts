@@ -9,29 +9,6 @@ import {
 } from "../constants/posts"
 import { IFileUploadProgressData } from "@pnp/sp/files"
 
-export const addNewPost = async (post: string, imageUrls: any, pageContext: any) => {
-  let sp: SPFI = getSP()
-
-  let userInfo = await getCurrentUserDetails()
-
-  let postUUID = crypto.randomUUID()
-  let imageResult: any
-  if (imageUrls.length > 0) {
-    imageResult = await uploadImage(imageUrls, pageContext, userInfo, postUUID)
-  }
-
-  await sp.web.lists.getByTitle("Discussion Point").items.add({
-    Description: post,
-    UserID: userInfo.UserId.NameId,
-    PostID: postUUID,
-    AuthorName: userInfo.Title,
-    AuthorMailID: userInfo.UserPrincipalName,
-    Images: imageResult
-      ? imageResult.map((image: any) => image.serverRelativeUrl).join(",")
-      : "",
-  })
-}
-
 export const getCurrentUserDetails = async () => {
   let sp: SPFI = getSP()
   return await sp.web.currentUser()
@@ -113,6 +90,33 @@ export const uploadImage = async (
   }
 
   return results
+}
+
+export const addNewPost = async (
+  post: string,
+  imageUrls: any,
+  pageContext: any,
+) => {
+  let sp: SPFI = getSP()
+
+  let userInfo = await getCurrentUserDetails()
+
+  let postUUID = crypto.randomUUID()
+  let imageResult: any
+  if (imageUrls.length > 0) {
+    imageResult = await uploadImage(imageUrls, pageContext, userInfo, postUUID)
+  }
+
+  await sp.web.lists.getByTitle("Discussion Point").items.add({
+    Description: post,
+    UserID: userInfo.UserId.NameId,
+    PostID: postUUID,
+    AuthorName: userInfo.Title,
+    AuthorMailID: userInfo.UserPrincipalName,
+    Images: imageResult
+      ? imageResult.map((image: any) => image.serverRelativeUrl).join(",")
+      : "",
+  })
 }
 
 export const getPosts = async (context: any, nextLink?: string) => {
