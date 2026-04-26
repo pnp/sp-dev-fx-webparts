@@ -18493,6 +18493,52 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-sp-permission-manager",
+    "source": "pnp",
+    "title": "SharePoint Permissions Manager",
+    "shortDescription": "SharePoint Permissions Manager is a SharePoint Framework web part for administering SharePoint site groups, group membership, and user permissions from a single interface.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-permission-manager",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sp-permission-manager",
+    "updateDateTime": "2026-04-13",
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.22.2"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "HarminderSethi",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/harmindersethi.1d1b349b140b.webp",
+        "name": "Harminder Singh",
+        "avatarSourceUrl": "https://github.com/HarminderSethi.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-sp-permission-manager.webp",
+        "alt": "SharePoint Permissions Manager"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-github-badge",
     "source": "pnp",
     "title": "GitHub Badge Web Part (React)",

@@ -1451,6 +1451,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-schema-extensions/assets/webpart.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-graph-schema-extensions.webp"
   },
+  "pnp-sp-dev-spfx-web-parts-react-sp-permission-manager": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sp-permission-manager/assets/CheckPermissions.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-sp-permission-manager.webp"
+  },
   "pnp-sp-dev-spfx-web-parts-react-github-badge": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-github-badge/assets/githubbadge.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-github-badge.webp"
