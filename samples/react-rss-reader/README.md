@@ -4,7 +4,7 @@
 
 A RSS Reader original based [on work by Olivier Carpentier](https://github.com/OlivierCC/spfx-40-fantastics/tree/master/src/webparts/rssReader), part of the [SPFx Fantastic 40 Web Parts](https://github.com/OlivierCC/spfx-40-fantastics)
 
-This RSS Reader utilizes SharePoint Framework v1.21.1 with no dependency on jQuery or a RSS Feed library. This project does utilize [ 
+This RSS Reader utilizes SharePoint Framework v1.21.1 with no dependency on jQuery or a RSS Feed library. This project does utilize [
 @pnp/spfx-property-controls](https://sharepoint.github.io/sp-dev-fx-property-controls/), and Moment React for date manipulation. Handlebar template option derived from React Search Refiners ([PnP Modern Search](https://microsoft-search.github.io/pnp-modern-search/)). Use NodeJS version 22 (validated using v22.15.0) to compile or rebuild the SPFx solution.
 
 Main features include:
@@ -66,6 +66,7 @@ Tested with: Node.js v22.15.0
 | 1.2.2   | September 12, 2025 | Upgraded to SPFx 1.21.1 |
 | 1.2.3   | October 24, 2025   | Updated PnP packages for Node 22 compatibility |
 | 1.2.4   | February 27, 2026  | Upgraded to SPFx 1.22.2 & fixed TypeScript errors after upgrade |
+| 1.2.5   | April 15, 2026     | Fix Web part Title render issue |
 
 ## Minimal Path to Awesome
 
@@ -83,7 +84,6 @@ Tested with: Node.js v22.15.0
 - To bundle and package the installable `.sppkg`, run:
   - `heft package-solution --production`
 
-
 ## Web Parts Configuration
 
 ### RSS Reader Web Part
@@ -92,34 +92,34 @@ Tested with: Node.js v22.15.0
 
 #### RSS Reader Settings
 
-| Setting                | Description |
+| Setting | Description |
 | ---------------------- | ---- |
-| Feed URL               | The URL of the RSS Feed for readers. Normally will URL will return XML |
+| Feed URL | The URL of the RSS Feed for readers. Normally will URL will return XML |
 | Feed Retrieval Service | The service to use to retrieve the feed. **Direct** = Make a direct call from the web part to the feed. Note, may have issues with CORS depending on the feed owner. **Feed2Json** = Retrieve a JSON version of feed via feed2json.org. Note, not for production, and may have issues with CORS. For production use, host your own feed2json service. Learn more at <https://github.com/appsattic/feed2json.org>. **Rss2Json** = CORS safe method to retrieve a feed response. Note, subject to limitations with paid options available. |
-| Feed Service URL       | If using Feed2Json, the URL of the feed2json service. Host your own service, learn more at <https://github.com/appsattic/feed2json.org> |
-| Feed Service API Key   | If using rss2json, an optional API key for paid services |
-| Max Count              | The maximum results to return, default: 10. **Note** When using the free versions of feed2json or rss2json, results are limited to 10 or less by the services. |
-| Cache Results          | Locally store results in browser local storage, default: no |
-| Mins to Cache Results  | If storing results in browser, number of minutes to store. Valid 1 to 1440 (one day), default: 60 |
-| Storage Key Prefix     | An optional local storage key prefix to use when storing results |
-| Loading Message        | An optional custom message to display while the RSS feed is being loaded |
-| Use a CORS proxy       | Use a CORS proxy to assist with feed retrieval, default: no |
-| CORS Proxy URL         | The URL of a CORS proxy if allowed. {0} will be replaced with Feed URL, i.e. <https://cors-anywhere.herokuapp.com/{0}>. To use CORS anywhere by Herokuapp for testing, be sure to visit [https://cors-anywhere.herokuapp.com](https://cors-anywhere.herokuapp.com) first to unlock yourself for testing. |
-| Disable CORS           | Set request header mode to "no-cors", thus not requesting CORS response from service. Will disable CORS request, default: no |
+| Feed Service URL | If using Feed2Json, the URL of the feed2json service. Host your own service, learn more at <https://github.com/appsattic/feed2json.org> |
+| Feed Service API Key | If using rss2json, an optional API key for paid services |
+| Max Count | The maximum results to return, default: 10. **Note** When using the free versions of feed2json or rss2json, results are limited to 10 or less by the services. |
+| Cache Results | Locally store results in browser local storage, default: no |
+| Mins to Cache Results | If storing results in browser, number of minutes to store. Valid 1 to 1440 (one day), default: 60 |
+| Storage Key Prefix | An optional local storage key prefix to use when storing results |
+| Loading Message | An optional custom message to display while the RSS feed is being loaded |
+| Use a CORS proxy | Use a CORS proxy to assist with feed retrieval, default: no |
+| CORS Proxy URL | The URL of a CORS proxy if allowed. {0} will be replaced with Feed URL, i.e. <https://cors-anywhere.herokuapp.com/{0}>. To use CORS anywhere by Herokuapp for testing, be sure to visit [https://cors-anywhere.herokuapp.com](https://cors-anywhere.herokuapp.com) first to unlock yourself for testing. |
+| Disable CORS | Set request header mode to "no-cors", thus not requesting CORS response from service. Will disable CORS request, default: no |
 
 #### Styling Options
 
-| Setting              | Description|
-| -------------------- | ---------- |
-|External Template URL | The URL of an external handlebar template to use in place of the handlebar template editor for custom layouts |
-|Results Layout        | The layout to use to display feed, Default (list) or Custom |
-|Template Editor       | A handlebar editor for custom layouts |
-|View All Link         | An optional link to view the entire feed, often a link to the RSS source blog itself, default: none |
-|View All Link Label   | An optional label for the View All Link |
+| Setting | Description |
+| ------- | ---------- |
+| External Template URL | The URL of an external handlebar template to use in place of the handlebar template editor for custom layouts |
+| Results Layout | The layout to use to display feed, Default (list) or Custom |
+| Template Editor | A handlebar editor for custom layouts |
+| View All Link | An optional link to view the entire feed, often a link to the RSS source blog itself, default: none |
+| View All Link Label | An optional label for the View All Link |
 
 ##### Default layout options
 
-| Setting | Description|
+| Setting | Description |
 | ------- | ---- |
 | Show Publication Date | Display the publication date |
 | Show Description | Display the content or description of each feed listing |
