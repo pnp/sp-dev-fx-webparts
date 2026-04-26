@@ -43,10 +43,6 @@ export const ReactEngageHub = (props: IReactEngageHubProps) => {
     setShouldRefreshPosts((prev) => !prev)
   }
 
-  useEffect(() => {
-    checkFolderExists()
-  }, [])
-
   const checkFolderExists = async () => {
     let userInfo = await getCurrentUserDetails()
 
@@ -54,6 +50,10 @@ export const ReactEngageHub = (props: IReactEngageHubProps) => {
 
     await ensureFolder(url)
   }
+
+    useEffect(() => {
+      checkFolderExists()
+    }, [])
 
   const fluentStyles = useStyles()
 

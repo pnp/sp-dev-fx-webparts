@@ -20,7 +20,7 @@ Engage Hub maintains responsiveness and light weight with its elegant React user
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
+![SPFx 1.22.2](https://img.shields.io/badge/SPFx-1.22.2-green.svg)
 ![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -47,6 +47,7 @@ Create a SharePoint  list `Discussion Point` in the SPO site with below columns
 | PostID | Text  |
 | AuthorName   | Text |
 | AuthorMailID   | Text |
+| Images   | Multi-line text |
 
 Create a Document library `Discussion Point Gallery` in SPO site & create one new column
 
@@ -65,6 +66,7 @@ Create a Document library `Discussion Point Gallery` in SPO site & create one ne
 | 1.0     | April 27, 2025   | Initial release                     |
 | 1.1     | May 4, 2025    | Add support for Rich Text, MSFT Notepad inspired AI features & other improvements Editor |
 | 1.2     | Oct 22, 2025    | Upgrade to SPFx1.21.1, implemented Fluent UI Components color changes based on site theme colors & introduced image viewer component for RTE image uploads and post lists images |
+| 1.3 | April 26, 2025 | Upgrade to SPFx 1.22.2
 
 ## Minimal Path to Awesome
 
