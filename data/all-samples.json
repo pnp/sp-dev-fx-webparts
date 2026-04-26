@@ -11460,7 +11460,7 @@
     "shortDescription": "A RSS Reader original based on work by Olivier Carpentier, part of the SPFx Fantastic 40 Web Parts",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-rss-reader",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-rss-reader",
-    "updateDateTime": "2026-02-27",
+    "updateDateTime": "2026-04-15",
     "metadata": [
       {
         "key": "SAMPLE-TYPE",
@@ -24939,6 +24939,50 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-extensions-js-application-gtm-injector",
+    "source": "pnp",
+    "title": "Google Tag Manager Injector",
+    "shortDescription": "This SharePoint Framework (SPFx) Application Customizer injects Google Tag Manager (GTM) into SharePoint Modern pages, enabling analytics and tag management across your tenant. It initializes the standard GTM dataLayer, loads the GTM script via SPComponentLoader, and hooks into SharePoint's navigation events to track Single Page Application (SPA) route changes — ensuring every page view is captured without a full browser reload.",
+    "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-application-gtm-injector",
+    "downloadUrl": null,
+    "updateDateTime": "2026-04-01",
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "JavaScript"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.22.2"
+      }
+    ],
+    "tags": [],
+    "categories": [
+      "SPFX-APPLICATION-EXTENSION"
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "saiiiiiii",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/saiiiiiii.b1e132237a67.webp",
+        "name": "@saiiiiiii",
+        "avatarSourceUrl": "https://github.com/saiiiiiii.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-js-application-gtm-injector.webp",
+        "alt": "Google Tag Manager Injector"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-extensions-react-application-customizer-feedback-widget",
     "source": "pnp",
     "title": "Sticky Feedback Widget Application Customizer",
@@ -25106,7 +25150,7 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://github.com/saiiiiiii/js-application-layout-customizer/raw/main/assets/layout-customizer-demo.gif",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-js-application-layout-customizer.webp",
         "alt": "SharePoint Page Indexer"
       }
     ],

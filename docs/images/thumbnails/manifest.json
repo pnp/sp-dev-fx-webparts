@@ -1963,6 +1963,10 @@
     "sourceUrl": "https://raw.githubusercontent.com/pnp/sp-dev-fx-extensions/main/samples/react-application-teams-chats-sharepoint/assets/Microsoft%20Teams%20chat%20in%20SharePoint%20sites.gif",
     "file": "pnp-sp-dev-spfx-extensions-react-application-teams-chats-sharepoint.webp"
   },
+  "pnp-sp-dev-spfx-extensions-js-application-gtm-injector": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-gtm-injector/assets/gtm-injector-demo.png",
+    "file": "pnp-sp-dev-spfx-extensions-js-application-gtm-injector.webp"
+  },
   "pnp-sp-dev-spfx-extensions-react-application-customizer-feedback-widget": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-application-customizer-feedback-widget/assets/Feedback_Widget1.png",
     "file": "pnp-sp-dev-spfx-extensions-react-application-customizer-feedback-widget.webp"
@@ -1976,7 +1980,7 @@
     "file": "pnp-sp-dev-spfx-extensions-js-application-header-toggler.webp"
   },
   "pnp-sp-dev-spfx-extensions-js-application-layout-customizer": {
-    "sourceUrl": "https://github.com/saiiiiiii/js-application-layout-customizer/raw/main/assets/layout-customizer-demo.gif",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-layout-customizer/assets/layout-customizer-demo.gif",
     "file": "pnp-sp-dev-spfx-extensions-js-application-layout-customizer.webp"
   },
   "pnp-sp-dev-spfx-extensions-react-application-breadcrumb": {
