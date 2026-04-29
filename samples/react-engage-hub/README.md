@@ -66,7 +66,7 @@ Create a Document library `Discussion Point Gallery` in SPO site & create one ne
 | 1.0     | April 27, 2025   | Initial release                     |
 | 1.1     | May 4, 2025    | Add support for Rich Text, MSFT Notepad inspired AI features & other improvements Editor |
 | 1.2     | Oct 22, 2025    | Upgrade to SPFx1.21.1, implemented Fluent UI Components color changes based on site theme colors & introduced image viewer component for RTE image uploads and post lists images |
-| 1.3 | April 26, 2025 | Upgrade to SPFx 1.22.2
+| 1.3 | April 26, 2026 | Upgrade to SPFx 1.22.2
 
 ## Minimal Path to Awesome
 

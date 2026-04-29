@@ -51,9 +51,9 @@ export const ReactEngageHub = (props: IReactEngageHubProps) => {
     await ensureFolder(url)
   }
 
-    useEffect(() => {
-      checkFolderExists()
-    }, [])
+  useEffect(() => {
+    checkFolderExists()
+  }, [])
 
   const fluentStyles = useStyles()
 
