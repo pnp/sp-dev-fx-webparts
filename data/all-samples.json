@@ -20778,6 +20778,52 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-powerapps-power-palette",
+    "source": "pnp",
+    "title": "Power Palette Studio",
+    "shortDescription": "A SharePoint Framework (SPFx) web part that lets you generate, customize, and preview color palettes for Power Apps themes — all within SharePoint. Choose colors, fine-tune them with an interactive HSL picker, and instantly see how they look applied to a realistic dashboard in desktop and mobile views. When you're happy with your palette, copy the ready-to-paste Power Apps ColorValue formula with one click.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-powerapps-power-palette",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-powerapps-power-palette",
+    "updateDateTime": "2026-04-01",
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.1"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "Sandeep-FED",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/sandeep-fed.6784dfb80995.webp",
+        "name": "Sandeep-FED",
+        "avatarSourceUrl": "https://github.com/Sandeep-FED.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-powerapps-power-palette.webp",
+        "alt": "Power Palette Studio"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-json-form",
     "source": "pnp",
     "title": "JSON form builder Web Part",
