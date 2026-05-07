@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.20.0",
+    "sdkVersions": {
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "nodeVersion": "18.20.6",
+    "isCreatingSolution": true,
+    "isDomainIsolated": false,
+    "environment": "spo",
+    "libraryName": "react-employee-offboarding-checklist",
+    "libraryId": "c891f7a3-452d-674e-90b8-ab1234567890",
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

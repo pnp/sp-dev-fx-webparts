@@ -1,0 +1,407 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+// ── Container & theme tokens ───────────────────────────────────────────────────
+
+.container {
+  --eoc-bg:           #f8fafc;
+  --eoc-surface:      #ffffff;
+  --eoc-surface-2:    #f1f5f9;
+  --eoc-border:       #e2e8f0;
+  --eoc-text-primary: #0f172a;
+  --eoc-text-label:   #374151;
+  --eoc-text-muted:   #6b7280;
+  --eoc-shadow:       rgba(15, 23, 42, 0.06);
+
+  background: var(--eoc-bg);
+  border-radius: 16px;
+  padding: 28px;
+  font-family: $ms-font-family-fallbacks;
+  overflow: hidden;
+  min-height: 400px;
+
+  &.dark {
+    --eoc-bg:           #0f172a;
+    --eoc-surface:      #1e293b;
+    --eoc-surface-2:    #263347;
+    --eoc-border:       #334155;
+    --eoc-text-primary: #f1f5f9;
+    --eoc-text-label:   #cbd5e1;
+    --eoc-text-muted:   #94a3b8;
+    --eoc-shadow:       rgba(0, 0, 0, 0.3);
+  }
+}
+
+// ── Header ────────────────────────────────────────────────────────────────────
+
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.pageTitle {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--eoc-text-primary);
+  line-height: 1.1;
+  letter-spacing: -0.3px;
+}
+
+.subtitle {
+  margin: 6px 0 0;
+  color: var(--eoc-text-muted);
+  font-size: 14px;
+}
+
+// ── Theme toggle ──────────────────────────────────────────────────────────────
+
+.themeToggle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid var(--eoc-border);
+  background: var(--eoc-surface);
+  color: var(--eoc-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: border-color 0.15s, background 0.15s, color 0.15s;
+
+  &:hover {
+    border-color: var(--eoc-text-muted);
+    color: var(--eoc-text-primary);
+    background: var(--eoc-surface-2);
+  }
+}
+
+// ── Employee selector ─────────────────────────────────────────────────────────
+
+.selectorRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.selectorLabel {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--eoc-text-label);
+  white-space: nowrap;
+}
+
+.employeeSelect {
+  flex: 1;
+  min-width: 240px;
+  max-width: 480px;
+  padding: 10px 14px;
+  border: 1px solid var(--eoc-border);
+  border-radius: 10px;
+  background: var(--eoc-surface);
+  font-size: 14px;
+  color: var(--eoc-text-primary);
+  font-family: inherit;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  appearance: none;
+
+  &:focus {
+    border-color: rgba(59, 130, 246, 0.6);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  }
+}
+
+// ── Stats row ─────────────────────────────────────────────────────────────────
+
+.statsRow {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.statCard {
+  background: var(--eoc-surface);
+  border-radius: 12px;
+  padding: 20px 24px;
+  text-align: center;
+  box-shadow: 0 4px 16px var(--eoc-shadow);
+}
+
+.statValue {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--eoc-text-primary);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.statLabel {
+  font-size: 13px;
+  color: var(--eoc-text-muted);
+  font-weight: 500;
+}
+
+// ── Overall progress bar ──────────────────────────────────────────────────────
+
+.overallProgressWrap {
+  margin-bottom: 24px;
+}
+
+.overallProgress {
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border: none;
+  border-radius: 4px;
+  background: var(--eoc-border);
+
+  &::-webkit-progress-bar { background: var(--eoc-border); border-radius: 4px; }
+}
+
+// ── Task grid ─────────────────────────────────────────────────────────────────
+
+.taskGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.taskCard {
+  background: var(--eoc-surface);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 16px var(--eoc-shadow);
+  position: relative;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px var(--eoc-shadow);
+  }
+}
+
+.taskCardDone {
+  opacity: 0.72;
+}
+
+// Department badge anchored top-right — uses SVG fill attribute, not inline CSS
+.deptBadge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+}
+
+.taskCardBody {
+  padding-right: 48px; // clear the badge
+}
+
+.taskTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--eoc-text-primary);
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.taskTeam {
+  font-size: 13px;
+  color: var(--eoc-text-muted);
+  margin-bottom: 12px;
+}
+
+.taskMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.taskNotes {
+  font-size: 12px;
+  color: var(--eoc-text-muted);
+  line-height: 1.5;
+  margin-bottom: 12px;
+  padding: 8px 10px;
+  background: var(--eoc-bg);
+  border-left: 3px solid var(--eoc-border);
+  border-radius: 0 4px 4px 0;
+}
+
+// ── Status badge ──────────────────────────────────────────────────────────────
+
+.statusBadge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.statusPending {
+  background: #fef9c3;
+  color: #854d0e;
+}
+
+.statusDone {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.statusBlocked {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+// ── Task progress bar ─────────────────────────────────────────────────────────
+
+.taskProgress {
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  border: none;
+  border-radius: 3px;
+  background: var(--eoc-border);
+  margin-bottom: 14px;
+
+  &::-webkit-progress-bar { background: var(--eoc-border); border-radius: 3px; }
+}
+
+// Overall progress bar fill colours via pseudo-elements — no inline style needed
+.progressDone {
+  &::-webkit-progress-value { background: linear-gradient(90deg, #22c55e, #16a34a); border-radius: 3px; }
+  &::-moz-progress-bar      { background: linear-gradient(90deg, #22c55e, #16a34a); border-radius: 3px; }
+}
+
+.progressMid {
+  &::-webkit-progress-value { background: linear-gradient(90deg, #3b82f6, #06b6d4); border-radius: 3px; }
+  &::-moz-progress-bar      { background: linear-gradient(90deg, #3b82f6, #06b6d4); border-radius: 3px; }
+}
+
+.progressLow {
+  &::-webkit-progress-value { background: linear-gradient(90deg, #22c55e, #16a34a); border-radius: 3px; }
+  &::-moz-progress-bar      { background: linear-gradient(90deg, #22c55e, #16a34a); border-radius: 3px; }
+}
+
+// ── Action buttons ────────────────────────────────────────────────────────────
+
+.taskActions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.markDoneBtn {
+  padding: 9px 20px;
+  background: #3b82f6;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, transform 0.12s;
+
+  &:hover:not(:disabled) {
+    background: #2563eb;
+    transform: translateY(-1px);
+  }
+
+  &:disabled { opacity: 0.6; cursor: not-allowed; }
+}
+
+.undoBtn {
+  padding: 9px 20px;
+  background: var(--eoc-surface);
+  color: var(--eoc-text-label);
+  border: 1.5px solid var(--eoc-border);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s, background 0.15s;
+
+  &:hover:not(:disabled) {
+    border-color: #94a3b8;
+    background: var(--eoc-bg);
+  }
+
+  &:disabled { opacity: 0.6; cursor: not-allowed; }
+}
+
+.blockBtn {
+  padding: 9px 20px;
+  background: var(--eoc-surface);
+  color: #991b1b;
+  border: 1.5px solid #fca5a5;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s, background 0.15s;
+
+  &:hover:not(:disabled) {
+    border-color: #ef4444;
+    background: #fff1f2;
+  }
+
+  &:disabled { opacity: 0.6; cursor: not-allowed; }
+}
+
+.unblockBtn {
+  padding: 9px 20px;
+  background: #fff7ed;
+  color: #9a3412;
+  border: 1.5px solid #fed7aa;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.15s, background 0.15s;
+
+  &:hover:not(:disabled) {
+    border-color: #fb923c;
+    background: #ffedd5;
+  }
+
+  &:disabled { opacity: 0.6; cursor: not-allowed; }
+}
+
+// ── Utility ───────────────────────────────────────────────────────────────────
+
+.errorWrapper { margin-bottom: 16px; }
+
+.spinnerWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 48px 0;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 48px 24px;
+  color: var(--eoc-text-muted);
+  font-size: 14px;
+
+  p { margin: 0 0 8px; }
+  strong { color: var(--eoc-text-label); }
+}
+
+// ── Responsive ────────────────────────────────────────────────────────────────
+
+@media (max-width: 680px) {
+  .container { padding: 16px; }
+  .pageTitle  { font-size: 22px; }
+  .statsRow   { grid-template-columns: 1fr; }
+  .taskGrid   { grid-template-columns: 1fr; }
+}
