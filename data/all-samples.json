@@ -16050,6 +16050,52 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-hero",
+    "source": "pnp",
+    "title": "React Hero Web Part",
+    "shortDescription": "A SharePoint Framework (SPFx) web part that displays a rich, fully configurable Hero banner with support for 7 layout modes, image/video backgrounds, call-to-action links, auto-rotation, and full Fluent UI v9 theming. Built with @spteck/react-controls-v2 and runs on SharePoint Online, Microsoft Teams, and Microsoft 365 (Office) hosts.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-hero",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-hero",
+    "updateDateTime": "2026-05-10",
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.22.2"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "joaojmendes",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/joaojmendes.27bf35a0f6fc.webp",
+        "name": "João Mendes",
+        "avatarSourceUrl": "https://github.com/joaojmendes.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-hero.webp",
+        "alt": "React Hero Web Part"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-htm-templating",
     "source": "pnp",
     "title": "HTM (Hyperscript Tagged Markup) Templating Web Part",
