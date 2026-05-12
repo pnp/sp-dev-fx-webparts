@@ -2302,9 +2302,11 @@
     ],
     "reactions": {
       "url": "https://github.com/pnp/sp-dev-fx-webparts/discussions/6204",
-      "totalReactions": 1,
+      "totalReactions": 3,
       "allReactors": [
-        "tretuttle"
+        "tretuttle",
+        "devjustintison",
+        "edistyping"
       ]
     }
   },
