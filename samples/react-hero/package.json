@@ -25,7 +25,7 @@
     "@microsoft/sp-office-ui-fabric-core": "1.22.2",
     "@microsoft/sp-property-pane": "1.22.2",
     "@microsoft/sp-webpart-base": "1.22.2",
-    "@spteck/react-controls-v2": "^2.6.7",
+    "@spteck/react-controls-v2": "^2.7.4",
     "@spteck/react-controls-v2-spfx-adapter": "^2.0.1",
     "jotai": "^2.19.1",
     "react": "17.0.1",
