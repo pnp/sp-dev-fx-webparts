@@ -7,7 +7,7 @@ sampleName: "pnp-sp-dev-spfx-web-parts-react-gantt"
 thumbnail: "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-gantt.webp"
 images: ["/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-gantt.webp"]
 thumbnailAlt: "React Gantt Chart Web Part"
-lastmod: "2026-12-31T00:00:00.000Z"
+lastmod: "2026-03-06T00:00:00.000Z"
 tags: []
 categories: []
 openInGalleryUrl: "/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-web-parts-react-gantt"
