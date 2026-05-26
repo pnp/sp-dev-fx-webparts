@@ -12,7 +12,7 @@ import {
 import { useHeroItemRowStyles } from "./useHeroItemRowStyles";
 import { HeroItemDetail } from "./HeroItemDetail";
 import { IHeroItemRowProps } from "../../models/IHeroItemRowProps";
-import * as strings from "HeroWebPartStrings";
+import strings from 'HeroWebPartStrings';
 
 export const HeroItemRow: React.FC<IHeroItemRowProps> = ({
   item,

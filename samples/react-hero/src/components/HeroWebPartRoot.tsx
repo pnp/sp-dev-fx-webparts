@@ -9,7 +9,7 @@ import {
 } from "@spteck/react-controls-v2";
 import { IHeroWebPartRootProps } from "../models/IHeroWebPartRootProps";
 import { PlaceHolder } from "./PlaceHolder/PlaceHolder";
-import * as strings from "HeroWebPartStrings";
+import strings from 'HeroWebPartStrings';
 
 const HeroContent: React.FC<IHeroWebPartRootProps> = (props) => {
   const {

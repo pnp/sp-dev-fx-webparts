@@ -2,7 +2,7 @@ import * as React from "react";
 import { webLightTheme } from "@fluentui/react-components";
 import { FluentUIProvider, DropdownField } from "@spteck/react-controls-v2";
 import { IBorderRadiusComponentProps } from "../../models/IBorderRadiusProps";
-import * as strings from "HeroWebPartStrings";
+import strings from 'HeroWebPartStrings';
 
 const getBorderRadiusOptions = (): { value: string; text: string }[] => [
   { value: "0", text: strings.BorderRadiusNoneOption },

@@ -24,7 +24,7 @@ import {
   type IHeroItem,
 } from "@spteck/react-controls-v2";
 
-import * as strings from "HeroWebPartStrings";
+import strings from 'HeroWebPartStrings';
 import { LAYOUT_OPTIONS } from "../../constants/constants";
 import { IHeroWebPartProps } from "../../models/IHeroWebPartProps";
 import { HeroWebPartRoot } from "../../components/HeroWebPartRoot";

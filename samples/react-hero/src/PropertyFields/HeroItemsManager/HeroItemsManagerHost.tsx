@@ -25,7 +25,7 @@ import { HeroItemRow } from "./HeroItemRow";
 import { useHeroItemsManagerStyles } from "./useHeroItemsManagerStyles";
 import { IHeroItemsManagerHostProps } from "../../models/IHeroItemsManagerProps";
 import { generateId } from "../../utils/useUtils";
-import * as strings from "HeroWebPartStrings";
+import strings from 'HeroWebPartStrings';
 
 const createDefaultItem = (): IHeroItem => ({
   id: generateId(),
