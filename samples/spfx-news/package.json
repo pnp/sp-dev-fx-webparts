@@ -35,7 +35,7 @@
     "@microsoft/eslint-plugin-spfx": "1.22.2",
     "@microsoft/sp-module-interfaces": "1.22.2",
     "@microsoft/spfx-heft-plugins": "1.22.2",
-    "@microsoft/spfx-web-build-rig": "1.22.2",
+    "@microsoft/spfx-web-build-rig": "1.23.0",
     "@rushstack/eslint-config": "4.5.2",
     "@rushstack/heft": "1.1.2",
     "@types/heft-jest": "1.0.2",
