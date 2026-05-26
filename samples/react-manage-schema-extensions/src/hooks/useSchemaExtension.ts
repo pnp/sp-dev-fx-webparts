@@ -1,23 +1,16 @@
 /* eslint-disable @typescript-eslint/no-floating-promises */
 import * as React from "react";
-import * as strings from "ManageSchemaExtensionsWebPartStrings";
 
-import {
-  IGraphApplication,
-  IGraphApplicationResults,
-} from "../models/IGraphApplication";
 import {
   ISchemaExtension,
   ISchemaExtensionCreateRequest,
 } from "../models/ISchemaExtension";
-import { useAppCatalog, useLogging } from "@spteck/m365-hooks";
+import { useLogging } from "@spteck/m365-hooks";
+import { useSchemaExtensionStorage } from "./useSchemaExtensionStorage";
 
 import { BaseComponentContext } from "@microsoft/sp-component-base";
-import { IAppValidationResult } from "../models/IAppValidationResult";
-import { IGraphError } from "../models/IGraphError";
 import { ISchemaTenantProperty } from "../models/ISchemaTeantProperty";
 import { MSGraphClientV3 } from "@microsoft/sp-http";
-import { useUtils } from "../utils/useUtils";
 
 export interface IUseSchemaExtensionProps {
   context: BaseComponentContext;
@@ -38,8 +31,6 @@ export interface IUseSchemaExtensionResult {
   getCreatedSchemaIds: () => Promise<ISchemaTenantProperty[]>;
   saveSchemaIdToTenantProperty: (schemaId: string) => Promise<void>;
   removeSchemaIdFromTenantProperty: (schemaId: string) => Promise<void>;
-  // App validation method
-  validateAppIdAndOwnership: (appId: string) => Promise<IAppValidationResult>;
 }
 
 const TENANT_PROPERTY_KEY = "ManageSchemaExtensionsCreatedSchemaIds";
@@ -47,7 +38,7 @@ const TENANT_PROPERTY_KEY = "ManageSchemaExtensionsCreatedSchemaIds";
 export const useSchemaExtension = ({
   context,
 }: IUseSchemaExtensionProps): IUseSchemaExtensionResult => {
-  // Create Graph client
+  // Create Graph client function
   const getGraphClient =
     React.useCallback(async (): Promise<MSGraphClientV3> => {
       if (!context) {
@@ -56,15 +47,12 @@ export const useSchemaExtension = ({
       return await context.msGraphClientFactory.getClient("3");
     }, [context]);
 
-  // Initialize app catalog hook for tenant properties management
-  const { getTenantProperty, updateTenantProperty, getAppCatalogUrl } =
-    useAppCatalog(context);
+  // Initialize storage hook for schema extension configuration (replaces tenant properties)
+  const { getProperty, setProperty, removeProperty, getAppCatalogUrl } =
+    useSchemaExtensionStorage(context);
 
   // Initialize logging hook
   const { logError, logWarning, logInfo } = useLogging();
-
-  // Initialize utils hook for retry functionality
-  const { retryWithExponentialBackoff } = useUtils();
 
   // Helper function to handle Graph API errors
 
@@ -85,7 +73,7 @@ export const useSchemaExtension = ({
     []
   );
 
-  // Get created schema extension IDs from SharePoint tenant properties
+  // Get created schema extension IDs from SharePoint list storage
   const getCreatedSchemaIds = React.useCallback(async (): Promise<
     ISchemaTenantProperty[]
   > => {
@@ -94,42 +82,31 @@ export const useSchemaExtension = ({
       if (!appCatalogUrl) {
         throw new Error("App catalog URL not available");
       }
-      let schemaIds: ISchemaTenantProperty[] = [];
-      // Read the tenant property with retries (exponential backoff)
-      await retryWithExponentialBackoff(
-        async () => {
-          const property = await getTenantProperty(TENANT_PROPERTY_KEY);
-          if (!property?.Value) {
-            schemaIds = [];
-          }
-          try {
-            schemaIds = JSON.parse(property.Value) || [];
-          } catch (parseError) {
-            logWarning(
-              "getCreatedSchemaIds",
-              "Failed to parse stored schema IDs, returning empty array:",
-              JSON.stringify(parseError)
-            );
-            schemaIds = [];
-          }
-        },
-        3,
-        1000,
-        "getCreatedSchemaIdsd"
-      );
-      return schemaIds;
+      const property = await getProperty(TENANT_PROPERTY_KEY);
+      if (!property?.Value) {
+        return [];
+      }
+      try {
+        return JSON.parse(property.Value) || [];
+      } catch (parseError) {
+        logWarning(
+          "getCreatedSchemaIds",
+          "Failed to parse stored schema IDs, returning empty array:",
+          JSON.stringify(parseError)
+        );
+        return [];
+      }
     } catch (error) {
       logError(
         "getCreatedSchemaIds",
-        "Failed to get created schema IDs from tenant properties:",
+        "Failed to get created schema IDs from storage:",
         JSON.stringify(error)
       );
-
       return [];
     }
-  }, [getAppCatalogUrl, getTenantProperty]);
+  }, [getAppCatalogUrl, getProperty]);
 
-  // Save schema extension ID to SharePoint tenant properties
+  // Save schema extension ID to SharePoint list storage
   const saveSchemaIdToTenantProperty = React.useCallback(
     async (schemaId: string): Promise<void> => {
       try {
@@ -140,86 +117,51 @@ export const useSchemaExtension = ({
 
         logInfo(
           "saveSchemaIdToTenantProperty",
-          `Saving schema extension ID ${schemaId} to SharePoint tenant properties`,
+          `Saving schema extension ID ${schemaId} to SharePoint storage`,
           { schemaId }
         );
 
-        await retryWithExponentialBackoff(
-          async () => {
-            // Get current list of schema IDs
-            const currentSchemaIds: ISchemaTenantProperty[] =
-              await getCreatedSchemaIds();
+        // Get current list of schema IDs
+        const currentSchemaIds: ISchemaTenantProperty[] =
+          await getCreatedSchemaIds();
 
-            // Add the new schema ID if it doesn't already exist
-            if (currentSchemaIds.some((item) => item.schemaId === schemaId)) {
-              logInfo(
-                "saveSchemaIdToTenantProperty",
-                `Schema ID ${schemaId} already exists in tenant properties`,
-                { schemaId }
-              );
-              return;
-            }
+        // Add the new schema ID if it doesn't already exist
+        if (currentSchemaIds.some((item) => item.schemaId === schemaId)) {
+          logInfo(
+            "saveSchemaIdToTenantProperty",
+            `Schema ID ${schemaId} already exists in storage`,
+            { schemaId }
+          );
+          return;
+        }
 
-            const updatedSchemaIds = [
-              ...currentSchemaIds,
-              { schemaId: schemaId },
-            ];
-            const schemaIdsJson = JSON.stringify(updatedSchemaIds);
+        const updatedSchemaIds = [...currentSchemaIds, { schemaId: schemaId }];
+        const schemaIdsJson = JSON.stringify(updatedSchemaIds);
 
-            await updateTenantProperty(TENANT_PROPERTY_KEY, schemaIdsJson);
-
-            // Verify the save was successful
-            const verifiedIds = await getCreatedSchemaIds();
-            const wasSaved = verifiedIds.some(
-              (item) => item.schemaId === schemaId
-            );
-
-            if (!wasSaved) {
-              throw new Error(
-                `Failed to verify schema ID ${schemaId} was saved to tenant properties`
-              );
-            }
-
-            logInfo(
-              "saveSchemaIdToTenantProperty",
-              `Saved and verified schema ID ${schemaId} to tenant properties`,
-              { schemaId }
-            );
-          },
-          3,
-          1000,
-          `saveSchemaIdToTenantProperty for ${schemaId}`
-        );
+        await setProperty(TENANT_PROPERTY_KEY, schemaIdsJson);
 
         logInfo(
           "saveSchemaIdToTenantProperty",
-          `Successfully completed saving schema ID ${schemaId} to tenant properties`,
+          `Saved schema ID ${schemaId} to storage`,
           { schemaId }
         );
       } catch (error) {
         logError(
           "saveSchemaIdToTenantProperty",
-          "Failed to save schema ID to tenant properties after retries:",
+          "Failed to save schema ID to storage:",
           JSON.stringify(error)
         );
 
         throw new Error(
-          "Unable to save schema ID to SharePoint tenant properties. App catalog access may be required."
+          "Unable to save schema ID to SharePoint storage. App catalog access may be required."
         );
       }
     },
-    [
-      getCreatedSchemaIds,
-      getAppCatalogUrl,
-      updateTenantProperty,
-      logInfo,
-      logError,
-      retryWithExponentialBackoff,
-    ]
+    [getCreatedSchemaIds]
   );
 
   /**
-   * Remove a schema extension ID from SharePoint tenant properties
+   * Remove a schema extension ID from SharePoint list storage
    */
   const removeSchemaIdFromTenantProperty = React.useCallback(
     async (schemaId: string): Promise<void> => {
@@ -231,67 +173,53 @@ export const useSchemaExtension = ({
 
         logInfo(
           "removeSchemaIdFromTenantProperty",
-          `Removing schema extension ID ${schemaId} from SharePoint tenant properties`
+          `Removing schema extension ID ${schemaId} from SharePoint storage`
         );
 
-        await retryWithExponentialBackoff(
-          async () => {
-            // Get current list of schema IDs
-            const currentSchemaIds: ISchemaTenantProperty[] =
-              await getCreatedSchemaIds();
+        // Get current list of schema IDs
+        const currentSchemaIds: ISchemaTenantProperty[] =
+          await getCreatedSchemaIds();
 
-            // Remove the ID
-            const updatedSchemaIds = currentSchemaIds.filter(
-              (id) => id.schemaId !== schemaId
-            );
-            if (updatedSchemaIds.length === currentSchemaIds.length) {
-              logInfo(
-                "removeSchemaIdFromTenantProperty",
-                `Schema ID ${schemaId} was not found in tenant properties`
-              );
-              return;
-            }
-            if (updatedSchemaIds.length === 0) {
-              // Remove the entire property by setting empty value
-              await updateTenantProperty(TENANT_PROPERTY_KEY, "");
-              logInfo(
-                "removeSchemaIdFromTenantProperty",
-                `Removed tenant property entirely as no schema IDs remain`
-              );
-            } else {
-              // Update the property with remaining IDs
-              const schemaIdsJson = JSON.stringify(updatedSchemaIds);
-              await updateTenantProperty(TENANT_PROPERTY_KEY, schemaIdsJson);
-              logInfo(
-                "removeSchemaIdFromTenantProperty",
-                `Updated tenant properties, removed schema ID ${schemaId}`
-              );
-            }
-          },
-          3,
-          1000,
-          `removeSchemaIdFromTenantProperty for ${schemaId}`
+        // Remove the ID
+        const updatedSchemaIds = currentSchemaIds.filter(
+          (id) => id.schemaId !== schemaId
         );
+        if (updatedSchemaIds.length === currentSchemaIds.length) {
+          logInfo(
+            "removeSchemaIdFromTenantProperty",
+            `Schema ID ${schemaId} was not found in storage`
+          );
+          return;
+        }
+        if (updatedSchemaIds.length === 0) {
+          // Remove the entire property by setting empty value
+          await removeProperty(TENANT_PROPERTY_KEY);
+          logInfo(
+            "removeSchemaIdFromTenantProperty",
+            `Removed storage property entirely as no schema IDs remain`
+          );
+        } else {
+          // Update the property with remaining IDs
+          const schemaIdsJson = JSON.stringify(updatedSchemaIds);
+          await setProperty(TENANT_PROPERTY_KEY, schemaIdsJson);
+          logInfo(
+            "removeSchemaIdFromTenantProperty",
+            `Updated storage, removed schema ID ${schemaId}`
+          );
+        }
       } catch (error) {
         logError(
           "removeSchemaIdFromTenantProperty",
-          "Failed to remove schema extension ID from tenant properties:",
+          "Failed to remove schema extension ID from storage:",
           JSON.stringify(error)
         );
 
         throw new Error(
-          "Unable to remove schema ID from SharePoint tenant properties."
+          "Unable to remove schema ID from SharePoint storage."
         );
       }
     },
-    [
-      getCreatedSchemaIds,
-      getAppCatalogUrl,
-      updateTenantProperty,
-      logInfo,
-      logError,
-      retryWithExponentialBackoff,
-    ]
+    [getCreatedSchemaIds]
   );
 
   /**
@@ -302,25 +230,18 @@ export const useSchemaExtension = ({
       schemaExtension: ISchemaExtensionCreateRequest
     ): Promise<ISchemaExtension> => {
       try {
-        return await retryWithExponentialBackoff(
-          async () => {
-            const client = await getGraphClient();
-            const response = await client
-              .api("/schemaExtensions")
-              .post(schemaExtension);
+        const client = await getGraphClient();
+        const response = await client
+          .api("/schemaExtensions")
+          .post(schemaExtension);
 
-            const createdSchema = response as ISchemaExtension;
+        const createdSchema = response as ISchemaExtension;
 
-            // Save the schema ID to tenant properties for future retrieval
-            if (createdSchema.id) {
-              await saveSchemaIdToTenantProperty(createdSchema.id);
-            }
-            return createdSchema;
-          },
-          3,
-          1000,
-          `createSchemaExtension ${schemaExtension.id}`
-        );
+        // Save the schema ID to tenant properties for future retrieval
+        if (createdSchema.id) {
+          await saveSchemaIdToTenantProperty(createdSchema.id);
+        }
+        return createdSchema;
       } catch (error) {
         throw handleGraphError(error, "create schema extension", {
           schemaExtensionId: schemaExtension.id,
@@ -329,21 +250,17 @@ export const useSchemaExtension = ({
         });
       }
     },
-    [
-      getGraphClient,
-      handleGraphError,
-      saveSchemaIdToTenantProperty,
-      retryWithExponentialBackoff,
-    ]
+    [getGraphClient, handleGraphError, saveSchemaIdToTenantProperty]
   );
 
   // Get created schema extensions using tenant properties approach
+  
   const getSchemaExtensions = React.useCallback(async (): Promise<
     ISchemaExtension[]
   > => {
     try {
       const storedIds = await getCreatedSchemaIds();
-      if (!storedIds.length) {
+      if (storedIds.length === 0) {
         logInfo(
           "getSchemaExtensions",
           "No schema extension IDs found in tenant properties"
@@ -355,39 +272,27 @@ export const useSchemaExtension = ({
         "Found schema extension IDs in tenant properties:",
         { storedIds: JSON.stringify(storedIds) }
       );
-
       // Fetch each schema extension by ID
       const client = await getGraphClient();
-      const schemaPromises = storedIds.map((schema) =>
-        client.api(`/schemaExtensions/${schema.schemaId}`).get()
-      );
+      const schemaExtensions: ISchemaExtension[] = [];
+      for (const schema of storedIds) {
+        try {
+          const response = await client
+            .api(`/schemaExtensions/${schema.schemaId}`)
+            .get();
 
-      // Wait for all fetches to complete
-      const results = await Promise.allSettled(schemaPromises);
-
-      // Extract only successful results and log failures
-      const schemaExtensions = results.reduce<ISchemaExtension[]>(
-        (acc, result, index) => {
-          if (result.status === "fulfilled") {
-            acc.push(result.value as ISchemaExtension);
-          } else {
-            logWarning(
-              "getSchemaExtensions",
-              `Failed to fetch schema extension ${storedIds[index].schemaId}:`,
-              JSON.stringify(result.reason)
-            );
-          }
-          return acc;
-        },
-        []
-      );
-
+          schemaExtensions.push(response as ISchemaExtension);
+        } catch (error) {
+          logWarning(
+            "getSchemaExtensions",
+            `Failed to get schema extension ${schema.schemaId}:`,
+            JSON.stringify(error)
+          );
+        }
+      }
       logInfo("getSchemaExtensions", "Retrieved schema extensions:", {
-        successCount: schemaExtensions.length,
-        totalAttempted: storedIds.length,
-        failedCount: storedIds.length - schemaExtensions.length,
+        schemaExtensions,
       });
-
       return schemaExtensions;
     } catch (error) {
       logError(
@@ -396,10 +301,7 @@ export const useSchemaExtension = ({
         JSON.stringify(error)
       );
 
-      throw handleGraphError(
-        error,
-        "Failed to get schema extensions from storage"
-      );
+      throw handleGraphError(error, "get schema extensions from storage");
     }
   }, [getGraphClient, handleGraphError]);
 
@@ -408,23 +310,16 @@ export const useSchemaExtension = ({
   const getSchemaExtension = React.useCallback(
     async (id: string): Promise<ISchemaExtension> => {
       try {
-        return await retryWithExponentialBackoff(
-          async () => {
-            const client = await getGraphClient();
-            const response = await client.api(`/schemaExtensions/${id}`).get();
-            return response as ISchemaExtension;
-          },
-          3,
-          1000,
-          `getSchemaExtension ${id}`
-        );
+        const client = await getGraphClient();
+        const response = await client.api(`/schemaExtensions/${id}`).get();
+        return response as ISchemaExtension;
       } catch (error) {
         throw handleGraphError(error, "get schema extension", {
           schemaExtensionId: id,
         });
       }
     },
-    [getGraphClient, handleGraphError, retryWithExponentialBackoff]
+    [getGraphClient, handleGraphError]
   );
 
   // Update a schema extension
@@ -435,173 +330,35 @@ export const useSchemaExtension = ({
       schemaExtension: Partial<ISchemaExtension>
     ): Promise<ISchemaExtension> => {
       try {
-        return await retryWithExponentialBackoff(
-          async () => {
-            const client = await getGraphClient();
-            const response = await client
-              .api(`/schemaExtensions/${id}`)
-              .patch(schemaExtension);
-            return response as ISchemaExtension;
-          },
-          3,
-          1000,
-          `updateSchemaExtension ${id}`
-        );
+        const client = await getGraphClient();
+        const response = await client
+          .api(`/schemaExtensions/${id}`)
+          .patch(schemaExtension);
+        return response as ISchemaExtension;
       } catch (error) {
         throw handleGraphError(error, "update schema extension", {
           schemaExtensionId: id,
         });
       }
     },
-    [getGraphClient, handleGraphError, retryWithExponentialBackoff]
+    [getGraphClient, handleGraphError]
   );
 
   // Delete a schema extension and remove its ID from tenant properties
   const deleteSchemaExtension = React.useCallback(
     async (id: string): Promise<void> => {
       try {
-        await retryWithExponentialBackoff(
-          async () => {
-            const client = await getGraphClient();
-            await client.api(`/schemaExtensions/${id}`).delete();
-            // Remove the schema ID from tenant properties
-            await removeSchemaIdFromTenantProperty(id);
-          },
-          3,
-          1000,
-          `deleteSchemaExtension ${id}`
-        );
+        const client = await getGraphClient();
+        await client.api(`/schemaExtensions/${id}`).delete();
+        // Remove the schema ID from tenant properties
+        await removeSchemaIdFromTenantProperty(id);
       } catch (error) {
         throw handleGraphError(error, "delete schema extension", {
           schemaExtensionId: id,
         });
       }
     },
-    [
-      getGraphClient,
-      handleGraphError,
-      removeSchemaIdFromTenantProperty,
-      retryWithExponentialBackoff,
-    ]
-  );
-
-  // Validate if an app ID exists in Entra ID
-
-  const validateAppIdAndOwnership = React.useCallback(
-    async (appId: string): Promise<IAppValidationResult> => {
-      try {
-        if (!appId || !appId.trim()) {
-          return {
-            exists: false,
-
-            error: strings.AppIdRequiredError,
-          };
-        }
-
-        // Validate GUID format
-        const guidRegex =
-          /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-        if (!guidRegex.test(appId.trim())) {
-          return {
-            exists: false,
-            error: strings.AppIdInvalidFormatError,
-          };
-        }
-
-        return await retryWithExponentialBackoff(
-          async () => {
-            const client = await getGraphClient();
-            logInfo(
-              "validateAppIdAndOwnership",
-              `Validating if app ID ${appId} exists`
-            );
-
-            // Check if the application exists in Entra ID
-            let application: IGraphApplication;
-            try {
-              const applicationResults = (await client
-                .api(`/applications/`)
-                .select("id,displayName,appId")
-                .filter(`appId eq '${appId}'`)
-                .get()) as IGraphApplicationResults;
-
-              application = applicationResults.value?.[0];
-
-              if (!application || !application.appId) {
-                logWarning(
-                  "validateAppIdAndOwnership",
-                  `Application with ID ${appId} not found in Entra ID`
-                );
-                return {
-                  exists: false,
-                  error: strings.AppIdNotFoundError,
-                };
-              } else {
-                logInfo(
-                  "validateAppIdAndOwnership",
-                  `Application found: ${application.displayName}`,
-                  { appId, displayName: application.displayName }
-                );
-                return { exists: true, displayName: application.displayName };
-              }
-            } catch (appError: unknown) {
-              const graphError = appError as IGraphError;
-              // Check if it's a 404 (not found) or 403 (forbidden)
-              if (
-                graphError.code === "Request_ResourceNotFound" ||
-                graphError.status === 404
-              ) {
-                logWarning(
-                  "validateAppIdAndOwnership",
-                  `Application with ID ${appId} not found in Entra ID`
-                );
-                return {
-                  exists: false,
-                  error: strings.AppIdNotFoundError,
-                };
-              } else if (
-                graphError.code === "Forbidden" ||
-                graphError.status === 403
-              ) {
-                logWarning(
-                  "validateAppIdAndOwnership",
-                  `Access denied when checking application ${appId}. User may not have permission to read applications.`
-                );
-                return {
-                  exists: false,
-                  error: strings.AppIdAccessDeniedError,
-                };
-              } else {
-                throw appError;
-              }
-            }
-          },
-          3,
-          1000,
-          `validateAppIdAndOwnership ${appId}`
-        );
-      } catch (error) {
-        logError(
-          "validateAppIdAndOwnership",
-          `Failed to validate app ID ${appId}:`,
-          JSON.stringify(error)
-        );
-
-        return {
-          exists: false,
-          displayName: undefined,
-          error: strings.AppIdValidationError,
-        };
-      }
-    },
-    [
-      getGraphClient,
-      context,
-      logInfo,
-      logWarning,
-      logError,
-      retryWithExponentialBackoff,
-    ]
+    [getGraphClient, handleGraphError, removeSchemaIdFromTenantProperty]
   );
 
   return {
@@ -613,6 +370,5 @@ export const useSchemaExtension = ({
     getCreatedSchemaIds,
     saveSchemaIdToTenantProperty,
     removeSchemaIdFromTenantProperty,
-    validateAppIdAndOwnership,
   };
 };
