@@ -7,7 +7,7 @@ sampleName: "pnp-sp-dev-spfx-web-parts-react-page-navigator"
 thumbnail: "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-page-navigator.webp"
 images: ["/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-page-navigator.webp"]
 thumbnailAlt: "Page Navigator Web Part"
-lastmod: "2026-01-12T00:00:00.000Z"
+lastmod: "2026-05-15T00:00:00.000Z"
 tags: []
 categories: []
 openInGalleryUrl: "/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-web-parts-react-page-navigator"
