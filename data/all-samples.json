@@ -20735,6 +20735,52 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-events",
+    "source": "pnp",
+    "title": "React Events Feed Web Part",
+    "shortDescription": "A SharePoint Framework (SPFx) web part that aggregates and displays calendar events from multiple sources — Microsoft 365 Group calendars and SharePoint list calendars — in a single, unified feed. It supports 9 layout styles, live date-range filtering with timezone-aware boundaries, drag-and-drop reordering, and full SharePoint theme integration via Fluent UI v9. Built with @spteck/react-controls-v2 and runs on SharePoint Online, Microsoft Teams, and Microsoft 365 (Office) hosts.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-events",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-events",
+    "updateDateTime": "2026-05-24",
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.23.0"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "joaojmendes",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/joaojmendes.27bf35a0f6fc.webp",
+        "name": "João Mendes",
+        "avatarSourceUrl": "https://github.com/joaojmendes.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-events.webp",
+        "alt": "React Events Feed Web Part"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-weather-information",
     "source": "pnp",
     "title": "Weather Information Web Part",

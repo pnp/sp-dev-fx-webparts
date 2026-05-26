@@ -1627,6 +1627,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-quotes/assets/react-quotes-sample.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-quotes.webp"
   },
+  "pnp-sp-dev-spfx-web-parts-react-events": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-events/assets/feed01.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-events.webp"
+  },
   "pnp-sp-dev-spfx-web-parts-react-weather-information": {
     "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-weather.gif",
     "file": "pnp-sp-dev-spfx-web-parts-react-weather-information.webp"
