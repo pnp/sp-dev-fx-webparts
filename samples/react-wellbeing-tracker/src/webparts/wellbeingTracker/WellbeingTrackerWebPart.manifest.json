@@ -1,0 +1,25 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "d5e6f7a8-b9c0-1234-5678-90abcdef0123",
+  "alias": "WellbeingTrackerWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab"],
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": { "default": "Other" },
+      "title": { "default": "Wellbeing & Engagement Tracker" },
+      "description": { "default": "Track wellbeing and engagement habits in a daily grid, backed by SharePoint Lists" },
+      "officeFabricIconFontName": "HeartFill",
+      "properties": {
+        "title": "Wellbeing & Engagement Tracker",
+        "activitiesListName": "WellbeingActivities",
+        "completionsListName": "WellbeingCompletions"
+      }
+    }
+  ]
+}
