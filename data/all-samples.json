@@ -23112,6 +23112,45 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-spfx-news",
+    "source": "pnp",
+    "title": "News Web Part",
+    "shortDescription": "A SharePoint Framework (SPFx) web part that displays SharePoint news in 6 configurable layout modes, with support for data source selection, auto-refresh, card customization, and full Fluent UI v9 theming. Built with @spteck/react-controls-v2 and runs on SharePoint Online, Microsoft Teams, and Microsoft 365 (Office) hosts.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/spfx-news",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/spfx-news",
+    "updateDateTime": "2026-05-17",
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.22.2"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "joaojmendes",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/joaojmendes.27bf35a0f6fc.webp",
+        "name": "João Mendes",
+        "avatarSourceUrl": "https://github.com/joaojmendes.png"
+      }
+    ],
+    "thumbnails": [],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-employees-onboarding",
     "source": "pnp",
     "title": "Employee Onboarding",
