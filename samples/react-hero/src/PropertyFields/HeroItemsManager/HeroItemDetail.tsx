@@ -29,7 +29,7 @@ import {
 } from "../../utils/useUtils";
 import { TEXT_POSITION_OPTIONS, EMediaType } from "../../constants/constants";
 import { IHeroItemDetailProps } from "../../models/IHeroItemDetailProps";
-import * as strings from "HeroWebPartStrings";
+import strings from 'HeroWebPartStrings';
 
 export const HeroItemDetail: React.FC<IHeroItemDetailProps> = ({
   item,

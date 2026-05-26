@@ -2,7 +2,7 @@ import * as React from 'react';
 import { webLightTheme } from '@fluentui/react-components';
 import { FluentUIProvider, DropdownField, HeroMosaicOverflowMode } from '@spteck/react-controls-v2';
 import { IMosaicOverflowComponentProps } from '../../models/IMosaicOverflowProps';
-import * as strings from 'HeroWebPartStrings';
+import strings from 'HeroWebPartStrings';
 
 const getMosaicOverflowOptions = (): { value: string; text: string }[] => [
   { value: 'marquee', text: strings.MosaicOverflowMarqueeOption },

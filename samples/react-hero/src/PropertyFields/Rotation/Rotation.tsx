@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Switch, Slider, webLightTheme } from '@fluentui/react-components';
 import { FluentUIProvider, StackV2, TypographyControl, DropdownField } from '@spteck/react-controls-v2';
 import { IRotationComponentProps } from '../../models/IRotationProps';
-import * as strings from 'HeroWebPartStrings';
+import strings from 'HeroWebPartStrings';
 
 export const Rotation: React.FC<IRotationComponentProps> = ({
   enabledLabel,
