@@ -4,10 +4,10 @@
 
 A SharePoint Framework (SPFx) web part that aggregates and displays calendar events from multiple sources — Microsoft 365 Group calendars and SharePoint list calendars — in a single, unified feed. It supports **9 layout styles**, live date-range filtering with timezone-aware boundaries, drag-and-drop reordering, and full SharePoint theme integration via Fluent UI v9. Built with [**@spteck/react-controls-v2**](https://www.npmjs.com/package/@spteck/react-controls-v2) and runs on SharePoint Online, Microsoft Teams, and Microsoft 365 (Office) hosts.
 
-![Agenda layout](./src/assets/feed01.png)
-![Grid layout](./src/assets/feed02.png)
-![List layout](./src/assets/feed03.png)
-![Feature layout](./src/assets/feed04.png)
+![Agenda layout](./assets/feed01.png)
+![Grid layout](./assets/feed02.png)
+![List layout](./assets/feed03.png)
+![Feature layout](./assets/feed04.png)
 
 ## Features
 
