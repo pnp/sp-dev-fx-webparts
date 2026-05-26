@@ -29,20 +29,20 @@
       "thumbnails": [
         {
           "type": "image",
-          "order": 200,
-          "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-legallens/assets/images/placeholder-app-screenshot.png",
+          "order": 100,
+          "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-legallens/assets/placeholder-app-screenshot.png",
           "alt": "Contract library view"
         },
         {
           "type": "image",
-          "order": 300,
-          "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-legallens/assets/images/placeholder-architecture.png",
+          "order": 200,
+          "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-legallens/assets/placeholder-architecture.png",
           "alt": "Architecture"
         },
         {
           "type": "image",
-          "order": 400,
-          "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-legallens/assets/images/placeholder-business-impact.png",
+          "order": 300,
+          "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-legallens/assets/placeholder-business-impact.png",
           "alt": "Business Impact"
         }
       ],
