@@ -30,7 +30,7 @@
     {
       "type": "image",
       "order": 100,
-      "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/js-smart-table-of-contents/assets/screenshots/floating-drawer-mode.png",
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-smart-table-of-contents/assets/screenshots/floating-drawer-mode.png",
       "alt": "Smart Table of Contents floating drawer mode"
     }
   ],
