@@ -65,23 +65,27 @@ This solution automatically generates a dynamic table of contents from page head
 
 ## Floating Drawer Mode
 
-![Floating Drawer](assets/screenshots/319dd762-855d-4c26-a309-c06bfb66a1bb.png)
+![Floating Drawer Mode](assets/screenshots/floating-drawer-mode.png)
 
 ## ScrollSpy Active Tracking
 
-![ScrollSpy](assets/screenshots/93103098-6e20-4c63-8aa7-aeb515f7bfeb.png)
+![ScrollSpy Active Tracking](assets/screenshots/scrollspy-active-tracking.png)
 
 ## Nested Heading Expansion
 
-![Nested Expansion](assets/screenshots/a624aeef-ac48-4c92-8ddd-544fdbbbdaec.png)
+![Nested Heading Expansion](assets/screenshots/nested-heading-expansion.png)
 
 ## Property Pane Configuration
 
-![Property Pane](assets/screenshots/defdb877-d218-40fc-b6aa-ab09a11e71a2.png)
+![Property Pane Configuration](assets/screenshots/property-pane-configuration.png)
 
 ## Inline Mode
 
-![Inline Mode](assets/screenshots/fb8a8992-afbe-4dac-aeb1-bbf664e88382.png)
+![Inline Mode](assets/screenshots/inline-mode.png)
+
+## Open Drawer Mode
+
+![Open Drawer Mode](assets/screenshots/open-drawer-mode.png)
 
 ---
 
