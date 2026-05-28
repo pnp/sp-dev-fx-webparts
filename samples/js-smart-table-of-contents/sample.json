@@ -1,0 +1,49 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/sample.schema.json",
+  "solution": {
+    "name": "js-smart-table-of-contents",
+    "id": "99f27194-bdd4-4f1e-b342-807271ea1a02",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Jonathan Adcox",
+      "websiteUrl": "https://github.com/blayderunner123",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": ""
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Advanced Smart Table of Contents web part for modern SharePoint pages."
+      },
+      "longDescription": {
+        "default": "A Smart Table of Contents SPFx web part supporting ScrollSpy tracking, smooth scrolling, floating drawer mode, nested heading expansion, heading search, and reading time estimation for modern SharePoint pages."
+      },
+      "screenshotPaths": [
+        "assets/screenshots/floating-drawer-mode.png",
+        "assets/screenshots/inline-mode.png",
+        "assets/screenshots/nested-heading-expansion.png",
+        "assets/screenshots/property-pane-configuration.png",
+        "assets/screenshots/scrollspy-active-tracking.png",
+        "assets/screenshots/open-drawer-mode.png"
+      ],
+      "videoUrl": "",
+      "categories": [
+        "Content management",
+        "User Experience",
+        "Productivity"
+      ]
+    },
+    "features": [
+      {
+        "title": "js-smart-table-of-contents Feature",
+        "description": "Deploys the Smart Table of Contents SPFx web part."
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/smart-table-of-contents.sppkg"
+  }
+}
