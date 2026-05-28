@@ -1,0 +1,203 @@
+.smartToc {
+  box-sizing: border-box;
+  width: 100%;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.card {
+  border: 1px solid #edebe9;
+  border-radius: 8px;
+  background: #ffffff;
+  padding: 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #323130;
+}
+
+.empty {
+  color: #605e5c;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.rootList,
+.childList {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+.childList {
+  margin-top: 4px;
+  margin-left: 14px;
+  border-left: 1px solid #edebe9;
+  padding-left: 10px;
+}
+
+.item {
+  margin: 2px 0;
+}
+
+.link {
+  display: flex;
+  gap: 6px;
+  align-items: flex-start;
+  color: #323130;
+  text-decoration: none;
+  border-radius: 4px;
+  padding: 5px 6px;
+  line-height: 1.3;
+  font-size: 14px;
+}
+
+.link:hover {
+  background: #f3f2f1;
+  color: #005a9e;
+  text-decoration: none;
+}
+
+.active {
+  background: #deecf9;
+  color: #005a9e;
+  font-weight: 600;
+}
+
+.number {
+  color: #605e5c;
+  min-width: 28px;
+  font-variant-numeric: tabular-nums;
+}
+
+.level1 > .link {
+  font-weight: 600;
+}
+
+.level2 > .link {
+  font-size: 14px;
+}
+
+.level3 > .link,
+.level4 > .link {
+  font-size: 13px;
+}
+
+.sticky {
+  position: sticky;
+  top: 16px;
+  z-index: 1;
+}
+
+@media screen and (max-width: 640px) {
+  .sticky {
+    position: relative;
+    top: auto;
+  }
+
+  .card {
+    padding: 12px;
+  }
+}
+
+
+.floatingButton {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 10000;
+  border: 0;
+  border-radius: 999px;
+  background: #005a9e;
+  color: #ffffff;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.24);
+  cursor: pointer;
+}
+
+.floatingButton:hover {
+  background: #004578;
+}
+
+.floatingButton:focus {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.drawerOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  background: rgba(0, 0, 0, 0.32);
+  display: flex;
+  justify-content: flex-end;
+}
+
+.drawerPanel {
+  width: min(420px, 92vw);
+  height: 100vh;
+  background: #ffffff;
+  box-shadow: -8px 0 24px rgba(0, 0, 0, 0.24);
+  display: flex;
+  flex-direction: column;
+}
+
+.drawerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid #edebe9;
+}
+
+.drawerTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #323130;
+}
+
+.closeButton {
+  width: 36px;
+  height: 36px;
+  border: 1px solid #d2d0ce;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #323130;
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.closeButton:hover {
+  background: #f3f2f1;
+}
+
+.drawerBody {
+  overflow-y: auto;
+  padding: 14px 18px 24px 18px;
+}
+
+@media screen and (max-width: 640px) {
+  .floatingButton {
+    right: 16px;
+    bottom: 16px;
+    max-width: calc(100vw - 32px);
+  }
+
+  .drawerOverlay {
+    align-items: flex-end;
+  }
+
+  .drawerPanel {
+    width: 100vw;
+    height: 80vh;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+  }
+}
