@@ -230,3 +230,5 @@ Jonathan R. Adcox
 # License
 
 MIT
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/js-smart-table-of-contents" />
