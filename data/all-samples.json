@@ -23191,9 +23191,11 @@
     ],
     "thumbnails": [],
     "reactions": {
-      "url": "",
-      "totalReactions": 0,
-      "allReactors": []
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/discussions/6292",
+      "totalReactions": 1,
+      "allReactors": [
+        "Mila2908"
+      ]
     }
   },
   {
