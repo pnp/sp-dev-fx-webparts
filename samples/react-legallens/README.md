@@ -1,22 +1,19 @@
 # LegalLens SPFx Solution
 
+## Summary 
+
 AI-powered contract management and e-signature platform built on SharePoint Online. Includes an SPFx web part for internal users and a vendor-facing signing flow backed by Azure Functions — no SharePoint access required for external signers.
 
----
 
 ![LegalLens](./assets/placeholder-app-screenshot.png)
 ![Youtube Video](https://youtu.be/-k96wyi92x4?si=P3R2B6w5H0VG0q9b)
 
----
 
-## Authors
+## Contributors
 
-| Name | GitHub |
-|------|--------|
-| Sai Siva Ram Bandaru | [@saiiiiiii](https://github.com/saiiiiiii) |
-| Antanina Druzhkina | [@Ateina](https://github.com/Ateina) |
+- [Sai Siva Ram Bandaru](https://github.com/saiiiiiii) |
+- [Antanina Druzhkina](https://github.com/Ateina) |
 
----
 
 ## Features
 
@@ -31,9 +28,11 @@ AI-powered contract management and e-signature platform built on SharePoint Onli
 ## SharePoint Document Library Setup
 
 > **Quick setup:** Run the included PowerShell script to create all libraries, lists, and columns automatically:
+>
 > ```powershell
 > .\assets\Setup-LegalLens-SharePoint.ps1 -SiteUrl "https://contoso.sharepoint.com/sites/YourSite" -ClientId "your-client-id"
 > ```
+>
 > The script creates the **Contracts** library, **Signed Documents** library, and **Signature Tokens** list with all required columns and views. Manual setup is described below for reference.
 
 <details>
@@ -189,6 +188,7 @@ Application Insights is automatically configured for Azure Functions.
 Validates a signing token. Called by [sign.html](./legallens-signatures/sign.html)  on load.
 
 **Response:**
+
 ```json
 {
   "token": {
@@ -223,6 +223,7 @@ Downloads the contract file. Serves the correct `Content-Type` per file extensio
 Submits the vendor's signature.
 
 **Request body:**
+
 ```json
 {
   "tokenId": "a3f9...",
@@ -232,6 +233,7 @@ Submits the vendor's signature.
 ```
 
 **Response:**
+
 ```json
 {
   "success": true,
@@ -254,6 +256,7 @@ Send OTP confirmation before signing
 The standalone signing page lives at [sign.html](./legallens-signatures/sign.html) and is hosted as a static file.
 
 **Signing URL format:**
+
 ```
 https://yourdomain.com/sign.html?token=<tokenId>
 ```
@@ -293,4 +296,10 @@ For comparison: DocuSign costs $25+/user/month.
 | Version | Date | Changes |
 |---------|------|---------|
 | 1.0.0 | 2026-04-10 | Initial release with Library, TranslatePro, Alerts, E-Signature and Q&A Agent |
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-legallens" />
 
