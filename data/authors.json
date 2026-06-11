@@ -51,7 +51,7 @@
     "gitHubAccount": "a1mery",
     "name": "Aimery Thomas",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/a1mery.74b01cb838c6.webp",
-    "avatarSourceUrl": "https://avatars.githubusercontent.com/u/7100077?s=460&v=4"
+    "avatarSourceUrl": "https://github.com/a1mery.png"
   },
   {
     "gitHubAccount": "albegut",
@@ -108,6 +108,12 @@
     "avatarSourceUrl": "https://github.com/anoopt.png"
   },
   {
+    "gitHubAccount": "Ateina",
+    "name": "Antanina Druzhkina",
+    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/ateina.f4d8afdcef97.webp",
+    "avatarSourceUrl": "https://github.com/Ateina.png"
+  },
+  {
     "gitHubAccount": "anthonyrhopkins",
     "name": "Anthony Hopkins",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/anthonyrhopkins.4f062ae9d60d.webp",
@@ -148,6 +154,12 @@
     "name": "Austin Breslin",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/austinbreslindev.148b76bb4c9a.webp",
     "avatarSourceUrl": "https://avatars.githubusercontent.com/u/10480670?s=460&v=4"
+  },
+  {
+    "gitHubAccount": "gretchunkim",
+    "name": "Azores",
+    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/gretchunkim.ce13fd6e0135.webp",
+    "avatarSourceUrl": "https://github.com/gretchunkim.png"
   },
   {
     "gitHubAccount": "babakdanyal",
@@ -345,7 +357,7 @@
     "gitHubAccount": "DonKirkham",
     "name": "Don Kirkham",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/donkirkham.831826bf34b4.webp",
-    "avatarSourceUrl": "https://github.com/DonKirkham.png"
+    "avatarSourceUrl": "https://avatars.githubusercontent.com/u/8630351?s=460&u=669abb2aac55f383a318d3ca6b1cb13467cada59&v=4"
   },
   {
     "gitHubAccount": "ejazhussain",
@@ -361,7 +373,7 @@
   },
   {
     "gitHubAccount": "Eli-Schei",
-    "name": "Eli Schei",
+    "name": "Eli H. Schei",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/eli-schei.3680818ac120.webp",
     "avatarSourceUrl": "https://github.com/Eli-Schei.png"
   },
@@ -456,12 +468,6 @@
     "avatarSourceUrl": "https://github.com/giuleon.png"
   },
   {
-    "gitHubAccount": "gretchunkim",
-    "name": "Gretchun Kim",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/gretchunkim.ce13fd6e0135.webp",
-    "avatarSourceUrl": "https://github.com/gretchunkim.png"
-  },
-  {
     "gitHubAccount": "GuidoZam",
     "name": "Guido Zambarda",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/guidozam.7bd1ac0b8597.webp",
@@ -553,7 +559,7 @@
   },
   {
     "gitHubAccount": "jtlivio",
-    "name": "Joao Livio",
+    "name": "João Livio",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/jtlivio.969fe0dcec53.webp",
     "avatarSourceUrl": "https://github.com/jtlivio.png"
   },
@@ -1122,10 +1128,10 @@
     "avatarSourceUrl": "https://github.com/sauslash.png"
   },
   {
-    "gitHubAccount": "Saurabh7019",
+    "gitHubAccount": "saurabh7019",
     "name": "Saurabh Tripathi",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/saurabh7019.1c80cfa0d82a.webp",
-    "avatarSourceUrl": "https://github.com/Saurabh7019.png"
+    "avatarSourceUrl": "https://github.com/saurabh7019.png"
   },
   {
     "gitHubAccount": "sebastienlevert",
