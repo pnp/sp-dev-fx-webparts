@@ -74,17 +74,9 @@ Create a Document library `Discussion Point Gallery` in SPO site & create one ne
 - Ensure that you are at the solution folder
 - in the command-line run:
   - `npm install`
-  - `gulp serve`
+  - `npm run build`
+  - `npm run start`
 
-## Deploy Package Solution 🚀
-
-- Ensure that you are at the solution folder
-- in the command-line run:
-  - `gulp build --ship`
-  - `gulp bundle --ship`
-  - `gulp package-solution --ship`
-
-- Upload package to AppCatalog & add it to the SharePoint site.
 
 ## Features💡
 
