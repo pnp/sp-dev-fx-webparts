@@ -1,0 +1,21 @@
+// Shared button mixins
+@mixin gradientBtn {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: none;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@mixin backBtn {
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--ll-bd-card);
+  background: var(--ll-bg-card);
+  color: var(--ll-cl-text-muted);
+  font-size: 11px;
+  cursor: pointer;
+  font-weight: 600;
+  outline: none;
+}

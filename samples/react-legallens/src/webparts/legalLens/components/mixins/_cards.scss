@@ -1,0 +1,30 @@
+// Shared card mixins
+@mixin progressTrack($height: 3px, $radius: 3px) {
+  background: var(--ll-bg-card);
+  border-radius: $radius;
+  height: $height;
+  overflow: hidden;
+}
+
+@mixin progressFill($gradient: linear-gradient(90deg, #6366f1, #8b5cf6), $radius: 3px, $transition: 0.4s) {
+  height: 100%;
+  border-radius: $radius;
+  background: $gradient;
+  transition: width $transition ease;
+}
+
+@mixin coloredPanel($color, $bgAlpha: 0.04, $borderAlpha: 0.2) {
+  background: rgba($color, $bgAlpha);
+  border: 1px solid rgba($color, $borderAlpha);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+@mixin glassCard($radius: 16px) {
+  background: var(--ll-bg-card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--ll-bd-card);
+  border-radius: $radius;
+  box-shadow: var(--ll-box-shadow);
+}
