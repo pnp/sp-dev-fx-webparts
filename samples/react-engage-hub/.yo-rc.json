@@ -12,7 +12,8 @@
       "@microsoft/microsoft-graph-client": "3.0.2",
       "@microsoft/teams-js": "2.24.0"
     },
-    "version": "1.21.1",
+    "version": "1.22.2",
+    "useGulp": false,
     "libraryName": "react-engage-hub",
     "libraryId": "156c77a3-ca7c-4d20-99d3-a895c0f3a630",
     "environment": "spo",
