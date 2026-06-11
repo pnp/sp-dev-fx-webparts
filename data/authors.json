@@ -120,12 +120,6 @@
     "avatarSourceUrl": "https://github.com/anthonyrhopkins.png"
   },
   {
-    "gitHubAccount": "Azure/azure-sdk-for-js/tree/main/sdk/openai/openai",
-    "name": "AOAI SDK",
-    "pictureUrl": "https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/openai/openai.png",
-    "avatarSourceUrl": ""
-  },
-  {
     "gitHubAccount": "AriGunawan",
     "name": "Ari Gunawan",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/arigunawan.d8e771e0c819.webp",

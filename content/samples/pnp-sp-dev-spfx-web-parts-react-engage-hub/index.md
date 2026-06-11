@@ -7,7 +7,7 @@ sampleName: "pnp-sp-dev-spfx-web-parts-react-engage-hub"
 thumbnail: "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-engage-hub.webp"
 images: ["/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-engage-hub.webp"]
 thumbnailAlt: "Engage Hub"
-lastmod: "2026-04-26T00:00:00.000Z"
+lastmod: "2025-10-22T00:00:00.000Z"
 tags: []
 categories: []
 openInGalleryUrl: "/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-web-parts-react-engage-hub"

@@ -16590,7 +16590,7 @@
     "shortDescription": "Built purely with off-the-shelf SharePoint capabilities, Engage Hub is a contemporary SPFx-based substitute for Viva Engage. In addition to providing essential social capabilities such as liking and unliking posts, threaded comments, and comment creation, it manages post data using SharePoint Lists and Document Libraries.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-engage-hub",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-engage-hub",
-    "updateDateTime": "2026-04-26",
+    "updateDateTime": "2025-10-22",
     "metadata": [
       {
         "key": "SAMPLE-TYPE",
@@ -16602,7 +16602,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.22.2"
+        "value": "1.20.0"
       }
     ],
     "tags": [],
@@ -16613,11 +16613,6 @@
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/sandeep-fed.6784dfb80995.webp",
         "name": "Sandeep P S",
         "avatarSourceUrl": "https://github.com/Sandeep-FED.png"
-      },
-      {
-        "gitHubAccount": "Azure/azure-sdk-for-js/tree/main/sdk/openai/openai",
-        "pictureUrl": "https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/openai/openai.png",
-        "name": "AOAI SDK"
       }
     ],
     "thumbnails": [
