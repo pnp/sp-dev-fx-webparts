@@ -15,7 +15,7 @@
     "@azure/identity": "^4.0.0",
     "@fingerprintjs/fingerprintjs": "^5.0.1",
     "@microsoft/microsoft-graph-client": "^3.0.7",
-    "axios": "^1.13.5",
+    "axios": "^1.16.0",
     "isomorphic-fetch": "^3.0.0",
     "mammoth": "^1.11.0",
     "node-fetch": "^2.7.0",
