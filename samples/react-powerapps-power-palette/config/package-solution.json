@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "power-palette-studio",
+    "id": "d14bd7a6-5659-459d-bd1f-0ab2ab305c52",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "power palette studio description"
+      },
+      "longDescription": {
+        "default": "power palette studio description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "power-palette-studio Feature",
+        "description": "The feature that activates elements of the power-palette-studio solution.",
+        "id": "80225abe-fa83-4942-ba3f-c2a9ad375807",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/power-palette-studio.sppkg"
+  }
+}

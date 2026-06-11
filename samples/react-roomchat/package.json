@@ -27,7 +27,7 @@
     "react-dom": "16.13.1",
     "spfx-fast-serve": "^3.0.5",
     "tslib": "2.3.1",
-    "uuid": "^8.3.2"
+    "uuid": "^14.0.0"
   },
   "devDependencies": {
     "@microsoft/rush-stack-compiler-4.5": "0.2.2",

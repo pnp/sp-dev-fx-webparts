@@ -50,6 +50,7 @@ Version|Date|Comments
 1.10|March 15, 2025|Added Sticky Mode options
 1.11|October 1, 2025|Fixed issue when page URL (file name) had a & or + symbol in it
 1.12|January 12, 2026|Add an option to display headings collapsed by default
+1.13|May 15, 2026|Add "Scrollspy" functionality
 
 ## Minimal Path to Awesome
 

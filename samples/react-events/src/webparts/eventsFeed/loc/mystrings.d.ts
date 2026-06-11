@@ -1,0 +1,63 @@
+declare interface IEventsFeedWebPartStrings {
+  PropertyPaneDescription: string;
+  LayoutGroupName: string;
+  DisplayGroupName: string;
+  DataSourceGroupName: string;
+  LayoutLabel: string;
+  HeightLabel: string;
+  MaxEventsLabel: string;
+  HeadlineLinesLabel: string;
+  DescriptionLinesLabel: string;
+  MarqueeDirectionLabel: string;
+  MarqueeDirectionVerticalLabel: string;
+  MarqueeDirectionHorizontalLabel: string;
+  EmptyStateTitleLabel: string;
+  EmptyStateDescriptionLabel: string;
+  EmptyStateConfigureLabel: string;
+  LayoutAgendaLabel: string;
+  LayoutGridLabel: string;
+  LayoutListLabel: string;
+  LayoutFilmstripLabel: string;
+  LayoutMarqueeLabel: string;
+  LayoutCarouselLabel: string;
+  LayoutFeatureLabel: string;
+  LayoutMasonryLabel: string;
+  LayoutCompactListLabel: string;
+  EmptyStateNoEventsTitleLabel: string;
+  EmptyStateNoEventsDescriptionLabel: string;
+  ErrorBoundaryTitleLabel: string;
+  ErrorBoundaryDescriptionLabel: string;
+  AllowDragLabel: string;
+  ShowDescriptionLabel: string;
+  ShowMetaLabel: string;
+  ShowLocationLabel: string;
+  ShowOrganizerLabel: string;
+  ShowFiltersLabel: string;
+  RefreshIntervalLabel: string;
+  TitleLabel: string;
+  SelectCalendarLabel: string;
+  SelectCalendarDescription: string;
+  SelectCalendarPlaceholder: string;
+  FilterEventsDateRangeLabel: string;
+  FilterEventsAllUpcomingLabel: string;
+  FilterEventsThisWeekLabel: string;
+  FilterEventsNextTwoWeeksLabel: string;
+  FilterEventsThisMonthLabel: string;
+  FilterEventsThisQuarterLabel: string;
+  FilterEventsSelectDateRangeLabel: string;
+  FilterEventsFromLabel: string;
+  FilterEventsToLabel: string;
+  FilterEventsCloseLabel: string;
+  FilterEventsDescriptionAllUpcoming: string;
+  FilterEventsDescriptionThisWeek: string;
+  FilterEventsDescriptionNextTwoWeeks: string;
+  FilterEventsDescriptionThisMonth: string;
+  FilterEventsDescriptionThisQuarter: string;
+  FilterEventsDescriptionFrom: string;
+  FilterEventsDescriptionTo: string;
+}
+
+declare module 'EventsFeedWebPartStrings' {
+  const strings: IEventsFeedWebPartStrings;
+  export = strings;
+}

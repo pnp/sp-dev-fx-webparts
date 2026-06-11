@@ -60,7 +60,7 @@
     "stringstream": ">=0.0.6",
     "tar": ">=7.5.11",
     "underscore.string": ">=3.3.5",
-    "ws": ">=8.17.1",
+    "ws": ">=8.20.1",
     "tslib": "2.3.1",
     "@fluentui/react": "^8.106.4"
   },

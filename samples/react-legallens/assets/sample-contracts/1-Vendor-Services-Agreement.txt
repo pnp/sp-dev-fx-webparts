@@ -1,0 +1,46 @@
+VENDOR SERVICES AGREEMENT
+
+This Vendor Services Agreement ("Agreement") is entered into as of January 15, 2024 ("Effective Date"), by and between:
+
+Acme Corporation, a Delaware corporation with its principal place of business at 123 Technology Drive, San Francisco, CA 94105 ("Client")
+
+AND
+
+TechServe Solutions Inc., a California corporation with its principal place of business at 456 Innovation Boulevard, San Jose, CA 95110 ("Vendor")
+
+§1. SCOPE OF SERVICES
+
+Vendor shall provide software development, maintenance, technical support, system integration, and documentation services to Client in a professional manner according to industry standards.
+
+§2. TERM AND TERMINATION
+
+This Agreement commences on the Effective Date and continues for two (2) years. The Agreement automatically renews for successive one-year periods unless either party provides ninety (90) days written notice of non-renewal. Either party may terminate for material breach upon thirty (30) days written notice if the breach is not cured.
+
+§3. COMPENSATION AND PAYMENT
+
+Client shall pay Vendor monthly fees as specified in each Statement of Work. Invoices are due within thirty (30) days. Late payments accrue interest at 1.5% per month. Client shall reimburse reasonable pre-approved expenses.
+
+§4. LIABILITY AND INDEMNIFICATION
+
+§4.1 Limitation of Liability
+EXCEPT FOR BREACHES OF CONFIDENTIALITY OR INTELLECTUAL PROPERTY, TOTAL LIABILITY SHALL NOT EXCEED AMOUNTS PAID IN THE PRECEDING TWELVE MONTHS, CAPPED AT TWO MILLION DOLLARS ($2,000,000).
+
+§4.2 Exclusion of Damages
+NO LIABILITY FOR INDIRECT, INCIDENTAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING LOST PROFITS OR DATA.
+
+§5. CONFIDENTIALITY
+
+Confidential Information means all non-public information marked as confidential. Receiving party must: (a) hold in strict confidence; (b) not disclose to third parties; (c) use only for Agreement purposes. Obligations survive for five (5) years after disclosure.
+
+§6. INTELLECTUAL PROPERTY
+
+Work product created for Client is owned by Client upon full payment. Vendor retains pre-existing IP and grants Client a non-exclusive, royalty-free license for use with the services.
+
+§7. GENERAL PROVISIONS
+
+Governed by Delaware law. Disputes subject to arbitration in San Francisco. This Agreement supersedes all prior agreements and may be amended only in writing.
+
+ACME CORPORATION                    TECHSERVE SOLUTIONS INC.
+By: John Smith                     By: Sarah Johnson
+Title: Chief Procurement Officer   Title: President
+Date: January 15, 2024            Date: January 15, 2024

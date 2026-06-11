@@ -9,8 +9,8 @@
     "longDescription": [
       "A SharePoint Framework (SPFx) web part that displays project tasks from a SharePoint list as an interactive Gantt chart. Built with @svar-ui/react-gantt and Fluent UI v9, it supports SharePoint pages, Microsoft Teams, and Microsoft 365 (Office) hosts."
     ],
-    "creationDateTime": "2026-12-25",
-    "updateDateTime": "2026-12-31",
+    "creationDateTime": "2026-03-06",
+    "updateDateTime": "2026-03-06",
     "products": [
       "SharePoint"
     ],

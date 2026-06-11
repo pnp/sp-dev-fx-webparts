@@ -1,0 +1,38 @@
+{
+  "name": "SPFx 1.21.1",
+  "image": "docker.io/m365pnp/spfx:1.21.1",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "editorconfig.editorconfig",
+        "dbaeumer.vscode-eslint"
+      ]
+    }
+  },
+  "forwardPorts": [
+    4321,
+    35729,
+    5432
+  ],
+  "portsAttributes": {
+    "4321": {
+      "protocol": "https",
+      "label": "Manifest",
+      "onAutoForward": "silent",
+      "requireLocalPort": true
+    },
+    "5432": {
+      "protocol": "https",
+      "label": "Workbench",
+      "onAutoForward": "silent"
+    },
+    "35729": {
+      "protocol": "https",
+      "label": "LiveReload",
+      "onAutoForward": "silent",
+      "requireLocalPort": true
+    }
+  },
+  "postCreateCommand": "bash .devcontainer/spfx-startup.sh",
+  "remoteUser": "node"
+}

@@ -3,7 +3,6 @@ import * as strings from "ManageSchemaExtensionsWebPartStrings";
 
 import {
   ErrorType,
-  useAppCatalog,
   useAppToast,
   useLogging,
   useSharePointPermission,
@@ -28,6 +27,7 @@ import { ShowError } from "@spteck/react-controls";
 import { appGlobalStateAtom } from "../../atoms/appGlobalState";
 import { createV9Theme } from "@fluentui/react-migration-v8-v9";
 import { useHydrateAtoms } from "jotai/utils";
+import { useSchemaExtensionStorage } from "../../hooks/useSchemaExtensionStorage";
 
 const HydrateAtoms: React.FC<{
   initialValues: Array<[atom: unknown, value: unknown]>;
@@ -49,7 +49,7 @@ export const ManageSchemaExtensions: React.FunctionComponent<
   const { checkPermissionsWithObjectId } = useSharePointPermission(
     context.spHttpClient
   );
-  const { getAppCatalogUrl } = useAppCatalog(context);
+  const { getAppCatalogUrl } = useSchemaExtensionStorage(context);
   const [isLoadingData, setIsLoadingData] = React.useState(true);
   const [error, setError] = React.useState<string | undefined>(undefined);
   const [userHasPermissions, setUserHasPermissions] =
@@ -104,40 +104,45 @@ export const ManageSchemaExtensions: React.FunctionComponent<
     return <ShowError message={error.message} />;
   };
 
-  const loadInitialData = React.useCallback(async (): Promise<void> => {
-    try {
-      setIsLoadingData(true);
-      setError(undefined);
-      // Check if user has permissions to manage schema extensions
-      const appCatalogUrl = await getAppCatalogUrl();
-      if (!appCatalogUrl) {
-        throw new Error(strings.AppCatalogNotFoundError);
-      }
-      // Check permissions for managing tenant properties in the app catalog
-      const permissions = await checkPermissionsWithObjectId(
-        appCatalogUrl,
-        "site",
-        ""
-      );
-      // If user doesn't have manageWeb or fullMask, they lack sufficient permissions
-      setUserHasPermissions(
-        permissions.includes(MANAGED_WEB) || permissions.includes(FULL_MASK)
-      );
-    } catch (error) {
-      const errorMessage =
-        error instanceof Error ? error.message : strings.LoadInitialDataError;
-      setError(errorMessage);
-      logError('loadInitialData', "Error loading initial data:", JSON.stringify(error));
-    } finally {
-      setIsLoadingData(false);
-    }
-  }, []);
+  React.useEffect(() => {
+    const loadInitialData = async (): Promise<void> => {
+      try {
+        setIsLoadingData(true);
+        setError(undefined);
 
-  React.useEffect(() => { 
-    loadInitialData().catch((error) =>
-      logError("Failed to load initial data:", JSON.stringify(error))
+        // Check if user has permissions to manage schema extensions
+        const appCatalogUrl = await getAppCatalogUrl();
+        if (!appCatalogUrl) {
+          throw new Error(strings.AppCatalogNotFoundError);
+        }
+        // Check permissions for managing configuration in the app catalog
+        const permissions = await checkPermissionsWithObjectId(
+          appCatalogUrl,
+          "site",
+          ""
+        );
+        // User needs manageWeb or fullMask permissions to manage the configuration list
+        if (
+          permissions.includes("manageWeb") ||
+          permissions.includes("fullMask")
+        ) {
+          setUserHasPermissions(true);
+        } else {
+          setUserHasPermissions(false);
+        }
+      } catch (err) {
+        const errorMessage =
+          err instanceof Error ? err.message : strings.LoadInitialDataError;
+        setError(errorMessage);
+        logError("Error loading initial data:", JSON.stringify(err));
+      } finally {
+        setIsLoadingData(false);
+      }
+    };
+    loadInitialData().catch((err) =>
+      logError("Failed to load initial data:", JSON.stringify(err))
     );
-  }, [props]);
+  }, [context]);
 
   const RenderContent = React.useCallback((): JSX.Element => {
     // If there was an error loading initial data, show error

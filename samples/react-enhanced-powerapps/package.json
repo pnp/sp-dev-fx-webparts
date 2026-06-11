@@ -23,17 +23,17 @@
         "@pnp/common": "^1.0.1",
         "@pnp/spfx-controls-react": "1.19.0",
         "@pnp/spfx-property-controls": "1.19.0",
-        "lodash": ">=4.17.23",
+        "lodash": ">=4.18.1",
         "lodash.template": ">=4.18.1",
         "office-ui-fabric-react": "6.214.0",
         "postcss-selector-parser": "^6.0.13",
         "react": "^16.13.1",
         "react-dom": "16.8.5",
-        "serialize-javascript": ">=7.0.4"
+        "serialize-javascript": ">=7.0.5"
     },
     "devDependencies": {
         "@microsoft/rush-stack-compiler-3.3": "0.3.5",
-        "@microsoft/sp-build-web": "^1.22.2",
+        "@microsoft/sp-build-web": "^1.23.0",
         "@microsoft/sp-module-interfaces": "1.13.1",
         "@microsoft/sp-tslint-rules": "1.13.1",
         "@types/chai": "3.4.34",

@@ -1,0 +1,159 @@
+@import "~@fluentui/react/dist/sass/References.scss";
+
+// ── Ribbon bar ──────────────────────────────────────────────────────────────
+
+.ribbonBar {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  flex-wrap: wrap;
+  // Subtle warm-tint surface — sits as the header row of the unified card
+  background: linear-gradient(180deg, #ffffff 0%, #f8f7f6 100%);
+  // Single border between toolbar and list content replaces the old outer shadow
+  border-bottom: 1px solid #e1dfdd;
+  padding: 6px 12px;
+  gap: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// ── Group ───────────────────────────────────────────────────────────────────
+
+.ribbonGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 2px 4px;
+  gap: 2px;
+}
+
+// ── Divider ─────────────────────────────────────────────────────────────────
+
+.ribbonDivider {
+  width: 1px;
+  // Gradient fade so the divider softly disappears at top and bottom
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    #d2d0ce 20%,
+    #d2d0ce 80%,
+    transparent 100%
+  );
+  margin: 6px 8px;
+  align-self: stretch;
+  flex-shrink: 0;
+}
+
+// ── Compound button (icon top, label below) ──────────────────────────────────
+
+.ribbonButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 4px;
+  padding: 7px 12px 8px;
+  min-width: 58px;
+  border: 1px solid transparent;
+  background: transparent;
+  cursor: pointer;
+  border-radius: 6px;
+  color: #323130;
+  font-family: inherit;
+  transition:
+    background 120ms ease,
+    border-color 120ms ease,
+    box-shadow 120ms ease,
+    transform 80ms ease;
+  user-select: none;
+  outline: none;
+
+  &:hover:not([disabled]) {
+    background: rgba(255, 255, 255, 0.95);
+    border-color: #e1dfdd;
+    box-shadow:
+      0 1px 3px rgba(0, 0, 0, 0.08),
+      0 2px 6px rgba(0, 0, 0, 0.06);
+    transform: translateY(-1px);
+  }
+
+  &:active:not([disabled]) {
+    background: #f0eeec;
+    border-color: #d2d0ce;
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.08);
+    transform: translateY(0);
+  }
+
+  &:focus-visible {
+    outline: 2px solid #0078d4;
+    outline-offset: 2px;
+  }
+}
+
+.ribbonButtonDisabled {
+  opacity: 0.35;
+  cursor: default;
+  pointer-events: none;
+}
+
+// ── Icon ────────────────────────────────────────────────────────────────────
+
+.ribbonButtonIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  // iconColor injected via --ribbon-icon-color CSS custom property
+  color: var(--ribbon-icon-color, #323130);
+  // Slight drop shadow on the icon for depth
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.10));
+
+  svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+// ── Label ───────────────────────────────────────────────────────────────────
+
+.ribbonButtonLabel {
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.3;
+  text-align: center;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  color: #3b3a39;
+  letter-spacing: 0.01em;
+}
+
+// ── Export chevron ───────────────────────────────────────────────────────────
+
+.chevron {
+  width: 10px;
+  height: 10px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .ribbonBar {
+    padding: 4px 8px;
+  }
+
+  .ribbonButtonLabel {
+    display: none;
+  }
+
+  .ribbonButton {
+    min-width: 38px;
+    padding: 6px 8px;
+  }
+
+  .ribbonDivider {
+    margin: 4px 5px;
+  }
+}

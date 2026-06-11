@@ -1,0 +1,27 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  padding: 8px;
+}
+
+.optionContent {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.optionTitle {
+  color: '[theme:neutralPrimary, default: #323130]';
+  color: var(--neutralPrimary);
+}
+
+.optionMeta {
+  color: '[theme:neutralSecondary, default: #605e5c]';
+  color: var(--neutralSecondary);
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

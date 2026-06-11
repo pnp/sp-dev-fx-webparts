@@ -1,6 +1,6 @@
 {
   "name": "react-rssreader",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "private": true,
   "engines": {
     "node": ">=22.14.0 < 23.0.0"
@@ -21,8 +21,8 @@
     "@microsoft/sp-property-pane": "1.22.2",
     "@microsoft/sp-webpart-base": "1.22.2",
     "@pnp/logging": "4.6.0",
-    "@pnp/spfx-controls-react": "3.23.0",
-    "@pnp/spfx-property-controls": "3.21.0",
+    "@pnp/spfx-controls-react": "^3.24.0",
+    "@pnp/spfx-property-controls": "^3.23.0",
     "ace-builds": "1.32.9",
     "common-tags": "1.8.2",
     "handlebars": "4.7.8",
