@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Smart Table of Contents",
+    "id": "dc422a2b-58ff-4ed6-bdb0-6e9dc319b721",
+    "version": "2.3.4.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Jonathan R. Adcox",
+      "websiteUrl": "https://adcox.ai",
+      "privacyUrl": "https://adcox.ai/privacy",
+      "termsOfUseUrl": "https://adcox.ai/terms",
+      "mpnId": ""
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "SmartTableOfContents description"
+      },
+      "longDescription": {
+        "default": "SmartTableOfContents description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "smart-table-of-contents Feature",
+        "description": "The feature that activates elements of the smart-table-of-contents solution.",
+        "id": "99f27194-bdd4-4f1e-b342-807271ea1a02",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/smart-table-of-contents.sppkg"
+  }
+}

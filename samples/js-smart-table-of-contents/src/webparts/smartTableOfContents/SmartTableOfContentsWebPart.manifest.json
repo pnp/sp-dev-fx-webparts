@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "11e47fd8-4c0e-42b9-97cc-8f1d8f6e1001",
+  "alias": "SmartTableOfContentsWebPart",
+  "componentType": "WebPart",
+  "version": "2.3.4",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": {
+        "default": "Text, media, and content"
+      },
+      "title": {
+        "default": "Smart Table of Contents"
+      },
+      "description": {
+        "default": "Dynamic SharePoint Table of Contents with smooth scrolling, collapsible headings, and live search."
+      },
+      "officeFabricIconFontName": "BulletedList",
+      "properties": {
+        "title": "Smart TOC TEST",
+        "maxHeadingLevel": 3,
+        "includeH1": false,
+        "sticky": false,
+        "showNumbers": false,
+        "showEmptyMessage": true,
+        "scrollOffset": 80
+      }
+    }
+  ]
+}
