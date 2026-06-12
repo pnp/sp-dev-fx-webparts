@@ -16590,7 +16590,7 @@
     "shortDescription": "Built purely with off-the-shelf SharePoint capabilities, Engage Hub is a contemporary SPFx-based substitute for Viva Engage. In addition to providing essential social capabilities such as liking and unliking posts, threaded comments, and comment creation, it manages post data using SharePoint Lists and Document Libraries.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-engage-hub",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-engage-hub",
-    "updateDateTime": "2025-10-22",
+    "updateDateTime": "2026-04-26",
     "metadata": [
       {
         "key": "SAMPLE-TYPE",
@@ -16602,7 +16602,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.20.0"
+        "value": "1.22.2"
       }
     ],
     "tags": [],
@@ -16613,6 +16613,11 @@
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/sandeep-fed.6784dfb80995.webp",
         "name": "Sandeep P S",
         "avatarSourceUrl": "https://github.com/Sandeep-FED.png"
+      },
+      {
+        "gitHubAccount": "Azure/azure-sdk-for-js/tree/main/sdk/openai/openai",
+        "pictureUrl": "https://github.com/Azure/azure-sdk-for-js/tree/main/sdk/openai/openai.png",
+        "name": "AOAI SDK"
       }
     ],
     "thumbnails": [
@@ -25221,51 +25226,7 @@
     }
   },
   {
-    "name": "pnp-sp-dev-spfx-extensions-js-application-gtm-injector",
-    "source": "pnp",
-    "title": "Google Tag Manager Injector",
-    "shortDescription": "This SharePoint Framework (SPFx) Application Customizer injects Google Tag Manager (GTM) into SharePoint Modern pages, enabling analytics and tag management across your tenant. It initializes the standard GTM dataLayer, loads the GTM script via SPComponentLoader, and hooks into SharePoint's navigation events to track Single Page Application (SPA) route changes — ensuring every page view is captured without a full browser reload.",
-    "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/js-application-gtm-injector",
-    "downloadUrl": null,
-    "updateDateTime": "2026-04-01",
-    "metadata": [
-      {
-        "key": "CLIENT-SIDE-DEV",
-        "value": "JavaScript"
-      },
-      {
-        "key": "SPFX-VERSION",
-        "value": "1.22.2"
-      }
-    ],
-    "tags": [],
-    "categories": [
-      "SPFX-APPLICATION-EXTENSION"
-    ],
-    "authors": [
-      {
-        "gitHubAccount": "saiiiiiii",
-        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/saiiiiiii.b1e132237a67.webp",
-        "name": "@saiiiiiii",
-        "avatarSourceUrl": "https://github.com/saiiiiiii.png"
-      }
-    ],
-    "thumbnails": [
-      {
-        "type": "image",
-        "order": 100,
-        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-js-application-gtm-injector.webp",
-        "alt": "Google Tag Manager Injector"
-      }
-    ],
-    "reactions": {
-      "url": "",
-      "totalReactions": 0,
-      "allReactors": []
-    }
-  },
-  {
-    "name": "pnp-sp-dev-spfx-extensions-react-application-customizer-feedback-widget",
+    "name": "pnp-sp-dev-spfx-extensions-react-application-tenant-telemetry-listener",
     "source": "pnp",
     "title": "Tenant Telemetry Application Customizer",
     "shortDescription": "A tenant-wide SPFx Application Customizer that collects telemetry from all SPFx web parts and extensions using Application Insights or Azure Functions.",
@@ -25298,14 +25259,16 @@
       {
         "type": "image",
         "order": 100,
-        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-application-customizer-feedback-widget.webp",
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-application-tenant-telemetry-listener.webp",
         "alt": "Tenant Telemetry Application Customizer"
       }
     ],
     "reactions": {
-      "url": "",
-      "totalReactions": 0,
-      "allReactors": []
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/discussions/5720",
+      "totalReactions": 1,
+      "allReactors": [
+        "hugoabernier"
+      ]
     }
   },
   {
