@@ -42,7 +42,7 @@
     "redux": "4.0.5",
     "redux-logger": "3.0.6",
     "redux-thunk": "2.3.0",
-    "tinymce": "^5.5.1"
+    "tinymce": "^7.9.3"
   },
   "devDependencies": {
     "@microsoft/rush-stack-compiler-3.3": "0.9.14",
