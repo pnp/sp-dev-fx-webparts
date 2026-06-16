@@ -99,7 +99,7 @@
     "gitHubAccount": "anoopt",
     "name": "Anoop Tatti",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/anoopt.1ab4e05a217d.webp",
-    "avatarSourceUrl": "https://github.com/anoopt.png"
+    "avatarSourceUrl": "https://avatars.githubusercontent.com/u/9694225?s=460&u=fbb4b27ed944935800d5f6dbc91e71911ce0d4ec&v=4"
   },
   {
     "gitHubAccount": "Anoop Tatti",
@@ -253,7 +253,7 @@
   },
   {
     "gitHubAccount": "Tanddant",
-    "name": "Dan Toft (Code Reviews)",
+    "name": "Dan Toft",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/tanddant.b503735bca0d.webp",
     "avatarSourceUrl": "https://github.com/Tanddant.png"
   },
@@ -852,6 +852,12 @@
     "avatarSourceUrl": "https://github.com/techienickb.png"
   },
   {
+    "gitHubAccount": "https://github.com/NicolasKheirallah",
+    "name": "Nico",
+    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/nicolaskheirallah.50f81b9fb5b9.webp",
+    "avatarSourceUrl": "https://github.com/NicolasKheirallah.png"
+  },
+  {
     "gitHubAccount": "nicodecleyre",
     "name": "Nico De Cleyre",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/nicodecleyre.6b802f23b157.webp",
@@ -859,12 +865,6 @@
   },
   {
     "gitHubAccount": "NicolasKheirallah",
-    "name": "Nicolas Kheirallah",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/nicolaskheirallah.50f81b9fb5b9.webp",
-    "avatarSourceUrl": "https://github.com/NicolasKheirallah.png"
-  },
-  {
-    "gitHubAccount": "https://github.com/NicolasKheirallah",
     "name": "Nicolas Kheirallah",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/nicolaskheirallah.50f81b9fb5b9.webp",
     "avatarSourceUrl": "https://github.com/NicolasKheirallah.png"
@@ -1113,7 +1113,7 @@
     "gitHubAccount": "Sandeep-FED",
     "name": "Sandeep P S",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/sandeep-fed.6784dfb80995.webp",
-    "avatarSourceUrl": "https://github.com/Sandeep-FED.png"
+    "avatarSourceUrl": "https://github.com/sandeep-fed.png"
   },
   {
     "gitHubAccount": "https://github.com/Sandeep-FED",
@@ -1219,7 +1219,7 @@
   },
   {
     "gitHubAccount": "sudharsank",
-    "name": "Sudharsan K.",
+    "name": "Sudharsan Kesavanarayanan",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/sudharsank.416ed5d2b87f.webp",
     "avatarSourceUrl": "https://github.com/sudharsank.png"
   },
