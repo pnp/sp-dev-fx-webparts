@@ -9,7 +9,7 @@ Site Content solution contains SPFx web part that provides
 3. Functionality to Sort the lists or libraries by name, type, items count, description.
 4. Functionality to get the Drive ID for document library
 
-![Site Content ](./assets/SiteContentWebpart.png)
+![Site Content ](./assets/screenshot.png)
 ![Detail](./assets/LibraryDetails.png)
 
 ## Compatibility
