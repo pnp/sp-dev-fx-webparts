@@ -62,8 +62,7 @@ samples/react-hot-desk-booking/
 │           │   ├── IHotDeskBookingProps.ts        # Props interface
 │           │   ├── ResourceCard.tsx              # Single bookable resource card
 │           │   ├── BookingForm.tsx               # Fluent UI Dialog — book a resource
-│           │   ├── MyBookings.tsx                # "My Bookings" tab view
-│           │   └── BookingItem.tsx               # Single row in My Bookings
+│           │   └── MyBookings.tsx                # "My Bookings" tab — DetailsList with cancel action
 │           ├── services/
 │           │   └── BookingService.ts             # All PnPjs CRUD operations
 │           ├── models/
@@ -95,7 +94,7 @@ samples/react-hot-desk-booking/
 ### Data flow
 
 1. `HotDeskBookingWebPart.ts` initialises `BookingService` with the SPFx context and configured list names, then passes it and other props to the root component.
-2. `HotDeskBooking.tsx` (root) owns all state: resources array, bookings array, selected date, active resource type filter, loading flags, error messages. It passes data and handler callbacks down to child components — no global state library.
+2. `HotDeskBooking.tsx` (root) owns all state: resources array, date-bookings array (for availability), my-bookings array, selected date, active resource type filter, loading flags, error messages. On mount it fetches resources and the current user's bookings. On date change it fetches all bookings for that date to compute per-resource availability. After a successful `addBooking` it re-fetches bookings for the current date to refresh card states. It passes data and handler callbacks down to child components — no global state library.
 3. `BookingService` is the only file that touches PnPjs. All methods return `{ data, error }` result objects so components never need try/catch blocks.
 
 ---
@@ -119,8 +118,8 @@ Fluent UI `Dialog`. Fields: date picker (pre-filled from parent state), Notes (o
 ### `MyBookings.tsx`
 Fluent UI `DetailsList`. Columns: Resource, Type, Location, Date, Notes, Action. Rows sorted by date descending. Past bookings (before today) are shown greyed-out with no Cancel button. Upcoming bookings have a Cancel button.
 
-### `BookingItem.tsx`
-Renders a single row in `MyBookings`. Cancel button calls `BookingService.cancelBooking`, then removes the row from local state without a full refresh.
+### `MyBookings.tsx` — cancel action
+The Cancel action is an inline command column in the `DetailsList`, not a separate component. Clicking Cancel calls `BookingService.cancelBooking`, then removes the row from local state without a full refresh.
 
 ### `BookingService.ts`
 
