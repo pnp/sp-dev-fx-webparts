@@ -17,7 +17,7 @@ export interface IReactSiteContentWebPartProps {
 export default class ReactSiteContentWebPart extends BaseClientSideWebPart<IReactSiteContentWebPartProps> {
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = "";
-  private spService: SPService;
+  private spService: SPService | undefined = undefined;
   public render(): void {
     const element: React.ReactElement<IReactSiteContentProps> = React.createElement(ReactSiteContent, {
       description: this.properties.description,
