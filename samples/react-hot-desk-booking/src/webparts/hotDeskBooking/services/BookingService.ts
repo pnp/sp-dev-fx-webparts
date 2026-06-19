@@ -1,4 +1,5 @@
-import { sp } from "@pnp/sp";
+import { spfi, SPFI } from "@pnp/sp";
+import { SPFx } from "@pnp/sp/presets/all";
 import "@pnp/sp/webs";
 import "@pnp/sp/lists";
 import "@pnp/sp/items";
@@ -10,6 +11,7 @@ export class BookingService {
   private resourcesListName: string;
   private bookingsListName: string;
   private context: WebPartContext;
+  private sp: SPFI;
 
   constructor(
     context: WebPartContext,
@@ -19,15 +21,15 @@ export class BookingService {
     this.context = context;
     this.resourcesListName = resourcesListName;
     this.bookingsListName = bookingsListName;
+    this.sp = spfi().using(SPFx(context));
   }
 
   public async getResources(): Promise<IResource[]> {
     try {
-      const items = await sp.web.lists
+      const items = await this.sp.web.lists
         .getByTitle(this.resourcesListName)
         .items.select("ID", "Title", "ResourceType", "Location", "Description", "IsActive")
-        .filter("IsActive eq true")
-        .get();
+        .filter("IsActive eq true")();
 
       return items.map((item: any) => ({
         id: item.ID.toString(),
@@ -46,13 +48,12 @@ export class BookingService {
   public async getMyBookings(): Promise<IBooking[]> {
     try {
       const userId = this.context.pageContext.legacyPageContext.userId;
-      const items = await sp.web.lists
+      const items = await this.sp.web.lists
         .getByTitle(this.bookingsListName)
         .items.select("ID", "Title", "BookingDate", "Notes", "Resource/ID", "Resource/Title", "Resource/ResourceType", "Resource/Location")
         .expand("Resource")
-        .filter(\`BookedById eq \${userId}\`)
-        .orderBy("BookingDate", false)
-        .get();
+        .filter(`BookedById eq ${userId}`)
+        .orderBy("BookingDate", false)();
 
       return items.map((item: any) => ({
         id: item.ID.toString(),
@@ -80,11 +81,10 @@ export class BookingService {
   public async checkConflict(resource: IResource, date: Date): Promise<boolean> {
     try {
       const dateStr = date.toISOString().split("T")[0];
-      const items = await sp.web.lists
+      const items = await this.sp.web.lists
         .getByTitle(this.bookingsListName)
         .items.select("ID")
-        .filter(\`ResourceId eq \${resource.id} and BookingDate eq datetime'\${dateStr}'\`)
-        .get();
+        .filter(`ResourceId eq ${resource.id} and BookingDate eq datetime'${dateStr}'`)();
 
       return items.length > 0;
     } catch (error) {
@@ -101,9 +101,9 @@ export class BookingService {
       }
 
       const dateStr = date.toISOString().split("T")[0];
-      const title = \`\${resource.title} – \${dateStr}\`;
+      const title = `${resource.title} – ${dateStr}`;
 
-      await sp.web.lists.getByTitle(this.bookingsListName).items.add({
+      await this.sp.web.lists.getByTitle(this.bookingsListName).items.add({
         Title: title,
         BookingDate: date,
         Notes: notes,
@@ -117,7 +117,7 @@ export class BookingService {
 
   public async cancelBooking(bookingId: string): Promise<void> {
     try {
-      await sp.web.lists
+      await this.sp.web.lists
         .getByTitle(this.bookingsListName)
         .items.getById(parseInt(bookingId, 10))
         .delete();
@@ -130,12 +130,11 @@ export class BookingService {
   public async getBookingsForDate(date: Date): Promise<IBooking[]> {
     try {
       const dateStr = date.toISOString().split("T")[0];
-      const items = await sp.web.lists
+      const items = await this.sp.web.lists
         .getByTitle(this.bookingsListName)
         .items.select("ID", "Title", "BookingDate", "Notes", "Resource/ID", "Resource/Title")
         .expand("Resource")
-        .filter(\`BookingDate eq datetime'\${dateStr}'\`)
-        .get();
+        .filter(`BookingDate eq datetime'${dateStr}'`)();
 
       return items.map((item: any) => ({
         id: item.ID.toString(),
@@ -160,3 +159,4 @@ export class BookingService {
     }
   }
 }
+

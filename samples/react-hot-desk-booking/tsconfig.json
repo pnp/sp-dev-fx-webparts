@@ -1,1 +1,40 @@
-{"compilerOptions":{"target":"es5","forceConsistentCasingInFileNames":true,"module":"esnext","moduleResolution":"node","jsx":"react","declaration":true,"declarationMap":true,"sourceMap":true,"allowJs":true,"noImplicitAny":true,"typeRoots":["./node_modules/@types","./node_modules/@microsoft"],"types":["jest","webpack","node"],"lib":["es5","dom","dom.iterable","esnext"]},"include":["src"]}
+{
+  "compilerOptions": {
+    "target": "es5",
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "declaration": true,
+    "sourceMap": true,
+    "allowJs": false,
+    "noImplicitAny": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
+    "outDir": "lib",
+    "rootDir": "src",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/@microsoft"
+    ],
+    "types": [
+      "jest",
+      "webpack",
+      "node"
+    ],
+    "lib": [
+      "es5",
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ]
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib",
+    "dist"
+  ]
+}

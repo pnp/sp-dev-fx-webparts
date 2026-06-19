@@ -2,8 +2,7 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import { BaseClientSideWebPart, IPropertyPaneConfiguration, PropertyPaneTextField, PropertyPaneToggle } from '@microsoft/sp-webpart-base';
-import { sp } from '@pnp/sp';
-import { HotDeskBooking } from './components/HotDeskBooking';
+import HotDeskBooking from './components/HotDeskBooking';
 import { IHotDeskBookingProps } from './components/IHotDeskBookingProps';
 import * as strings from 'HotDeskBookingWebPartStrings';
 
@@ -17,9 +16,7 @@ export interface IHotDeskBookingWebPartProps {
 
 export default class HotDeskBookingWebPart extends BaseClientSideWebPart<IHotDeskBookingWebPartProps> {
   protected onInit(): Promise<void> {
-    return super.onInit().then(() => {
-      sp.setup({ spfxContext: this.context });
-    });
+    return super.onInit();
   }
 
   public render(): void {

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Card, Stack, Text, PrimaryButton, DefaultButton, Badge } from "@fluentui/react";
+import { Stack, Text, PrimaryButton } from "@fluentui/react";
 import { IResource } from "../models/IResource";
 import { BookingService } from "../services/BookingService";
 import BookingForm from "./BookingForm";
@@ -16,15 +16,15 @@ const ResourceCard: React.FC<Props> = ({ resource, onBookingCreated, bookingServ
 
   return (
     <>
-      <Card className={styles.resourceCard}>
+      <div className={styles.resourceCard}>
         <Stack tokens={{ childrenGap: 12 }}>
           <Stack horizontal horizontalAlign="space-between">
             <Text variant="large" className={styles.resourceTitle}>
               {resource.title}
             </Text>
-            <Badge appearance="primary" size="large">
-              {resource.resourceType}
-            </Badge>
+            {resource.resourceType && (
+              <span className={styles.resourceType}>{resource.resourceType}</span>
+            )}
           </Stack>
 
           {resource.location && (
@@ -45,7 +45,7 @@ const ResourceCard: React.FC<Props> = ({ resource, onBookingCreated, bookingServ
             />
           </Stack>
         </Stack>
-      </Card>
+      </div>
 
       {showForm && (
         <BookingForm

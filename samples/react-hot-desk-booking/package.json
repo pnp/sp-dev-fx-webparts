@@ -29,10 +29,11 @@
     "@types/react": "17.0.45"
   },
   "devDependencies": {
-    "@microsoft/eslint-config-spfx": "1.20.0",
-    "@microsoft/sp-build-core-tasks": "1.20.0",
-    "@microsoft/sp-build-web": "1.20.0",
-    "@microsoft/sp-tslint-rules": "1.20.0",
+    "@microsoft/eslint-config-spfx": "1.20.2",
+    "@microsoft/rush-stack-compiler-4.7": "^0.1.0",
+    "@microsoft/sp-build-core-tasks": "1.20.2",
+    "@microsoft/sp-build-web": "1.20.2",
+    "@microsoft/sp-tslint-rules": "1.20.2",
     "@types/jest": "29.2.4",
     "@types/react": "17.0.45",
     "@types/react-dom": "17.0.17",
