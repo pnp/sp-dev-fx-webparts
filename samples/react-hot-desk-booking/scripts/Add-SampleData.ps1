@@ -60,19 +60,10 @@ function Write-Info {
 try {
     Write-Step "Connecting to SharePoint"
 
-    if ($ClientId -and $ClientSecret -and $TenantId) {
-        Write-Info "Using app registration authentication"
-        $securePassword = ConvertTo-SecureString -String $ClientSecret -AsPlainText -Force
-        Connect-PnPOnline -Url $SiteUrl `
-            -ClientId $ClientId `
-            -Tenant $TenantId `
-            -ClientSecret $securePassword
-        Write-Success "Connected with app registration"
-    } else {
-        Write-Info "Using interactive authentication"
-        Connect-PnPOnline -Url $SiteUrl -Interactive
-        Write-Success "Connected interactively"
-    }
+    Connect-PnPOnline -Url $SiteUrl `
+        -ClientId $ClientId `
+        -Tenant $TenantId `
+        -DeviceLogin
 
     Write-Step "Adding Sample Resources"
 

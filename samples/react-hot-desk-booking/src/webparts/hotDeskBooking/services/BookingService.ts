@@ -29,7 +29,7 @@ export class BookingService {
       const items = await this.sp.web.lists
         .getByTitle(this.resourcesListName)
         .items.select("ID", "Title", "ResourceType", "Location", "Description", "IsActive")
-        .filter("IsActive eq true")();
+        .filter("IsActive eq 1")();
 
       return items.map((item: any) => ({
         id: item.ID.toString(),
@@ -80,11 +80,12 @@ export class BookingService {
 
   public async checkConflict(resource: IResource, date: Date): Promise<boolean> {
     try {
-      const dateStr = date.toISOString().split("T")[0];
+      const { dateStr, nextDateStr } = this._dayRange(date);
+      const resourceId = parseInt(resource.id, 10);
       const items = await this.sp.web.lists
         .getByTitle(this.bookingsListName)
         .items.select("ID")
-        .filter(`ResourceId eq ${resource.id} and BookingDate eq datetime'${dateStr}'`)();
+        .filter(`ResourceId eq ${resourceId} and BookingDate ge datetime'${dateStr}T00:00:00' and BookingDate lt datetime'${nextDateStr}T00:00:00'`)();
 
       return items.length > 0;
     } catch (error) {
@@ -102,12 +103,14 @@ export class BookingService {
 
       const dateStr = date.toISOString().split("T")[0];
       const title = `${resource.title} – ${dateStr}`;
+      const webUrl = this.context.pageContext.web.absoluteUrl;
 
       await this.sp.web.lists.getByTitle(this.bookingsListName).items.add({
         Title: title,
         BookingDate: date,
         Notes: notes,
-        ResourceId: resource.id
+        "Resource@odata.bind": `${webUrl}/_api/web/lists/getByTitle('${this.resourcesListName}')/items(${parseInt(resource.id, 10)})`,
+        BookedById: this.context.pageContext.legacyPageContext.userId
       });
     } catch (error) {
       console.error("Error adding booking:", error);
@@ -129,12 +132,12 @@ export class BookingService {
 
   public async getBookingsForDate(date: Date): Promise<IBooking[]> {
     try {
-      const dateStr = date.toISOString().split("T")[0];
+      const { dateStr, nextDateStr } = this._dayRange(date);
       const items = await this.sp.web.lists
         .getByTitle(this.bookingsListName)
         .items.select("ID", "Title", "BookingDate", "Notes", "Resource/ID", "Resource/Title")
         .expand("Resource")
-        .filter(`BookingDate eq datetime'${dateStr}'`)();
+        .filter(`BookingDate ge datetime'${dateStr}T00:00:00' and BookingDate lt datetime'${nextDateStr}T00:00:00'`)();
 
       return items.map((item: any) => ({
         id: item.ID.toString(),
@@ -157,6 +160,15 @@ export class BookingService {
       console.error("Error fetching bookings for date:", error);
       throw error;
     }
+  }
+
+  private _dayRange(date: Date): { dateStr: string; nextDateStr: string } {
+    const d = new Date(date);
+    d.setHours(0, 0, 0, 0);
+    const next = new Date(d);
+    next.setDate(d.getDate() + 1);
+    const fmt = (v: Date): string => v.toISOString().split("T")[0];
+    return { dateStr: fmt(d), nextDateStr: fmt(next) };
   }
 }
 

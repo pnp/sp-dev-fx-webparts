@@ -1,20 +1,50 @@
 .hotDeskBooking {
+  --color-hotdesk: #0078d4;
+  --color-parking: #107c10;
+  --color-locker: #f7630c;
+  --color-meetingroom: #744da9;
+  --color-other: #8a8886;
+
   padding: 20px;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
   color: #333333;
+}
 
-  h2 {
-    margin-top: 0;
-    margin-bottom: 20px;
-    color: #0078d4;
-    font-size: 24px;
-    font-weight: 600;
-  }
+.webPartHeader {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 20px;
+}
+
+.webPartTitle {
+  color: #0078d4;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.availabilityPill {
+  background-color: #e6f2e6;
+  border: 1px solid #107c10;
+  border-radius: 999px;
+  color: #107c10;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 6px 12px;
+}
+
+.dateFilterBar {
+  align-items: flex-end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 12px;
 }
 
 .resourceGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
   gap: 16px;
   padding: 12px 0;
 
@@ -23,12 +53,21 @@
   }
 }
 
-.resourceCard {
+.loadingCard {
+  background-color: #ffffff;
   border: 1px solid #e0e0e0;
   border-radius: 4px;
+  min-height: 160px;
   padding: 16px;
+}
+
+.resourceCard {
   background-color: #ffffff;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
   transition: box-shadow 0.2s ease, transform 0.2s ease;
 
   &:hover {
@@ -37,56 +76,310 @@
   }
 }
 
+.cardHeaderStrip {
+  align-items: center;
+  display: flex;
+  height: 16px;
+  justify-content: flex-end;
+  padding-right: 8px;
+}
+
+.cardTypeIcon {
+  color: #ffffff;
+  font-size: 12px;
+  line-height: 1;
+}
+
+.resourceCardContent {
+  padding: 16px;
+}
+
 .resourceTitle {
-  font-weight: 600;
   color: #0078d4;
+  font-weight: 600;
   margin: 0;
   word-break: break-word;
 }
 
 .resourceType {
-  display: inline-block;
-  background-color: #0078d4;
-  color: #ffffff;
-  padding: 2px 8px;
+  background-color: #f3f2f1;
   border-radius: 3px;
+  color: #323130;
+  display: inline-block;
   font-size: 11px;
   font-weight: 600;
-  text-transform: uppercase;
   margin-top: 8px;
+  padding: 2px 8px;
+  text-transform: uppercase;
 }
 
 .bookButton {
-  width: 100%;
   margin-top: 12px;
+  width: 100%;
+}
+
+.bookedBadge {
+  background-color: #e6f2e6;
+  border: 1px solid #107c10;
+  border-radius: 2px;
+  color: #107c10;
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 12px;
+  padding: 6px 0;
+  text-align: center;
+  width: 100%;
+}
+
+.unavailableOverlay {
+  align-items: center;
+  background-color: rgba(209, 52, 56, 0.75);
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  inset: 0;
+  justify-content: center;
+  opacity: 1;
+  pointer-events: none;
+  position: absolute;
+  transform: translateY(0);
+  transition: opacity 200ms ease, transform 200ms ease;
+}
+
+.unavailableIcon {
+  font-size: 22px;
+}
+
+.unavailableText {
+  color: #ffffff;
+  font-weight: 600;
 }
 
 .myBookings {
   padding: 12px 0;
 }
 
-/* Dark theme support */
+.viewToggleRow {
+  margin-bottom: 12px;
+}
+
+.viewToggleButton {
+  border: 1px solid #d2d0ce;
+  border-radius: 4px;
+}
+
+.viewToggleButtonSelected {
+  background-color: #deecf9;
+  border-color: #0078d4;
+}
+
+.resourceCell {
+  align-items: center;
+  display: inline-flex;
+  gap: 8px;
+}
+
+.resourceDot {
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+  height: 6px;
+  width: 6px;
+}
+
+.statusBadge {
+  border-radius: 999px;
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+}
+
+.statusUpcoming {
+  background-color: #deecf9;
+  color: #005a9e;
+}
+
+.statusPast {
+  background-color: #edebe9;
+  color: #605e5c;
+}
+
+.pastBookingRow {
+  color: #8a8886;
+}
+
+.cancelButton {
+  :global(.ms-Button-label) {
+    color: #d13438;
+  }
+}
+
+.calendarContainer {
+  border: 1px solid #edebe9;
+  border-radius: 6px;
+  padding: 12px;
+}
+
+.calendarHeader {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.calendarMonthLabel {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.calendarGrid {
+  display: grid;
+  gap: 6px;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.calendarDayHeader {
+  color: #605e5c;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 4px;
+  text-align: center;
+}
+
+.calendarDayCell {
+  background: #ffffff;
+  border: 1px solid #edebe9;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  min-height: 82px;
+  padding: 6px;
+  text-align: left;
+}
+
+.calendarOutsideMonth {
+  opacity: 0.35;
+}
+
+.calendarToday {
+  border: 2px solid #0078d4;
+}
+
+.calendarDayNumber {
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.calendarDots {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.calendarDot {
+  border-radius: 999px;
+  display: inline-block;
+  height: 6px;
+  width: 20px;
+}
+
+.calendarMore {
+  color: #605e5c;
+  font-size: 11px;
+}
+
+.calendarCallout {
+  max-width: 280px;
+}
+
+.calendarCalloutContent {
+  padding: 10px;
+}
+
+.calendarBookingItem {
+  border-bottom: 1px solid #f3f2f1;
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+
+  &:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+}
+
+.calendarBookingTitle {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.dialogHeaderStrip {
+  align-items: center;
+  border-radius: 4px;
+  color: #ffffff;
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding: 8px 10px;
+}
+
+.dialogHeaderIcon {
+  color: #ffffff;
+  font-size: 16px;
+}
+
+.dialogHeaderType {
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+@media (max-width: 480px) {
+  .resourceGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .webPartHeader {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .calendarDayCell {
+    min-height: 56px;
+    padding: 4px;
+  }
+
+  .calendarDots {
+    display: none;
+  }
+}
+
 :global([data-theme="dark"]) {
   .hotDeskBooking {
     background-color: #1f1f1f;
     color: #ffffff;
-
-    h2 {
-      color: #0078d4;
-    }
   }
 
-  .resourceCard {
+  .resourceCard,
+  .loadingCard,
+  .calendarDayCell {
     background-color: #2d2d2d;
     border-color: #444444;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
-
-    &:hover {
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
-    }
   }
 
-  .resourceTitle {
-    color: #0078d4;
+  .resourceType {
+    background-color: #3b3a39;
+    color: #f3f2f1;
+  }
+
+  .calendarContainer {
+    border-color: #444444;
   }
 }

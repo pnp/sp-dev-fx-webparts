@@ -1,35 +1,27 @@
 {
-  "requiresCustomScript": false,
-  "id": "88888888-8888-8888-8888-888888888890",
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/sp-webpart-manifest.schema.json",
+  "id": "2a8928ea-e7e0-4f96-94b2-4bb1eb31ce9b",
   "alias": "HotDeskBookingWebPart",
   "componentType": "WebPart",
-  "manifestVersion": 2,
   "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+  "supportsThemeVariants": true,
   "preconfiguredEntries": [
     {
-      "title": {
-        "default": "Hot Desk Booking"
-      },
-      "group": {
-        "default": "Collaboration"
-      },
-      "description": {
-        "default": "Book shared resources like hot desks, parking spots, and lockers"
-      },
+      "groupId": "bac22e09-5056-4a94-b250-2adc8ca0285b",
+      "group": { "default": "Collaboration" },
+      "title": { "default": "Hot Desk Booking" },
+      "description": { "default": "Book shared resources like hot desks, parking spots, and lockers" },
       "officeFabricIconFontName": "CalendarMirrored",
-      "groupId": "88888888-8888-8888-8888-888888888891",
       "properties": {
-        "resourcesListName": "HotDeskResources",
-        "isAdminMode": false,
         "title": "Resource Booking",
-        "defaultResourceType": "",
-        "bookingsListName": "HotDeskBookings"
+        "resourcesListName": "HotDeskResources",
+        "bookingsListName": "HotDeskBookings",
+        "isAdminMode": false,
+        "defaultResourceType": ""
       }
     }
-  ],
-  "supportedHosts": [
-    "SharePointWebPart"
-  ],
-  "$schema": "https://developer.microsoft.com/json-schemas/spfx/sp-webpart-manifest.schema.json",
-  "supportsThemeVariants": true
+  ]
 }

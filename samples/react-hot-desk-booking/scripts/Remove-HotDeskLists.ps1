@@ -66,7 +66,7 @@ try {
             -Tenant $TenantId `
             -DeviceLogin
     } else {
-        Connect-PnPOnline -Url $SiteUrl -Interactive
+        Connect-PnPOnline -Url $SiteUrl -Interactive -ClientId "31359c7f-bd7e-475c-86db-fdb8c937548e"
     }
 
     Write-Host "Removing lists..." -ForegroundColor Yellow
