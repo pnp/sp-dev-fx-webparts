@@ -16590,7 +16590,7 @@
     "shortDescription": "Built purely with off-the-shelf SharePoint capabilities, Engage Hub is a contemporary SPFx-based substitute for Viva Engage. In addition to providing essential social capabilities such as liking and unliking posts, threaded comments, and comment creation, it manages post data using SharePoint Lists and Document Libraries.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-engage-hub",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-engage-hub",
-    "updateDateTime": "2026-04-26",
+    "updateDateTime": "2026-06-17",
     "metadata": [
       {
         "key": "SAMPLE-TYPE",
