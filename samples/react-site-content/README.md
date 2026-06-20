@@ -9,7 +9,7 @@ Site Content solution contains SPFx web part that provides
 3. Functionality to Sort the lists or libraries by name, type, items count, description.
 4. Functionality to get the Drive ID for document library
 
-![Site Content ](./assets/SiteContentWebpart.png)
+![Site Content ](./assets/screenshot.png)
 ![Detail](./assets/LibraryDetails.png)
 
 ## Compatibility
@@ -23,7 +23,7 @@ This sample is optimally compatible with the following environment configuration
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
+![SPFx 1.23.0](https://img.shields.io/badge/SPFx-1.23.0-green.svg)
 ![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -66,6 +66,7 @@ For more information about SPFx compatibility, please refer to <https://aka.ms/s
 | 1.0     | September 07, 2025 | Initial release                          |
 | 2.0     | October 12, 2025   | Sorting & Document Library Details added |
 | 2.1     | November 12, 2025  | Bug fix related to sorting               |
+| 2.2     | June 17, 2026      | SPFx version upgrade to 1.23             |
 
 ## Minimal Path to Awesome
 
