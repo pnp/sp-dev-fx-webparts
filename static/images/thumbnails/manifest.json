@@ -2131,6 +2131,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-dialog/assets/screenshot.png",
     "file": "pnp-sp-dev-spfx-extensions-react-command-dialog.webp"
   },
+  "pnp-sp-dev-spfx-extensions-react-command-task-mgmt": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/react-command-task-mgmt/assets/task-management.png",
+    "file": "pnp-sp-dev-spfx-extensions-react-command-task-mgmt.webp"
+  },
   "pnp-sp-dev-spfx-extensions-js-application-listdrivenplaceholders": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-extensions/raw/main/samples/js-application-listdrivenplaceholders/assets/placeholders.jpg",
     "file": "pnp-sp-dev-spfx-extensions-js-application-listdrivenplaceholders.webp"

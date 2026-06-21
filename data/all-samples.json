@@ -26954,6 +26954,50 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-extensions-react-command-task-mgmt",
+    "source": "pnp",
+    "title": "Grouped ListView Command Set - Task Management",
+    "shortDescription": "This sample demonstrates the new Grouping support for ListView Command Sets introduced in SPFx 1.23. It adds a grouped Status command (with Approve and Reject sub-commands) to the SharePoint modern list view toolbar and context menu.",
+    "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-command-task-mgmt",
+    "downloadUrl": null,
+    "updateDateTime": "2026-05-31",
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.23.0"
+      }
+    ],
+    "tags": [],
+    "categories": [
+      "SPFX-APPLICATION-EXTENSION"
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "a1mery",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/a1mery.74b01cb838c6.webp",
+        "name": "Aimery Thomas",
+        "avatarSourceUrl": "https://github.com/a1mery.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-command-task-mgmt.webp",
+        "alt": "Grouped ListView Command Set - Task Management"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-extensions-js-application-listdrivenplaceholders",
     "source": "pnp",
     "title": "List-Driven Placeholders",
@@ -27272,6 +27316,43 @@
         "alt": "File Size Viewer sample with Command View Set"
       }
     ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
+    "name": "pnp-sp-dev-spfx-extensions-react-site-content-ribbon-extension",
+    "source": "pnp",
+    "title": "Site Content Ribbon Extension",
+    "shortDescription": "Site Content Ribbon Extension is a SharePoint Framework Application Customizer for SharePoint Online that adds a ribbon-style “Site content” action to the SharePoint header and opens a modern, searchable experience for browsing site content directly from the current page.",
+    "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-site-content-ribbon-extension",
+    "downloadUrl": null,
+    "updateDateTime": "2026-06-19",
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.23.0"
+      }
+    ],
+    "tags": [],
+    "categories": [
+      "SPFX-APPLICATION-EXTENSION"
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "HarminderSethi",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/harmindersethi.1d1b349b140b.webp",
+        "name": "Harminder Singh",
+        "avatarSourceUrl": "https://github.com/HarminderSethi.png"
+      }
+    ],
+    "thumbnails": [],
     "reactions": {
       "url": "",
       "totalReactions": 0,
