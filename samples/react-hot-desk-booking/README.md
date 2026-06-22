@@ -89,7 +89,7 @@ Device Code Flow (for CI/CD or automation):
     -TenantId "contoso.onmicrosoft.com"
 ```
 
-For detailed script documentation, see [scripts/README.md](scripts/README.md) and [scripts/APP-REGISTRATION-SETUP.md](scripts/APP-REGISTRATION-SETUP.md).
+
 
 #### Option B: Manual List Creation
 
