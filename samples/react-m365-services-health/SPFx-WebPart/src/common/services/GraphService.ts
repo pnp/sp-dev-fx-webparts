@@ -4,14 +4,14 @@ import { MSGraphClientV3 } from "@microsoft/sp-http-msgraph";
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 
 export class GraphService {
-  private context: WebPartContext;
+  private readonly context: WebPartContext;
 
   //private token: string;
   constructor(context: WebPartContext) {
     this.context = context;
   }
 
-  private getClient = async (): Promise<MSGraphClientV3> => {
+  private readonly getClient = async (): Promise<MSGraphClientV3> => {
     return await this.context.msGraphClientFactory.getClient("3");
   };
 

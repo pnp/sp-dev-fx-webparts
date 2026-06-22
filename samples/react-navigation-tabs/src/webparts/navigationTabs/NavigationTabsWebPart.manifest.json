@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "b2c3d4e5-f6a7-8901-bcde-f12345678901",
+  "alias": "NavigationTabsWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "SharePointWebPart",
+    "TeamsPersonalApp",
+    "TeamsTab",
+    "SharePointFullPage"
+  ],
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": {
+        "default": "Other"
+      },
+      "title": {
+        "default": "Navigation Tabs"
+      },
+      "description": {
+        "default": "Displays SharePoint list links in tabbed categories"
+      },
+      "officeFabricIconFontName": "TabCenter",
+      "properties": {
+        "listId": "",
+        "layoutType": "card",
+        "cardsPerRow": 3,
+        "showDescriptions": true,
+        "openInNewTabDefault": true,
+        "newListName": "",
+        "categoryOrder": []
+      }
+    }
+  ]
+}

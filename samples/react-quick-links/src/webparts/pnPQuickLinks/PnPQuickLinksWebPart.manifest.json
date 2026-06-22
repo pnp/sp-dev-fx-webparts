@@ -36,7 +36,8 @@
             "IconName": "blog",
             "Link": "https://blog.dan-toft.dk",
             "SortWeight": 0.25,
-            "Target": "_blank"
+            "Target": "_blank",
+            "GroupsIDS": []
           },
           {
             "Id": "leoonn0xyr1cels2k6j",
@@ -44,7 +45,8 @@
             "IconName": "SharedDatabase",
             "Link": "https://pnp.github.io/",
             "SortWeight": 0.5,
-            "Target": "_blank"
+            "Target": "_blank",
+            "GroupsIDS": []
           },
           {
             "Id": "leooo0weyww1ld0kzkf",
@@ -52,7 +54,8 @@
             "IconName": "BingLogo",
             "Link": "https://bing.com/new",
             "SortWeight": 0.75,
-            "Target": "_blank"
+            "Target": "_blank",
+            "GroupsIDS": []
           }
         ],
         "tile": {

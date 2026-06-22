@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "strategy": {
+      "type": "string",
+      "enum": ["major", "minor", "patch", "build"],
+      "description": "Version increment strategy: major (breaking), minor (features), patch (fixes), build (revision only)",
+      "default": "patch"
+    },
+    "productionOnly": {
+      "type": "boolean",
+      "description": "Only increment version on production builds",
+      "default": true
+    },
+    "updatePackageSolution": {
+      "type": "boolean",
+      "description": "Update config/package-solution.json with new version",
+      "default": true
+    }
+  },
+  "additionalProperties": false
+}

@@ -3,6 +3,8 @@ declare interface ICarouselWebPartStrings {
   BasicGroupName: string;
   SiteUrlFieldLabel: string;
   ListFieldLabel: string;
+  ImageFitFieldLabel: string;
+  CarouselSpeedFieldLabel: string;
   WebPartConfigButtonLabel: string;
   WebpartConfigDescription: string;
   WebpartConfigIconText: string;

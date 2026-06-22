@@ -2,25 +2,7 @@ import * as React from 'react';
 import { IImageProps } from './IRenderImageProps';
 import { IImageState } from './IRenderImageState';
 
-import {
-  Spinner,
-  SpinnerSize,
-  MessageBar,
-  MessageBarType,
-  Label,
-  Icon,
-  DocumentCard,
-  DocumentCardActivity,
-  DocumentCardPreview,
-  DocumentCardTitle,
-  IDocumentCardPreviewProps,
-  ImageFit,
-  Image
-
-} from 'office-ui-fabric-react';
-import { FontSizes } from '@uifabric/fluent-theme/lib/fluent/FluentType';
-import 'video-react/dist/video-react.css'; // import css
-import { Player, BigPlayButton } from 'video-react';
+import { FontSizes, Icon, Label,Image, ImageFit } from '@fluentui/react';
 
 export default class RenderImage extends React.Component<IImageProps, IImageState> {
 
@@ -50,7 +32,7 @@ export default class RenderImage extends React.Component<IImageProps, IImageStat
             height={180}
           />
           {
-            this.props.image.mediaType == 'video' && (
+            this.props.image.mediaType === 'video' && (
               <Icon iconName='MSNVideosSolid'
                 style={{ pointerEvents: "none", display: 'block'   , fontSize: FontSizes.size42, textAlign: 'center', width: '50px', height: '50px', position: 'absolute', top: '40%', left: '40%' }}
               />

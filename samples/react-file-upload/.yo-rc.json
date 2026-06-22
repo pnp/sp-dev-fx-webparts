@@ -1,0 +1,12 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.4.0",
+    "libraryName": "dixons-carphone",
+    "libraryId": "786e7cdf-d1c8-4412-8abb-1aa18ea555e0",
+    "environment": "spo",
+    "isDomainIsolated": false,
+    "isCreatingSolution": true,
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

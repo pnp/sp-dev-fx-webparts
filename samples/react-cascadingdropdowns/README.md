@@ -22,8 +22,8 @@ For a version of this sample which demonstrates how to load dropdown choices fro
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.18.0](https://img.shields.io/badge/SPFx-1.18.0-green.svg)
-![Node.js v18.17.1](https://img.shields.io/badge/Node.js-v18.17.1-green.svg)
+![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
+![Node.js v22.15.0](https://img.shields.io/badge/Node.js-%20v22.15.0-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -31,7 +31,7 @@ This sample is optimally compatible with the following environment configuration
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
-Tested using Node.js: **v18.17.1**
+Tested using Node.js: **v22.15.0**
 
 ## Applies to
 
@@ -50,9 +50,9 @@ Tested using Node.js: **v18.17.1**
 Version|Date|Comments
 -------|----|--------
 1.0|September 12, 2022|Initial release
+1.1|September 12, 2025| Upgraded to SPFx 1.21.1
 
 ## Minimal path to awesome
-
 
 
 * Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-cascadingdropdowns) then unzip it)

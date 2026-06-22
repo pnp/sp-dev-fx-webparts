@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "user-group-manager-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/SPPermissionManager/SPPermissionManagerWebPart.js",
+          "manifest": "./src/webparts/SPPermissionManager/SPPermissionManagerWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SPPermissionManagerWebPartStrings": "lib/webparts/SPPermissionManager/loc/{locale}.js"
+  }
+}

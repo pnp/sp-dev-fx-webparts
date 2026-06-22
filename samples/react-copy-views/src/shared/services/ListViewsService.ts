@@ -80,12 +80,12 @@ export class ListViewsService implements IListViewsService {
         if (!targetView) {
             const viewAddResult = await targetList.views.add(sourceView.title, false, properties);
 
-            await this._updateViewFields(viewAddResult.view, sourceViewFields, targetListInfo);
+            await this._updateViewFields(targetList.views.getById(viewAddResult.Id), sourceViewFields, targetListInfo);
         }
         else {
             const viewUpdateResult = await targetList.views.getById(targetView.Id).update(properties);
 
-            await this._updateViewFields(viewUpdateResult.view, sourceViewFields, targetListInfo);
+            await this._updateViewFields(targetList.views.getById(targetView.Id), sourceViewFields, targetListInfo);
         }
     }
 

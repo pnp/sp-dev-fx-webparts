@@ -51,7 +51,15 @@ When configuring the canvas app registration, pay attention to the following det
 
 2. The redirect URI should be the same as the URL for your SharePoint site that will host the copilot. For example, if you plan to deploy the copilot on <https://mytenant.sharepoint.com/sites/MySite>, set this as your redirect URI.
 
-   **Important:** Users can reach your SharePoint site via addresses that include trailing slashes. Since redirect URIs are sensitive to this variation, consider creating two redirect URIs representing the same site, with and without a trailing slash (for example: <https://mytenant.sharepoint.com/sites/MySite> and <https://mytenant.sharepoint.com/sites/MySite/>)
+   **Important:** 
+    - Users can reach your SharePoint site via addresses that include trailing slashes. Since redirect URIs are sensitive to this variation, consider creating two redirect URIs representing the same site, with and without a trailing slash (for example: <https://mytenant.sharepoint.com/sites/MySite> and <https://mytenant.sharepoint.com/sites/MySite/>)
+    - The redirect URI should be the page url in which the webpart is added. So, consider adding the page URI as well (for example: <https://mytenant.sharepoint.com/sites/MySite/sitepages/Page-Where-The-Webpart-Is-Added.aspx>) as in below screenshot.
+     
+    <p align="center">
+      <img src="./images/Redirect-URI.png" alt="Redirect URI samples">
+      <br>
+      <em>Redirect URI examples</em>
+    </p>
 
 3. The canvas app registration will need permissions for the custom API that was configured in *Step 1*. To add this permission, select an API from “APIs my organization uses” and search for the name you have given your copilot app registration in *Step 1*. For example, if your copilot app registration is called “SharePoint Bot Authentication” search for that name in the list of APIs, and select your custom scope (a name for your custom scope has been selected while configuring a custom API for your copilot app registration)
 

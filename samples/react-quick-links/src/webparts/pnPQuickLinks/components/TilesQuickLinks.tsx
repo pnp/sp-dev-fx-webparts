@@ -7,6 +7,7 @@ import { Util } from '../Util/Util';
 import { SortableContainer, SortableElement } from 'react-sortable-hoc';
 import { IPnPQuickLinksProps } from './IPnPQuickLinksProps';
 import { TileSize } from '../models/enums';
+import TargetAudience from './TargetAudience';
 
 export interface ITilesQuickLinksProps extends IPnPQuickLinksProps {
   size: TileSize,
@@ -15,7 +16,7 @@ export interface ITilesQuickLinksProps extends IPnPQuickLinksProps {
 
 
 export const TilesQuickLinks: React.FunctionComponent<ITilesQuickLinksProps> = (props: React.PropsWithChildren<ITilesQuickLinksProps>) => {
-  const { displayMode, webPartTitle, setWebpartTitle, links, setLinks, SelectedItemId, setSelectedItemId, hideText, size } = props;
+  const { displayMode, webPartTitle, setWebpartTitle, links, setLinks, SelectedItemId, setSelectedItemId, hideText, size, context, pageContext } = props;
   const theme = getTheme();
 
   const AddLink = ():void => {
@@ -64,16 +65,31 @@ export const TilesQuickLinks: React.FunctionComponent<ITilesQuickLinksProps> = (
       }} />
   ));
 
-  const SortableList = SortableContainer(({ items }: { items: ILink[] }) => (
+const SortableList = SortableContainer(({ items }: { items: ILink[] }) => (
     <div style={{ gap: 10, display: 'flex', flexWrap: "wrap" }}>
-      {items.map((item, index) => (
-        <SortableItem
-          key={`${item.Id}`}
-          index={index}
-          link={item}
-          disabled={displayMode === DisplayMode.Read}
-        />
-      ))}
+      {displayMode === DisplayMode.Read &&
+        items.map((item, index) => (
+          <TargetAudience
+            key={`${item.Id}`}
+            groupIds={item.GroupsIDS}
+            pageContext={pageContext}
+            context={context}
+          >
+            <SortableItem
+              index={index}
+              link={item}
+              disabled={true}
+            />
+          </TargetAudience>
+        ))}
+      {displayMode == DisplayMode.Edit &&
+        items.map((item, index) => (
+          <SortableItem
+            key={`${item.Id}`}
+            index={index}
+            link={item}
+          />
+        ))}
     </div>
   ));
 

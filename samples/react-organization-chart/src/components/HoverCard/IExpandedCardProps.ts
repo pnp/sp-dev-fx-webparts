@@ -1,6 +1,7 @@
 import { IUserInfo } from "../../models/IUserInfo";
+import { SPFI } from "@pnp/sp";
 
 export interface IExpandedCardProps {
-  user: IUserInfo
-
+  user: IUserInfo;
+  sp: SPFI;
 }

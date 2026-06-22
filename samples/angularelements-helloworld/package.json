@@ -11,7 +11,7 @@
     "test": "gulp test"
   },
   "dependencies": {
-    "@angular/common": "^6.0.3",
+    "@angular/common": "^19.2.16",
     "@angular/compiler": "^6.0.3",
     "@angular/core": "^11.0.5",
     "@angular/elements": "^6.0.3",

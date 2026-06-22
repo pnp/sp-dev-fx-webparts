@@ -1,0 +1,9 @@
+{
+    "json.schemas": [
+      {
+        "fileMatch": ["**/assets/sample.json"], 
+        "url": "pnp/sp-dev-fx-webparts/templates/metadata-schema.json"
+      }
+    ]
+  }
+  

@@ -9,7 +9,7 @@ import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { AdaptiveCard, IAdaptiveCardActionResult } from '../../../controls/AdaptiveCard';
 
 // Needed for displaying warnings
-import { MessageBar, MessageBarType, MessageBarButton } from 'office-ui-fabric-react';
+import { MessageBar, MessageBarType } from '@fluentui/react/lib/MessageBar';
 
 // Localization
 import * as strings from 'AdaptiveCardHostWebPartStrings';
@@ -66,7 +66,7 @@ export default class AdaptiveCardHost extends React.Component<IAdaptiveCardHostP
             messageBarType={MessageBarType.warning}
             actions={
               <div>
-                <MessageBarButton onClick={this._configureHandler}>{strings.ConfigureButtonLabel}</MessageBarButton>
+                <MessageBar onClick={this._configureHandler}>{strings.ConfigureButtonLabel}</MessageBar>
               </div>
             }
           >

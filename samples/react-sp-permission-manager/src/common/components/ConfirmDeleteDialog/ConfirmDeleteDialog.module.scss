@@ -1,0 +1,65 @@
+.surface {
+  width: min(560px, calc(100vw - 24px));
+}
+
+.accessDeniedBody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  text-align: center;
+}
+
+.lockIcon {
+  font-size: 48px;
+  color: var(--colorPaletteRedForeground1);
+}
+
+.itemList {
+  margin: 8px 0 0;
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.deletingBody {
+  padding: 24px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.resultSummary {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.resultTable {
+  width: 100%;
+}
+
+.successText {
+  color: var(--colorPaletteGreenForeground1);
+}
+
+.errorText {
+  color: var(--colorPaletteRedForeground1);
+}
+
+.dangerPrimary {
+  background-color: #d13438;
+  border-color: #d13438;
+  color: #ffffff;
+
+  &:hover {
+    background-color: #a4262c;
+    border-color: #a4262c;
+  }
+
+  &:active {
+    background-color: #8a1c21;
+    border-color: #8a1c21;
+  }
+}

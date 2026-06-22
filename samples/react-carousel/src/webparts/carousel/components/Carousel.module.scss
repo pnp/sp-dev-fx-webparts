@@ -64,11 +64,71 @@
 }
 
 :global {
-    .slick-next,
-    .slick-prev {
-        background: $ms-color-themePrimary !important;
+    .custom-arrow {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 100;
+        transition: background-color 0.2s ease, box-shadow 0.2s ease;
+
+        i {
+            font-size: 20px;
+            color: $ms-color-themePrimary;
+        }
+
+        &:hover {
+            background: $ms-color-themePrimary;
+            box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
+
+            i {
+                color: white;
+            }
+        }
     }
+
+    .custom-prev {
+        left: 25px;
+    }
+
+    .custom-next {
+        right: 25px;
+    }
+
     .slick-dots {
         position: initial !important;
+        bottom: 20px !important;
+
+        li {
+            margin: 0 8px !important;
+
+            button {
+                &:before {
+                    font-size: 12px !important;
+                    color: $ms-color-neutralLight !important;
+                    opacity: 0.5 !important;
+                    transition: all 0.3s ease !important;
+                }
+
+                &:hover:before {
+                    opacity: 0.75 !important;
+                    transform: scale(1.2) !important;
+                }
+            }
+
+            &.slick-active button:before {
+                color: $ms-color-themePrimary !important;
+                opacity: 1 !important;
+                transform: scale(1.3) !important;
+            }
+        }
     }
 }

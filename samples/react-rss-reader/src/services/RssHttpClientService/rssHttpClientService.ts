@@ -19,7 +19,7 @@ export class RssHttpClientService {
   public static async init(context: WebPartContext): Promise<void> {
 
     //obtain the httpClient from the webpart context
-    this._httpClient = await context.httpClient;
+    this._httpClient = context.httpClient as any;
 
   }
 

@@ -1,0 +1,185 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.migratePersonalSettings {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.welcome {
+  text-align: center;
+}
+
+.welcomeImage {
+  width: 100%;
+  max-width: 420px;
+}
+
+.links {
+  a {
+    text-decoration: none;
+    color: "[theme:link, default:#03787c]";
+    color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+
+    &:hover {
+      text-decoration: underline;
+      color: "[theme:linkHovered, default: #014446]";
+      color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+    }
+  }
+}
+
+.authSection {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.configInfo {
+  margin-bottom: 10px;
+  padding: 8px;
+  background-color: #e1f5fe;
+  border-left: 4px solid #0277bd;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.authStatus {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.buttonContainer {
+  margin-bottom: 10px;
+}
+
+.messageBarContainer {
+  margin-bottom: 15px;
+}
+
+.signInButton {
+  margin-right: 10px;
+}
+
+.tokenSection {
+  margin-top: 10px;
+}
+
+.tokenDisplay {
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 3px;
+  font-size: 12px;
+  word-break: break-all;
+  max-height: 100px;
+  overflow: auto;
+}
+
+.profileSection {
+  margin-top: 10px;
+}
+
+.profileDetails {
+  background-color: #f5f5f5;
+  padding: 10px;
+  border-radius: 3px;
+  font-size: 12px;
+}
+
+.filesSection {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fafafa;
+}
+
+.actionsContainer {
+  display: flex;
+  gap: 8px;
+}
+
+.contentButton {
+  background: none;
+  border: none;
+  color: #0078d4;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  font-size: inherit;
+
+  &:hover {
+    color: #106ebe;
+  }
+
+  &:disabled {
+    color: #a6a6a6;
+    cursor: not-allowed;
+  }
+}
+
+.contentSection {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f5f5f5;
+}
+
+.contentHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #666;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    color: #000;
+    background-color: #e1e1e1;
+    border-radius: 50%;
+  }
+}
+
+.contentDisplay {
+  max-height: 400px;
+  overflow: auto;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+.contentText {
+  margin: 0;
+  padding: 15px;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.infoNote {
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #666;
+}

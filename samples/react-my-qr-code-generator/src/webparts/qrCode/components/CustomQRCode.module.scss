@@ -1,0 +1,31 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.frameContainer {
+  position: relative;
+  display: inline-block;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  &.simple {
+    padding: 20px;
+    border-radius: 4px;
+  }
+
+  &.rounded {
+    padding: 20px;
+    border-radius: 16px;
+  }
+
+  &.badge {
+    padding: 30px 20px 40px;
+    border-radius: 20px;
+  }
+}
+
+.frameText {
+  text-align: center;
+  margin-top: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  color: #333;
+}

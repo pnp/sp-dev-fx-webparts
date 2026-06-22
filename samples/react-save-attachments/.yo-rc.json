@@ -1,0 +1,12 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.13.0",
+    "libraryName": "react-save-attachments",
+    "libraryId": "04634d50-d72c-45ec-81d0-7b1f803800da",
+    "environment": "spo",
+    "isDomainIsolated": false,
+    "isCreatingSolution": true,
+    "packageManager": "npm",
+    "componentType": "webpart"
+  }
+}

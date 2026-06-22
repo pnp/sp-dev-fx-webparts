@@ -6,14 +6,21 @@
 import { ICalendarService } from "..";
 import { BaseCalendarService } from "../BaseCalendarService";
 import { ICalendarEvent } from "../ICalendarEvent";
-import { Web } from "@pnp/sp";
+import { spfi, SPFx, SPFI } from "@pnp/sp";
+import { Web } from "@pnp/sp/webs";
+import "@pnp/sp/webs";
+import "@pnp/sp/lists";
+import "@pnp/sp/items";
 import { combine } from "@pnp/common";
 
 export class SharePointCalendarService extends BaseCalendarService
   implements ICalendarService {
+    private sp : SPFI ;
   constructor() {
     super();
+
     this.Name = "SharePoint";
+    
   }
 
   public getEvents = async (): Promise<ICalendarEvent[]> => {
@@ -21,7 +28,12 @@ export class SharePointCalendarService extends BaseCalendarService
       this.FeedUrl,
       this.EventRange
     );
-
+    if(this.Context === undefined || this.Context === null){
+      throw new Error("Context is null SPFx context is required for SharePointCalendarService");
+    }
+    if(this.sp === undefined && (this.Context !== undefined || this.Context !== null)){
+      this.sp = spfi().using(SPFx(this.Context));
+    }
     // Get the URL
     const webUrl = parameterizedFeedUrl.toLowerCase();
 
@@ -35,22 +47,21 @@ export class SharePointCalendarService extends BaseCalendarService
     const listUrl = webUrl.substring(webRoot.length);
 
     // Find the "lists" portion of the URL to get the site URL
-    const webLocation = listUrl.substr(0, listUrl.indexOf("lists/"));
+    const webLocation = listUrl.substring(0, listUrl.indexOf("lists/"));
     const siteUrl = webRoot + webLocation;
 
     // Open the web associated to the site
-    const web = new Web(siteUrl);
-
-    // Get the web
-    await web.get();
+   
+    const web =  Web(siteUrl).using(SPFx(this.Context));
+    
+   
     // Build a filter so that we don't retrieve every single thing unless necesssary
     const dateFilter: string = "EventDate ge datetime'" + this.EventRange.Start.toISOString() + "' and EndDate lt datetime'" + this.EventRange.End.toISOString() + "'";
     try {
       const items = await web.getList(listUrl)
         .items.select("Id,Title,Description,EventDate,EndDate,fAllDayEvent,Category,Location")
         .orderBy('EventDate', true)
-        .filter(dateFilter)
-        .get();
+        .filter(dateFilter)();
       // Once we get the list, convert to calendar events
       const events: ICalendarEvent[] = items.map((item: any) => {
         const eventUrl: string = combine(webUrl, "DispForm.aspx?ID=" + item.Id);

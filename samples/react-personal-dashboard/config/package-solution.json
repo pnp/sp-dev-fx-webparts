@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Personal Dashboard",
+    "id": "9973f73a-25d0-4ce7-8a61-27238f09eac9",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.17.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Personal Dashboard"
+      },
+      "longDescription": {
+        "default": "This solution allows users to create personalized dashboard by selecting and adding organization-wide apps."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Personal Dashboard Feature",
+        "description": "The feature that activates elements of the react-personal-dashboard solution.",
+        "id": "c8a098d4-c26a-4ac5-aea4-41377aaf31f1",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-personal-dashboard.sppkg"
+  }
+}

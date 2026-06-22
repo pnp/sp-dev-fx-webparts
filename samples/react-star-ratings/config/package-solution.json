@@ -3,7 +3,7 @@
   "solution": {
     "name": "ratings",
     "id": "1fac5bb8-6a05-4c52-aee3-496f6921ac1a",
-    "version": "1.4.0.0",
+    "version": "1.5.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -30,7 +30,7 @@
         "title": "Ratings",
         "description": "The feature that activates elements of the ratings solution.",
         "id": "6f19fff7-a71c-47bd-a5d0-c1d6c147acae",
-        "version": "1.4.0.0"
+        "version": "1.5.0.0"
       }
     ]
   },

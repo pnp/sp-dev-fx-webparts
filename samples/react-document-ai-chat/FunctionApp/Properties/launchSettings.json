@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "O365C.SK.KernelMemory.FuncApp": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7210",
+      "launchBrowser": false
+    }
+  }
+}

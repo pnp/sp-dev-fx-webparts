@@ -33,7 +33,7 @@
     "@types/webpack-env": "1.15.2",
     "@uifabric/example-data": "^7.1.5",
     "classnames": "^2.2.6",
-    "immutable": "^4.0.0-rc.12",
+    "immutable": "^4.3.8",
     "moment": "^2.29.1",
     "office-ui-fabric-react": "^7.145.0",
     "react": "16.8.5",
@@ -42,7 +42,7 @@
     "redux": "4.0.5",
     "redux-logger": "3.0.6",
     "redux-thunk": "2.3.0",
-    "tinymce": "^5.5.1"
+    "tinymce": "^7.9.3"
   },
   "devDependencies": {
     "@microsoft/rush-stack-compiler-3.3": "0.9.14",

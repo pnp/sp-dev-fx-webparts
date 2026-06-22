@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+    <ListInstance
+        CustomSchema="schema.xml"
+        FeatureId="00bfea71-de22-43b2-a848-c05709900100"
+        Title="Birthdays"
+        Description="Employee birthdays list"
+        TemplateType="100"
+        Url="Lists/Birthdays"
+        OnQuickLaunch="TRUE">
+    </ListInstance>
+</Elements>

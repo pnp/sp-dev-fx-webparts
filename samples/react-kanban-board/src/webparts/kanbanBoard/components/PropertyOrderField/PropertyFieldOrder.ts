@@ -16,7 +16,7 @@ class PropertyFieldOrderBuilder implements IPropertyPaneField<IPropertyFieldOrde
     public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
     public targetProperty: string;
     public properties: IPropertyFieldOrderPropsInternal;
-    private elem: HTMLElement;
+    private elem: HTMLElement|undefined;
     private items: Array<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
     private changeCB?: (targetProperty?: string, newValue?: any) => void; // eslint-disable-line @typescript-eslint/no-explicit-any
 

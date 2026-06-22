@@ -27,7 +27,7 @@ const currentTheme = window.__themeState__.theme;
 export const PersonCard: React.FunctionComponent<IPersonCardProps> = (
   props: IPersonCardProps
 ) => {
-  const { userInfo, onUserSelected, showActionsBar } = props;
+  const { userInfo, onUserSelected, showActionsBar, sp } = props;
 
   const documentCardRef = React.useRef<IDocumentCard>(null);
   const {
@@ -102,8 +102,8 @@ export const PersonCard: React.FunctionComponent<IPersonCardProps> = (
   );
 
   const onRenderExpandedCard = React.useCallback(
-    (user: IUserInfo): JSX.Element => <ExpandedCard user={user} />,
-    []
+    (user: IUserInfo): JSX.Element => <ExpandedCard user={user} sp={sp} />,
+    [sp]
   );
 
   const expandingCardProps: IExpandingCardProps = React.useMemo(() => {

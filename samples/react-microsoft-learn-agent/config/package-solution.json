@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "O365C - Microsoft Learn Agent",
+    "id": "4b22853b-37fb-4d9a-80c7-07348805a146",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "MicrosoftLearnAgent description"
+      },
+      "longDescription": {
+        "default": "MicrosoftLearnAgent description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "O365C - Microsoft Learn Agent",
+        "description": "The feature that activates elements of the O365C - Microsoft Learn Agent.",
+        "id": "87b798ab-565d-43f8-a46e-82715a8c566a",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/o365c-microsoft-learn-agent.sppkg"
+  }
+}

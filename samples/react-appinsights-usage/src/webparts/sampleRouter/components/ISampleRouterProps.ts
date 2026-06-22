@@ -4,4 +4,5 @@ export interface ISampleRouterProps {
   environmentMessage: string;
   hasTeamsContext: boolean;
   userDisplayName: string;
+  isAppInsightsConfigured: boolean;
 }

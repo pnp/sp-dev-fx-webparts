@@ -1,0 +1,60 @@
+.characterOptions {
+  padding: 16px 0;
+
+  :global {
+    .ms-Dialog-main {
+      .ms-Dialog-content {
+        .ms-Stackitem {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}
+
+.characterCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px;
+  border: 2px solid #e1e1e1;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  background-color: #fafafa;
+
+  &:hover {
+    border-color: #0078d4;
+    background-color: #f3f2f1;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  &.selected {
+    border-color: #0078d4;
+    background-color: #e8f4f8;
+    box-shadow: 0 2px 12px rgba(0, 120, 212, 0.2);
+  }
+}
+
+.cardContent {
+  flex: 1;
+}
+
+.label {
+  font-weight: 600;
+  font-size: 16px;
+  color: #202020;
+  margin-bottom: 4px;
+}
+
+.description {
+  font-size: 13px;
+  color: #605e5c;
+}
+
+.checkmark {
+  font-size: 24px;
+  color: #107c10;
+  font-weight: bold;
+  margin-left: 16px;
+}

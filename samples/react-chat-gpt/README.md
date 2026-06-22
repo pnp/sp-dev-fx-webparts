@@ -21,8 +21,8 @@ This webpart uses Chat GPT in an SPFx web part. You can ask questions from the w
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.16.1](https://img.shields.io/badge/SPFx-1.16.1-green.svg)
-![Node.js v16 | v14 | v12](https://img.shields.io/badge/Node.js-v16%20%7C%20v14%20%7C%20v12-green.svg)
+![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
+![Node.js v22.15.0](https://img.shields.io/badge/Node.js-%20v22.15.0-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -47,6 +47,7 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 
 Version|Date|Comments
 -------|----|--------
+1.1| October 2025 | Upgraded to 1.21.1
 1.0|February 4, 2023|Initial release
 
 ## Prerequisites

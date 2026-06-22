@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "countdown-timer-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/countdownTimer/CountdownTimerWebPart.js",
+          "manifest": "./src/webparts/countdownTimer/CountdownTimerWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "CountdownTimerWebPartStrings": "lib/webparts/countdownTimer/loc/{locale}.js"
+  }
+}

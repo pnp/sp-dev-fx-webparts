@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "m-365-planner-timeline-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/m365PlannerTimeline/M365PlannerTimelineWebPart.js",
+          "manifest": "./src/webparts/m365PlannerTimeline/M365PlannerTimelineWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "M365PlannerTimelineWebPartStrings": "lib/webparts/m365PlannerTimeline/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}

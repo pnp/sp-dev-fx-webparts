@@ -19,7 +19,7 @@
         "url": "https://github.com"
     },
     "dependencies": {
-        "botbuilder": "~4.9.1",
+        "botbuilder": "~4.23.3",
         "dotenv": "^8.2.0",
         "express": "^4.17.1",
         "replace": "~1.1.1",

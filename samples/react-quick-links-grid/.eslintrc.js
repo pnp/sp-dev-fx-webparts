@@ -22,11 +22,11 @@ module.exports = {
         '@typescript-eslint/adjacent-overload-signatures': 1,
         // STANDARDIZED BY:   @typescript-eslint\eslint-plugin\dist\configs\recommended.json
         //
-        // CONFIGURATION:     By default, these are banned: String, Boolean, Number, Object, Symbol
-        '@typescript-eslint/ban-types': [
+        // CONFIGURATION:     Replaced deprecated @typescript-eslint/ban-types with @typescript-eslint/no-restricted-types
+        // By default, these are banned: String, Boolean, Number, Object, Symbol
+        '@typescript-eslint/no-restricted-types': [
           1,
           {
-            'extendDefaults': false,
             'types': {
               'String': {
                 'message': 'Use \'string\' instead',

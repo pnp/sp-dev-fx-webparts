@@ -3,7 +3,7 @@ import { IList, ISite } from '../interfaces';
 import { ServiceScope } from '@microsoft/sp-core-library';
 import { IListsService, ListsService } from '../services';
 import * as strings from 'CopyViewsSharedStrings';
-import { ComboBox, IComboBox, IComboBoxOption, SelectableOptionMenuItemType } from 'office-ui-fabric-react/lib/ComboBox';
+import { ComboBox, IComboBox, IComboBoxOption, SelectableOptionMenuItemType } from '@fluentui/react';
 import { uniq } from '@microsoft/sp-lodash-subset';
 import { BaseType } from '../enums';
 

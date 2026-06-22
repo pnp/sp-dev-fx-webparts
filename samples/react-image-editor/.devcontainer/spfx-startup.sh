@@ -7,9 +7,11 @@ echo
 echo -e "\e[1;94mGenerating dev certificate\e[0m"
 gulp trust-dev-cert
 
+# Convert the generated PEM certificate to a  CER certificate
+openssl x509 -inform PEM -in ~/.rushstack/rushstack-serve.pem -outform DER -out ./spfx-dev-cert.cer
 
-cp ~/.gcb-serve-data/gcb-serve.cer ./spfx-dev-cert.cer
-cp ~/.gcb-serve-data/gcb-serve.cer ./spfx-dev-cert.pem
+# Copy the PEM ecrtificate for non-Windows hosts
+cp ~/.rushstack/rushstack-serve.pem ./spfx-dev-cert.pem
 
 ## add *.cer to .gitignore to prevent certificates from being saved in repo
 if ! grep -Fxq '*.cer' ./.gitignore

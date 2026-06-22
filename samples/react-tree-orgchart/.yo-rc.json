@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "nodeVersion": "22.04.0",
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "useGulp": false,
+    "version": "1.22.1",
+    "libraryName": "react-tree-orgchart",
+    "libraryId": "4f45c562-805c-42da-81cc-8e84bf7834b0",
+    "packageManager": "npm",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "plusBeta": false,
+    "componentType": "webpart",
+    "sdkVersions": {
+      "@microsoft/teams-js": "2.24.0",
+      "@microsoft/microsoft-graph-client": "3.0.2"
+    }
+  }
+}
+  

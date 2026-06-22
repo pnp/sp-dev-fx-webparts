@@ -1,7 +1,10 @@
 declare interface IRatingsWebPartStrings {
   PropertyPaneDescription: string;
-  ActiveColorLabel: string;
-  InactiveColorLabel: string;
+  ColorFieldLabel: string;
+  ColorFieldOptions: Record<'brand' | 'marigold' | 'neutral', string>;
+  SizeFieldLabel: string;
+  SizeFieldOptions: Record<'small' | 'medium' | 'large', string>;
+  TitleFieldLabel: string;
   RateThisPageLabel: string;
   YourRatingLabel: string;
 }

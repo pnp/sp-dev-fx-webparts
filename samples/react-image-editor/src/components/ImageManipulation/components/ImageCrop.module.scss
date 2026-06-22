@@ -1,3 +1,5 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
 $drag-handle-width: 10px !default;
 $drag-handle-height: 10px !default;
 $drag-bar-size: 6px !default;
@@ -110,8 +112,8 @@ touch-action: manipulation;
   .nw{
     top: 0;
     left: 0;
-    margin-top: -(ceil($drag-handle-height / 2));
-    margin-left: -(ceil($drag-handle-width / 2));
+    margin-top: calc(-#{$drag-handle-height} / 2);
+    margin-left: calc(-#{$drag-handle-width} / 2);
     cursor: nwse-resize;
 
     &::after {
@@ -122,8 +124,8 @@ touch-action: manipulation;
   .n {
     top: 0;
     left: 50%;
-    margin-top: -(ceil($drag-handle-height / 2));
-    margin-left: -(ceil($drag-handle-width / 2));
+    margin-top: calc(-#{$drag-handle-height} / 2);
+    margin-left: calc(-#{$drag-handle-width} / 2);
     cursor: ns-resize;
 
     &::after {
@@ -133,8 +135,8 @@ touch-action: manipulation;
   .ne {
     top: 0;
     right: 0;
-    margin-top: -(ceil($drag-handle-height / 2));
-    margin-right: -(ceil($drag-handle-width / 2));
+    margin-top: calc(-#{$drag-handle-height} / 2);
+    margin-right: calc(-#{$drag-handle-width} / 2);
     cursor: nesw-resize;
 
     &::after {
@@ -145,8 +147,8 @@ touch-action: manipulation;
   .e {
     top: 50%;
     right: 0;
-    margin-top: -(ceil($drag-handle-height / 2));
-    margin-right: -(ceil($drag-handle-width / 2));
+    margin-top: calc(-#{$drag-handle-height} / 2);
+    margin-right: calc(-#{$drag-handle-width} / 2);
     cursor: ew-resize;
 
     &::after {
@@ -156,8 +158,8 @@ touch-action: manipulation;
   .se {
     bottom: 0;
     right: 0;
-    margin-bottom: -(ceil($drag-handle-height / 2));
-    margin-right: -(ceil($drag-handle-width / 2));
+    margin-bottom: calc(-#{$drag-handle-height} / 2);
+    margin-right: calc(-#{$drag-handle-width} / 2);
     cursor: nwse-resize;
 
     &::after {
@@ -168,8 +170,8 @@ touch-action: manipulation;
   .s {
     bottom: 0;
     left: 50%;
-    margin-bottom: -(ceil($drag-handle-height / 2));
-    margin-left: -(ceil($drag-handle-width / 2));
+    margin-bottom: calc(-#{$drag-handle-height} / 2);
+    margin-left: calc(-#{$drag-handle-width} / 2);
     cursor: ns-resize;
 
     &::after {
@@ -179,8 +181,8 @@ touch-action: manipulation;
   .sw {
     bottom: 0;
     left: 0;
-    margin-bottom: -(ceil($drag-handle-height / 2));
-    margin-left: -(ceil($drag-handle-width / 2));
+    margin-bottom: calc(-#{$drag-handle-height} / 2);
+    margin-left: calc(-#{$drag-handle-width} / 2);
     cursor: nesw-resize;
 
     &::after {
@@ -191,8 +193,8 @@ touch-action: manipulation;
   .w {
     top: 50%;
     left: 0;
-    margin-top: -(ceil($drag-handle-height / 2));
-    margin-left: -(ceil($drag-handle-width / 2));
+    margin-top: calc(-#{$drag-handle-height} / 2);
+    margin-left: calc(-#{$drag-handle-width} / 2);
     cursor: ew-resize;
 
     &::after {
@@ -205,7 +207,7 @@ touch-action: manipulation;
     left: 0;
     width: 100%;
     height: $drag-bar-size;
-    margin-top: -($drag-bar-size / 2);
+    margin-top: calc(-#{$drag-bar-size} / 2);
   }
 
 
@@ -216,7 +218,7 @@ touch-action: manipulation;
       top: 0;
       width: $drag-bar-size;
       height: 100%;
-      margin-right: -($drag-bar-size / 2);
+      margin-right: calc(-#{$drag-bar-size} / 2);
     }
     .dragBar_s {
       position: absolute;
@@ -224,7 +226,7 @@ touch-action: manipulation;
       left: 0;
       width: 100%;
       height: $drag-bar-size;
-      margin-bottom: -($drag-bar-size / 2);
+      margin-bottom: calc(-#{$drag-bar-size} / 2);
     }
     .dragBar_w {
       position: absolute;
@@ -232,7 +234,7 @@ touch-action: manipulation;
       left: 0;
       width: $drag-bar-size;
       height: 100%;
-      margin-left: -($drag-bar-size / 2);
+      margin-left: calc(-#{$drag-bar-size} / 2);
     }
 
 

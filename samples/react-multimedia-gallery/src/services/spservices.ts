@@ -1,41 +1,28 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // João Mendes
 // March 2019
 
 import { WebPartContext } from "@microsoft/sp-webpart-base";
-import { sp, Fields, Web, SearchResults, Field, PermissionKind, RegionalSettings, PagedItemCollection } from '@pnp/sp';
-import { graph, } from "@pnp/graph";
-import { SPHttpClient, SPHttpClientResponse, ISPHttpClientOptions, HttpClient, MSGraphClient } from '@microsoft/sp-http';
-import * as $ from 'jquery';
 
-import { registerDefaultFontFaces } from "@uifabric/styling";
-import * as moment from 'moment';
-import { SiteUser } from "@pnp/sp/src/siteusers";
-import { dateAdd } from "@pnp/common";
-import { escape, update } from '@microsoft/sp-lodash-subset';
+import "@pnp/sp/webs";
+import "@pnp/sp/lists";
+import "@pnp/sp/items";
+import { Web } from "@pnp/sp/webs";
+import {  SPFx as spSPFx } from "@pnp/sp";
 
 
 // Class Services
 export default class spservices {
 
-  private graphClient: MSGraphClient = null;
+  private wpContext : WebPartContext = null;
 
-  constructor(private context: WebPartContext) {
-    // Setuo Context to PnPjs and MSGraph
-    sp.setup({
-      spfxContext: this.context
-    });
-
-    graph.setup({
-      spfxContext: this.context
-    });
-    // Init
-    this.onInit();
+  constructor(private wPcontext: WebPartContext) {
+    this.wpContext = wPcontext;
   }
   // OnInit Function
-  private async onInit() {
-  }
+ 
 
-  public async getSiteLists(siteUrl: string) {
+  public async getSiteLists(siteUrl: string): Promise<any[]> {
 
     let results: any[] = [];
 
@@ -44,12 +31,12 @@ export default class spservices {
     }
 
     try {
-      const web = new Web(siteUrl);
+      const web = Web(siteUrl).using(spSPFx(this.wpContext));
       results = await web.lists
         .select("Title", "ID")
-        .filter('BaseTemplate eq 101 or BaseTemplate eq 109')
-        .usingCaching()
-        .get();
+        .filter('BaseTemplate eq 101 or BaseTemplate eq 109')();
+  //      .usingCaching()
+       // .get();
 
     } catch (error) {
       return Promise.reject(error);
@@ -61,23 +48,24 @@ export default class spservices {
   public async getImages(siteUrl: string, listId: string, numberImages: number): Promise<any[]> {
     let results: any[] = [];
     try {
-      const web = new Web(siteUrl);
+      const web = Web(siteUrl).using(spSPFx(this.wpContext));
       results = await web.lists
         .getById(listId).items
-        .select('Title','File_x0020_Type', 'FileSystemObjectType','File/Name', 'File/ServerRelativeUrl', 'File/Title', 'File/Id', 'File/TimeLastModified')
+        
+        .select('Title', 'File_x0020_Type', 'FileSystemObjectType', 'File/Name', 'File/ServerRelativeUrl', 'File/Title', 'File/Id', 'File/TimeLastModified')
         .top(numberImages)
         .expand('File')
-        .filter((`File_x0020_Type eq  'jpg' or File_x0020_Type eq  'png' or  File_x0020_Type eq  'jpeg'  or  File_x0020_Type eq  'gif' or  File_x0020_Type eq  'mp4'`))
-        .orderBy('Modified', false)
-        .usingCaching()
-        .get();
+        .filter(`File_x0020_Type eq 'jpg' or File_x0020_Type eq 'png' or File_x0020_Type eq 'jpeg' or File_x0020_Type eq 'gif' or File_x0020_Type eq 'mp4'`)
+        .orderBy('Modified', false)();
     } catch (error) {
       return Promise.reject(error);
     }
     return results;
   }
 
-  public async getImagesNextPage(results: PagedItemCollection<any[]>): Promise<PagedItemCollection<any[]>> {
-    return results.getNext();
-  }
+  
 }
+
+
+
+

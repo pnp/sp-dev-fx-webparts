@@ -4,7 +4,7 @@ import {
   Icon,
   Shimmer,
   ShimmerElementType,
-} from "office-ui-fabric-react";
+} from "@fluentui/react";
 import * as React from "react";
 import { useEffect, useState } from "react";
 

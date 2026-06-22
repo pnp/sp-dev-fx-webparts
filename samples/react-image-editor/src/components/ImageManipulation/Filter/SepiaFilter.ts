@@ -18,7 +18,7 @@ export class SepiaFilter implements IImageFilter {
   private noise: number = 0;
   public process(imageData: ImageData, _width: number, _height: number, nvalue?: number, _svalue?: string): ImageData {
     // var data: Uint8ClampedArray = imageData.data;
-    this.noise = nvalue;
+    this.noise = nvalue || 0;
     for (let i: number = 0; i < imageData.data.length; i += 4) {
       // change image colors
       imageData.data[i] = this.r[imageData.data[i]];

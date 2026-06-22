@@ -18,6 +18,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -73,6 +77,7 @@
         "pictureUrl": "https://github.com/AriGunawan.png"
       }
     ],
-    "references": []
+    "references": [],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-list-form"
   }
-  ]
+]

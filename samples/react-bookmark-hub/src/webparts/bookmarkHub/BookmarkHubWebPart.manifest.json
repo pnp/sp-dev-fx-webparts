@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "6c640ded-b242-40bb-8700-d936144f796a",
+  "alias": "BookmarkHubWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Advanced" },
+    "title": { "default": "BookmarkHub" },
+    "description": { "default": "A unified hub that brings together all your favorites, bookmarks, and important content from across Microsoft 365 into one organized, context‑rich view." },
+    "officeFabricIconFontName": "Bookmarks",
+    "properties": {
+      "description": "BookmarkHub"
+    }
+  }]
+}

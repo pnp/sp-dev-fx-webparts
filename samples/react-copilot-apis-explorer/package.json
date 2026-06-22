@@ -1,0 +1,52 @@
+{
+  "name": "o-365-c-copilot-api-explorer",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=22.14.0 < 23.0.0"
+  },
+  "scripts": {
+    "build": "heft test --clean --production && heft package-solution --production",
+    "start": "heft start --clean",
+    "clean": "heft clean",
+    "eject-webpack": "heft eject-webpack"
+  },
+  "dependencies": {
+    "tslib": "2.3.1",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-markdown": "^8.0.7",
+    "remark-gfm": "^3.0.1",
+    "@fluentui/react": "^8.106.4",
+    "@microsoft/sp-core-library": "1.22.1",
+    "@microsoft/sp-component-base": "1.22.1",
+    "@microsoft/sp-property-pane": "1.22.1",
+    "@microsoft/sp-webpart-base": "1.22.1",
+    "@microsoft/sp-lodash-subset": "1.22.1",
+    "@microsoft/sp-office-ui-fabric-core": "1.22.1"
+  },
+  "devDependencies": {
+    "@rushstack/eslint-config": "4.5.2",
+    "@microsoft/eslint-plugin-spfx": "1.22.1",
+    "@microsoft/eslint-config-spfx": "1.22.1",
+    "@microsoft/spfx-web-build-rig": "1.22.1",
+    "@microsoft/spfx-heft-plugins": "1.22.1",
+    "@rushstack/heft": "1.1.2",
+    "@types/heft-jest": "1.0.2",
+    "@types/webpack-env": "~1.15.2",
+    "@typescript-eslint/parser": "8.46.2",
+    "css-loader": "~7.1.2",
+    "eslint": "8.57.1",
+    "typescript": "~5.8.0",
+    "@types/react": "17.0.45",
+    "@types/react-dom": "17.0.17",
+    "eslint-plugin-react-hooks": "4.3.0",
+    "@microsoft/sp-module-interfaces": "1.22.1"
+  },
+  "overrides": {
+    "@rushstack/heft": "1.1.2"
+  },
+  "resolutions": {
+    "@types/react": "17.0.45"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "spfx-document-explorer",
+    "environment": "spo",
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "DocumentExplorer",
+    "componentDescription": "Modern document explorer with multi-library and dynamic layout",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.17.1",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "spfx-document-explorer",
+    "libraryId": "1895e1b5-bc14-4fe6-af9b-73b94bc98c91",
+    "packageManager": "npm",
+    "solutionShortDescription": "spfx-document-explorer description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "extends": "./node_modules/@microsoft/rush-stack-compiler-4.5/includes/tsconfig-web.json",
+  "extends": "./node_modules/@microsoft/spfx-web-build-rig/profiles/default/tsconfig-base.json",
   "compilerOptions": {
     "target": "es5",
     "forceConsistentCasingInFileNames": true,
@@ -22,11 +22,13 @@
       "./node_modules/@microsoft"
     ],
     "types": [
-      "webpack-env"
+      "webpack-env",
+      "heft-jest"
     ],
     "lib": [
       "es5",
       "dom",
+      "es2015",
       "es2015.collection",
       "es2015.promise"
     ]
@@ -34,6 +36,5 @@
   "include": [
     "src/**/*.ts",
     "src/**/*.tsx"
-  ],
-
+  ]
 }

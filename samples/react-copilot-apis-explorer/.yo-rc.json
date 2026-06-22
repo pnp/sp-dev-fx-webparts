@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.20.0",
+    "sdksVersions": {},
+    "version": "1.22.1",
+    "libraryName": "o-365-c-copilot-chat-api",
+    "libraryId": "a2fce93e-ce80-4bdb-9059-d74d459f146f",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "O365C - Copilot Chat API",
+    "solutionShortDescription": "O365C - Copilot Chat API description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

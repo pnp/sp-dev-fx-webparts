@@ -1,5 +1,5 @@
 {
-  "extends": "./node_modules/@microsoft/rush-stack-compiler-4.7/includes/tsconfig-web.json",
+  "extends": "./node_modules/@microsoft/rush-stack-compiler-5.3/includes/tsconfig-web.json",
   "compilerOptions": {
     "target": "es5",
     "forceConsistentCasingInFileNames": true,
@@ -22,8 +22,7 @@
       "./node_modules/@microsoft"
     ],
     "types": [
-      "webpack-env",
-      "@types/jest"
+      "webpack-env"
     ],
     "lib": [
       "es5",

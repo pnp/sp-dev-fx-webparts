@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "react-custom-localization-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/reactCustomLocalization/ReactCustomLocalizationWebPart.js",
+          "manifest": "./src/webparts/reactCustomLocalization/ReactCustomLocalizationWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ReactCustomLocalizationWebPartStrings": "lib/webparts/reactCustomLocalization/loc/{locale}.js"
+  }
+}

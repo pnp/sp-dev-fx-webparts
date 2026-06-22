@@ -4,8 +4,8 @@
 
 A RSS Reader original based [on work by Olivier Carpentier](https://github.com/OlivierCC/spfx-40-fantastics/tree/master/src/webparts/rssReader), part of the [SPFx Fantastic 40 Web Parts](https://github.com/OlivierCC/spfx-40-fantastics)
 
-This RSS Reader utilizes SharePoint Framework v1.20.0 with no dependency on jQuery or a RSS Feed library. This project does utilize [ 
-@pnp/spfx-property-controls](https://sharepoint.github.io/sp-dev-fx-property-controls/), and Moment React for date manipulation. Handlebar template option derived from React Search Refiners ([PnP Modern Search](https://microsoft-search.github.io/pnp-modern-search/)). Use NodeJS version 18 (validated using v18.17.1) to compile or rebuild the SPFx solution.
+This RSS Reader utilizes SharePoint Framework v1.21.1 with no dependency on jQuery or a RSS Feed library. This project does utilize [
+@pnp/spfx-property-controls](https://sharepoint.github.io/sp-dev-fx-property-controls/), and Moment React for date manipulation. Handlebar template option derived from React Search Refiners ([PnP Modern Search](https://microsoft-search.github.io/pnp-modern-search/)). Use NodeJS version 22 (validated using v22.15.0) to compile or rebuild the SPFx solution.
 
 Main features include:
 
@@ -23,12 +23,12 @@ Main features include:
 ## Compatibility
 
 | :warning: Important          |
-|:---------------------------|
+| :--------------------------- |
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.20](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
-![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
+![SPFx 1.22.2](https://img.shields.io/badge/SPFx-1.22.2-green.svg)
+![Node.js v22.15.1](https://img.shields.io/badge/Node.js-%20v22.15.1-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -36,7 +36,7 @@ Main features include:
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
-Tested with: Node.js v18.20.4
+Tested with: Node.js v22.15.0
 
 ## Applies to
 
@@ -49,19 +49,24 @@ Tested with: Node.js v18.20.4
 - [Eric Overfield](https://github.com/eoverfield)
 - [Kalle Mansikkaniemi](https://github.com/djsladi)
 - [Lauri Koskimies](https://github.com/koskimiesl)
+- [Nishkalank Bezawada](https://github.com/NishkalankBezawada)
 
 ## Version history
 
-Version|Date|Comments
--------|----|--------
-1.0.0 | Jan 21, 2019 | Initial release
-1.0.1 | Nov 22, 2020 | Upgraded to SPFx 1.11
-1.0.2 | April 6, 2023 | Fix bug in Direct request retrieval service
-1.0.3 | April 21, 2023 | Added theme awareness
-1.0.4 | May 25, 2023 | Fixed direct request issues
-1.1.0 | February 6, 2024 | Upgraded to SPFx 1.18.2
-1.2.0 | October 30, 2024 | Upgraded to SPFx 1.20.0
-1.2.1 | November 20, 2024 | Fixed a bug where loading message doesn't disappear when RSS feed doesn't contain any items.
+| Version | Date               | Comments |
+| ------- | ------------------ | -------- |
+| 1.0.0   | Jan 21, 2019       | Initial release |
+| 1.0.1   | Nov 22, 2020       | Upgraded to SPFx 1.11 |
+| 1.0.2   | April 6, 2023      | Fix bug in Direct request retrieval service |
+| 1.0.3   | April 21, 2023     | Added theme awareness |
+| 1.0.4   | May 25, 2023       | Fixed direct request issues |
+| 1.1.0   | February 6, 2024   | Upgraded to SPFx 1.18.2 |
+| 1.2.0   | October 30, 2024   | Upgraded to SPFx 1.20.0 |
+| 1.2.1   | November 20, 2024  | Fixed a bug where loading message doesn't disappear when RSS feed doesn't contain  any items. |
+| 1.2.2   | September 12, 2025 | Upgraded to SPFx 1.21.1 |
+| 1.2.3   | October 24, 2025   | Updated PnP packages for Node 22 compatibility |
+| 1.2.4   | February 27, 2026  | Upgraded to SPFx 1.22.2 & fixed TypeScript errors after upgrade |
+| 1.2.5   | April 15, 2026     | Fix Web part Title render issue |
 
 ## Minimal Path to Awesome
 
@@ -71,58 +76,58 @@ Version|Date|Comments
 
 ### SPFx
 
-- In the command line, with a version of Node 18, i.e. 18.17.1, run:
+- In the command line, with a version of Node 22, i.e. 22.15.1, run:
   - `npm install`
-  - `gulp serve`
+  - `heft build`
+  - `heft start`
 
 - To bundle and package the installable `.sppkg`, run:
-  - `gulp bundle --ship`
-  - `gulp package-solution --ship`
+  - `heft package-solution --production`
 
 ## Web Parts Configuration
 
 ### RSS Reader Web Part
 
-![Property Pane](./images/rss_property_pane.png)
+![Property Pane](./assets/rss_property_pane.png)
 
 #### RSS Reader Settings
 
-Setting | Description
--------|----
-Feed URL | The URL of the RSS Feed for readers. Normally will URL will return XML
-Feed Retrieval Service | The service to use to retrieve the feed. **Direct** = Make a direct call from the web part to the feed. Note, may have issues with CORS depending on the feed owner. **Feed2Json** = Retrieve a JSON version of feed via feed2json.org. Note, not for production, and may have issues with CORS. For production use, host your own feed2json service. Learn more at <https://github.com/appsattic/feed2json.org>. **Rss2Json** = CORS safe method to retrieve a feed response. Note, subject to limitations with paid options available.
-Feed Service URL | If using Feed2Json, the URL of the feed2json service. Host your own service, learn more at <https://github.com/appsattic/feed2json.org>
-Feed Service API Key | If using rss2json, an optional API key for paid services
-Max Count | The maximum results to return, default: 10. **Note** When using the free versions of feed2json or rss2json, results are limited to 10 or less by the services.
-Cache Results | Locally store results in browser local storage, default: no
-Mins to Cache Results | If storing results in browser, number of minutes to store. Valid 1 to 1440 (one day), default: 60
-Storage Key Prefix | An optional local storage key prefix to use when storing results
-Loading Message | An optional custom message to display while the RSS feed is being loaded
-Use a CORS proxy | Use a CORS proxy to assist with feed retrieval, default: no
-CORS Proxy URL | The URL of a CORS proxy if allowed. {0} will be replaced with Feed URL, i.e. <https://cors-anywhere.herokuapp.com/{0}>. To use CORS anywhere by Herokuapp for testing, be sure to visit ![https://cors-anywhere.herokuapp.com](https://cors-anywhere.herokuapp.com) first to unlock yourself for testing.
-Disable CORS | Set request header mode to "no-cors", thus not requesting CORS response from service. Will disable CORS request, default: no
+| Setting | Description |
+| ---------------------- | ---- |
+| Feed URL | The URL of the RSS Feed for readers. Normally will URL will return XML |
+| Feed Retrieval Service | The service to use to retrieve the feed. **Direct** = Make a direct call from the web part to the feed. Note, may have issues with CORS depending on the feed owner. **Feed2Json** = Retrieve a JSON version of feed via feed2json.org. Note, not for production, and may have issues with CORS. For production use, host your own feed2json service. Learn more at <https://github.com/appsattic/feed2json.org>. **Rss2Json** = CORS safe method to retrieve a feed response. Note, subject to limitations with paid options available. |
+| Feed Service URL | If using Feed2Json, the URL of the feed2json service. Host your own service, learn more at <https://github.com/appsattic/feed2json.org> |
+| Feed Service API Key | If using rss2json, an optional API key for paid services |
+| Max Count | The maximum results to return, default: 10. **Note** When using the free versions of feed2json or rss2json, results are limited to 10 or less by the services. |
+| Cache Results | Locally store results in browser local storage, default: no |
+| Mins to Cache Results | If storing results in browser, number of minutes to store. Valid 1 to 1440 (one day), default: 60 |
+| Storage Key Prefix | An optional local storage key prefix to use when storing results |
+| Loading Message | An optional custom message to display while the RSS feed is being loaded |
+| Use a CORS proxy | Use a CORS proxy to assist with feed retrieval, default: no |
+| CORS Proxy URL | The URL of a CORS proxy if allowed. {0} will be replaced with Feed URL, i.e. <https://cors-anywhere.herokuapp.com/{0}>. To use CORS anywhere by Herokuapp for testing, be sure to visit [https://cors-anywhere.herokuapp.com](https://cors-anywhere.herokuapp.com) first to unlock yourself for testing. |
+| Disable CORS | Set request header mode to "no-cors", thus not requesting CORS response from service. Will disable CORS request, default: no |
 
 #### Styling Options
 
-|Setting | Description|
-|-------|----|
-|External Template URL | The URL of an external handlebar template to use in place of the handlebar template editor for custom layouts|
-|Results Layout | The layout to use to display feed, Default (list) or Custom|
-|Template Editor | A handlebar editor for custom layouts|
-|View All Link | An optional link to view the entire feed, often a link to the RSS source blog itself, default: none|
-|View All Link Label | An optional label for the View All Link|
+| Setting | Description |
+| ------- | ---------- |
+| External Template URL | The URL of an external handlebar template to use in place of the handlebar template editor for custom layouts |
+| Results Layout | The layout to use to display feed, Default (list) or Custom |
+| Template Editor | A handlebar editor for custom layouts |
+| View All Link | An optional link to view the entire feed, often a link to the RSS source blog itself, default: none |
+| View All Link Label | An optional label for the View All Link |
 
 ##### Default layout options
 
-|Setting | Description|
--------|----
-Show Publication Date | Display the publication date
-Show Description | Display the content or description of each feed listing
-Description Character Limit | The maximum number of description characters to display
-Link Target | The "target" of a listing link, default: _blank
-Date Format | The Moment based format format of the listing date, i.e. DD/MM/YYYY (European), default: MM/DD/YYYY
-Title Color | Color override for a listing title
-Background Color | Color override for the web part background
+| Setting | Description |
+| ------- | ---- |
+| Show Publication Date | Display the publication date |
+| Show Description | Display the content or description of each feed listing |
+| Description Character Limit | The maximum number of description characters to display |
+| Link Target | The "target" of a listing link, default: _blank |
+| Date Format | The Moment based format format of the listing date, i.e. DD/MM/YYYY (European), default: MM/DD/YYYY |
+| Title Color | Color override for a listing title |
+| Background Color | Color override for the web part background |
 
 ## Features
 

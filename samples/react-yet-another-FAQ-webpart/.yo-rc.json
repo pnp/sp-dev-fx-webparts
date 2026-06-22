@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.18.2",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "version": "1.20.0",
+    "libraryName": "spfx-accordian-faq",
+    "libraryId": "a4362435-4fbe-4586-9281-0d8fc67e6579",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "spfx-accordian-faq",
+    "solutionShortDescription": "spfx-accordian-faq description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

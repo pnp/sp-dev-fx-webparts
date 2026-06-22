@@ -1,0 +1,78 @@
+@import "~@fluentui/react/dist/sass/References.scss";
+
+.article {
+  padding: 10px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+.imageWrapper {
+  width: 238px;
+  height: 160px;
+}
+.topContainer {
+  display: flex;
+  gap: 0.5rem;
+}
+.author {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+.commentArea {
+  padding: 1rem;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}
+.reactions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: space-between;
+}
+.newCommentContainer {
+  position: relative;
+  margin-top: 1rem;
+  width: 100%;
+}
+.likeUnlikeContainer {
+  border: 1px solid #ccc;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min-content;
+  padding: 0 18px 0 4px;
+  margin-top: 0.5rem;
+  height: 28px;
+}
+.previewImageWrapper{
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  overflow-y: auto;
+  height: fit-content;
+  padding-bottom: 0.75rem;
+  padding-top: 0.5rem;
+}
+.imageContainer{
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.moreOptions{
+  margin-top: 4px;
+  cursor:pointer;
+  margin-left: auto
+}
+
+@keyframes pulseOpacity {
+  0% { opacity: 0.3; }
+  100% { opacity: 1; }
+}
+
+.textEditorLoading {
+  animation: pulseOpacity 1.2s infinite alternate;
+  transition: opacity 0.3s;
+  opacity: 0.5;
+  pointer-events: none;
+}

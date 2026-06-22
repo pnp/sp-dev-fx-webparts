@@ -4,9 +4,7 @@ import { ISite } from './../interfaces';
 import { ServiceScope } from '@microsoft/sp-core-library';
 import { SitesService, ISitesService } from './../services';
 import * as strings from 'CopyViewsSharedStrings';
-import { BasePicker, IBasePickerProps, IPickerItemProps } from 'office-ui-fabric-react/lib/Pickers';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { BasePicker, IBasePickerProps, IPickerItemProps, Label, IconButton } from '@fluentui/react';
 
 interface ISourceSitePickerProps {
   serviceScope: ServiceScope;
@@ -24,7 +22,7 @@ interface ISourceSitePickerState {
 
 export interface ISitePickerProps extends IBasePickerProps<ISite> {}
 
-class SitePicker extends BasePicker<ISite, ISitePickerProps> {}
+const SitePicker = BasePicker as new (props: ISitePickerProps) => BasePicker<ISite, ISitePickerProps>;
 
 export class SourceSitePicker extends React.Component<ISourceSitePickerProps, ISourceSitePickerState> {
   private _sitesService: ISitesService;

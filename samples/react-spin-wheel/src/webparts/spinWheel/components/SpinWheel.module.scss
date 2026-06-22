@@ -1,0 +1,320 @@
+.spinWheel {
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 700px;
+  font-family: 'Montserrat', Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 12px;
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .title {
+    color: white;
+    font-size: 48px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .subtitle {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 18px;
+    margin-bottom: 40px;
+    font-weight: 400;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .warningMessage {
+    margin-bottom: 30px;
+    font-size: 16px;
+    font-weight: 600;
+    background: rgba(255, 152, 0, 0.15);
+    border: 2px solid rgba(255, 152, 0, 0.4);
+    border-radius: 8px;
+    padding: 12px;
+  }
+
+  .wheelContainer {
+    position: relative;
+    width: 500px;
+    height: 500px;
+    margin: 0 auto 40px;
+    filter: drop-shadow(0 20px 60px rgba(0, 0, 0, 0.4));
+
+    &.disabled {
+      opacity: 0.4;
+      pointer-events: none;
+
+      &::after {
+        content: 'Come Back Tomorrow!';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 32px;
+        font-weight: bold;
+        color: white;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.8);
+        z-index: 10;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 20px 40px;
+        border-radius: 12px;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+      }
+    }
+
+    @media (max-width: 768px) {
+      width: 350px;
+      height: 350px;
+    }
+
+    @media (max-width: 480px) {
+      width: 280px;
+      height: 280px;
+    }
+
+    .pointer {
+      position: absolute;
+      top: -35px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 25px solid transparent;
+      border-right: 25px solid transparent;
+      border-top: 50px solid #ffeb3b;
+      z-index: 10;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: -55px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 20px;
+        height: 20px;
+        background: #ffeb3b;
+        border-radius: 50%;
+        box-shadow: 0 0 20px rgba(255, 235, 59, 0.6);
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: -48px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 8px;
+        height: 8px;
+        background: #f57f17;
+        border-radius: 50%;
+      }
+    }
+
+    .wheel {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      overflow: hidden;
+      box-shadow:
+        0 0 0 8px rgba(255, 255, 255, 0.2),
+        0 0 0 16px rgba(255, 255, 255, 0.1),
+        inset 0 0 40px rgba(0, 0, 0, 0.3);
+      border: 3px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .segment {
+      position: absolute;
+      width: 50%;
+      height: 70%;
+      top: 50%;
+      left: 50%;
+      transform-origin: 0% 0%;
+      clip-path: polygon(0 0, 100% 0, 0 100%);
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding: 50px 25px;
+      border-left: 3px solid rgba(255, 255, 255, 0.4);
+      border-top: 3px solid rgba(255, 255, 255, 0.4);
+      transition: filter 0.3s ease;
+
+      &:hover {
+        filter: brightness(1.15);
+      }
+
+      .segmentContent {
+        transform: rotate(-60deg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100px;
+        text-align: center;
+        margin-top: 10px !important;
+
+
+        .rewardTitle {
+          font-size: 14px;
+          font-weight: 700;
+          letter-spacing: 1px;
+          margin-bottom: 6px;
+          opacity: 0.95;
+          @media (max-width: 768px) {
+            font-size: 13px;
+          }
+
+          @media (max-width: 480px) {
+            font-size: 10px;
+          }
+        }
+
+        .rewardPoints {
+          font-size: 18px;
+          font-weight: 500;
+          letter-spacing: -0.5px;
+          text-shadow:
+            2px 2px 4px rgba(0, 0, 0, 0.8),
+            0 0 10px rgba(255, 255, 255, 0.3);
+
+          @media (max-width: 768px) {
+            font-size: 16px;
+          }
+
+          @media (max-width: 480px) {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+
+    .centerCircle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 120px;
+      height: 120px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 0 0 4px rgba(255, 255, 255, 0.4),
+        0 0 20px rgba(0, 0, 0, 0.6),
+        inset 0 0 20px rgba(0, 0, 0, 0.3);
+      z-index: 5;
+      border: 3px solid rgba(255, 255, 255, 0.2);
+
+      @media (max-width: 768px) {
+        width: 80px;
+        height: 80px;
+      }
+
+      @media (max-width: 480px) {
+        width: 60px;
+        height: 60px;
+      }
+
+      .centerText {
+        font-size: 28px;
+        font-weight: 900;
+        color: white;
+        letter-spacing: 2px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+
+        @media (max-width: 768px) {
+          font-size: 20px;
+        }
+
+        @media (max-width: 480px) {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .controls {
+    margin-top: 50px;
+
+    .spinButton {
+      font-size: 22px;
+      padding: 18px 80px;
+      height: auto;
+      border-radius: 50px;
+      background: #ffeb3b;
+      color: #333;
+      font-weight: 800;
+      border: none;
+      box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.3),
+        0 0 0 3px rgba(255, 255, 255, 0.3);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+
+      &:hover:not(:disabled) {
+        background: #ffd700;
+        transform: translateY(-3px) scale(1.05);
+        box-shadow:
+          0 15px 40px rgba(0, 0, 0, 0.4),
+          0 0 0 3px rgba(255, 255, 255, 0.4);
+      }
+
+      &:active:not(:disabled) {
+        transform: translateY(-1px) scale(0.98);
+      }
+
+      &:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+        background: #999;
+        color: #666;
+      }
+
+      @media (max-width: 768px) {
+        font-size: 18px;
+        padding: 15px 50px;
+      }
+    }
+  }
+
+  .dialogContent {
+    padding: 30px 20px;
+    text-align: center;
+
+    .rewardDisplay {
+      h2 {
+        color: #667eea;
+        font-size: 36px;
+        margin-bottom: 20px;
+        font-weight: 700;
+        letter-spacing: -1px;
+      }
+
+      .pointsWon {
+        font-size: 64px;
+        font-weight: 900;
+        color: #ffd700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        letter-spacing: -2px;
+        margin: 20px 0;
+      }
+
+      .pointsLabel {
+        color: #666;
+        font-size: 20px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+    }
+  }
+}

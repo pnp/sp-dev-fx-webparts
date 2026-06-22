@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "eae1a185-f369-4728-889f-12b7ebc2cda1",
+  "alias": "PersonalDashboardWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", 
+    "group": { "default": "hack-together-teams" },
+    "title": { "default": "Personal Dashboard Isolated" },
+    "description": { "default": "This web part provides users a personalized dashboard by selecting and adding organization-wide apps." },
+    "officeFabricIconFontName": "ViewDashboard",
+    "properties": {
+      "description": "This web part provides users a personalized dashboard by selecting and adding organization-wide apps."
+    }
+  }]
+}

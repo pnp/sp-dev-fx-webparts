@@ -8,6 +8,15 @@ When added to a vertical section it can be used as a contents table for the page
 
 ![Page Navigator](./assets/PageNavigator.gif)
 
+The Properties `Sticky Mode` and `Parent Distance` can be configured to allow the Page Navigator to remain visible while scrolling.
+When Sticky Mode is enabled, CSS will be added to the element `Parent Distance` nodes above the Page Navigator component. For example, `Parent Distance: 1` will apply the CSS to the direct parent element of the web part, whereas `Parent Distance: 2` will apply the CSS to the parent of the parent, etc.
+
+![Page Navigator](./assets/PageNavigatorProperties.png)
+
+As this feature involves modifying HTML elements outside of the web part, it could stop working in the future if Microsoft change their HTML/CSS etc.
+
+At the time of writing, Sticky Parent Distance = 1 works for a Page Navigator configured on a vertical section like the example shown above.
+
 ## Compatibility
 
 | :warning: Important          |
@@ -38,6 +47,10 @@ Version|Date|Comments
 1.7|December 22, 2022|Fixed issue with duplicated level 2 headings
 1.8|May 13, 2023|Fixed issue when heading has a + symbol
 1.9|October 6, 2024|SPFx Upgraded to 1.20.0 and code refactored
+1.10|March 15, 2025|Added Sticky Mode options
+1.11|October 1, 2025|Fixed issue when page URL (file name) had a & or + symbol in it
+1.12|January 12, 2026|Add an option to display headings collapsed by default
+1.13|May 15, 2026|Add "Scrollspy" functionality
 
 ## Minimal Path to Awesome
 
@@ -58,6 +71,7 @@ Version|Date|Comments
 * [Jasey Waegebaert](https://github.com/Jwaegebaert)
 * [Mike Zimmerman](https://github.com/mikezimm)
 * [Tobias Maestrini](https://github.com/tmaestrini)
+* [Aimery Thomas](https://github.com/a1mery)
 
 ## Help
 
@@ -74,7 +88,6 @@ If you encounter any issues using this sample, [create a new issue](https://gith
 For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-page-navigator&template=question.yml&sample=react-page-navigator&authors=@aakashbhardwaj619&title=react-page-navigator%20-%20).
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-page-navigator&template=suggestion.yml&sample=react-page-navigator&authors=@aakashbhardwaj619&title=react-page-navigator%20-%20).
-
 
 ## Disclaimer
 

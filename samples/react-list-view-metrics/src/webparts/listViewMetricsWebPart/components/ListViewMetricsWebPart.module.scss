@@ -1,0 +1,170 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.listViewMetricsWebPart {
+  overflow: hidden;
+  //padding: 1em;
+  color: var(--bodyText);
+  /* Use CSS variable directly for consistent color */
+
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+    /* Apply Fluent UI font family */
+  }
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+  min-height: 150px;
+}
+
+.metricCardContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+  padding: 10px;
+
+  .metricCardWrapperVertical {
+    position: relative;
+    padding: 10px;
+    padding-bottom: 5px;
+    background-color: "[theme: neutralLighterAlt, default: #faf9f8]";
+    color: "[theme: neutralPrimary, default: #323130]";
+    border-radius: 8px;
+    width: 100%;
+    max-width: 150px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    resize: horizontal;
+    box-sizing: border-box;
+
+    .metricIcon{
+      text-align: center;
+    }
+  }
+
+  .metricCardWrapperVerticalContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .metricCardWrapperHorizontal {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding: 10px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    background-color: "[theme: neutralLighterAlt, default: #faf9f8]";
+    color: "[theme: neutralPrimary, default: #323130]";
+    border-radius: 8px;
+    width: 100%;
+    max-width: 250px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    resize: horizontal;
+    box-sizing: border-box;
+
+    .metricIcon{
+      margin-right: 10px;
+    }
+
+    .metricHeader h1{
+      text-align: left;
+    }
+    .metricBody {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    .metricBody span{
+      text-align: left;
+    }
+  }
+
+  .metricCardWrapperHorizontalContent {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: start;
+  }
+
+
+  .metricIcon{
+    font-size: 28px;
+  }
+
+  .metricHeader {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    // height: 37px;
+    box-sizing: border-box;
+    margin-bottom: 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+  }
+  
+  .metricHeader h1 {
+    text-align: center; 
+    font-size: clamp(0.85rem, 3vw, 0.85rem);
+    font-weight: 500;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .metricBody {
+    display: flex;
+    align-items: start;
+    justify-content: start;
+    width: 100%;
+    //height: 48px;
+    box-sizing: border-box;
+    margin-bottom: 0px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: normal;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .metricBody span {
+    text-align: center; 
+    font-size: clamp(1.35rem, 3vw, 0.75rem);
+    font-weight: 700;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    line-height: 1.4;
+  }
+
+  .metricGrowth {
+    height: 20px;
+    font-size: 12px;
+    /* Responsive font size for growth indicator */
+
+    .positive {
+      color: #28a745;
+    }
+    .negative {
+      color: #dc3545;
+    }
+  }
+}
+

@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "personal-settings-client-side-solution",
+    "id": "7e423dac-3195-4bd6-811e-3f176f73357e",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Paolo Pialorsi",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "webApiPermissionRequests": [
+      {
+        "resource": "React-Settings-Approot",
+        "scope": "UserSettings.Manage"
+      }
+    ],
+    "metadata": {
+      "shortDescription": {
+        "default": "Personal Settings Web Part"
+      },
+      "longDescription": {
+        "default": "This web part allows users to manage their personal settings securely."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "personal-settings Feature",
+        "description": "The feature that activates elements of the personal-settings solution.",
+        "id": "b86bd4c0-25c1-4a92-b7ae-10591a4f93b7",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/personal-settings.sppkg"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-telemetry-event-sender-sample-client-side-solution",
+    "id": "c1839542-c029-4322-8a78-88b17b59306c",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-telemetry-event-sender-sample description"
+      },
+      "longDescription": {
+        "default": "react-telemetry-event-sender-sample description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-telemetry-event-sender-sample Feature",
+        "description": "The feature that activates elements of the react-telemetry-event-sender-sample solution.",
+        "id": "82441fff-5b33-41e6-b028-a8ae9eee3f2d",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-telemetry-event-sender-sample.sppkg"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.20.6",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "version": "1.20.0",
+    "libraryName": "react-sp-secret-santa",
+    "libraryId": "dca24450-6401-4591-ae29-05efa0c5e492",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-sp-secret-santa",
+    "solutionShortDescription": "react-sp-secret-santa description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

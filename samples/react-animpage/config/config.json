@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "anim-page-motion-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/animPageMotion/AnimPageMotionWebPart.js",
+          "manifest": "./src/webparts/animPageMotion/AnimPageMotionWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "AnimPageMotionWebPartStrings": "lib/webparts/animPageMotion/loc/{locale}.js",
+    "AnimPageMotionApplicationCustomizerStrings": "lib/extensions/animPageMotion/loc/{locale}.js"
+  }
+}

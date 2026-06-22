@@ -3,7 +3,7 @@
   "solution": {
     "name": "list-search-webpart",
     "id": "8277f088-9c30-4f95-9c15-9c18a9d40a26",
-    "version": "1.4.0.0",
+    "version": "1.6.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,

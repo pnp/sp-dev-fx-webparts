@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { sp, SPBatch } from "@pnp/sp/";
+import { SPFI } from "@pnp/sp";
+import "@pnp/sp/profiles";
+import "@pnp/sp/batching";
 import { IUserInfo } from "../models/IUserInfo";
 import * as React from "react";
 import { get, set } from "idb-keyval";
@@ -11,6 +13,7 @@ import { IPersonProperties } from "../models/IPersonProperties";
 // *************************************************************************************/
 
 type getUserProfileFunc = (
+  sp: SPFI,
   currentUser: string,
   startUser?: string,
   showAllManagers?: boolean,
@@ -28,6 +31,7 @@ export const useGetUserProperties = (): {
 } => {
   const getUserProfile = React.useCallback(
     async (
+      sp: SPFI,
       currentUser: string,
       startUser?: string,
       showAllManagers: boolean = false,
@@ -59,12 +63,13 @@ export const useGetUserProperties = (): {
       // Get Direct Reports if exists
       if (wDirectReports && wDirectReports.length > 0) {
         // eslint-disable-next-line @typescript-eslint/no-use-before-define
-        reportsLists = await getDirectReports(wDirectReports, showGuestUsers);
+        reportsLists = await getDirectReports(sp, wDirectReports, showGuestUsers);
       }
       // Get Managers if exists
       if (startUser && wExtendedManagers && wExtendedManagers.length > 0) {
         // eslint-disable-next-line @typescript-eslint/no-use-before-define
         managersList = await getExtendedManagers(
+          sp,
           wExtendedManagers,
           loginNameStartUser!,
           showAllManagers,
@@ -81,19 +86,20 @@ export const useGetUserProperties = (): {
 };
 
 const getDirectReports = async (
+  sp: SPFI,
   directReports: string[],
   showGuestUsers: boolean
 ): Promise<IUserInfo[]> => {
   const _reportsList: IUserInfo[] = [];
-  const batch: SPBatch = sp.createBatch();
+  const [batchedSP, execute] = sp.batched();
+  
   for (const userReport of directReports) {
     const cacheDirectReport: Maybe<IPersonProperties> = await get(
       `${userReport}__orgchart__`
     );
     if (!cacheDirectReport) {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      sp.profiles
-        .inBatch(batch)
+      batchedSP.profiles
         .getPropertiesFor(userReport)
         .then(async (directReport: IPersonProperties) => {
           // eslint-disable-next-line @typescript-eslint/no-use-before-define
@@ -111,18 +117,19 @@ const getDirectReports = async (
       _reportsList.push(userInfo);
     }
   }
-  await batch.execute();
+  await execute();
   return sortBy(_reportsList, ["displayName"]);
 };
 
 const getExtendedManagers = async (
+  sp: SPFI,
   extendedManagers: string[],
   startUser: string,
   showAllManagers: boolean,
   showGuestUsers: boolean
 ): Promise<IUserInfo[]> => {
   const wManagers: IUserInfo[] = [];
-  const batch: SPBatch = sp.createBatch();
+  const [batchedSP, execute] = sp.batched();
 
   for (const manager of extendedManagers) {
     if (!showAllManagers && manager !== startUser) {
@@ -133,8 +140,7 @@ const getExtendedManagers = async (
     );
     if (!cacheManager) {
       // eslint-disable-next-line @typescript-eslint/no-floating-promises
-      sp.profiles
-        .inBatch(batch)
+      batchedSP.profiles
         .getPropertiesFor(manager)
         .then(async (_profile: IPersonProperties) => {
           // eslint-disable-next-line @typescript-eslint/no-use-before-define
@@ -152,7 +158,7 @@ const getExtendedManagers = async (
       wManagers.push(userInfo);
     }
   }
-  await batch.execute();
+  await execute();
   return wManagers;
 };
 

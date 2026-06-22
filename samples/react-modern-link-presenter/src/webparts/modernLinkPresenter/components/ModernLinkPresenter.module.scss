@@ -1,0 +1,213 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.modernLinkPresenter {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.welcome {
+  text-align: center;
+}
+
+.welcomeImage {
+  width: 100%;
+  max-width: 420px;
+}
+
+.links {
+  a {
+    text-decoration: none;
+    color: "[theme:link, default:#03787c]";
+    color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+
+    &:hover {
+      text-decoration: underline;
+      color: "[theme:linkHovered, default: #014446]";
+      color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+    }
+  }
+}
+
+.linkList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.linkItem {
+  margin-bottom: 1em;
+  /* Optional: add spacing or border for visual separation */
+}
+
+.buttonLink {
+  background: #0078d4;
+  color: #fff;
+  padding: 0.5em 1.2em;
+  border-radius: 4px;
+  display: inline-block;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+}
+
+.icon {
+  margin-right: 0.5em;
+}
+
+// If using CSS modules with TypeScript, ensure a ModernLinkPresenter.module.scss.d.ts is generated for type safety.
+
+.tileGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5em;
+  margin-top: 1.5em;
+}
+
+.tile {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  padding: 1.5em 1em 1em 1em;
+  width: 220px;
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.2s cubic-bezier(.4,2,.6,1), box-shadow 0.2s;
+  cursor: pointer;
+  position: relative;
+}
+
+.tile:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.13);
+}
+
+.tile--lift:hover {
+  transform: translateY(-8px) scale(1.03);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.13);
+}
+
+.tile--shadow:hover {
+  box-shadow: 0 16px 32px rgba(0,0,0,0.22);
+  transform: none;
+}
+
+.tile--scale:hover {
+  transform: scale(1.07);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.tile--none:hover {
+  transform: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+
+.tileIcon {
+  background: #FFD54F;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1em;
+}
+
+.tileIcon :global(.ms-Icon) {
+  font-size: 32px;
+  color: #fff;
+}
+
+.tileTitle {
+  font-size: 1.2em;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+.tileDescription {
+  font-size: 1em;
+  color: #444;
+  text-align: center;
+  margin-bottom: 1.5em;
+  flex: 1 1 auto;
+}
+
+.tileButton {
+  background: #888;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 0.5em 1.5em;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  margin-top: auto;
+  transition: background 0.2s;
+}
+
+.tileButton:hover {
+  background: #333;
+}
+
+.inlineLinkGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  align-items: flex-start;
+}
+
+.inlineLinkTile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 0.7em 1.2em 0.5em 1.2em;
+  min-width: 220px;
+  min-height: 60px;
+  box-sizing: border-box;
+  margin: 0;
+  background: #ddd; /* fallback, will be overridden inline */
+}
+
+.inlineLinkIcon {
+  display: inline-block;
+  margin-right: 0.5em;
+  vertical-align: middle;
+}
+
+.inlineLinkTitle {
+  font-weight: 500;
+  font-size: 1.08em;
+  color: #1a0dab;
+  text-decoration: underline;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.inlineLinkDescription {
+  font-size: 0.98em;
+  color: #666;
+  margin-top: 0.2em;
+  margin-left: 1.5em;
+}
+
+.verticalList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
+}
+
+.horizontalList {
+  display: flex;
+  flex-direction: row;
+  gap: 1em;
+  flex-wrap: wrap;
+  align-items: flex-start;
+}

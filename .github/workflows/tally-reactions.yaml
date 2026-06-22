@@ -1,0 +1,99 @@
+name: Tally Reactions
+
+on:
+  workflow_dispatch: 
+      
+jobs:
+  Tally-Reactions:
+    runs-on:  ubuntu-latest
+
+    permissions: 
+      contents: write
+      discussions: read
+    
+    steps: 
+      - name:  Checkout main branch (for action)
+        uses: actions/checkout@v4
+        with: 
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth:  1
+
+      - name:  Tally discussion reactions
+        id:  reactions
+        uses: ./.github/actions/tally-reactions
+
+      - name: Checkout Docs branch
+        uses: actions/checkout@v4
+        with: 
+          ref: Docs
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+          persist-credentials: true
+
+      - name: Save tally results to docs/data/likes.json
+        run: |
+          mkdir -p docs/data
+          echo '${{ steps.reactions.outputs.result }}' > docs/data/likes.json
+          echo "📄 Generated likes.json content:"
+          cat docs/data/likes.json
+          
+          # Validate JSON
+          if ! jq empty docs/data/likes.json 2>/dev/null; then
+            echo "❌ Invalid JSON generated"
+            exit 1
+          fi
+      
+      - name:  Commit and push to Docs branch
+        id: commit
+        run:  |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add docs/data/likes.json
+          
+          if git diff --cached --quiet --exit-code; then
+            echo "ℹ️ No changes to commit"
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            git commit -m "chore: update likes.json"
+            git push origin Docs
+            echo "✅ Changes committed and pushed to Docs branch"
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Generate summary
+        run: |
+          echo "## 🎯 Tally Reactions Workflow Complete" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Branch:** Docs" >> $GITHUB_STEP_SUMMARY
+          echo "**Output File:** \`docs/data/likes.json\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ "${{ steps.commit.outputs.changed }}" == "true" ]; then
+            echo "✅ **Status:** Changes detected and committed" >> $GITHUB_STEP_SUMMARY
+          else
+            echo "ℹ️ **Status:** No changes detected" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📊 Reaction Statistics" >> $GITHUB_STEP_SUMMARY
+          
+          # Check if likes.json exists and is valid
+          if [ !  -f docs/data/likes.json ]; then
+            echo "⚠️ likes.json not found" >> $GITHUB_STEP_SUMMARY
+            exit 0
+          fi
+          
+          # Check if .likes exists and is an object
+          if ! jq -e '.likes' docs/data/likes.json > /dev/null 2>&1; then
+            echo "⚠️ No likes data found in JSON" >> $GITHUB_STEP_SUMMARY
+            exit 0
+          fi
+          
+          # Count discussions with reactions (where count > 0)
+          DISCUSSION_COUNT=$(jq '[.likes | to_entries[] | select(.value.count > 0)] | length' docs/data/likes.json 2>/dev/null || echo "0")
+          
+          # Sum total reactions across all discussions
+          TOTAL_REACTIONS=$(jq '[.likes | to_entries[].value.count] | add // 0' docs/data/likes.json 2>/dev/null || echo "0")
+          
+          echo "- **Discussions with reactions:** ${DISCUSSION_COUNT}" >> $GITHUB_STEP_SUMMARY
+          echo "- **Total reactions:** ${TOTAL_REACTIONS}" >> $GITHUB_STEP_SUMMARY

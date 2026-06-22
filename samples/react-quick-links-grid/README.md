@@ -17,8 +17,8 @@ This project is a SharePoint Framework (SPFx) web part that displays a set of qu
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.19.0](https://img.shields.io/badge/SPFx-1.19.0-green.svg)
-![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
+![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
+![Node.js v18](https://img.shields.io/badge/Node.js-v22-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -42,15 +42,17 @@ This sample is optimally compatible with the following environment configuration
 | Version | Date            | Comments        |
 | ------- | --------------- | --------------- |
 | 1.0     | August 11, 2024 | Initial release |
+| 2.0     | July 18, 2025 | Adds order column |
 
 ## Prerequisites
 
-- Node.js (v19.00.4)
+- Node.js (v22.14.0)
 - SharePoint Online environment
 - A SharePoint list containing the quick links. This list is configured with columns
   - **Title** - Single line of text
   - **URL** - Hyperlink or Picture
   - **Icon** - Single line of text // Fluent Icon names can be referred from (https://developer.microsoft.com/en-us/fluentui#/styles/web/icons)
+  - **Order** - Number (optional, for custom ordering of links) - please be advised that every list has and internal 'order' field so if you plan to add a new column with title 'Order' then most probably its internal name will be 'Order0'.
   
   ![image](./assets/356854637-e68afa9a-0e48-40bf-abc0-f0fa12f154c7.png)
 

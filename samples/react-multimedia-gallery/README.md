@@ -7,7 +7,7 @@ This web part show images and videos in responsive grid, on click it show images
 It uses Microsoft Graph API to get thumbnails and image/video url and use PnPjs to load files from library the images/videos are loading in lazy mode, progressively.
 
 
-##  
+
 ![callendar](/samples/react-multimedia-gallery/assets/MultimediaGallery.gif) 
 
  
@@ -33,8 +33,8 @@ It uses Microsoft Graph API to get thumbnails and image/video url and use PnPjs 
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.10](https://img.shields.io/badge/SPFx-1.10.0-green.svg) 
-![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
+![SPFx 1.20](https://img.shields.io/badge/SPFx-1.20.0-green.svg) 
+![Node.js v18 ](https://img.shields.io/badge/Node.js-v18-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -71,7 +71,8 @@ The web part Use PnPjs library, Microsoft Graph API, Office-ui-fabric-react comp
 | Version | Date          | Comments                                                | Author(s)                                                          |
 | ------- | ------------- | ------------------------------------------------------- | ------------------------------------------------------------------ |
 | 1.0.0   | June 24, 2019 | Initial release                                         | João Mendes                                                        |
-| 1.1.0   | July 10, 2020 | Version Conflict with websocket-driver | [Peter Paul Kirschner](https://github.com/petkir) ([@petkir_at](https://twitter.com/petkir_at)) |
+| 1.1.0   | July 10, 2020 | Version Conflict with websocket-driver | [Peter Paul Kirschner](https://github.com/petkir) |
+| 2.0.0   | April 05, 2025 | Version Upgrade | [Peter Paul Kirschner](https://github.com/petkir)  |
 
 ## Minimal Path to Awesome
 

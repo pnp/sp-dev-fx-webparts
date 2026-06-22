@@ -1,0 +1,164 @@
+@import "~@fluentui/react/dist/sass/References.scss";
+
+.qrCode {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.welcome {
+  text-align: center;
+}
+
+.welcomeImage {
+  width: 100%;
+  max-width: 420px;
+}
+
+.links {
+  a {
+    text-decoration: none;
+    color: "[theme:link, default:#03787c]";
+    color: var(
+      --link
+    );
+
+    &:hover {
+      text-decoration: underline;
+      color: "[theme:linkHovered, default: #014446]";
+      color: var(
+        --linkHovered
+      );
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.generateTab {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.panel {
+  min-width: 350px;
+  flex: 1;
+}
+
+.previewPanel {
+  min-width: 350px;
+  flex: 1;
+  text-align: center;
+}
+
+.previewContainer {
+  height: 100%;
+  width: 100%;
+}
+
+.qrCodeWrapper {
+  padding: 20px;
+  background: transparent;
+  border-radius: 8px;
+}
+
+.qrText {
+  margin-top: 20px;
+  text-align: center;
+  word-break: break-all;
+  max-width: 90%;
+}
+
+.phoneMockupToggle {
+  margin-bottom: 20px;
+}
+
+.noPhoneMockup {
+  padding: 40px;
+  background: #f8f9fa;
+  border-radius: 12px;
+}
+
+.actionButtons {
+  margin-top: 20px;
+}
+
+.historyItem {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  
+  &:hover {
+    background-color: #f3f2f1;
+  }
+}
+
+.historyIconContainer {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #0078d4;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+.historyItemName {
+  font-weight: 600;
+}
+
+.historyItemDate {
+  color: #666;
+}
+
+.historyItemContent {
+  color: #666;
+  margin-top: 4px;
+}
+
+.deleteButton {
+  color: #a80000;
+  
+  &:hover {
+    color: #a80000;
+    background-color: #fde7e9;
+  }
+}
+
+.sharePointButton {
+  margin-top: 15px;
+}
+
+.fadeIn {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.slideUp {
+  animation: slideUp 0.5s ease-out;
+}

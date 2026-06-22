@@ -34,21 +34,14 @@ export default class KanbanTaskManagedProp extends React.Component<IKanbanTaskMa
         switch (this.props.type) {
             case KanbanTaskMamagedPropertyType.string:
                 return (<span>{value} </span>);
-                break;
             case KanbanTaskMamagedPropertyType.number:
                 return (<span>{value} </span>);
-                //TODO  maybe Formater
-                break;
             case KanbanTaskMamagedPropertyType.percent:
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 return (value?<span>{`${(value as any) * 100}%`} </span>:<span/>);
-                //TODO  maybe better Formater
-                break;
             case KanbanTaskMamagedPropertyType.html:
                 return (value?<span>{HTMLReactParser(value)}</span>:<span/>);
-                break;
             case KanbanTaskMamagedPropertyType.person:
-
                 return (<span>
                     {value && (
                         <Persona
@@ -57,7 +50,6 @@ export default class KanbanTaskManagedProp extends React.Component<IKanbanTaskMa
                             hidePersonaDetails={false} />
                     )}
                 </span>);
-                break;
             case KanbanTaskMamagedPropertyType.persons:
                 return (<span>
                     {
@@ -71,13 +63,10 @@ export default class KanbanTaskManagedProp extends React.Component<IKanbanTaskMa
                         ))
                     }
                 </span>);
-                break;
             case KanbanTaskMamagedPropertyType.complex:
                 return (<span>{JSON.stringify(value)}</span>);
-                break;
             default:
                 throw new Error("Unknow KanbanTaskMamagedPropertyType");
-                break;
         }
     }
 }

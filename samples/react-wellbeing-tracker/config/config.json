@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core-build/config/v1/config.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "wellbeing-tracker-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/wellbeingTracker/WellbeingTrackerWebPart.js",
+          "manifest": "./src/webparts/wellbeingTracker/WellbeingTrackerWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "WellbeingTrackerWebPartStrings": "lib/webparts/wellbeingTracker/loc/{locale}.js"
+  }
+}

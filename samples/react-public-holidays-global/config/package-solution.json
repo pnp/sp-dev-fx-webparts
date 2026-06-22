@@ -1,0 +1,41 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-public-holidays-global-client-side-solution",
+    "id": "a713c73b-9961-4e84-bbfb-54e3cceae8b9",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "João LIVIO",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Displays public holidays by country and year."
+      },
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-public-holidays-global",
+      "longDescription": {
+        "default": "This SPFx web part displays public holidays for multiple countries and years. Users can select the country via the property pane, view holidays for the current year, navigate through paginated results, and visualize the total holidays across the last 4 years with a dynamic bar chart."
+      },
+      "screenshotPaths": ["assets/sample.png"],
+      "videoUrl": "",
+      "categories": ["Productivity", "Reference"]
+    },
+    "features": [
+      {
+        "title": "react-public-holidays-global Feature",
+        "description": "The feature that activates elements of the react-public-holidays-global solution.",
+        "id": "c1685df5-5baa-438a-9665-e9f6e162048d",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-public-holidays-global.sppkg"
+  }
+}

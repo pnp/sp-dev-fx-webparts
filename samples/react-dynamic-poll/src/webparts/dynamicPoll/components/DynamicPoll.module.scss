@@ -1,0 +1,121 @@
+@import "~@fluentui/react/dist/sass/References.scss";
+
+.dynamicPoll {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  justify-content: center;
+
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.container {
+  max-width: 600px;
+  width: 100%;
+  background: white;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  border-top: 5px solid #0078d4; // Default Brand color
+
+  &:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.header {
+  background: #f3f2f1;
+  padding: 20px;
+  text-align: center;
+
+  h2 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: 600;
+    color: #323130;
+  }
+}
+
+.content {
+  padding: 24px;
+}
+
+.question {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #201f1e;
+}
+
+.msgContainer {
+  padding: 40px 20px;
+  text-align: center;
+  color: #605e5c;
+
+  h3 {
+    margin-top: 0;
+    color: #0078d4;
+  }
+}
+
+.thankYou {
+  background-color: #e6f7ff;
+  border: 1px solid #91d5ff;
+  border-radius: 4px;
+  padding: 20px;
+  text-align: center;
+
+  h3 {
+    color: #0050b3;
+    margin-bottom: 10px;
+  }
+
+  .votedAnswer {
+    font-size: 16px;
+    color: #003a8c;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+}
+
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: #0078d4;
+  font-weight: 600;
+}
+
+.noPoll {
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  padding: 40px;
+  text-align: center;
+  color: #a19f9d;
+  font-style: italic;
+}
+
+.actions {
+  margin-top: 25px;
+  text-align: right;
+}
+
+.pollResultsItem {
+  margin-bottom: 15px;
+}
+
+.pollResultsRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}

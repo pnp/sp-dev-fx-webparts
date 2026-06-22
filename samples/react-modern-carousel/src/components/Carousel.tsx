@@ -1,25 +1,24 @@
 import * as React from "react"
+import { useContext } from "react"
 import { Swiper, SwiperSlide } from "swiper/react"
-import { EffectCards, EffectCoverflow } from "swiper"
-import { Card, CardPreview } from "@fluentui/react-components"
+import { EffectCards, EffectCoverflow } from "swiper/modules"
+import { Card, CardPreview, tokens } from "@fluentui/react-components"
 import { useEffect, useState } from "react"
 import { useListItems } from "pnp-react-hooks/hooks/sp/useListItems"
 import { ListOptions } from "pnp-react-hooks/types/options/ListOptions"
-import { useSite } from "pnp-react-hooks/hooks/sp/useSite"
 
 // Import Swiper styles
-import "swiper/swiper.min.css"
-import "swiper/modules/navigation/navigation.min.css"
-import "swiper/modules/pagination/pagination.min.css"
-import "swiper/modules/effect-coverflow/effect-coverflow.min.css"
+import "swiper/css"
+import "swiper/css/effect-coverflow"
 
 import { AwardItems } from "../types/AwardItems"
 import styles from "../webparts/awardRecognition/components/AwardRecognition.module.scss"
 import { Content } from "./Content"
 import { WebpartContext } from "../webparts/awardRecognition/components/AwardRecognition"
+import { getCardLayoutType } from "../utils/carousel"
 
 export const Carousel = (): JSX.Element => {
-  const contextInfo = React.useContext(WebpartContext)
+  const contextInfo = useContext(WebpartContext)
 
   const [awardList, setAwardList] = useState<AwardItems[]>([])
   const [selectedUser, setSelectedUser] = useState<AwardItems | null>(null)
@@ -31,13 +30,11 @@ export const Carousel = (): JSX.Element => {
     mode: ListOptions.All,
   })
 
-  const siteInfo = useSite()
-
   useEffect(() => {
     if (listItems && listItems.length > 0) {
       const parsedData = listItems.map((item) => {
         const AppImageUrl = JSON.parse(item.UserImage)
-        const ImageUrl = `${siteInfo.Url}/Lists/Award%20Recognition/Attachments/${item.ID}/${AppImageUrl.fileName}`
+        const ImageUrl = `${contextInfo.context.pageContext.web.serverRelativeUrl}/Lists/Award%20Recognition/Attachments/${item.ID}/${AppImageUrl.fileName}`
         return { ...item, ImageUrl }
       })
       setAwardList(parsedData)
@@ -46,18 +43,13 @@ export const Carousel = (): JSX.Element => {
       }
     }
     console.log("contextInfo", contextInfo)
-  }, [listItems, selectedUser, siteInfo])
+  }, [listItems, selectedUser])
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSlideChange = (swiper: any): void => {
     const realIndex = swiper.realIndex
     setSelectedUser(awardList[realIndex])
   }
-
-  const moduleType =
-    contextInfo.cardType === "coverEffect" ? EffectCoverflow : EffectCards
-
-  console.log("card style", contextInfo.cardStyle)
 
   const cardStyles =
     contextInfo.cardStyle === "rounded"
@@ -78,12 +70,20 @@ export const Carousel = (): JSX.Element => {
         <Content user={selectedUser} />
       </aside>
       <aside className={styles.carouselWrapper}>
-        <div className={styles.fade_left} />
-        <div className={styles.fade_right} />
+        <div
+          className={styles.fade_left}
+          style={{
+            background: `linear-gradient(to right, ${tokens.colorNeutralBackground4Selected}, transparent)`,
+          }}
+        />
+        <div
+          className={styles.fade_right}
+          style={{
+            background: `linear-gradient(to left, ${tokens.colorNeutralBackground4Selected}, transparent)`,
+          }}
+        />
         <Swiper
-          effect={
-            contextInfo.cardType === "coverEffect" ? "coverflow" : "cards"
-          }
+          effect={getCardLayoutType(contextInfo.cardType)}
           grabCursor={true}
           rewind={contextInfo.animationChoice === "rewind" ? true : false}
           coverflowEffect={{
@@ -91,6 +91,10 @@ export const Carousel = (): JSX.Element => {
             stretch: 0,
             depth: 120,
             modifier: 3.5,
+            slideShadows: false,
+          }}
+          cardsEffect={{
+            slideShadows: false,
           }}
           keyboard={{ enabled: true }}
           mousewheel={{
@@ -105,7 +109,7 @@ export const Carousel = (): JSX.Element => {
             },
           }}
           slidesPerView={2}
-          modules={[moduleType]}
+          modules={[EffectCards, EffectCoverflow]}
           centeredSlides
           spaceBetween={30}
           loop={contextInfo.animationChoice === "loop" ? true : false}

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "chat-api-playground-client-side-solution",
+    "id": "a1e6de8e-70ad-48c5-aa24-991d8975932a",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.22.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "chat-api-playground description"
+      },
+      "longDescription": {
+        "default": "chat-api-playground description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "chat-api-playground Feature",
+        "description": "The feature that activates elements of the chat-api-playground solution.",
+        "id": "e930f2bc-eff8-429b-ac3b-1a1b8502beab",
+        "version": "1.0.0.0"
+      }
+    ],
+    "webApiPermissionRequests": [
+      { "resource": "Microsoft Graph", "scope": "Sites.Read.All" },
+      { "resource": "Microsoft Graph", "scope": "Mail.Read" },
+      { "resource": "Microsoft Graph", "scope": "People.Read.All" },
+      { "resource": "Microsoft Graph", "scope": "OnlineMeetingTranscript.Read.All" },
+      { "resource": "Microsoft Graph", "scope": "Chat.Read" },
+      { "resource": "Microsoft Graph", "scope": "ChannelMessage.Read.All" },
+      { "resource": "Microsoft Graph", "scope": "ExternalItem.Read.All" }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/chat-api-playground.sppkg"
+  }
+}

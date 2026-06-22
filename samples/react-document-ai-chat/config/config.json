@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "docu-genie-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/docuGenie/DocuGenieWebPart.js",
+          "manifest": "./src/webparts/docuGenie/DocuGenieWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "DocuGenieWebPartStrings": "lib/webparts/docuGenie/loc/{locale}.js"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "extends": "./node_modules/@microsoft/spfx-web-build-rig/profiles/default/tsconfig-base.json",
+   "compilerOptions": {
+   "lib": [
+      "dom",
+      "es5",
+      "es2015.core",
+      "es2015.collection",
+      "es2015.iterable",
+      "es2015.promise",
+      "es2015.proxy",
+      "ES2016.Array.Include"
+    ],
+  }
+}

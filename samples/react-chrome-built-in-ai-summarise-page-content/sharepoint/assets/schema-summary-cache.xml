@@ -1,0 +1,40 @@
+<List xmlns:ows="Microsoft SharePoint" Title="Page Summary Cache" FolderCreation="FALSE" Direction="$Resources:Direction;" Url="Lists/PageSummaryCache" BaseType="0"
+  xmlns="http://schemas.microsoft.com/sharepoint/">
+
+  <MetaData>
+    <ContentTypes>
+    </ContentTypes>
+
+    <Fields>
+      <Field ID="{12345678-1234-1234-1234-123456789011}" Name="builtinaiPageId" StaticName="builtinaiPageId" DisplayName="Page ID" Type="Text" Required="TRUE" Indexed="TRUE" ShowInDisplayForm="TRUE" ShowInEditForm="TRUE" ShowInNewForm="TRUE" />
+      
+      <Field ID="{12345678-1234-1234-1234-123456789012}" Name="builtinaiSummary" StaticName="builtinaiSummary" DisplayName="Page Summary" Type="Note" Required="TRUE" ShowInDisplayForm="TRUE" ShowInEditForm="TRUE" ShowInNewForm="TRUE" />
+      
+      <Field ID="{12345678-1234-1234-1234-123456789013}" Name="builtinaiLanguage" StaticName="builtinaiLanguage" DisplayName="Summary Language" Type="Text" Required="TRUE" ShowInDisplayForm="TRUE" ShowInEditForm="TRUE" ShowInNewForm="TRUE" />
+    </Fields>
+
+    <Views>
+      <View BaseViewID="1" Type="HTML" WebPartZoneID="Main" DisplayName="All Items" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" SetupPath="pages\viewpage.aspx" ImageUrl="/_layouts/images/generic.png" Url="AllItems.aspx">
+        <Toolbar Type="Standard" />
+        <XslLink Default="TRUE">main.xsl</XslLink>
+        <RowLimit Paged="TRUE">30</RowLimit>
+        <ViewFields>
+          <FieldRef Name="LinkTitle"></FieldRef>
+          <FieldRef Name="builtinaiPageId"></FieldRef>
+          <FieldRef Name="builtinaiLanguage"></FieldRef>
+          <FieldRef Name="Modified"></FieldRef>
+        </ViewFields>
+        <Query>
+          <OrderBy>
+            <FieldRef Name="Modified" Ascending="FALSE"></FieldRef>
+          </OrderBy>
+        </Query>
+      </View>
+    </Views>
+    <Forms>
+      <Form Type="DisplayForm" Url="DispForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="EditForm" Url="EditForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+      <Form Type="NewForm" Url="NewForm.aspx" SetupPath="pages\form.aspx" WebPartZoneID="Main" />
+    </Forms>
+  </MetaData>
+</List>

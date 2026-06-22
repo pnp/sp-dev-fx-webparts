@@ -1,0 +1,400 @@
+// LibraryView
+@use '../../mixins' as *;
+
+.backBtn {
+  @include backBtn;
+  width: 150px;
+}
+
+.loadingWrap {
+  min-height: 400px;
+}
+
+.spinner {
+  color: var(--ll-cl-accent);
+
+  :global(.ms-Spinner-label) {
+    color: var(--ll-cl-text-muted);
+  }
+}
+
+.headerRow {
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.viewTitle {
+  @include tabTitle;
+  margin: 0 0 3px;
+}
+
+.viewSubtitle {
+  font-size: 11px;
+  color: var(--ll-cl-text-faint);
+}
+
+// StatsCards
+.card {
+  background: var(--ll-bg-card);
+  border: 1px solid var(--ll-bd-card);
+  border-radius: 8px;
+  padding: 7px 12px;
+  min-width: 75px;
+}
+
+.value {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.label {
+  @include sectionLabel(8px, 0.5px);
+  margin-top: 1px;
+}
+
+// ContractTable
+.tableWrap {
+  @include glassCard(12px);
+  overflow: hidden;
+
+  :global(.ms-DetailsHeader) {
+    padding-top: 0;
+    border-bottom: 1px solid var(--ll-bd-card);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(139, 92, 246, 0.05));
+    backdrop-filter: blur(10px);
+  }
+
+  :global(.ms-DetailsHeader-cell) {
+    font-size: 8px;
+    color: var(--ll-cl-text-faint);
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    font-weight: 600;
+    height: 40px;
+    line-height: 40px;
+    &:hover {
+      background: transparent;
+    }
+  }
+
+  :global(.ms-DetailsRow) {
+    border-bottom: 1px solid var(--ll-bd-subtle);
+    min-height: 52px;
+    background: transparent;
+
+    &:hover {
+      background: var(--ll-bg-card);
+    }
+  }
+
+  .openBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: none;
+    background: transparent;
+    color: var(--ll-cl-text-faint);
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 16px;
+    &:hover {
+      background: rgba(99, 102, 241, 0.15);
+      color: var(--ll-cl-accent-soft);
+    }
+  }
+
+  :global(.ms-DetailsRow-cell) {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.contractName {
+  font-size: 12px;
+  color: var(--ll-cl-text);
+  font-weight: 500;
+  margin-bottom: 1px;
+}
+
+.contractExpiry {
+  font-size: 9px;
+  color: var(--ll-cl-text-faint);
+}
+
+.metaText {
+  font-size: 10.5px;
+  color: var(--ll-cl-text-muted);
+}
+
+.riskTrack {
+  width: 24px;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--ll-bg-card);
+  overflow: hidden;
+}
+
+.riskScore {
+  font-size: 8.5px;
+  font-weight: 600;
+}
+
+.statusDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.statusText {
+  font-size: 9.5px;
+  text-transform: capitalize;
+}
+
+.flagBadge {
+  font-size: 7.5px;
+  background: rgba(245, 158, 11, 0.12);
+  color: #f59e0b;
+  border-radius: 3px;
+  padding: 1px 4px;
+  margin-left: 3px;
+}
+
+.emptyState {
+  @include glassCard;
+  padding: 40px;
+  text-align: center;
+  color: var(--ll-cl-text-faint);
+}
+
+.emptyIcon {
+  font-size: 48px;
+  opacity: 0.3;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.emptyText {
+  font-size: 13px;
+  margin-bottom: 8px;
+  color: var(--ll-cl-text-faint);
+}
+
+// DocumentOverview
+.infoColA {
+  flex: 1;
+  min-width: 0;
+}
+
+.infoColB {
+  flex: 1;
+  min-width: 0;
+}
+
+.overviewSection {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--ll-bd-subtle);
+
+  &:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+}
+.mainColumn {
+  flex: 2;
+  min-width: 200px;
+  .riskAnalysis {
+    background: var(--ll-bg-card);
+    border: 1px solid var(--ll-bd-card);
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+  }
+  .documentInfo {
+    background: var(--ll-bg-card);
+    border: 1px solid var(--ll-bd-card);
+    border-radius: 12px;
+    padding: 16px;
+  }
+}
+
+.detailsColumn {
+  flex: 1;
+  min-width: 0;
+  .documentOverview {
+    background: var(--ll-bg-card);
+    border: 1px solid var(--ll-bd-card);
+    border-radius: 12px;
+    padding: 16px;
+  }
+}
+
+
+.documentWrap {
+  margin-top: 0 !important;
+  padding: 0 0 20px;
+}
+
+.overviewField {
+  min-width: 140px;
+}
+
+.overviewFieldLabel {
+  @include sectionLabel;
+  margin-bottom: 3px;
+}
+
+.overviewFieldValue {
+  font-size: 12px;
+  color: var(--ll-cl-text);
+  font-weight: 500;
+}
+
+.expiredBadge {
+  font-size: 9px;
+  font-weight: 600;
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.25);
+  border-radius: 4px;
+  padding: 1px 6px;
+}
+
+.overviewTag {
+  font-size: 10px;
+  color: var(--ll-cl-accent-soft);
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 4px;
+  padding: 2px 8px;
+}
+
+.overviewSectionTitle {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ll-cl-accent-soft);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.overviewFileLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--ll-cl-accent-soft);
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.overviewFileLinkIcon {
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.overviewSummary {
+  font-size: 11px;
+  color: var(--ll-cl-text-muted);
+  line-height: 1.7;
+  margin-top: 4px;
+}
+
+.clauseValue {
+  font-size: 11px;
+  color: var(--ll-cl-text-muted);
+}
+
+.riskFactorDesc {
+  font-size: 11px;
+  color: var(--ll-cl-text-muted);
+  margin-bottom: 0px;
+  line-height: 1.6;
+}
+
+.riskFactorRec {
+  font-size: 10px;
+  color: #10b981;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+// TagFilter
+.wrap {
+  margin-bottom: 16px;
+  padding: 12px;
+  background: var(--ll-bg-card);
+  border-radius: 8px;
+  border: 1px solid var(--ll-bd-subtle);
+}
+
+.tagRow {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filterLabel {
+  @include sectionLabel(8.5px, 0.5px);
+}
+
+.clearBtn {
+  background: rgba(239, 68, 68, 0.12);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  color: #ef4444;
+  border-radius: 4px;
+  padding: 4px 10px;
+  font-size: 8.5px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  height: 20px;
+
+  &:hover {
+    background: rgba(239, 68, 68, 0.2);
+    color: #ef4444;
+  }
+}
+
+.tagBtn {
+  font-size: 8.5px;
+  font-family: monospace;
+  background: var(--ll-bg-tag);
+  border: 1px solid var(--ll-bd-tag);
+  border-radius: 4px;
+  padding: 4px 10px;
+  color: var(--ll-cl-tag);
+  font-weight: 400;
+  cursor: pointer;
+  outline: none;
+  height: 20px;
+
+  &:hover {
+    background: var(--ll-bg-tag-hover);
+    color: var(--ll-cl-tag);
+  }
+
+  &.selected {
+    background: var(--ll-bg-tag-selected);
+    border-color: var(--ll-bd-tag-selected);
+    color: var(--ll-cl-tag-selected);
+    font-weight: 600;
+
+    &:hover {
+      background: var(--ll-bg-tag-selected);
+    }
+  }
+}
+
+.tagCount {
+  font-size: 7px;
+  margin-left: 4px;
+  opacity: 0.7;
+  font-weight: 700;
+}

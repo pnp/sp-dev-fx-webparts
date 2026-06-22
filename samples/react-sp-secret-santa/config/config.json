@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "secret-santa-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/secretSanta/SecretSantaWebPart.js",
+          "manifest": "./src/webparts/secretSanta/SecretSantaWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SecretSantaWebPartStrings": "lib/webparts/secretSanta/loc/{locale}.js"
+  }
+}

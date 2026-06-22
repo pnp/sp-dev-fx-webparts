@@ -7,7 +7,7 @@ import { DateBoxSize, IDateBoxProps } from ".";
 /**
  * Shows a date in a SharePoint-looking date
  */
-export const DateBox = (props: IDateBoxProps) => {
+export const DateBox = (props: IDateBoxProps):JSX.Element => {
   // convert start and end date into moments so that we can manipulate them
   const startMoment: moment.Moment = moment(props.startDate);
 
@@ -18,11 +18,11 @@ export const DateBox = (props: IDateBoxProps) => {
   const isSameDay: boolean = startMoment.isSame(endMoment, "day");
 
   const { themeVariant } = props;
-  const backgroundColor: string = themeVariant && themeVariant.palette["primaryBackground"];
-  const textColor: string = themeVariant && backgroundColor != themeVariant.semanticColors.bodyText ?
-    themeVariant.semanticColors.bodyText : themeVariant.palette["primaryText"];
+  const backgroundColor: string = themeVariant && themeVariant.palette.white// ["primaryBackground"];
+  const textColor: string = themeVariant && backgroundColor !== themeVariant.semanticColors.bodyText ?
+    themeVariant.semanticColors.bodyText : themeVariant.palette.black//["primaryText"];
   // If the background color matches the text color, it is probably a reversed section, use a different border color
-  const borderColor: string = themeVariant && backgroundColor != themeVariant.semanticColors.bodyText ? themeVariant.semanticColors.bodyDivider : "[theme:neutralLight, default: #eaeaea]";
+  const borderColor: string = themeVariant && backgroundColor !== themeVariant.semanticColors.bodyText ? themeVariant.semanticColors.bodyDivider : "[theme:neutralLight, default: #eaeaea]";
 
   if (isSameDay) {
     return (

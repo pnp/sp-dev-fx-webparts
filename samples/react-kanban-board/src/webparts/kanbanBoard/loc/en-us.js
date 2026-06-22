@@ -1,18 +1,18 @@
 define([], function () {
   return {
     "PropertyPaneDescription": "Description",
-    "BasicGroupName": "Basic Configuration",
+    "BasicGroupName": "Basic configuration",
 
 
-    "PercentComplete": "Percent Complete",
+    "PercentComplete": "Percent complete",
 
-    "propertyPaneHideWPHeadline": "Hide WebPart-Title?",
-    "propertyPaneHideWPHeadlineShow": "show",
-    "propertyPaneHideWPHeadlineHide": "hide",
-    "propertyPaneSelectList": "Select List",
-    "propertyPaneGroupNameOrderBuckets": "Order Buckets",
+    "propertyPaneHideWPHeadline": "Hide web part title?",
+    "propertyPaneHideWPHeadlineShow": "Show",
+    "propertyPaneHideWPHeadlineHide": "Hide",
+    "propertyPaneSelectList": "Select list",
+    "propertyPaneGroupNameOrderBuckets": "Order buckets",
     "propertyPaneLabelOrderBuckets": "",
-    "propertyPaneBucketConfiguration": "Bucket Configuration",
+    "propertyPaneBucketConfiguration": "Bucket configuration",
 
     "PlaceholderIconText": "Configure your web part",
     "PlaceholderDescription": "Please configure the web part.",

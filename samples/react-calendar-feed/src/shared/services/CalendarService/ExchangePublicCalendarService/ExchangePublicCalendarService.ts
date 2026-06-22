@@ -12,7 +12,7 @@ export class ExchangePublicCalendarService extends iCalCalendarService implement
         this.Name = "Exchange";
     }
 
-    public getEvents = (): Promise<ICalendarEvent[]> => {
+    public async getEvents(): Promise<ICalendarEvent[]>  {
         // exchange public calendar shares are really ICS calendars.
         // we allow users to pass either the .html URL or
         // the .ics, but we really need the .ics file
@@ -24,6 +24,6 @@ export class ExchangePublicCalendarService extends iCalCalendarService implement
             this.FeedUrl= `${root}.ics`;
         }
 
-        return this.getEvents();
+        return super.getEvents();
     }
 }

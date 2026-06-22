@@ -1,0 +1,82 @@
+DATA PROCESSING AGREEMENT
+
+This DPA is entered into as of September 15, 2024, forming part of the Master Services Agreement between:
+
+HealthCare Systems International Inc., Chicago, IL 60611 ("Data Controller")
+AND
+SecureCloud Processing Services Ltd., Dublin, Ireland ("Data Processor")
+
+§1. SCOPE AND PURPOSE
+
+Data Processor processes Personal Data on behalf of Data Controller for cloud infrastructure and healthcare data processing services. Processing must comply with GDPR, CCPA, and all applicable data protection laws.
+
+Types of Personal Data:
+- Patient identification (names, addresses, DOB, ID numbers)
+- Health and medical records
+- Healthcare provider information
+- Insurance and billing data
+- Contact information (email, phone)
+
+Data Subjects: Patients, healthcare providers, insurance beneficiaries, legal guardians
+
+§2. DATA PROCESSOR OBLIGATIONS
+
+§2.1 Processing Instructions
+Process Personal Data only on documented instructions from Controller or as required by law. Notify Controller if instruction violates data protection laws.
+
+§2.2 Confidentiality
+Ensure all personnel are bound by confidentiality obligations.
+
+§2.3 Security Measures
+Implement appropriate technical and organizational measures:
+- Encryption and pseudonymization
+- System confidentiality, integrity, availability, resilience
+- Regular testing and vulnerability assessment
+- Incident recovery capabilities
+
+§2.4 Sub-processors
+General authorization granted for Sub-processors listed at www.securecloud.com/subprocessors. 30 days notice for new Sub-processors. Controller may object on reasonable data protection grounds within 15 days.
+
+§2.5 Data Subject Rights
+Assist Controller in responding to requests for:
+- Access, rectification, erasure
+- Restriction of processing
+- Data portability
+- Right to object
+
+§2.6 Security Incidents
+Notify Controller within 24 hours of Security Incident discovery with:
+- Nature of incident
+- Categories and number of affected Data Subjects
+- Likely consequences
+- Mitigation measures taken
+
+§2.7 Return or Deletion
+At Controller election, delete or return all Personal Data after service ends. Continue compliance if retention required by law.
+
+§2.8 Audit Rights
+Controller may audit once annually (30 days notice) during business hours. Controller responsible for costs. Additional audits permitted after Security Incident or by Supervisory Authority request.
+
+§3. DATA TRANSFERS
+
+Transfers outside EEA only if: (a) adequate protection exists; (b) Standard Contractual Clauses in place; or (c) GDPR Article 49 derogation applies.
+
+§4. LIABILITY
+
+Data Processor liable for damages only if failed to comply with processor-specific obligations or acted outside/contrary to lawful instructions. Data Processor indemnifies Controller for breaches of DPA or data protection law violations.
+
+§5. TERM
+
+Effective September 15, 2024 until MSA termination. Sections on deletion, liability, and general provisions survive termination.
+
+§6. GOVERNING LAW
+
+Governed by laws of Ireland (to extent not inconsistent with Data Protection Laws). This DPA prevails over MSA for Personal Data processing.
+
+HEALTHCARE SYSTEMS INTERNATIONAL INC.    SECURECLOUD PROCESSING SERVICES LTD.
+By: Dr. Jennifer Adams                 By: Patrick O'Brien
+Title: Chief Privacy Officer             Title: Data Protection Officer
+Date: September 15, 2024                Date: September 15, 2024
+
+ANNEX: Processing Duration
+For MSA term plus 7-10 years retention as required by healthcare regulations.

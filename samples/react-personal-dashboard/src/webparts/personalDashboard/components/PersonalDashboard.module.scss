@@ -1,0 +1,141 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.personalDashboard {
+  margin-right: auto;
+  margin-left: auto;
+  width: 100%;
+
+  /* My Dashboard */
+  .dashboardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    
+
+    .item {
+      position: relative;
+      margin: 5px;
+      width: 290px;
+
+      .header {
+        margin: 10px 0 10px 0;
+        font-size: 18px;
+        font-weight: 600;
+        width: 100%;
+
+        i {
+          padding-right: 5px;
+          position: relative;
+          top: 3px;
+        }
+      }
+
+      .content {
+        border: 2px solid #DDD;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        height: 235px;
+        overflow-y: auto;
+        border-bottom: 0;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+
+        &::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: #F5F5F5;
+          border-radius: 8px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: #DDD;
+          border-radius: 8px;
+
+          &:hover {
+            background: #BBB;
+          }
+        }
+      }
+
+      .contentWithoutFooter {
+        border: 2px solid #DDD;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        height: 255px;
+        overflow-y: auto;
+
+        &::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        &::-webkit-scrollbar-track {
+          background: #F5F5F5;
+          border-radius: 8px;
+        }
+
+        &::-webkit-scrollbar-thumb {
+          background: #DDD;
+          border-radius: 8px;
+
+          &:hover {
+            background: #BBB;
+          }
+        }
+      }
+
+      .footer {
+        position: static;
+        display: table;
+        bottom: 0px;
+        width: 100%;
+        height: 20px;
+        border-width: 0 2px 2px 2px;
+        border-style: none solid solid solid;
+        border-color: transparent #DDD #DDD #DDD;
+        border-radius: 0 0 8px 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        background-color: #F5F5F5;
+
+        .text {
+          display: table-cell;
+          font-size: 10px;
+          font-weight: bold;
+          color: "[theme:themeDarker, default:#515D63]";
+          width: 50%;
+          padding-top: 6px;
+          position: relative;
+          top: 50%;
+          text-align: center;
+          text-decoration: none;
+
+          &:first-child {
+            border-right: 1px solid #EEE;
+          }
+
+        }
+      }
+    }
+  }
+
+  .personalizeContainer {
+    padding: 20px;
+
+    .customLink {
+      float: right;
+      color: "[theme:themeDarker, default:#000]";
+      text-decoration: none;
+      font-size: 12px;
+      cursor: pointer;
+
+      i {
+        padding-right: 5px;
+        position: relative;
+      }
+    }
+  }
+}

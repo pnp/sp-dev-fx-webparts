@@ -1,8 +1,11 @@
 .root {
+  display: flex;
+  flex-direction: column;
   .container {
     width: 100%;
     .flex {
       display: flex;
+      flex-direction: row;
       gap: .5rem;
       align-items: center;
       justify-content: left;

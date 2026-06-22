@@ -14,7 +14,7 @@
     "@types/react-addons-update": "0.14.14",
     "@types/react-dom": "0.14.18",
     "@types/webpack-env": ">=1.12.1 <1.14.0",
-    "immutable": "^3.8.1",
+    "immutable": "^3.8.3",
     "react": "15.4.2",
     "react-dom": "15.4.2",
     "react-redux": "^5.0.5",

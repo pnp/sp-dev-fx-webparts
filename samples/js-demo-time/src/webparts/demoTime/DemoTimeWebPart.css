@@ -1,0 +1,100 @@
+.item-demo-time {
+  flex-shrink: 0;
+}
+
+.root-demo-time {
+  outline: transparent;
+  position: relative;
+  font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  font-size: 14px;
+  font-weight: 400;
+  border: none;
+  border-radius: 4px;
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0px;
+  text-decoration: none;
+  text-align: center;
+  min-width: 40px;
+  background-color: transparent;
+  color: rgb(36, 36, 36);
+  height: 100%;
+  margin: 0px 2px;
+  user-select: none;
+}
+
+.root-demo-time:hover {
+  background-color: #f1f0ef;
+  color: rgb(20, 20, 20);
+}
+
+.flexContainer-demo-time {
+  display: flex;
+  height: 32px;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+  padding-left: 4px;
+  padding-right: 4px;
+  border-radius: 4px;
+}
+
+.displayNone {
+  display: none;
+}
+
+.enchance {
+  box-shadow: 0px 200px 200px #111, 0px -200px 200px #111;
+  position: relative;
+  z-index: 1;
+}
+
+.demo-time-comment-box {
+  border: 2px solid #bbb;
+  position: fixed;
+  right: 15px;
+  top: 175px;
+  z-index: 100;
+  min-width: 200px;
+  max-width: 200px;
+  min-height: 50px;
+  padding: 10px;
+  background: #ffffff;
+  box-shadow: 0 0 15px #aaa;
+  text-align: center;
+}
+
+.demo-time-comment-box:after {
+  bottom: 100%;
+  left: 33%;
+  border: solid transparent;
+  content: "";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+}
+
+.demo-time-comment-box:after {
+  border-color: rgba(136, 183, 213, 0) rgba(136, 183, 213, 0) #ccc;
+  border-width: 15px;
+  margin-left: 59px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease-in-out;
+}

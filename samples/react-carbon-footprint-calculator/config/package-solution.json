@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-carbon-footprint-calculator-client-side-solution",
+    "id": "b393780f-53b0-429c-8123-44bf7a1dd515",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-carbon-footprint-calculator description"
+      },
+      "longDescription": {
+        "default": "react-carbon-footprint-calculator description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-carbon-footprint-calculator Feature",
+        "description": "The feature that activates elements of the react-carbon-footprint-calculator solution.",
+        "id": "916bbadc-41d4-443c-9b22-6bfc0a61608a",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-carbon-footprint-calculator.sppkg"
+  }
+}

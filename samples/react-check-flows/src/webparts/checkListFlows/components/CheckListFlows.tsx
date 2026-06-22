@@ -2,14 +2,27 @@ import * as React from 'react';
 import styles from './CheckListFlows.module.scss';
 import { ICheckListFlowsProps } from './ICheckListFlowsProps';
 import { SPHttpClient } from '@microsoft/sp-http';
-import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { Dropdown, IDropdownOption } from '@fluentui/react/lib/Dropdown';
 import { WebPartTitle } from "@pnp/spfx-controls-react/lib/WebPartTitle";
-import { DetailsList, DetailsListLayoutMode, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, DetailsListLayoutMode, IColumn } from '@fluentui/react/lib/DetailsList';
 import { unescape } from '@microsoft/sp-lodash-subset';
-import { Shimmer, ShimmerElementType } from 'office-ui-fabric-react/lib/Shimmer';
-import { Link } from 'office-ui-fabric-react/lib/Link';
+import { Shimmer, ShimmerElementType } from '@fluentui/react/lib/Shimmer';
+import { Link } from '@fluentui/react/lib/Link';
 import { ICheckListFlowsState } from './ICheckListFlowsState';
 import { IFlowDetails } from './IFlowDetails';
+
+interface IFlowApiResponse {
+  id: string;
+  properties: {
+    displayName: string;
+    sharingType?: string;
+    definitionSummary: {
+      triggers: Array<{
+        swaggerOperationId: string;
+      }>;
+    };
+  };
+}
 
 export default class CheckListFlows extends React.Component<ICheckListFlowsProps, ICheckListFlowsState> {
   constructor(props: ICheckListFlowsProps) {
@@ -161,8 +174,8 @@ export default class CheckListFlows extends React.Component<ICheckListFlowsProps
     this.props.context.spHttpClient.post(`${this.props.context.pageContext.web.absoluteUrl}/_api/web/GetList(@url)/SyncFlowInstances?@url='${listUrl}'`, SPHttpClient.configurations.v1, {})
       .then((response) => {
         response.json().then((val) => {
-          let flowItems: IFlowDetails[] = [];
-          JSON.parse(val.SynchronizationData).value.map((flow) => {
+          const flowItems: IFlowDetails[] = [];
+          JSON.parse(val.SynchronizationData).value.map((flow: IFlowApiResponse) => {
             flowItems.push({
               flowName: flow.properties.displayName,
               flowTrigger: flow.properties.definitionSummary.triggers[0].swaggerOperationId,

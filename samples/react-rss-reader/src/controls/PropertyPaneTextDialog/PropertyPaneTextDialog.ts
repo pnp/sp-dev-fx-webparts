@@ -11,7 +11,7 @@ export class PropertyPaneTextDialog implements IPropertyPaneField<IPropertyPaneT
   public type: PropertyPaneFieldType = PropertyPaneFieldType.Custom;
   public targetProperty: string;
   public properties: IPropertyPaneTextDialogInternalProps;
-  private elem: HTMLElement;
+  private elem!: HTMLElement;
 
 
   /*****************************************************************************************

@@ -13,8 +13,8 @@ This web part demonstrates *Star Ratings* capabilities to SharePoint News. The "
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.18.0](https://img.shields.io/badge/SPFx-1.18.0-green.svg)
-![Node.js v18 | v16](https://img.shields.io/badge/Node.js-v18%20%7C%20v16-green.svg)
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
+![Node.js v19 | v18](https://img.shields.io/badge/Node.js-v19%20%7C%20v18-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -57,7 +57,8 @@ This web part demonstrates *Star Ratings* capabilities to SharePoint News. The "
 
 Version|Date|Comments
 -------|----|--------
-1.4|November 9, 2023|Upgraded* to SPFx v1.18
+1.5|January 23, 2025|Upgraded to SPFx v1.20 and changed to React Fluent UI v9.
+1.4|November 9, 2023|Upgraded to SPFx v1.18
 1.3|April 27, 2022|Changed to show averages with stars instead of user ratings.
 1.2|March 28, 2022|Upgraded to SPFx v1.14
 1.1|January 12, 2022|Updated to retrieve values from API

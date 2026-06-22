@@ -1,0 +1,113 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.docuGenie {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+.chatContainer {  
+  margin: 0 auto;
+  padding: 10px;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chatWindow {
+  height: 565px;
+  overflow-y: auto;
+  margin-bottom: 5px;
+  padding: 10px;  
+  border-radius: 4px;  
+}
+
+.userMessage {
+  background-color: #fdf4f3;  
+  padding: 10px 15px;
+  border-radius: 5px;
+  max-width: 60%;
+  word-wrap: break-word;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+}
+
+.aiMessage {
+  background-color: #fff3d5;
+  color: black;
+  padding: 10px 15px;
+  border-radius: 5px;
+  max-width: 60%;
+  word-wrap: break-word;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
+}
+.timestamp {
+  font-size: 12px;
+  color: #888;
+  margin-top: 5px;
+}
+
+.inputSection {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+
+.uploadSection {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;  
+}
+
+.uploadButton {    
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer; 
+}
+
+
+.fileName{
+  color: #673AB7;
+    cursor: pointer;
+    margin: 0 10px;
+    font-size: 16px;
+}
+.userMessageContainer {
+  display: flex;
+  justify-content: flex-end !important;
+}
+
+.aiMessageContainer {
+  display: flex;
+  justify-content: flex-start !important;
+}
+
+.welcome {
+  text-align: center;
+}
+
+.welcomeImage {
+  width: 100%;
+  max-width: 420px;
+}
+
+.links {
+  a {
+    text-decoration: none;
+    color: "[theme:link, default:#03787c]";
+    color: var(--link); // note: CSS Custom Properties support is limited to modern browsers only
+
+    &:hover {
+      text-decoration: underline;
+      color: "[theme:linkHovered, default: #014446]";
+      color: var(--linkHovered); // note: CSS Custom Properties support is limited to modern browsers only
+    }
+  }
+}
