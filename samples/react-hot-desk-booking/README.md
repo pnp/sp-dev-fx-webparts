@@ -10,6 +10,7 @@ This SharePoint Framework (SPFx) web part enables organizations to efficiently m
 - **Instant Booking**: Quick booking interface with date selection and optional notes
 - **My Bookings**: View your upcoming and past bookings with cancellation capability
 - **Conflict Detection**: Prevents double-booking of resources
+- **Booked Resource Guardrails**: Book button is disabled for already booked or unavailable resources
 - **Admin Mode**: Optional admin toggle to view who has booked each resource
 - **Dark Theme Support**: Full dark mode support with automatic theme detection
 - **Responsive Design**: Mobile-friendly interface
@@ -133,7 +134,7 @@ Once added to a SharePoint page, configure the web part via the property pane:
 
 1. Navigate to the **Browse & Book** tab
 2. Select a date using the date picker
-3. Click **Book** on an available resource card
+3. Click **Book** on an available resource card (button is disabled for booked/unavailable resources)
 4. Enter optional notes
 5. Click **Submit** to complete the booking
 
@@ -162,19 +163,8 @@ Once added to a SharePoint page, configure the web part via the property pane:
 - **IResource.ts**: Resource interface definition
 - **IBooking.ts**: Booking interface definition
 
-## Testing
 
-### Manual Test Checklist
 
-- [ ] Load web part and verify resources display
-- [ ] Book an available resource
-- [ ] Verify booking appears in "My Bookings" tab
-- [ ] Attempt to double-book same resource/date - should see conflict error
-- [ ] Cancel a future booking successfully
-- [ ] Verify past bookings are greyed out and non-cancellable
-- [ ] Toggle Admin Mode and verify booked-by names appear
-- [ ] Test on mobile - verify responsive layout
-- [ ] Switch SharePoint to dark theme - verify styling
 
 ## Troubleshooting
 
@@ -189,19 +179,21 @@ Once added to a SharePoint page, configure the web part via the property pane:
 **No bookings appear in My Bookings tab**
 - Verify BookedBy column is properly set to current user
 
+**Resource shows as "Unknown" in My Bookings**
+- Ensure the booking item `ResourceId` maps to the resources list item ID.
+- This sample normalizes lookup IDs to string in `BookingService.ts` when resolving resources.
+- If existing old entries still show unknown, create a new booking and verify the resource title resolves.
+
+**`EADDRINUSE: address already in use ::1:4321` when serving**
+- Another process is using SPFx dev server port 4321.
+- Find process: `Get-NetTCPConnection -LocalPort 4321 | Select-Object LocalAddress, LocalPort, OwningProcess, State`
+- Stop process: `Stop-Process -Id <PID> -Force`
+- Start again: `gulp serve-deprecated --nobrowser`
+
 **PowerShell Script Execution Issues**
 - Update PnP.PowerShell: `Update-Module -Name PnP.PowerShell`
 - Fix execution policy: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
-- See [scripts/APP-REGISTRATION-SETUP.md](scripts/APP-REGISTRATION-SETUP.md) for troubleshooting
 
-## Scripts Documentation
-
-For detailed information about the provisioning scripts, see:
-
-- **[scripts/README.md](scripts/README.md)** - Complete script reference
-- **[scripts/QUICK-START.md](scripts/QUICK-START.md)** - Quick reference guide
-- **[scripts/SELECTION-GUIDE.md](scripts/SELECTION-GUIDE.md)** - Script comparison matrix
-- **[scripts/APP-REGISTRATION-SETUP.md](scripts/APP-REGISTRATION-SETUP.md)** - Device code flow setup guide
 
 ## Support
 
@@ -210,3 +202,5 @@ For issues, questions, or contributions, please visit the [SharePoint Framework 
 ## License
 
 MIT
+
+
