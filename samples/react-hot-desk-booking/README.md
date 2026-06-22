@@ -17,6 +17,16 @@ This SharePoint Framework (SPFx) web part enables organizations to efficiently m
 - **Real-time Status**: Clear availability status for each resource
 - **Custom List Configuration**: Configure which SharePoint lists to use
 
+## Screenshots
+
+### Browse & Book
+
+![Browse and Book view](assets/screenshot1.png)
+
+### My Bookings
+
+![My Bookings view](assets/screenshot2.png)
+
 ## Prerequisites
 
 - **SharePoint Online** with SPFx support
@@ -99,7 +109,7 @@ Alternatively, create two SharePoint lists manually:
 
 | Column | Type | Required | Notes |
 |--------|------|----------|-------|
-| Title | Single line of text | Yes | Auto-generated as "ResourceName – YYYY-MM-DD" |
+| Title | Single line of text | Yes | Auto-generated as "ResourceName - YYYY-MM-DD" |
 | Resource | Lookup to HotDeskResources | Yes | Which resource is booked |
 | BookingDate | Date | Yes | The reservation date |
 | BookedBy | Person or Group | Yes | User who made the booking |
@@ -152,7 +162,7 @@ Once added to a SharePoint page, configure the web part via the property pane:
 - **HotDeskBooking.tsx**: Root component managing state and routing between tabs
 - **ResourceCard.tsx**: Individual resource display with booking button
 - **BookingForm.tsx**: Dialog for entering booking details
-- **MyBookings.tsx**: DetailsList showing user''s bookings with cancel action
+- **MyBookings.tsx**: DetailsList showing user's bookings with cancel action
 
 ### Services
 
@@ -162,45 +172,4 @@ Once added to a SharePoint page, configure the web part via the property pane:
 
 - **IResource.ts**: Resource interface definition
 - **IBooking.ts**: Booking interface definition
-
-
-
-
-## Troubleshooting
-
-**"Could not load resources" error**
-- Check list names in web part settings
-- Ensure lists exist and contain columns as specified
-- Run provisioning script to verify list structure
-
-**"This resource is already booked" error**
-- This indicates a booking conflict - select a different date
-
-**No bookings appear in My Bookings tab**
-- Verify BookedBy column is properly set to current user
-
-**Resource shows as "Unknown" in My Bookings**
-- Ensure the booking item `ResourceId` maps to the resources list item ID.
-- This sample normalizes lookup IDs to string in `BookingService.ts` when resolving resources.
-- If existing old entries still show unknown, create a new booking and verify the resource title resolves.
-
-**`EADDRINUSE: address already in use ::1:4321` when serving**
-- Another process is using SPFx dev server port 4321.
-- Find process: `Get-NetTCPConnection -LocalPort 4321 | Select-Object LocalAddress, LocalPort, OwningProcess, State`
-- Stop process: `Stop-Process -Id <PID> -Force`
-- Start again: `gulp serve-deprecated --nobrowser`
-
-**PowerShell Script Execution Issues**
-- Update PnP.PowerShell: `Update-Module -Name PnP.PowerShell`
-- Fix execution policy: `Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser`
-
-
-## Support
-
-For issues, questions, or contributions, please visit the [SharePoint Framework Samples GitHub repository](https://github.com/pnp/sp-dev-fx-webparts).
-
-## License
-
-MIT
-
 
