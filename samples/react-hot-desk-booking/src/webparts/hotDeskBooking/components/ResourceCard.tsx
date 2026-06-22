@@ -4,6 +4,7 @@ import { IResource } from "../models/IResource";
 import { BookingService } from "../services/BookingService";
 import BookingForm from "./BookingForm";
 import styles from "./HotDeskBooking.module.scss";
+import { getResourceMeta } from "../utils/resourceMeta";
 
 interface Props {
   resource: IResource;
@@ -13,33 +14,6 @@ interface Props {
   onBookingCreated: () => Promise<void>;
   bookingService: BookingService;
 }
-
-interface ITypeMeta {
-  colorVar: string;
-  iconName: string;
-}
-
-const getResourceMeta = (resourceType: string): ITypeMeta => {
-  const normalized = (resourceType || "").trim().toLowerCase();
-
-  if (normalized === "hot desk") {
-    return { colorVar: "--color-hotdesk", iconName: "ThisPC" };
-  }
-
-  if (normalized === "parking") {
-    return { colorVar: "--color-parking", iconName: "Car" };
-  }
-
-  if (normalized === "locker") {
-    return { colorVar: "--color-locker", iconName: "Lock" };
-  }
-
-  if (normalized === "meeting room") {
-    return { colorVar: "--color-meetingroom", iconName: "Home" };
-  }
-
-  return { colorVar: "--color-other", iconName: "Org" };
-};
 
 const ResourceCard: React.FC<Props> = ({
   resource,
@@ -52,6 +26,7 @@ const ResourceCard: React.FC<Props> = ({
   const [showForm, setShowForm] = React.useState(false);
   const [unbooking, setUnbooking] = React.useState(false);
   const typeMeta = getResourceMeta(resource.resourceType);
+  const canBook = !isBooked && !isUnavailable;
 
   const handleUnbook = React.useCallback(async (): Promise<void> => {
     if (!bookingId || unbooking) {
@@ -91,22 +66,23 @@ const ResourceCard: React.FC<Props> = ({
 
             {resource.description && <Text variant="small">{resource.description}</Text>}
 
-            <Stack horizontal tokens={{ childrenGap: 8 }}>
-              {isBooked ? (
-                <Stack tokens={{ childrenGap: 8 }}>
-                  <span className={styles.bookedBadge}>Already Booked</span>
-                  <DefaultButton
-                    text={unbooking ? "Unbooking..." : "Unbook"}
-                    className={styles.cancelButton}
-                    onClick={() => {
-                      void handleUnbook();
-                    }}
-                    disabled={!bookingId || unbooking}
-                  />
-                </Stack>
-              ) : !isUnavailable ? (
-                <PrimaryButton text="Book" onClick={() => setShowForm(true)} className={styles.bookButton} />
-              ) : null}
+            <Stack tokens={{ childrenGap: 8 }}>
+              <PrimaryButton
+                text="Book"
+                onClick={() => { if (!canBook) { return; } setShowForm(true); }}
+                className={styles.bookButton}
+                disabled={!canBook}
+              />
+              {isBooked && (
+                <DefaultButton
+                  text={unbooking ? "Unbooking..." : "Unbook"}
+                  className={styles.cancelButton}
+                  onClick={() => {
+                    void handleUnbook();
+                  }}
+                  disabled={!bookingId || unbooking}
+                />
+              )}
             </Stack>
           </Stack>
         </div>

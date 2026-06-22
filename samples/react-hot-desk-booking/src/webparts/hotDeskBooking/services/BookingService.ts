@@ -31,14 +31,7 @@ export class BookingService {
         .items.select("ID", "Title", "ResourceType", "Location", "Description", "IsActive")
         .filter("IsActive eq 1")();
 
-      return items.map((item: any) => ({
-        id: item.ID.toString(),
-        title: item.Title,
-        resourceType: item.ResourceType || "",
-        location: item.Location || "",
-        description: item.Description || "",
-        isActive: item.IsActive
-      }));
+      return items.map((item: any) => this._mapToResource(item));
     } catch (error) {
       console.error("Error fetching resources:", error);
       throw error;
@@ -48,26 +41,20 @@ export class BookingService {
   public async getMyBookings(): Promise<IBooking[]> {
     try {
       const userId = this.context.pageContext.legacyPageContext.userId;
-      const items = await this.sp.web.lists
-        .getByTitle(this.bookingsListName)
-        .items.select("ID", "Title", "BookingDate", "Notes", "Resource/ID", "Resource/Title", "Resource/ResourceType", "Resource/Location")
-        .expand("Resource")
-        .filter(`BookedById eq ${userId}`)
-        .orderBy("BookingDate", false)();
+      const [items, resources] = await Promise.all([
+        this.sp.web.lists
+          .getByTitle(this.bookingsListName)
+          .items.select("ID", "Title", "BookingDate", "Notes", "ResourceId")
+          .filter(`BookedById eq ${userId}`)
+          .orderBy("BookingDate", false)(),
+        this.getResources()
+      ]);
 
+      const resourceMap = new Map(resources.map((r) => [r.id, r]));
       return items.map((item: any) => ({
         id: item.ID.toString(),
         title: item.Title,
-        resource: item.Resource
-          ? {
-              id: item.Resource.ID.toString(),
-              title: item.Resource.Title,
-              resourceType: item.Resource.ResourceType,
-              location: item.Resource.Location,
-              description: "",
-              isActive: true
-            }
-          : null,
+        resource: item.ResourceId ? (resourceMap.get(item.ResourceId.toString()) ?? null) : null,
         bookingDate: new Date(item.BookingDate),
         bookedBy: "",
         notes: item.Notes || ""
@@ -80,17 +67,16 @@ export class BookingService {
 
   public async checkConflict(resource: IResource, date: Date): Promise<boolean> {
     try {
-      const { dateStr, nextDateStr } = this._dayRange(date);
-      const resourceId = parseInt(resource.id, 10);
+      const { startIso, endIso } = this._dayRange(date);
       const items = await this.sp.web.lists
         .getByTitle(this.bookingsListName)
         .items.select("ID")
-        .filter(`ResourceId eq ${resourceId} and BookingDate ge datetime'${dateStr}T00:00:00' and BookingDate lt datetime'${nextDateStr}T00:00:00'`)();
+        .filter(`ResourceId eq '${resource.id}' and BookingDate ge datetime'${startIso}' and BookingDate lt datetime'${endIso}'`)();
 
       return items.length > 0;
     } catch (error) {
       console.error("Error checking conflict:", error);
-      return false;
+      throw new Error("Could not verify availability. Please try again.");
     }
   }
 
@@ -102,13 +88,14 @@ export class BookingService {
       }
 
       const dateStr = date.toISOString().split("T")[0];
-      const title = `${resource.title} – ${dateStr}`;
+      const title = `${resource.title} - ${dateStr}`;
       const webUrl = this.context.pageContext.web.absoluteUrl;
 
       await this.sp.web.lists.getByTitle(this.bookingsListName).items.add({
         Title: title,
         BookingDate: date,
         Notes: notes,
+        ResourceId: resource.id,
         "Resource@odata.bind": `${webUrl}/_api/web/lists/getByTitle('${this.resourcesListName}')/items(${parseInt(resource.id, 10)})`,
         BookedById: this.context.pageContext.legacyPageContext.userId
       });
@@ -132,20 +119,19 @@ export class BookingService {
 
   public async getBookingsForDate(date: Date): Promise<IBooking[]> {
     try {
-      const { dateStr, nextDateStr } = this._dayRange(date);
+      const { startIso, endIso } = this._dayRange(date);
       const items = await this.sp.web.lists
         .getByTitle(this.bookingsListName)
-        .items.select("ID", "Title", "BookingDate", "Notes", "Resource/ID", "Resource/Title")
-        .expand("Resource")
-        .filter(`BookingDate ge datetime'${dateStr}T00:00:00' and BookingDate lt datetime'${nextDateStr}T00:00:00'`)();
+        .items.select("ID", "Title", "BookingDate", "Notes", "ResourceId")
+        .filter(`BookingDate ge datetime'${startIso}' and BookingDate lt datetime'${endIso}'`)();
 
       return items.map((item: any) => ({
         id: item.ID.toString(),
         title: item.Title,
-        resource: item.Resource
+                resource: item.ResourceId
           ? {
-              id: item.Resource.ID.toString(),
-              title: item.Resource.Title,
+              id: item.ResourceId.toString(),
+              title: "",
               resourceType: "",
               location: "",
               description: "",
@@ -162,13 +148,26 @@ export class BookingService {
     }
   }
 
-  private _dayRange(date: Date): { dateStr: string; nextDateStr: string } {
-    const d = new Date(date);
-    d.setHours(0, 0, 0, 0);
-    const next = new Date(d);
-    next.setDate(d.getDate() + 1);
-    const fmt = (v: Date): string => v.toISOString().split("T")[0];
-    return { dateStr: fmt(d), nextDateStr: fmt(next) };
+  private _mapToResource(raw: any): IResource {
+    return {
+      id: raw.ID.toString(),
+      title: raw.Title,
+      resourceType: raw.ResourceType || "",
+      location: raw.Location || "",
+      description: raw.Description || "",
+      isActive: raw.IsActive !== undefined ? raw.IsActive : true
+    };
+  }
+
+  private _dayRange(date: Date): { startIso: string; endIso: string } {
+    const start = new Date(date);
+    start.setHours(0, 0, 0, 0);
+    const end = new Date(start);
+    end.setDate(start.getDate() + 1);
+    return {
+      startIso: start.toISOString(),
+      endIso: end.toISOString()
+    };
   }
 }
 

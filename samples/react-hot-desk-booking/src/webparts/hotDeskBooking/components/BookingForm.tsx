@@ -16,6 +16,7 @@ import {
 import { IResource } from "../models/IResource";
 import { BookingService } from "../services/BookingService";
 import styles from "./HotDeskBooking.module.scss";
+import { getResourceMeta } from "../utils/resourceMeta";
 
 interface Props {
   isOpen: boolean;
@@ -24,33 +25,6 @@ interface Props {
   onSubmitted: () => Promise<void>;
   bookingService: BookingService;
 }
-
-interface ITypeMeta {
-  colorVar: string;
-  iconName: string;
-}
-
-const getResourceMeta = (resourceType: string): ITypeMeta => {
-  const normalized = (resourceType || "").trim().toLowerCase();
-
-  if (normalized === "hot desk") {
-    return { colorVar: "--color-hotdesk", iconName: "ThisPC" };
-  }
-
-  if (normalized === "parking") {
-    return { colorVar: "--color-parking", iconName: "Car" };
-  }
-
-  if (normalized === "locker") {
-    return { colorVar: "--color-locker", iconName: "Lock" };
-  }
-
-  if (normalized === "meeting room") {
-    return { colorVar: "--color-meetingroom", iconName: "Home" };
-  }
-
-  return { colorVar: "--color-other", iconName: "Org" };
-};
 
 const BookingForm: React.FC<Props> = ({ isOpen, resource, onDismiss, onSubmitted, bookingService }) => {
   const [date, setDate] = React.useState<Date | null>(null);
@@ -79,7 +53,9 @@ const BookingForm: React.FC<Props> = ({ isOpen, resource, onDismiss, onSubmitted
           setHasConflict(conflictExists);
         }
       } catch (err) {
-        console.error("Conflict check failed", err);
+        if (conflictRequestRef.current === requestId) {
+          setError(err instanceof Error ? err.message : "Could not verify availability. Please try again.");
+        }
       } finally {
         if (conflictRequestRef.current === requestId) {
           setCheckingConflict(false);
@@ -92,6 +68,11 @@ const BookingForm: React.FC<Props> = ({ isOpen, resource, onDismiss, onSubmitted
   const handleSubmit = async (): Promise<void> => {
     if (!date) {
       setError("Please select a date");
+      return;
+    }
+
+    if (hasConflict) {
+      setError("This resource is already booked for the selected date.");
       return;
     }
 
@@ -128,7 +109,7 @@ const BookingForm: React.FC<Props> = ({ isOpen, resource, onDismiss, onSubmitted
 
       {hasConflict && (
         <MessageBar messageBarType={MessageBarType.warning}>
-          This resource appears to be booked on this date. You can still submit, but booking may fail.
+          This resource is already booked on this date. Please pick another date.
         </MessageBar>
       )}
 
@@ -155,7 +136,7 @@ const BookingForm: React.FC<Props> = ({ isOpen, resource, onDismiss, onSubmitted
       />
 
       <DialogFooter>
-        <PrimaryButton text="Book" onClick={handleSubmit} disabled={loading} />
+        <PrimaryButton text="Book" onClick={handleSubmit} disabled={loading || checkingConflict || hasConflict || !date} />
         <DefaultButton text="Cancel" onClick={onDismiss} disabled={loading} />
       </DialogFooter>
 
