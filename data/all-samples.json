@@ -14128,6 +14128,52 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-hot-desk-booking",
+    "source": "pnp",
+    "title": "React Hot Desk Booking Web Part",
+    "shortDescription": "This SharePoint Framework (SPFx) web part enables organizations to efficiently manage shared resource bookings, such as hot desks, parking spots, and lockers. Users can browse available resources, make instant bookings for specific dates, view their existing bookings, and cancel reservations when needed.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-hot-desk-booking",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-hot-desk-booking",
+    "updateDateTime": "2026-06-22",
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "sudeepghatak",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/sudeepghatak.72498f95b645.webp",
+        "name": "sudeepghatak",
+        "avatarSourceUrl": "https://github.com/sudeepghatak.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-hot-desk-booking.webp",
+        "alt": "React Hot Desk Booking Web Part"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-js-employee-spotlight",
     "source": "pnp",
     "title": "Display Employee Spotlight JavaScript Client-Side Web Part",

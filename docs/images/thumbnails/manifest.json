@@ -1119,6 +1119,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-tinymce/assets/preview.gif",
     "file": "pnp-sp-dev-spfx-web-parts-react-tinymce.webp"
   },
+  "pnp-sp-dev-spfx-web-parts-react-hot-desk-booking": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-hot-desk-booking/assets/screenshot1.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-hot-desk-booking.webp"
+  },
   "pnp-sp-dev-spfx-web-parts-js-employee-spotlight": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-employee-spotlight/assets/Employee-spotlight-priview.png",
     "file": "pnp-sp-dev-spfx-web-parts-js-employee-spotlight.webp"
