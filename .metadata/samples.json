@@ -4814,7 +4814,7 @@
             {
                 "type": "image",
                 "order": 100,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-caml2table/assets/Demo.gif",
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-json-form/assets/Demo.gif",
                 "alt": "Web Part Preview"
             }
         ],
