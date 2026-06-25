@@ -500,6 +500,150 @@
   font-weight: 600;
 }
 
+// ── Comments section ────────────────────────────────────────────────────────
+
+.commentsSection {
+  border-top: 2px solid #e5e7eb;
+  margin-top: 10px;
+}
+
+.commentsList {
+  margin-bottom: 20px;
+}
+
+.commentItem {
+  display: flex;
+  gap: 12px;
+  padding: 14px 0;
+  border-bottom: 1px solid #f0f0f0;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.commentAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #0078d4;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+  text-transform: uppercase;
+}
+
+.commentBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.commentMeta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 6px;
+}
+
+.commentAuthor {
+  font-weight: 600;
+  font-size: 13px;
+  color: #1f2937;
+}
+
+.commentDate {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.commentEdited {
+  font-size: 11px;
+  color: #9ca3af;
+  font-style: italic;
+}
+
+.commentText {
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.commentFooter {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.likeButton {
+  background: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-size: 12px;
+  cursor: pointer;
+  color: #6b7280;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  line-height: 1.4;
+
+  &:hover {
+    background-color: #f3f4f6;
+    border-color: #d1d5db;
+  }
+}
+
+.likeButtonActive {
+  background-color: #eff6ff;
+  border-color: #bfdbfe;
+  color: #2563eb;
+}
+
+.commentDeleteButton {
+  color: #d83b01 !important;
+
+  &:hover {
+    color: #a80000 !important;
+    background-color: #fef2f2 !important;
+  }
+
+  i {
+    font-size: 12px;
+  }
+}
+
+.commentsEmpty {
+  text-align: center;
+  padding: 20px;
+  color: #9ca3af;
+  font-size: 14px;
+  background-color: #f9fafb;
+  border-radius: 6px;
+  margin-bottom: 16px;
+}
+
+.addCommentForm {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.addCommentActions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+
+// ── End comments ─────────────────────────────────────────────────────────────
+
 @media (max-width: 640px) {
   .ticketCard {
     flex-direction: column;
