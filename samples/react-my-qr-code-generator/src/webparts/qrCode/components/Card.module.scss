@@ -1,0 +1,24 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.card {
+  background-color: var(--bodyBackground, #ffffff);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08), 0 0 2px rgba(0, 0, 0, 0.05);
+  padding: 24px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid transparent;
+  animation: slideUp 0.5s ease-out forwards;
+
+  &:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), 0 0 2px rgba(0, 0, 0, 0.05);
+    transform: translateY(-4px);
+    border-color: var(--themePrimary, #0078d4);
+  }
+}
+
+.title {
+  margin: 0 0 15px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--bodyText, #323130);
+}

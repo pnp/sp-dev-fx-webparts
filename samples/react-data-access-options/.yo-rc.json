@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.19.1",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "data-access-option-spfx",
+    "libraryId": "7d6179c9-0fb0-4550-bf2c-98d9835e1fcb",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "data-access-option-spfx",
+    "solutionShortDescription": "data-access-option-spfx description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

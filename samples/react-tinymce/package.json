@@ -22,10 +22,10 @@
     "react": "15.6.2",
     "react-dom": "15.6.2",
     "react-html-parser": "^2.0.2",
-    "tinymce": "^7.0.0"
+    "tinymce": "^7.9.3"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "~1.16.1",
+    "@microsoft/sp-build-web": "~1.22.1",
     "@microsoft/sp-module-interfaces": "~1.4.1",
     "@microsoft/sp-webpart-workbench": "~1.12.1",
     "gulp": "~3.9.1",

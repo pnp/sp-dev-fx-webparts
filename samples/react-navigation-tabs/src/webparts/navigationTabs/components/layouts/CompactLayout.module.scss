@@ -1,0 +1,40 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.compactList {
+  column-count: 3;
+  column-gap: 16px;
+}
+
+.compactLink {
+  display: flex;
+  align-items: center;
+  break-inside: avoid;
+  gap: 8px;
+  padding: 6px 10px;
+  text-decoration: none;
+  color: $ms-color-neutralPrimary;
+  border-radius: 3px;
+  transition: background 0.15s ease;
+
+  &:hover {
+    background: $ms-color-neutralLighter;
+    color: $ms-color-themePrimary;
+  }
+
+  &:focus {
+    outline: 2px solid $ms-color-themePrimary;
+    outline-offset: -2px;
+  }
+}
+
+.compactIcon {
+  flex-shrink: 0;
+  color: $ms-color-themePrimary;
+}
+
+.compactTitle {
+  font-size: 13px;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+}

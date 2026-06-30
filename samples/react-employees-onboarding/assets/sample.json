@@ -16,6 +16,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -29,28 +33,28 @@
         "name": "demo1.png",
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-employees-onboarding\\assets\\demo1.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/demo1.png",
         "alt": "Web Part Preview"
       },
       {
         "name": "demo2.png",
         "type": "image",
         "order": 101,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-employees-onboarding\\assets\\demo2.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/demo2.png",
         "alt": "Web Part Preview"
       },
       {
         "name": "demo3.png",
         "type": "image",
         "order": 102,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-employees-onboarding\\assets\\demo3.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/demo3.png",
         "alt": "Web Part Preview"
       },
       {
         "name": "demo4.png",
         "type": "image",
         "order": 103,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/D:\\GitHub\\pnp\\sp-dev-fx-webparts\\samples\\react-employees-onboarding\\assets\\demo4.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-employees-onboarding/assets/demo4.png",
         "alt": "Web Part Preview"
       }
     ],
@@ -65,7 +69,7 @@
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
-        "url": "https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ]
   }

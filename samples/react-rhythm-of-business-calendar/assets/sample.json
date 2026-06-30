@@ -17,6 +17,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "TypeScript"
       },
@@ -57,12 +61,12 @@
       {
         "name": "Getting started with SharePoint Framework",
         "description": "Introduction about how to develop Microsoft 365 extensions using SharePoint Framework.",
-        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant"
+        "url": "https://learn.microsoft.com//sharepoint/dev/spfx/set-up-your-developer-tenant"
       },
       {
         "name": "Build your first SharePoint client-side web part",
         "description": "Learn how to develop your first Web Part using SharePoint Framework (SPFx).",
-        "url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       }
     ],
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-rhythm-of-business-calendar"

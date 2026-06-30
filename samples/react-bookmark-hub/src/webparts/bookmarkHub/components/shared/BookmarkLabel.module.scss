@@ -1,0 +1,28 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.labelPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  max-width: 150px;
+  
+  .labelText {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .removeButton {
+    padding: 0;
+    min-width: 16px;
+    
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

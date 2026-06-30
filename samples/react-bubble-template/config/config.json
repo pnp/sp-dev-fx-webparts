@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "react-bubble-template-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/reactBubbleTemplate/ReactBubbleTemplateWebPart.js",
+          "manifest": "./src/webparts/reactBubbleTemplate/ReactBubbleTemplateWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ReactBubbleTemplateWebPartStrings": "lib/webparts/reactBubbleTemplate/loc/{locale}.js"
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "$schema": "https://developer.microsoft.com/en-us/json-schemas/spfx-build/webpack-patch.schema.json",
+  "patchFiles": [
+    "./config/webpack-patch/webpack-bundle-analyzer.js"
+  ]
+}

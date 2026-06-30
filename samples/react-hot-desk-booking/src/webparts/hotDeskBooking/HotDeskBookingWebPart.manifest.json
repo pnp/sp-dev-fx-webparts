@@ -1,0 +1,27 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/sp-webpart-manifest.schema.json",
+  "id": "2a8928ea-e7e0-4f96-94b2-4bb1eb31ce9b",
+  "alias": "HotDeskBookingWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [
+    {
+      "groupId": "bac22e09-5056-4a94-b250-2adc8ca0285b",
+      "group": { "default": "Collaboration" },
+      "title": { "default": "Hot Desk Booking" },
+      "description": { "default": "Book shared resources like hot desks, parking spots, and lockers" },
+      "officeFabricIconFontName": "CalendarMirrored",
+      "properties": {
+        "title": "Resource Booking",
+        "resourcesListName": "HotDeskResources",
+        "bookingsListName": "HotDeskBookings",
+        "isAdminMode": false,
+        "defaultResourceType": ""
+      }
+    }
+  ]
+}

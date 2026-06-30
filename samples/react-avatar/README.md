@@ -21,8 +21,8 @@ This is a sample web part that helps user create their avatar and save as profil
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.11.1](https://img.shields.io/badge/SPFx-1.11.1-green.svg) 
-![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg) 
+![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
+![Node.js v22.15.0](https://img.shields.io/badge/Node.js-%20v22.15.0-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -74,6 +74,7 @@ Web Part Title | Text| no|
 
 Version|Date|Comments
 -------|----|--------
+1.1.0|October 2025|Upgraded to 1.21.1
 1.0.0|August 1, 2020|Initial release
 1.0.1|October 20, 2020|Update to SPFx 1.11.0
 2.0.0|November 18, 2022|Added hat color, facial hair color, background color support

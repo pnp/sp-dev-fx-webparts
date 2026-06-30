@@ -1,0 +1,51 @@
+{
+  "$schema": "https://pnp.github.io/sp-dev-fx-webparts/samples/sample.schema.json",
+  "name": "js-smart-table-of-contents",
+  "source": "pnp",
+  "title": "Smart Table of Contents",
+  "shortDescription": "Advanced Smart Table of Contents web part for modern SharePoint pages.",
+  "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-smart-table-of-contents",
+  "longDescription": [
+    "A lightweight non-React SPFx web part that generates a smart table of contents from modern SharePoint page headings.",
+    "Supports ScrollSpy active heading tracking, smooth scrolling, floating drawer mode, inline mode, nested heading expansion, heading search, configurable heading depth, section numbering, and reading time estimation."
+  ],
+  "creationDateTime": "2026-05-28",
+  "updateDateTime": "2026-05-28",
+  "products": ["SharePoint", "SharePoint Online"],
+  "metadata": [
+    {
+      "key": "SPFx",
+      "value": "1.19.0"
+    },
+    {
+      "key": "Node.js",
+      "value": "20.20.2"
+    },
+    {
+      "key": "TypeScript",
+      "value": "4.7.4"
+    }
+  ],
+  "thumbnails": [
+    {
+      "type": "image",
+      "order": 100,
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-smart-table-of-contents/assets/screenshots/floating-drawer-mode.png",
+      "alt": "Smart Table of Contents floating drawer mode"
+    }
+  ],
+  "authors": [
+    {
+      "gitHubAccount": "blayderunner123",
+      "pictureUrl": "https://github.com/blayderunner123.png",
+      "name": "Jonathan Adcox"
+    }
+  ],
+  "references": [
+    {
+      "name": "SharePoint Framework",
+      "description": "SharePoint Framework documentation",
+      "url": "https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview"
+    }
+  ]
+}

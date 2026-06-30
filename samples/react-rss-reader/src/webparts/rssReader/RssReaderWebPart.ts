@@ -83,20 +83,20 @@ export interface IRssReaderWebPartProps {
 }
 
 export default class RssReaderWebPart extends BaseClientSideWebPart<IRssReaderWebPartProps> {
-  private _templateService: BaseTemplateService;
-  private _propertyPage = null;
-  private _themeProvider: ThemeProvider;
+  private _templateService!: BaseTemplateService;
+  private _propertyPage: any = null;
+  private _themeProvider!: ThemeProvider;
   private _themeVariant: IReadonlyTheme | undefined;
 
   /**
    * The template to display at render time
    */
-  private _templateContentToDisplay: string;
+  private _templateContentToDisplay!: string;
 
   public onInit(): Promise<void> {
 
     // Consume the new ThemeProvider service
-    this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
+    this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey as any);
 
     // If it exists, get the theme variant
     this._themeVariant = this._themeProvider.tryGetTheme();
@@ -114,7 +114,7 @@ export default class RssReaderWebPart extends BaseClientSideWebPart<IRssReaderWe
       this._templateService = new MockTemplateService(this.context.pageContext.cultureInfo.currentUICultureName);
     }
     else {
-      this._templateService = new TemplateService(this.context.spHttpClient, this.context.pageContext.cultureInfo.currentUICultureName);
+      this._templateService = new TemplateService(this.context.spHttpClient as any, this.context.pageContext.cultureInfo.currentUICultureName);
     }
 
     return super.onInit().then();
@@ -465,7 +465,7 @@ export default class RssReaderWebPart extends BaseClientSideWebPart<IRssReaderWe
 
     if (this.properties.selectedLayout === FeedLayoutOption.Custom) {
       layoutFields.push(
-        new this._propertyPage.PropertyPaneTextDialog('inlineTemplateText', {
+      new this._propertyPage.PropertyPaneTextDialog('inlineTemplateText', {
           dialogTextFieldValue: this._templateContentToDisplay,
           onPropertyChange: this._onCustomPropertyPaneChange.bind(this),
           disabled: !canEditTemplate,
@@ -630,7 +630,7 @@ export default class RssReaderWebPart extends BaseClientSideWebPart<IRssReaderWe
         break;
     }
 
-    this._templateContentToDisplay = templateContent;
+    this._templateContentToDisplay = templateContent ?? '';
   }
 
   /**

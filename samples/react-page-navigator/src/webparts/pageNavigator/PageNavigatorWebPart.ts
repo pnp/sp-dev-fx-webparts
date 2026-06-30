@@ -12,7 +12,8 @@ import strings from 'PageNavigatorWebPartStrings';
 
 export interface IPageNavigatorWebPartProps {
   stickyMode: boolean,
-  stickyParentDistance: string
+  stickyParentDistance: string,
+  isExpanded: boolean
 }
 
 export default class PageNavigatorWebPart extends BaseClientSideWebPart<IPageNavigatorWebPartProps> {
@@ -23,7 +24,7 @@ export default class PageNavigatorWebPart extends BaseClientSideWebPart<IPageNav
   public async onInit(): Promise<void> {
     await super.onInit();
 
-    this.anchorLinks = await SPService.GetAnchorLinks(this.context);
+    this.anchorLinks = await SPService.GetAnchorLinks(this.context, this.properties.isExpanded);
 
     // Consume the new ThemeProvider service
     this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey as ServiceKey<ThemeProvider>);
@@ -87,6 +88,9 @@ export default class PageNavigatorWebPart extends BaseClientSideWebPart<IPageNav
                 PropertyPaneTextField('stickyParentDistance', {
                   label: strings.StickyParentDistance,
                   onGetErrorMessage: this.validateDistanceParam.bind(this)
+                }),
+                PropertyPaneToggle('isExpanded', {
+                  label: strings.IsExpanded
                 })
               ]
             }

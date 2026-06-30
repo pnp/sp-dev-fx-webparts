@@ -1,0 +1,39 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.copilotApiHub {
+  overflow: hidden;
+  padding: 20px 24px;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  max-width: 1200px;
+  margin: 0 auto;
+
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+  padding: 20px 0;
+  background: linear-gradient(135deg, #f0f6ff 0%, #e8f0fe 50%, #f3e8fd 100%);
+  border-radius: 8px;
+}
+
+.headerTitle {
+  font-size: 22px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: #1a1a1a;
+}
+
+.headerSubtitle {
+  font-size: 13px;
+  color: #555;
+}
+
+.tabContent {
+  margin-top: 20px;
+  padding: 4px;
+}

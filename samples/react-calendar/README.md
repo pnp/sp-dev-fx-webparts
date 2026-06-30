@@ -93,6 +93,7 @@ The Web Part Use PnPjs library, Office-ui-fabric-react components. react Big-Cal
 * [Mohamed Derhalli](https://github.com/derhallim)
 * [Mohammed Amer](https://github.com/mohammadamer)
 * [Nanddeep Nachan](https://github.com/nanddeepn)
+* [Dhananjay Pant](https://github.com/Dhananjay-12)
 
 ## Version history
 

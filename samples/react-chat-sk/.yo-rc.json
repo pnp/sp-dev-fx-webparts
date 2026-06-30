@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.14.0",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "react-chat-sk",
+    "libraryId": "59412a9d-0ff5-464f-bb31-0bd9dd61a61d",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-chat-sk",
+    "solutionShortDescription": "react-chat-sk description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

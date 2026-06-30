@@ -4,14 +4,21 @@
 
 This list search web part allows the user to show data from lists or libraries. The web part can be used to (for more details see images below):
 
-  * [Show merged items from different lists/libraries](#merge-items-from-different-listslibraries)
-  * [Open item data in modal window (same data shown in the table)](#merge-items-from-different-listslibraries)
-  * [Select render by field type](#select-render-of-the-selected-fields)
-  * [Open item detail in modal window (it allows to select the fields to show by list)](#open-selected-item-with-selected-properties)
-  * [Open documents in modal window](#open-documents-in-modal-window)
-  * [Open documents in new tab](#open-documents-in-new-tab)
-  * [Use of dynamic data](#use-of-dynamic-data)
-  * [Redirect to url](#redirect-to-url-depends-on-selected-item)
+  [Show merged items from different lists/libraries](#merge-items-from-different-listslibraries)
+
+  [Open item data in modal window (same data shown in the table)](#merge-items-from-different-listslibraries)
+
+  [Select render by field type](#select-render-of-the-selected-fields)
+
+  [Open item detail in modal window (it allows to select the fields to show by list)](#open-selected-item-with-selected-properties)
+
+  [Open documents in modal window](#open-documents-in-modal-window)
+
+  [Open documents in new tab](#open-documents-in-new-tab)
+
+  [Use of dynamic data](#use-of-dynamic-data)
+  
+  [Redirect to url](#redirect-to-url-depends-on-selected-item)
 
 * Other useful functionalities:
   * List item modern audience support
@@ -80,7 +87,7 @@ This list search web part allows the user to show data from lists or libraries. 
 
 ## Contributors
 
-* [Alberto Gutiérrez](https://github.com/albegut) 
+* [Alberto Gutiérrez](https://github.com/albegut)
 
 ## Version history
 
@@ -91,26 +98,22 @@ Version|Date|Comments
 1.2.0|January 01, 2022|Upgraded for SPFx v1.13.1
 1.3.0|July 11, 2022|Fixes CAML issues
 1.4.0|October 2, 2024|Upgraded for SPFx v1.20.0
+1.5.0|August 14, 2025|Fixes ContentType query
+1.6.0|October 17, 2025|Fixes List view and Caml query
 
 ## Minimal Path to Awesome
 
 ### Dev Mode
 
->  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
+> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
-  * Clone this repository
-  * From your command line, change your current directory to the directory containing this sample (react-list-search, located under samples)
-  * In the command line run:
-    * `npm install`
-    * `gulp serve`
-    * Open the *workbench* on your Office 365 Developer tenant
-    * Test out the web part
-
-### Sppkg
-
-  * Download `.sppkg` files from `sppkg` folder
-  * Upload files to **App Catalog**
-  * Approve the API permissions in the new SP admin center (only needed if you are going to enable list item modern audience)
+* Clone this repository
+* From your command line, change your current directory to the directory containing this sample (react-list-search, located under samples)
+* In the command line run:
+  * `npm install`
+  * `gulp serve`
+  * Open the *workbench* on your Office 365 Developer tenant
+  * Test out the web part
 
 ## Features
 
@@ -147,6 +150,5 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
-
 
 <img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-list-search" />

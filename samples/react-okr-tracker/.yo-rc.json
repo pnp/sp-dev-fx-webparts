@@ -1,0 +1,25 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "goals-okrs-tracker",
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "GoalsOkrsTracker",
+    "componentDescription": "Track Objectives and Key Results",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.20.6",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "version": "1.20.0",
+    "libraryName": "goals-okrs-tracker",
+    "libraryId": "2ba0286b-112f-4089-b731-ff22bfe6ad1a",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionShortDescription": "goals-okrs-tracker description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  }
+}

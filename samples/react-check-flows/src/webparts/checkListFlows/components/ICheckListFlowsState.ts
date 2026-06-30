@@ -1,5 +1,5 @@
 import { IFlowDetails } from './IFlowDetails';
-import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
+import { IColumn } from '@fluentui/react/lib/DetailsList';
 
 export interface ICheckListFlowsState {
   flowItems: IFlowDetails[];

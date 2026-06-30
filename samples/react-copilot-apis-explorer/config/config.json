@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "copilot-api-hub-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/copilotApiHub/CopilotApiHubWebPart.js",
+          "manifest": "./src/webparts/copilotApiHub/CopilotApiHubWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "CopilotApiHubWebPartStrings": "lib/webparts/copilotApiHub/loc/{locale}.js"
+  }
+}

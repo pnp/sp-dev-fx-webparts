@@ -13,6 +13,7 @@ import * as strings from "ReactEngageHubWebPartStrings"
 import { ReactEngageHub } from "./ReactEngageHub"
 import { IReactEngageHubProps } from "./IReactEngageHubProps"
 import { getSP } from "./utils/spUtility"
+import { Theme } from "@fluentui/react"
 
 export interface IReactEngageHubWebPartProps {
   title: string
@@ -24,12 +25,14 @@ export interface IReactEngageHubWebPartProps {
 
 export default class ReactEngageHubWebPart extends BaseClientSideWebPart<IReactEngageHubWebPartProps> {
   private _isDarkTheme: boolean = false
+  private _theme: Theme | undefined
   private _environmentMessage: string = ""
 
   public render(): void {
     const element: React.ReactElement<IReactEngageHubProps> =
       React.createElement(ReactEngageHub, {
         isDarkTheme: this._isDarkTheme,
+        theme: this._theme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
         userDisplayName: this.context.pageContext.user.displayName,
@@ -60,21 +63,8 @@ export default class ReactEngageHubWebPart extends BaseClientSideWebPart<IReactE
     if (!currentTheme) {
       return
     }
-
+    this._theme = currentTheme as Theme
     this._isDarkTheme = !!currentTheme.isInverted
-    const { semanticColors } = currentTheme
-
-    if (semanticColors) {
-      this.domElement.style.setProperty(
-        "--bodyText",
-        semanticColors.bodyText || null
-      )
-      this.domElement.style.setProperty("--link", semanticColors.link || null)
-      this.domElement.style.setProperty(
-        "--linkHovered",
-        semanticColors.linkHovered || null
-      )
-    }
   }
 
   protected onDispose(): void {

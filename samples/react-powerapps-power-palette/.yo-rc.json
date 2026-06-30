@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "power palette studio",
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "power palette studio",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.18.0",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "power-palette-studio",
+    "libraryId": "d14bd7a6-5659-459d-bd1f-0ab2ab305c52",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionShortDescription": "power palette studio description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  }
+}

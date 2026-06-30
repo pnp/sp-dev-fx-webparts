@@ -19,6 +19,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -69,12 +73,12 @@
       {
         "name": "Get Subscription",
         "description": "Get SharePoint webhook subscriptions",
-        "url": "https://learn.microsoft.com/en-us/sharepoint/dev/apis/webhooks/lists/get-subscription"
+        "url": "https://learn.microsoft.com/sharepoint/dev/apis/webhooks/lists/get-subscription"
       },
       {
         "name": "Update Subscription",
         "description": "Update SharePoint webhook subscriptions",
-        "url": "https://learn.microsoft.com/en-us/sharepoint/dev/apis/webhooks/lists/update-subscription"
+        "url": "https://learn.microsoft.com/sharepoint/dev/apis/webhooks/lists/update-subscription"
       }
     ],
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-manage-hublevel-subscriptions"

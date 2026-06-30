@@ -16,6 +16,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -45,11 +49,6 @@
       }
     ],
     "authors": [
-      {
-        "gitHubAccount": "srpmtt",
-        "pictureUrl": "https://github.com/srpmtt.png",
-        "name": "Matteo Serpi"
-      },
       {
         "gitHubAccount": "AlessiaDeMartino",
         "pictureUrl": "https://github.com/AlessiaDeMartino.png",

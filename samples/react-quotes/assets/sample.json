@@ -15,6 +15,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -44,7 +48,7 @@
       },
       {
         "gitHubAccount": "yhabersaat",
-        "pictureUrl": "https://github.com/yhabersaat",
+        "pictureUrl": "https://github.com/yhabersaat.png",
         "name": "Yves Habersaat"
       }
     ],

@@ -16,16 +16,12 @@ Engage Hub maintains responsiveness and light weight with its elegant React user
 | :warning: Important                                                                                                                                                                                                                                                                                   |
 | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Every SPFx version is optimally compatible with specific versions of Node.js. In order to be able to build this sample, you need to ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node. |
-| Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.                                                                                                                                                                                                                     |
-
-## Used SharePoint Framework Version
-
-![version](https://img.shields.io/badge/version-1.20.0-green.svg)
+| Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
-![Node.js v18 | v16](https://img.shields.io/badge/Node.js-v18%20%7C%20v16-green.svg)
+![SPFx 1.22.2](https://img.shields.io/badge/SPFx-1.22.2-green.svg)
+![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](<https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg> "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -51,6 +47,7 @@ Create a SharePoint  list `Discussion Point` in the SPO site with below columns
 | PostID | Text  |
 | AuthorName   | Text |
 | AuthorMailID   | Text |
+| Images   | Multi-line text |
 
 Create a Document library `Discussion Point Gallery` in SPO site & create one new column
 
@@ -68,6 +65,8 @@ Create a Document library `Discussion Point Gallery` in SPO site & create one ne
 | ------- | ---------------- | ----------------------------------- |
 | 1.0     | April 27, 2025   | Initial release                     |
 | 1.1     | May 4, 2025    | Add support for Rich Text, MSFT Notepad inspired AI features & other improvements Editor |
+| 1.2     | Oct 22, 2025    | Upgrade to SPFx1.21.1, implemented Fluent UI Components color changes based on site theme colors & introduced image viewer component for RTE image uploads and post lists images |
+| 1.3 | April 26, 2026 | Upgrade to SPFx 1.22.2
 
 ## Minimal Path to Awesome
 
@@ -85,7 +84,6 @@ Create a Document library `Discussion Point Gallery` in SPO site & create one ne
   - `gulp bundle --ship`
   - `gulp package-solution --ship`
 
-- Upload package to AppCatalog & add it to the SharePoint site.
 
 ## Features
 

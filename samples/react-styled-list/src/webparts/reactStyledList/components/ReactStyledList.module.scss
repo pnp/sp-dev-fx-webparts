@@ -1,0 +1,410 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.reactStyledList {
+  overflow: hidden;
+  padding: 20px;
+  background-color: var(--background, #000);
+  color: var(--bodyText, #fff);
+
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+// Grid styles adapted from provided HTML/CSS
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 2px;
+  max-width: 1200px;
+  margin: 0 auto;
+  grid-auto-rows: minmax(160px, 1fr);
+}
+
+.gridItem {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: all 0.3s ease;
+  transform-origin: center;
+  will-change: transform;
+  outline: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+  &:hover {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    color: #000000;
+    border-color: #0078d4;
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 120, 212, 0.3);
+  }
+
+  &:focus-visible {
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    color: #000000;
+    border-color: #0078d4;
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(0, 120, 212, 0.3);
+    outline: 2px solid #0078d4;
+    outline-offset: 2px;
+  }
+
+  &:hover .number,
+  &:hover .category {
+    color: #000000;
+    text-shadow: 0 2px 4px rgba(0, 120, 212, 0.2);
+  }
+
+  &:hover .author {
+    color: #0078d4;
+    font-weight: 900;
+  }
+
+  &:hover .quote {
+    color: #888888;
+    font-style: italic;
+  }
+
+  &:hover .pageNumber {
+    color: #666666;
+    font-weight: bold;
+  }
+
+  &:focus-visible .number,
+  &:focus-visible .category {
+    color: #000000;
+    text-shadow: 0 2px 4px rgba(0, 120, 212, 0.2);
+  }
+
+  &:focus-visible .author,
+  &:focus-visible .quote {
+    color: #333333;
+  }
+
+  &:focus-visible .pageNumber {
+    color: #666666;
+  }
+}
+
+.number {
+  font-size: 4rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.author {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--authorText, #ccc);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.quote {
+  font-size: 0.8rem;
+  color: var(--quoteText, #aaa);
+  line-height: 1.4;
+  margin-bottom: 20px;
+  flex-grow: 1;
+}
+
+.pageNumber {
+  font-size: 0.7rem;
+  color: var(--pageText, #666);
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.category {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-align: center;
+  letter-spacing: 2px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  margin-top: auto;
+  text-transform: uppercase;
+  align-self: center;
+}
+
+.categoryHorizontal {
+  writing-mode: horizontal-tb;
+  position: static;
+  transform: none;
+  margin-top: auto;
+}
+
+// Responsive rules
+@media (max-width: 1024px) {
+  .gridContainer {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .gridContainer {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+
+  .number {
+    font-size: 3rem;
+  }
+
+  .category {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+  }
+
+  .category {
+    font-size: 2rem;
+  }
+}
+
+// Theme classes
+.light {
+  background-color: #ffffff;
+  color: #000000;
+
+  .gridItem {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+    color: #000000;
+
+    .number,
+    .category {
+      color: #000000;
+    }
+
+    .author {
+      color: #495057;
+    }
+
+    .bookAbstract {
+      color: #6c757d;
+    }
+
+    .price {
+      color: #0078d4;
+    }
+
+    &:hover {
+      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+      color: #000000;
+      border-color: #0078d4;
+
+      .number,
+      .category {
+        color: #000000;
+        text-shadow: 0 2px 4px rgba(0, 120, 212, 0.2);
+      }
+
+      .author {
+        color: #0078d4;
+        font-weight: 900;
+      }
+
+      .bookAbstract {
+        color: #333333;
+        font-style: italic;
+      }
+
+      .price {
+        color: #005a9e;
+        font-weight: bold;
+      }
+    }
+
+    &:focus-visible {
+      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+      color: #000000;
+      border-color: #0078d4;
+
+      .number,
+      .category {
+        color: #000000;
+        text-shadow: 0 2px 4px rgba(0, 120, 212, 0.2);
+      }
+
+      .author,
+      .bookAbstract {
+        color: #333333;
+      }
+
+      .price {
+        color: #666666;
+      }
+    }
+  }
+}
+
+.dark {
+  background-color: #000000;
+  color: #ffffff;
+
+  .gridItem {
+    background-color: #1a1a1a;
+    border-color: #333;
+    color: #ffffff;
+
+    .number,
+    .category {
+      color: #ffffff;
+    }
+
+    .author {
+      color: #ccc;
+    }
+
+    .bookAbstract {
+      color: #aaa;
+    }
+
+    .price {
+      color: #0078d4;
+    }
+
+    &:hover {
+      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+      color: #000000;
+      border-color: #0078d4;
+
+      .number,
+      .category {
+        color: #000000;
+        text-shadow: 0 2px 4px rgba(0, 120, 212, 0.2);
+      }
+
+      .author {
+        color: #0078d4;
+        font-weight: 900;
+      }
+
+      .bookAbstract {
+        color: #333333;
+        font-style: italic;
+      }
+
+      .price {
+        color: #005a9e;
+        font-weight: bold;
+      }
+    }
+
+    &:focus-visible {
+      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+      color: #000000;
+      border-color: #0078d4;
+
+      .number,
+      .category {
+        color: #000000;
+        text-shadow: 0 2px 4px rgba(0, 120, 212, 0.2);
+      }
+
+      .author,
+      .bookAbstract {
+        color: #333333;
+      }
+
+      .price {
+        color: #666666;
+      }
+    }
+  }
+}
+
+// Alignment classes
+.vertical {
+  .gridContainer {
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(6, 1fr);
+    gap: 20px;
+    max-width: 800px;
+  }
+
+  .gridItem {
+    min-height: 200px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "content number-category"
+      "content price";
+    gap: 20px;
+    align-items: start;
+    padding: 30px;
+
+    .contentContainer {
+      grid-area: content;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .number {
+      grid-area: number-category;
+      font-size: 3.5rem;
+      margin-bottom: 0;
+      text-align: right;
+    }
+
+    .category {
+      grid-area: number-category;
+      font-size: 2rem;
+      margin-top: auto;
+      margin-bottom: 0;
+      text-align: right;
+      writing-mode: horizontal-tb;
+      position: static;
+      transform: none;
+      align-self: end;
+    }
+
+    .price {
+      grid-area: price;
+      text-align: right;
+      margin-bottom: 0;
+      font-size: 1.1rem;
+    }
+
+    .author {
+      margin-bottom: 0;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .bookAbstract {
+      margin-top: 0;
+      margin-bottom: 0;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      padding-top: 0;
+    }
+  }
+}
+
+.horizontal {
+  .gridContainer {
+    grid-template-columns: repeat(6, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+    gap: 2px;
+    max-width: 1200px;
+  }
+}

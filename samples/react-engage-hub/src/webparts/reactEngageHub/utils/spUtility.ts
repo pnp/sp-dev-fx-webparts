@@ -14,7 +14,7 @@ import "@pnp/sp/files"
 import "@pnp/sp/comments/item"
 import "@pnp/sp/comments"
 
-var _sp: SPFI | null = null
+let _sp: SPFI | null = null
 
 export const getSP = (context?: WebPartContext): SPFI => {
   if (context != null) {

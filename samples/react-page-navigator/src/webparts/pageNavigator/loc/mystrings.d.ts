@@ -4,6 +4,7 @@ declare interface IPageNavigatorWebPartStrings {
   DescriptionFieldLabel: string;
   StickyMode: string;
   StickyParentDistance: string;
+  IsExpanded: string;
   ErrorNumeric: string;
   ErrorNumericLog: string;
   ErrorDistanceTooFar: string;

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-flag-template-client-side-solution",
+    "id": "de1a13f1-4ff5-4033-8fd6-8ff9cfb4a67c",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-flag-template description"
+      },
+      "longDescription": {
+        "default": "react-flag-template description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-flag-template Feature",
+        "description": "The feature that activates elements of the react-flag-template solution.",
+        "id": "8f544957-4352-4a36-9717-afb797973217",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-flag-template.sppkg"
+  }
+}

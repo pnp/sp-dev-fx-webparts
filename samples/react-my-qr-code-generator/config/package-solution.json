@@ -1,0 +1,62 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-my-qr-code-generator-client-side-solution",
+    "id": "9390db07-076d-441b-ac5a-e81b36e204d7",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-my-qr-code-generator description"
+      },
+      "longDescription": {
+        "default": "react-my-qr-code-generator description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-my-qr-code-generator Feature",
+        "description": "The feature that activates elements of the react-my-qr-code-generator solution.",
+        "id": "777034b7-8753-4bba-b6ba-b18535c07c35",
+        "version": "1.0.0.0"
+      }
+    ],
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Files.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "OnlineMeetings.ReadWrite"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Calendars.ReadWrite"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Place.Read.All"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-my-qr-code-generator.sppkg"
+  }
+}

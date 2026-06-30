@@ -2,10 +2,15 @@
   "@microsoft/generator-sharepoint": {
     "isCreatingSolution": false,
     "environment": "spo",
-    "version": "1.11.0",
+    "version": "1.21.1",
     "libraryName": "react-chartcontrol",
     "libraryId": "fb9665fb-4455-4b7f-99ab-2195920871fd",
     "packageManager": "npm",
-    "componentType": "webpart"
+    "componentType": "webpart",
+    "sdkVersions": {
+      "@microsoft/teams-js": "2.24.0",
+      "@microsoft/microsoft-graph-client": "3.0.2"
+    },
+    "nodeVersion": "22.15.0"
   }
 }

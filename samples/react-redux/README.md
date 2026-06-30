@@ -21,11 +21,11 @@ Sample web part implementation that uses [Redux](https://github.com/reactjs/redu
 
 ### Reactive
 
-![](https://i.gyazo.com/729c4addf6c992513f8eb91a3fa0e302.gif)
+![](assets/reactive.gif)
 
 ### Non-Reactive
 
-![](https://i.gyazo.com/1981f22fa6a162931a29ce8dad9c2657.gif)
+![](assets/nonreactive.gif)
 
 ## Compatibility
 

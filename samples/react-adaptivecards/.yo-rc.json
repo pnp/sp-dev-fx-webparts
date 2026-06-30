@@ -1,11 +1,20 @@
 {
   "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
     "isCreatingSolution": true,
-    "environment": "spo",
-    "version": "1.12.1",
+    "nodeVersion": "22.19.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "version": "1.21.1",
     "libraryName": "react-adaptivecards",
     "libraryId": "f504f00b-ee99-4184-97cd-114c9b9e75ca",
+    "environment": "spo",
     "packageManager": "npm",
+    "solutionName": "react-adaptivecards",
+    "solutionShortDescription": "react-adaptivecards description",
+    "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "componentType": "webpart"
   }

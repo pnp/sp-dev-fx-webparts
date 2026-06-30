@@ -1,0 +1,23 @@
+declare const styles: {
+  configWrapper: string;
+  panel: string;
+  messageBar: string;
+  toolbar: string;
+  mainContainer: string;
+  leftPane: string;
+  actionButtons: string;
+  treeContainer: string;
+  rightPane: string;
+  treeLevel: string;
+  treeNode: string;
+  treeItem: string;
+  treeSelected: string;
+  treeSpacer: string;
+  treeChildren: string;
+  iconFolder: string;
+  iconLink: string;
+  treeTitle: string;
+  formLabel: string;
+  formGroup: string;
+};
+export default styles;

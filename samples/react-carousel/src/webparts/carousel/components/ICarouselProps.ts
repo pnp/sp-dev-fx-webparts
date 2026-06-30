@@ -6,6 +6,8 @@ export interface ICarouselProps {
   list: string;
   context: WebPartContext;
   numberImages: number;
+  imageFit: string;
+  carouselSpeed: number;
   updateProperty: (value: string) => void;
   displayMode: DisplayMode;
 }

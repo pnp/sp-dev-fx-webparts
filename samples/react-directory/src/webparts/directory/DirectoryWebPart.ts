@@ -14,7 +14,6 @@ import DirectoryHook from './components/DirectoryHook';
 import { IDirectoryProps } from './components/IDirectoryProps';
 import {
   FluentProvider,
-  FluentProviderProps,
   teamsDarkTheme,
   teamsLightTheme,
   Theme,
@@ -113,7 +112,7 @@ export default class DirectoryWebPart extends BaseClientSideWebPart<IDirectoryWe
         .getContext()
         .then((context) => {
           console.log(context, 'context');
-          let environmentMessage: string = '';
+          const environmentMessage: string = '';
           switch (context.app.host.name) {
             case 'Office': // running in Office
               this._appMode = _l ? AppMode.OfficeLocal : AppMode.Office;
@@ -174,11 +173,11 @@ export default class DirectoryWebPart extends BaseClientSideWebPart<IDirectoryWe
                 }),
                 PropertyPaneToggle('searchFirstName', {
                   checked: false,
-                  label: 'Search on First Name ?',
+                  label: 'Search on first name ?',
                 }),
                 PropertyPaneToggle('justifycontent', {
                   checked: false,
-                  label: 'Result Layout',
+                  label: 'Result layout',
                   onText: 'SpaceBetween',
                   offText: 'Center',
                 }),

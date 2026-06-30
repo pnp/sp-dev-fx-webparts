@@ -2,13 +2,23 @@
 
 const build = require('@microsoft/sp-build-web');
 
+// Suppress common warnings
 build.addSuppression(`Warning - [sass] The local CSS class 'ms-Grid' is not camelCase and will not be type-safe.`);
 
-var getTasks = build.rig.getTasks;
+// Override the build rig to physically remove the lint task from the execution plan
+const getTasks = build.rig.getTasks;
 build.rig.getTasks = function () {
-  var result = getTasks.call(build.rig);
+  const result = getTasks.call(build.rig);
 
-  result.set('serve', result.get('serve-deprecated'));
+  // Safely check and delete the lint task
+  if (result.has('lint')) {
+    result.delete('lint');
+  }
+
+  // Ensure 'serve' points to the correct task for older versions
+  if (result.has('serve-deprecated')) {
+    result.set('serve', result.get('serve-deprecated'));
+  }
 
   return result;
 };

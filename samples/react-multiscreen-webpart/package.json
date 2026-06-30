@@ -17,7 +17,7 @@
     "office-ui-fabric-react": "7.156.0",
     "react": "16.9.0",
     "react-dom": "16.9.0",
-    "react-router-dom": "7.5.2"
+    "react-router-dom": "7.12.0"
   },
   "resolutions": {
     "@types/react": "16.8.8"
@@ -25,7 +25,7 @@
   "devDependencies": {
     "@microsoft/rush-stack-compiler-2.9": "0.7.7",
     "@microsoft/rush-stack-compiler-3.7": "0.2.3",
-    "@microsoft/sp-build-web": "1.12.1",
+    "@microsoft/sp-build-web": "1.22.2",
     "@microsoft/sp-module-interfaces": "1.12.1",
     "@microsoft/sp-tslint-rules": "1.12.1",
     "@microsoft/sp-webpart-workbench": "1.12.1",

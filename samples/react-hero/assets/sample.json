@@ -1,0 +1,104 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-hero",
+    "source": "pnp",
+    "title": "React Hero Web Part",
+    "shortDescription": "A SharePoint Framework (SPFx) web part that displays a rich, fully configurable Hero banner with support for 7 layout modes, image/video backgrounds, call-to-action links, auto-rotation, and full Fluent UI v9 theming. Built with @spteck/react-controls-v2 and runs on SharePoint Online, Microsoft Teams, and Microsoft 365 (Office) hosts.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-hero",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-hero",
+    "longDescription": [
+      "A SharePoint Framework (SPFx) web part that displays a rich, fully configurable Hero banner with support for 7 layout modes, image/video backgrounds, call-to-action links, auto-rotation, and full Fluent UI v9 theming. Built with @spteck/react-controls-v2 and runs on SharePoint Online, Microsoft Teams, and Microsoft 365 (Office) hosts."
+    ],
+    "creationDateTime": "2026-05-10",
+    "updateDateTime": "2026-05-10",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.22.2"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "hero-webpart-linkedin.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-hero/assets/hero-webpart-linkedin.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "hero1.png",
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-hero/assets/hero1.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "hero2.png",
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-hero/assets/hero2.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "hero3.png",
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-hero/assets/hero3.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "hero4.png",
+        "type": "image",
+        "order": 104,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-hero/assets/hero4.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "hero5.png",
+        "type": "image",
+        "order": 105,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-hero/assets/hero5.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "hero6.png",
+        "type": "image",
+        "order": 106,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-hero/assets/hero6.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "hero7.png",
+        "type": "image",
+        "order": 107,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-hero/assets/hero7.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "joaojmendes",
+        "pictureUrl": "https://github.com/joaojmendes.png",
+        "name": "João Mendes"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

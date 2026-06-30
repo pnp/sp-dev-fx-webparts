@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "site-game-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/siteGame/SiteGameWebPart.js",
+          "manifest": "./src/webparts/siteGame/SiteGameWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SiteGameWebPartStrings": "lib/webparts/siteGame/loc/{locale}.js"
+  }
+}

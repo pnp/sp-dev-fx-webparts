@@ -11,7 +11,7 @@
     "@types/webpack-env": ">=1.12.1 <1.14.0"
   },
   "devDependencies": {
-    "@microsoft/sp-build-web": "~1.17.2",
+    "@microsoft/sp-build-web": "~1.22.1",
     "@microsoft/sp-module-interfaces": "~1.1.1",
     "@microsoft/sp-webpart-workbench": "~1.12.1",
     "gulp": "~4.0.2",

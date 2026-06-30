@@ -1,0 +1,73 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.searchContainer {
+  max-width: 100%;
+}
+
+.apiBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  background-color: #f5f0ff;
+  border-radius: 6px;
+  margin-bottom: 16px;
+  border: 1px solid #e0d4f5;
+}
+
+.apiBarLeft {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+}
+
+.badge {
+  padding: 2px 8px;
+  border-radius: 10px;
+  font-size: 11px;
+  font-weight: 600;
+  background-color: #fff3cd;
+  color: #996515;
+}
+
+.searchResult {
+  padding: 14px 16px;
+  border: 1px solid #edebe9;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background-color: #fff;
+  transition: box-shadow 0.15s ease;
+
+  &:hover {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.resultTitle {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 4px;
+
+  a {
+    color: #8661c5;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+      color: #6b4fa0;
+    }
+  }
+}
+
+.resultMeta {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.resultPreview {
+  font-size: 13px;
+  color: #323130;
+  line-height: 1.5;
+}

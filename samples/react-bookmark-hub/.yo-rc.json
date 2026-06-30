@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.14.0",
+    "sdksVersions": {},
+    "version": "1.22.1",
+    "libraryName": "BookmarkHub",
+    "libraryId": "556b1e36-2a92-4088-a3a9-49b9b92c912b",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "BookmarkHub",
+    "solutionShortDescription": "bookmark-hub description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

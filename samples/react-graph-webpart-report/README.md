@@ -4,7 +4,7 @@
 
 This sample web part shows a report of the web parts used on the current site.
 
-![Chart View](./assets/chartView.png)
+![Static sample](./assets/webpartReport.png)
 
 ![List View](./assets/listView.png)
 
@@ -19,8 +19,8 @@ This sample web part shows a report of the web parts used on the current site.
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.18.2](https://img.shields.io/badge/SPFx-1.18.2-green.svg)
-![Node.js v18 | v16](https://img.shields.io/badge/Node.js-v18%20%7C%20v16-green.svg)
+![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
+![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -52,6 +52,7 @@ Microsoft Graph permission:
 | 1.0     | March 23, 2023 | Initial release |
 | 2.0     | July 11, 2023  | Add minor features|
 | 3.0     | February 12, 2024 | Upgrade to SPFx 1.18.2 |
+| 4.0     | October 24, 2025 | Upgrade to SPFx 1.21.1 |
 
 ## Minimal Path to Awesome
 

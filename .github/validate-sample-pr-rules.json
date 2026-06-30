@@ -86,6 +86,12 @@
             "rule": "No lib folder",
             "href": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/CONTRIBUTING.md#source-code-only",
             "order": 12
+        },
+        {
+            "forbid": "upgrade-report.md",
+            "rule": "No upgrade reports",
+            "href": "https://github.com/pnp/sp-dev-fx-webparts/edit/main/CONTRIBUTING.md#no-unnecessary-files",
+            "order": 10
         }
     ]
 }

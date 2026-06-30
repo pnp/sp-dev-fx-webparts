@@ -761,7 +761,7 @@ export default class ListSearchWebPart extends BaseClientSideWebPart<IListSearch
           title: strings.CollectionDataFieldsRenderType,
           type: CustomCollectionFieldType.custom,
           required: true,
-          onCustomRender: (field, value, onUpdate, item) => {
+          onCustomRender: (field, value, onUpdate, item: IBaseFieldData) => {
             if (item.SiteCollectionSource && item.ListSourceField && item.SourceField) {
               return (
                 CustomCollectionDataField.getPickerByStringOptions(this.GetRenderOptionsByType(item.SPFieldType), field, item, onUpdate, undefined)
@@ -1032,7 +1032,7 @@ export default class ListSearchWebPart extends BaseClientSideWebPart<IListSearch
                       title: strings.CollectionDataFieldsRenderType,
                       type: CustomCollectionFieldType.custom,
                       required: true,
-                      onCustomRender: (field, value, onUpdate, item) => {
+                      onCustomRender: (field, value, onUpdate, item: IMappingFieldData) => {
                         if (item.SiteCollectionSource && item.ListSourceField && item.SourceField) {
                           return (
                             CustomCollectionDataField.getPickerByStringOptions(this.GetRenderOptionsByType(item.SPFieldType), field, item, onUpdate, undefined)
@@ -1166,6 +1166,11 @@ export default class ListSearchWebPart extends BaseClientSideWebPart<IListSearch
   private GetRenderOptionsByType(SPFieldType: string): string[] {
     let result = [SPFieldType];
     switch (SPFieldType) {
+      case SharePointType.Computed:
+        {
+          result = [SharePointType.Computed];
+          break;
+        }
       case SharePointType.Text:
       case SharePointType.Note:
       case SharePointType.NoteFullHtml:

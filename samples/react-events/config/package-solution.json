@@ -1,0 +1,56 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-events-solution",
+    "id": "1dd46bc0-0af5-48ba-81c7-a53d76dc074e",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.23.0-rc.3"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "spfx-events"
+      },
+      "longDescription": {
+        "default": "spfx-events show events from the Microsoft Graph API in a SharePoint web part."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Calendars.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "GroupMember.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "MailboxSettings.Read"
+      }
+    ],    "features": [
+      {
+        "title": "spfx-events application",
+        "description": "The feature that activates elements of the spfx-events application.",
+        "id": "e4086d51-f371-46cf-b4ca-009b2b7529ad",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-events.sppkg"
+  }
+}

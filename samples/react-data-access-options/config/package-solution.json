@@ -1,0 +1,41 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "data-access-option-spfx-client-side-solution",
+    "id": "7d6179c9-0fb0-4550-bf2c-98d9835e1fcb",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "iconPath": "assets/icon.png",
+    "developer": {
+      "name": "Marc Andre Schröder-Zhou",
+      "websiteUrl": "https://www.dev-sky.net",
+      "privacyUrl": "",
+      "termsOfUseUrl": "https://go.microsoft.com/fwlink/?linkid=2041178",
+      "mpnId": "XXXX"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "data-access-option-spfx description"
+      },
+      "longDescription": {
+        "default": "data-access-option-spfx description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Data Access options in spfx",
+        "description": "The feature that activates elements of the data-access-option-spfx solution.",
+        "id": "38df6553-0ca5-4676-ac59-936f7f6b5d4c",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/data-access-option-spfx.sppkg"
+  }
+}

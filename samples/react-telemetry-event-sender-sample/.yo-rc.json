@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "react-telemetry-event-sender-sample",
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "TelemetryEventSenderSample",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.21.1",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "react-telemetry-event-sender-sample",
+    "libraryId": "c1839542-c029-4322-8a78-88b17b59306c",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionShortDescription": "react-telemetry-event-sender-sample description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  }
+}

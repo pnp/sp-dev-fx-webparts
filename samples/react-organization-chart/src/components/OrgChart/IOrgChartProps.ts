@@ -1,7 +1,8 @@
 
 import { WebPartContext } from "@microsoft/sp-webpart-base";
-
+import { SPFI } from "@pnp/sp";
 import { IPropertyFieldGroupOrPerson } from '@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker';
+
 export interface IOrgChartProps {
   title: string;
   defaultUser: string;
@@ -9,5 +10,6 @@ export interface IOrgChartProps {
   startFromUser: IPropertyFieldGroupOrPerson[];
   showAllManagers: boolean;
   showGuestUsers: boolean;
-  showActionsBar:boolean;
+  showActionsBar: boolean;
+  sp: SPFI;
 }

@@ -1,0 +1,9 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/heft/v0/heft-sass-plugin.schema.json",
+  "fileExtensions": [".sass", ".scss", ".css"],
+  "nonModuleFileExtensions": [".global.sass", ".global.scss", ".global.css"],
+  "cssOutputFolders": ["lib", "lib-commonjs"],
+  "importIncludePaths": [
+    "node_modules"
+  ]
+}

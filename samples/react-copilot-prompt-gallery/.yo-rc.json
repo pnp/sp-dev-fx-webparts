@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.16.0",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "react-copilot-prompt-gallery",
+    "libraryId": "4bb26c1d-cbe4-4a23-8f94-5968dc619cd8",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-copilot-prompt-gallery",
+    "solutionShortDescription": "react-copilot-prompt-gallery description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

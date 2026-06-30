@@ -19,8 +19,8 @@ The web part only displays the flows which are shared with the current user and 
 
 This sample is designed to be used in the following environments:
 
-![SPFx 1.9.1](https://img.shields.io/badge/SPFx-1.9.1-green.svg) 
-![Node.js v10 | v8](https://img.shields.io/badge/Node.js-v10%20%7C%20v8-green.svg) 
+![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
+![Node.js v22.15.0](https://img.shields.io/badge/Node.js-%20v22.15.0-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -44,6 +44,13 @@ For more information about SPFx compatibility, please refer to https://aka.ms/sp
 ## Contributors
 
 - [Aakash Bhardwaj](https://github.com/in8aakbh)
+
+Version|Date|Comments
+-------|----|--------
+1.0|September 17, 2019|Initial release
+1.1|October 25, 2025|Upgrade to SPFx 1.21.1
+
+
 
 ## Disclaimer
 

@@ -16,6 +16,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -48,14 +52,19 @@
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
       },
       {
+        "name": "Changes on SharePoint Framework (SPFx) permission grants in Microsoft Entra ID",
+        "description": "Article explaining a set of changes to the way API permissions are managed in SharePoint Online by Tenant Administrators in SharePoint Framework (SPFx) starting from March 2025.",
+        "url": "https://devblogs.microsoft.com/microsoft365dev/changes-on-sharepoint-framework-spfx-permission-grants-in-microsoft-entra-id/"
+      },
+      {
         "name": "Microsoft Graph Special Folders",
         "description": "Learn how to use Microsoft Graph special folders, such as the 'approot' folder, to store and manage user-specific files and settings in OneDrive for Business in a secure and isolated way.",
-        "url": "https://learn.microsoft.com/en-us/graph/api/drive-get-specialfolder?view=graph-rest-1.0&tabs=http"
+        "url": "https://learn.microsoft.com/graph/api/drive-get-specialfolder?view=graph-rest-1.0&tabs=http"
       },
       {
         "name": "On-Behalf-Of Flow",
         "description": "Understand how to implement the OAuth 2.0 On-Behalf-Of (OBO) authentication flow to securely call downstream APIs like Microsoft Graph from your own APIs, while preserving the user's identity and permissions.",
-        "url": "https://learn.microsoft.com/en-us/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow"
+        "url": "https://learn.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow"
       }
     ]
   }

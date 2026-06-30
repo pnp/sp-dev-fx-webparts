@@ -10,8 +10,10 @@ import {
 import * as strings from 'CheckListFlowsWebPartStrings';
 import CheckListFlows from './components/CheckListFlows';
 import { ICheckListFlowsProps } from './components/ICheckListFlowsProps';
-import { IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { sp } from '@pnp/sp';
+import { IDropdownOption } from '@fluentui/react/lib/Dropdown';
+import { spfi, SPFx } from '@pnp/sp';
+import '@pnp/sp/webs';
+import '@pnp/sp/lists';
 
 export interface ICheckListFlowsWebPartProps {
   description: string;
@@ -40,14 +42,12 @@ export default class CheckListFlowsWebPart extends BaseClientSideWebPart<ICheckL
   }
 
   protected onInit(): Promise<void> {
-    return super.onInit().then(async _ => {
-      sp.setup({
-        spfxContext: this.context
-      });
+    return super.onInit().then(async () => {
+      const sp = spfi().using(SPFx(this.context));
       //Get Title and EntityTypeName for all lists in the site
-      let listOptions: IDropdownOption[] = [];
-      let lists = await sp.web.lists.select('EntityTypeName', 'Title').filter('Hidden eq false').get();
-      lists.map((list) => {
+      const listOptions: IDropdownOption[] = [];
+      const lists = await sp.web.lists.select('EntityTypeName', 'Title').filter('Hidden eq false')();
+      lists.map((list: { EntityTypeName: string; Title: string }) => {
         listOptions.push({ key: list.EntityTypeName, text: list.Title });
       });
       this.listOptions = listOptions;

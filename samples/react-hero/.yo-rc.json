@@ -1,0 +1,20 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.21.1",
+    "sdksVersions": {},
+    "version": "1.22.2",
+    "libraryName": "spfx-hero-webpart",
+    "libraryId": "0c516854-5835-4617-907c-03b8fc269e19",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "spfx-hero-webpart",
+    "solutionShortDescription": "spfx-hero-webpart description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart",
+    "ejected": true
+  }
+}

@@ -16,6 +16,10 @@
     ],
     "metadata": [
       {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
       },
@@ -49,7 +53,7 @@
     ],
     "authors": [
       {
-        "gitHubAccount": "https://github.com/ejazhussain",
+        "gitHubAccount": "ejazhussain",
         "pictureUrl": "https://github.com/ejazhussain.png",
         "name": "Ejaz Hussain"
       }

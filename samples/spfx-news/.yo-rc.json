@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.21.1",
+    "sdksVersions": {},
+    "version": "1.22.2",
+    "libraryName": "spfx-news-feed",
+    "libraryId": "1cdf8b67-50c3-460a-a478-36e6be760ba2",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "spfx-news-feed",
+    "solutionShortDescription": "spfx-news-feed description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

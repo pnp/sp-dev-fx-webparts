@@ -1,0 +1,547 @@
+name: Generate All Samples and Cache Thumbnails
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".metadata/samples.json"
+      - ".metadata/extensions-samples.json"
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * *" # Daily 06:00 UTC
+  workflow_run:
+    workflows: 
+      - "Merge and Distribute Samples"
+      - "Sync Extensions Samples"
+    types: 
+      - completed
+    branches:
+      - main
+      
+jobs:
+  merge_all_samples:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      discussions: read
+
+    steps:
+      - name: Checkout main (source JSON)
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: main
+          fetch-depth: 0
+
+      - name: Checkout Docs branch (published site output)
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          ref: Docs
+          path: Docs
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Install Docs deps (workspaces)
+        shell: bash
+        run: |
+          cd Docs
+          npm install --include=optional
+
+      - name: Merge + slim samples files
+        id: merge
+        run: |
+          python3 << 'EOF'
+          import json
+          import sys
+          from pathlib import Path
+
+          def flatten_samples(data):
+              if isinstance(data, list):
+                  out = []
+                  for item in data:
+                      if isinstance(item, dict):
+                          out.append(item)
+                      elif isinstance(item, list):
+                          out.extend(flatten_samples(item))
+                  return out
+              if isinstance(data, dict):
+                  return [data]
+              return []
+
+          def pick_primary_thumbnail(sample: dict):
+              thumbs = sample.get("thumbnails") or []
+              if not isinstance(thumbs, list):
+                  return None
+
+              images = [t for t in thumbs if isinstance(t, dict) and t.get("type") == "image" and t.get("url")]
+              if not images:
+                  return None
+
+              def order_key(t):
+                  o = t.get("order")
+                  return o if isinstance(o, int) else 999999
+
+              images.sort(key=order_key)
+              return images[0]
+
+          def slim_sample(sample: dict):
+              primary = pick_primary_thumbnail(sample)
+
+              out = {
+                  "name": sample.get("name"),
+                  "source": sample.get("source"),
+                  "title": sample.get("title"),
+                  "shortDescription": sample.get("shortDescription"),
+                  "url": sample.get("url"),
+                  "downloadUrl": sample.get("downloadUrl"),
+                  "updateDateTime": sample.get("updateDateTime"),
+                  "metadata": sample.get("metadata") or [],
+                  "tags": sample.get("tags") or [],
+                  "categories": sample.get("categories") or [],
+                  "authors": sample.get("authors") or [],
+                  "thumbnails":  [primary] if primary else [],
+              }
+              return out
+
+          all_samples = []
+          errors = []
+          file_stats = {}
+
+          base_path = Path.cwd().resolve()
+          metadata_dir = base_path / ".metadata"
+          metadata_dir.mkdir(parents=True, exist_ok=True)
+
+          files_to_merge = [
+              ("samples.json", "WebParts"),
+              ("extensions-samples.json", "Extensions")
+          ]
+
+          print("🔄 Merging + slimming sample files...\n")
+
+          for filename, source_type in files_to_merge:
+              file_path = metadata_dir / filename
+              if not file_path.exists():
+                  print(f"ℹ️ {filename}: File not found (skipping)")
+                  file_stats[filename] = {"type": source_type, "count": 0, "status": "not_found"}
+                  continue
+
+              try:
+                  content = file_path.read_text(encoding="utf-8").strip()
+                  if not content:
+                      errors.append({"file": filename, "error": "Empty file"})
+                      print(f"✗ {filename}: Empty file")
+                      file_stats[filename] = {"type": source_type, "count": 0, "status": "empty"}
+                      continue
+
+                  data = json.loads(content)
+                  samples = flatten_samples(data)
+                  if not samples:
+                      errors.append({"file": filename, "error": "No valid samples found after flattening"})
+                      print(f"✗ {filename}: No valid samples found")
+                      file_stats[filename] = {"type": source_type, "count": 0, "status": "no_samples"}
+                      continue
+
+                  slimmed = [slim_sample(s) for s in samples if isinstance(s, dict)]
+                  all_samples.extend(slimmed)
+                  print(f"✓ {filename}: Added {len(slimmed)} {source_type} samples")
+                  file_stats[filename] = {"type": source_type, "count": len(slimmed), "status": "success"}
+
+              except json.JSONDecodeError as e:
+                  errors.append({"file": filename, "error": f"JSON decode error: {str(e)}"})
+                  print(f"✗ {filename}: JSON error - {str(e)}")
+                  file_stats[filename] = {"type": source_type, "count": 0, "status": "json_error"}
+              except Exception as e:
+                  errors.append({"file": filename, "error": f"Unexpected error: {str(e)}"})
+                  print(f"✗ {filename}: Error - {str(e)}")
+                  file_stats[filename] = {"type":  source_type, "count": 0, "status": "error"}
+
+          out_path = metadata_dir / "all-samples.json"
+          try:
+              out_path.write_text(json.dumps(all_samples, indent=2, ensure_ascii=False), encoding="utf-8")
+              print(f"\n✓ Successfully wrote {out_path}")
+          except Exception as e:
+              print(f"\n✗ Error writing {out_path}: {str(e)}")
+              sys.exit(1)
+
+          merge_errors_file = metadata_dir / "merge-errors.json"
+          if errors:
+              payload = {
+                  "timestamp": "${{ github.event.head_commit.timestamp }}",
+                  "commit": "${{ github.sha }}",
+                  "errors": errors
+              }
+              merge_errors_file.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
+              print(f"⚠️ Errors written to: {merge_errors_file}")
+              has_errors = "true"
+          else:
+              if merge_errors_file.exists():
+                  merge_errors_file.unlink()
+                  print("✓ No errors.  Removed existing merge-errors.json")
+              has_errors = "false"
+
+          import os
+          with open(os.environ["GITHUB_OUTPUT"], "a") as f:
+              f.write(f"has_errors={has_errors}\n")
+              f.write(f"total_samples={len(all_samples)}\n")
+              f.write(f"file_stats={json.dumps(file_stats)}\n")
+          EOF
+
+      - name: Generate thumbnails
+        id: thumbs
+        uses: ./.github/actions/generate-thumbnails
+        with:
+          docs-path: Docs
+          all-samples-path: .metadata/all-samples.json
+          allow-remote: "true"
+          node-version: "20"
+          install-deps: "true"
+
+      - name: Generate avatars
+        id: avatars
+        uses: ./.github/actions/generate-avatars
+        with:
+          docs-path: Docs
+          all-samples-path: .metadata/all-samples.json
+          allow-remote: "true"
+          node-version: "20"
+          install-deps: "true"
+
+      - name: Debug where did images get generated?
+        shell: bash
+        run: |
+          cd Docs
+
+          echo "Top image folders under static/images:"
+          find static/images -maxdepth 2 -type d 2>/dev/null | sed -n '1,120p' || true
+
+          echo "Avatar files in static/images/avatars:"
+          find static/images/avatars -type f 2>/dev/null | head -n 20 || true
+
+          echo "Thumbnail files in static/images/thumbnails:"
+          find static/images/thumbnails -type f 2>/dev/null | head -n 20 || true
+
+          echo "WARNING: if images exist under docs/images BEFORE hugo, they will be deleted:"
+          find docs/images -type f 2>/dev/null | head -n 20 || true
+
+      - name: Debug verify images are in static
+        shell: bash
+        run: |
+          cd Docs
+          echo "avatars:"; find static/images/avatars -type f 2>/dev/null | head -n 10 || true
+          echo "thumbs:"; find static/images/thumbnails -type f 2>/dev/null | head -n 10 || true
+
+      - name: Tally discussion reactions
+        id: reactions
+        uses: ./.github/actions/tally-reactions
+
+      - name: Save likes.json into Docs/data
+        shell: bash
+        run: |
+          mkdir -p Docs/data
+          echo '${{ steps.reactions.outputs.result }}' > Docs/data/likes.json
+          jq empty Docs/data/likes.json
+
+
+      - name: Write published JSON files into Docs/data
+        id: publish_json
+        shell: bash
+        run: |
+          node << 'EOF'
+          const fs = require("fs");
+          const path = require("path");
+
+          const allSamplesPath = path.resolve(".metadata/all-samples.json");
+          const samples = JSON.parse(fs.readFileSync(allSamplesPath, "utf8"));
+
+          // ----- Merge reactions from Docs/data/likes.json into each sample -----
+          const likesPath = path.resolve("Docs/data/likes.json");
+          const dataDir = path.resolve("Docs/data");
+          let likes = null;
+
+          if (fs.existsSync(likesPath)) {
+            likes = JSON.parse(fs.readFileSync(likesPath, "utf8"));
+          }
+
+          const discussions =
+            likes && likes.discussions && typeof likes.discussions === "object"
+              ? likes.discussions
+              : {};
+
+          for (const s of samples) {
+            const titleKey = `sample:${s.name}`; // join key matches tally action title convention
+            const d = discussions[titleKey];
+
+            s.reactions = d
+              ? {
+                  url: d.url ?? "",
+                  totalReactions: d.totalReactions ?? 0,
+                  allReactors: Array.isArray(d.allReactors) ? d.allReactors : []
+                }
+              : {
+                  url: "",
+                  totalReactions: 0,
+                  allReactors: []
+                };
+          }
+
+          fs.mkdirSync(dataDir, { recursive: true });
+
+          // all-samples.json
+          fs.writeFileSync(
+            path.join(dataDir, "all-samples.json"),
+            JSON.stringify(samples, null, 2),
+            "utf8"
+          );
+
+          // authors.json (deduped)
+          const byKey = new Map();
+          for (const s of samples) {
+            const authors = Array.isArray(s.authors) ? s.authors : [];
+            for (const a of authors) {
+              if (!a) continue;
+
+              const key =
+                (a.gitHubAccount && `gh:${a.gitHubAccount.toLowerCase()}`) ||
+                (a.avatarSourceUrl && `src:${a.avatarSourceUrl}`) ||
+                (a.pictureUrl && `pic:${a.pictureUrl}`) ||
+                (a.name && `name:${a.name.toLowerCase()}`);
+
+              if (!key) continue;
+
+              const existing = byKey.get(key) || {};
+              byKey.set(key, {
+                gitHubAccount: a.gitHubAccount || existing.gitHubAccount || "",
+                name: a.name || existing.name || "",
+                pictureUrl: a.pictureUrl || existing.pictureUrl || "",
+                avatarSourceUrl: a.avatarSourceUrl || existing.avatarSourceUrl || ""
+              });
+            }
+          }
+
+          const authors = Array.from(byKey.values())
+            .sort((x, y) => (x.name || "").localeCompare(y.name || ""));
+
+          fs.writeFileSync(
+            path.join(dataDir, "authors.json"),
+            JSON.stringify(authors, null, 2),
+            "utf8"
+          );
+
+          // optional tiny meta file (handy for debugging)
+          fs.writeFileSync(
+            path.join(dataDir, "generated-meta.json"),
+            JSON.stringify({ generatedAt: new Date().toISOString(), sampleCount: samples.length }, null, 2),
+            "utf8"
+          );
+          EOF
+          
+      # - name: Commit samples data + images
+      #   shell: bash
+      #   run: |
+      #     cd Docs
+      #     git config --local user.email "github-actions[bot]@users.noreply.github.com"
+      #     git config --local user.name "github-actions[bot]"
+
+      #     git add -A docs/images/thumbnails docs/images/avatars data
+
+      #     if git diff --cached --exit-code; then
+      #       echo "ℹ️ No changes to publish to Docs branch"
+      #       exit 0
+      #     fi
+
+      #     git commit -m "chore: publish samples data + images [skip ci]"
+      #     git push origin HEAD:Docs
+      #     echo "✅ Changes committed and pushed"
+
+      - name: Generate sample pages (Docs branch)
+        shell: bash
+        run: |
+          cd Docs
+          npm run generate:pages
+
+      - name: Install deps for pnp-samples-gallery (force optional deps)
+        shell: bash
+        run: |
+          cd Docs
+          rm -rf pnp-samples-gallery/node_modules
+          npm --prefix ./pnp-samples-gallery install --include=optional
+
+      - name: Build React gallery and copy assets
+        shell: bash
+        run: |
+          cd Docs
+          npm run build:react
+
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "latest"
+          extended: true
+
+      - name: Build Hugo site + commit
+        shell: bash
+        run: |
+          cd Docs
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          echo "=== DEBUG: how many samples are tracked in the repo checkout? ==="
+          git ls-files "docs/samples/**" | wc -l || true
+
+          echo "=== DEBUG: does the tracked tree contain docs/samples? ==="
+          git ls-tree -d HEAD docs/samples || true
+
+          hugo --minify --destination docs --cleanDestinationDir
+
+          echo "Sitemap loc count:"; grep -c "<loc>" docs/sitemap.xml || true
+          echo "Sitemap samples entries:"; grep -c "/samples/" docs/sitemap.xml || true
+          echo "First 20 samples sitemap hits:"
+          python3 - << 'PY'
+          import re
+          p = "docs/sitemap.xml"
+          s = open(p, "r", encoding="utf-8").read()
+          hits = re.findall(r'https?://[^<"]*/samples/[^<"]*', s)
+          for i, h in enumerate(hits[:20], 1):
+              print(f"{i}: {h}")
+          PY
+
+          echo "Check one generated page front matter (first 60 lines):"
+          slug="$(find content/samples -mindepth 1 -maxdepth 1 -type d -printf '%f\n' -print -quit 2>/dev/null || true)"
+          echo "Chosen slug: ${slug:-<none>}"
+          if [[ -n "$slug" ]]; then
+            sed -n '1,80p' "content/samples/$slug/index.md" || true
+          fi
+
+          echo "=== DEBUG: find which sample did not render to docs/ ==="
+          # list slugs from generated content vs built output
+          ls -1 content/samples | sort > /tmp/content_slugs.txt
+          ls -1 docs/samples | sort > /tmp/docs_slugs.txt
+
+          echo "In content but missing from docs:"
+          comm -23 /tmp/content_slugs.txt /tmp/docs_slugs.txt | sed -n '1,50p'
+
+          missing_slug="$(comm -23 /tmp/content_slugs.txt /tmp/docs_slugs.txt | head -n 1 || true)"
+          echo "Missing slug: ${missing_slug:-<none>}"
+
+          if [[ -n "$missing_slug" ]]; then
+            echo "---- content front matter for missing slug ----"
+            sed -n '1,80p' "content/samples/$missing_slug/index.md" || true
+
+            echo "---- re-run hugo with verbose logging for this page ----"
+            # rerun once with extra diagnostics (won't change output, but logs warnings)
+            hugo --minify --destination docs --cleanDestinationDir --printPathWarnings --logLevel info || true
+          fi
+
+          echo "=== DEBUG: how many sample HTML files exist after build? ==="
+          find docs/samples -type f -name "index.html" | wc -l || true
+
+          echo "=== DEBUG: did any samples files actually change content? ==="
+          git diff --name-only -- docs/samples | head -n 50 || true
+
+          echo "docs/samples count:"
+          find docs/samples -maxdepth 2 -type f | wc -l || true
+
+          echo "=== DEBUG: find any sample folder missing index.html ==="
+          missing_dir="$(find docs/samples -mindepth 1 -maxdepth 1 -type d ! -exec test -f '{}/index.html' \; -print -quit 2>/dev/null || true)"
+          echo "Missing HTML dir: ${missing_dir:-<none>}"
+          if [[ -n "$missing_dir" ]]; then
+            echo "Contents:"
+            ls -la "$missing_dir" || true
+          fi
+
+
+          echo "=== DEBUG: write build marker into docs/ ==="
+          echo "sha=$GITHUB_SHA" > docs/build-info.txt
+          echo "builtAt=$(date -u +%Y-%m-%dT%H:%M:%SZ)" >> docs/build-info.txt
+          echo "samplesFolders=$(find docs/samples -mindepth 1 -maxdepth 1 -type d | wc -l)" >> docs/build-info.txt
+          echo "sitemapLocs=$(grep -c '<loc>' docs/sitemap.xml || true)" >> docs/build-info.txt
+          echo "sitemapSamples=$(grep -c '/samples/' docs/sitemap.xml || true)" >> docs/build-info.txt
+
+          cat docs/build-info.txt
+
+          git add -A data static content docs
+
+          echo ""
+          echo "=== DEBUG: does git think docs/samples is ignored? ==="
+          # pick any file that should exist
+          sample_file="$(find docs/samples -type f -print -quit 2>/dev/null || true)"
+          echo "Sample output file: ${sample_file:-<none found>}"
+          if [[ -n "$sample_file" ]]; then
+            git check-ignore -v "$sample_file" || echo "Not ignored ✅"
+          fi
+
+          echo ""
+          echo "=== DEBUG: git status (porcelain) ==="
+          git status --porcelain | sed -n '1,200p'
+
+          echo ""
+          echo "=== DEBUG: staged files (name-only) ==="
+          git diff --cached --name-only | sed -n '1,200p'
+
+          echo ""
+          echo "=== DEBUG: staged docs/samples files count ==="
+          git diff --cached --name-only | grep '^docs/samples/' | wc -l || true
+
+          if git diff --cached --exit-code; then
+            echo "ℹ️ No changes to publish"
+            exit 0
+          fi
+
+          git commit -m "chore: regenerate data/assets/site [skip ci]"
+          git push origin HEAD:Docs
+
+      - name: Generate workflow summary
+        if: always()
+        shell: bash
+        run: |
+          {
+            echo "# 📊 Merge All Samples Workflow Summary"
+            echo
+            echo "## Workflow Details"
+            echo "- **Triggered by**: ${{ github.event_name }}"
+            echo "- **Run number**: ${{ github.run_number }}"
+            echo "- **Commit**: ${{ github.sha }}"
+            echo "- **Branch**: ${{ github.ref_name }}"
+            echo
+            echo "## 📦 Sample Processing"
+            echo "| Metric | Value |"
+            echo "|--------|-------|"
+            echo "| **Total Samples** | ${{ steps.merge.outputs.total_samples }} |"
+            echo "| **Merge Errors** | ${{ steps.merge.outputs.has_errors == 'true' && '⚠️ Yes' || '✅ No' }} |"
+            echo
+            echo "## 🖼️ Thumbnails"
+            echo "| Metric | Count |"
+            echo "|--------|-------|"
+            echo "| **Generated/updated** | ${{ steps.thumbs.outputs.thumbnails_generated }} |"
+            echo "| **Failed** | ${{ steps.thumbs.outputs.thumbnails_failed }} |"
+            echo "| **Skipped** | ${{ steps.thumbs.outputs.thumbnails_skipped }} |"
+            echo "| **Samples with thumbnail URL set** | ${{ steps.thumbs.outputs.samples_with_thumbnails }} |"
+            echo
+            echo "## 🧑‍🎨 Avatars"
+            echo "| Metric | Count |"
+            echo "|--------|-------|"
+            echo "| **Generated/updated** | ${{ steps.avatars.outputs.avatars_generated }} |"
+            echo "| **Updated** | ${{ steps.avatars.outputs.authors_updated }} |"
+            echo "| **Skipped** | ${{ steps.avatars.outputs.avatars_skipped }} |"
+            echo "| **Deleted (orphans)** | ${{ steps.avatars.outputs.avatars_deleted }} |"
+            echo
+
+            echo "## 👍 Reactions"
+            echo "| Metric | Count |"
+            echo "|--------|-------|"
+            echo "| **Matched discussions** | ${{ steps.reactions.outputs.matched_discussions }} |"
+            echo "| **Total reactions** | ${{ steps.reactions.outputs.total_reactions }} |"
+            echo
+          } >> "$GITHUB_STEP_SUMMARY"

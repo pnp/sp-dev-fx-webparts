@@ -1,0 +1,69 @@
+.dialogSurface {
+  width: min(920px, calc(100vw - 24px));
+}
+
+.dialogContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding-top: 8px;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.sectionTitle {
+  margin-bottom: 4px;
+  line-height: 1.3;
+}
+
+.sectionDescription {
+  margin-bottom: 12px;
+  color: var(--colorNeutralForeground3);
+  line-height: 1.4;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
+.inlineOptions {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  min-height: 32px;
+}
+
+.currentOwner {
+  margin-bottom: 10px;
+  color: var(--colorNeutralForeground3);
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.dangerPrimary {
+  background-color: #d13438;
+  border-color: #d13438;
+  color: #ffffff;
+
+  &:hover {
+    background-color: #a4262c;
+    border-color: #a4262c;
+  }
+
+  &:active {
+    background-color: #8a1c21;
+    border-color: #8a1c21;
+  }
+}

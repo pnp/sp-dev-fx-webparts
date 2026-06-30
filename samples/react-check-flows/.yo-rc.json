@@ -1,12 +1,17 @@
 {
   "@microsoft/generator-sharepoint": {
-    "version": "1.10.0",
+    "version": "1.21.1",
     "libraryName": "react-check-flows",
     "libraryId": "ef548472-a8f3-4fe4-b4b9-c57c3a3cc721",
     "environment": "spo",
     "packageManager": "npm",
     "isCreatingSolution": true,
     "isDomainIsolated": true,
-    "componentType": "webpart"
+    "componentType": "webpart",
+    "sdkVersions": {
+      "@microsoft/teams-js": "2.24.0",
+      "@microsoft/microsoft-graph-client": "3.0.2"
+    },
+    "nodeVersion": "22.15.0"
   }
 }

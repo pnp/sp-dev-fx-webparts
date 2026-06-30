@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-sp-countdown-timer-client-side-solution",
+    "id": "57a9d455-30bd-4a4f-9b50-92ccc8f4506e",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-sp-countdown-timer description"
+      },
+      "longDescription": {
+        "default": "react-sp-countdown-timer description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-sp-countdown-timer Feature",
+        "description": "The feature that activates elements of the react-sp-countdown-timer solution.",
+        "id": "ec1e5de1-5c8a-421f-8d4d-8c6b075da015",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-sp-countdown-timer.sppkg"
+  }
+}

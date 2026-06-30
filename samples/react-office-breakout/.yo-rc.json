@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.14.0",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "react-office-breakout",
+    "libraryId": "6cafca11-d4f4-41d3-ba77-5628e528f25f",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-office-breakout",
+    "solutionShortDescription": "react-office-breakout description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

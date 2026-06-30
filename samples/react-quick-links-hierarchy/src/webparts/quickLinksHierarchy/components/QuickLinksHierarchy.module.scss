@@ -1,0 +1,175 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.wrapper {
+  position: relative;
+  padding: 16px;
+  background-color: $ms-color-white;
+  border-radius: 4px;
+  box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+  min-height: 200px;
+}
+
+.gear {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  z-index: 10;
+
+  button {
+    background-color: $ms-color-themeLighterAlt;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background-color: $ms-color-themePrimary;
+      transform: rotate(90deg);
+
+      i {
+        color: $ms-color-white;
+      }
+    }
+  }
+
+  i {
+    color: $ms-color-themePrimary;
+    font-size: 18px;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+ // gap: 8px;
+  width: 20%;
+  min-width: 200px;
+}
+
+.section {
+  border: 1px solid $ms-color-neutralLight;
+  border-radius: 4px;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  background-color: $ms-color-white;
+
+  &:hover {
+    border-color: $ms-color-themePrimary;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  cursor: pointer;
+  background: linear-gradient(135deg, $ms-color-themeLighterAlt 0%, $ms-color-neutralLighter 100%);
+  border-bottom: 1px solid $ms-color-neutralLight;
+  transition: all 0.2s ease;
+  gap: 10px;
+
+  &:hover {
+    background: linear-gradient(135deg, $ms-color-themeLight 0%, $ms-color-themeLighter 100%);
+    
+    .icon {
+      color: $ms-color-themeDark;
+      transform: scale(1.1);
+    }
+  }
+
+  &:active {
+   // background: linear-gradient(135deg, $ms-color-themePrimary 0%, $ms-color-themeSecondary 100%);
+    color: $ms-color-white;
+
+    .icon,
+    .chevron {
+      color: $ms-color-white;
+    }
+  }
+}
+
+.icon {
+  font-size: 16px;
+  color: $ms-color-themePrimary;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.title {
+  flex: 1;
+  font-weight: 600;
+  font-size: 14px;
+  color: $ms-color-neutralPrimary;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.chevron {
+  font-size: 14px;
+  color: $ms-color-themePrimary;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.children {
+  display: flex;
+  flex-direction: column;
+  background-color: $ms-color-neutralLighterAlt;
+  border-top: 1px solid $ms-color-neutralLight;
+}
+
+.child {
+  display: flex;
+  align-items: center;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-bottom: 1px solid $ms-color-neutralLighter;
+  transition: all 0.15s ease;
+  gap: 8px;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: $ms-color-themeLighter;
+    padding-left: 24px;
+    
+    .childIcon {
+      color: $ms-color-themeDark;
+      transform: translateX(4px);
+    }
+  }
+
+  &:active {
+    background-color: $ms-color-themeLight;
+    color: $ms-color-themeDarkAlt;
+  }
+}
+
+.childIcon {
+  font-size: 12px;
+  color: $ms-color-themeSecondary;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.error {
+  padding: 16px;
+  color: var(--colorStatusDangerForeground);
+background-color: var(--colorStatusDangerBackground);
+border: 1px solid var(--colorStatusDangerForeground);
+  border-radius: 4px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.empty {
+  padding: 32px;
+  text-align: center;
+  color: $ms-color-neutralSecondary;
+  font-style: italic;
+  background-color: $ms-color-neutralLighterAlt;
+  border: 2px dashed $ms-color-neutralTertiary;
+  border-radius: 4px;
+}

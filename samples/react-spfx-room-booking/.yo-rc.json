@@ -1,0 +1,22 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "SPFx Room Booking",
+    "useGulp": false,
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "SPFx Room Booking",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.20.3",
+    "sdksVersions": {},
+    "version": "1.22.1",
+    "libraryName": "sp-fx-room-booking",
+    "libraryId": "a1f90be5-c611-4fc5-8967-546de6852f25",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionShortDescription": "SPFx Room Booking description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "copilot-chat-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/copilotChat/CopilotChatWebPart.js",
+          "manifest": "./src/webparts/copilotChat/CopilotChatWebPart.manifest.json"
+        }
+      ]
+    },
+    "copilot-search-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/copilotSearch/CopilotSearchWebPart.js",
+          "manifest": "./src/webparts/copilotSearch/CopilotSearchWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "CopilotChatWebPartStrings": "lib/webparts/copilotChat/loc/{locale}.js",
+    "CopilotSearchWebPartStrings": "lib/webparts/copilotSearch/loc/{locale}.js"
+  }
+}

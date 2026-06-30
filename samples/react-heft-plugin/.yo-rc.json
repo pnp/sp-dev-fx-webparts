@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.17.0",
+    "sdksVersions": {},
+    "version": "1.22.0",
+    "libraryName": "heft-toolchain",
+    "libraryId": "35081967-0edb-4420-bcee-d4206f3e9341",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "HeftToolchain",
+    "solutionShortDescription": "HeftToolchain description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

@@ -19,7 +19,7 @@ import React from 'react';
 
 type OverflowMenuProps = {
   onTabSelect?: (tabId: string) => void;
-  tabs: any[];
+  tabs: string[];
 };
 
 const MoreHorizontal = bundleIcon(MoreHorizontalFilled, MoreHorizontalRegular);
@@ -33,18 +33,38 @@ const useOverflowMenuStyles = makeStyles({
   },
 });
 
-export const OverflowAlphabetsMenu = (props: OverflowMenuProps) => {
+type OverflowMenuItemProps = {
+  tab: string;
+  onClick: () => void;
+};
+
+const OverflowMenuItem = (props: OverflowMenuItemProps): JSX.Element  => {
+  const { tab, onClick } = props;
+  const isVisible = useIsOverflowItemVisible(tab);
+
+  if (isVisible) {
+    return <div />;
+  }
+
+  return (
+    <MenuItem key={tab} onClick={onClick}>
+      <div>{tab}</div>
+    </MenuItem>
+  );
+};
+
+export const OverflowAlphabetsMenu = (props: OverflowMenuProps): JSX.Element  => {
   const { onTabSelect } = props;
   console.log('OverflowMenu', props);
   const { ref, isOverflowing, overflowCount } =
     useOverflowMenu<HTMLButtonElement>();
 
-  const onItemClick = (tabId: string) => {
+  const onItemClick = (tabId: string): void => {
     onTabSelect?.(tabId);
   };
 
   if (!isOverflowing) {
-    return null;
+    return <div />;
   }
 
   const styles = useOverflowMenuStyles();
@@ -63,7 +83,7 @@ export const OverflowAlphabetsMenu = (props: OverflowMenuProps) => {
       </MenuTrigger>
       <MenuPopover>
         <MenuList className={styles.menu}>
-          {props.tabs.map((tab: any) => (
+          {props.tabs.map((tab: string) => (
             <OverflowMenuItem
               key={tab}
               tab={tab}
@@ -73,25 +93,5 @@ export const OverflowAlphabetsMenu = (props: OverflowMenuProps) => {
         </MenuList>
       </MenuPopover>
     </Menu>
-  );
-};
-
-type OverflowMenuItemProps = {
-  tab: any;
-  onClick: any;
-};
-
-const OverflowMenuItem = (props: OverflowMenuItemProps) => {
-  const { tab, onClick } = props;
-  const isVisible = useIsOverflowItemVisible(tab);
-
-  if (isVisible) {
-    return null;
-  }
-
-  return (
-    <MenuItem key={tab} onClick={onClick}>
-      <div>{tab}</div>
-    </MenuItem>
   );
 };

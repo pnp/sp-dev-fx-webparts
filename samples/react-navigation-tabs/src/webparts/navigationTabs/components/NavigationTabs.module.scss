@@ -1,0 +1,32 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.navigationTabs {
+  padding: 8px;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+.errorContainer {
+  text-align: center;
+  padding: 40px 20px;
+  color: $ms-color-error;
+}
+
+.emptyContainer {
+  text-align: center;
+  padding: 40px 20px;
+  color: $ms-color-neutralSecondary;
+  font-size: 14px;
+}
+
+.attribution {
+  text-align: right;
+  padding: 8px 12px 4px;
+  font-size: 11px;
+  color: $ms-color-neutralTertiary;
+}
