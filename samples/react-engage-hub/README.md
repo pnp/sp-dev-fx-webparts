@@ -58,7 +58,7 @@ Create a Document library `Discussion Point Gallery` in SPO site & create one ne
 | ----------- | ----- |
 | PostID   | Text |
 
-## Contributors🧑‍💻
+## Contributors
 
 - [Sandeep P S](https://github.com/Sandeep-FED)
 
@@ -69,7 +69,7 @@ Create a Document library `Discussion Point Gallery` in SPO site & create one ne
 | 1.0     | April 27, 2025   | Initial release                     |
 | 1.1     | May 4, 2025    | Add support for Rich Text, MSFT Notepad inspired AI features & other improvements Editor |
 
-## Minimal Path to Awesome⚡
+## Minimal Path to Awesome
 
 - Clone this repository
 - Ensure that you are at the solution folder
@@ -77,7 +77,7 @@ Create a Document library `Discussion Point Gallery` in SPO site & create one ne
   - `npm install`
   - `gulp serve`
 
-## Deploy Package Solution 🚀
+## Deploy Package Solution 
 
 - Ensure that you are at the solution folder
 - in the command-line run:
@@ -87,7 +87,7 @@ Create a Document library `Discussion Point Gallery` in SPO site & create one ne
 
 - Upload package to AppCatalog & add it to the SharePoint site.
 
-## Features💡
+## Features
 
 Key features demonstrated by this solution:
 
