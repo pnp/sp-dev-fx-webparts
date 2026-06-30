@@ -65,7 +65,7 @@
     "typescript": "~3.7.x",
     "webpack": "4.42.0",
     "webpack-cli": "3.3.11",
-    "webpack-dev-server": "5.2.4"
+    "webpack-dev-server": "5.2.5"
   },
   "jest-junit": {
     "output": "temp/test/junit/junit.xml",
