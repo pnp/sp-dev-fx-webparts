@@ -17473,7 +17473,7 @@
     "shortDescription": "This SharePoint web part is a ticket management system with a modern, responsive design. It includes a dashboard, personal view, new ticket form, and a detailed ticket view. Tickets can be configured with metadata like priority and status. The system integrates with SharePoint for assignments and permissions, stores data in a SharePoint list, and provides real-time updates. Built with React, TypeScript, and Fluent UI, it maintains SharePoint's look and feel while offering advanced functionality for managing issues or requests.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-ticket-mgnt",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-ticket-mgnt",
-    "updateDateTime": "2025-06-13",
+    "updateDateTime": "2026-06-24",
     "metadata": [
       {
         "key": "SAMPLE-TYPE",

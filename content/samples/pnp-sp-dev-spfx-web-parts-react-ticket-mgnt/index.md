@@ -7,7 +7,7 @@ sampleName: "pnp-sp-dev-spfx-web-parts-react-ticket-mgnt"
 thumbnail: "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-ticket-mgnt.webp"
 images: ["/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-ticket-mgnt.webp"]
 thumbnailAlt: "Ticket Management App"
-lastmod: "2025-06-13T00:00:00.000Z"
+lastmod: "2026-06-24T00:00:00.000Z"
 tags: []
 categories: []
 openInGalleryUrl: "/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-web-parts-react-ticket-mgnt"
