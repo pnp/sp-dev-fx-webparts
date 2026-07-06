@@ -6608,6 +6608,52 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-team-randomiser",
+    "source": "pnp",
+    "title": "Team Randomiser",
+    "shortDescription": "Randomly assign people into evenly-sized groups with a single click. Enter a list of names and a desired group size; the web part shuffles them and displays colour-coded group cards. Hit Shuffle Groups to re-randomise at any time.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-team-randomiser",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-team-randomiser",
+    "updateDateTime": "2026-07-01",
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "sudeepghatak",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/sudeepghatak.72498f95b645.webp",
+        "name": "Sudeep Ghatak",
+        "avatarSourceUrl": "https://github.com/sudeepghatak.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-team-randomiser.webp",
+        "alt": "Team Randomiser"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-add-js-css-ref",
     "source": "pnp",
     "title": "Add JS and CSS reference on Modern Pages Web Part",

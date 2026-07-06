@@ -515,6 +515,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-teams/assets/react-my-teams.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-my-teams.webp"
   },
+  "pnp-sp-dev-spfx-web-parts-react-team-randomiser": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-team-randomiser/assets/screenshot.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-team-randomiser.webp"
+  },
   "pnp-sp-dev-spfx-web-parts-react-add-js-css-ref": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-add-js-css-ref/assets/webpartinaction.gif",
     "file": "pnp-sp-dev-spfx-web-parts-react-add-js-css-ref.webp"
