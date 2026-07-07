@@ -25576,6 +25576,50 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-extensions-react-share-via-teams-chat-extension",
+    "source": "pnp",
+    "title": "Share via Teams Chat",
+    "shortDescription": "Share via Teams Chat is a SharePoint Framework list view command set that enables users to send one or more selected SharePoint list items or documents to Microsoft Teams chats and channels as a rich, formatted message with an Adaptive Card.",
+    "url": "https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-share-via-teams-chat-extension",
+    "downloadUrl": null,
+    "updateDateTime": "2026-07-02",
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.23.0"
+      }
+    ],
+    "tags": [],
+    "categories": [
+      "SPFX-APPLICATION-EXTENSION"
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "HarminderSethi",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/harmindersethi.1d1b349b140b.webp",
+        "name": "Harminder Singh",
+        "avatarSourceUrl": "https://github.com/HarminderSethi.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-share-via-teams-chat-extension.webp",
+        "alt": "Share via Teams Chat"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-extensions-jquery-field-itemorder",
     "source": "pnp",
     "title": "Item Order",
