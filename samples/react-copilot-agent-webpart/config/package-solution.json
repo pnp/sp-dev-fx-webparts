@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-copilot-agent-webpart",
+    "id": "30fc1718-8a21-4106-a3f1-d47b9e53f818",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Vilius Vystartas",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.23.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "M365 Copilot Agent Chat web part"
+      },
+      "longDescription": {
+        "default": "Embed an M365 Copilot Agent Chat experience in SharePoint."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "copilot-agent Feature",
+        "description": "Activates the M365 Copilot Agent Chat web part.",
+        "id": "7d0fcc60-9874-44c3-b7b0-a7aac62fb479",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/copilot-agent.sppkg"
+  }
+}
