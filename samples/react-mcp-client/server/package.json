@@ -1,0 +1,18 @@
+{
+  "name": "mcp-bridge-server",
+  "private": true,
+  "scripts": {
+    "start": "tsx bridge.ts"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.21.2",
+    "ws": "^8.18.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.1",
+    "@types/ws": "^8.5.14",
+    "tsx": "^4.19.3",
+    "typescript": "^5.7.3"
+  }
+}

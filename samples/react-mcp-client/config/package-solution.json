@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-mcp-client",
+    "id": "6f9eb390-df65-4d1a-8899-11e79887aae4",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Vilius Vystartas",
+      "websiteUrl": "https://github.com/vystartasv",
+      "privacyUrl": "https://example.com/privacy",
+      "termsOfUseUrl": "https://example.com/terms",
+      "mpnId": "Undefined-1.23.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Connect to MCP servers through a local bridge and invoke their tools."
+      },
+      "longDescription": {
+        "default": "MCP Client Web Part connects to Model Context Protocol servers through a local bridge, lists their available tools, and invokes them with user-supplied arguments."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "mcp-client Feature",
+        "description": "The feature that activates elements of the mcp-client solution.",
+        "id": "88860163-dec8-4328-8ab3-3396f3280623",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/mcp-client.sppkg"
+  }
+}
