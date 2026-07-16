@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "azure-ai-chat-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/azureAiChat/AzureAiChatWebPart.js",
+          "manifest": "./src/webparts/azureAiChat/AzureAiChatWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "AzureAiChatStrings": "lib/webparts/azureAiChat/loc/{locale}.js"
+  }
+}

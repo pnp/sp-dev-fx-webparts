@@ -1,0 +1,50 @@
+{
+  "name": "azure-ai-chat",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=22.14.0 < 23.0.0"
+  },
+  "scripts": {
+    "build": "heft test --clean --production && heft package-solution --production",
+    "start": "heft start --clean",
+    "clean": "heft clean",
+    "eject-webpack": "heft eject-webpack"
+  },
+  "dependencies": {
+    "@azure/ai-projects": "^2.3.1",
+    "@fluentui/react": "^8.106.4",
+    "@fluentui/react-components": "^9.54.0",
+    "@fluentui/react-icons": "^2.0.245",
+    "@microsoft/sp-component-base": "1.23.2",
+    "@microsoft/sp-core-library": "1.23.2",
+    "@microsoft/sp-lodash-subset": "1.23.2",
+    "@microsoft/sp-office-ui-fabric-core": "1.23.2",
+    "@microsoft/sp-property-pane": "1.23.2",
+    "@microsoft/sp-webpart-base": "1.23.2",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "tslib": "2.3.1"
+  },
+  "devDependencies": {
+    "@microsoft/eslint-config-spfx": "1.23.2",
+    "@microsoft/eslint-plugin-spfx": "1.23.2",
+    "@microsoft/sp-module-interfaces": "1.23.2",
+    "@microsoft/spfx-web-build-rig": "1.23.2",
+    "@rushstack/eslint-config": "4.6.4",
+    "@rushstack/heft": "^1.2.7",
+    "@types/heft-jest": "^1.0.6",
+    "@types/react": "17.0.45",
+    "@types/react-dom": "17.0.17",
+    "@types/webpack-env": "~1.15.2",
+    "@typescript-eslint/parser": "8.48.1",
+    "eslint": "8.57.1",
+    "eslint-plugin-react": "^7.35.0",
+    "concurrently": "^9.1.2",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "typescript": "~5.8.3"
+  },
+  "resolutions": {
+    "@types/react": "17.0.45"
+  }
+}

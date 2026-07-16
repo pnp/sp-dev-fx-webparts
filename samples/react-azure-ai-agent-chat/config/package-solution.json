@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-azure-ai-agent-chat",
+    "id": "c8ed06b8-414e-408a-8cee-f3db8bde005b",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Vilius Vystartas",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.23.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "SPFx 1.23.2 web part for chatting with an Azure AI Agent directly from SharePoint."
+      },
+      "longDescription": {
+        "default": "An SPFx 1.23.2 web part that connects to Azure AI Agent Service using the @azure/ai-projects SDK, enabling users to chat with an AI agent directly from SharePoint."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Azure AI Agent Chat Feature",
+        "description": "Activates the Azure AI Agent Chat web part.",
+        "id": "1bdabf3c-1005-4778-bc54-7b5081c892a9",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/azure-ai-chat.sppkg"
+  }
+}
