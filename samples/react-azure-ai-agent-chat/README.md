@@ -2,7 +2,7 @@
 
 An SPFx 1.23.2 web part that connects to Azure AI Agent Service using the `@azure/ai-projects` SDK. Chat with an AI agent directly from SharePoint.
 
-![Visitor count](https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-azure-ai-agent-chat)
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-azure-ai-agent-chat" />
 
 ## Prerequisites
 
