@@ -18582,6 +18582,52 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-power-platform-environments",
+    "source": "pnp",
+    "title": "Power Platform Environments",
+    "shortDescription": "Manage and explore Power Platform environments directly from SharePoint with sorting, environment details, administrative actions and environment deletion.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-power-platform-environments",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-power-platform-environments",
+    "updateDateTime": "2026-07-09",
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.23.0"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "brayjosh",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/brayjosh.d1cbaa09853d.webp",
+        "name": "joshua",
+        "avatarSourceUrl": "https://github.com/brayjosh.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-power-platform-environments.webp",
+        "alt": "Power Platform Environments"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-powerapps-power-palette",
     "source": "pnp",
     "title": "Power Palette Studio",

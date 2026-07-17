@@ -1443,6 +1443,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-graph-auto-batching/assets/_nopreview.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-graph-auto-batching.webp"
   },
+  "pnp-sp-dev-spfx-web-parts-react-power-platform-environments": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-power-platform-environments/assets/sample.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-power-platform-environments.webp"
+  },
   "pnp-sp-dev-spfx-web-parts-react-powerapps-power-palette": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-powerapps-power-palette/assets/power-palette-light-dark.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-powerapps-power-palette.webp"

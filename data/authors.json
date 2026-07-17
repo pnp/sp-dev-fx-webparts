@@ -600,6 +600,12 @@
     "avatarSourceUrl": "https://github.com/jquintozamora.png"
   },
   {
+    "gitHubAccount": "brayjosh",
+    "name": "joshua",
+    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/brayjosh.d1cbaa09853d.webp",
+    "avatarSourceUrl": "https://github.com/brayjosh.png"
+  },
+  {
     "gitHubAccount": "juliemturner",
     "name": "Julie Turner",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/juliemturner.1148c3ae7e6a.webp",
