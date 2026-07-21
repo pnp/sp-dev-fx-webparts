@@ -7,7 +7,7 @@ sampleName: "pnp-sp-dev-spfx-web-parts-react-fluentui-9"
 thumbnail: "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-fluentui-9.webp"
 images: ["/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-fluentui-9.webp"]
 thumbnailAlt: "Using Fluent UI 9 in SPFx web part"
-lastmod: "2024-10-03T00:00:00.000Z"
+lastmod: "2026-07-20T00:00:00.000Z"
 tags: []
 categories: []
 openInGalleryUrl: "/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-web-parts-react-fluentui-9"

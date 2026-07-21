@@ -1783,7 +1783,7 @@
     "shortDescription": "description",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-fluentui-9",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-fluentui-9",
-    "updateDateTime": "2024-10-03",
+    "updateDateTime": "2026-07-20",
     "metadata": [
       {
         "key": "SAMPLE-TYPE",
@@ -1795,7 +1795,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.20.0"
+        "value": "1.23.2"
       }
     ],
     "tags": [],
