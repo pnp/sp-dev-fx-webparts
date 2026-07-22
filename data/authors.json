@@ -6,6 +6,12 @@
     "avatarSourceUrl": "https://github.com/Paxol.png"
   },
   {
+    "gitHubAccount": "saiiiiiii",
+    "name": "@saiiiiiii",
+    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/saiiiiiii.b1e132237a67.webp",
+    "avatarSourceUrl": "https://github.com/saiiiiiii.png"
+  },
+  {
     "gitHubAccount": "aakashbhardwaj619",
     "name": "Aakash Bhardwaj",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/aakashbhardwaj619.bf79a729c94b.webp",
@@ -253,7 +259,7 @@
   },
   {
     "gitHubAccount": "Tanddant",
-    "name": "Dan Toft",
+    "name": "Dan Toft (Code Reviews)",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/tanddant.b503735bca0d.webp",
     "avatarSourceUrl": "https://github.com/Tanddant.png"
   },
@@ -858,12 +864,6 @@
     "avatarSourceUrl": "https://github.com/techienickb.png"
   },
   {
-    "gitHubAccount": "https://github.com/NicolasKheirallah",
-    "name": "Nico",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/nicolaskheirallah.50f81b9fb5b9.webp",
-    "avatarSourceUrl": "https://github.com/NicolasKheirallah.png"
-  },
-  {
     "gitHubAccount": "nicodecleyre",
     "name": "Nico De Cleyre",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/nicodecleyre.6b802f23b157.webp",
@@ -871,6 +871,12 @@
   },
   {
     "gitHubAccount": "NicolasKheirallah",
+    "name": "Nicolas Kheirallah",
+    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/nicolaskheirallah.50f81b9fb5b9.webp",
+    "avatarSourceUrl": "https://github.com/NicolasKheirallah.png"
+  },
+  {
+    "gitHubAccount": "https://github.com/NicolasKheirallah",
     "name": "Nicolas Kheirallah",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/nicolaskheirallah.50f81b9fb5b9.webp",
     "avatarSourceUrl": "https://github.com/NicolasKheirallah.png"
@@ -1090,12 +1096,6 @@
     "name": "Ryan Schouten",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/sharepointknight.e4c43e564505.webp",
     "avatarSourceUrl": "https://github.com/sharepointknight.png"
-  },
-  {
-    "gitHubAccount": "saiiiiiii",
-    "name": "Sai Siva Ram Bandaru",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/saiiiiiii.b1e132237a67.webp",
-    "avatarSourceUrl": "https://avatars.githubusercontent.com/u/46020510?v=4"
   },
   {
     "gitHubAccount": "smaity",
