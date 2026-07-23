@@ -14,7 +14,7 @@
     "@microsoft/sp-office-ui-fabric-core": "1.15.0-beta.1",
     "@microsoft/sp-property-pane": "1.15.0-beta.1",
     "@microsoft/sp-webpart-base": "1.15.0-beta.1",
-    "@pnp/spfx-controls-react": "3.7.0",
+    "@pnp/spfx-controls-react": "3.21.0",
     "office-ui-fabric-react": "7.181.1",
     "property-pane-portal": "^0.2.1",
     "react": "16.13.1",
