@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "m365-search-hub-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/m365SearchHub/M365SearchHubWebPart.js",
+          "manifest": "./src/webparts/m365SearchHub/M365SearchHubWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "M365SearchHubWebPartStrings": "lib/webparts/m365SearchHub/loc/{locale}.js"
+  }
+}

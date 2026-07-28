@@ -1,0 +1,61 @@
+define([], function() {
+  return {
+    "PropertyPaneDescription": "Configure how the search behaves.",
+    "BasicGroupName": "Settings",
+    "DiagnosticsGroupName": "Diagnostics",
+    "TitleFieldLabel": "Title shown above the search box",
+    "PageSizeFieldLabel": "Results per page",
+    "ShowPerformancePanelLabel": "Show the performance panel",
+
+    "SearchBoxLabel": "Search Microsoft 365",
+    "SearchBoxPlaceholder": "Search documents, pages and sites",
+    "ClearSearchLabel": "Clear search",
+    "LoadMoreLabel": "Load more results",
+    "SortLabel": "Sort by",
+    "SortRelevance": "Relevance",
+    "SortDate": "Last modified",
+    "FiltersLabel": "Filter by type",
+
+    "KindDocument": "Documents",
+    "KindPage": "Pages",
+    "KindSite": "Sites",
+    "KindListItem": "List items",
+
+    "StatusIdle": "Type to search across the documents, pages and sites you have access to.",
+    "StatusLoading": "Searching",
+    "StatusQueryTooShort": "Type at least {0} characters to search.",
+    "StatusEmptyTitle": "No results for '{0}'",
+    "StatusEmptyDetail": "Check the spelling, or try a broader term.",
+    "StatusResultCount": "{0} results",
+    "StatusResultCountOne": "1 result",
+    "StatusShowingCount": "Showing {0} of {1} results",
+
+    "PermissionDeniedTitle": "Microsoft 365 search is not available because access to the required Microsoft Graph permission was denied.",
+    "PermissionDeniedDetail": "Ask a Global Administrator to verify that Sites.Read.All has been approved in SharePoint API access.",
+    "ViewSetupInstructions": "View setup instructions",
+
+    "NotAuthenticatedTitle": "Your sign-in has expired.",
+    "NotAuthenticatedDetail": "Refresh the page to sign in again.",
+
+    "ThrottledTitle": "Microsoft 365 is busy and asked us to slow down.",
+    "ThrottledDetail": "Try again in a moment.",
+
+    "ErrorTitle": "Search is not available right now.",
+    "ErrorDetail": "Something went wrong reaching Microsoft 365. Try again in a moment.",
+    "RetryLabel": "Try again",
+
+    "PerformanceHeading": "Performance",
+    "PerformanceDuration": "Request duration",
+    "PerformanceResultCount": "Results returned",
+    "PerformanceCache": "Cache",
+    "PerformanceCacheHit": "Hit",
+    "PerformanceCacheMiss": "Miss",
+    "PerformanceCancelled": "Cancelled requests",
+    "PerformancePagesLoaded": "Pages loaded",
+    "PerformanceMilliseconds": "{0} ms",
+    "PerformanceLocalOnly": "Measured in this browser only. Nothing is sent anywhere.",
+
+    "ResultLastModified": "Modified {0}",
+    "ResultsListLabel": "Search results"
+  }
+});

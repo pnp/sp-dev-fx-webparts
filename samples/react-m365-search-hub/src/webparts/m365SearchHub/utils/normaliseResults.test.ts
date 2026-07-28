@@ -1,0 +1,216 @@
+import {
+  classify,
+  fileExtensionOf,
+  filterByKind,
+  normaliseSearchResponse,
+  stripHitHighlight
+} from './normaliseResults';
+
+const hit = (
+  resource: Record<string, unknown>,
+  over: Record<string, unknown> = {}
+): Record<string, unknown> => ({
+  hitId: (resource.webUrl as string) || 'hit',
+  summary: 'a summary',
+  resource,
+  ...over
+});
+
+const response = (
+  hits: unknown[],
+  over: Record<string, unknown> = {}
+): Record<string, unknown> => ({
+  value: [{ hitsContainers: [{ hits, total: hits.length, moreResultsAvailable: false, ...over }] }]
+});
+
+describe('fileExtensionOf', () => {
+  it('reads the extension, lowercased', () => {
+    expect(fileExtensionOf('Report.DOCX')).toEqual('docx');
+  });
+
+  it('has none for a name without a dot', () => {
+    expect(fileExtensionOf('Shared Documents')).toBeUndefined();
+  });
+
+  it('ignores a leading dot, which is not an extension', () => {
+    expect(fileExtensionOf('.gitignore')).toBeUndefined();
+  });
+
+  it('ignores a trailing dot with nothing after it', () => {
+    expect(fileExtensionOf('name.')).toBeUndefined();
+  });
+
+  it('takes the last extension of a double-barrelled name', () => {
+    expect(fileExtensionOf('archive.tar.gz')).toEqual('gz');
+  });
+});
+
+describe('classify', () => {
+  it('recognises a site by its odata type', () => {
+    expect(classify({ '@odata.type': '#microsoft.graph.site' })).toEqual('site');
+  });
+
+  it('recognises a modern page by the SharePoint content class', () => {
+    expect(classify({ contentclass: 'STS_ListItem_SitePages', name: 'News' })).toEqual('page');
+  });
+
+  it('recognises a page by its .aspx extension', () => {
+    expect(classify({ name: 'Home.aspx' })).toEqual('page');
+  });
+
+  it('reads a file with an extension as a document', () => {
+    expect(classify({ name: 'Budget.xlsx' })).toEqual('document');
+  });
+
+  it('keeps a folder reachable rather than dropping it', () => {
+    expect(classify({ '@odata.type': '#microsoft.graph.driveItem', name: 'Projects' })).toEqual(
+      'document'
+    );
+  });
+
+  it('falls back to a list item when nothing else identifies it', () => {
+    expect(classify({ title: 'Row 12' })).toEqual('listItem');
+  });
+
+  it('survives a resource that is missing entirely', () => {
+    expect(classify(undefined)).toEqual('listItem');
+  });
+});
+
+describe('stripHitHighlight', () => {
+  it('removes the match markers Graph wraps around terms', () => {
+    expect(stripHitHighlight('the <c0>budget</c0> for <c1>2026</c1>')).toEqual(
+      'the budget for 2026'
+    );
+  });
+
+  it('leaves a summary with no markers untouched', () => {
+    expect(stripHitHighlight('a plain summary')).toEqual('a plain summary');
+  });
+
+  it('leaves other angle brackets alone rather than stripping markup blindly', () => {
+    // The summary is rendered as text, so this must survive intact and visible.
+    expect(stripHitHighlight('a > b and <script>')).toEqual('a > b and <script>');
+  });
+});
+
+describe('normaliseSearchResponse', () => {
+  it('maps a hit onto the shape the components render', () => {
+    const page = normaliseSearchResponse(
+      response([
+        hit({
+          name: 'Budget.xlsx',
+          title: 'Budget 2026',
+          webUrl: 'https://contoso.sharepoint.com/a/Budget.xlsx',
+          lastModifiedDateTime: '2026-05-01T10:00:00Z',
+          siteTitle: 'Finance'
+        })
+      ])
+    );
+
+    expect(page.results).toHaveLength(1);
+    expect(page.results[0]).toEqual(
+      expect.objectContaining({
+        kind: 'document',
+        title: 'Budget 2026',
+        source: 'Finance',
+        fileExtension: 'xlsx'
+      })
+    );
+    expect(page.results[0].lastModified?.toISOString()).toEqual('2026-05-01T10:00:00.000Z');
+  });
+
+  it('drops a hit with no link, which could not be opened anyway', () => {
+    expect(normaliseSearchResponse(response([hit({ name: 'Orphan.docx' })])).results).toHaveLength(
+      0
+    );
+  });
+
+  it('removes the duplicate when an item matches as both driveItem and listItem', () => {
+    const url = 'https://contoso.sharepoint.com/a/Budget.xlsx';
+    const page = normaliseSearchResponse(
+      response([hit({ name: 'Budget.xlsx', webUrl: url }), hit({ title: 'Budget', webUrl: url })])
+    );
+
+    expect(page.results).toHaveLength(1);
+  });
+
+  it('treats the same link in different case as the same item', () => {
+    const page = normaliseSearchResponse(
+      response([
+        hit({ name: 'a.docx', webUrl: 'https://contoso.sharepoint.com/A.docx' }),
+        hit({ name: 'a.docx', webUrl: 'https://contoso.sharepoint.com/a.docx' })
+      ])
+    );
+
+    expect(page.results).toHaveLength(1);
+  });
+
+  it('falls back to the name, then the link, when there is no title', () => {
+    const withName = normaliseSearchResponse(
+      response([hit({ name: 'Budget.xlsx', webUrl: 'https://contoso.sharepoint.com/a' })])
+    );
+    expect(withName.results[0].title).toEqual('Budget.xlsx');
+
+    const bare = normaliseSearchResponse(
+      response([hit({ webUrl: 'https://contoso.sharepoint.com/a' })])
+    );
+    expect(bare.results[0].title).toEqual('https://contoso.sharepoint.com/a');
+  });
+
+  it('keeps the total Graph reported, which is not the size of the page', () => {
+    const page = normaliseSearchResponse(
+      response([hit({ name: 'a.docx', webUrl: 'https://contoso.sharepoint.com/a.docx' })], {
+        total: 431,
+        moreResultsAvailable: true
+      })
+    );
+
+    expect(page.total).toEqual(431);
+    expect(page.moreResultsAvailable).toBe(true);
+  });
+
+  it('ignores a date it cannot parse rather than showing an invalid one', () => {
+    const page = normaliseSearchResponse(
+      response([
+        hit({
+          name: 'a.docx',
+          webUrl: 'https://contoso.sharepoint.com/a.docx',
+          lastModifiedDateTime: 'not a date'
+        })
+      ])
+    );
+
+    expect(page.results[0].lastModified).toBeUndefined();
+  });
+
+  it('returns an empty page for a response with no results', () => {
+    expect(normaliseSearchResponse(response([]))).toEqual({
+      results: [],
+      total: 0,
+      moreResultsAvailable: false
+    });
+  });
+
+  it('survives a response of an entirely unexpected shape', () => {
+    expect(normaliseSearchResponse(undefined).results).toHaveLength(0);
+    expect(normaliseSearchResponse({}).results).toHaveLength(0);
+    expect(normaliseSearchResponse({ value: [] }).results).toHaveLength(0);
+  });
+});
+
+describe('filterByKind', () => {
+  const results = [
+    { kind: 'document' } as never,
+    { kind: 'page' } as never,
+    { kind: 'site' } as never
+  ];
+
+  it('returns everything when nothing is selected', () => {
+    expect(filterByKind(results, [])).toHaveLength(3);
+  });
+
+  it('keeps only the selected kinds', () => {
+    expect(filterByKind(results, ['page', 'site'])).toHaveLength(2);
+  });
+});

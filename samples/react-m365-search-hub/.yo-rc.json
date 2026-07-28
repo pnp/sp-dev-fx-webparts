@@ -1,0 +1,23 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "react-m365-search-hub",
+    "skipFeatureDeployment": true,
+    "useGulp": false,
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "M365 Search Hub",
+    "componentDescription": "Unified Microsoft 365 search across documents, pages and sites",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.14.0",
+    "sdksVersions": {},
+    "version": "1.23.2",
+    "libraryName": "react-m365-search-hub",
+    "libraryId": "7a93cd4b-4c61-4eee-b6d6-1635eabfcb62",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionShortDescription": "react-m365-search-hub description",
+    "isDomainIsolated": false
+  }
+}
