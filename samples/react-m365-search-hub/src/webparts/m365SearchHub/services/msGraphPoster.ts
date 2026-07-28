@@ -16,6 +16,14 @@ import { IGraphPoster } from './GraphSearchService';
  *
  * The signal is still honoured before the call, so a request superseded while
  * the client was being acquired never leaves at all.
+ *
+ * A second thing worth knowing, confirmed against the installed client and in
+ * a proxied workbench run: the Graph client carries a `RetryHandler` that
+ * **retries 429, 503 and 504 by itself**, honouring `Retry-After`. This sample
+ * adds no retry of its own and never loops, but a single call from here can
+ * still become four requests over the wire, and a 429 carrying
+ * `Retry-After: 45` keeps the search in its loading state for that long before
+ * anything is reported. Nothing above this file can see that happening.
  */
 export function createMSGraphPoster(getClient: () => Promise<MSGraphClientV3>): IGraphPoster {
   return {

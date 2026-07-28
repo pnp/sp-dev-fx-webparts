@@ -5,16 +5,30 @@ define([], function() {
     "DiagnosticsGroupName": "Diagnostics",
     "TitleFieldLabel": "Title shown above the search box",
     "PageSizeFieldLabel": "Results per page",
+    "SearchGroupName": "Search",
+    "AppearanceGroupName": "Appearance",
+    "ScopeFieldLabel": "Search scope",
+    "ScopeTenant": "Everything I can see",
+    "ScopeSite": "This site only",
+    "DefaultSortFieldLabel": "Default sort",
+    "LayoutFieldLabel": "Layout",
+    "LayoutComfortable": "Comfortable",
+    "LayoutCompact": "Compact",
+    "OpenResultsFieldLabel": "Open results",
+    "OpenSameTab": "In the same tab",
+    "OpenNewTab": "In a new tab",
     "ShowPerformancePanelLabel": "Show the performance panel",
 
     "SearchBoxLabel": "Search Microsoft 365",
     "SearchBoxPlaceholder": "Search documents, pages and sites",
     "ClearSearchLabel": "Clear search",
     "LoadMoreLabel": "Load more results",
+    "SearchToolsLabel": "Refine results",
     "SortLabel": "Sort by",
     "SortRelevance": "Relevance",
     "SortDate": "Last modified",
     "FiltersLabel": "Filter by type",
+    "FiltersActiveLabel": "Filter by type ({0})",
 
     "KindDocument": "Documents",
     "KindPage": "Pages",
@@ -29,6 +43,8 @@ define([], function() {
     "StatusResultCount": "{0} results",
     "StatusResultCountOne": "1 result",
     "StatusShowingCount": "Showing {0} of {1} results",
+    "StatusMatchingCount": "{0} matching results",
+    "StatusMatchingCountOne": "1 matching result",
 
     "PermissionDeniedTitle": "Microsoft 365 search is not available because access to the required Microsoft Graph permission was denied.",
     "PermissionDeniedDetail": "Ask a Global Administrator to verify that Sites.Read.All has been approved in SharePoint API access.",
@@ -56,6 +72,8 @@ define([], function() {
     "PerformanceLocalOnly": "Measured in this browser only. Nothing is sent anywhere.",
 
     "ResultLastModified": "Modified {0}",
+    "ResultModifiedByOn": "Modified by {0} on {1}",
+    "ResultModifiedBy": "Modified by {0}",
     "ResultsListLabel": "Search results"
   }
 });

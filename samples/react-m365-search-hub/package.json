@@ -7,15 +7,15 @@
   },
   "scripts": {
     "build": "heft test --clean --production && heft package-solution --production",
+    "test": "heft test",
     "clean": "heft clean",
     "eject-webpack": "heft eject-webpack",
     "start": "heft start --clean"
   },
   "dependencies": {
-    "@fluentui/react": "^8.106.4",
     "@fluentui/react-components": "9.74.4",
+    "@fluentui/react-icons": "2.0.334",
     "@fluentui/react-migration-v8-v9": "9.10.15",
-    "@microsoft/microsoft-graph-types": "2.43.1",
     "@microsoft/sp-component-base": "1.23.2",
     "@microsoft/sp-core-library": "1.23.2",
     "@microsoft/sp-lodash-subset": "1.23.2",

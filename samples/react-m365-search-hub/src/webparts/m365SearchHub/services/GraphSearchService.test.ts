@@ -140,7 +140,7 @@ describe('GraphSearchService', () => {
   });
 
   describe('cancellation', () => {
-    it('aborts the request in flight when a newer search starts', async () => {
+    it('marks the request in flight as no longer wanted when a newer one starts', async () => {
       let resolveFirst: (value: unknown) => void = () => undefined;
       const poster = new FakePoster((call) =>
         call === 0
@@ -154,6 +154,8 @@ describe('GraphSearchService', () => {
       const first = service.search(aQuery({ text: 'budg' }));
       const second = service.search(aQuery({ text: 'budget' }));
 
+      // The signal is aborted; whether the request itself stops is the
+      // poster's business, and with the Graph client it does not.
       expect(poster.calls[0].signal?.aborted).toBe(true);
 
       resolveFirst(graphResponse());
@@ -173,7 +175,7 @@ describe('GraphSearchService', () => {
       expect(service.cancelledCount).toEqual(1);
     });
 
-    it('reports an abort as cancelled, never as an error to show', async () => {
+    it('reports an abandoned request as cancelled, never as an error to show', async () => {
       const abortError = Object.assign(new Error('aborted'), { name: 'AbortError' });
       const poster = new FakePoster(() => Promise.reject(abortError));
 

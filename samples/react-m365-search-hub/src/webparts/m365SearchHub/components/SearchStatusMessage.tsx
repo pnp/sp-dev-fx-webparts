@@ -1,59 +1,38 @@
 import * as React from 'react';
-import { Button, Link, MessageBar, MessageBarBody, MessageBarTitle, Spinner, Text } from '@fluentui/react-components';
+import {
+  Button,
+  Link,
+  MessageBar,
+  MessageBarActions,
+  MessageBarBody,
+  MessageBarTitle,
+  Spinner,
+  Text
+} from '@fluentui/react-components';
 import * as strings from 'M365SearchHubWebPartStrings';
-import { SearchStatus, SearchFailure } from '../models/SearchStatus';
+import { SearchFailure, SearchStatus } from '../models/SearchStatus';
 import { format } from '../utils/format';
 
-/** Where a person is sent to get the permission approved. */
+/** Where somebody is sent to get the permission looked at. */
 const SETUP_DOCS = 'https://learn.microsoft.com/sharepoint/api-access';
 
 export interface ISearchStatusMessageProps {
   status: SearchStatus;
   failure?: SearchFailure;
-  /** The term that produced no results. Only used by the empty state. */
+  /** The term that produced no results, so the empty state can quote it. */
   query?: string;
   minimumQueryLength: number;
   onRetry?: () => void;
 }
 
-interface IStated {
-  intent: 'info' | 'warning' | 'error';
-  title: string;
-  detail?: string;
-}
-
 /**
- * Turns a failure into something worth reading.
+ * The states that are not a list of results.
  *
- * A permission that has not been approved is not an error the person caused,
- * so it does not get an error intent and never says that search failed. It
- * gets an instruction and a link, because the fix belongs to an administrator.
+ * Each one is meant to look like a different thing, not the same box with
+ * different words: a spinner for work in progress, an informational bar for a
+ * search that simply found nothing, a warning for something an administrator
+ * must look at, an error with a way back for something that might pass.
  */
-function describe(failure: SearchFailure): IStated {
-  switch (failure) {
-    case 'permissionDenied':
-      return {
-        intent: 'warning',
-        title: strings.PermissionDeniedTitle,
-        detail: strings.PermissionDeniedDetail
-      };
-    case 'notAuthenticated':
-      return {
-        intent: 'warning',
-        title: strings.NotAuthenticatedTitle,
-        detail: strings.NotAuthenticatedDetail
-      };
-    case 'throttled':
-      return {
-        intent: 'info',
-        title: strings.ThrottledTitle,
-        detail: strings.ThrottledDetail
-      };
-    default:
-      return { intent: 'error', title: strings.ErrorTitle, detail: strings.ErrorDetail };
-  }
-}
-
 export const SearchStatusMessage: React.FunctionComponent<ISearchStatusMessageProps> = (props) => {
   const { status, failure, query, minimumQueryLength, onRetry } = props;
 
@@ -64,7 +43,7 @@ export const SearchStatusMessage: React.FunctionComponent<ISearchStatusMessagePr
   if (status === 'idle') {
     return (
       <Text>
-        {minimumQueryLength > 1
+        {query && query.length > 0
           ? format(strings.StatusQueryTooShort, minimumQueryLength)
           : strings.StatusIdle}
       </Text>
@@ -82,26 +61,68 @@ export const SearchStatusMessage: React.FunctionComponent<ISearchStatusMessagePr
     );
   }
 
-  if (status === 'permissionDenied' || status === 'error') {
-    const described = describe(failure || 'unknown');
-    const isPermission = failure === 'permissionDenied';
+  if (status === 'permissionDenied') {
+    // A warning, not an error: nothing here is the reader's doing, and the fix
+    // belongs to somebody else. No retry, because retrying cannot help.
+    return (
+      <MessageBar intent="warning">
+        <MessageBarBody>
+          <MessageBarTitle>{strings.PermissionDeniedTitle}</MessageBarTitle>
+          {strings.PermissionDeniedDetail}
+        </MessageBarBody>
+        <MessageBarActions>
+          <Link href={SETUP_DOCS} target="_blank" rel="noreferrer">
+            {strings.ViewSetupInstructions}
+          </Link>
+        </MessageBarActions>
+      </MessageBar>
+    );
+  }
+
+  if (status === 'error') {
+    if (failure === 'notAuthenticated') {
+      return (
+        <MessageBar intent="warning">
+          <MessageBarBody>
+            <MessageBarTitle>{strings.NotAuthenticatedTitle}</MessageBarTitle>
+            {strings.NotAuthenticatedDetail}
+          </MessageBarBody>
+        </MessageBar>
+      );
+    }
+
+    if (failure === 'throttled') {
+      // Microsoft 365 asked us to slow down. Informational, and retried only
+      // when somebody chooses to.
+      return (
+        <MessageBar intent="info">
+          <MessageBarBody>
+            <MessageBarTitle>{strings.ThrottledTitle}</MessageBarTitle>
+            {strings.ThrottledDetail}
+          </MessageBarBody>
+          {onRetry ? (
+            <MessageBarActions>
+              <Button appearance="transparent" onClick={onRetry}>
+                {strings.RetryLabel}
+              </Button>
+            </MessageBarActions>
+          ) : undefined}
+        </MessageBar>
+      );
+    }
 
     return (
-      <MessageBar intent={described.intent}>
+      <MessageBar intent="error">
         <MessageBarBody>
-          <MessageBarTitle>{described.title}</MessageBarTitle>
-          {described.detail}{' '}
-          {isPermission ? (
-            <Link href={SETUP_DOCS} target="_blank" rel="noreferrer">
-              {strings.ViewSetupInstructions}
-            </Link>
-          ) : undefined}
+          <MessageBarTitle>{strings.ErrorTitle}</MessageBarTitle>
+          {strings.ErrorDetail}
         </MessageBarBody>
-        {/* Retrying is offered, never automatic, and never for a missing permission. */}
-        {!isPermission && failure !== 'notAuthenticated' && onRetry ? (
-          <Button appearance="transparent" onClick={onRetry}>
-            {strings.RetryLabel}
-          </Button>
+        {onRetry ? (
+          <MessageBarActions>
+            <Button appearance="transparent" onClick={onRetry}>
+              {strings.RetryLabel}
+            </Button>
+          </MessageBarActions>
         ) : undefined}
       </MessageBar>
     );

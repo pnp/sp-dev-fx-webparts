@@ -12,35 +12,60 @@ export interface IUseSearch {
   retry: () => void;
 }
 
+export interface IUseSearchOptions {
+  pageSize: number;
+  /** Absolute site URL to restrict to, or nothing for no restriction. */
+  sitePath?: string;
+}
+
 /**
  * Glue between React and {@link SearchSession}.
  *
  * **This hook must stay thin.** Everything awkward — debounce, superseded
  * responses, cancellation, error shape, query building, result normalisation —
  * lives in plain classes precisely so it can be tested without a renderer or a
- * jsdom environment. That is why there is no test file beside this one: there
- * is no behaviour here to test that the session's own tests do not already
- * cover.
+ * jsdom environment. If a rule ever moves in here, that reasoning is gone and
+ * this hook has earned tests and the environment they need.
  *
- * If a rule ever moves in here — when to invalidate the cache, how to treat an
- * error, how to build a query — then that reasoning is gone, and this hook has
- * earned tests and the test environment they need. Put the rule in the session
- * instead.
+ * Two things here are load-bearing and were learned the hard way.
+ *
+ * The actions are memoised on the session alone, never on the state. Rebuilding
+ * them whenever a result arrives changes their identity, and any effect
+ * depending on one of them re-runs, calls it, produces a new state, and runs
+ * again: a search that never stops. That is not a theoretical risk — an earlier
+ * version of this file sent 1605 requests to Microsoft Graph in a few seconds.
+ *
+ * The scope effect keys on the URL string rather than on a callback, for the
+ * same reason.
  */
-export function useSearch(service: GraphSearchService, pageSize: number): IUseSearch {
+export function useSearch(service: GraphSearchService, options: IUseSearchOptions): IUseSearch {
   const [state, setState] = React.useState<ISearchState>(INITIAL_STATE);
   const sessionRef = React.useRef<SearchSession>();
 
   if (!sessionRef.current) {
-    sessionRef.current = new SearchSession(service, setState, { pageSize });
+    sessionRef.current = new SearchSession(service, setState, {
+      pageSize: options.pageSize,
+      sitePath: options.sitePath
+    });
   }
 
-  React.useEffect(() => {
-    const session = sessionRef.current;
-    return () => session?.dispose();
-  }, []);
-
   const session = sessionRef.current;
+
+  React.useEffect(() => {
+    return () => session.dispose();
+  }, [session]);
+
+  // The page author changed where to look. Skipped on the first render, when
+  // the session was built with this scope already.
+  const sitePath = options.sitePath;
+  const applied = React.useRef(sitePath);
+  React.useEffect(() => {
+    if (applied.current === sitePath) {
+      return;
+    }
+    applied.current = sitePath;
+    session.setScope(sitePath);
+  }, [sitePath, session]);
 
   return React.useMemo(
     () => ({
@@ -51,6 +76,8 @@ export function useSearch(service: GraphSearchService, pageSize: number): IUseSe
       loadMore: () => session.loadMore(),
       retry: () => session.retry()
     }),
+    // `state` is here because it is returned, not because the actions need it;
+    // the actions close over `session`, which does not change.
     [state, session]
   );
 }

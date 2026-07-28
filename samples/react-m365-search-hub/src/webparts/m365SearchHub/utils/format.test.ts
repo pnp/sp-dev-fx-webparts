@@ -22,3 +22,15 @@ describe('format', () => {
     expect(format('Search Microsoft 365')).toEqual('Search Microsoft 365');
   });
 });
+
+describe('format, when a locale file is short a key', () => {
+  it('returns nothing rather than throwing', () => {
+    // strings.Whatever is undefined when a locale file does not carry the key.
+    // Losing a label is acceptable; losing the web part is not.
+    expect(format(undefined as unknown as string, 25)).toEqual('');
+  });
+
+  it('treats an empty template the same way', () => {
+    expect(format('', 25)).toEqual('');
+  });
+});

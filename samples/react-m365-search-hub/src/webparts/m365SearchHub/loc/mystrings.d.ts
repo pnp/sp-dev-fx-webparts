@@ -4,16 +4,30 @@ declare interface IM365SearchHubWebPartStrings {
   DiagnosticsGroupName: string;
   TitleFieldLabel: string;
   PageSizeFieldLabel: string;
+  SearchGroupName: string;
+  AppearanceGroupName: string;
+  ScopeFieldLabel: string;
+  ScopeTenant: string;
+  ScopeSite: string;
+  DefaultSortFieldLabel: string;
+  LayoutFieldLabel: string;
+  LayoutComfortable: string;
+  LayoutCompact: string;
+  OpenResultsFieldLabel: string;
+  OpenSameTab: string;
+  OpenNewTab: string;
   ShowPerformancePanelLabel: string;
 
   SearchBoxLabel: string;
   SearchBoxPlaceholder: string;
   ClearSearchLabel: string;
   LoadMoreLabel: string;
+  SearchToolsLabel: string;
   SortLabel: string;
   SortRelevance: string;
   SortDate: string;
   FiltersLabel: string;
+  FiltersActiveLabel: string;
 
   KindDocument: string;
   KindPage: string;
@@ -28,6 +42,8 @@ declare interface IM365SearchHubWebPartStrings {
   StatusResultCount: string;
   StatusResultCountOne: string;
   StatusShowingCount: string;
+  StatusMatchingCount: string;
+  StatusMatchingCountOne: string;
 
   PermissionDeniedTitle: string;
   PermissionDeniedDetail: string;
@@ -55,6 +71,8 @@ declare interface IM365SearchHubWebPartStrings {
   PerformanceLocalOnly: string;
 
   ResultLastModified: string;
+  ResultModifiedBy: string;
+  ResultModifiedByOn: string;
   ResultsListLabel: string;
 }
 

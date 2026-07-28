@@ -234,8 +234,8 @@ describe('SearchSession', () => {
     });
   });
 
-  describe('races, with a service that does not abort', () => {
-    // The service aborts a superseded request, which on its own is enough to
+  describe('races, with a service that does not abandon anything', () => {
+    // The service abandons a superseded request, which on its own is enough to
     // keep a stale answer away. These tests remove that protection so the
     // session's own guards are the only thing left standing: a sequence number
     // for superseded work, and a disposed flag for work whose owner has gone.
@@ -254,7 +254,7 @@ describe('SearchSession', () => {
       };
     };
 
-    it('drops a superseded answer even when the request was never aborted', async () => {
+    it('drops a superseded answer even when the service never abandoned it', async () => {
       const { session: unguarded, poster: slowPoster } = buildWithoutAbort();
 
       unguarded.setText('slow');
@@ -274,7 +274,7 @@ describe('SearchSession', () => {
       expect(latest().results.map((r) => r.title)).toEqual(['from fast']);
     });
 
-    it('reports nothing after disposal even when the request was never aborted', async () => {
+    it('reports nothing after disposal even when the service never abandoned it', async () => {
       const { session: unguarded, poster: slowPoster } = buildWithoutAbort();
 
       unguarded.setText('abc');
@@ -288,6 +288,68 @@ describe('SearchSession', () => {
       await settle();
 
       expect(states).toHaveLength(countAtDispose);
+    });
+  });
+
+  describe('scope', () => {
+    it('runs the search again when the scope changes', async () => {
+      session.setText('abc');
+      scheduler.flush();
+      await settle();
+      poster.resolve(0, graphResponse(['from the tenant']));
+      await settle();
+
+      session.setScope('https://contoso.sharepoint.com/sites/finance');
+      await settle();
+
+      expect(poster.requestCount).toEqual(2);
+      const body = poster.calls[1].body as { requests: { query: { queryString: string } }[] };
+      expect(body.requests[0].query.queryString).toContain('path:');
+    });
+
+    it('does not leave old results under a heading that no longer describes them', async () => {
+      session.setText('abc');
+      scheduler.flush();
+      await settle();
+      poster.resolve(0, graphResponse(['from the tenant']));
+      await settle();
+      expect(latest().results).toHaveLength(1);
+
+      session.setScope('https://contoso.sharepoint.com/sites/finance');
+      await settle();
+
+      // The new search is in flight; what is shown is no longer claimed as
+      // final, and the stale answer cannot come back to replace it.
+      expect(latest().status).toEqual('loading');
+      poster.resolve(1, graphResponse(['from the site']));
+      await settle();
+      expect(latest().results.map((r) => r.title)).toEqual(['from the site']);
+    });
+
+    it('starts the paging over when the scope changes', async () => {
+      session.setText('abc');
+      scheduler.flush();
+      await settle();
+      poster.resolve(0, graphResponse(['one'], 100));
+      await settle();
+      session.loadMore();
+      await settle();
+      poster.resolve(1, graphResponse(['two'], 100));
+      await settle();
+
+      session.setScope('https://x/sites/a');
+      await settle();
+
+      const body = poster.calls[2].body as { requests: { from: number }[] };
+      expect(body.requests[0].from).toEqual(0);
+    });
+
+    it('shows nothing rather than searching when the box is empty', async () => {
+      session.setScope('https://x/sites/a');
+      await settle();
+
+      expect(poster.requestCount).toEqual(0);
+      expect(latest().status).toEqual('idle');
     });
   });
 

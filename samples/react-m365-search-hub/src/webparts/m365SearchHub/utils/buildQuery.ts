@@ -10,7 +10,18 @@ import { ContentKind, ISearchQuery, SortOrder } from '../models/ISearchModels';
  */
 export const ENTITY_TYPES = ['driveItem', 'listItem', 'site'] as const;
 
-/** Properties asked for, to keep the response smaller than the default. */
+/**
+ * Properties asked for.
+ *
+ * Every one of these was checked against real responses rather than picked
+ * from the documentation: without asking, a hit comes back with only
+ * `@odata.type`, `name`, `webUrl` and `lastModifiedDateTime`, and the title
+ * shown would be a file name and the location a guess made from the URL.
+ *
+ * `authorOWSUSER` is deliberately absent. It carries a claims token alongside
+ * the address, and nothing here needs it: `lastModifiedBy` gives a display
+ * name for the same person without it.
+ */
 export const REQUESTED_FIELDS = [
   'title',
   'name',
@@ -18,7 +29,9 @@ export const REQUESTED_FIELDS = [
   'lastModifiedDateTime',
   'fileType',
   'contentclass',
-  'siteTitle'
+  'siteTitle',
+  'createdBy',
+  'lastModifiedBy'
 ];
 
 /** Below this a query costs a request and returns noise. */
@@ -42,9 +55,30 @@ export function escapeKql(term: string): string {
  * it that way. Whitespace is collapsed so a pasted line break does not become
  * part of the phrase.
  */
-export function buildQueryString(text: string): string {
+/**
+ * Tidies a site URL before it becomes a KQL restriction.
+ *
+ * A trailing slash makes `path:` match nothing on some tenants, and the URL
+ * arrives from the SPFx page context with or without one depending on how the
+ * site was created. Whitespace is trimmed for the same reason.
+ */
+export function normaliseSitePath(url: string | undefined): string | undefined {
+  const trimmed = (url || '').trim().replace(/\/+$/, '');
+  return trimmed.length > 0 ? trimmed : undefined;
+}
+
+export function buildQueryString(text: string, sitePath?: string): string {
   const collapsed = text.trim().replace(/\s+/g, ' ');
-  return collapsed.length === 0 ? '' : `"${escapeKql(collapsed)}"`;
+  if (collapsed.length === 0) {
+    return '';
+  }
+
+  const phrase = `"${escapeKql(collapsed)}"`;
+  const site = normaliseSitePath(sitePath);
+  // KQL restricts by location with `path:`. The site URL is escaped the same
+  // way as the typed text, so a site whose URL somehow contains a quote cannot
+  // break out of the restriction either.
+  return site ? `${phrase} path:"${escapeKql(site)}"` : phrase;
 }
 
 /** True when the text is worth spending a request on. */
@@ -88,7 +122,7 @@ export function buildSearchRequest(query: ISearchQuery): IGraphSearchRequestBody
     requests: [
       {
         entityTypes: [...ENTITY_TYPES],
-        query: { queryString: buildQueryString(query.text) },
+        query: { queryString: buildQueryString(query.text, query.sitePath) },
         fields: [...REQUESTED_FIELDS],
         from: Math.max(0, query.from),
         // Graph caps a page at 1000 and charges latency for large pages.
@@ -102,7 +136,14 @@ export function buildSearchRequest(query: ISearchQuery): IGraphSearchRequestBody
 /** A stable key for the cache: the same query must produce the same string. */
 export function cacheKey(query: ISearchQuery): string {
   const kinds = [...query.kinds].sort().join(',');
-  return [query.text.trim().toLowerCase(), kinds, query.sort, query.from, query.size].join('|');
+  return [
+    query.text.trim().toLowerCase(),
+    kinds,
+    query.sort,
+    query.from,
+    query.size,
+    normaliseSitePath(query.sitePath) || ''
+  ].join('|');
 }
 
 export type { ContentKind };

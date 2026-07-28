@@ -2,6 +2,7 @@ import {
   classify,
   fileExtensionOf,
   filterByKind,
+  lastPathSegment,
   normaliseSearchResponse,
   stripHitHighlight
 } from './normaliseResults';
@@ -75,6 +76,23 @@ describe('classify', () => {
   it('survives a resource that is missing entirely', () => {
     expect(classify(undefined)).toEqual('listItem');
   });
+
+  // Seen in the workbench: a SitePages .aspx hit arrived with a link and no
+  // name, and was being labelled a list item.
+  it('recognises a page from the link when the hit carries no name', () => {
+    expect(
+      classify({
+        webUrl:
+          'https://contoso.sharepoint.com/sites/a/SitePages/Templates/Status-report-template.aspx'
+      })
+    ).toEqual('page');
+  });
+
+  it('recognises a document from the link when the hit carries no name', () => {
+    expect(classify({ webUrl: 'https://contoso.sharepoint.com/a/Budget.xlsx' })).toEqual(
+      'document'
+    );
+  });
 });
 
 describe('stripHitHighlight', () => {
@@ -91,6 +109,56 @@ describe('stripHitHighlight', () => {
   it('leaves other angle brackets alone rather than stripping markup blindly', () => {
     // The summary is rendered as text, so this must survive intact and visible.
     expect(stripHitHighlight('a > b and <script>')).toEqual('a > b and <script>');
+  });
+
+  // Seen in the workbench against real results, not invented: summaries came
+  // back with <ddd/> where text had been cut out, and it was being shown.
+  it('turns the truncation marker into an ellipsis instead of showing it', () => {
+    expect(stripHitHighlight('<ddd/>budget planning, supporting<ddd/>')).toEqual(
+      '…budget planning, supporting…'
+    );
+  });
+
+  it('handles both markers together, as they arrive', () => {
+    expect(stripHitHighlight('<ddd/>the <c0>budget</c0> for 2026<ddd/>')).toEqual(
+      '…the budget for 2026…'
+    );
+  });
+
+  it('does not leave a space stranded before an ellipsis', () => {
+    expect(stripHitHighlight('the budget <ddd/>')).toEqual('the budget …');
+  });
+});
+
+describe('lastPathSegment', () => {
+  it('takes the file name from a link', () => {
+    expect(lastPathSegment('https://contoso.sharepoint.com/sites/a/Shared/Budget.xlsx')).toEqual(
+      'Budget.xlsx'
+    );
+  });
+
+  it('decodes what was escaped in the link', () => {
+    expect(lastPathSegment('https://contoso.sharepoint.com/a/Q1%20Budget.xlsx')).toEqual(
+      'Q1 Budget.xlsx'
+    );
+  });
+
+  it('ignores a query string and a fragment', () => {
+    expect(lastPathSegment('https://contoso.sharepoint.com/a/Home.aspx?x=1#top')).toEqual(
+      'Home.aspx'
+    );
+  });
+
+  it('ignores a trailing slash', () => {
+    expect(lastPathSegment('https://contoso.sharepoint.com/sites/finance/')).toEqual('finance');
+  });
+
+  it('survives a link it cannot decode', () => {
+    expect(lastPathSegment('https://contoso.sharepoint.com/a/100%.docx')).toEqual('100%.docx');
+  });
+
+  it('has nothing for nothing', () => {
+    expect(lastPathSegment(undefined)).toEqual('');
   });
 });
 
@@ -152,10 +220,14 @@ describe('normaliseSearchResponse', () => {
     );
     expect(withName.results[0].title).toEqual('Budget.xlsx');
 
+    // A whole URL is not a title. The last part of the link reads better and
+    // is what a person would recognise.
     const bare = normaliseSearchResponse(
-      response([hit({ webUrl: 'https://contoso.sharepoint.com/a' })])
+      response([
+        hit({ webUrl: 'https://contoso.sharepoint.com/sites/a/SitePages/Status-report.aspx' })
+      ])
     );
-    expect(bare.results[0].title).toEqual('https://contoso.sharepoint.com/a');
+    expect(bare.results[0].title).toEqual('Status-report.aspx');
   });
 
   it('keeps the total Graph reported, which is not the size of the page', () => {

@@ -29,6 +29,10 @@ export const INITIAL_STATE: ISearchState = {
 export interface ISearchSessionOptions {
   debounceMs?: number;
   pageSize?: number;
+  /** Absolute site URL to restrict to, or nothing for no restriction. */
+  sitePath?: string;
+  /** Sort the page author chose as the starting point. */
+  sort?: SortOrder;
   /** Injected so the timing is deterministic under test. */
   schedule?: (callback: () => void, delayMs: number) => unknown;
   cancelScheduled?: (handle: unknown) => void;
@@ -63,6 +67,7 @@ export class SearchSession {
 
   private readonly _debounceMs: number;
   private readonly _pageSize: number;
+  private _sitePath?: string;
   private readonly _schedule: (callback: () => void, delayMs: number) => unknown;
   private readonly _cancelScheduled: (handle: unknown) => void;
 
@@ -73,6 +78,8 @@ export class SearchSession {
   ) {
     this._debounceMs = options.debounceMs ?? 300;
     this._pageSize = options.pageSize ?? 25;
+    this._sitePath = options.sitePath;
+    this._sort = options.sort ?? 'relevance';
     this._schedule = options.schedule || ((callback, delay) => setTimeout(callback, delay));
     this._cancelScheduled = options.cancelScheduled || ((handle) => clearTimeout(handle as never));
   }
@@ -106,6 +113,26 @@ export class SearchSession {
     this._from = 0;
     this._pagesLoaded = 0;
     this._runIfSearchable();
+  }
+
+  /**
+   * Where to look changed, which is a page-author decision.
+   *
+   * Whatever is on screen answered a different question, so it goes and the
+   * search runs again rather than keeping results under a heading that has
+   * stopped describing them.
+   */
+  public setScope(sitePath: string | undefined): void {
+    this._sitePath = sitePath;
+    this._from = 0;
+    this._pagesLoaded = 0;
+
+    if (!isSearchable(this._text)) {
+      this._sequence += 1;
+      this._emit({ ...INITIAL_STATE, query: this._text });
+      return;
+    }
+    this._runDetached(false);
   }
 
   public setSort(sort: SortOrder): void {
@@ -174,7 +201,8 @@ export class SearchSession {
       kinds: this._kinds,
       sort: this._sort,
       from: this._from,
-      size: this._pageSize
+      size: this._pageSize,
+      sitePath: this._sitePath
     };
   }
 

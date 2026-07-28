@@ -18,11 +18,14 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
     "group": { "default": "Advanced" },
-    "title": { "default": "M365 Search Hub" },
-    "description": { "default": "Unified Microsoft 365 search across documents, pages and sites" },
-    "officeFabricIconFontName": "Page",
+    "title": { "default": "Microsoft 365 Search Hub" },
+    "description": { "default": "Search documents, pages, sites and list items across Microsoft 365." },
+    "officeFabricIconFontName": "Search",
     "properties": {
-      "description": "M365 Search Hub"
+      "title": "",
+      "pageSize": 10,
+      "scope": "tenant",
+      "showPerformancePanel": false
     }
   }]
 }

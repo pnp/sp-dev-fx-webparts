@@ -1,5 +1,6 @@
 import {
   buildQueryString,
+  normaliseSitePath,
   buildSearchRequest,
   buildSortProperties,
   cacheKey,
@@ -138,6 +139,97 @@ describe('cacheKey', () => {
   it('changes when the kinds change', () => {
     expect(cacheKey(aQuery({ kinds: ['document'] }))).not.toEqual(
       cacheKey(aQuery({ kinds: ['site'] }))
+    );
+  });
+});
+
+describe('search scope', () => {
+  it('sends no restriction when the scope is everything', () => {
+    expect(buildQueryString('budget')).toEqual('"budget"');
+  });
+
+  it('restricts by path when the scope is one site', () => {
+    expect(buildQueryString('budget', 'https://contoso.sharepoint.com/sites/finance')).toEqual(
+      '"budget" path:"https://contoso.sharepoint.com/sites/finance"'
+    );
+  });
+
+  it('escapes the site path as carefully as the typed text', () => {
+    // A path cannot be used to break out of its own restriction.
+    expect(buildQueryString('budget', 'https://x/a"b')).toEqual('"budget" path:"https://x/a""b"');
+  });
+
+  it('caches a site-scoped query separately from an unscoped one', () => {
+    expect(cacheKey(aQuery({ sitePath: 'https://x/sites/a' }))).not.toEqual(cacheKey(aQuery()));
+  });
+
+  it('caches two different sites separately', () => {
+    expect(cacheKey(aQuery({ sitePath: 'https://x/sites/a' }))).not.toEqual(
+      cacheKey(aQuery({ sitePath: 'https://x/sites/b' }))
+    );
+  });
+});
+
+describe('normaliseSitePath', () => {
+  it('drops a trailing slash, which stops path: matching on some tenants', () => {
+    expect(normaliseSitePath('https://contoso.sharepoint.com/sites/finance/')).toEqual(
+      'https://contoso.sharepoint.com/sites/finance'
+    );
+  });
+
+  it('drops more than one trailing slash', () => {
+    expect(normaliseSitePath('https://contoso.sharepoint.com/sites/finance//')).toEqual(
+      'https://contoso.sharepoint.com/sites/finance'
+    );
+  });
+
+  it('trims surrounding whitespace', () => {
+    expect(normaliseSitePath('  https://contoso.sharepoint.com/sites/a  ')).toEqual(
+      'https://contoso.sharepoint.com/sites/a'
+    );
+  });
+
+  it('has nothing for an empty or missing value', () => {
+    expect(normaliseSitePath('')).toBeUndefined();
+    expect(normaliseSitePath('   ')).toBeUndefined();
+    expect(normaliseSitePath(undefined)).toBeUndefined();
+  });
+});
+
+describe('site paths that are awkward in practice', () => {
+  it('keeps a space in a site name intact inside the quoted path', () => {
+    expect(buildQueryString('budget', 'https://contoso.sharepoint.com/sites/Sales Team')).toEqual(
+      '"budget" path:"https://contoso.sharepoint.com/sites/Sales Team"'
+    );
+  });
+
+  it('keeps an already-encoded path as it came', () => {
+    expect(buildQueryString('a', 'https://contoso.sharepoint.com/sites/Sales%20Team')).toEqual(
+      '"a" path:"https://contoso.sharepoint.com/sites/Sales%20Team"'
+    );
+  });
+
+  it('handles a managed path other than /sites/', () => {
+    expect(buildQueryString('a', 'https://contoso.sharepoint.com/teams/finance')).toEqual(
+      '"a" path:"https://contoso.sharepoint.com/teams/finance"'
+    );
+  });
+
+  it('handles a tenant root site, which has no managed path at all', () => {
+    expect(buildQueryString('a', 'https://contoso.sharepoint.com')).toEqual(
+      '"a" path:"https://contoso.sharepoint.com"'
+    );
+  });
+
+  it('handles accents and other non-ASCII in a site name', () => {
+    expect(buildQueryString('a', 'https://contoso.sharepoint.com/sites/Direção')).toEqual(
+      '"a" path:"https://contoso.sharepoint.com/sites/Direção"'
+    );
+  });
+
+  it('treats the same site with and without a trailing slash as one cache entry', () => {
+    expect(cacheKey(aQuery({ sitePath: 'https://x/sites/a/' }))).toEqual(
+      cacheKey(aQuery({ sitePath: 'https://x/sites/a' }))
     );
   });
 });
