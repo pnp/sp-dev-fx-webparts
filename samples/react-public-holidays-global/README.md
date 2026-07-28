@@ -4,7 +4,7 @@
 
 This SharePoint Framework (SPFx) web part displays public holidays for multiple countries and years. Users can select the country via the property pane, view holidays for the current year, navigate through paginated results.
 
-The solution uses **React**, **Fluent UI**, and **Recharts** for a responsive, modern experience. It integrates with the [Nager.Date Public Holidays API](https://date.nager.at/) to retrieve holiday data in real time from the following endpoint structure:
+The solution uses **React** and **Fluent UI**, with no third-party UI or charting libraries. It integrates with the [Nager.Date Public Holidays API](https://date.nager.at/) to retrieve holiday data in real time from the following endpoint structure:
 
 ```https
 https://date.nager.at/api/v3/PublicHolidays/{year}/{countryCode}
@@ -55,6 +55,7 @@ This sample is compatible with:
 | Version | Date          | Comments        |
 | ------- | ------------- | --------------- |
 | 1.0     | June 17, 2025 | Initial release |
+| 1.1     | July 28, 2026 | Improved accessibility, localization, error handling, and UI. Removed the unused Recharts dependency and fixed SharePoint package generation. |
 
 ## Minimal Path to Awesome
 
@@ -71,19 +72,20 @@ gulp serve
 
 This web part demonstrates the following:
 
-* Select country from property pane dropdown
-* Fetch and display public holidays by year and country
-* Pagination of holiday list (10 per page)
-* Indicator showing current holiday count and change vs previous year
-* Interactive bar chart with % of holidays per year
-* Responsive layout using Fluent UI
-* Graceful handling of loading and API errors
+* Searchable country picker and year picker in the web part
+* Default country, default year and page size configured in the property pane
+* Public holidays fetched by country and year from the Nager.Date API
+* Paginated list with keyboard-accessible page navigation
+* Loading, empty and error states, with a retry action where retrying can help
+* Distinct messages for an unsupported country code and an unreachable service
+* All user-facing text localizable through the standard SPFx string files
+* Accessible markup: heading structure, `aria-live` status updates, machine-readable dates, and no information conveyed by colour alone
+* Responsive layout using Fluent UI theme tokens, with no third-party UI dependencies
 
 ## References
 
 * [SharePoint Framework documentation](https://learn.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
 * [Fluent UI React components](https://developer.microsoft.com/en-us/fluentui#/controls/web)
-* [Recharts documentation](https://recharts.org/en-US/)
 * [Public Holidays API – Nager.Date](https://date.nager.at/Api)
 
 ## Help

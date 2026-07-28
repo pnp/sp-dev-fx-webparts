@@ -1,252 +1,155 @@
 import * as React from 'react';
-import styles from './PublicHolidaysGlobal.module.scss';
-import type { IPublicHolidaysGlobalProps } from './IPublicHolidaysGlobalProps';
-import { HolidaysService } from '../services/HolidaysService';
-import type { IPublicHoliday } from '../models/IPublicHoliday';
-
-import { MessageBar, MessageBarType } from '@fluentui/react/lib/MessageBar';
-import { ProgressIndicator } from '@fluentui/react/lib/ProgressIndicator';
-import { DetailsList, IColumn } from '@fluentui/react/lib/DetailsList';
 import { Stack } from '@fluentui/react/lib/Stack';
 import { Text } from '@fluentui/react/lib/Text';
-import { DefaultButton } from '@fluentui/react/lib/Button';
+import { Link } from '@fluentui/react/lib/Link';
+import { MessageBar, MessageBarType } from '@fluentui/react/lib/MessageBar';
+import { PrimaryButton } from '@fluentui/react/lib/Button';
+import { Shimmer, ShimmerElementType } from '@fluentui/react/lib/Shimmer';
+import { useTheme } from '@fluentui/react/lib/Theme';
 
-const columns: IColumn[] = [
-  { key: 'date', name: 'Date', fieldName: 'date', minWidth: 90, isResizable: true },
-  { key: 'localName', name: 'Local Name', fieldName: 'localName', minWidth: 140, isResizable: true },
-  { key: 'name', name: 'English Name', fieldName: 'name', minWidth: 140, isResizable: true },
-  {
-    key: 'global', name: 'Global', fieldName: 'global', minWidth: 60, isResizable: true,
-    onRender: item => item.global ? "✔️" : "❌"
+import type { IPublicHolidaysGlobalProps } from './IPublicHolidaysGlobalProps';
+import { HolidayFilters } from './HolidayFilters';
+import { HolidayList } from './HolidayList';
+import { HolidayPagination } from './HolidayPagination';
+import { ConfigurePlaceholder } from './ConfigurePlaceholder';
+import { useHolidays } from '../hooks/useHolidays';
+import { HolidaysErrorKind } from '../models/HolidaysError';
+import { countryName } from '../models/countries';
+import { format } from '../utils/format';
+import * as strings from 'PublicHolidaysGlobalWebPartStrings';
+
+const DEFAULT_PAGE_SIZE = 10;
+
+function errorMessage(kind: HolidaysErrorKind | undefined, country: string, year: number): string {
+  switch (kind) {
+    case HolidaysErrorKind.UnknownCountry:
+      return format(strings.ErrorUnknownCountry, country);
+    case HolidaysErrorKind.Unreachable:
+      return strings.ErrorUnreachable;
+    default:
+      return format(strings.ErrorService, countryName(country), year);
   }
-];
-
-
-const ITEMS_PER_PAGE = 10;
-
-interface IYearHolidays {
-  year: number;
-  count: number;
-  percent: number;
 }
 
-interface IPublicHolidaysGlobalState {
-  holidays: IPublicHoliday[];
-  loading: boolean;
-  error: string | undefined;
-  year: number;
-  currentPage: number;
-  yearsSummary: IYearHolidays[];
-}
+const PublicHolidaysGlobal: React.FunctionComponent<IPublicHolidaysGlobalProps> = (props) => {
+  const theme = useTheme();
+  const pageSize = props.itemsPerPage && props.itemsPerPage > 0 ? props.itemsPerPage : DEFAULT_PAGE_SIZE;
 
-export default class PublicHolidaysGlobal extends React.Component<IPublicHolidaysGlobalProps, IPublicHolidaysGlobalState> {
-  constructor(props: IPublicHolidaysGlobalProps) {
-    super(props);
-    this.state = {
-      holidays: [],
-      loading: false,
-      error: undefined,
-      year: new Date().getFullYear(),
-      currentPage: 1,
-      yearsSummary: []
-    };
-  }
+  const [country, setCountry] = React.useState(props.country);
+  const [year, setYear] = React.useState(props.defaultYear || new Date().getFullYear());
+  const [page, setPage] = React.useState(1);
 
-  public componentDidMount(): void {
-    this.loadHolidays(this.props.country).catch(() => {/* intentionally ignored */ });
-    this.loadYearsSummary(this.props.country).catch(() => {/* intentionally ignored */ });
-  }
-
-  public componentDidUpdate(prevProps: IPublicHolidaysGlobalProps): void {
-    if (prevProps.country !== this.props.country) {
-      this.loadHolidays(this.props.country).catch(() => {/* intentionally ignored */ });
-      this.loadYearsSummary(this.props.country).catch(() => {/* intentionally ignored */ });
+  // The property pane sets the starting point; changing it resets the view.
+  React.useEffect(() => setCountry(props.country), [props.country]);
+  React.useEffect(() => {
+    if (props.defaultYear) {
+      setYear(props.defaultYear);
     }
+  }, [props.defaultYear]);
+
+  const { status, holidays, errorKind, reload } = useHolidays(country, year);
+
+  React.useEffect(() => setPage(1), [country, year]);
+
+  if (!props.country) {
+    return <ConfigurePlaceholder onConfigure={props.onConfigure} />;
   }
 
-  private async loadHolidays(country: string): Promise<void> {
-    this.setState({ holidays: [], loading: true, error: undefined, currentPage: 1 });
-    try {
-      const holidays = await HolidaysService.getHolidays(this.state.year, country);
-      this.setState({ holidays, loading: false, error: undefined, currentPage: 1 });
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        this.setState({ error: err.message, loading: false });
-      } else {
-        this.setState({ error: 'Unknown error', loading: false });
-      }
-    }
-  }
+  const totalPages = Math.max(1, Math.ceil(holidays.length / pageSize));
+  const visible = holidays.slice((page - 1) * pageSize, page * pageSize);
 
-  private goToPage = (page: number): void => {
-    this.setState({ currentPage: page });
-  };
-
-  private async loadYearsSummary(country: string): Promise<void> {
-    const currentYear = new Date().getFullYear();
-    const years = [currentYear - 3, currentYear - 2, currentYear - 1, currentYear];
-    const summary: IYearHolidays[] = [];
-
-    for (const year of years) {
-      try {
-        const holidays = await HolidaysService.getHolidays(year, country);
-        const percent = +(100 * holidays.length / (this.isLeapYear(year) ? 366 : 365)).toFixed(2);
-        summary.push({ year, count: holidays.length, percent });
-      } catch {
-        summary.push({ year, count: 0, percent: 0 });
-      }
-    }
-    this.setState({ yearsSummary: summary });
-  }
-
-
-  private isLeapYear(year: number): boolean {
-    return ((year % 4 === 0) && (year % 100 !== 0)) || (year % 400 === 0);
-  }
-
-  private renderPager(totalPages: number, currentPage: number): JSX.Element {
-    if (totalPages <= 1) return <></>;
-
-    const pageButtons = [];
-    for (let i = 1; i <= totalPages; i++) {
-      pageButtons.push(
-        <DefaultButton
-          key={i}
-          text={i.toString()}
-          onClick={() => this.goToPage(i)}
-          style={{
-            minWidth: 32,
-            fontWeight: i === currentPage ? 600 : 400,
-            background: i === currentPage ? "#e5f6fa" : undefined,
-            border: i === currentPage ? "2px solid #03787c" : undefined
-          }}
-          disabled={i === currentPage}
-        />
-      );
-    }
-
-    return (
-      <div style={{
-        display: "flex", justifyContent: "center", alignItems: "center",
-        gap: 6, margin: "1.2em 0 0 0", flexWrap: "wrap"
-      }}>
-        <DefaultButton
-          text="Prev"
-          disabled={currentPage === 1}
-          onClick={() => this.goToPage(currentPage - 1)}
-        />
-        {pageButtons}
-        <DefaultButton
-          text="Next"
-          disabled={currentPage === totalPages}
-          onClick={() => this.goToPage(currentPage + 1)}
-        />
-      </div>
-    );
-  }
-
-  public render(): React.ReactElement<IPublicHolidaysGlobalProps> {
-    const { holidays, loading, error, year, currentPage } = this.state;
-    const { country } = this.props;
-
-    const totalPages = Math.max(1, Math.ceil(holidays.length / ITEMS_PER_PAGE));
-    const holidaysToShow = holidays.slice(
-      (currentPage - 1) * ITEMS_PER_PAGE,
-      currentPage * ITEMS_PER_PAGE
-    );
-
-    // Calculate the number of holidays in the current year
-    const currentYearCount = holidays.length;
-
-    return (
-
-      <section className={styles.publicHolidaysGlobal}>
-
-        <Stack tokens={{ childrenGap: 18 }}>
-          {/* Header showing selected year and country */}
-          <Text variant="xLarge" block>
-            Public Holidays {year} - {country}
+  return (
+    <section>
+      <Stack tokens={{ childrenGap: 20 }}>
+        <Stack tokens={{ childrenGap: 4 }}>
+          <Text as="h2" variant="xLarge" block styles={{ root: { margin: 0 } }}>
+            {strings.TitleLabel}
           </Text>
-
-
-
-
-          {/* Highlight card showing only the number of holidays in the current year */}
-          <Stack
-            horizontal
-            horizontalAlign="center"
-            tokens={{ childrenGap: 28 }}
-            style={{ margin: "24px 0" }}
-          >
-            <div
-              style={{
-                background: "#f3f9fa",
-                padding: "2em 2.5em",
-                borderRadius: 18,
-                boxShadow: "0 2px 8px rgba(0,0,0,0.07)",
-                minWidth: 180,
-                textAlign: "center"
-              }}
-            >
-              <>
-                {/* Large text showing the count of holidays */}
-              </>
-              <Text variant="xxLarge" style={{ color: "#03787c", fontWeight: 700 }}>
-                {currentYearCount}
-              </Text>
-
-              <>
-                {/* Label for the number */}
-              </>
-              <Text variant="large" style={{ color: "#555" }}>
-                {' '} Holidays in {year}
-              </Text>
-
-            </div>
-          </Stack>
-
-          {/* Loading indicator while fetching holidays */}
-          {loading && <ProgressIndicator label="Loading holidays..." />}
-
-          {/* Error message if fetch failed */}
-          {error && (
-            <MessageBar messageBarType={MessageBarType.error}>
-              {error}
-            </MessageBar>
-          )}
-
-          {/* Holiday list with pagination */}
-          {!loading && !error && holidaysToShow.length > 0 && (
-            <>
-              <DetailsList
-                items={holidaysToShow}
-                columns={columns}
-                compact
-                styles={{
-                  root: {
-                    background: "white",
-                    borderRadius: 8,
-                    boxShadow: "0 2px 6px rgba(0,0,0,0.07)"
-                  }
-                }}
-              />
-              {/* Render pager only if multiple pages */}
-              {totalPages > 1 && this.renderPager(totalPages, currentPage)}
-            </>
-          )}
-
-          {/* Message if no holidays found */}
-          {!loading && !error && holidays.length === 0 && (
-            <MessageBar>No holidays found for the selected country.</MessageBar>
-          )}
-          {!country && (
-            <Text variant="large" block styles={{ root: { marginTop: 12, color: '#03787c', fontWeight: '600' } }}>
-              ⚠️ Please go to the web part properties panel to select a country.
+          {props.description && (
+            <Text variant="medium" styles={{ root: { color: theme.semanticColors.bodySubtext } }}>
+              {props.description}
             </Text>
           )}
         </Stack>
-      </section>
-    );
-  }
 
-}
+        <HolidayFilters
+          countryCode={country}
+          year={year}
+          onCountryChange={setCountry}
+          onYearChange={setYear}
+        />
+
+        {/* Async state changes are announced, not only rendered. */}
+        <div aria-live="polite" aria-busy={status === 'loading'}>
+          {status === 'loading' && (
+            <Stack tokens={{ childrenGap: 12 }}>
+              <Text variant="small" styles={{ root: { color: theme.semanticColors.bodySubtext } }}>
+                {format(strings.LoadingLabel, countryName(country), year)}
+              </Text>
+              {[0, 1, 2, 3, 4].map((i) => (
+                <Shimmer
+                  key={i}
+                  shimmerElements={[
+                    { type: ShimmerElementType.line, height: 16, width: '30%' },
+                    { type: ShimmerElementType.gap, width: 16 },
+                    { type: ShimmerElementType.line, height: 16 }
+                  ]}
+                />
+              ))}
+            </Stack>
+          )}
+
+          {status === 'error' && (
+            <MessageBar
+              messageBarType={MessageBarType.error}
+              actions={
+                errorKind === HolidaysErrorKind.UnknownCountry ? undefined : (
+                  <PrimaryButton onClick={reload}>{strings.RetryButtonLabel}</PrimaryButton>
+                )
+              }
+            >
+              {errorMessage(errorKind, country, year)}
+            </MessageBar>
+          )}
+
+          {status === 'empty' && (
+            <MessageBar messageBarType={MessageBarType.info}>
+              {format(strings.EmptyStateMessage, countryName(country), year)}
+            </MessageBar>
+          )}
+
+          {status === 'ready' && (
+            <Stack tokens={{ childrenGap: 12 }}>
+              <Text variant="medium">
+                {format(
+                  holidays.length === 1 ? strings.SummaryLabelSingular : strings.SummaryLabel,
+                  holidays.length,
+                  countryName(country),
+                  year
+                )}
+              </Text>
+              <HolidayList holidays={visible} />
+              {totalPages > 1 && (
+                <HolidayPagination
+                  currentPage={page}
+                  totalPages={totalPages}
+                  onChange={setPage}
+                />
+              )}
+            </Stack>
+          )}
+        </div>
+
+        <Text variant="small" styles={{ root: { color: theme.semanticColors.bodySubtext } }}>
+          {strings.AttributionPrefix}{' '}
+          <Link href="https://date.nager.at/" target="_blank" rel="noopener noreferrer">
+            {strings.AttributionLinkLabel}
+          </Link>
+          {strings.AttributionSuffix}
+        </Text>
+      </Stack>
+    </section>
+  );
+};
+
+export default PublicHolidaysGlobal;
