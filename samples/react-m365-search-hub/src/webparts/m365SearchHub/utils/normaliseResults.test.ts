@@ -1,5 +1,6 @@
 import {
   classify,
+  locationOf,
   fileExtensionOf,
   filterByKind,
   lastPathSegment,
@@ -284,5 +285,59 @@ describe('filterByKind', () => {
 
   it('keeps only the selected kinds', () => {
     expect(filterByKind(results, ['page', 'site'])).toHaveLength(2);
+  });
+});
+
+describe('locationOf', () => {
+  it('prefers the site title Graph gave, when it gave one', () => {
+    expect(locationOf('ph7x Systems - SIXFACTOR', 'https://x/sites/a/b/c.docx')).toEqual(
+      'ph7x Systems - SIXFACTOR'
+    );
+  });
+
+  it('falls back to the path, without the managed path nobody reads', () => {
+    expect(
+      locationOf(undefined, 'https://contoso.sharepoint.com/sites/Finance/Shared Documents/a.docx')
+    ).toEqual('Finance / Shared Documents');
+  });
+
+  it('handles /teams/ the same way as /sites/', () => {
+    expect(locationOf(undefined, 'https://contoso.sharepoint.com/teams/Ops/Docs/a.docx')).toEqual(
+      'Ops / Docs'
+    );
+  });
+
+  it('drops the item itself, which is already the title', () => {
+    expect(locationOf(undefined, 'https://contoso.sharepoint.com/sites/Finance/a.docx')).toEqual(
+      'Finance'
+    );
+  });
+
+  it('stops at two segments rather than printing a whole deep path', () => {
+    expect(
+      locationOf(undefined, 'https://x/sites/A/B/C/D/E/f.docx')
+    ).toEqual('A / B');
+  });
+
+  it('decodes escaped segments', () => {
+    expect(locationOf(undefined, 'https://x/sites/Sales%20Team/Docs/a.docx')).toEqual(
+      'Sales Team / Docs'
+    );
+  });
+
+  it('survives a segment it cannot decode', () => {
+    expect(locationOf(undefined, 'https://x/sites/100%/Docs/a.docx')).toEqual('100% / Docs');
+  });
+
+  it('has nothing to say for a tenant root item', () => {
+    expect(locationOf(undefined, 'https://contoso.sharepoint.com/a.docx')).toEqual('');
+  });
+
+  it('has nothing to say without a link', () => {
+    expect(locationOf(undefined, undefined)).toEqual('');
+  });
+
+  it('ignores a query string when working out the path', () => {
+    expect(locationOf(undefined, 'https://x/sites/A/Docs/a.aspx?web=1')).toEqual('A / Docs');
   });
 });
