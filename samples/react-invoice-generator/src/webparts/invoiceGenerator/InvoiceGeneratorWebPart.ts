@@ -38,9 +38,9 @@ export interface IInvoiceGeneratorWebPartProps {
 }
 
 export default class InvoiceGeneratorWebPart extends BaseClientSideWebPart<IInvoiceGeneratorWebPartProps> {
-  private _themeProvider: ThemeProvider;
+  private _themeProvider!: ThemeProvider;
   private _themeVariant: IReadonlyTheme | undefined;
-  private _invoiceService: InvoiceService;
+  private _invoiceService!: InvoiceService;
 
   protected async onInit(): Promise<void> {
     // Consume the new ThemeProvider service
@@ -78,7 +78,8 @@ export default class InvoiceGeneratorWebPart extends BaseClientSideWebPart<IInvo
         taxRate: this.properties.taxRate || 0,
         companyName: this.properties.companyName,
         companyAddress: this.properties.companyAddress,
-        themeVariant: this._themeVariant
+        themeVariant: this._themeVariant,
+        displayMode: this.displayMode
       }
     );
 
@@ -102,6 +103,7 @@ export default class InvoiceGeneratorWebPart extends BaseClientSideWebPart<IInvo
       return (`List with name "${value}" already exists.`);
     }
 
+    return '';
   }
 
   protected onPropertyPaneFieldChanged(propertyPath: string, newValue: string): void {
@@ -114,16 +116,16 @@ export default class InvoiceGeneratorWebPart extends BaseClientSideWebPart<IInvo
   }
   private async createList(): Promise<void> {
     try {
-
-      const createdList = await this._invoiceService.createList(this.properties.listName);
-      if (createdList) {
-        console.log(`List "${this.properties.listName}" created successfully.`);
+      // ensureList returns the list ID string (creating the list if needed).
+      const createdListId = await this._invoiceService.ensureList(this.properties.listName);
+      if (createdListId) {
+        console.log(`List "${this.properties.listName}" is ready.`);
         const availableLists = await this._invoiceService.getLists();
         this.properties.listIdOptions = availableLists.map(list => ({
           key: list.Id,
           text: list.Title,
         }));
-        this.properties.listId = createdList.Id;
+        this.properties.listId = createdListId;
         this.context.propertyPane.refresh();
         this.render();
       }
@@ -161,19 +163,17 @@ export default class InvoiceGeneratorWebPart extends BaseClientSideWebPart<IInvo
         label: 'Do you want to create a new list?',
         checked: createListToggle,
       }),
-      createListToggle &&
-      PropertyPaneTextField('listName', {
-        label: 'New list name',
-        onGetErrorMessage: this.validateListName.bind(this)
-      }),
-      createListToggle &&
-      PropertyPaneButton('CreateList', {
-        text: "Create List",
-        buttonType: PropertyPaneButtonType.Normal,
-        onClick: this.createList.bind(this),
-
-
-      }),
+      ...(createListToggle ? [
+        PropertyPaneTextField('listName', {
+          label: 'New list name',
+          onGetErrorMessage: this.validateListName.bind(this)
+        }),
+        PropertyPaneButton('CreateList', {
+          text: "Create List",
+          buttonType: PropertyPaneButtonType.Normal,
+          onClick: this.createList.bind(this),
+        }),
+      ] : []),
 
       PropertyPaneDropdown('listId', {
         label: 'Pick your list',
