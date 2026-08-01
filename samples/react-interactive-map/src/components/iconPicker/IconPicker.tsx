@@ -1,9 +1,9 @@
 import * as React from 'react';
 import styles from './IconPicker.module.scss';
-import { Icon, ITextField } from 'office-ui-fabric-react';
+import { Icon, ITextField } from '@fluentui/react';
 import { allIcons } from './availableIcons';
 import { isNullOrEmpty, cssClasses, isFunction } from '@spfxappdev/utility';
-import { Autocomplete, IAutocompleteProps } from '@src/components/autocomplete/Autocomplete';
+import { Autocomplete, IAutocompleteProps } from '../autocomplete/Autocomplete';
 
 
 export interface IIconPickerProps extends Omit<IAutocompleteProps, "onUpdated" | "onChange"> {
@@ -31,11 +31,11 @@ export class IconPicker extends React.Component<IIconPickerProps, IIconPickerSta
 
     private inputValueOnClick: string = "";
 
-    private textFieldReference: ITextField = null;
+    private textFieldReference: ITextField | undefined = undefined;
 
-    private textFieldDomElement: HTMLInputElement = null;
+    private textFieldDomElement: HTMLInputElement | undefined = undefined;
 
-    private autocompleteRef: Autocomplete = null;
+    private autocompleteRef: Autocomplete | undefined = undefined;
     
     public render(): React.ReactElement<IIconPickerProps> {
 
@@ -49,9 +49,9 @@ export class IconPicker extends React.Component<IIconPickerProps, IIconPickerSta
                 this.props.textFieldRef(fluentUITextField, autocompleteComponent, this.textFieldDomElement);
             }
         }}
-        onChange={(ev: any, name: string) => {
+        onChange={(ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, name?: string) => {
             if(isFunction(this.props.onIconChanged)) {
-                this.props.onIconChanged(name);
+                this.props.onIconChanged(name ?? "");
             }
         }}
         onUpdated={(name: string) => {
@@ -80,7 +80,7 @@ export class IconPicker extends React.Component<IIconPickerProps, IIconPickerSta
     private renderSuggesstionsFlyout(): JSX.Element {
 
         return (
-            <div className={styles["suggesstion"]}>
+            <div className={styles.suggesstion}>
             {allIcons.Where(icon => icon.StartsWith(this.state.currentValue)).map((iconName: string): JSX.Element => {
                 return (<div 
                     key={`Icon_${iconName}`}
@@ -91,7 +91,7 @@ export class IconPicker extends React.Component<IIconPickerProps, IIconPickerSta
                             currentValue: iconName
                         });
                         
-                        this.autocompleteRef.updateValue(iconName);
+                        this.autocompleteRef!.updateValue(iconName);
                     }}
                     className={styles["suggesstion-item"]}>
                         <Icon  iconName={iconName} />

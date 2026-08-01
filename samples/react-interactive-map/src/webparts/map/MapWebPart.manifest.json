@@ -39,12 +39,14 @@
       "dragging": true,
       "height": 400,
       "scrollWheelZoom": true,
+      "fitToMarkers": true,
       "plugins": {
         "searchBox": false,
         "markercluster": false,
         "legend": false,
         "zoomControl": true
       },
+      "tileLayerPreset": "streets",
       "tileLayerUrl": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       "tileLayerAttribution": "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
     }
