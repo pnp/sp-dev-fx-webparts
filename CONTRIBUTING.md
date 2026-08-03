@@ -57,7 +57,7 @@ When you submit a new sample, please follow these guidelines:
 * For security reasons, we do not accept pull requests containing `.sppkg` files. We only accept source code files for applications. 
 * Make sure to place the root of your solution's source code in sample folder
 
-### No AI Slop
+### AI-assisted contributions
 
 AI-assisted development is welcome -- and encouraged. However, contributors are responsible for ensuring that every sample is accurate, complete, well-tested, and does what it claims to do. Pull requests containing unreviewed AI-generated code, hallucinated implementations, placeholder content, or samples that do not function as described will be rejected.
 
