@@ -60,6 +60,7 @@ The property pane is organised across pages. The Tile layer page offers ready-ma
 ## Contributors
 
 * [Sergej Schwabauer](https://github.com/SPFxAppDev)
+* [Nello D'Andrea](https://github.com/ferrarirosso)
 
 ## Version history
 
