@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "b6458fb7-d6b1-49be-a668-68453f6be3d3",
+  "alias": "PageMigrationAdminWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "SharePointWebPart"
+  ],
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [
+    {
+      "groupId": "cf066440-0614-43d6-98ae-0b31cf14c7c3",
+      "group": {
+        "default": "Advanced"
+      },
+      "title": {
+        "default": "Page Migration Admin"
+      },
+      "description": {
+        "default": "Hybrid modern SharePoint page migration administration console."
+      },
+      "officeFabricIconFontName": "Pages",
+      "properties": {
+        "defaultPublishOnComplete": true,
+        "defaultConflictMode": "Rename",
+        "persistReports": true,
+        "reportStorageSiteUrl": "",
+        "auditListName": "Page Migration Audit",
+        "logListName": "Page Migration Logs",
+        "compatibilityOverridesJson": "[]"
+      }
+    }
+  ]
+}

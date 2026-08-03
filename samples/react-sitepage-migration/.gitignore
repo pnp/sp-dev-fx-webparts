@@ -1,0 +1,11 @@
+node_modules
+temp
+lib
+lib-commonjs
+dist
+release
+jest-output
+sharepoint/solution
+*.tgz
+.DS_Store
+.heft

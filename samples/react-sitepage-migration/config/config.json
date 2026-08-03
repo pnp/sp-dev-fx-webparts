@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "page-migration-admin-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/pageMigrationAdmin/PageMigrationAdminWebPart.js",
+          "manifest": "./src/webparts/pageMigrationAdmin/PageMigrationAdminWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "PageMigrationAdminWebPartStrings": "lib/webparts/pageMigrationAdmin/loc/{locale}.js"
+  }
+}
