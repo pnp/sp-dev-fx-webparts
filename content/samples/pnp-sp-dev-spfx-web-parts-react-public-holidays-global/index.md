@@ -7,7 +7,7 @@ sampleName: "pnp-sp-dev-spfx-web-parts-react-public-holidays-global"
 thumbnail: "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-public-holidays-global.webp"
 images: ["/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-public-holidays-global.webp"]
 thumbnailAlt: "Public Holidays Global"
-lastmod: "2025-06-17T00:00:00.000Z"
+lastmod: "2026-07-28T00:00:00.000Z"
 tags: []
 categories: []
 openInGalleryUrl: "/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-web-parts-react-public-holidays-global"
