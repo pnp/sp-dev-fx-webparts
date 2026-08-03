@@ -50,6 +50,7 @@ This sample is optimally compatible with the following environment configuration
 
 | Version | Date        | Comments                       |
 | ------- | ----------- | ------------------------------ |
+| 1.2     | July 28, 2026 | Documented the emission factors and their limitations. Removed unused services, models and the chart and PDF dependencies. Replaced PDF export with a print view, improved accessibility and localization, and added unit tests for the calculations. |
 | 1.1     | May 8, 2025 | Added PDF export functionality |
 | 1.0     | May 8, 2025 | Initial release                |
 
@@ -70,11 +71,17 @@ gulp serve
 
 This SPFx web part demonstrates the following features:
 
-* Interactive sliders for real-time emissions calculation
-* Dynamic chart visualization of carbon footprint
-* Sustainable threshold indicators (green, yellow, red)
-* PDF export capability for sharing results
-* Tips for reducing carbon footprint
+* Interactive sliders that recalculate the footprint as they move
+* Headline figures for the total, the per-person share and the largest contributor
+* A per-category breakdown where every value is shown as text, with a proportional bar as a visual aid only
+* A print view that hides the controls, so the browser's "Save as PDF" produces selectable text rather than an image
+* Tips for reducing the footprint
+* Household size configured in the property pane
+* All user-facing text localizable through the standard SPFx string files
+* Unit tests for the emission arithmetic, runnable with `npm test`
+* Accessible markup: heading structure, `aria-live` result updates, and no information conveyed by colour alone
+* No colour of its own: every colour comes from the host theme through the SPFx `ThemeProvider` service, so the web part follows the site theme, a section background, or whichever theme the host applies
+* Fluent UI throughout, with no third-party UI, charting or PDF dependencies
 
 ## References
 
@@ -99,6 +106,24 @@ If you encounter any issues using this sample, [create a new issue](https://gith
 For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-carbon-footprint-calculator&template=question.yml&sample=react-carbon-footprint-calculator&authors=@jtlivio&title=react-carbon-footprint-calculator%20-%20).
 
 Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-carbon-footprint-calculator&template=suggestion.yml&sample=react-carbon-footprint-calculator&authors=@jtlivio&title=react-carbon-footprint-calculator%20-%20).
+
+## About the numbers
+
+The emission factors used by this sample are rounded, illustrative values. They
+are declared in `src/models/EmissionFactors.ts`, where each one carries the unit
+it applies to and a note on what it assumes.
+
+They are **not** official conversion factors and should not be used for
+reporting. A real figure depends on the local electricity mix, the vehicle, the
+aircraft and its load factor, and the accounting boundary in use. The orders of
+magnitude follow commonly published national conversion factors such as the
+[UK Government GHG conversion factors for company reporting](https://www.gov.uk/government/collections/government-conversion-factors-for-company-reporting).
+
+To adapt the calculator to a region, replace the values in that file with the
+factors published by that region's authority and cite the source alongside them.
+
+The calculator is meant for comparing choices — "what happens if I fly less" —
+not for producing a number to report.
 
 ## Disclaimer
 
