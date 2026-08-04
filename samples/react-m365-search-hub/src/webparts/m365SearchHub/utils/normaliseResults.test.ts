@@ -290,8 +290,8 @@ describe('filterByKind', () => {
 
 describe('locationOf', () => {
   it('prefers the site title Graph gave, when it gave one', () => {
-    expect(locationOf('ph7x Systems - SIXFACTOR', 'https://x/sites/a/b/c.docx')).toEqual(
-      'ph7x Systems - SIXFACTOR'
+    expect(locationOf('Contoso Finance - Payables', 'https://x/sites/a/b/c.docx')).toEqual(
+      'Contoso Finance - Payables'
     );
   });
 
