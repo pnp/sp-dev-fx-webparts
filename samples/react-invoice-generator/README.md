@@ -57,6 +57,7 @@ PDF generated using the Download Invoice PDF button:
 ## Contributors
 
 * [Rishabh Shukla](https://github.com/rishabhshukla12)
+* [Nello D'Andrea](https://github.com/ferrarirosso)
 
 ## Version history
 
