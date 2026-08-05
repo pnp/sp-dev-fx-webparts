@@ -17307,11 +17307,11 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-interactive-map",
     "source": "pnp",
-    "title": "Interactive Map Web Part",
-    "shortDescription": "This web parts displays a (world) map. An editor can set custom markers directly in the map. Each marker can configured individually.",
+    "title": "Interactive Map",
+    "shortDescription": "This web parts displays a (world) map. An editor can set custom markers directly in the map. Each marker can configured individually. It is possible to determine the color of the pin, the icon in the pin or what should happen when the pin is clicked. It is even possible to change the tile layer in the web part properties.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-interactive-map",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-interactive-map",
-    "updateDateTime": "2023-01-31",
+    "updateDateTime": "2026-07-01",
     "metadata": [
       {
         "key": "SAMPLE-TYPE",
@@ -17323,7 +17323,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.16.1"
+        "value": "1.23.0"
       }
     ],
     "tags": [],
@@ -17334,6 +17334,12 @@
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/spfxappdev.1c1d87228063.webp",
         "name": "Sergej Schwabauer",
         "avatarSourceUrl": "https://github.com/SPFxAppDev.png"
+      },
+      {
+        "gitHubAccount": "ferrarirosso",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/ferrarirosso.b83443bbf2f4.webp",
+        "name": "Nello D'Andrea",
+        "avatarSourceUrl": "https://github.com/ferrarirosso.png"
       }
     ],
     "thumbnails": [
@@ -17341,7 +17347,7 @@
         "type": "image",
         "order": 100,
         "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-interactive-map.webp",
-        "alt": "Interactive Map Web Part"
+        "alt": "Interactive Map"
       }
     ],
     "reactions": {

@@ -1356,7 +1356,7 @@
     "file": "pnp-sp-dev-spfx-web-parts-js-applicationinsights-api-calls-tracking.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-interactive-map": {
-    "sourceUrl": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-interactive-map/assets/WPPreview.png",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-interactive-map/assets/CreateNewMarker.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-interactive-map.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-smart-profile-photo-editor": {
