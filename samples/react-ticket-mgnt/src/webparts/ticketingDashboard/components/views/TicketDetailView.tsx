@@ -16,6 +16,7 @@ import "@pnp/sp/lists";
 import "@pnp/sp/items";
 import { PrimaryButton, DefaultButton, } from '@fluentui/react/lib/Button';
 import { Dialog, DialogType, DialogFooter } from '@fluentui/react/lib/Dialog';
+import { TicketComments } from '../TicketComments';
 
 export interface ITicketDetailViewProps {
     ticketId: number;
@@ -441,6 +442,12 @@ export const TicketDetailView: React.FC<ITicketDetailViewProps> = ({
                         </div>
                     </div>
                 </div>
+
+                <TicketComments
+                    ticketId={ticketId}
+                    context={context}
+                    listTitle={ticketService.getListTitle()}
+                />
 
                 <div className={styles.ticketActions}>
                     <DefaultButton onClick={onBack} text="Back" />

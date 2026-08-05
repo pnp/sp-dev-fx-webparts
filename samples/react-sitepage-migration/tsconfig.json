@@ -1,0 +1,30 @@
+{
+  "extends": "./node_modules/@microsoft/spfx-web-build-rig/profiles/default/tsconfig-base.json",
+  "compilerOptions": {
+    "declaration": true,
+    "declarationMap": false,
+    "jsx": "react",
+    "lib": [
+      "dom",
+      "es2019"
+    ],
+    "module": "esnext",
+    "noEmitOnError": true,
+    "noFallthroughCasesInSwitch": true,
+    "noImplicitAny": true,
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "resolveJsonModule": true,
+    "strict": true,
+    "target": "es2019",
+    "types": [
+      "webpack-env",
+      "heft-jest"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "src/**/*.d.ts"
+  ]
+}

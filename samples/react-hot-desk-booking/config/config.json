@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/core/v1/baseconfig.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "hot-desk-booking-bundle": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/hotDeskBooking/HotDeskBookingWebPart.js",
+          "manifest": "./src/webparts/hotDeskBooking/HotDeskBookingWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {
+    "react": "node_modules/react/dist/react.js",
+    "react-dom": "node_modules/react-dom/dist/react-dom.js"
+  },
+  "localizedResources": {
+    "HotDeskBookingWebPartStrings": "lib/webparts/hotDeskBooking/loc/{locale}.js"
+  }
+}

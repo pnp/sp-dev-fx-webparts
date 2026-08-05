@@ -1,0 +1,55 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-team-randomiser",
+    "source": "pnp",
+    "title": "Team Randomiser",
+    "shortDescription": "Randomly assign people into evenly-sized groups with a single click. Enter a list of names and a desired group size; the web part shuffles them and displays colour-coded group cards. Hit Shuffle Groups to re-randomise at any time.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-team-randomiser",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-team-randomiser",
+    "longDescription": [
+      "Randomly assign people into evenly-sized groups with a single click. Enter a list of names and a desired group size; the web part shuffles them and displays colour-coded group cards. Hit Shuffle Groups to re-randomise at any time."
+    ],
+    "creationDateTime": "2026-07-01",
+    "updateDateTime": "2026-07-01",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "screenshot.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-team-randomiser/assets/screenshot.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "sudeepghatak",
+        "pictureUrl": "https://github.com/sudeepghatak.png",
+        "name": "Sudeep Ghatak"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

@@ -1,0 +1,27 @@
+.header1 {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.controlWrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.selectionDetails {
+  margin-bottom: 20px;
+}
+
+.controlContainer {
+  display: flex;
+  align-items: center;
+}
+
+.filterContainer {
+  margin-left: auto;
+}
+
+.adminColumn {
+  padding-top: 3px;
+}

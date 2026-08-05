@@ -1,0 +1,74 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-m365-search-hub",
+    "source": "pnp",
+    "title": "Microsoft 365 Search Hub",
+    "shortDescription": "A custom Microsoft 365 search experience built on the Microsoft Search API in Microsoft Graph. Demonstrates the architecture behind a search web part rather than the search box itself.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-m365-search-hub",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-m365-search-hub",
+    "longDescription": [
+      "Searches documents, pages, sites and list items through the Microsoft Search API in Microsoft Graph, from one search box, with a single Sites.Read.All permission.",
+      "The sample exists for the case where the search that comes with SharePoint does not fit the problem and somebody has to write code: a page where search belongs among the other content, a portal where only certain sites matter, or results that need the organisation's own context on them.",
+      "What it demonstrates is the architecture. Query building and result normalisation are pure functions; concurrency lives in one service, with debounce, a short cache, superseded responses discarded and paging; the interface is composed from Fluent UI v9 with the SharePoint theme bridged onto it, and a denied permission, an expired sign-in, throttling and a service error each get a state of their own rather than one generic failure.",
+      "Built on SPFx 1.23.2 with the Heft toolchain. 163 unit tests cover the query building, result normalisation, cache, service and search state, including the races between debounce, superseded responses and unmount."
+    ],
+    "creationDateTime": "2026-07-28",
+    "updateDateTime": "2026-07-28",
+    "products": [
+      "SharePoint",
+      "Microsoft Graph"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.23.2"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "sample.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-m365-search-hub/assets/sample.png",
+        "alt": "Search results across documents, pages and sites, with filters and sort in a toolbar"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "jtlivio",
+        "pictureUrl": "https://github.com/jtlivio.png",
+        "name": "João Livio"
+      }
+    ],
+    "references": [
+      {
+        "name": "Use the Microsoft Search API to query data",
+        "description": "How to scope a search request by entity type, page the results and select the properties that come back.",
+        "url": "https://learn.microsoft.com/graph/api/resources/search-api-overview"
+      },
+      {
+        "name": "Use the MSGraphClientV3 to connect to Microsoft Graph",
+        "description": "The client the SharePoint Framework provides for calling Microsoft Graph, and how to get hold of it.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/use-msgraph"
+      },
+      {
+        "name": "Manage access to Microsoft Entra ID-secured APIs",
+        "description": "How an administrator approves the permission a solution requests, and which role is required to approve Microsoft Graph.",
+        "url": "https://learn.microsoft.com/sharepoint/api-access"
+      },
+      {
+        "name": "Supporting section backgrounds",
+        "description": "The SPFx ThemeProvider service, which is how a web part follows the theme of the section it sits in.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/guidance/supporting-section-backgrounds"
+      }
+    ]
+  }
+]

@@ -2,7 +2,7 @@
 
 ## Summary
 
-This SharePoint web part is a ticket management system with a modern, responsive design. It includes a dashboard, personal view, new ticket form, and a detailed ticket view. Tickets can be configured with metadata like priority and status. The system integrates with SharePoint for assignments and permissions, stores data in a SharePoint list, and provides real-time updates. Built with React, TypeScript, and Fluent UI, it maintains SharePoint's look and feel while offering advanced functionality for managing issues or requests.
+This SharePoint web part is a ticket management system with a modern, responsive design. It includes a dashboard, personal view, new ticket form, and a detailed ticket view. Tickets can be configured with metadata like priority and status. The system integrates with SharePoint for assignments and permissions, stores data in a SharePoint list, and provides real-time updates. Each ticket has a native SharePoint comments section so team members can discuss issues and track the full conversation history directly on the ticket. 
 
 ![Ticket dashboard](./assets/ticket%20dashboard.png)  ![New ticket](./assets/new%20ticket.png)
 ![Ticket details](./assets/ticket%20details.png)
@@ -63,6 +63,7 @@ A SharePoint list to store the information should have the following columns:
 |Version|Date|Comments|
 |-------|----|--------|
 |1.0|June 13, 2025|Initial release|
+|1.1|June 25, 2025|Added native SharePoint comments to ticket detail view|
 
 ## Minimal Path to Awesome
 
@@ -122,6 +123,14 @@ A SharePoint list to store the information should have the following columns:
 - Intuitive navigation  
 - Visual status indicators  
 - Mobile-friendly layout  
+
+#### Native SharePoint Comments
+
+- Per-ticket comment thread using SharePoint's built-in list item comments API  
+- Post new comments directly from the ticket detail view  
+- Delete your own comments  
+- Like / unlike any comment  
+- Full conversation history visible to all users with list access  
 
 #### SharePoint Integration
 

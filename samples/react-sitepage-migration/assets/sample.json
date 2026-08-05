@@ -1,0 +1,90 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-sitepage-migration",
+    "source": "pnp",
+    "title": "Page Migration Admin",
+    "shortDescription": "Copies modern Site Pages from one SharePoint Online site to another, with their images, layout and web part configuration.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sitepage-migration",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sitepage-migration",
+    "longDescription": [
+      "Copies modern Site Pages from one SharePoint Online site to another, with their images, layout and web part configuration."
+    ],
+    "creationDateTime": "2026-05-03",
+    "updateDateTime": "2026-07-26",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.23.2"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "01-choose-sites-empty-state.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sitepage-migration/assets/01-choose-sites-empty-state.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "02-site-picker-recent-sites.png",
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sitepage-migration/assets/02-site-picker-recent-sites.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "03-sites-selected-load-pages.png",
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sitepage-migration/assets/03-sites-selected-load-pages.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "04-page-inventory-readiness.png",
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sitepage-migration/assets/04-page-inventory-readiness.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "05-page-inventory-migrated-status.png",
+        "type": "image",
+        "order": 104,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sitepage-migration/assets/05-page-inventory-migrated-status.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "06-migration-confirmation-dialog.png",
+        "type": "image",
+        "order": 105,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-sitepage-migration/assets/06-migration-confirmation-dialog.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "NicolasKheirallah",
+        "pictureUrl": "https://github.com/NicolasKheirallah.png",
+        "name": "Nico"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

@@ -4,7 +4,7 @@
 
 This demos the use of the new [Fluent UI version 9](https://github.com/microsoft/fluentui/tree/master/packages/react-components) controls and theme provider.  1 UI framework which has native theming for Teams, SharePoint and Windows
 
-![SharePoint View](assets/FQzNLB4XwAIFMRh.jpg "SharePoint View") 
+![SharePoint View](assets/FQzNLB4XwAIFMRh.jpg "SharePoint View")
 ![Teams View](assets/FQzO9YjWUAgFlrU.jpg "Teams View")
 
 ⚠️ AS of Fluent UI 9.40+ you will need to temporarily override some Fluent UI 9 components for webpack to run ⚠️
@@ -12,19 +12,18 @@ This demos the use of the new [Fluent UI version 9](https://github.com/microsoft
 ## Compatibility
 
 | :warning: Important          |
-|:---------------------------|
+|:-----------------------------|
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
-![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
+![SPFx 1.23.2](https://img.shields.io/badge/SPFx-1.23.2-green.svg)
+![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
-
 
 ## Applies to
 
@@ -33,18 +32,9 @@ This demos the use of the new [Fluent UI version 9](https://github.com/microsoft
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](https://aka.ms/m365/devprogram)
 
-
-## Applies to
-
-- [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
-
-> Get your own free development tenant by subscribing to [Microsoft 365 developer program](https://aka.ms/m365/devprogram)
-
 ## Contributors
 
 * [Nick Brown](https://github.com/techienickb)
-
 
 ## Version history
 
@@ -56,12 +46,16 @@ Version|Date|Comments
 1.0.2|May 15, 2023|Updated SPFx 1.17.2, latest Fluent UI 9
 1.0.4|January 6, 2023|Updated SPFx 1.18.2, latest Fluent UI 9, override to get package builds working
 1.0.5|October 3, 2024|Updated to SPFx 1.20.0, latest Fluent UI 9 (9.54.17)
+1.0.6|October 3, 2026|Updated to SPFx 1.23.0, latest Fluent UI 9, fixed UI container issue
+1.0.7|July 20, 2026|Updated to SPFx 1.23.2, latest Fluent UI 9, fixed UI container issue
+
+## Mininum path to awesoness
 
 - Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-fluentui-9) then unzip it)
 - From your command-line, change your current directory to the directory containing this sample (`react-fluentui-9`, located under `samples`)
 - in the command-line run:
   - `npm install`
-  - `gulp serve`
+  - `npm run start` to see the web part in action
 
 > This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 

@@ -22,7 +22,7 @@
       "longDescription": {
         "default": "This SPFx web part displays public holidays for multiple countries and years. Users can select the country via the property pane, view holidays for the current year, navigate through paginated results, and visualize the total holidays across the last 4 years with a dynamic bar chart."
       },
-      "screenshotPaths": ["assets/sample.png"],
+      "screenshotPaths": [],
       "videoUrl": "",
       "categories": ["Productivity", "Reference"]
     },

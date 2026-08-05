@@ -74,11 +74,18 @@ Create a Document library `Discussion Point Gallery` in SPO site & create one ne
 - Ensure that you are at the solution folder
 - in the command-line run:
   - `npm install`
-  - `npm run build`
-  - `npm run start`
+  - `gulp serve`
+
+## Deploy Package Solution 
+
+- Ensure that you are at the solution folder
+- in the command-line run:
+  - `gulp build --ship`
+  - `gulp bundle --ship`
+  - `gulp package-solution --ship`
 
 
-## Features💡
+## Features
 
 Key features demonstrated by this solution:
 

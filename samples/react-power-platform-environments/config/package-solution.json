@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-power-platform-environments-client-side-solution",
+    "id": "98779ce3-50e4-4ce3-b9d6-702507271995",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Flow Service",
+        "scope": "Flows.Read.All"
+      }
+    ],
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.23.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-power-platform-environments description"
+      },
+      "longDescription": {
+        "default": "react-power-platform-environments description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-power-platform-environments Feature",
+        "description": "The feature that activates elements of the react-power-platform-environments solution.",
+        "id": "c3ab38fb-9791-4c6c-8f2a-9853b274b0eb",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-power-platform-environments.sppkg"
+  }
+}

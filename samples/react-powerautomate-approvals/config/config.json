@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "power-automate-approvals-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/powerAutomateApprovals/PowerAutomateApprovalsWebPart.js",
+          "manifest": "./src/webparts/powerAutomateApprovals/PowerAutomateApprovalsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "PowerAutomateApprovalsWebPartStrings": "lib/webparts/powerAutomateApprovals/loc/{locale}.js"
+  }
+}
