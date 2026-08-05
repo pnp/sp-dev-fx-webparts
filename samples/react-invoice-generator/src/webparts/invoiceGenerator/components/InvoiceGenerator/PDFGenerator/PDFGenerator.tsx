@@ -115,8 +115,11 @@ export const PDFGenerator: React.FC<IInvoicePDFProps> = ({ items, subtotal, tax,
 
             <Page size="A4" style={styles.page}>
                 <View style={styles.section}>
-                <Image src= {logoImage}  style={styles.logoImage}/>
-                <Text style={{ textAlign: 'center', marginBottom: '20pt' }}>Invoice</Text> 
+                {/* The logo is optional. Passing an empty src to react-pdf's <Image>
+                    throws ("Image should receive either a src or source prop") and
+                    rejects the toBlob() promise, so only render it when one is set. */}
+                {logoImage ? <Image src={logoImage} style={styles.logoImage} /> : null}
+                <Text style={{ textAlign: 'center', marginBottom: '20pt' }}>Invoice</Text>
                     <View style={{ flexDirection: 'row', marginBottom: '20pt' }}>
                         <View style={styles.sectionLeft}>
                             <Text>{companyName}</Text>

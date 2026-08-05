@@ -14,15 +14,17 @@ import { InvoiceItemRow } from './InvoiceItemRow/InvoiceItemRow';
 import * as strings from 'InvoiceGeneratorWebPartStrings';
 import { Placeholder } from "@pnp/spfx-controls-react/lib/Placeholder";
 import { Customizer } from "@uifabric/utilities/lib/";
+import { DisplayMode } from '@microsoft/sp-core-library';
 
 const Plus = (): JSX.Element => <Icon iconName="CirclePlus" />;
 
 export const InvoiceGenerator: React.FC<IInvoiceGeneratorProps> = (props) => {
-  const { context, listId, taxRate, companyAddress, companyName, logoImage, themeVariant } = props;
+  const { context, listId, taxRate, companyAddress, companyName, logoImage, themeVariant, displayMode } = props;
+  const isEditMode = displayMode === DisplayMode.Edit;
   const [invoices, setInvoices] = React.useState<IInvoice[]>([]);
   const [selectedInvoiceIndex, setSelectedInvoiceIndex] = React.useState<string>('0');
   const [invoiceItems, setInvoiceItems] = React.useState<IInvoiceItem[]>([]);
-  const [selectedItem, setSelectedItem] = React.useState<IInvoiceItem>(null);
+  const [selectedItem, setSelectedItem] = React.useState<IInvoiceItem | null>(null);
   const [itemDescription, setItemDescription] = React.useState('');
   const [quantity, setQuantity] = React.useState(0);
   const [price, setPrice] = React.useState(0);
@@ -167,9 +169,19 @@ export const InvoiceGenerator: React.FC<IInvoiceGeneratorProps> = (props) => {
         {(!invoices || invoices.length === 0 || !listId) && (
           <Placeholder
             iconName="Edit"
-            iconText="Configure your web part"
-            description="Please configure the web part properties."
+            iconText={!listId ? "Set up your invoice list" : "No invoices found"}
+            description={
+              !listId
+                ? isEditMode
+                  ? "This web part reads customers from a SharePoint list (with Title and billTo columns). Open the property pane to pick an existing list — or switch on \"Do you want to create a new list?\" and create one in a single click."
+                  : "This web part isn't set up yet. Edit the page, then open this web part's property pane to pick an existing invoice list or create a new one."
+                : "The selected list has no invoices yet. Add customer items to it, then reload the page."
+            }
             buttonLabel="Configure"
+            // The Configure button opens the property pane, which only exists in edit
+            // mode. In view mode hide it (it would be a dead click) and the description
+            // above tells the visitor to edit the page instead.
+            hideButton={!isEditMode}
             onConfigure={() => {
               context.propertyPane.open();
             }}
@@ -186,11 +198,13 @@ export const InvoiceGenerator: React.FC<IInvoiceGeneratorProps> = (props) => {
                   text: `${strings.invoiceText} ${invoice.ID} - ${invoice.Title}`,
                 }))}
                 selectedKey={selectedInvoiceIndex.toString()}
-                onChange={(event, option) => setSelectedInvoiceIndex(option.key.toString())}
+                onChange={(event, option) => option && setSelectedInvoiceIndex(option.key.toString())}
               />
             </div>
             <div className={styles.header}>
-              <img className={styles.companyLogo} src={logoImage} alt={strings.companyLogoAlt} height="100" width="100" />
+              {logoImage && (
+                <img className={styles.companyLogo} src={logoImage} alt={strings.companyLogoAlt} height="100" width="100" />
+              )}
               <div className={styles.title}>{strings.invoiceTitle}</div>
             </div>
 

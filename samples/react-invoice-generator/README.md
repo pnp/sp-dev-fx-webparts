@@ -4,15 +4,25 @@
 
 SPFx Invoice Generator Web part using PnP JS allows users to create invoices for different clients or customers. Users can add items to the invoice using add item button, and the application calculates the subtotal, tax, and total amount. The application also generates PDF versions of the invoices. To obtain customer names and addresses, the application retrieve data from a SharePoint list and present them in dropdown menus for use in the application. The user interface components are designed and implemented using the Fluent UI library. Additionally, the @react-pdf/renderer library is utilized to generate the PDF versions of the invoices. Company Logo, Company Name, Address and Tax rate can be updated using web part properties.
 
-![Configure Invoice Generator](./assets/configureWebpart.PNG)
+Before the web part is configured, it explains which list it needs and how to create one:
+
+![Set up your invoice list](./assets/configureWebpart.PNG)
+
+Once the list exists but has no customer items yet:
+
+![No invoices found](./assets/noInvoicesFound.png)
+
+The invoice itself, with line items, tax and totals:
 
 ![Invoice Generator](./assets/invoice.PNG)
 
-List needed to configure to make the app work
-![Invoice Generator List ](./assets/invoiceList.PNG)
+The SharePoint list the web part reads customers from:
 
-PDF generated using Download Invoice PDF button
-![Invoice Generator PDF ](./assets/invoicePDF.PNG)
+![Invoice Generator List](./assets/invoiceList.PNG)
+
+PDF generated using the Download Invoice PDF button:
+
+![Invoice Generator PDF](./assets/InvoicePDF.PNG)
 
 ## Compatibility
 
@@ -21,8 +31,8 @@ PDF generated using Download Invoice PDF button
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.16.1](https://img.shields.io/badge/SPFx-1.16.1-green.svg)
-![Node.js v16 | v14 | v12](https://img.shields.io/badge/Node.js-v16%20%7C%20v14%20%7C%20v12-green.svg)
+![SPFx 1.23.0](https://img.shields.io/badge/SPFx-1.23.0-green.svg)
+![Node.js v22.15.0](https://img.shields.io/badge/Node.js-%20v22.15.0-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -37,21 +47,23 @@ PDF generated using Download Invoice PDF button
 
 ## Prerequisites
 
- To use the SPFX Invoice Generator app, you will need:
+ The web part reads customer data from a SharePoint list with these columns:
 
-A custom list on the current SharePoint site with the following columns:
+* `Title` (single line of text) — the customer name (shown as *customerName* in the screenshot)
+* `billTo` (multiple lines of text) — the billing address
 
-* Title (single line of text) renamed to customerName in the screenshot. Internal Name - Title
-* billTo (multiple lines of text)
+**You do not have to create this list by hand.** Open the web part property pane and switch on **"Do you want to create a new list?"**, enter a name, and click **Create List** — the web part provisions the list (with the `billTo` column) for you and selects it. If you already have a suitable list, just pick it from the **"Pick your list"** dropdown instead.
 
 ## Contributors
 
 * [Rishabh Shukla](https://github.com/rishabhshukla12)
+* [Nello D'Andrea](https://github.com/ferrarirosso)
 
 ## Version history
 
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
+| 1.1.0   | July 2026        | Upgraded to SPFx 1.23.0; list provisioning made idempotent, clearer first-run guidance, company logo now optional |
 | 1.0     | May 25, 2023 | Initial release |
 
 ## Minimal Path to Awesome
@@ -60,7 +72,7 @@ A custom list on the current SharePoint site with the following columns:
 * Ensure that you are at the solution folder
 * in the command-line run:
 * `npm install`
-* `gulp serve`
+* `npm run serve` (SPFx 1.23 uses the Heft toolchain — `gulp serve` no longer applies)
 
 ## References
 
