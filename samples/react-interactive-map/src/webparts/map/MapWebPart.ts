@@ -6,7 +6,8 @@ import {
   PropertyPaneTextField,
   PropertyPaneToggle,
   PropertyPaneSlider,
-  PropertyPaneButton
+  PropertyPaneButton,
+  PropertyPaneDropdown
 } from '@microsoft/sp-property-pane';
 import { PropertyPaneWebPartInformation } from '@pnp/spfx-property-controls/lib/PropertyPaneWebPartInformation';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
@@ -16,8 +17,28 @@ import * as strings from 'MapWebPartStrings';
 import Map from './components/Map';
 import { IMapProps, IMarker, IMarkerCategory } from './components/IMapProps';
 import ManageMarkerCategoriesDialog, { IManageMarkerCategoriesDialogProps } from './components/ManageMarkerCategoriesDialog';
+import SetStartLocationDialog, { ISetStartLocationDialogProps } from './components/SetStartLocationDialog';
 import { isNullOrEmpty } from '@spfxappdev/utility';
-import { Spinner, ISpinnerProps } from '@microsoft/office-ui-fabric-react-bundle';
+import { Spinner, ISpinnerProps } from '@fluentui/react';
+
+const OSM_TILE_URL = "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png";
+const OSM_TILE_ATTRIBUTION = "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors";
+
+interface ITileLayerPreset {
+  key: string;
+  text: string;
+  url: string;
+  attribution: string;
+}
+
+/** Ready-made, no-API-key base maps. Selecting one fills in the tile URL + attribution;
+ *  "custom" leaves the fields editable so an author can paste their own provider. */
+const TILE_LAYER_PRESETS: ITileLayerPreset[] = [
+  { key: 'streets', text: 'Streets (OpenStreetMap)', url: OSM_TILE_URL, attribution: OSM_TILE_ATTRIBUTION },
+  { key: 'satellite', text: 'Satellite (Esri)', url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', attribution: 'Tiles &copy; Esri &mdash; Source: Esri, Maxar, Earthstar Geographics, and the GIS User Community' },
+  { key: 'topographic', text: 'Topographic (Esri)', url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}', attribution: 'Tiles &copy; Esri &mdash; Esri, HERE, Garmin, Intermap, USGS, and the GIS User Community' },
+  { key: 'custom', text: 'Custom (enter a tile URL below)', url: '', attribution: '' }
+];
 
 export interface IMapPlugins {
   searchBox: boolean;
@@ -38,10 +59,12 @@ export interface IMapWebPartProps {
   scrollWheelZoom: boolean;
   dragging: boolean;
   showPopUp: boolean;
+  fitToMarkers: boolean;
   plugins: IMapPlugins;
+  tileLayerPreset: string;
   tileLayerUrl: string;
   tileLayerAttribution: string;
-    
+
 }
 
 export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> {
@@ -56,9 +79,9 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
     const element: React.ReactElement<IMapProps> = React.createElement(
       Map,
       {
-        markerItems: this.properties.markerItems||[],
+        markerItems: this.properties.markerItems || [],
         markerCategories: this.properties.markerCategories||[],
-        isEditMode: this.displayMode == DisplayMode.Edit,
+        isEditMode: this.displayMode === DisplayMode.Edit,
         zoom: this.properties.startZoom,
         minZoom: this.properties.minZoom,
         maxZoom: this.properties.maxZoom,
@@ -70,7 +93,9 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
         tileLayerAttribution: isNullOrEmpty(this.properties.tileLayerAttribution) ? "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors" : this.properties.tileLayerAttribution,
         dragging: this.properties.dragging,
         scrollWheelZoom: this.properties.scrollWheelZoom,
-        showPopUp: this.properties.showPopUp, 
+        showPopUp: this.properties.showPopUp,
+        // Default on so visitors see every marker on load; falls back to the start view when off.
+        fitToMarkers: this.properties.fitToMarkers ?? true,
 
         onMarkerCollectionChanged: (markerItems: IMarker[]) => {
           this.properties.markerItems = markerItems;
@@ -96,10 +121,26 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
       this.reload();
   }
 
-  protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: any, newValue: any): void {
+  protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: unknown, newValue: unknown): void {
     super.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue);
 
-    const reloadIfOneOfProps = ["height", "tileLayerUrl", "minZoom", "maxZoom", "tileLayerAttribution", "plugins.zoomControl"];
+    // Picking a map-style preset fills in the tile URL + attribution, then refreshes the
+    // pane so the (read-only unless "custom") URL/attribution fields reflect the choice.
+    if (propertyPath === 'tileLayerPreset') {
+      const preset = TILE_LAYER_PRESETS.filter(p => p.key === (newValue as string))[0];
+      if (preset && preset.key !== 'custom') {
+        this.properties.tileLayerUrl = preset.url;
+        this.properties.tileLayerAttribution = preset.attribution;
+      }
+      this.context.propertyPane.refresh();
+      this.reload();
+      return;
+    }
+
+    // markercluster and legend render as MapContainer children; react-leaflet v3
+    // doesn't reliably reconcile them after the map is created, so remount on toggle.
+    // (searchBox is now an overlay sibling and updates reactively — no remount needed.)
+    const reloadIfOneOfProps = ["height", "tileLayerUrl", "minZoom", "maxZoom", "tileLayerAttribution", "plugins.zoomControl", "plugins.markercluster", "plugins.legend"];
     
     if(reloadIfOneOfProps.Contains(p => p.Equals(propertyPath))) {
       this.reload();
@@ -115,7 +156,10 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
 
       ReactDom.render(spinner, this.domElement);
 
-      setTimeout(() => { this.render(); }, 300);
+      setTimeout(() => {
+        ReactDom.unmountComponentAtNode(this.domElement);
+        this.render();
+      }, 300);
     }, 500);
     
     
@@ -129,6 +173,7 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
     this.properties.markerCategories = markerCategories;
     this.render();
   }
+
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
     if (!currentTheme) {
       return;
@@ -138,9 +183,9 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
     const {
       semanticColors
     } = currentTheme;
-    this.domElement.style.setProperty('--bodyText', semanticColors.bodyText);
-    this.domElement.style.setProperty('--link', semanticColors.link);
-    this.domElement.style.setProperty('--linkHovered', semanticColors.linkHovered);
+    this.domElement.style.setProperty('--bodyText', semanticColors!.bodyText!);
+    this.domElement.style.setProperty('--link', semanticColors!.link!);
+    this.domElement.style.setProperty('--linkHovered', semanticColors!.linkHovered!);
 
   }
 
@@ -152,10 +197,63 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
     return Version.parse('1.0');
   }
 
+  /** Opens the "Set start location" mini-map dialog and, on save, persists center + zoom. */
+  private openSetStartLocationDialog(): void {
+    const dummyElement: HTMLDivElement = document.createElement("div");
+    document.body.appendChild(dummyElement);
+
+    const closeDialog = (): void => {
+      ReactDom.unmountComponentAtNode(dummyElement);
+      dummyElement.remove();
+    };
+
+    const element: React.ReactElement<ISetStartLocationDialogProps> = React.createElement(SetStartLocationDialog, {
+      center: this.properties.center ?? [51.505, -0.09],
+      zoom: this.properties.startZoom ?? 13,
+      tileLayerUrl: isNullOrEmpty(this.properties.tileLayerUrl) ? OSM_TILE_URL : this.properties.tileLayerUrl,
+      tileLayerAttribution: isNullOrEmpty(this.properties.tileLayerAttribution) ? OSM_TILE_ATTRIBUTION : this.properties.tileLayerAttribution,
+      onSave: (center: [number, number], zoom: number) => {
+        this.properties.center = center;
+        this.properties.startZoom = zoom;
+        this.reload();
+      },
+      onDismiss: () => {
+        closeDialog();
+      }
+    });
+
+    ReactDom.render(element, dummyElement);
+  }
+
+  /** Opens the "Manage categories" dialog and applies any category changes. */
+  private openManageCategoriesDialog(): void {
+    const dummyElement: HTMLDivElement = document.createElement("div");
+    document.body.appendChild(dummyElement);
+
+    const closeDialog = (): void => {
+      ReactDom.unmountComponentAtNode(dummyElement);
+      dummyElement.remove();
+    };
+
+    const element: React.ReactElement<IManageMarkerCategoriesDialogProps> = React.createElement(ManageMarkerCategoriesDialog, {
+      markerCategories: this.properties.markerCategories,
+      onDismiss: () => {
+        closeDialog();
+      },
+      onMarkerCategoriesChanged: (markerCategories: IMarkerCategory[]) => {
+        closeDialog();
+        this.onMarkerCategoriesChanged(markerCategories);
+      },
+    });
+
+    ReactDom.render(element, dummyElement);
+  }
+
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
         {
+          header: { description: strings.WebPartPropertyGroupMapSettings },
           groups: [
             {
               groupName: strings.WebPartPropertyGroupMapSettings,
@@ -164,6 +262,16 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
                 //   description: `<div class='wp-settings-info'>${strings.WebPartPropertySettingsInfoLabel}</div>`,
                 //   key: 'Info_For_3f860b48-1dc3-496d-bd28-b145672289cc'
                 // }),
+                PropertyPaneButton('setStartLocationButton', {
+                  text: strings.WebPartPropertyButtonSetStartLocation,
+                  onClick: () => {
+                    this.openSetStartLocationDialog();
+                    return null;
+                  }
+                }),
+                PropertyPaneToggle('fitToMarkers', {
+                  label: strings.WebPartPropertyFitToMarkersLabel
+                }),
                 PropertyPaneSlider('minZoom', {
                   label: strings.WebPartPropertyMinZoomLabel,
                   max: 30,
@@ -193,25 +301,33 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
                 }),
                 
               ]
-            },
+            }
+          ]
+        },
+        {
+          header: { description: strings.WebPartPropertyGroupCategories },
+          groups: [
             {
-              isCollapsed: true,
-              groupName: strings.WebPartPropertyGroupTileLayerSettings,
+              groupName: strings.WebPartPropertyGroupCategories,
               groupFields: [
-                PropertyPaneWebPartInformation({
-                  description: `<div class='wp-settings-info'>${strings.WebPartPropertyTileLayerUrlInformationLabel}</div>`,
-                  key: 'Tile_For_3f860b48-1dc3-496d-bd28-b145672289cc'
+                PropertyPaneButton('manageCategoriesButton', {
+                  text: strings.WebPartPropertyButtonManageCategories,
+                  onClick: () => {
+                    this.openManageCategoriesDialog();
+                    return null;
+                  }
                 }),
-                PropertyPaneTextField('tileLayerUrl', {
-                  label: strings.WebPartPropertyTileLayerUrlLabel
-                }),
-                PropertyPaneTextField('tileLayerAttribution', {
-                  label: strings.WebPartPropertyTileLayerAttributionLabel
-                }),                
+                PropertyPaneToggle('plugins.legend', {
+                  label: strings.WebPartPropertyPluginLegendLabel
+                })
               ]
-            },
+            }
+          ]
+        },
+        {
+          header: { description: strings.WebPartPropertyGroupPlugins },
+          groups: [
             {
-              isCollapsed: true,
               groupName: strings.WebPartPropertyGroupPlugins,
               groupFields: [
                 PropertyPaneToggle('plugins.searchBox', {
@@ -224,38 +340,38 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
                   label: strings.WebPartPropertyPluginZoomControlLabel
                 }),
               ]
-            },
+            }
+          ]
+        },
+        {
+          header: { description: strings.WebPartPropertyGroupTileLayerSettings },
+          groups: [
             {
-              isCollapsed: true,
-              groupName: strings.WebPartPropertyGroupCategories,
+              groupName: strings.WebPartPropertyGroupTileLayerSettings,
               groupFields: [
-                PropertyPaneButton(null, {
-                  text: strings.WebPartPropertyButtonManageCategories,
-                  onClick: (val: any) => {
-                    const dummyElement: HTMLDivElement = document.createElement("div");
-                    document.body.appendChild(dummyElement);
-
-                    const element: React.ReactElement<IManageMarkerCategoriesDialogProps> = React.createElement(ManageMarkerCategoriesDialog, {
-                      markerCategories: this.properties.markerCategories,
-                      onDismiss: () => {
-                        dummyElement.remove();
-                      },
-                      onMarkerCategoriesChanged: (markerCategories: IMarkerCategory[]) => {
-                        dummyElement.remove();
-                        this.onMarkerCategoriesChanged(markerCategories);
-                      },
-                    });
-
-                    ReactDom.render(element, dummyElement);
-                    
-                    return null;
-                  }
+                PropertyPaneDropdown('tileLayerPreset', {
+                  label: strings.WebPartPropertyTileLayerPresetLabel,
+                  options: TILE_LAYER_PRESETS.map(p => ({ key: p.key, text: p.text }))
                 }),
-                PropertyPaneToggle('plugins.legend', {
-                  label: strings.WebPartPropertyPluginLegendLabel
-                })
+                PropertyPaneWebPartInformation({
+                  description: `<div class='wp-settings-info'>${strings.WebPartPropertyTileLayerUrlInformationLabel}</div>`,
+                  key: 'Tile_For_3f860b48-1dc3-496d-bd28-b145672289cc'
+                }),
+                PropertyPaneTextField('tileLayerUrl', {
+                  label: strings.WebPartPropertyTileLayerUrlLabel,
+                  disabled: (this.properties.tileLayerPreset ?? 'streets') !== 'custom'
+                }),
+                PropertyPaneTextField('tileLayerAttribution', {
+                  label: strings.WebPartPropertyTileLayerAttributionLabel,
+                  disabled: (this.properties.tileLayerPreset ?? 'streets') !== 'custom'
+                }),
               ]
-            },
+            }
+          ]
+        },
+        {
+          header: { description: strings.WebPartPropertyGroupAbout },
+          groups: [
             {
               groupName: strings.WebPartPropertyGroupAbout,
               groupFields: [
@@ -271,8 +387,7 @@ export default class MapWebPart extends BaseClientSideWebPart<IMapWebPartProps> 
                 })
               ]
             }
-          ],
-          displayGroupsAsAccordion: true,
+          ]
         }
       ]
     };
