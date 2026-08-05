@@ -7,7 +7,7 @@ sampleName: "pnp-sp-dev-spfx-web-parts-react-invoice-generator"
 thumbnail: "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-invoice-generator.webp"
 images: ["/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-invoice-generator.webp"]
 thumbnailAlt: "Invoice Generator Web Part"
-lastmod: "2023-06-12T00:00:00.000Z"
+lastmod: "2026-07-01T00:00:00.000Z"
 tags: []
 categories: []
 openInGalleryUrl: "/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-web-parts-react-invoice-generator"

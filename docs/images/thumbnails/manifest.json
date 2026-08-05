@@ -276,7 +276,7 @@
     "file": "pnp-sp-dev-spfx-web-parts-react-group-members-webpart.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-invoice-generator": {
-    "sourceUrl": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-invoice-generator/assets/invoice.PNG",
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-invoice-generator/assets/configureWebpart.PNG",
     "file": "pnp-sp-dev-spfx-web-parts-react-invoice-generator.webp"
   },
   "pnp-sp-dev-spfx-web-parts-react-news-extension": {
