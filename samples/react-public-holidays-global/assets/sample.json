@@ -10,7 +10,7 @@
       "This SharePoint Framework (SPFx) web part displays public holidays for multiple countries and years. Users can select the country via the property pane, view holidays for the current year, navigate through paginated results."
     ],
     "creationDateTime": "2025-06-17",
-    "updateDateTime": "2025-06-17",
+    "updateDateTime": "2026-07-28",
     "products": [
       "SharePoint"
     ],

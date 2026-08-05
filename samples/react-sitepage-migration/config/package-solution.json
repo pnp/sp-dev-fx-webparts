@@ -1,0 +1,52 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-page-migration-admin-client-side-solution",
+    "id": "57552219-3f49-4038-b69b-1f9ec2165f64",
+    "version": "1.1.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.22.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Hybrid SharePoint modern page migration administration web part."
+      },
+      "longDescription": {
+        "default": "Lists modern pages from a source site, validates fidelity, migrates content, assets, and structure to a target site, and exports migration reports."
+      },
+      "screenshotPaths": [
+        "assets/01-choose-sites-empty-state.png",
+        "assets/04-page-inventory-readiness.png",
+        "assets/06-migration-confirmation-dialog.png"
+      ],
+      "videoUrl": "",
+      "categories": [
+        "Productivity"
+      ]
+    },
+    "features": [
+      {
+        "title": "Page Migration Admin Web Part",
+        "description": "Deploys the hybrid SharePoint modern page migration administration web part.",
+        "id": "db59927e-5d10-4446-a4f9-fec8f5e51f79",
+        "version": "1.1.0.0"
+      }
+    ],
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read.All"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-page-migration-admin.sppkg"
+  }
+}

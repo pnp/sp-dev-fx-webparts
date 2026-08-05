@@ -10,27 +10,32 @@ export class TicketService {
         this.listTitle = listName;
     }
 
+    public getListTitle(): string {
+        return this.listTitle;
+    }
+
     public async getTickets(sp: SPFI): Promise<ITicketItem[]> {
         try {
-            const items = await sp.web.lists.getByTitle(this.listTitle).items.select("*", "AssignedTo/Id", "AssignedTo/Title").expand("AssignedTo")();
-            return items;
+            return await sp.web.lists.getByTitle(this.listTitle).items
+                .select("*", "AssignedTo/Id", "AssignedTo/Title")
+                .expand("AssignedTo")();
         } catch (error) {
-            console.error("Error fetching all tickets:", error);
-            throw error;
+            // AssignedTo field may not exist on the list — retry without the expand
+            console.warn("Retrying getTickets without AssignedTo expansion:", error);
+            return await sp.web.lists.getByTitle(this.listTitle).items.select("*")();
         }
     }
 
     public async getMyTickets(userId: number, sp: SPFI): Promise<ITicketItem[]> {
         try {
-            const items = await sp.web.lists.getByTitle(this.listTitle).items
+            return await sp.web.lists.getByTitle(this.listTitle).items
                 .select("*", "AssignedTo/Id", "AssignedTo/Title")
                 .expand("AssignedTo")
                 .filter(`AssignedTo/Id eq ${userId}`)();
-
-            return items;
         } catch (error) {
-            console.error("Error fetching user tickets:", error);
-            throw error;
+            // AssignedTo field may not exist on the list — return all items as fallback
+            console.warn("Retrying getMyTickets without AssignedTo expansion:", error);
+            return await sp.web.lists.getByTitle(this.listTitle).items.select("*")();
         }
     }
 
@@ -58,14 +63,17 @@ export class TicketService {
 
     public async getTicketById(id: number, sp: SPFI): Promise<ITicketItem> {
         try {
-            const item = await sp.web.lists.getByTitle(this.listTitle).items.getById(id)
+            return await sp.web.lists.getByTitle(this.listTitle).items.getById(id)
                 .select("*", "AssignedTo/Id", "AssignedTo/Title", "Author/Id", "Author/Title", "Editor/Id", "Editor/Title")
                 .expand("AssignedTo", "Author", "Editor")
                 ();
-            return item;
         } catch (error) {
-            console.error("Error getting ticket by ID:", error);
-            throw error;
+            // Retry without AssignedTo if that field doesn't exist on the list
+            console.warn("Retrying getTicketById without AssignedTo expansion:", error);
+            return await sp.web.lists.getByTitle(this.listTitle).items.getById(id)
+                .select("*", "Author/Id", "Author/Title", "Editor/Id", "Editor/Title")
+                .expand("Author", "Editor")
+                ();
         }
     }
 

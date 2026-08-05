@@ -23,7 +23,7 @@
     "adaptivecards": "^1.2.6",
     "adaptivecards-fabric": "^1.0.4",
     "adaptivecards-templating": "1.1.0",
-    "markdown-it": "^10.0.0",
+    "markdown-it": "^14.2.0",
     "office-ui-fabric-react": "6.214.0",
     "react": "16.8.5",
     "react-dom": "16.8.5"

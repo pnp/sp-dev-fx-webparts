@@ -4,6 +4,16 @@
 
 This web parts displays a (world) map. An editor can set custom markers directly in the map. Each marker can configured individually. It is possible to determine the color of the pin, the icon in the pin or what should happen when the pin is clicked. It is even possible to change the tile layer in the web part properties.
 
+Markers are added and configured directly in the map (right-click *"Add a new marker here"* in edit mode), each with its category, click behaviour, colour, icon, tooltip and rich Panel/Dialog or URL content.
+
+The web part also supports:
+
+* **Set start location** — a property-pane dialog with a small map and a place search (OpenStreetMap) to pick the view visitors see when the page loads. Panning the map and using the right-click *"Make this view as start position"* still works as a secondary path.
+* **Fit to markers** — an optional toggle (on by default) that frames all markers when the page loads, so visitors see every point without zooming out. Falls back to the start location when off or when there are no markers.
+* **Map style presets** — a *"Map style"* dropdown on the Tile layer page with ready-made, no-API-key base maps: Streets (OpenStreetMap), Satellite (Esri) and Topographic (Esri), plus Custom for pasting your own tile URL.
+* **Visitor location search** — an optional toggle (*"Let visitors search for locations"*) that surfaces a place search above the map at run time.
+* **Paged property pane** — settings are organised across pages (general, categories, controls, tile layer) instead of one long list.
+
 
 ![EditMode](assets/WPPreview.png)
 
@@ -13,7 +23,15 @@ This web parts displays a (world) map. An editor can set custom markers directly
 
 ### Preview
 
+Search for a location, then click a marker to open its panel or follow its link:
+
 ![Interactive Map web part preview](assets/MapWPOverview.gif)
+
+### Switching the map style
+
+The property pane is organised across pages. The Tile layer page offers ready-made base maps — including satellite imagery — with no API key required:
+
+![Switching the map style to satellite imagery](assets/MapStyleSatellite.gif)
 
 ## Compatibility
 
@@ -22,8 +40,8 @@ This web parts displays a (world) map. An editor can set custom markers directly
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.14](https://img.shields.io/badge/SPFx-1.14-green.svg)
-![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg)
+![SPFx 1.23.0](https://img.shields.io/badge/SPFx-1.23.0-green.svg)
+![Node.js v22.15.0](https://img.shields.io/badge/Node.js-%20v22.15.0-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -42,11 +60,13 @@ This web parts displays a (world) map. An editor can set custom markers directly
 ## Contributors
 
 * [Sergej Schwabauer](https://github.com/SPFxAppDev)
+* [Nello D'Andrea](https://github.com/ferrarirosso)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
+1.1.0   | July 2026 | Upgraded to 1.23.0; reorganised the property pane into pages; added map-style presets (incl. satellite), a start-location dialog, a fit-to-markers toggle and a visitor location-search bar; hardened the OpenStreetMap search
 1.0|January 19, 2023|Initial release
 
 
@@ -56,7 +76,7 @@ Version|Date|Comments
 * From your command line, change your current directory to the directory containing this sample (`react-interactive-map`, located under `samples`)
 * in the command line run:
   * `npm install`
-  * `gulp serve`
+  * `npm run serve`
 
 > This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
@@ -64,10 +84,12 @@ Version|Date|Comments
 
 This Web Part illustrates the following concepts on top of the SharePoint Framework:
 
-* [Fluent UI React Controls](https://developer.microsoft.com/en-us/fluentui#/controls/web)
-* [OpenStreetMap](https://www.openstreetmap.org/)
+* [Fluent UI React Controls](https://developer.microsoft.com/en-us/fluentui#/controls/web), including the `SearchBox` for place search
 * [LeafletJS](https://leafletjs.com/) and the [react-leaflet](https://react-leaflet.js.org/) wrapper
-* [Leaflet Plugin "Marker cluster"](https://github.com/Leaflet/Leaflet.markercluster) ant the [react-leaflet-markercluster](https://www.npmjs.com/package/react-leaflet-markercluster) wrapper
+* [Leaflet Plugin "Marker cluster"](https://github.com/Leaflet/Leaflet.markercluster) and the [react-leaflet-markercluster](https://www.npmjs.com/package/react-leaflet-markercluster) wrapper
+* Switchable base maps: [OpenStreetMap](https://www.openstreetmap.org/) and [Esri](https://www.esri.com/) (satellite / topographic) tiles, all without an API key
+* [OpenStreetMap Nominatim](https://nominatim.org/) geocoding for place search (no API key)
+* A multi-page property pane with `PropertyPaneDropdown` and button-launched dialogs
 
 ## Help
 

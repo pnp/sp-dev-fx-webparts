@@ -21,7 +21,6 @@
     "@microsoft/sp-webpart-base": "1.20.0",
     "react": "17.0.1",
     "react-dom": "17.0.1",
-    "recharts": "^2.15.3",
     "tslib": "2.3.1"
   },
   "devDependencies": {

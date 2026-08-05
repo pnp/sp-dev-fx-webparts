@@ -14,6 +14,8 @@ node_modules
 # Build generated files
 dist
 lib
+lib-commonjs
+.heft
 release
 solution
 temp

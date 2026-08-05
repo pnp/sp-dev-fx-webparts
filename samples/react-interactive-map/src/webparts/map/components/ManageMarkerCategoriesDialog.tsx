@@ -2,21 +2,20 @@ import * as React from 'react';
 import { IMarkerCategory } from './IMapProps';
 import './Map.module.scss';
 import { cloneDeep } from '@microsoft/sp-lodash-subset';
-import { Icon, Dialog, TextField, PrimaryButton, DefaultButton, getColorFromString, IColor, DialogFooter, DialogContent, DialogType, MessageBar, TooltipHost } from 'office-ui-fabric-react';
+import { Icon, Dialog, TextField, PrimaryButton, DefaultButton, getColorFromString, IColor, DialogFooter, DialogContent, DialogType, MessageBar, TooltipHost, IconButton } from '@fluentui/react';
 import { Guid } from '@microsoft/sp-core-library';
 import { isNullOrEmpty, isFunction } from '@spfxappdev/utility';
-import { InlineColorPicker } from '@src/components/inlineColorPicker/InlineColorPicker';
+import { InlineColorPicker } from '../../../components/inlineColorPicker/InlineColorPicker';
 import '@spfxappdev/utility/lib/extensions/StringExtensions';
 import '@spfxappdev/utility/lib/extensions/ArrayExtensions';
-import { IconButton } from '@microsoft/office-ui-fabric-react-bundle';
 import { MarkerIcon } from './MarkerIcon';
 import * as strings from 'MapWebPartStrings';
-import { IconPicker } from '@src/components/iconPicker/IconPicker';
+import { IconPicker } from '../../../components/iconPicker/IconPicker';
 
 export interface IManageMarkerCategoriesDialogProps {
     markerCategories: IMarkerCategory[];
-    onDismiss();
-    onMarkerCategoriesChanged(markerCategories: IMarkerCategory[]);
+    onDismiss(): void;
+    onMarkerCategoriesChanged(markerCategories: IMarkerCategory[]): void;
 }
 
 interface IManageMarkerCategoriesDialogState {
@@ -70,7 +69,7 @@ export default class ManageMarkerCategoriesDialog extends React.Component<IManag
                 {!isNullOrEmpty(this.state.markerCategories) &&
                 <>
                     <div className='spfxappdev-grid-row grid-header'>
-                        <div className='spfxappdev-grid-col spfxappdev-sm1'></div>
+                        <div className='spfxappdev-grid-col spfxappdev-sm1' />
                         <div className='spfxappdev-grid-col spfxappdev-sm3'>{strings.LabelCategoryHeaderName}</div>
                         <div className='spfxappdev-grid-col spfxappdev-sm1'>{strings.LabelMarkerColor}</div>
                         <div className='spfxappdev-grid-col spfxappdev-sm3'>
@@ -85,7 +84,7 @@ export default class ManageMarkerCategoriesDialog extends React.Component<IManag
                                 <Icon className='info-tooltip' iconName='Info' />
                             </TooltipHost>
                         </div>
-                        <div className='spfxappdev-grid-col spfxappdev-sm1'></div>
+                        <div className='spfxappdev-grid-col spfxappdev-sm1' />
                     </div>
                     {this.state.markerCategories.map((cat: IMarkerCategory, index: number): JSX.Element => {
                         return (<div key={cat.id} className='spfxappdev-grid-row categories-grid' data-catid={cat.id}>
@@ -144,21 +143,25 @@ export default class ManageMarkerCategoriesDialog extends React.Component<IManag
                 }} />
             </div>
             <div className='spfxappdev-grid-col spfxappdev-sm3'>
-                <TextField 
+                <TextField
                     required={true}
-                    defaultValue={categoryItem.name} 
-                    onChange={(ev: any, name: string) => {
-                        this.state.markerCategories[index].name = name;
+                    defaultValue={categoryItem.name}
+                    onChange={(ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, name?: string) => {
+                        const markerCategories = this.state.markerCategories;
+                        markerCategories[index].name = name ?? "";
+                        this.setState({ markerCategories });
                         this.validateForm();
-                    }}  
+                    }}
                 />
             </div>
             <div className='spfxappdev-grid-col spfxappdev-sm1'>
-                <InlineColorPicker 
+                <InlineColorPicker
                     alphaType='none'
                     color={getColorFromString(categoryItem.iconProperties.markerColor)}
-                    onChange={(ev: any, color: IColor) => {
-                        this.state.markerCategories[index].iconProperties.markerColor = "#" + color.hex;
+                    onChange={(ev: React.SyntheticEvent<HTMLElement>, color: IColor) => {
+                        const markerCategories = this.state.markerCategories;
+                        markerCategories[index].iconProperties.markerColor = "#" + color.hex;
+                        this.setState({ markerCategories });
                         this.validateForm();
                     }}
                 />
@@ -167,17 +170,21 @@ export default class ManageMarkerCategoriesDialog extends React.Component<IManag
                 <IconPicker
                     defaultValue={categoryItem.iconProperties.iconName}
                     onIconChanged={(name: string) => {
-                        this.state.markerCategories[index].iconProperties.iconName = name;
+                        const markerCategories = this.state.markerCategories;
+                        markerCategories[index].iconProperties.iconName = name;
+                        this.setState({ markerCategories });
                         this.validateForm();
-                    }} 
+                    }}
                 />
             </div>
             <div className='spfxappdev-grid-col spfxappdev-sm1'>
                 <InlineColorPicker
                     alphaType='none'
                     color={getColorFromString(categoryItem.iconProperties.iconColor)}
-                    onChange={(ev: any, color: IColor) => {
-                        this.state.markerCategories[index].iconProperties.iconColor = "#" + color.hex;
+                    onChange={(ev: React.SyntheticEvent<HTMLElement>, color: IColor) => {
+                        const markerCategories = this.state.markerCategories;
+                        markerCategories[index].iconProperties.iconColor = "#" + color.hex;
+                        this.setState({ markerCategories });
                         this.validateForm();
                     }}
                     isDisbaled={isNullOrEmpty(categoryItem.iconProperties.iconName)}
@@ -185,11 +192,13 @@ export default class ManageMarkerCategoriesDialog extends React.Component<IManag
             </div>
             <div className='spfxappdev-grid-col spfxappdev-sm2'>
                 <TextField
-                    defaultValue={categoryItem.popuptext} 
-                    onChange={(ev: any, popuptext: string) => {
-                        this.state.markerCategories[index].popuptext = popuptext;
+                    defaultValue={categoryItem.popuptext}
+                    onChange={(ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, popuptext?: string) => {
+                        const markerCategories = this.state.markerCategories;
+                        markerCategories[index].popuptext = popuptext;
+                        this.setState({ markerCategories });
                         this.validateForm();
-                    }}  
+                    }}
                 />
             </div>
             <div className='spfxappdev-grid-col spfxappdev-sm1'>

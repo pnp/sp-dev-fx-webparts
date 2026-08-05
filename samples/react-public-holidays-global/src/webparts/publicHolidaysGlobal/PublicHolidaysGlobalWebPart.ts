@@ -5,18 +5,22 @@ import {
   type IPropertyPaneConfiguration,
   PropertyPaneTextField,
   PropertyPaneDropdown,
+  PropertyPaneSlider,
   IPropertyPaneDropdownOption
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
 
 import * as strings from 'PublicHolidaysGlobalWebPartStrings';
+import { COUNTRIES } from './models/countries';
 import PublicHolidaysGlobal from './components/PublicHolidaysGlobal';
 import { IPublicHolidaysGlobalProps } from './components/IPublicHolidaysGlobalProps';
 
 export interface IPublicHolidaysGlobalWebPartProps {
   description: string;
   country: string;
+  defaultYear: number;
+  itemsPerPage: number;
 }
 
 export default class PublicHolidaysGlobalWebPart extends BaseClientSideWebPart<IPublicHolidaysGlobalWebPartProps> {
@@ -24,28 +28,17 @@ export default class PublicHolidaysGlobalWebPart extends BaseClientSideWebPart<I
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = '';
 
-  // Country options for the dropdown
-private _countryOptions: IPropertyPaneDropdownOption[] = [
-  { key: 'PT', text: 'Portugal' },
-  { key: 'ES', text: 'Spain' },
-  { key: 'BR', text: 'Brazil' },
-  { key: 'US', text: 'United States' },
-  { key: 'FR', text: 'France' },
-  { key: 'DE', text: 'Germany' },
-  { key: 'IT', text: 'Italy' },
-  { key: 'GB', text: 'United Kingdom' },
-  { key: 'CA', text: 'Canada' },
-  { key: 'AU', text: 'Australia' },
-  { key: 'JP', text: 'Japan' },
-  { key: 'CN', text: 'China' },
-  { key: 'IN', text: 'India' },
-  { key: 'MX', text: 'Mexico' },
-  { key: 'NL', text: 'Netherlands' },
-  { key: 'SE', text: 'Sweden' },
-  { key: 'CH', text: 'Switzerland' },
-  { key: 'ZA', text: 'South Africa' },
-  { key: 'KR', text: 'South Korea' }
-];
+  private _countryOptions: IPropertyPaneDropdownOption[] =
+    COUNTRIES.map((c) => ({ key: c.code, text: c.name }));
+
+  private get _yearOptions(): IPropertyPaneDropdownOption[] {
+    const current = new Date().getFullYear();
+    const options: IPropertyPaneDropdownOption[] = [];
+    for (let y = current - 3; y <= current + 1; y++) {
+      options.push({ key: y, text: String(y) });
+    }
+    return options;
+  }
 
 
   public render(): void {
@@ -54,6 +47,9 @@ private _countryOptions: IPropertyPaneDropdownOption[] = [
       {
         description: this.properties.description,
         country: this.properties.country || 'PT',
+        defaultYear: this.properties.defaultYear,
+        itemsPerPage: this.properties.itemsPerPage,
+        onConfigure: () => this.context.propertyPane.open(),
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
@@ -137,9 +133,22 @@ private _countryOptions: IPropertyPaneDropdownOption[] = [
                   label: strings.DescriptionFieldLabel
                 }),
                 PropertyPaneDropdown('country', {
-                  label: 'Country',
+                  label: strings.DefaultCountryFieldLabel,
                   options: this._countryOptions,
                   selectedKey: this.properties.country || 'PT'
+                }),
+                PropertyPaneDropdown('defaultYear', {
+                  label: strings.DefaultYearFieldLabel,
+                  options: this._yearOptions,
+                  selectedKey: this.properties.defaultYear || new Date().getFullYear()
+                }),
+                PropertyPaneSlider('itemsPerPage', {
+                  label: strings.ItemsPerPageFieldLabel,
+                  min: 5,
+                  max: 25,
+                  step: 5,
+                  value: this.properties.itemsPerPage || 10,
+                  showValue: true
                 })
               ]
             }

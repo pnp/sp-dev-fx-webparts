@@ -1,5 +1,4 @@
 import { Guid } from '@microsoft/sp-core-library';
-import * as L from 'leaflet';
 import { IMapPlugins } from '../MapWebPart';
 
 export type MarkerType = "Panel"|"Dialog"|"Url"|"None";
@@ -58,12 +57,14 @@ export interface IMapProps {
   plugins: IMapPlugins;
   tileLayerUrl: string;
   tileLayerAttribution: string;
-  showPopUp: boolean; 
-  
+  showPopUp: boolean;
+  /** When true (and markers exist), the live map frames all markers on load instead of the start view. */
+  fitToMarkers: boolean;
 
-  onMarkerCollectionChanged(markerItems: IMarker[]);
-  onMarkerCategoriesChanged(markerCategories: IMarkerCategory[]);
-  onStartViewSet(zoomLevel: number, lat: number, lng: number);
+
+  onMarkerCollectionChanged(markerItems: IMarker[]): void;
+  onMarkerCategoriesChanged(markerCategories: IMarkerCategory[]): void;
+  onStartViewSet(zoomLevel: number, lat: number, lng: number): void;
   onTitleUpdate?: (value: string) => void;
 }
 
@@ -82,5 +83,5 @@ export const emptyMarkerItem: IMarker = {
     iconName: "FullCircleMask",
     iconColor: "#ffffff"
   },
-  popuptext: null
+  popuptext: undefined
 };

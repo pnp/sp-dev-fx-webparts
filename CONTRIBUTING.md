@@ -57,6 +57,10 @@ When you submit a new sample, please follow these guidelines:
 * For security reasons, we do not accept pull requests containing `.sppkg` files. We only accept source code files for applications. 
 * Make sure to place the root of your solution's source code in sample folder
 
+### AI-assisted contributions
+
+AI-assisted development is welcome -- and encouraged. However, contributors are responsible for ensuring that every sample is accurate, complete, well-tested, and does what it claims to do. Pull requests containing unreviewed AI-generated code, hallucinated implementations, placeholder content, or samples that do not function as described will be rejected.
+
 ### No unnecessary files
 
 Remember that those using your samples may be new to SPFx, and they may not quite know what files are needed or not -- yet. As such, try to remove unecessary files to help them.
@@ -77,6 +81,8 @@ Remember that those using your samples may be new to SPFx, and they may not quit
 * The README template contains a specific tracking image at the end of the file with an `img` element pointing to `https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/YOUR-SOLUTION-NAME`. This is a transparent image which is used to track how many visits each sample receives in GitHub.
 * Update the image `src` attribute according with the repository name and folder information. For example, if your sample is named `react-todo` in the `samples` folder, you should update the `src` attribute to `https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-todo`
   * Update the image `src` attribute according with the repository name and folder information.
+
+> **⚠️ IMPORTANT:** The automated validation bot checks for an `<img>` HTML element in your README. Using Markdown image syntax like `![Visitor count](...)` will trigger a validation **warning** and may delay your PR. Always use the `<img>` tag format shown in the template above.
 
 #### Contributors
 

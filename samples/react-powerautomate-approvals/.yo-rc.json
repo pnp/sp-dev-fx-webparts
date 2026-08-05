@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.21.1",
+    "sdksVersions": {},
+    "version": "1.22.1",
+    "libraryName": "react-powerautomate-approvals",
+    "libraryId": "aea7c924-0732-4b18-824b-cd223c3c0d7a",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-powerautomate-approvals",
+    "solutionShortDescription": "react-powerautomate-approvals description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

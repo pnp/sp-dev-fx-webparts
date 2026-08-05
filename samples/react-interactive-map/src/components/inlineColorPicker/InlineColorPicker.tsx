@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ColorPicker, IColorPickerProps, getColorFromString, IColor, Callout, Label } from 'office-ui-fabric-react';
+import { ColorPicker, IColorPickerProps, getColorFromString, IColor, Callout, Label } from '@fluentui/react';
 import styles from './InlineColorPicker.module.scss';
 import { isset, isNullOrEmpty } from '@spfxappdev/utility';
 
@@ -23,22 +23,22 @@ export class InlineColorPicker extends React.Component<IInlineColorPickerProps, 
         isDisbaled: false
     };
 
-    private targetElement: HTMLDivElement = null;
-    
+    private targetElement: HTMLDivElement | undefined = undefined;
+
     public render(): React.ReactElement<IInlineColorPickerProps> {
 
 
-        let bc: IColor = null;
-        
-        if(typeof this.props.color != "string") {
+        let bc: IColor;
+
+        if(typeof this.props.color !== "string") {
             bc = this.props.color;
         }
         else {
-            bc = getColorFromString(this.props.color);
+            bc = getColorFromString(this.props.color)!;
         }
 
         const customCss: React.CSSProperties = {
-            background: `rgba(${bc.r}, ${bc.g}, ${bc.b}, ${bc.a/100})`
+            background: `rgba(${bc.r}, ${bc.g}, ${bc.b}, ${(bc.a ?? 100)/100})`
         };
 
         return (
@@ -47,12 +47,12 @@ export class InlineColorPicker extends React.Component<IInlineColorPickerProps, 
             <Label>{this.props.label}</Label> 
             }
         <div 
-        className={styles['inline-color-picker'] + ` ${this.props.isDisbaled?styles['disabled']:''}`} 
+        className={styles['inline-color-picker'] + ` ${this.props.isDisbaled?styles.disabled:''}`} 
         ref={(r) => {
             if(isset(r)) {
-                this.targetElement = r;
+                this.targetElement = r as HTMLDivElement;
             }
-        }} 
+        }}
         onClick={() => {
 
             if(this.props.isDisbaled) {
@@ -61,7 +61,7 @@ export class InlineColorPicker extends React.Component<IInlineColorPickerProps, 
 
             this.setState({ isPickerVisible: true });
         }}>
-            <div className={styles['inline-color-picker-inner']} style={customCss}></div>
+            <div className={styles['inline-color-picker-inner']} style={customCss} />
         </div>
         {this.state.isPickerVisible &&
                 <Callout target={this.targetElement} onDismiss={() => {
