@@ -2,40 +2,14 @@
 
 {{ $target := (printf "%s" (.Params.openInGalleryUrl | default "")) }}
 
-{{/* Optional soft redirect (NOT bot-detection). Users can cancel. */}}
 {{ if and $target .Params.openInGalleryUrl }}
 <div class="sample-redirect-banner"
     style="padding:12px;border:1px solid rgba(0,0,0,.12);border-radius:10px;margin:0 0 16px 0;">
-    <strong>Open in gallery</strong>
+    <strong>Interactive gallery</strong>
     <div style="margin-top:6px;">
-        This sample is best viewed in the interactive gallery.
-        <a href="{{ $target | safeURL }}">Open now</a>
-        ·
-        <a href="#" id="stay-here">Stay on this page</a>
+        <a href="{{ $target | safeURL }}">Open this sample in the gallery</a>
     </div>
 </div>
-
-<script>
-  (function () {
-    var target = {{ $target | jsonify }};
-
-    // Normalize + defend against accidental quotes / relative URLs
-    target = (target || "").toString().trim();
-    target = target.replace(/^"+|"+$/g, "");   // strip leading/trailing quotes
-    target = target.replace(/"/g, "");         // strip any remaining quotes
-
-    // Force absolute-path redirect if it isn't already absolute
-    if (target && !/^https?:\/\//i.test(target) && target[0] !== "/") {
-      target = "/" + target;
-    }
-
-    window.location.assign(target);
-  })();
-</script>
-
-<noscript>
-    <p><a href="{{ $target | safeURL }}">Open in gallery</a></p>
-</noscript>
 {{ end }}
 
 {{/* JSON-LD for SEO */}}

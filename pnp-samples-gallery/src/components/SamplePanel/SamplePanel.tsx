@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect, useRef, useCallback } from "react";
 import type { PnPSample } from "../../types/index";
 import { Icon } from "../index";
-import { metaFirst, getCategories, techLabel, techKey, techToIcon, prettyCategory, categoryToIcon } from "../../types/index";
+import { metaFirst, getCategories, techLabel, techKey, prettyCategory, categoryToIcon } from "../../types/index";
 import { LikesPanel } from "../LikesPanel";
 import styles from "./SamplePanel.module.css";
 
@@ -718,12 +718,10 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
                             <div className={styles.pillValueValue}>
                                 {techList.map((t: string) => {
                                     const k = techKey(t);
-                                    const techIcon = techToIcon(k);
                                     const labelText = k === 'other' ? t : techLabel(k);
                                     return (
                                         <span key={t} className="pnp-pill pnp-pill--icon" style={{ display: 'inline-flex', alignItems: 'center', gap: 8 }}>
-                                            {/* prefer techIconBasePath provided via props or baseUrl; default to ./tech-icons */}
-                                            <Icon icon={techIcon} basePath={baseUrl ? `${baseUrl.replace(/\/$/, '')}/tech-icons` : './tech-icons'} size={16} />
+                                            <Icon icon={k} basePath={baseUrl ? baseUrl.replace(/\/$/, '') : '.'} size={16} />
                                             <span>{labelText}</span>
                                         </span>
                                     );

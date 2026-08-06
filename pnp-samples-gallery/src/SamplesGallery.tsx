@@ -8,12 +8,13 @@ import { metaFirst, getCategories, spfxToBucket, spfxBucketSortKeyDesc } from ".
 
 import { categoryToIcon, prettyCategory } from "./types/index";
 import { Icon } from "./components";
-import { techKey, techLabel, techToIcon } from "./types/index";
+import { techKey, techLabel } from "./types/index";
 import Pill from "./components/Pill/Pill";
 import SampleCard from "./components/SampleCard";
 import SkeletonCard from "./components/SkeletonCard/SkeletonCard";
 import { FacetGroup } from "./components";
 import SamplePanel from "./components/SamplePanel/SamplePanel";
+import { getGalleryPath, getSampleDetailPath, getSampleSlugFromPath, slugifySampleName } from "./utils/sampleUrls";
 
 import { LayoutGroup } from "framer-motion";
 import { setScope as setLikesScope, subscribe as subscribeLikesOverrides } from "./utils/likesOverrides";
@@ -24,36 +25,27 @@ import { captureFullDocument } from "./utils/captureDocumentImage";
 
 import "./styles.css";
 
-function slugifySampleName(name: string): string {
-    console.log("slugifying sample name:", name);
-    return String(name ?? "")
-        .trim()
-        .toLowerCase()
-        .replace(/['"]/g, "")
-        .replace(/&/g, " and ")
-        .replace(/[^a-z0-9]+/g, "-")
-        .replace(/-+/g, "-")
-        .replace(/^-|-$/g, "");
+function readRequestedSampleSlug(baseUrl?: string): string | null {
+    if (typeof window === "undefined") return null;
+
+    const params = new URLSearchParams(window.location.search);
+    const requested = params.get("sample");
+    if (requested) return requested;
+
+    return getSampleSlugFromPath(window.location.pathname, baseUrl);
 }
 
-function setSampleParam(slug: string): void {
+function pushSamplePath(sample: PnPSample, baseUrl?: string): void {
     if (typeof window === "undefined") return;
 
-    const url = new URL(window.location.href);
-    url.searchParams.set("sample", slug);
-
-    // Use pushState so Back closes the panel (optional, but nice UX)
-    window.history.pushState({}, "", url.toString());
+    const slug = slugifySampleName(sample.name);
+    const path = getSampleDetailPath(slug, baseUrl);
+    window.history.pushState({ pnpSamplesGallerySample: slug }, "", path);
 }
 
-function clearSampleParam(): void {
+function replaceGalleryPath(baseUrl?: string): void {
     if (typeof window === "undefined") return;
-
-    const url = new URL(window.location.href);
-    url.searchParams.delete("sample");
-
-    // Use replaceState so closing doesn't add extra history entries
-    window.history.replaceState({}, "", url.toString());
+    window.history.replaceState({}, "", getGalleryPath(baseUrl));
 }
 
 function readEmbeddedSamplesArray(): PnPSample[] | null {
@@ -968,36 +960,52 @@ export function SamplesGallery(props: SamplesGalleryProps) {
     const [selected, setSelected] = useState<PnPSample | null>(null);
     const closePanel = useCallback(() => {
         setSelected(null);
-        clearSampleParam();
-    }, []);
+        try {
+            if (typeof window !== "undefined" && window.history.state?.pnpSamplesGallerySample) {
+                window.history.back();
+                return;
+            }
+        } catch {
+            // ignore
+        }
+        replaceGalleryPath(props.baseUrl);
+    }, [props.baseUrl]);
 
     const openPanel = useCallback((sample: PnPSample) => {
         setSelected(sample);
-        setSampleParam(slugifySampleName(sample.name));
-    }, []);
+        pushSamplePath(sample, props.baseUrl);
+    }, [props.baseUrl]);
     const panelRef = useRef<HTMLDivElement | null>(null);
     const lastFocusedRef = useRef<HTMLElement | null>(null);
 
     useEffect(() => {
         if (typeof window === "undefined") return;
 
-        const params = new URLSearchParams(window.location.search);
-        const requested = params.get("sample");
-        if (!requested) return;
+        const syncSelectionFromLocation = () => {
+            const requested = readRequestedSampleSlug(props.baseUrl);
+            if (!requested) {
+                setSelected(null);
+                return;
+            }
 
-        // If already open, don't override the user's current selection
-        if (selected) return;
+            const match = samples.find((s) => slugifySampleName(s.name) === requested);
+            if (!match) return;
 
-        // Match by slugified sample.name (your generator uses name as slug)
-        const match = samples.find((s) => slugifySampleName(s.name) === requested);
-        if (!match) return;
+            setSelected(match);
 
-        openPanel(match);
+            if (window.location.search.includes("sample=")) {
+                window.history.replaceState(
+                    { pnpSamplesGallerySample: requested },
+                    "",
+                    getSampleDetailPath(requested, props.baseUrl)
+                );
+            }
+        };
 
-        // Optional: remove the query string after opening (prevents re-opening on refresh)
-        // Comment this out if you want the URL to stay shareable.
-        // window.history.replaceState({}, "", window.location.pathname + window.location.hash);
-    }, [samples, selected, openPanel]);
+        syncSelectionFromLocation();
+        window.addEventListener("popstate", syncSelectionFromLocation);
+        return () => window.removeEventListener("popstate", syncSelectionFromLocation);
+    }, [samples, props.baseUrl]);
 
     // Global key handler: `f` to toggle fullscreen, `Escape` to close panel or fullscreen.
     useEffect(() => {
@@ -1295,7 +1303,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                             disabledOptions={disabledOptions.tech}
                             renderLabel={(t) => {
                                 const label = techLabel(t as TechKey);
-                                const src = `${props.baseUrl}/${techToIcon(t as TechKey)}.svg`;
+                                const src = `${props.baseUrl}/${t}.svg`;
                                 return (<><Icon src={src} size={18} />&nbsp;{label}</>);
                             }}
                             mobile={isMobile}

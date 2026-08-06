@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import type { PnPSample } from "../../types/index";
-import { bestThumb, categoryToIcon, getCategories, metaFirst, prettyCategory, techKey, techLabel, techToIcon } from "../../types/index";
+import { bestThumb, categoryToIcon, getCategories, metaFirst, prettyCategory, techKey, techLabel } from "../../types/index";
 import { Icon, Facepile } from "../";
 import { readOverrideFor, subscribe } from "../../utils/likesOverrides";
+import { getSampleDetailPath } from "../../utils/sampleUrls";
 import styles from './SampleCard.module.css';
 
 export interface SampleCardProps {
@@ -22,14 +23,14 @@ export function SampleCard({ sample: s, basePath, muuriRef, onOpen, reactionsSup
 
     const techText = techLabel(tech);
     const resolvedBase = (basePath ?? '/').replace(/\/$/, '');
-    const techSrc = `${resolvedBase}/${techToIcon(tech)}.svg`;
+    const techSrc = `${resolvedBase}/${tech}.svg`;
 
     const primaryCat = cats[0] ?? "SPFX-WEB-PART";
     const catLabel = prettyCategory(primaryCat);
 
-    const isMobile = typeof window !== 'undefined' ? window.matchMedia('(max-width:640px)').matches : false;
     const anchorRef = React.useRef<HTMLElement | null>(null);
     const titleId = `pnp-card-title-${String(s.name ?? '').replace(/[^a-z0-9-_]/gi, '-')}`;
+    const sampleHref = getSampleDetailPath(s, basePath);
 
     const [displayedCount, setDisplayedCount] = useState<number>(() => {
         if (!reactionsSupported) return 0;
@@ -139,69 +140,19 @@ export function SampleCard({ sample: s, basePath, muuriRef, onOpen, reactionsSup
         const isLeft = isMouse ? (e as React.MouseEvent).button === 0 : false;
         const hasModifier = ('ctrlKey' in e && (e as any).ctrlKey) || ('metaKey' in e && (e as any).metaKey) || ('shiftKey' in e && (e as any).shiftKey) || ('altKey' in e && (e as any).altKey);
 
-        // Modifier-click behavior: if the user ctrl/cmd/shift/alt clicks and the
-        // sample has a URL, open it in a new tab instead of opening the panel.
         if (hasModifier) {
-            try {
-                const el = (e.currentTarget as HTMLElement | null);
-                const tag = el?.tagName?.toLowerCase() ?? '';
-
-                // If the clickable element is an anchor, allow the browser to handle
-                // the modifier-click (it will open in a new tab). For non-anchor
-                // elements (buttons), explicitly open the link in a new tab.
-                if (s.url) {
-                    if (tag === 'a') {
-                        // Do nothing — let the default anchor behavior occur
-                        return;
-                    }
-
-                    try {
-                        window.open(s.url, '_blank', 'noopener,noreferrer');
-                    } catch {
-                        window.location.href = s.url;
-                    }
-                    return;
-                }
-            } catch {
-                // ignore and continue
+            const tag = (e.currentTarget as HTMLElement | null)?.tagName?.toLowerCase() ?? "";
+            if (tag !== "a") {
+                window.open(sampleHref, "_blank", "noopener,noreferrer");
             }
+            return;
         }
 
         if (isLeft && !hasModifier) {
-            if (isMobile) {
-                e.preventDefault();
-                e.stopPropagation();
-
-                if (onOpen) {
-                    try {
-                        onOpen(s);
-                    } catch (err) {
-                        console.error('[SampleCard] onOpen failed', err);
-                        if (s.url) window.location.href = s.url;
-                    }
-                    return;
-                }
-
-                if (s.url) {
-                    try {
-                        const winName = `_pnp_${Date.now()}_${Math.random().toString(36).slice(2)}`;
-                        window.open(s.url, winName, "noopener,noreferrer");
-                    } catch {
-                        window.location.href = s.url;
-                    }
-                }
-                return;
-            }
-
             if (!onOpen) return;
             e.preventDefault();
+            e.stopPropagation();
             onOpen(s);
-        }
-    };
-
-    const handleKeyDown = (e: React.KeyboardEvent) => {
-        if (isMobile && (e.key === 'Enter' || e.key === ' ')) {
-            handleClick(e as unknown as React.MouseEvent);
         }
     };
 
@@ -324,21 +275,14 @@ export function SampleCard({ sample: s, basePath, muuriRef, onOpen, reactionsSup
             data-total-reactions={(displayedCount ?? 0)}
         >
             <div className="pnp-sample-item-content">
-                {isMobile ? (
-                    <button ref={(el) => { anchorRef.current = el as HTMLElement | null; }} className="pnp-card" type="button" aria-labelledby={titleId} onClick={handleClick} onKeyDown={handleKeyDown}>
+                {admin ? (
+                    <button ref={(el) => { anchorRef.current = el as HTMLElement | null; }} className="pnp-card" type="button" aria-labelledby={titleId} onClick={handleClick}>
                         {cardInner}
                     </button>
                 ) : (
-                    // Desktop: prefer to open the panel via onOpen (button) when provided; otherwise fall back to link
-                    onOpen ? (
-                        <button ref={(el) => { anchorRef.current = el as HTMLElement | null; }} className="pnp-card" type="button" aria-labelledby={titleId} onClick={handleClick} onKeyDown={handleKeyDown}>
-                            {cardInner}
-                        </button>
-                    ) : (
-                        <a ref={(el) => { anchorRef.current = el as HTMLElement | null; }} className="pnp-card-link" href={s.url} rel="noopener" onClick={handleClick} target={isMobile ? "_blank" : undefined}>
-                            {cardInner}
-                        </a>
-                    )
+                    <a ref={(el) => { anchorRef.current = el as HTMLElement | null; }} className="pnp-card-link" href={sampleHref} onClick={handleClick}>
+                        {cardInner}
+                    </a>
                 )}
             </div>
         </div>

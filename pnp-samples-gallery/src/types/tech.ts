@@ -1,12 +1,3 @@
-export type TechIcon =
-    | "angularjs"
-    | "javascript"
-    | "jquery"
-    | "knockout"
-    | "react"
-    | "vuejs"
-    | "other";
-
 /**
  * Canonical tech key used for facets + filtering (dedupes spelling/casing).
  */
@@ -45,9 +36,4 @@ export function techLabel(key: TechKey): string {
         case "vuejs": return "Vue.js";
         default: return "Other";
     }
-}
-
-export function techToIcon(key: TechKey): TechIcon {
-    // identical for now, but keeping separate makes it easy to change later
-    return key;
 }

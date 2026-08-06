@@ -1,5 +1,18 @@
 {{- $s := . -}}
-<article class="pnp-sample-item pnp-sample-item--skeleton sample-card" data-sample-slug="{{ $s.slug }}">
+{{- $slugSource := "" -}}
+{{- with index $s "slug" -}}
+{{- $slugSource = . -}}
+{{- else -}}
+{{- with index $s "name" -}}
+{{- $slugSource = . -}}
+{{- else -}}
+{{- with index $s "title" -}}
+{{- $slugSource = . -}}
+{{- end -}}
+{{- end -}}
+{{- end -}}
+{{- $slug := $slugSource | lower | replaceRE "['\"]" "" | replaceRE "&" " and " | replaceRE "[^a-z0-9]+" "-" | replaceRE "-+" "-" | replaceRE "^-|-$" "" -}}
+<article class="pnp-sample-item pnp-sample-item--skeleton sample-card" data-sample-slug="{{ $slug }}">
     <div class="pnp-sample-item-content">
         <div class="pnp-card" aria-hidden="true">
             <figure class="pnp-card__thumb pnp-card__thumb--empty"></figure>
@@ -19,7 +32,7 @@
             </div>
         </div>
 
-        <a class="pnp-card-link ssr-hidden" href="/samples/{{ $s.slug }}/" style="display:none;">
+        <a class="pnp-card-link ssr-hidden" href="{{ printf "/samples/%s/" $slug | relURL }}" style="display:none;">
             <h3>{{ $s.title }}</h3>
             <p>{{ $s.description }}</p>
         </a>
