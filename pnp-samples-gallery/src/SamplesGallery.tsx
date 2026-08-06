@@ -30,7 +30,7 @@ function readRequestedSampleSlug(baseUrl?: string): string | null {
 
     const params = new URLSearchParams(window.location.search);
     const requested = params.get("sample");
-    if (requested) return requested;
+    if (requested) return slugifySampleName(requested);
 
     return getSampleSlugFromPath(window.location.pathname, baseUrl);
 }
@@ -40,6 +40,8 @@ function pushSamplePath(sample: PnPSample, baseUrl?: string): void {
 
     const slug = slugifySampleName(sample.name);
     const path = getSampleDetailPath(slug, baseUrl);
+    if (window.location.pathname === path && !window.location.search.includes("sample=")) return;
+
     window.history.pushState({ pnpSamplesGallerySample: slug }, "", path);
 }
 
@@ -113,8 +115,8 @@ export function SamplesGallery(props: SamplesGalleryProps) {
     const sortMode = sortModeInternal;
     const [isMobile, setIsMobile] = useState<boolean>(() => typeof window !== "undefined" ? window.matchMedia('(max-width:640px)').matches : false);
     const [showFilters, setShowFilters] = useState<boolean>(false);
-    const hasEmbeddedDataAtBoot = useMemo(() => readEmbeddedSamplesArray() !== null, []);
     const embedded = useMemo(() => readEmbeddedSamplesArray(), []);
+    const hasEmbeddedDataAtBoot = embedded !== null;
     const [samples, setSamples] = useState<PnPSample[]>(() => embedded ?? []);
     const [loading, setLoading] = useState<boolean>(() => !embedded);
     const [gridReady, setGridReady] = useState<boolean>(false);
@@ -958,6 +960,14 @@ export function SamplesGallery(props: SamplesGalleryProps) {
     }, [fullscreen]);
 
     const [selected, setSelected] = useState<PnPSample | null>(null);
+    const sampleBySlug = useMemo(() => {
+        const map = new Map<string, PnPSample>();
+        for (const sample of samples) {
+            map.set(slugifySampleName(sample.name), sample);
+        }
+        return map;
+    }, [samples]);
+
     const closePanel = useCallback(() => {
         setSelected(null);
         try {
@@ -988,7 +998,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
                 return;
             }
 
-            const match = samples.find((s) => slugifySampleName(s.name) === requested);
+            const match = sampleBySlug.get(requested);
             if (!match) return;
 
             setSelected(match);
@@ -1005,7 +1015,7 @@ export function SamplesGallery(props: SamplesGalleryProps) {
         syncSelectionFromLocation();
         window.addEventListener("popstate", syncSelectionFromLocation);
         return () => window.removeEventListener("popstate", syncSelectionFromLocation);
-    }, [samples, props.baseUrl]);
+    }, [sampleBySlug, props.baseUrl]);
 
     // Global key handler: `f` to toggle fullscreen, `Escape` to close panel or fullscreen.
     useEffect(() => {

@@ -21,7 +21,15 @@ const OUT_DIR = path.join(REPO_ROOT, "content", "samples");
 
 const DELETE_ORPHANS = process.argv.includes("--delete-orphans");
 
-const GALLERY_PATH = "/sp-dev-fx-webparts/";
+function normalizeGalleryPath(value) {
+    let raw = String(value ?? "/sp-dev-fx-webparts/").trim() || "/";
+    raw = raw.replace(/^\/?[A-Z]:\/Program Files\/Git(?=\/)/i, "");
+
+    if (!raw.startsWith("/")) raw = `/${raw}`;
+    return raw.replace(/\/+$/, "") + "/";
+}
+
+const GALLERY_PATH = normalizeGalleryPath(process.env.GALLERY_PATH);
 
 const SAMPLE_QUERY_KEY = process.env.SAMPLE_QUERY_KEY ?? "sample";
 

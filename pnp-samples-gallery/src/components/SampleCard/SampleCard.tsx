@@ -165,6 +165,7 @@ export function SampleCard({ sample: s, basePath, muuriRef, onOpen, reactionsSup
                         src={thumb.url}
                         alt={thumb.alt ?? "Sample thumbnail"}
                         loading="lazy"
+                        decoding="async"
                         onLoad={() => {
                             const g = muuriRef?.current;
                             if (g) {
@@ -178,9 +179,10 @@ export function SampleCard({ sample: s, basePath, muuriRef, onOpen, reactionsSup
                 <figure className={styles.thumbFigure}>
                     <img
                         className={styles.thumb}
-                        src={`${basePath}/spfx-samples-black.svg`}
+                        src={`${resolvedBase}/spfx-samples-black.svg`}
                         alt={"No preview available"}
                         loading="lazy"
+                        decoding="async"
                         onLoad={() => {
                             const g = muuriRef?.current;
                             if (g) {

@@ -615,6 +615,8 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
                                     src={t.url}
                                     alt={t.alt}
                                     className={`${styles.thumb} ${idx === activeIndex ? styles.thumbActive : ''}`}
+                                    loading={idx === 0 ? "eager" : "lazy"}
+                                    decoding="async"
                                 />
                             ))}
 
@@ -636,7 +638,7 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
                         <div className={styles.thumbStrip}>
                             {thumbnails.map((t, idx) => (
                                 <button key={t.url + '-thumb-' + idx} className={`${styles.thumbBtn} ${idx === activeIndex ? styles.isActive : ''}`} onClick={() => setActiveIndex(idx)} aria-label={`Thumbnail ${idx + 1}`}>
-                                    <img src={t.url} alt={t.alt} />
+                                    <img src={t.url} alt={t.alt} loading="lazy" decoding="async" />
                                 </button>
                             ))}
                         </div>
@@ -682,7 +684,7 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
                         return (
                             <div key={`${a.gitHubAccount ?? a.name ?? 'author'}-${idx}`} className={styles.authorRow}>
                                 <div className={styles.authorAvatar}>
-                                    {a.pictureUrl ? <img src={a.pictureUrl} alt={displayName(a)} loading="lazy" referrerPolicy="no-referrer" /> : <span className={styles.facepileInitials}>{(displayName(a)[0] || '?').toUpperCase()}</span>}
+                                    {a.pictureUrl ? <img src={a.pictureUrl} alt={displayName(a)} loading="lazy" decoding="async" referrerPolicy="no-referrer" /> : <span className={styles.facepileInitials}>{(displayName(a)[0] || '?').toUpperCase()}</span>}
                                 </div>
                                 {gh ? (
                                     <a className={styles.authorLink} href={gh} target="_blank" rel="noopener">
@@ -763,7 +765,7 @@ export default function SamplePanel({ sample, onClose, baseUrl, giscusSettings, 
         ) : null}
                 {/* Invisible 1x1 visitor stats image for tracking */}
                 {visitorStatsSrc ? (
-                    <img src={visitorStatsSrc} width={1} height={1} style={{ width: 1, height: 1, opacity: 0, border: 0 }} alt="" aria-hidden="true" />
+                    <img src={visitorStatsSrc} width={1} height={1} style={{ width: 1, height: 1, opacity: 0, border: 0 }} alt="" aria-hidden="true" loading="lazy" decoding="async" />
                 ) : null}
             </div>
         </div>

@@ -18,13 +18,13 @@
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": {{ .Title | jsonify }},
-  "description": {{ (.Params.description | default "") | jsonify }},
-  "url": {{ .Permalink | jsonify }}
+  "name": {{ .Title | jsonify | safeJS }},
+  "description": {{ (.Params.description | default "") | jsonify | safeJS }},
+  "url": {{ .Permalink | jsonify | safeJS }}
   {{- if $img -}},
   "primaryImageOfPage": {
     "@type": "ImageObject",
-    "url": {{ ($img | absURL) | jsonify }}
+    "url": {{ ($img | absURL) | jsonify | safeJS }}
   }
   {{- end -}}
 }

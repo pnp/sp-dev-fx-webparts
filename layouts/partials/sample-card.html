@@ -24,7 +24,10 @@
                     {{ with $s.authors }}
                     {{ range $i, $a := . }}
                     {{ if eq $i 0 }}
-                    <span class="pnp-pill">{{ $a }}</span>
+                    {{ $authorName := or $a.name $a.gitHubAccount }}
+                    {{ with $authorName }}
+                    <span class="pnp-pill">{{ . }}</span>
+                    {{ end }}
                     {{ end }}
                     {{ end }}
                     {{ end }}
