@@ -6,6 +6,9 @@ A dynamic SharePoint Framework (SPFx) web part that displays an A-Z indexed, acc
 
 ![Modern Glossary Demo](./assets/modern-glossary-demo.gif)
 
+![Alphabet Navigation](./assets/alphabet-navigation.png)
+![Manage Items](./assets/manage-items-panel.png)
+
 This sample is optimally compatible with the following environment configuration:
 
 ![SPFx 1.23.0](https://img.shields.io/badge/SPFx-1.23.0-green.svg)
