@@ -31,7 +31,7 @@ A SharePoint list to store the information should have the following columns:
 - Regression Test Status (Choice)
 - Release (Single line of text)
 
- Use can use the [Powershell script](./script/ProvisionTicketList.ps1) to provision the list.
+ You can use the [Powershell script](./script/ProvisionTicketList.ps1) to provision the list.
 
 ## Compatibility
 
@@ -51,8 +51,8 @@ A SharePoint list to store the information should have the following columns:
 
 ## Applies to
 
-- [SharePoint Framework Developer Preview](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
-- [Office 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+- [SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+- [Microsoft 365 developer tenant](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Contributors
 
@@ -63,7 +63,7 @@ A SharePoint list to store the information should have the following columns:
 |Version|Date|Comments|
 |-------|----|--------|
 |1.0|June 13, 2025|Initial release|
-|1.1|June 25, 2025|Added native SharePoint comments to ticket detail view|
+|1.1|June 25, 2026|Added native SharePoint comments to ticket detail view|
 
 ## Minimal Path to Awesome
 
@@ -76,9 +76,9 @@ A SharePoint list to store the information should have the following columns:
     - `npm i`
     - `gulp build`
     - `gulp serve --nobrowser`
-1. Create a custom list (e.g. Bookmarks)
+1. Provision the ticket list using the [PowerShell script](./script/ProvisionTicketList.ps1) or create it manually as described in the Prerequisites section
 1. Navigate to the hosted version of SharePoint workbench, e.g. **https://\<tenant>.sharepoint.com/sites/\<your site>/_layouts/15/workbench.aspx**
-1. Add the Web Part to the canvas and configure it.
+1. Add the Web Part to the canvas and configure it with your list name.
 
 ### Package and deploy
 
@@ -86,11 +86,9 @@ A SharePoint list to store the information should have the following columns:
     - `gulp bundle --ship`
     - `gulp package-solution --ship`
 2. Install into your SharePoint app catalog and add it to a SharePoint site.
-3. Navigate to your site, e.g. **https://\<tenant>.sharepoint.com/sites/\<your site>**
-4. Create a custom list with Title and Description(internal name) of type Enhanced rich text.
-5. Populate the list with some items
-6. Navigate to a page on your site where the custom list is created
-7. Add the Web Part to the page and configure it.
+3. Provision the ticket list using the [PowerShell script](./script/ProvisionTicketList.ps1) or create it manually as described in the Prerequisites section.
+4. Navigate to a page on your site, e.g. **https://\<tenant>.sharepoint.com/sites/\<your site>**
+5. Add the Web Part to the page and configure it with your list name.
 
 ## Features
 
@@ -145,14 +143,14 @@ We do not support samples, but we this community is always willing to help, and 
 
 If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
 
-If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-sp-ticket-mgmt=bug-report.yml&sample=react-sp-ticket-mgmt&authors=@SudeepGhatakh&title=react-sp-ticket-mgmt).
+If you encounter any issues while using this sample, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20react-sp-ticket-mgmt&template=bug-report.yml&sample=react-sp-ticket-mgmt&authors=@SudeepGhatakh&title=react-sp-ticket-mgmt).
 
 For questions regarding this sample, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20react-sp-ticket-mgmt&template=bug-report.yml&sample=react-sp-ticket-mgmt&authors=@SudeepGhatakh&title=react-sp-ticket-mgmt).
 
-Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-sp-ticket-mgmt&template=bug-report.yml&sample=react-sp-ticket-mgmt&authors=@SudeepGhatakh&title=react-sp-bookmarks).
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20react-sp-ticket-mgmt&template=bug-report.yml&sample=react-sp-ticket-mgmt&authors=@SudeepGhatakh&title=react-sp-ticket-mgmt).
 
 ## Disclaimer
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-sp-bookmarks" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-ticket-mgnt" />
