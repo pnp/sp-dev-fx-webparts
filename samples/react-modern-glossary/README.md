@@ -18,7 +18,7 @@ This sample is optimally compatible with the following environment configuration
 ## Applies to
 
 - [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
+- [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 ## Prerequisites
 
@@ -37,7 +37,7 @@ This sample is optimally compatible with the following environment configuration
 
 ## Version history
 
-| Version | Date            | Comments        |
+| Version | Date            | Comments         |
 | ------- | --------------- | ---------------- |
 | 1.0     | August 8, 2026  | Initial release  |
 
@@ -67,27 +67,25 @@ This web part illustrates the following concepts:
 - **Expand All / Collapse All**: Positioned alongside Show All, using identical pill styling; toggles every currently visible accordion item
 - **Free-Text Search**: Filters across Title and Description, combinable with the letter filter
 
-
 ## Configuration
 
 ### Web Part Properties
 
-| Property  | Type   | Default                    | Description                                                    |
-|-----------|--------|-----------------------------|------------------------------------------------------------------|
+| Property  | Type   | Default                    | Description                                                     |
+|-----------|--------|----------------------------|-----------------------------------------------------------------|
 | title     | string | "All Application Glossary" | Display heading shown above the alphabet navigation             |
-| listName  | string | "ModernGlossary"            | Exact title of the SharePoint list to read glossary terms from  |
+| listName  | string | "ModernGlossary"           | Exact title of the SharePoint list to read glossary terms from  |
 
 ### SharePoint List Structure
 
-| Column Name    | Internal Name    | Type                          | Required | Description                                  |
-|----------------|-------------------|--------------------------------|----------|-----------------------------------------------|
+| Column Name    | Internal Name     | Type                           | Required | Description                                  |
+|----------------|-------------------|--------------------------------|----------|----------------------------------------------|
 | Title          | `Title`           | Single line of text (built-in) | Yes      | The glossary term                            |
 | Description    | `Description`     | Multiple lines of text         | Yes      | Definition shown in the expanded accordion   |
 | ApplicationUrl | `ApplicationUrl`  | Hyperlink                      | Yes      | Label + link to the live application/tool    |
 | DetailsUrl     | `DetailsUrl`      | Hyperlink                      | Yes      | Label + link to supporting documentation     |
 | Status         | `Status`          | Choice: `Active`, `Inactive`   | Yes      | Controls visibility; only `Active` is shown  |
-| AlphabetLetter | `AlphabetLetter`  | Choice: `A`-`Z`                 | Yes      | Explicit letter bucket for A-Z grouping      |
-
+| AlphabetLetter | `AlphabetLetter`  | Choice: `A`-`Z`                | Yes      | Explicit letter bucket for A-Z grouping      |
 
 ### Display Modes
 
@@ -103,17 +101,16 @@ This web part illustrates the following concepts:
 - Gear icon and management panel are not rendered
 - Users can browse, search, and expand terms
 
-
 ## References
 
-- [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
-- [Building for Microsoft Teams](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview)
-- [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
-- [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
+- [Getting started with SharePoint Framework](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
+- [Building for Microsoft Teams](https://docs.microsoft.com/sharepoint/dev/spfx/build-for-teams-overview)
+- [Use Microsoft Graph in your solution](https://docs.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
+- [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/sharepoint/dev/spfx/publish-to-marketplace-overview)
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp)
 - [PnP JS Documentation](https://pnp.github.io/pnpjs/)
 - [Working with Lists and Items using PnP JS](https://pnp.github.io/pnpjs/sp/items/)
-- [Fluent UI React](https://developer.microsoft.com/en-us/fluentui#/controls/web)
+- [Fluent UI React](https://developer.microsoft.com/fluentui#/controls/web)
 
 ## Help
 
