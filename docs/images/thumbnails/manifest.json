@@ -959,6 +959,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-whos-in/assets/screenshot.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-whos-in.webp"
   },
+  "pnp-sp-dev-spfx-web-parts-react-modern-glossary": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-glossary/assets/modern-glossary-demo.gif",
+    "file": "pnp-sp-dev-spfx-web-parts-react-modern-glossary.webp"
+  },
   "pnp-sp-dev-spfx-web-parts-react-richtext-editor": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-richtext-editor/assets/screenshot.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-richtext-editor.webp"

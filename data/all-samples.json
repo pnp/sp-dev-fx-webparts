@@ -12371,6 +12371,48 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-modern-glossary",
+    "source": "pnp",
+    "title": "Modern Glossary",
+    "shortDescription": "A dynamic SharePoint Framework web part displaying an A-Z indexed, accordion-style glossary with alphabet navigation, in-place item management, and Active/Inactive content lifecycle control.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-glossary",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-glossary",
+    "updateDateTime": "2026-08-08",
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.23.0"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "saiiiiiii",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/saiiiiiii.b1e132237a67.webp",
+        "name": "Sai Siva Ram Bandaru",
+        "avatarSourceUrl": "https://github.com/saiiiiiii.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-modern-glossary.webp",
+        "alt": "Modern Glossary"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-richtext-editor",
     "source": "pnp",
     "title": "Rich Text Editor - Fluent UI",
