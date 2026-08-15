@@ -6,10 +6,10 @@
  * docs or observed in a tenant. Unverified rules are excluded from release builds.
  *
  * `checkable` records whether an SPFx web part can actually evaluate the rule
- * from Microsoft Graph metadata. Agent-level settings live in Copilot Studio,
- * not in SharePoint, so the web part can only prompt the maker to confirm them.
- * Being honest about this in the data is what keeps the UI from implying it
- * checked something it never saw.
+ * from the library's own list metadata. Agent-level settings live in Copilot
+ * Studio, not in SharePoint, so the web part can only prompt the maker to
+ * confirm them. Keeping that distinction in the data is what stops the UI
+ * implying it checked something it never saw.
  *
  * Last verified against Learn: 2026-08-14.
  */
@@ -20,8 +20,8 @@ export type RuleScope = 'agent' | 'library' | 'document';
 
 /** How the web part can establish the finding. */
 export type Checkable =
-  /** Derivable from Graph driveItem / site metadata. */
-  | 'graph'
+  /** Derivable from the list and item metadata the web part can read. */
+  | 'metadata'
   /** Needs the maker to confirm a Copilot Studio setting the web part cannot read. */
   | 'maker-confirms';
 
@@ -62,7 +62,7 @@ export const groundingRules: GroundingRule[] = [
     id: 'file-size-limit',
     scope: 'document',
     severity: 'blocking',
-    checkable: 'graph',
+    checkable: 'metadata',
     title: 'File exceeds the supported size for grounding',
     finding:
       'With tenant graph grounding on and the maker holding a Microsoft 365 licence in the same tenant, SharePoint and Copilot connectors support files up to 200 MB. PDF, PPTX and DOCX files are supported up to 512 MB. Files above the applicable limit are not retrievable, and no error is shown to the maker.',
@@ -77,7 +77,7 @@ export const groundingRules: GroundingRule[] = [
     id: 'excel-semantic-search',
     scope: 'document',
     severity: 'degraded',
-    checkable: 'graph',
+    checkable: 'metadata',
     title: 'Spreadsheet content is not reliably indexed by semantic search',
     finding:
       'Semantic search has limitations for cell indexing. Learn directs makers to use code interpreter rather than semantic search to search over Excel file content.',
@@ -90,7 +90,7 @@ export const groundingRules: GroundingRule[] = [
     id: 'sensitivity-label-blocks-grounding',
     scope: 'document',
     severity: 'blocking',
-    checkable: 'graph',
+    checkable: 'metadata',
     title: 'Sensitivity label or password protection blocks the file',
     finding:
       'A file with a sensitivity setting of Confidential or Highly Confidential, or with password protection, is listed as part of the knowledge source but never produces answers.',
@@ -103,22 +103,21 @@ export const groundingRules: GroundingRule[] = [
     id: 'unsupported-filename-character',
     scope: 'document',
     severity: 'blocking',
-    checkable: 'graph',
+    checkable: 'metadata',
     title: 'File name contains an unsupported character',
     finding:
       'Learn lists an unsupported character in the file name as a documented cause of a SharePoint file appearing in the knowledge source but never answering.',
     remediation: 'Rename the file.',
     docsUrl: `${UNSTRUCTURED}#one-of-the-files-i-added-appears-as-part-of-the-knowledge-source-but-i-cant-get-answers-from-it-why`,
-    // The failure mode is documented, the exact character set is not.
-    // Ship the rule only once the set is confirmed by observation in a tenant,
-    // and label it as observed behaviour rather than a documented limit.
+    // The failure mode is documented, the exact character set is not, so this
+    // rule stays out of the release build until the set can be cited.
     verified: false
   },
   {
     id: 'knowledge-object-cap',
     scope: 'library',
     severity: 'blocking',
-    checkable: 'graph',
+    checkable: 'metadata',
     title: 'Library exceeds the 500 knowledge object cap',
     finding:
       'An agent can hold a maximum of 500 knowledge objects across files, folders, knowledge articles and websites. When a folder exceeds the maximum, Copilot Studio indexes up to the limit, does not process the remainder, and does not indicate which items were skipped.',
@@ -144,7 +143,7 @@ export const groundingRules: GroundingRule[] = [
     id: 'sync-lag',
     scope: 'library',
     severity: 'informational',
-    checkable: 'graph',
+    checkable: 'metadata',
     title: 'Recently changed content may not be retrievable yet',
     finding:
       'With the file upload option, content is synchronized every four to six hours after ingestion completes, and a refresh cannot be triggered manually. With the SharePoint connector option, retrieval goes through SharePoint search indexing, so new or updated items are not available until indexing completes.',
@@ -157,7 +156,7 @@ export const groundingRules: GroundingRule[] = [
     id: 'sharepoint-pages-unsupported',
     scope: 'library',
     severity: 'blocking',
-    checkable: 'graph',
+    checkable: 'metadata',
     title: 'SharePoint Pages are not supported by the file upload connector',
     finding:
       'The SharePoint file upload connector does not currently support Pages. A site whose knowledge lives in news posts and site pages contributes nothing through this path.',
@@ -170,14 +169,14 @@ export const groundingRules: GroundingRule[] = [
     id: 'unsupported-file-type',
     scope: 'document',
     severity: 'blocking',
-    checkable: 'graph',
+    checkable: 'metadata',
     title: 'File type is not supported as grounding content',
     finding:
       'An unsupported file type is a documented cause of a file appearing in the knowledge source without ever contributing to an answer.',
     remediation: 'Convert to a supported format or exclude the folder from the knowledge source.',
     docsUrl: `${UNSTRUCTURED}#one-of-the-files-i-added-appears-as-part-of-the-knowledge-source-but-i-cant-get-answers-from-it-why`,
-    // Enumerate the supported set from the semantic index supported content
-    // types page before shipping. Do not guess the extension list.
+    // The supported extension list is not enumerated here, so the rule stays
+    // out of the release build rather than guessing it. Source to enumerate from:
     // https://learn.microsoft.com/microsoftsearch/semantic-index-for-copilot#supported-content-types
     verified: false
   },
@@ -192,15 +191,15 @@ export const groundingRules: GroundingRule[] = [
     remediation: 'Write a one line description of what the library contains.',
     docsUrl:
       'https://learn.microsoft.com/microsoft-copilot-studio/advanced-generative-actions#authoring-descriptions',
-    // The mechanism is confirmed on the knowledge summary page. The authoring
-    // guidance page itself has not been read. Read it before shipping.
+    // The mechanism is confirmed on the knowledge summary page, but the
+    // authoring guidance page is not yet cited, so this stays unverified.
     verified: false
   },
   {
     id: 'stale-content',
     scope: 'document',
     severity: 'informational',
-    checkable: 'graph',
+    checkable: 'metadata',
     title: 'Document has not been modified in a long time',
     finding:
       'Not a platform limit. Stale policy documents are a common source of confidently wrong grounded answers, and nothing in the platform flags them.',
@@ -215,4 +214,4 @@ export const releaseRules = (): GroundingRule[] => groundingRules.filter(r => r.
 
 /** Rules the web part can evaluate on its own, without asking the maker. */
 export const automaticRules = (): GroundingRule[] =>
-  releaseRules().filter(r => r.checkable === 'graph');
+  releaseRules().filter(r => r.checkable === 'metadata');

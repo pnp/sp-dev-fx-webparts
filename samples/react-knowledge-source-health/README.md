@@ -27,7 +27,7 @@ This is a diagnostic tool, not a demo. It tells a maker what to fix before the a
 
 This distinction is built into the rule data as a `checkable` field, and the UI must respect it.
 
-**Checkable from Graph.** File size, extension, sensitivity label, last modified date, item counts per folder, whether the library holds Pages. These the web part evaluates itself.
+**Checkable from list metadata.** File size, extension, sensitivity label, last modified date, item count, whether the library holds Pages. These the web part evaluates itself.
 
 **Not checkable.** The agent's authentication method, whether tenant graph grounding with semantic search is on, how many knowledge sources the agent has, and whether each source has a description. These live in Copilot Studio, not in SharePoint. The web part surfaces them as a short maker checklist with the Learn link, and never claims to have verified them.
 
@@ -85,7 +85,20 @@ To debug against a tenant:
 npm run start
 ```
 
-SPFx 1.23 has no local workbench. `npm run start` serves to the tenant workbench at `https://<tenant>.sharepoint.com/_layouts/workbench.aspx`, and the first run needs `npx heft trust-dev-cert` to install a development certificate. Note that the hosted workbench retires on 1 December 2026; after that, use the [SPFx Debug Toolbar](https://learn.microsoft.com/sharepoint/dev/spfx/debug-toolbar) on a real page.
+SPFx 1.23 has no local workbench. `npm run start` serves to the tenant workbench, and the first run needs `npx heft trust-dev-cert` to install a development certificate.
+
+`config/serve.json` ships with the scaffold's `{tenantDomain}` placeholder. Heft only substitutes it from an environment variable, so set that first or the console prints the literal placeholder, which is not a usable URL:
+
+```bash
+# PowerShell
+$env:SPFX_SERVE_TENANT_DOMAIN = "contoso.sharepoint.com"
+```
+
+Otherwise open the workbench yourself and append the query string heft prints:
+
+```
+https://<tenant>.sharepoint.com/_layouts/workbench.aspx?debugManifestsFile=https%3A%2F%2Flocalhost%3A4321%2Ftemp%2Fbuild%2Fmanifests.js&debug=true&noredir=true
+``` Note that the hosted workbench retires on 1 December 2026; after that, use the [SPFx Debug Toolbar](https://learn.microsoft.com/sharepoint/dev/spfx/debug-toolbar) on a real page.
 
 ## Tests
 

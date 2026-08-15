@@ -218,7 +218,7 @@ export const evaluateScan = (
   // Rules that are documented but not yet verified never reach automaticRules(),
   // so surface them as not evaluated rather than letting them vanish silently.
   for (const rule of releaseRules()) {
-    if (rule.checkable === 'graph' && !findRule(rule.id)) {
+    if (rule.checkable === 'metadata' && !findRule(rule.id)) {
       notEvaluatedRuleIds.push(rule.id);
     }
   }
