@@ -124,6 +124,25 @@ You will also see `broken_tool` missing from the list, with an explanation. That
 
 To point at a real server, turn **Use mock server** off in the property pane and set the endpoint URL, plus an Entra resource URI if the server requires a token.
 
+### Debugging against a tenant
+
+SPFx 1.23 has no local workbench, so `npm run start` serves to the tenant workbench and the first run needs `npx heft trust-dev-cert`.
+
+`config/serve.json` ships with the scaffold's `{tenantDomain}` placeholder, which heft only substitutes from an environment variable. Set it, or the console prints the literal placeholder rather than a usable URL:
+
+```bash
+# PowerShell
+$env:SPFX_SERVE_TENANT_DOMAIN = "contoso.sharepoint.com"
+```
+
+Otherwise open the workbench yourself and append the query string heft prints:
+
+```
+https://<tenant>.sharepoint.com/_layouts/workbench.aspx?debugManifestsFile=https%3A%2F%2Flocalhost%3A4321%2Ftemp%2Fbuild%2Fmanifests.js&debug=true&noredir=true
+```
+
+Note that the hosted workbench retires on 1 December 2026; after that, use the [SPFx Debug Toolbar](https://learn.microsoft.com/sharepoint/dev/spfx/debug-toolbar) on a real page.
+
 ## Tests
 
 ```bash
