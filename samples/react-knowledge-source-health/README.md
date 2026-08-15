@@ -10,6 +10,8 @@ There is no error message for any of this. The agent just answers from less than
 
 This is a diagnostic tool, not a demo. It tells a maker what to fix before the agent goes live, and it re-runs after every content change.
 
+![The scorecard and findings table, with each rule linked to the Microsoft Learn page that justifies it](./assets/screenshot-scorecard.png)
+
 ## Features
 
 - Pick any document library or Pages library on the current site and scan it
@@ -72,6 +74,10 @@ npm run build
 The web part ships with **Use demo data** turned on, so it renders a full audit with fabricated content the moment it is added to a page. Every demo document exists to make one rule fire, which makes it the fastest way to see what the rules do.
 
 To scan a real site, open the property pane and turn **Use demo data** off, then pick a library and select **Scan**.
+
+![A scan of a real library, reporting a rule as not evaluated because the sensitivity label column was unavailable](./assets/screenshot-real-scan.png)
+
+That second screenshot is the design principle in action. The scanned library has no sensitivity label column, so rather than quietly passing that rule, the web part reports it as **not evaluated**, and says that is neither a pass nor a failure.
 
 To debug against a tenant:
 

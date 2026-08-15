@@ -173,6 +173,18 @@ export const KnowledgeSourceHealth: React.FC<IKnowledgeSourceHealthProps> = prop
         <div>
           <Scorecard result={result} />
 
+          {result.libraryBlockingCount > 0 && (
+            <MessageBar messageBarType={MessageBarType.severeWarning} isMultiline={true}>
+              {result.libraryBlockingCount === 1
+                ? '1 blocking finding applies'
+                : `${result.libraryBlockingCount} blocking findings apply`}{' '}
+              to the library as a whole, not to individual documents, so the{' '}
+              {result.groundablePercent}% above does not account for{' '}
+              {result.libraryBlockingCount === 1 ? 'it' : 'them'}. Fix the library level findings
+              first.
+            </MessageBar>
+          )}
+
           {result.library.truncated && (
             <MessageBar messageBarType={MessageBarType.warning}>
               Only the first {maxItemsPerLibrary} documents were read. The library reports{' '}

@@ -24,7 +24,20 @@
       "value": "1.23.2"
     }
   ],
-  "thumbnails": [],
+  "thumbnails": [
+    {
+      "type": "image",
+      "order": 100,
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-knowledge-source-health/assets/screenshot-scorecard.png",
+      "alt": "The scorecard and findings table, showing blocking, degraded and informational findings with the Learn-sourced rule and its remediation"
+    },
+    {
+      "type": "image",
+      "order": 200,
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-knowledge-source-health/assets/screenshot-real-scan.png",
+      "alt": "A scan of a real SharePoint library, reporting a rule as not evaluated because the sensitivity label column was unavailable"
+    }
+  ],
   "authors": [
     {
       "gitHubAccount": "OwnOptic",

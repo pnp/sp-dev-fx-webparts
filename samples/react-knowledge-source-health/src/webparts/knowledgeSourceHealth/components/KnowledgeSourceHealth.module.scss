@@ -1,7 +1,9 @@
 @import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
 
 .knowledgeSourceHealth {
-  overflow: hidden;
+  // Deliberately not `overflow: hidden`. A SharePoint canvas column is around
+  // 730px, and the findings table is wider than that. Clipping it hides the
+  // remediation column, so the table scrolls in its own container instead.
   padding: 1em;
   color: '[theme:bodyText, default: #323130]';
   color: var(--bodyText);
@@ -30,9 +32,19 @@
   margin-bottom: 16px;
 }
 
+// Keeps the table from forcing the whole web part wider than its column.
+.gridScroll {
+  overflow-x: auto;
+  max-width: 100%;
+}
+
 .tile {
-  flex: 1 1 140px;
-  min-width: 140px;
+  // border-box matters: with content-box the padding and border are added on
+  // top of the flex basis, so the row overflows its column and the last tile
+  // is cut off in a standard SharePoint section.
+  box-sizing: border-box;
+  flex: 1 1 120px;
+  min-width: 120px;
   padding: 12px 16px;
   border: 1px solid '[theme:neutralLight, default: #edebe9]';
   border-radius: 4px;

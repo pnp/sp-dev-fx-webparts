@@ -9,7 +9,7 @@
  * excluded from the build or surfaced as a maker checklist item.
  */
 
-import { GroundingRule, Severity, automaticRules, releaseRules } from './groundingRules';
+import { GroundingRule, RuleScope, Severity, automaticRules, releaseRules } from './groundingRules';
 import { IDocumentFacts, ILibraryFacts } from '../models/ScanTypes';
 
 export const MB: number = 1024 * 1024;
@@ -52,6 +52,8 @@ export const defaultOptions = (): IEvaluationOptions => ({
 export interface IFinding {
   ruleId: string;
   severity: Severity;
+  /** Whether the finding is about the library as a whole or a single document. */
+  scope: RuleScope;
   /** Display name of the document or library the finding is about. */
   target: string;
   targetUrl: string;
@@ -67,6 +69,13 @@ export interface IScanResult {
   groundableDocuments: number;
   /** Percentage of scanned documents with no blocking finding, 0 to 100. */
   groundablePercent: number;
+  /**
+   * Blocking findings about the library itself. These are not counted in
+   * groundablePercent, which is a per-document measure, so the UI must say so.
+   * Otherwise "100% groundable" can sit next to a rule that blocks the whole
+   * library and read as an all-clear.
+   */
+  libraryBlockingCount: number;
   /**
    * Rules that could not be evaluated because the underlying fact was unavailable.
    * Reported explicitly so a clean scorecard is never mistaken for an all-clear.
@@ -112,6 +121,7 @@ export const evaluateDocument = (
       findings.push({
         ruleId,
         severity: rule.severity,
+        scope: rule.scope,
         target: doc.name,
         targetUrl: doc.webUrl,
         detail
@@ -161,6 +171,7 @@ export const evaluateLibrary = (library: ILibraryFacts): IFinding[] => {
       findings.push({
         ruleId,
         severity: rule.severity,
+        scope: rule.scope,
         target: library.title,
         targetUrl: library.webUrl,
         detail
@@ -218,6 +229,7 @@ export const evaluateScan = (
     documentsScanned: scanned,
     groundableDocuments: groundable,
     groundablePercent: scanned === 0 ? 100 : Math.round((groundable / scanned) * 100),
+    libraryBlockingCount: findings.filter(f => f.scope === 'library' && f.severity === 'blocking').length,
     notEvaluatedRuleIds
   };
 };

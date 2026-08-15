@@ -176,3 +176,33 @@ describe('scorecard', () => {
     expect(result.groundablePercent).toBe(100);
   });
 });
+
+describe('library level blocking findings', () => {
+  it('counts them separately, so a 100% document score cannot read as an all-clear', () => {
+    // A Pages library the connector does not support, holding one clean document.
+    const result = evaluateScan(library([doc({})], { isPagesLibrary: true }), options());
+
+    expect(result.groundablePercent).toBe(100);
+    expect(result.libraryBlockingCount).toBe(1);
+  });
+
+  it('is zero when nothing blocks at library scope', () => {
+    const result = evaluateScan(library([doc({})]), options());
+    expect(result.libraryBlockingCount).toBe(0);
+  });
+
+  it('does not count document level blocking findings', () => {
+    const result = evaluateScan(
+      library([doc({ extension: 'zip', name: 'a.zip', sizeBytes: 300 * MB })]),
+      options()
+    );
+    expect(result.groundablePercent).toBe(0);
+    expect(result.libraryBlockingCount).toBe(0);
+  });
+
+  it('tags every finding with the scope of its rule', () => {
+    const result = evaluateScan(library([doc({})], { totalItemCount: 612 }), options());
+    const cap = result.findings.filter(f => f.ruleId === 'knowledge-object-cap')[0];
+    expect(cap.scope).toBe('library');
+  });
+});

@@ -52,8 +52,8 @@ export const FindingsGrid: React.FC<IFindingsGridProps> = ({ findings }) => {
     {
       key: 'severity',
       name: 'Severity',
-      minWidth: 90,
-      maxWidth: 100,
+      minWidth: 70,
+      maxWidth: 80,
       onRender: (item: IFinding) => (
         <span className={severityClass(item.severity)}>{item.severity}</span>
       )
@@ -61,8 +61,8 @@ export const FindingsGrid: React.FC<IFindingsGridProps> = ({ findings }) => {
     {
       key: 'target',
       name: 'Item',
-      minWidth: 180,
-      maxWidth: 280,
+      minWidth: 130,
+      maxWidth: 180,
       isMultiline: true,
       onRender: (item: IFinding) =>
         item.targetUrl ? (
@@ -76,8 +76,8 @@ export const FindingsGrid: React.FC<IFindingsGridProps> = ({ findings }) => {
     {
       key: 'rule',
       name: 'Rule',
-      minWidth: 220,
-      maxWidth: 320,
+      minWidth: 170,
+      maxWidth: 220,
       isMultiline: true,
       onRender: (item: IFinding) => (
         <Link href={ruleDocsUrl(item.ruleId)} target="_blank" rel="noreferrer">
@@ -88,7 +88,7 @@ export const FindingsGrid: React.FC<IFindingsGridProps> = ({ findings }) => {
     {
       key: 'detail',
       name: 'Detail and remediation',
-      minWidth: 260,
+      minWidth: 240,
       isMultiline: true,
       onRender: (item: IFinding) => (
         <div>
@@ -103,14 +103,22 @@ export const FindingsGrid: React.FC<IFindingsGridProps> = ({ findings }) => {
     return <p>No findings. Every scanned document passed the rules that could be evaluated.</p>;
   }
 
+  // The table is wider than a SharePoint canvas column, so it scrolls inside
+  // this wrapper rather than widening (and clipping) the whole web part.
   return (
-    <DetailsList
-      items={sorted}
-      columns={columns}
-      selectionMode={SelectionMode.none}
-      layoutMode={DetailsListLayoutMode.justified}
-      isHeaderVisible={true}
-    />
+    <div className={styles.gridScroll}>
+      <DetailsList
+        items={sorted}
+        columns={columns}
+        selectionMode={SelectionMode.none}
+        layoutMode={DetailsListLayoutMode.justified}
+        isHeaderVisible={true}
+        // An audit produces tens of findings, not thousands. Virtualisation
+        // leaves unrendered rows as blank space when the web part is taller
+        // than the viewport, which is worse than rendering them all.
+        onShouldVirtualize={() => false}
+      />
+    </div>
   );
 };
 
