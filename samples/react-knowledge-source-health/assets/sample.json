@@ -1,0 +1,65 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v1/sample.schema.json",
+  "name": "pnp-sp-dev-spfx-web-parts-react-knowledge-source-health",
+  "source": "pnp",
+  "title": "Knowledge Source Health",
+  "shortDescription": "Audits a site's libraries against Copilot Studio knowledge source constraints and flags the documents that will silently fail to ground.",
+  "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-knowledge-source-health",
+  "longDescription": [
+    "A maker points an agent at a SharePoint site and never learns that part of the library was never retrievable: files over the size limit, spreadsheets semantic search cannot index at cell level, documents blocked by a sensitivity label, or a folder past the 500 knowledge object cap where Copilot Studio indexed part of it and did not report which part. There is no error for any of it. This web part runs a rule-based audit over the library and reports what to fix before the agent goes live. Every rule cites the Microsoft Learn page that justifies it, and rules the web part cannot verify from Graph are shown as a maker checklist rather than claimed as checked."
+  ],
+  "creationDateTime": "2026-08-14",
+  "updateDateTime": "2026-08-14",
+  "products": [
+    "SharePoint",
+    "Copilot"
+  ],
+  "metadata": [
+    {
+      "key": "CLIENT-SIDE-DEV",
+      "value": "React"
+    },
+    {
+      "key": "SPFX-VERSION",
+      "value": "1.23.2"
+    }
+  ],
+  "thumbnails": [
+    {
+      "type": "image",
+      "order": 100,
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-knowledge-source-health/assets/screenshot-scorecard.png",
+      "alt": "The scorecard and findings table, showing blocking, degraded and informational findings with the Learn-sourced rule and its remediation"
+    },
+    {
+      "type": "image",
+      "order": 200,
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-knowledge-source-health/assets/screenshot-real-scan.png",
+      "alt": "A scan of a real SharePoint library, reporting a rule as not evaluated because the sensitivity label column was unavailable"
+    }
+  ],
+  "authors": [
+    {
+      "gitHubAccount": "OwnOptic",
+      "name": "Elliot Margot",
+      "pictureUrl": "https://github.com/OwnOptic.png"
+    }
+  ],
+  "references": [
+    {
+      "name": "Build for SharePoint with the SharePoint Framework",
+      "description": "Extend the Microsoft 365 platform with SPFx.",
+      "url": "https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview"
+    },
+    {
+      "name": "Knowledge sources summary",
+      "description": "Copilot Studio knowledge sources, limits and the tenant graph grounding requirements the rules are drawn from.",
+      "url": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-copilot-studio"
+    },
+    {
+      "name": "Unstructured data as a knowledge source",
+      "description": "Object caps, sync frequency and the documented reasons a file never answers.",
+      "url": "https://learn.microsoft.com/microsoft-copilot-studio/knowledge-unstructured-data"
+    }
+  ]
+}
