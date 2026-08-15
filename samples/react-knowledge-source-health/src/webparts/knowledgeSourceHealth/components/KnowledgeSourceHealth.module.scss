@@ -1,0 +1,77 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.knowledgeSourceHealth {
+  overflow: hidden;
+  padding: 1em;
+  color: '[theme:bodyText, default: #323130]';
+  color: var(--bodyText);
+
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.libraryPicker {
+  min-width: 260px;
+}
+
+.scorecard {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.tile {
+  flex: 1 1 140px;
+  min-width: 140px;
+  padding: 12px 16px;
+  border: 1px solid '[theme:neutralLight, default: #edebe9]';
+  border-radius: 4px;
+  background-color: '[theme:white, default: #ffffff]';
+}
+
+.tileValue {
+  font-size: 28px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.tileLabel {
+  font-size: 12px;
+  color: '[theme:neutralSecondary, default: #605e5c]';
+}
+
+.blocking {
+  color: '[theme:redDark, default: #a4262c]';
+}
+
+.degraded {
+  color: '[theme:yellowDark, default: #795300]';
+}
+
+.informational {
+  color: '[theme:themePrimary, default: #0078d4]';
+}
+
+.findingDetail {
+  font-size: 12px;
+  color: '[theme:neutralSecondary, default: #605e5c]';
+}
+
+.checklist {
+  margin-top: 24px;
+}
+
+.checklistItem {
+  padding: 8px 0;
+  border-bottom: 1px solid '[theme:neutralLighter, default: #f3f2f1]';
+}
