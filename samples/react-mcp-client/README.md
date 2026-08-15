@@ -54,6 +54,10 @@ Three requirements of the revision are implemented here that are easy to miss:
 - **`x-mcp-header` mirroring is mandatory for clients.** A server may mark a tool parameter to be copied into an `Mcp-Param-{Name}` header so a gateway can route on it. Optional to offer, not optional to support.
 - **Values that are not header safe use the Base64 sentinel.** Non-ASCII, padded, or control-character values travel as `=?base64?...?=`, and so does a plain value that happens to look like the sentinel.
 
+![A tools/call in the trace panel, showing the MCP-Protocol-Version, Mcp-Method, Mcp-Name and Mcp-Param-Region headers](./assets/screenshot-trace.png)
+
+The trace above is a real `tools/call`, captured from the web part running on a SharePoint page. `Mcp-Param-Region` is there because the server annotated that parameter with `x-mcp-header` and the client is required to mirror it.
+
 ## Features
 
 - Built-in mock MCP server, so the sample runs with zero setup
@@ -113,6 +117,10 @@ Add the web part to a page. **Use mock server** is on by default, so select **Li
 - `slow_report` answers with an SSE stream, so the trace shows two progress notifications before the result
 
 You will also see `broken_tool` missing from the list, with an explanation. That is the client correctly refusing a tool whose annotation is invalid.
+
+![The tool list, with one tool excluded because its x-mcp-header annotation is invalid](./assets/screenshot-tools.png)
+
+![A tools/call answered with an SSE stream, showing two progress notifications before the result](./assets/screenshot-sse.png)
 
 To point at a real server, turn **Use mock server** off in the property pane and set the endpoint URL, plus an Entra resource URI if the server requires a token.
 

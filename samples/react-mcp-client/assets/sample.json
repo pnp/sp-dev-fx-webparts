@@ -15,7 +15,26 @@
     { "key": "CLIENT-SIDE-DEV", "value": "React" },
     { "key": "SPFX-VERSION", "value": "1.23.2" }
   ],
-  "thumbnails": [],
+  "thumbnails": [
+    {
+      "type": "image",
+      "order": 100,
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mcp-client/assets/screenshot-trace.png",
+      "alt": "A tools/call request in the trace panel, showing the MCP-Protocol-Version, Mcp-Method, Mcp-Name and Mcp-Param-Region headers alongside the JSON-RPC body"
+    },
+    {
+      "type": "image",
+      "order": 200,
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mcp-client/assets/screenshot-tools.png",
+      "alt": "The tool list from the built-in mock server, with one tool excluded because its x-mcp-header annotation is invalid"
+    },
+    {
+      "type": "image",
+      "order": 300,
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mcp-client/assets/screenshot-sse.png",
+      "alt": "A tools/call answered with an SSE stream, showing two progress notifications before the final result"
+    }
+  ],
   "authors": [
     { "gitHubAccount": "OwnOptic", "name": "Elliot Margot", "pictureUrl": "TBD" }
   ],
