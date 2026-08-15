@@ -1,0 +1,58 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/sp/v1/sample.schema.json",
+  "name": "pnp-sp-dev-spfx-web-parts-react-mcp-client",
+  "source": "pnp",
+  "title": "MCP Client for SharePoint",
+  "shortDescription": "A web part that acts as a Model Context Protocol client over Streamable HTTP, speaking the stateless 2026-07-28 revision, with the full JSON-RPC trace rendered in the page.",
+  "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-mcp-client",
+  "longDescription": [
+    "Existing MCP work in the SharePoint space exposes SharePoint to external hosts. This sample inverts that: SharePoint is the host surface and the MCP server is consumed from the browser. It implements the 2026-07-28 protocol revision, which removed the initialize handshake and Mcp-Session-Id in favour of self contained requests, and it implements the parts of that revision clients must support: Mcp-Method and Mcp-Name header mirroring, x-mcp-header parameter mirroring, the Base64 sentinel encoding, and client side rejection of malformed tool definitions. A mock MCP server runs in the browser tab so the sample works with no server to deploy and no CORS to configure, and it validates the header requirements so a wrong client is caught rather than tolerated."
+  ],
+  "creationDateTime": "2026-08-14",
+  "updateDateTime": "2026-08-14",
+  "products": ["SharePoint", "Copilot"],
+  "metadata": [
+    { "key": "CLIENT-SIDE-DEV", "value": "React" },
+    { "key": "SPFX-VERSION", "value": "1.23.2" }
+  ],
+  "thumbnails": [
+    {
+      "type": "image",
+      "order": 100,
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mcp-client/assets/screenshot-trace.png",
+      "alt": "A tools/call request in the trace panel, showing the MCP-Protocol-Version, Mcp-Method, Mcp-Name and Mcp-Param-Region headers alongside the JSON-RPC body"
+    },
+    {
+      "type": "image",
+      "order": 200,
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mcp-client/assets/screenshot-tools.png",
+      "alt": "The tool list from the built-in mock server, with one tool excluded because its x-mcp-header annotation is invalid"
+    },
+    {
+      "type": "image",
+      "order": 300,
+      "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mcp-client/assets/screenshot-sse.png",
+      "alt": "A tools/call answered with an SSE stream, showing two progress notifications before the final result"
+    }
+  ],
+  "authors": [
+    { "gitHubAccount": "OwnOptic", "name": "Elliot Margot", "pictureUrl": "https://github.com/OwnOptic.png" }
+  ],
+  "references": [
+    {
+      "name": "Build for SharePoint with the SharePoint Framework",
+      "description": "Extend the Microsoft 365 platform with SPFx.",
+      "url": "https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview"
+    },
+    {
+      "name": "MCP specification 2026-07-28: Streamable HTTP",
+      "description": "The transport, the required request metadata headers, and the value encoding rules this sample implements.",
+      "url": "https://modelcontextprotocol.io/specification/2026-07-28/basic/transports/streamable-http"
+    },
+    {
+      "name": "Connect to Azure AD-secured APIs",
+      "description": "Acquiring an access token for the signed-in user from an SPFx web part.",
+      "url": "https://learn.microsoft.com/sharepoint/dev/spfx/use-aadhttpclient"
+    }
+  ]
+}
