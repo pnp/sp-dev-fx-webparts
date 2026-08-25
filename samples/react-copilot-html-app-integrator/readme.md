@@ -1,4 +1,4 @@
-# SharePoint - Use list data for data cards with AI support for Adaptive Cards (WebPart)
+# SharePoint - Integrate (Copilot) HTML apps seamlessly in SharePoint (WebPart)
 ## Summary
 
 An SPFx web part that embeds small, self-contained HTML applications (HTML + inline JavaScript + CSS, stored in a SharePoint document library) into SharePoint pages **without** the SharePoint file-preview chrome (toolbar, download button).
