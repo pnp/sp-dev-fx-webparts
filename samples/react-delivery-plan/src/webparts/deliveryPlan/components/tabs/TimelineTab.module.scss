@@ -1,0 +1,159 @@
+.container { overflow-x: auto; }
+
+.heading {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 4px;
+  color: #323130;
+}
+
+.desc {
+  font-size: 13px;
+  color: #605e5c;
+  margin: 0 0 20px;
+}
+
+.empty {
+  padding: 40px;
+  text-align: center;
+  color: #605e5c;
+  font-size: 14px;
+}
+
+$infoWidth: 220px;
+
+.headerRow {
+  display: grid;
+  grid-template-columns: $infoWidth 1fr;
+  border-bottom: 1px solid #e0e0e0;
+  margin-bottom: 4px;
+}
+
+.taskInfoHeader {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #605e5c;
+  padding: 4px 8px;
+}
+
+.weekHeaders {
+  display: grid;
+  border-left: 1px solid #e0e0e0;
+}
+
+.weekLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: #605e5c;
+  padding: 4px 6px;
+  border-right: 1px solid #f0f0f0;
+}
+
+.lane {
+  margin-bottom: 4px;
+  border-bottom: 1px solid #f0f0f0;
+  padding-bottom: 4px;
+}
+
+.laneHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  background: #f8f8f8;
+  border-radius: 4px;
+  margin-bottom: 2px;
+}
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.resourceName {
+  font-size: 14px;
+  font-weight: 600;
+  color: #323130;
+  flex: 1;
+}
+
+.laneMeta {
+  font-size: 12px;
+  color: #605e5c;
+}
+
+.taskRow {
+  display: grid;
+  grid-template-columns: $infoWidth 1fr;
+  min-height: 44px;
+  border-bottom: 1px solid #fafafa;
+  align-items: stretch;
+}
+
+.taskInfo {
+  padding: 6px 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.taskTitle {
+  font-size: 13px;
+  font-weight: 500;
+  color: #323130;
+  line-height: 1.3;
+}
+
+.taskMeta {
+  font-size: 11px;
+  color: #605e5c;
+  margin-top: 2px;
+}
+
+.barArea {
+  position: relative;
+  border-left: 1px solid #e0e0e0;
+  min-height: 44px;
+}
+
+.todayLine {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #d13438;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.bar {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 28px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  min-width: 4px;
+  z-index: 1;
+}
+
+.barLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: #fff;
+  padding: 0 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
