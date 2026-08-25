@@ -1,0 +1,124 @@
+# SharePoint - Use list data for data cards with AI support for Adaptive Cards (WebPart)
+## Summary
+
+An SPFx web part that embeds small, self-contained HTML applications (HTML + inline JavaScript + CSS, stored in a SharePoint document library) into SharePoint pages **without** the SharePoint file-preview chrome (toolbar, download button).
+
+How it works:
+
+1. The web part loads the selected HTML file as **text** through the SharePoint REST API (`GetFileByServerRelativePath(...)/$value`) — the file is never opened through its SharePoint URL, so no preview toolbar appears.
+2. If the file declares data sources in an embedded manifest (`<script type="application/json" class="ka-livedata-manifest">`), the web part resolves them in the page context with `SPHttpClient`: SharePoint **lists** (paged, flattened to `{headers, rows}` JSON) and **text files**.
+3. It injects a bootstrap layer into the document: the resolved data as `window.__LD_RESULTS__` (keyed by each source's `spItemUrl`), an instance ID, automatic height reporting (`ResizeObserver` → `postMessage`), and an error relay.
+4. The transformed document is rendered through a **sandboxed `iframe.srcdoc`**.
+
+The app inside the iframe can request a full reload (HTML + data) by sending `postMessage({ type: 'ka-html-viewer-refresh' }, '*')` — see `documents/Demo01.html` for a working example app (live contact directory bound to a SharePoint list).
+
+
+![UI of the generated form](assets/app-screen-01.png)
+*Full page integrated Copilot app*
+
+![UI of the generated form](assets/app-screen-02.png)
+*Configuration of the web part*
+
+![UI of the generated form](assets/app-screen-03.png)
+*Create a databound HTML dashboard app with Copilot*
+
+![UI of the generated form](assets/app-screen-04.png)
+*HTML embedded via SharePoint approach vs. using the web part*
+
+## Video
+[![The video demonstrates the web part.](https://img.youtube.com/vi/Z6Jic8Sy4NU/hqdefault.jpg)](https://youtu.be/Z6Jic8Sy4NU)
+
+## Used SharePoint Framework Version
+![version](https://img.shields.io/badge/version-1.23.2-green.svg)
+
+## Applies to
+
+- [SharePoint Framework](https://aka.ms/spfx)
+- [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
+
+> Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
+
+## Prerequisites
+
+> You just need a SharePoint list and a view for field order configuration. To use the AI option a valid Copilot licence is needed.
+
+## Contributors
+
+- [Marc André Schröder-Zhou](https://github.com/maschroeder-z)
+
+## Solution
+
+| Solution    | Author(s)                                                   |
+| ----------- | ----------------------------------------------------------- |
+| Repository  | Marc André Schröder-Zhou (https://github.com/maschroeder-z) |
+
+## Version history
+
+| Version | Date             | Comments                |
+| ------- | ---------------- | ----------------------- |
+| 1.0     | 10.08.2026       | Initial Release         |
+
+
+## Web part properties
+
+| Property | Description |
+| --- | --- |
+| Site URL | Absolute URL of the site hosting the HTML file (must be in the current tenant) |
+| HTML file | Server-relative URL of the `.html` file |
+| Minimum height | Initial/minimum iframe height in px (100–1000) |
+| Maximum height | Upper clamp for automatic height in px (1000–20000) |
+
+## Security model
+
+- The iframe sandbox is `allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox` — deliberately **without** `allow-same-origin`. The embedded document runs in an opaque origin: no cookies, no direct SharePoint REST access, no parent-DOM access; `postMessage` is the only channel.
+- A `<meta>` Content-Security-Policy is injected: `default-src 'none'`, nonce-based `script-src`/`style-src`, `style-src-attr 'unsafe-inline'` (embedded apps use inline `style=""` attributes), images/fonts only from the tenant origin (+ `data:`/`blob:`), `connect-src 'none'`.
+- Manifest validation: max 10 data sources, `https` + current-tenant origin only, GUID list IDs. The HTML file itself must live in the current tenant and end in `.html`.
+- **Page-CSP inheritance:** `srcdoc` documents inherit the SharePoint page's own Content-Security-Policy, whose `script-src` allows inline scripts only via SharePoint's per-load nonce. The web part therefore reads the page's CSP nonce (from the page's script elements) and stamps the embedded document's scripts with it; on hosts without a page CSP it falls back to a self-generated nonce. Without this, the inherited policy blocks every inline script in the iframe.
+- `requiresCustomScript` remains `false` in the manifest: author-supplied script executes only inside the no-same-origin sandbox with the CSP above, not in the page's origin.
+
+## HTML application contract
+
+An HTML file works in this web part if it:
+
+- is a valid, self-contained HTML document (inline scripts and styles),
+- optionally declares data sources via the `ka-livedata-manifest` JSON block (plain array or `{schemaVersion, items}` object),
+- reads its data from `window.__LD_RESULTS__[spItemUrl]` instead of calling SharePoint directly,
+- communicates with the host only via `postMessage` (e.g. the refresh message above).
+
+Static HTML files without a manifest also work — the web part just injects the host bridge and renders the document.
+
+## Disclaimer
+
+**THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
+
+---
+
+## Minimal Path to Awesome
+
+- Clone this repository
+- Ensure that you are at the solution folder
+- in the command-line run:
+  - **npm install**
+  - **gulp serve**
+
+> Check your currenr Node version and installed SPFx-Framework version.
+
+## Features
+- Embed Copilot generated HTML apps in SharePoint pages
+- Supports inline page integration
+- Support full page mode
+- No additional chrome and page-viewer controls
+
+## Help
+Please contact me for further help or information about the sample.
+
+## References
+
+- [Standard app available on the Marketplace](https://marketplace.microsoft.com/de-de/product/WA200011352)
+- [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
+- [Building for Microsoft teams](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview)
+- [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
+- [Publish SharePoint Framework applications to the Marketplace](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/publish-to-marketplace-overview)
+- [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-copilot-html-app-integrator" />

@@ -1,0 +1,50 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Smart HTML application page Integrator",
+    "id": "6d6cdd08-4396-4b4a-9eed-0782f06c9b62",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "iconPath": "assets/96x96.png",
+    "developer": {
+      "name": "dev-sky.net",
+      "websiteUrl": "https://www.dev-sky.net",
+      "privacyUrl": "https://www.dev-sky.net/PrivacyPolicy/app-privacy.html",
+      "termsOfUseUrl": "https://www.dev-sky.net/PrivacyPolicy/app-terms.html",
+      "mpnId": "6499491"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Embed self-contained HTML applications from a SharePoint document library directly into your pages - clean, sandboxed, and with live SharePoint list data, without the file-preview toolbar."
+      },
+      "longDescription": {
+        "default": "The webpart Smart HTML application page Integrator renders small, self-contained HTML applications (HTML with inline JavaScript and CSS, stored in a SharePoint document library) directly on SharePoint pages - without the SharePoint file-preview chrome such as the toolbar or download button. The web part loads the selected HTML file as text via the SharePoint REST API and displays it in a sandboxed iframe with an automatically adjusting height. If the HTML file declares data sources in an embedded manifest, the web part resolves them in the page context and injects the results into the application: SharePoint lists (paged and flattened to header/row JSON) as well as text files - enabling live, data-driven mini-apps such as dashboards, directories, or viewers with no additional backend. Security is built in: the embedded document runs in an opaque origin without cookies, direct SharePoint access, or parent-DOM access; a strict Content-Security-Policy with nonce-based scripts is enforced, data sources are restricted to the current tenant, and communication with the host happens exclusively via postMessage. Custom script does not need to be enabled on the site. Configuration is simple: pick the site and the HTML file, optionally adjust minimum and maximum height - done. The webpart consumes the provided HTML app pages for rendering only. The webpart itself does not produce any AI content. The HTML app itself will be created typically from a SharePoint list or library with Copilot. A typical prompt could be: Generate a databound dashboard app for the current list."
+      },
+      "screenshotPaths": [
+        "assets/screenshots/app-screen-01.png",
+        "assets/screenshots/app-screen-02.png",
+        "assets/screenshots/app-screen-03.png",
+        "assets/screenshots/app-screen-04.png"
+      ],
+      "videoUrl": "https://youtu.be/Z6Jic8Sy4NU",
+      "categories": [
+        "Content management",
+        "Productivity",
+        "Site Design"
+      ]
+    },
+    "features": [
+      {
+        "title": "Smart HTML application page Integrator Feature",
+        "description": "The feature that activates elements of the smart HTML application page Integrator solution.",
+        "id": "7db683e7-cba9-45c0-bd97-085d3dc8d6e4",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/html-app-integrator.sppkg"
+  }
+}

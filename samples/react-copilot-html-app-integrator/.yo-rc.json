@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.16.0",
+    "sdksVersions": {},
+    "version": "1.23.2",
+    "libraryName": "copilot-app-integrator",
+    "libraryId": "6d6cdd08-4396-4b4a-9eed-0782f06c9b62",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "copilot-app-integrator",
+    "solutionShortDescription": "copilot-app-integrator description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}
