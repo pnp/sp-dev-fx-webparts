@@ -8,11 +8,11 @@
     "experimentalDecorators": true,
     "skipLibCheck": true,
     "outDir": "lib",
-    "inSourceMap": true,
+    "inlineSources": true,
     "strictNullChecks": true,
     "noUnusedLocals": false,
     "typeRoots": ["./node_modules/@types", "./node_modules/@microsoft"],
-    "types": ["webpack-env"],
+    "types": [],
     "lib": ["es5", "dom", "es2015.collection", "es2015.promise"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"]
