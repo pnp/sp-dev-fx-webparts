@@ -82,8 +82,6 @@ export default class DeliveryPlanWebPart extends BaseClientSideWebPart<IDelivery
     const { semanticColors } = currentTheme;
     if (semanticColors) {
       this.domElement.style.setProperty('--bodyText', semanticColors.bodyText || null);
-      this.domElement.style.setProperty('--link', semanticColors.link || null);
-      this.domElement.style.setProperty('--linkHovered', semanticColors.linkHovered || null);
     }
   }
 
