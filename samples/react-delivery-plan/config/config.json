@@ -1,9 +1,8 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/core-build/config.2.0.0.schema.json",
   "version": "2.0",
-  "bundles": [
-    {
-      "name": "delivery-plan-web-part",
+  "bundles": {
+    "delivery-plan-web-part": {
       "components": [
         {
           "entrypoint": "./lib/webparts/deliveryPlan/DeliveryPlanWebPart.js",
@@ -11,7 +10,7 @@
         }
       ]
     }
-  ],
+  },
   "externals": {},
   "localizedResources": {
     "DeliveryPlanWebPartStrings": "lib/webparts/deliveryPlan/loc/{locale}.js"
