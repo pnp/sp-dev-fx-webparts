@@ -1,0 +1,57 @@
+.container {}
+
+.heading { font-size: 16px; font-weight: 600; margin: 0 0 4px; color: #323130; }
+.desc { font-size: 13px; color: #605e5c; margin: 0 0 20px; }
+.empty { padding: 40px; text-align: center; color: #605e5c; font-size: 14px; }
+
+.phaseList { display: flex; flex-direction: column; }
+
+.phaseRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #f0f0f0;
+  &:last-child { border-bottom: none; }
+}
+
+.phaseInfo { width: 280px; flex-shrink: 0; }
+
+.phaseNameRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.phaseDot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.phaseName { font-size: 14px; font-weight: 600; color: #323130; }
+
+.phaseMeta { font-size: 12px; color: #605e5c; padding-left: 18px; }
+
+.barArea {
+  flex: 1;
+  height: 24px;
+  position: relative;
+  background: #f0f0f0;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.bar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-radius: 4px;
+}
+
+.taskCount { width: 70px; flex-shrink: 0; text-align: right; }
+.taskCountNum { font-size: 14px; font-weight: 700; color: #323130; }
+.taskCountLabel { font-size: 13px; color: #605e5c; }
