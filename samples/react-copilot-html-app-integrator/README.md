@@ -130,7 +130,6 @@ Please contact me for further help or information about the sample.
 
 ## References
 
-- [Standard app available on the Marketplace](https://marketplace.microsoft.com/de-de/product/WA200011352)
 - [Getting started with SharePoint Framework](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
 - [Building for Microsoft teams](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/build-for-teams-overview)
 - [Use Microsoft Graph in your solution](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
