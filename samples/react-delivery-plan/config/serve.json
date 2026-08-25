@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/spfx-serve.schema.json",
+  "port": 4321,
+  "https": true,
+  "serveConfigurations": {
+    "default": {
+      "pageUrl": "https://contoso.sharepoint.com/sites/mySite/SitePages/myPage.aspx",
+      "webPart": {
+        "title": "DeliveryPlan",
+        "properties": {
+          "listName": "DeliveryPlan",
+          "title": "Delivery Plan",
+          "subtitle": ""
+        }
+      }
+    }
+  }
+}
