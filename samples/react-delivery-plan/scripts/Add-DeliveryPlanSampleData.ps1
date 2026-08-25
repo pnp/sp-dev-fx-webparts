@@ -99,8 +99,8 @@ try {
         $user2 = New-PnPUser -LoginName $Resource2Email
     }
 
-    Write-Host "  Resource 1: $($user1.Title) (ID $($user1.Id))" -ForegroundColor Green
-    Write-Host "  Resource 2: $($user2.Title) (ID $($user2.Id))" -ForegroundColor Green
+    Write-Host "  Resource 1: $($user1.Title) [$($user1.LoginName)]" -ForegroundColor Green
+    Write-Host "  Resource 2: $($user2.Title) [$($user2.LoginName)]" -ForegroundColor Green
 }
 catch {
     Write-Error "Failed to resolve users: $_"
@@ -108,8 +108,9 @@ catch {
     exit 1
 }
 
-$S = $user1.Id   # Sudeep Ghatak
-$A = $user2.Id   # Ashish Ghatak
+# Add-PnPListItem requires the login name (claims string) for Person fields, not the numeric ID
+$S = $user1.LoginName   # Sudeep Ghatak
+$A = $user2.LoginName   # Ashish Ghatak
 #endregion
 
 #region Sample data
