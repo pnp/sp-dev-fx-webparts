@@ -35,7 +35,7 @@ The app inside the iframe can request a full reload (HTML + data) by sending `po
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.23.2](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
+![SPFx 1.23.2](https://img.shields.io/badge/SPFx-1.23.2-green.svg)
 ![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
