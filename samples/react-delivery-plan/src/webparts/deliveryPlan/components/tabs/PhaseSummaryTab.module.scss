@@ -1,8 +1,8 @@
 .container { display: block; }
 
-.heading { font-size: 16px; font-weight: 600; margin: 0 0 4px; color: #323130; }
-.desc { font-size: 13px; color: #605e5c; margin: 0 0 20px; }
-.empty { padding: 40px; text-align: center; color: #605e5c; font-size: 14px; }
+.heading { font-size: 16px; font-weight: 600; margin: 0 0 4px; color: var(--dp-text); }
+.desc { font-size: 13px; color: var(--dp-text-secondary); margin: 0 0 20px; }
+.empty { padding: 40px; text-align: center; color: var(--dp-text-secondary); font-size: 14px; }
 
 .phaseList { display: flex; flex-direction: column; }
 
@@ -11,7 +11,7 @@
   align-items: center;
   gap: 16px;
   padding: 16px 0;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--dp-border-subtle);
   &:last-child { border-bottom: none; }
 }
 
@@ -32,15 +32,15 @@
   flex-shrink: 0;
 }
 
-.phaseName { font-size: 14px; font-weight: 600; color: #323130; }
+.phaseName { font-size: 14px; font-weight: 600; color: var(--dp-text); }
 
-.phaseMeta { font-size: 12px; color: #605e5c; padding-left: 18px; }
+.phaseMeta { font-size: 12px; color: var(--dp-text-secondary); padding-left: 18px; }
 
 .barArea {
   flex: 1;
   height: 24px;
   position: relative;
-  background: #f0f0f0;
+  background: var(--dp-border-subtle);
   border-radius: 4px;
   overflow: hidden;
 }
@@ -53,5 +53,5 @@
 }
 
 .taskCount { width: 70px; flex-shrink: 0; text-align: right; }
-.taskCountNum { font-size: 14px; font-weight: 700; color: #323130; }
-.taskCountLabel { font-size: 13px; color: #605e5c; }
+.taskCountNum { font-size: 14px; font-weight: 700; color: var(--dp-text); }
+.taskCountLabel { font-size: 13px; color: var(--dp-text-secondary); }

@@ -59,7 +59,7 @@ export class DeliveryPlan extends React.Component<IDeliveryPlanProps, IDeliveryP
   }
 
   public render(): React.ReactElement {
-    const { tasks, title, subtitle, errorMessage } = this.props;
+    const { tasks, title, subtitle, errorMessage, isDarkTheme } = this.props;
     const { activeTab } = this.state;
     const phaseColours = this._buildPhaseColours(tasks);
     const legendEntries = this._getLegendEntries(phaseColours);
@@ -79,7 +79,7 @@ export class DeliveryPlan extends React.Component<IDeliveryPlanProps, IDeliveryP
     ];
 
     return (
-      <div className={styles.deliveryPlan}>
+      <div className={`${styles.deliveryPlan}${isDarkTheme ? ` ${styles.dark}` : ''}`}>
         <div className={styles.header}>
           <div className={styles.headerText}>
             <h2 className={styles.title}>{title}</h2>

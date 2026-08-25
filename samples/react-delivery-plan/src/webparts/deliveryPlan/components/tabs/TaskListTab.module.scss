@@ -1,35 +1,35 @@
 .container { overflow-x: auto; }
 
-.heading { font-size: 16px; font-weight: 600; margin: 0 0 4px; color: #323130; }
-.desc { font-size: 13px; color: #605e5c; margin: 0 0 16px; }
-.empty { padding: 40px; text-align: center; color: #605e5c; font-size: 14px; }
+.heading { font-size: 16px; font-weight: 600; margin: 0 0 4px; color: var(--dp-text); }
+.desc { font-size: 13px; color: var(--dp-text-secondary); margin: 0 0 16px; }
+.empty { padding: 40px; text-align: center; color: var(--dp-text-secondary); font-size: 14px; }
 
-.table { border: 1px solid #e0e0e0; border-radius: 4px; overflow: hidden; }
+.table { border: 1px solid var(--dp-border); border-radius: 4px; overflow: hidden; }
 
 .thead {
   display: flex;
-  background: #f8f8f8;
-  border-bottom: 2px solid #e0e0e0;
+  background: var(--dp-bg-subtle);
+  border-bottom: 2px solid var(--dp-border);
 
   > div {
     padding: 10px 12px;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: 0.5px;
-    color: #605e5c;
+    color: var(--dp-text-secondary);
     cursor: pointer;
     user-select: none;
     white-space: nowrap;
-    &:hover { background: #f0f0f0; }
+    &:hover { background: var(--dp-border-subtle); }
   }
 }
 
 .tr {
   display: flex;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--dp-border-subtle);
   align-items: center;
   &:last-child { border-bottom: none; }
-  &:hover { background: #faf9f8; }
+  &:hover { background: var(--dp-bg-hover); }
 }
 
 .colResource { width: 160px; flex-shrink: 0; }
@@ -43,15 +43,15 @@
 .tdTask {
   padding: 10px 12px;
   font-size: 13px;
-  color: #323130;
+  color: var(--dp-text);
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
 
-.tdPhase { display: flex; align-items: center; gap: 6px; padding: 10px 12px; font-size: 13px; color: #323130; }
-.tdDate { padding: 10px 12px; font-size: 13px; color: #323130; }
-.tdDays { padding: 10px 12px; font-size: 13px; font-weight: 600; color: #323130; text-align: right; }
+.tdPhase { display: flex; align-items: center; gap: 6px; padding: 10px 12px; font-size: 13px; color: var(--dp-text); }
+.tdDate { padding: 10px 12px; font-size: 13px; color: var(--dp-text); }
+.tdDays { padding: 10px 12px; font-size: 13px; font-weight: 600; color: var(--dp-text); text-align: right; }
 
 .avatar {
   display: inline-flex;
@@ -66,7 +66,7 @@
   flex-shrink: 0;
 }
 
-.resourceName { font-size: 13px; font-weight: 500; color: #323130; white-space: nowrap; }
+.resourceName { font-size: 13px; font-weight: 500; color: var(--dp-text); white-space: nowrap; }
 
 .phaseDot {
   display: inline-block;

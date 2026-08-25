@@ -1,28 +1,28 @@
 .container { overflow-x: auto; }
 
-.heading { font-size: 16px; font-weight: 600; margin: 0 0 4px; color: #323130; }
-.desc { font-size: 13px; color: #605e5c; margin: 0 0 20px; }
-.empty { padding: 40px; text-align: center; color: #605e5c; font-size: 14px; }
+.heading { font-size: 16px; font-weight: 600; margin: 0 0 4px; color: var(--dp-text); }
+.desc { font-size: 13px; color: var(--dp-text-secondary); margin: 0 0 20px; }
+.empty { padding: 40px; text-align: center; color: var(--dp-text-secondary); font-size: 14px; }
 
 .table {
-  border: 1px solid #e0e0e0;
+  border: 1px solid var(--dp-border);
   border-radius: 4px;
   overflow: hidden;
 }
 
 .rowHeader {
   display: flex;
-  background: #f8f8f8;
-  border-bottom: 2px solid #e0e0e0;
+  background: var(--dp-bg-subtle);
+  border-bottom: 2px solid var(--dp-border);
 }
 
 .row {
   display: flex;
-  border-bottom: 1px solid #f0f0f0;
+  border-bottom: 1px solid var(--dp-border-subtle);
   &:last-child { border-bottom: none; }
 }
 
-.combinedRow { border-top: 2px solid #e0e0e0; }
+.combinedRow { border-top: 2px solid var(--dp-border); }
 
 .resourceCell {
   display: flex;
@@ -33,8 +33,8 @@
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.4px;
-  color: #605e5c;
-  border-right: 1px solid #e0e0e0;
+  color: var(--dp-text-secondary);
+  border-right: 1px solid var(--dp-border);
   flex-shrink: 0;
 }
 
@@ -45,9 +45,9 @@
   font-size: 10px;
   font-weight: 700;
   letter-spacing: 0.3px;
-  color: #605e5c;
+  color: var(--dp-text-secondary);
   text-align: center;
-  border-right: 1px solid #f0f0f0;
+  border-right: 1px solid var(--dp-border-subtle);
 }
 
 .cell {
@@ -57,11 +57,11 @@
   align-items: center;
   justify-content: center;
   min-height: 52px;
-  border-right: 1px solid #f0f0f0;
+  border-right: 1px solid var(--dp-border-subtle);
   transition: background-color 0.1s;
 }
 
-.cellCount { font-size: 16px; font-weight: 700; color: #323130; }
+.cellCount { font-size: 16px; font-weight: 700; color: var(--dp-text); }
 
 .avatar {
   display: inline-flex;
@@ -76,10 +76,10 @@
   flex-shrink: 0;
 }
 
-.resourceName { font-size: 13px; font-weight: 600; color: #323130; }
+.resourceName { font-size: 13px; font-weight: 600; color: var(--dp-text); }
 
 .legend { display: flex; align-items: center; gap: 8px; margin-top: 12px; }
-.legendLabel { font-size: 12px; color: #605e5c; }
+.legendLabel { font-size: 12px; color: var(--dp-text-secondary); }
 
 .legendGradient {
   width: 120px;
