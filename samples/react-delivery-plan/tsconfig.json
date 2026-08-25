@@ -12,7 +12,7 @@
     "strictNullChecks": true,
     "noUnusedLocals": false,
     "typeRoots": ["./node_modules/@types", "./node_modules/@microsoft"],
-    "types": [],
+    "types": ["webpack-env"],
     "lib": ["es5", "dom", "es2015.collection", "es2015.promise", "es2015.iterable", "es2019.array"]
   },
   "include": ["src/**/*.ts", "src/**/*.tsx"]
