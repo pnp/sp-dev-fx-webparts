@@ -1,0 +1,77 @@
+.container { overflow-x: auto; }
+
+.heading { font-size: 16px; font-weight: 600; margin: 0 0 4px; color: #323130; }
+.desc { font-size: 13px; color: #605e5c; margin: 0 0 16px; }
+.empty { padding: 40px; text-align: center; color: #605e5c; font-size: 14px; }
+
+.table { border: 1px solid #e0e0e0; border-radius: 4px; overflow: hidden; }
+
+.thead {
+  display: flex;
+  background: #f8f8f8;
+  border-bottom: 2px solid #e0e0e0;
+
+  > div {
+    padding: 10px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #605e5c;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    &:hover { background: #f0f0f0; }
+  }
+}
+
+.tr {
+  display: flex;
+  border-bottom: 1px solid #f0f0f0;
+  align-items: center;
+  &:last-child { border-bottom: none; }
+  &:hover { background: #faf9f8; }
+}
+
+.colResource { width: 160px; flex-shrink: 0; }
+.colTask { flex: 1; min-width: 0; }
+.colPhase { width: 220px; flex-shrink: 0; }
+.colDate { width: 90px; flex-shrink: 0; }
+.colDays { width: 60px; flex-shrink: 0; text-align: right; }
+
+.tdResource { display: flex; align-items: center; gap: 8px; padding: 10px 12px; }
+
+.tdTask {
+  padding: 10px 12px;
+  font-size: 13px;
+  color: #323130;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tdPhase { display: flex; align-items: center; gap: 6px; padding: 10px 12px; font-size: 13px; color: #323130; }
+.tdDate { padding: 10px 12px; font-size: 13px; color: #323130; }
+.tdDays { padding: 10px 12px; font-size: 13px; font-weight: 600; color: #323130; text-align: right; }
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.resourceName { font-size: 13px; font-weight: 500; color: #323130; white-space: nowrap; }
+
+.phaseDot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
