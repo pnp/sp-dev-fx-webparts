@@ -44,6 +44,12 @@ param (
     [string]$ListName = "DeliveryPlan",
 
     [Parameter(Mandatory = $false)]
+    [string]$TenantId = "DeliveryPlan",
+
+    [Parameter(Mandatory = $false)]
+    [string]$ClientId = "DeliveryPlan",
+
+    [Parameter(Mandatory = $false)]
     [string[]]$PhaseChoices = @(
         "Discovery & Environment Setup",
         "Core Application & Data Capture",
@@ -64,7 +70,7 @@ if (-not (Get-Module -ListAvailable -Name PnP.PowerShell)) {
 #region Connect
 Write-Host "Connecting to $SiteUrl ..." -ForegroundColor Cyan
 try {
-    Connect-PnPOnline -Url $SiteUrl -Interactive
+    Connect-PnPOnline -Url $SiteUrl -Tenant $TenantId -ClientId $ClientId -DeviceLogin -ErrorAction Stop
     Write-Host "Connected." -ForegroundColor Green
 }
 catch {
