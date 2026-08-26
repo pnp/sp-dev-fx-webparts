@@ -1,0 +1,14 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.tabContainer {
+  :global {
+    .ms-Pivot {
+      margin-bottom: 16px;
+      border-bottom: 1px solid $ms-color-neutralLight;
+    }
+  }
+}
+
+.tabContent {
+  padding: 8px 0;
+}

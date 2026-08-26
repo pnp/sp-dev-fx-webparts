@@ -1,0 +1,47 @@
+MUTUAL NON-DISCLOSURE AGREEMENT
+
+This Mutual Non-Disclosure Agreement is made as of March 1, 2024, by and between:
+
+GlobalTech Innovations LLC, with offices at 789 Innovation Park, Boston, MA 02101 ("Party A")
+AND
+DataStream Analytics Corp., with offices at 321 Data Center Way, New York, NY 10001 ("Party B")
+
+§1. CONFIDENTIAL INFORMATION
+
+"Confidential Information" means technical, business, financial information disclosed by one Party to the other, including:
+- Trade secrets, algorithms, software, source code
+- Research, development, designs, specifications
+- Financial data, customer lists, business plans
+- Information marked "Confidential" or reasonably considered confidential
+
+Exclusions: Information that is (a) publicly available; (b) rightfully received from third parties; (c) independently developed; (d) known prior to disclosure; or (e) required by law to be disclosed.
+
+§2. OBLIGATIONS
+
+Receiving Party shall:
+- Hold Confidential Information in strict confidence
+- Not disclose to third parties without consent
+- Use only for the agreed Purpose
+- Disclose only to employees/contractors with need-to-know who are bound by confidentiality
+- Not copy or create derivatives except as necessary
+
+§3. OWNERSHIP AND RETURN
+
+All Confidential Information remains property of Disclosing Party. Upon request or termination, Receiving Party shall return or destroy all Confidential Information and certify destruction.
+
+§4. TERM
+
+This Agreement commences March 1, 2024 and continues for three (3) years. Confidentiality obligations survive for five (5) years from disclosure date.
+
+§5. REMEDIES
+
+Breach may cause irreparable harm. Disclosing Party entitled to equitable relief including injunction, in addition to other remedies.
+
+§6. GENERAL PROVISIONS
+
+Governed by New York law. Exclusive jurisdiction in New York County courts. This Agreement is the entire agreement and may be amended only in writing.
+
+GLOBALTECH INNOVATIONS LLC          DATASTREAM ANALYTICS CORP.
+By: Michael Chen                   By: Emily Rodriguez
+Title: Chief Legal Officer         Title: General Counsel
+Date: March 1, 2024               Date: March 1, 2024

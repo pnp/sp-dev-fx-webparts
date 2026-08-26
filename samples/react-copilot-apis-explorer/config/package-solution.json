@@ -1,0 +1,82 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "O365C - Copilot API Explorer",
+    "id": "a2fce93e-ce80-4bdb-9059-d74d459f146f",
+    "version": "2.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.22.1"
+    },
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Mail.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "People.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "OnlineMeetingTranscript.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Chat.Read"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "ChannelMessage.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "ExternalItem.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Files.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "OnlineMeetingAiInsight.Read.All"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Reports.Read.All"
+      }
+    ],
+    "metadata": {
+      "shortDescription": {
+        "default": "Teaching sample: Microsoft 365 Copilot APIs (Chat, Search, Meeting Insights, Usage Reports)"
+      },
+      "longDescription": {
+        "default": "An SPFx web part demonstrating four Microsoft 365 Copilot APIs through a tabbed interface. Built as an educational reference for developers learning to integrate Copilot capabilities into SharePoint solutions."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "O365C - Copilot API Explorer Feature",
+        "description": "Activates the Copilot API Explorer web part with Chat, Search, Meeting Insights, and Usage Reports tabs.",
+        "id": "d125fa74-62ec-401c-b583-720a5b5afaa6",
+        "version": "2.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/o365c-copilot-api-explorer.sppkg"
+  }
+}

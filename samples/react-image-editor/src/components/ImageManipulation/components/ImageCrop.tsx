@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import * as React from 'react';
 import { ICrop } from '../ImageManipulation.types';
 
@@ -18,7 +19,7 @@ export interface IImageCropProps {
   onDragStart?: (e: MouseEvent) => void;
   onComplete?: (crop: ICrop) => void;
   onChange?: (crop: ICrop) => void;
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line: no-any
   onDragEnd?: (e: any) => void;
 }
 
@@ -35,7 +36,7 @@ export interface IImageCropState {
 export default class ImageCrop extends
   React.Component<IImageCropProps, IImageCropState> {
 
-  private controlRef: HTMLDivElement = undefined;
+  private controlRef: HTMLDivElement|undefined = undefined;
 
   private dragStarted: boolean = false;
   private mouseDownOnCrop: boolean = false;
@@ -71,7 +72,7 @@ export default class ImageCrop extends
 
   public render(): React.ReactElement<IImageCropProps> {
     const { crop } = this.props;
-    const cropSelection: JSX.Element = this.isValid(crop) && this.controlRef ? this.createSelectionGrid() : undefined;
+    const cropSelection: JSX.Element|undefined = this.isValid(crop) && this.controlRef ? this.createSelectionGrid() : undefined;
 
      // tslint:disable:react-a11y-event-has-role
     return (
@@ -155,7 +156,7 @@ export default class ImageCrop extends
     };
   }
 
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line: no-any
   private onDocMouseTouchMove(e: React.MouseEvent<HTMLDivElement> | any): void {
     const { crop, onChange, onDragStart } = this.props;
     if (!this.mouseDownOnCrop) {
@@ -166,7 +167,7 @@ export default class ImageCrop extends
     if (!this.dragStarted) {
       this.dragStarted = true;
       if (onDragStart) {
-        // tslint:disable-next-line: no-any
+        // eslint-disable-next-line: no-any
         onDragStart(e as any);
       }
     }
@@ -202,11 +203,12 @@ export default class ImageCrop extends
 
     const { evData } = this;
     const nextCrop: ICrop = this.makeNewCrop();
+    if(this.controlRef !== undefined) {
     const width: number = this.controlRef.clientWidth;
     const height: number = this.controlRef.clientHeight;
     nextCrop.sx = clamp(evData.cropStartX + evData.xDiff, 0, width - nextCrop.width);
     nextCrop.sy = clamp(evData.cropStartY + evData.yDiff, 0, height - nextCrop.height);
-
+    }
     return nextCrop;
   }
 
@@ -301,7 +303,7 @@ export default class ImageCrop extends
     };
   }
 
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line: no-any
   private onDocMouseTouchEnd(e: MouseEvent | any): void {
     const { crop, onDragEnd, onComplete } = this.props;
 
@@ -319,7 +321,7 @@ export default class ImageCrop extends
     }
   }
 
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line: no-any
   private onCropMouseTouchDown(e: MouseEvent | any): void {
     const { crop } = this.props;
 
@@ -329,7 +331,7 @@ export default class ImageCrop extends
 
     let xInversed: boolean = false;
     let yInversed: boolean = false;
-    let pos: nodePoition = undefined;
+    let pos: nodePoition|undefined = undefined;
     if (ord && !isNaN(+ord)) {
       pos = +ord;
       xInversed = pos === nodePoition.NW || pos === nodePoition.W || pos === nodePoition.SW;
@@ -359,7 +361,7 @@ export default class ImageCrop extends
     this.controlRef = element;
   }
 
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line: no-any
   private getClientPos(e: MouseEvent | any): IMousePosition {
     let pageX: number;
     let pageY: number;
@@ -380,14 +382,14 @@ export default class ImageCrop extends
     return crop && !isNaN(crop.width) && !isNaN(crop.height);
   }
 
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line: no-any
   private onMouseTouchDown(e: MouseEvent | any): void {
     const { crop, onChange } = this.props;
     e.preventDefault(); // Stop drag selection.
     const mousepos: IMousePosition = this.getClientPos(e);
 
-    // tslint:disable-next-line: no-any
-    const refpos: any = this.controlRef.getBoundingClientRect();
+    // eslint-disable-next-line: no-any
+    const refpos: any = this.controlRef!.getBoundingClientRect();
     const startx: number = mousepos.x - refpos.left;
     const starty: number = mousepos.y - refpos.top;
     // is mousePos in current pos
@@ -424,9 +426,9 @@ export default class ImageCrop extends
     };
 
     this.mouseDownOnCrop = true;
-
-    onChange(nextCrop);
-
+    if(onChange) {
+        onChange(nextCrop);
+    }
     this.setState({ cropIsActive: true, newCropIsBeingDrawn: true });
   }
 }

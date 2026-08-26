@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-people-slick-client-side-solution",
+    "id": "d8a876a0-000b-4f8d-b52f-dfff585481dc",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Lew Chin Hoong",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-people-slick display carousell of people from list"
+      },
+      "longDescription": {
+        "default": "react-people-slick display carousell of people from list"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-people-slick Feature",
+        "description": "The feature that activates elements of the react-people-slick solution.",
+        "id": "f712206d-5022-4926-8ed3-75c24d2d40fc",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-people-slick.sppkg"
+  }
+}

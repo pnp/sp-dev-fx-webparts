@@ -69,7 +69,7 @@ export default class Carousel extends React.Component<ICarouselProps, ICarouselS
 
 		this.setState({ isLoading: true, hasError: false });
 		const tenantUrl = `https://${location.host}`;
-		let galleryImages: ICarouselImages[] = [];
+		const galleryImages: ICarouselImages[] = [];
 		let carouselImages: React.ReactElement<HTMLElement>[] = [];
 
 		try {
@@ -112,7 +112,7 @@ export default class Carousel extends React.Component<ICarouselProps, ICarouselS
 				// Create Carousel Slides from Images
 				carouselImages = galleryImages.map((galleryImage, i) => {
 					return (
-						<div className='slideLoading' >
+						<div key={i} className='slideLoading' >
 
 							{galleryImage.mediaType == 'video' ?
 								<div >
@@ -134,7 +134,7 @@ export default class Carousel extends React.Component<ICarouselProps, ICarouselS
 											}
 										}}
 										height={'400px'}
-										imageFit={ImageFit.cover}
+										imageFit={this.props.imageFit === 'contain' ? ImageFit.contain : ImageFit.cover}
 									/>
 									<div style={{ background: 'rgba(0, 0, 0, 0.3)', overflow: 'hidden', fontSize: FontSizes.size16, top: 0, transition: '.7s ease', textAlign: 'left', width: '200px', height: '350px', position: 'absolute', color: '#ffffff', padding: '25px' }}>
 										<h2 style={{ fontSize: FontSizes.size20, textTransform: 'uppercase', color: 'white' }}>{galleryImage.caption}</h2>
@@ -172,6 +172,24 @@ export default class Carousel extends React.Component<ICarouselProps, ICarouselS
 			await this.loadPictures();
 		}
 	}
+	private NextArrow = (props: { onClick?: () => void }) => {
+		const { onClick } = props;
+		return (
+			<div className="custom-arrow custom-next" onClick={onClick}>
+				<Icon iconName="ChevronRight" />
+			</div>
+		);
+	}
+
+	private PrevArrow = (props: { onClick?: () => void }) => {
+		const { onClick } = props;
+		return (
+			<div className="custom-arrow custom-prev" onClick={onClick}>
+				<Icon iconName="ChevronLeft" />
+			</div>
+		);
+	}
+
 	public render(): React.ReactElement<ICarouselProps> {
 		const sliderSettings = {
 			dots: true,
@@ -180,9 +198,11 @@ export default class Carousel extends React.Component<ICarouselProps, ICarouselS
 			slidesToShow: 1,
 			slidesToScroll: 1,
 			lazyLoad: 'progressive' as 'ondemand' | 'progressive',
-			autoplaySpeed: 3000,
+			autoplaySpeed: this.props.carouselSpeed,
 			initialSlide: this.state.photoIndex,
 			arrows: true,
+			nextArrow: <this.NextArrow />,
+			prevArrow: <this.PrevArrow />,
 			draggable: true,
 			adaptiveHeight: true,
 			useCSS: true,
@@ -191,8 +211,8 @@ export default class Carousel extends React.Component<ICarouselProps, ICarouselS
 
 		return (
 			<div className={styles.carousel}>
-				<div>
-				</div>
+				<div />
+
 				{
 					(!this.props.list) ?
 						<Placeholder iconName='Edit'

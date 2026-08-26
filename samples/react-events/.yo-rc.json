@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.21.1",
+    "sdksVersions": {},
+    "version": "1.23.0-rc.3",
+    "libraryName": "spfx-events",
+    "libraryId": "1dd46bc0-0af5-48ba-81c7-a53d76dc074e",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "spfx-events",
+    "solutionShortDescription": "spfx-events description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

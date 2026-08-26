@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-hub-site-navigator-client-side-solution",
+    "id": "7bbcc1e4-4948-4162-95c6-cfca4e4cbbeb",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Harminder Singh",
+      "websiteUrl": "https://github.com/HarminderSethi",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "hub-site-navigator description"
+      },
+      "longDescription": {
+        "default": "hub-site-navigator description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "hub-site-navigator Feature",
+        "description": "The feature that activates elements of the hub-site-navigator solution.",
+        "id": "3227644a-9da4-44f1-9cfe-08c72ec36ce0",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-hub-site-navigator.sppkg"
+  }
+}

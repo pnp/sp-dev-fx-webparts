@@ -19,9 +19,6 @@ import {
   Text,
 } from "@fluentui/react";
 
-
-
-import { getGUID } from "@pnp/common";
 import { useOrgChartStyles } from "./useOrgChartStyles";
 
 import "./OrgChart.module.scss";
@@ -64,6 +61,7 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
     startFromUser,
     showActionsBar,
     title,
+    sp,
   }: IOrgChartProps = props;
 
 
@@ -86,6 +84,7 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
 
       try {
         const profileResponse = await getUserProfile(
+          sp,
           selectedUser,
           startFromUserId,
           showAllManagers,
@@ -94,33 +93,31 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
         if (profileResponse) {
           for (const managerInfo of profileResponse.managersList) {
             wRenderManagers.push(
-              <>
+              <React.Fragment key={`manager-${managerInfo.id}`}>
                 <PersonCard
-                  key={getGUID()}
                   userInfo={managerInfo}
                   onUserSelected={onUserSelected}
                   selectedUser={currentUser}
                   showActionsBar={showActionsBar}
+                  sp={sp}
                  />
                 <div
-                  key={getGUID()}
                   className={orgChartClasses.separatorVertical}
                  />
-              </>
+              </React.Fragment>
             );
           }
 
           for (const directReport of profileResponse.reportsLists) {
             wRenderDirectReports.push(
-              <>
-                <PersonCard
-                  key={getGUID()}
-                  userInfo={directReport}
-                  onUserSelected={onUserSelected}
-                  selectedUser={currentUser}
-                  showActionsBar={showActionsBar}
-                 />
-              </>
+              <PersonCard
+                key={`report-${directReport.id}`}
+                userInfo={directReport}
+                onUserSelected={onUserSelected}
+                selectedUser={currentUser}
+                showActionsBar={showActionsBar}
+                sp={sp}
+               />
             );
           }
         }
@@ -148,6 +145,7 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
     },
 
     [
+      sp,
       getUserProfile,
       startFromUserId,
       showAllManagers,
@@ -178,7 +176,7 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
           });
           return;
         }
-        const profileResponse = await getUserProfile(startFromUserId);
+        const profileResponse = await getUserProfile(sp, startFromUserId);
         const wCurrentUser: IUserInfo = await manpingUserProperties(
           // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
           profileResponse!.currentUserProfile
@@ -206,7 +204,7 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
         });
       }
     })();
-  }, [getUserProfile, startFromUserId]);
+  }, [getUserProfile, sp, startFromUserId]);
 
   React.useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-floating-promises
@@ -290,12 +288,13 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
         <Stack horizontalAlign="center" verticalAlign="center">
           {renderManagers}
           <PersonCard
-            key={getGUID()}
+            key={`current-${currentUser?.id}`}
             // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             userInfo={currentUser!}
             onUserSelected={onUserSelected}
             selectedUser={currentUser}
             showActionsBar={showActionsBar}
+            sp={sp}
            />
           {renderDirectReports.length && (
             <>

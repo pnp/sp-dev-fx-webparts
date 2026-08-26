@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-hero-webpart-client-side-solution",
+    "id": "0c516854-5835-4617-907c-03b8fc269e19",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.22.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "spfx-hero-webpart description"
+      },
+      "longDescription": {
+        "default": "spfx-hero-webpart description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "spfx-hero-webpart Feature",
+        "description": "The feature that activates elements of the spfx-hero-webpart solution.",
+        "id": "779a56bd-2ab4-4029-848f-4ff79b909948",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-hero-webpart.sppkg"
+  }
+}

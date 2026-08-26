@@ -1,15 +1,15 @@
 import * as React from 'react';
 import styles from './Chatgpt.module.scss';
 import { IChatgptProps } from './IChatgptProps';
-import { escape } from '@microsoft/sp-lodash-subset';
-import { PrimaryButton, TextField } from 'office-ui-fabric-react';
+import { PrimaryButton, DefaultButton, TextField, MessageBar, MessageBarType } from '@fluentui/react';
 import { IChatgptState } from './IChatgptState';
-import { Configuration, OpenAIApi } from 'openai';
+import OpenAI from 'openai';
 import { IChatgpt } from './IChatgpt';
 import { Interweave } from 'interweave';
 
 export default class Chatgpt extends React.Component<IChatgptProps, IChatgptState> {
-  private static openai: OpenAIApi;
+  private static openai: OpenAI;
+  private static readonly fallbackModelId = 'gpt-5-mini';
 
   constructor(props: IChatgptProps){
     super(props);
@@ -22,10 +22,21 @@ export default class Chatgpt extends React.Component<IChatgptProps, IChatgptStat
   }
 
   public componentDidMount(): void {
-    const key = new Configuration({
-      apiKey: this.props.apiKey,
-    });
-    Chatgpt.openai = new OpenAIApi(key);
+    if (this.props.apiKey) {
+      Chatgpt.openai = new OpenAI({
+        apiKey: this.props.apiKey,
+        dangerouslyAllowBrowser: true
+      });
+    }
+  }
+
+  public componentDidUpdate(prevProps: Readonly<IChatgptProps>): void {
+    if (this.props.apiKey && this.props.apiKey !== prevProps.apiKey) {
+      Chatgpt.openai = new OpenAI({
+        apiKey: this.props.apiKey,
+        dangerouslyAllowBrowser: true
+      });
+    }
   }
 
   private updateQuestion(value: string): void{
@@ -33,28 +44,87 @@ export default class Chatgpt extends React.Component<IChatgptProps, IChatgptStat
   }
 
   private async askQuestion(): Promise<void>{
-    const currentQuestion = this.state.currentQuestion;
-    this.setState({
-      loading: true,
-      currentQuestion: ''
-    })
-    const response = await Chatgpt.openai.createCompletion({
-      model: "text-davinci-003",
-      prompt: currentQuestion,
-      max_tokens: 2048
-    });
-
-    const chatgpt: IChatgpt = {
-      question: currentQuestion,
-      answer: response.data.choices[0].text.replace('\n\n','')
+    const currentQuestion = this.state.currentQuestion.trim();
+    if (!currentQuestion || !this.props.apiKey) {
+      return;
     }
+    const modelId = this.props.modelId || Chatgpt.fallbackModelId;
 
-    const oldChatgpt = this.state.chatgpt;
-    oldChatgpt.push(chatgpt);
-    this.setState({
-      chatgpt: oldChatgpt,
-      loading: false
-    })
+    const pendingEntry: IChatgpt = {
+      question: currentQuestion,
+      answer: '',
+      isPending: true
+    };
+
+    this.setState((prevState) => ({
+      loading: true,
+      currentQuestion: '',
+      chatgpt: [...prevState.chatgpt, pendingEntry]
+    }));
+
+    try {
+      if (!Chatgpt.openai) {
+        Chatgpt.openai = new OpenAI({
+          apiKey: this.props.apiKey,
+          dangerouslyAllowBrowser: true
+        });
+      }
+
+      const response = await Chatgpt.openai.responses.create({
+        model: modelId,
+        input: currentQuestion,
+        max_output_tokens: 1024
+      });
+
+      const answerText = response.output_text?.trim() || 'No response received from OpenAI.';
+
+      this.setState((prevState) => {
+        const updatedChat = [...prevState.chatgpt];
+        const lastIndex = updatedChat.length - 1;
+
+        if (lastIndex >= 0 && updatedChat[lastIndex].question === currentQuestion && updatedChat[lastIndex].isPending) {
+          updatedChat[lastIndex] = {
+            question: currentQuestion,
+            answer: answerText
+          };
+        } else {
+          updatedChat.push({
+            question: currentQuestion,
+            answer: answerText
+          });
+        }
+
+        return {
+          chatgpt: updatedChat,
+          loading: false
+        };
+      });
+    } catch (error) {
+      console.error('OpenAI request failed', error);
+      const fallbackAnswer = 'Unable to retrieve an answer from OpenAI. Please check the console for details.';
+
+      this.setState((prevState) => {
+        const updatedChat = [...prevState.chatgpt];
+        const lastIndex = updatedChat.length - 1;
+
+        if (lastIndex >= 0 && updatedChat[lastIndex].question === currentQuestion && updatedChat[lastIndex].isPending) {
+          updatedChat[lastIndex] = {
+            question: currentQuestion,
+            answer: fallbackAnswer
+          };
+        } else {
+          updatedChat.push({
+            question: currentQuestion,
+            answer: fallbackAnswer
+          });
+        }
+
+        return {
+          chatgpt: updatedChat,
+          loading: false
+        };
+      });
+    }
   }
 
   private clearAnswers(): void {
@@ -64,42 +134,82 @@ export default class Chatgpt extends React.Component<IChatgptProps, IChatgptStat
   }
 
   public render(): React.ReactElement<IChatgptProps> {
-    const {
-      isDarkTheme,
-      hasTeamsContext,
-    } = this.props;
-    const chatgpt = this.state.chatgpt.reverse();
+    const { hasTeamsContext } = this.props;
+    const chatgpt = [...this.state.chatgpt].reverse();
 
     return (
       <section className={`${styles.chatgpt} ${hasTeamsContext ? styles.teams : ''}`}>
-        <div className={styles.welcome}>
-          <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
-          <h2>Welcome {escape(this.props.context.pageContext.user.displayName)}, ask ChatGPT anything:</h2>
-          {!this.props.apiKey && <section>No Api key present, enter your api key in the webpart properties</section>}
-        </div>
-        {this.props.apiKey &&<section>
-          <TextField className={styles.textfield} label="Question: " onChange={((event,newValue) => this.updateQuestion(newValue))} value={this.state.currentQuestion}/>
-          <PrimaryButton text='Ask ChatGPT' onClick={this.askQuestion.bind(this)}/>
-          <PrimaryButton text='Clear answers' onClick={this.clearAnswers.bind(this)}/>
-          <section className={styles.loadingContainer}>
-            {this.state.loading && <div className={styles.loader}>
-              <div/>
-              <div/>
-              <div/>
-            </div>}
-          </section>
-          <section className={styles.container}>
-          {chatgpt.map((chatgpt, key) => {return <section key={key}>
-            <section className={styles.questionContainer}>
-              <section className={styles.question}>{chatgpt.question}</section>
+        <div className={styles.surface}>
+          <div className={styles.welcome}>
+            <div className={styles.welcomeContent}>
+              <span className={styles.welcomeEyebrow}>Chat with GPT</span>
+              <h2 className={styles.welcomeTitle}>
+                Hey {this.props.context.pageContext.user.displayName}!
+              </h2>
+              <p className={styles.welcomeSubtitle}>
+                Ask anything and get quick help right here.
+              </p>
+            </div>
+            {!this.props.apiKey && (
+              <div className={styles.apiKeyMessage}>
+                <MessageBar
+                  messageBarType={MessageBarType.warning}
+                  isMultiline={false}
+                >
+                  Add your OpenAI API key in the web part properties to start a conversation.
+                </MessageBar>
+              </div>
+            )}
+          </div>
+          {this.props.apiKey && (
+            <section className={styles.chatArea}>
+              <div className={styles.promptCard}>
+                <TextField
+                  className={styles.promptInput}
+                  label="Ask your question"
+                  placeholder="Try &quot;Draft a project status update summarising this week’s wins&quot;"
+                  onChange={((event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => this.updateQuestion(newValue || ''))}
+                  value={this.state.currentQuestion}
+                />
+                <div className={styles.actions}>
+                  <PrimaryButton text='Ask ChatGPT' onClick={this.askQuestion.bind(this)}/>
+                  <DefaultButton text='Clear answers' onClick={this.clearAnswers.bind(this)}/>
+                </div>
+              </div>
+              <section className={styles.loadingContainer}>
+                {this.state.loading && <div className={styles.loader}>
+                  <div/>
+                  <div/>
+                  <div/>
+                </div>}
+              </section>
+              <section className={styles.conversation}>
+                {chatgpt.map((chatgptEntry, key) => (
+                  <section key={key} className={styles.messageGroup}>
+                    <div className={`${styles.messageRow} ${styles.outgoing}`}>
+                      <div className={`${styles.messageBubble} ${styles.questionBubble}`}>
+                        {chatgptEntry.question}
+                      </div>
+                    </div>
+                    <div className={`${styles.messageRow} ${styles.incoming}`}>
+                      {chatgptEntry.isPending ? (
+                        <div className={`${styles.messageBubble} ${styles.answerBubble}`}>
+                          <div className={styles.typingIndicator}>
+                            <span/>
+                            <span/>
+                            <span/>
+                          </div>
+                        </div>
+                      ) : (
+                        <Interweave className={`${styles.messageBubble} ${styles.answerBubble}`} content={chatgptEntry.answer}/>
+                      )}
+                    </div>
+                  </section>
+                ))}
+              </section>
             </section>
-            <section className={styles.answerContainer}>
-              <Interweave className={styles.answer} content={chatgpt.answer}/>
-            </section>
-            </section>}
           )}
-          </section>
-        </section>}
+        </div>
       </section>
     );
   }

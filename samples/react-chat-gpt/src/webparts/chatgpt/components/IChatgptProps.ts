@@ -5,4 +5,5 @@ export interface IChatgptProps {
   isDarkTheme: boolean;
   hasTeamsContext: boolean;
   context: WebPartContext;
+  modelId: string;
 }

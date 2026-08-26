@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styles from './Autocomplete.module.scss';
-import { TextField, ITextFieldProps, Callout, ICalloutProps, DirectionalHint, ITextField, TextFieldBase } from 'office-ui-fabric-react';
+import { TextField, ITextFieldProps, Callout, ICalloutProps, DirectionalHint, ITextField, TextFieldBase } from '@fluentui/react';
 import { isNullOrEmpty, cssClasses, getDeepOrDefault, isFunction } from '@spfxappdev/utility';
 
 
@@ -9,8 +9,8 @@ export interface IAutocompleteProps extends Omit<ITextFieldProps, "componentRef"
     minValueLength?: number;
     onLoadSuggestions?(newValue: string): void;
     onRenderSuggestions?(inputValue: string): JSX.Element;
-    textFieldRef?(fluentUITextField: ITextField, autocompleteComponent: Autocomplete, htmlInput?: HTMLInputElement);
-    onUpdated?(newValue: string);
+    textFieldRef?(fluentUITextField: ITextField, autocompleteComponent: Autocomplete, htmlInput?: HTMLInputElement): void;
+    onUpdated?(newValue: string): void;
     calloutProps?: Omit<ICalloutProps, "hidden" | "target" | "preventDismissOnScroll" | "directionalHint" | "directionalHintFixed" | "isBeakVisible">;
 }
 
@@ -34,9 +34,9 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
         }
     };
 
-    private textFieldReference: ITextField = null;
+    private textFieldReference: ITextField | undefined = undefined;
 
-    private textFieldDomElement: HTMLInputElement = null;
+    private textFieldDomElement: HTMLInputElement | undefined = undefined;
 
     private userIsTyping: boolean = false;
 
@@ -50,16 +50,16 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
         <TextField {...this.props}
         autoComplete={"off"}
         className={cssClasses(styles.autocomplete, this.props.className)}
-        componentRef={(input: ITextField) => {
-            this.textFieldReference = input;
-            this.textFieldDomElement = getDeepOrDefault<HTMLInputElement>(input, "_textElement.current", null);
-            
+        componentRef={(input: ITextField | null) => {
+            this.textFieldReference = input ?? undefined;
+            this.textFieldDomElement = getDeepOrDefault<HTMLInputElement>(input, "_textElement.current", undefined);
+
             if(isFunction(this.props.textFieldRef)) {
-                this.props.textFieldRef(input, this, this.textFieldDomElement);
+                this.props.textFieldRef(input!, this, this.textFieldDomElement);
             }
-            
+
         }}
-        onFocus={(ev: any) => {
+        onFocus={(ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
             if(this.props.showSuggestionsOnFocus) {
                 this.handleSuggestionListVisibility();
             }
@@ -68,7 +68,7 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
                 this.props.onFocus(ev);
             }
         }}
-        onBlur={(ev: any) => {
+        onBlur={(ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
 
             this.onTextFieldBlur();
 
@@ -76,8 +76,8 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
                 this.props.onBlur(ev);
             }
         }}
-        onChange={(ev: any, newValue: string) => {
-            this.onValueChanged(ev, newValue);
+        onChange={(ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => {
+            this.onValueChanged(ev, newValue ?? "");
         }}
         defaultValue={this.state.currentValue}
         />
@@ -110,7 +110,7 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
         }
 
         if(minWidth > 0) {
-            this.props.calloutProps.calloutMinWidth = minWidth;
+            this.props.calloutProps!.calloutMinWidth = minWidth;
         }
 
         return (<Callout
@@ -119,11 +119,11 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
             directionalHintFixed={true}
             isBeakVisible={false}
             target={this.textFieldDomElement}
-            onDismiss={(ev?: any) => {
+            onDismiss={(ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>) => {
                 this.hideSuggesstionsFlyout();
                 
-                if(isFunction(this.props.calloutProps.onDismiss)) {
-                    this.props.calloutProps.onDismiss(ev);
+                if(isFunction(this.props.calloutProps!.onDismiss)) {
+                    this.props.calloutProps!.onDismiss(ev);
                 }
             }}
             preventDismissOnScroll={true}
@@ -133,10 +133,9 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
         );
     }
 
-    private onValueChanged(ev: any, newValue: string): void {
+    private onValueChanged(ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue: string): void {
         this.userIsTyping = true;
 
-        this.state.currentValue = newValue;
         this.setState({
             currentValue: newValue
         });
@@ -156,14 +155,14 @@ export class Autocomplete extends React.Component<IAutocompleteProps, IAutocompl
     }
 
     private handleSuggestionListVisibility(): void {
-        let val = this.state.currentValue;
+        const val = this.state.currentValue;
 
         if(isNullOrEmpty(val)) {
             this.hideSuggesstionsFlyout();
             return;
         }
 
-        if(val.length < this.props.minValueLength) {
+        if(val.length < this.props.minValueLength!) {
             this.hideSuggesstionsFlyout();
             return;
         }

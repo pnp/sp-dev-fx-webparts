@@ -1,0 +1,21 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.mainPane {
+  min-width: 0;
+  padding: 0;
+}
+
+.actionErrorBar {
+  margin: 8px 12px 0;
+}

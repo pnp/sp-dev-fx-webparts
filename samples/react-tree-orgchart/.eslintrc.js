@@ -18,6 +18,10 @@ module.exports = {
         '@rushstack/hoist-jest-mock': 1,
         // Require regular expressions to be constructed from string constants rather than dynamically building strings at runtime. https://www.npmjs.com/package/@rushstack/eslint-plugin-security
         '@rushstack/security/no-unsafe-regexp': 1,
+        // Require chunk names for dynamic imports in SPFx projects. https://www.npmjs.com/package/@rushstack/eslint-plugin
+        '@rushstack/import-requires-chunk-name': 1,
+        // Ensure that React components rendered with ReactDOM.render() are unmounted with ReactDOM.unmountComponentAtNode(). https://www.npmjs.com/package/@rushstack/eslint-plugin
+        '@rushstack/pair-react-dom-render-unmount': 1,
         // STANDARDIZED BY:   @typescript-eslint\eslint-plugin\dist\configs\recommended.json
         '@typescript-eslint/adjacent-overload-signatures': 1,
         // RATIONALE:         Code is more readable when the type of every variable is immediately obvious.
@@ -284,13 +288,7 @@ module.exports = {
         // STANDARDIZED BY:   eslint\conf\eslint-recommended.js
         // Set to 1 (warning) or 2 (error) to enable.
         // Rationale to disable: !!{}
-        'no-extra-boolean-cast': 0,
-        // ====================================================================
-        // @microsoft/eslint-plugin-spfx
-        // ====================================================================
-        '@microsoft/spfx/import-requires-chunk-name': 1,
-        '@microsoft/spfx/no-require-ensure': 2,
-        '@microsoft/spfx/pair-react-dom-render-unmount': 1
+        'no-extra-boolean-cast': 0
       }
     },
     {

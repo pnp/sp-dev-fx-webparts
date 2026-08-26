@@ -3,16 +3,16 @@
   "solution": {
     "name": "React Birthdays Per Month",
     "id": "e4cd97a3-4515-42cd-8a12-f765eaf60caa",
-    "version": "1.2.0.0",
+    "version": "1.3.0.0",
     "includeClientSideAssets": true,
-    "skipFeatureDeployment": true,
+    "skipFeatureDeployment": false,
     "isDomainIsolated": false,
     "developer": {
       "name": "",
       "websiteUrl": "",
       "privacyUrl": "",
       "termsOfUseUrl": "",
-      "mpnId": "Undefined-1.15.2"
+      "mpnId": "Undefined-1.21.1"
     },
     "metadata": {
       "shortDescription": {
@@ -30,7 +30,15 @@
         "title": "react-birthdays-per-month Feature",
         "description": "The feature that activates elements of the react-birthdays-per-month solution.",
         "id": "d61e3b54-8033-4741-b55f-7f724cd7e65e",
-        "version": "1.0.0.0"
+        "version": "1.1.0.0",
+        "assets": {
+          "elementManifests": [
+            "elements.xml"
+          ],
+          "elementFiles": [
+            "schema.xml"
+          ]
+        }
       }
     ]
   },

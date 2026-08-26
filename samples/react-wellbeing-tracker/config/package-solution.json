@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-wellbeing-tracker-client-side-solution",
+    "id": "c8d4e2f1-a3b5-4e67-8901-2345678901ab",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Wellbeing & Engagement Tracker"
+      },
+      "longDescription": {
+        "default": "Track wellbeing and engagement activities with a habit-tracking grid backed by SharePoint Lists"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-wellbeing-tracker Feature",
+        "description": "The feature that activates elements of the react-wellbeing-tracker solution.",
+        "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-wellbeing-tracker.sppkg"
+  }
+}

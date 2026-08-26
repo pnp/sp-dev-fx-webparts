@@ -10,7 +10,7 @@ import { useCallback } from 'react';
 /**
  * A custom pagination control designed to look & feel like Office UI Fabric
  */
-export const Pagination = (props: IPaginationProps) => {
+export const Pagination = (props: IPaginationProps):JSX.Element => {
   const { currentPage, totalItems, itemsCountPerPage } = props;
 
   // calculate the page situation

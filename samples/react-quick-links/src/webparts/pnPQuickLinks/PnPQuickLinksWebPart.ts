@@ -17,6 +17,7 @@ import { ILink } from './models/ILink';
 import { PropertyFieldIconPicker } from '@pnp/spfx-property-controls/lib/PropertyFieldIconPicker';
 import { IPnPQuickLinksProps } from './components/IPnPQuickLinksProps';
 import { LayoutType, TileSize } from './models/enums';
+import { PropertyFieldPeoplePicker, PrincipalType } from '@pnp/spfx-property-controls/lib/PropertyFieldPeoplePicker';
 
 
 
@@ -55,7 +56,9 @@ export default class PnPQuickLinksWebPart extends BaseClientSideWebPart<IPnPQuic
         this.render();
       },
 
-      displayMode: this.displayMode
+      displayMode: this.displayMode,
+      context: this.context,
+      pageContext: this.context.pageContext
     } as IPnPQuickLinksProps
 
 
@@ -119,6 +122,17 @@ export default class PnPQuickLinksWebPart extends BaseClientSideWebPart<IPnPQuic
                       { key: "_blank", text: "In new tab" }
                     ]
                   }),
+                  PropertyFieldPeoplePicker(`links[${index}].GroupsIDS`, {
+                    label: 'Target Audience',
+                    initialData: this.properties.links[index].GroupsIDS,
+                    multiSelect: true,
+                    allowDuplicate: false,
+                    principalType: [PrincipalType.Security],
+                    onPropertyChange: this.onPropertyPaneFieldChanged,
+                    context: this.context as any,
+                    properties: this.properties,
+                    key: `peoplePickerFieldId[${index}]`
+                  }),
                   PropertyPaneButton('', {
                     text: "Delete",
                     icon: "Delete",
@@ -143,7 +157,7 @@ export default class PnPQuickLinksWebPart extends BaseClientSideWebPart<IPnPQuic
             ]
           }
         ]
-      }
+      };
     }
 
 
@@ -168,18 +182,7 @@ export default class PnPQuickLinksWebPart extends BaseClientSideWebPart<IPnPQuic
               ]
             },
             ...(this.properties.type === LayoutType.Tiles ? this.TileLayoutFields() : []),
-            {
-              groupName: "Filter",
-              groupFields: [
-                PropertyPaneToggle("_", {
-                  label: "Enable audience targeting",
-                  disabled: true,
-                }),
-                PropertyPaneLabel('', {
-                  text: "Audience targeting is not yet implemented, feel free to do so"
-                })
-              ]
-            }
+
           ]
         }
       ]

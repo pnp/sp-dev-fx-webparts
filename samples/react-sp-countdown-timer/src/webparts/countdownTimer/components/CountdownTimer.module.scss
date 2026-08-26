@@ -1,0 +1,193 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.countdownTimer {
+  overflow: hidden;
+  padding: 2em 1em;
+  color: var(--bodyText);
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f3f6fb 0%, #e9eafc 100%);
+  box-sizing: border-box;
+  transition: background 0.3s;
+
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.welcome {
+  text-align: center;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  padding: 2em 1em 1.5em 1em;
+  margin-bottom: 2em;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  transition: box-shadow 0.2s;
+}
+
+.welcomeImage {
+  width: 100%;
+  max-width: 320px;
+  margin-bottom: 1em;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.05);
+}
+
+.links {
+  a {
+    text-decoration: none;
+    color: var(--link);
+    transition: color 0.2s;
+
+    &:hover {
+      text-decoration: underline;
+      color: var(--linkHovered);
+    }
+  }
+}
+
+.eventsContainer {
+  margin-top: 2em;
+
+  h3 {
+    color: var(--bodyText);
+    margin-bottom: 1em;
+    font-size: 1.7em;
+    font-weight: 700;
+    letter-spacing: -1px;
+  }
+}
+
+.eventsList {
+  display: grid;
+  gap: 1.5em;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  margin-bottom: 2em;
+}
+
+.eventItem {
+  background: white;
+  border: 1px solid #e3e6f0;
+  border-radius: 12px;
+  padding: 2em 1.5em 1.5em 1.5em;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+  transition: box-shadow 0.2s, transform 0.2s;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.13);
+    transform: translateY(-4px) scale(1.02);
+  }
+
+  h4 {
+    margin: 0 0 0.5em 0;
+    color: var(--bodyText);
+    font-size: 1.3em;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+  }
+
+  p {
+    margin: 0 0 1em 0;
+    color: #5a5a5a;
+    font-size: 1em;
+    line-height: 1.5;
+  }
+}
+
+.countdownContainer {
+  margin-top: 1.2em;
+  padding-top: 1em;
+  border-top: 1px solid #e3e6f0;
+  text-align: center;
+}
+
+.countdown {
+  display: inline-block;
+  font-family: 'Courier New', monospace;
+  font-weight: bold;
+  font-size: 1.5em;
+  letter-spacing: 1px;
+  background: linear-gradient(90deg, #e9eafc 0%, #f3f6fb 100%);
+  padding: 0.5em 1.2em;
+  border-radius: 8px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
+
+  .days {
+    color: #0078d4;
+    font-size: 1.2em;
+    font-weight: 700;
+  }
+
+  .time {
+    color: #323130;
+    font-size: 1.1em;
+  }
+}
+
+.eventStarted {
+  color: #d13438;
+  font-weight: bold;
+  font-size: 1.2em;
+  background: #fff0f0;
+  padding: 0.4em 1em;
+  border-radius: 6px;
+  display: inline-block;
+}
+
+.error {
+  background: #fed9cc;
+  border: 1px solid #d13438;
+  border-radius: 8px;
+  padding: 1.2em 1em;
+  margin: 1.5em 0;
+  box-shadow: 0 2px 8px rgba(209, 52, 56, 0.07);
+
+  p {
+    margin: 0 0 1em 0;
+    color: #d13438;
+    font-size: 1.1em;
+    font-weight: 600;
+  }
+
+  button {
+    background: #d13438;
+    color: white;
+    border: none;
+    padding: 0.6em 1.2em;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s;
+
+    &:hover {
+      background: #fff0f0;
+      color: #d13438;
+    }
+  }
+}
+
+// Responsive tweaks
+@media (max-width: 600px) {
+  .welcome {
+    padding: 1.2em 0.5em 1em 0.5em;
+  }
+
+  .eventsList {
+    grid-template-columns: 1fr;
+    gap: 1em;
+  }
+
+  .eventItem {
+    padding: 1.2em 0.7em 1em 0.7em;
+  }
+
+  .countdown {
+    font-size: 1.1em;
+    padding: 0.4em 0.7em;
+  }
+}

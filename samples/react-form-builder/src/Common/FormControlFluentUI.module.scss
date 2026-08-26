@@ -1,0 +1,44 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.formFieldContainer
+{
+    padding-bottom: 10px;
+}
+
+.textInput {
+    width: 100%;
+}
+
+.errorPanel {
+    color: #000;
+    display: flex;    
+}
+
+.errorPanel span {
+    font-weight: bold;
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
+.errorPanel svg {
+    color: #B40404; 
+}
+
+.inline {
+    display: inline-flex;
+}
+
+/*.descriptionPanel {
+    color: #000;
+    display: flex;
+}
+
+.descriptionPanel span {
+    font-weight: normal;
+    margin-left: 5px;
+    margin-top: 2px;
+}
+
+.descriptionPanel svg {
+    color: #ccc;
+}*/

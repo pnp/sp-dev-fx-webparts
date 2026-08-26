@@ -1,0 +1,1259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>LegalLens — Sign Document</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --indigo:#5b5ee6;--indigo-dark:#4547c4;--indigo-bg:rgba(91,94,230,.08);
+  --purple:#7c5cde;--green:#16a34a;--green-bg:#f0fdf4;--green-border:#bbf7d0;
+  --red:#dc2626;--red-bg:#fef2f2;--red-border:#fecaca;
+  --amber:#b45309;--amber-bg:#fffbeb;--amber-border:#fde68a;
+  --slate-50:#f8fafc;--slate-100:#f1f5f9;--slate-200:#e2e8f0;
+  --slate-300:#cbd5e1;--slate-400:#94a3b8;--slate-500:#64748b;
+  --slate-600:#475569;--slate-700:#334155;--slate-800:#1e293b;--slate-900:#0f172a;
+  --shadow-sm:0 1px 3px rgba(0,0,0,.07),0 1px 2px rgba(0,0,0,.04);
+  --shadow-md:0 4px 12px rgba(0,0,0,.08);
+  --shadow-lg:0 8px 28px rgba(0,0,0,.12);
+  --r:12px;
+}
+html,body{height:100%;font-family:'DM Sans',system-ui,sans-serif;background:var(--slate-100);color:var(--slate-900);-webkit-font-smoothing:antialiased}
+
+.topbar{
+  height:62px;background:#fff;border-bottom:1px solid var(--slate-200);
+  padding:0 28px;display:flex;align-items:center;gap:12px;
+  position:sticky;top:0;z-index:200;box-shadow:var(--shadow-sm);
+}
+.topbar-logo{
+  width:38px;height:38px;border-radius:11px;flex-shrink:0;
+  background:linear-gradient(135deg,var(--indigo),var(--purple));
+  display:flex;align-items:center;justify-content:center;
+}
+.topbar-logo svg{width:19px;height:19px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.topbar-brand{font-weight:700;font-size:17px;letter-spacing:-.3px;color:var(--slate-900)}
+.topbar-doc{margin-left:auto;font-size:12px;color:var(--slate-400);max-width:260px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:500}
+.step-track{display:flex;align-items:center;gap:0;margin-left:16px;flex-shrink:0}
+.step-pip{
+  width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:11px;font-weight:700;border:2px solid var(--slate-200);
+  color:var(--slate-400);background:#fff;transition:all .3s;
+}
+.step-pip.active{border-color:var(--indigo);color:var(--indigo);background:var(--indigo-bg)}
+.step-pip.done{border-color:var(--green);background:var(--green-bg);color:var(--green)}
+.step-pip.done svg{width:11px;height:11px;stroke:var(--green);fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.step-line{width:24px;height:2px;background:var(--slate-200);transition:background .3s}
+.step-line.done{background:var(--green)}
+
+.layout{display:grid;grid-template-columns:1fr 440px;height:calc(100vh - 62px)}
+
+.pdf-panel{
+  background:#3a3d40;overflow-y:auto;
+  display:flex;flex-direction:column;align-items:center;
+  padding:28px 20px;gap:16px;position:relative;
+  transition:filter .4s ease,opacity .4s ease;
+}
+.pdf-panel.locked{filter:blur(8px);opacity:.35;pointer-events:none;user-select:none}
+.pdf-gate-overlay{
+  position:absolute;inset:0;z-index:10;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:12px;pointer-events:none;
+}
+.pdf-gate-card{
+  background:rgba(15,23,42,.85);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.12);border-radius:16px;
+  padding:24px 32px;text-align:center;color:#fff;max-width:280px;
+}
+.pdf-gate-card svg{width:32px;height:32px;stroke:rgba(255,255,255,.5);fill:none;stroke-width:1.5;margin-bottom:12px}
+.pdf-gate-card strong{display:block;font-size:15px;font-weight:700;margin-bottom:6px}
+.pdf-gate-card span{font-size:12px;color:rgba(255,255,255,.55);line-height:1.6}
+.pdf-loading-box{color:#ccc;font-size:14px;display:flex;flex-direction:column;align-items:center;gap:14px;padding-top:60px}
+.pdf-page-wrapper{background:#fff;box-shadow:0 4px 20px rgba(0,0,0,.5);border-radius:3px;overflow:hidden}
+.pdf-page-wrapper canvas{display:block}
+.pdf-toolbar{
+  background:rgba(0,0,0,.55);backdrop-filter:blur(8px);color:#fff;
+  padding:8px 16px;border-radius:20px;font-size:12px;font-weight:500;
+  position:sticky;bottom:16px;display:flex;align-items:center;gap:8px;
+  border:1px solid rgba(255,255,255,.1);
+}
+.pdf-toolbar button{
+  background:rgba(255,255,255,.12);border:none;color:#fff;
+  padding:4px 12px;border-radius:10px;cursor:pointer;font-size:13px;font-family:inherit;
+  transition:background .15s;
+}
+.pdf-toolbar button:hover{background:rgba(255,255,255,.22)}
+
+.sign-panel{background:#fff;border-left:1px solid var(--slate-200);overflow-y:auto;display:flex;flex-direction:column}
+.screen{display:none;flex-direction:column}
+.screen.active{display:flex}
+
+#screen-loading,#screen-submitting{
+  height:100%;align-items:center;justify-content:center;
+  gap:14px;color:var(--slate-500);font-size:14px;font-weight:500;
+}
+.spinner{width:36px;height:36px;border:3px solid var(--slate-200);border-top-color:var(--indigo);border-radius:50%;animation:spin .75s linear infinite}
+#screen-submitting .spinner{width:44px;height:44px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.loading-sub{font-size:12px;color:var(--slate-400)}
+
+#screen-error{height:100%;align-items:center;justify-content:center;padding:48px 32px;text-align:center;gap:10px;flex-direction:column}
+.err-icon{width:64px;height:64px;border-radius:50%;background:var(--red-bg);border:1px solid var(--red-border);display:flex;align-items:center;justify-content:center;margin-bottom:4px}
+.err-icon svg{width:28px;height:28px;stroke:var(--red);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.err-title{font-size:20px;font-weight:700;font-family:'DM Serif Display',serif;color:var(--slate-800)}
+.err-msg{color:var(--slate-500);font-size:13px;line-height:1.65;max-width:280px}
+
+#screen-email{min-height:100%}
+.email-hero{
+  padding:36px 32px 28px;
+  background:linear-gradient(160deg,#eef0fd 0%,#fff 70%);
+  border-bottom:1px solid var(--slate-100);
+}
+.email-hero-icon{
+  width:52px;height:52px;border-radius:14px;
+  background:linear-gradient(135deg,var(--indigo),var(--purple));
+  display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+}
+.email-hero-icon svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.email-hero h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--slate-900);margin-bottom:8px;letter-spacing:-.3px}
+.email-hero p{font-size:13px;color:var(--slate-500);line-height:1.65}
+.email-body{padding:24px 32px;display:flex;flex-direction:column;gap:18px}
+
+.doc-card{background:var(--slate-50);border:1px solid var(--slate-200);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:8px}
+.doc-card-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--slate-400)}
+.doc-card-name{font-size:14px;font-weight:700;color:var(--slate-800);line-height:1.4}
+.doc-meta{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--slate-500)}
+.doc-meta svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
+
+.field-group{display:flex;flex-direction:column;gap:6px}
+.field-label{font-size:12px;font-weight:600;color:var(--slate-600);letter-spacing:.3px;text-transform:uppercase}
+.field-input{
+  width:100%;border:1.5px solid var(--slate-200);border-radius:10px;
+  padding:12px 14px;font-size:14px;font-family:inherit;color:var(--slate-900);
+  outline:none;transition:border-color .2s,box-shadow .2s;background:#fff;
+}
+.field-input:focus{border-color:var(--indigo);box-shadow:0 0 0 3px rgba(91,94,230,.1)}
+.field-input.err{border-color:var(--red);box-shadow:0 0 0 3px rgba(220,38,38,.08)}
+
+.inline-msg{
+  display:none;align-items:flex-start;gap:8px;
+  padding:10px 12px;border-radius:8px;font-size:12px;line-height:1.5;
+}
+.inline-msg.show{display:flex}
+.inline-msg svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;margin-top:1px}
+.inline-msg.error{background:var(--red-bg);border:1px solid var(--red-border);color:var(--red)}
+.inline-msg.info{background:var(--amber-bg);border:1px solid var(--amber-border);color:var(--amber)}
+
+.btn-primary{
+  background:linear-gradient(135deg,var(--indigo),var(--purple));color:#fff;
+  border:none;border-radius:10px;padding:14px 20px;font-size:14px;font-weight:600;
+  font-family:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  gap:8px;box-shadow:0 4px 14px rgba(91,94,230,.3);transition:opacity .15s,transform .1s;width:100%;
+}
+.btn-primary:hover{opacity:.92;transform:translateY(-1px)}
+.btn-primary:active{transform:translateY(0)}
+.btn-primary svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.secure-note{display:flex;align-items:center;justify-content:center;gap:7px;font-size:11px;color:var(--slate-400)}
+.secure-note svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0}
+
+#screen-otp{min-height:100%}
+.otp-hero{
+  padding:36px 32px 28px;
+  background:linear-gradient(160deg,#eef0fd 0%,#fff 70%);
+  border-bottom:1px solid var(--slate-100);
+}
+.otp-hero-icon{
+  width:52px;height:52px;border-radius:14px;
+  background:linear-gradient(135deg,var(--indigo),var(--purple));
+  display:flex;align-items:center;justify-content:center;margin-bottom:16px;
+}
+.otp-hero-icon svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.otp-hero h2{font-family:'DM Serif Display',serif;font-size:24px;font-weight:400;color:var(--slate-900);margin-bottom:8px;letter-spacing:-.3px}
+.otp-hero p{font-size:13px;color:var(--slate-500);line-height:1.65}
+.otp-body{padding:24px 32px;display:flex;flex-direction:column;gap:18px}
+.otp-digits{display:flex;gap:8px;justify-content:center}
+.otp-digit{
+  width:46px;height:56px;border:1.5px solid var(--slate-200);border-radius:10px;
+  font-size:24px;font-weight:700;text-align:center;font-family:inherit;
+  color:var(--slate-900);background:#fff;outline:none;
+  transition:border-color .2s,box-shadow .2s;caret-color:transparent;
+}
+.otp-digit:focus{border-color:var(--indigo);box-shadow:0 0 0 3px rgba(91,94,230,.1)}
+.otp-digit.filled{border-color:var(--indigo);background:var(--indigo-bg)}
+.otp-digit.err{border-color:var(--red);box-shadow:0 0 0 3px rgba(220,38,38,.08);background:var(--red-bg)}
+.otp-timer{font-size:12px;color:var(--slate-400);text-align:center;font-weight:500}
+.otp-timer strong{color:var(--red)}
+.otp-resend{
+  background:none;border:1px solid var(--slate-200);border-radius:8px;
+  color:var(--slate-600);font-size:12px;font-weight:500;font-family:inherit;
+  padding:8px 16px;cursor:pointer;transition:background .15s;width:fit-content;margin:0 auto;
+}
+.otp-resend:hover{background:var(--slate-100)}
+.otp-resend:disabled{opacity:.4;cursor:not-allowed}
+
+#screen-sign{overflow-y:auto}
+.sign-header{
+  padding:20px 24px 16px;
+  background:linear-gradient(160deg,var(--green-bg) 0%,#fff 60%);
+  border-bottom:1px solid var(--slate-100);
+}
+.verified-chip{
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--green-bg);border:1px solid var(--green-border);
+  border-radius:20px;padding:4px 10px;font-size:11px;font-weight:600;color:var(--green);
+  margin-bottom:10px;
+}
+.verified-chip svg{width:11px;height:11px;stroke:var(--green);fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.sign-doc-name{font-size:15px;font-weight:700;color:var(--slate-800);line-height:1.35}
+.sign-body{padding:20px 24px;display:flex;flex-direction:column;gap:18px}
+.section-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.7px;color:var(--slate-400)}
+
+.sig-tab-bar{display:flex;border-bottom:1px solid var(--slate-200)}
+.sig-tab{
+  flex:1;padding:10px 6px;font-size:12px;font-weight:600;font-family:inherit;
+  color:var(--slate-500);border:none;background:none;cursor:pointer;
+  border-bottom:2px solid transparent;margin-bottom:-1px;
+  display:flex;align-items:center;justify-content:center;gap:5px;
+  transition:color .15s,border-color .15s;
+}
+.sig-tab svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+.sig-tab.active{color:var(--indigo);border-bottom-color:var(--indigo)}
+.sig-tab-panel{display:none;padding-top:14px}
+.sig-tab-panel.active{display:block}
+
+.canvas-wrap{
+  border:1.5px dashed var(--slate-200);border-radius:10px;background:var(--slate-50);
+  overflow:hidden;position:relative;transition:border-color .2s;
+}
+.canvas-wrap:hover{border-color:var(--indigo)}
+.canvas-wrap.has-sig{border-style:solid;border-color:var(--indigo)}
+#sig-canvas{display:block;cursor:crosshair;touch-action:none;width:100%;height:120px}
+.canvas-hint{
+  position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;gap:6px;
+  color:var(--slate-400);font-size:12px;pointer-events:none;transition:opacity .2s;
+}
+.canvas-hint svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.5;opacity:.5}
+.color-row{display:flex;align-items:center;gap:8px;margin-top:10px}
+.color-label{font-size:11px;font-weight:600;color:var(--slate-500)}
+.color-dot{
+  width:22px;height:22px;border-radius:50%;border:2px solid transparent;
+  cursor:pointer;transition:transform .15s,border-color .15s;
+}
+.color-dot:hover{transform:scale(1.15)}
+.color-dot.active{border-color:var(--indigo);transform:scale(1.1)}
+.btn-clear{
+  margin-left:auto;background:none;border:1px solid var(--slate-200);
+  color:var(--slate-500);padding:4px 11px;border-radius:7px;font-size:11px;
+  font-weight:500;font-family:inherit;cursor:pointer;transition:background .15s;
+}
+.btn-clear:hover{background:var(--slate-100)}
+
+.theme-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.theme-btn{
+  border:1.5px solid var(--slate-200);border-radius:10px;padding:10px 6px 8px;
+  cursor:pointer;background:#fff;transition:all .15s;text-align:center;font-family:inherit;
+}
+.theme-btn:hover{border-color:var(--indigo);background:var(--indigo-bg)}
+.theme-btn.selected{border-color:var(--indigo);background:var(--indigo-bg)}
+.theme-preview{height:34px;display:flex;align-items:center;justify-content:center;font-size:14px;margin-bottom:4px}
+.theme-name{font-size:10px;font-weight:600;color:var(--slate-500);text-transform:uppercase;letter-spacing:.4px}
+.theme-canvas-wrap{margin-top:10px;border:1.5px solid var(--slate-200);border-radius:10px;overflow:hidden;display:none}
+#theme-canvas{display:block;width:100%;height:80px}
+
+.upload-zone{
+  border:1.5px dashed var(--slate-200);border-radius:10px;padding:28px 20px;
+  text-align:center;cursor:pointer;transition:all .2s;background:var(--slate-50);
+}
+.upload-zone:hover,.upload-zone.drag{border-color:var(--indigo);background:var(--indigo-bg)}
+.upload-zone-icon{
+  width:40px;height:40px;border-radius:10px;background:var(--slate-200);
+  display:flex;align-items:center;justify-content:center;margin:0 auto 10px;
+}
+.upload-zone-icon svg{width:20px;height:20px;stroke:var(--slate-500);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.upload-zone strong{display:block;font-size:13px;font-weight:600;color:var(--slate-700);margin-bottom:4px}
+.upload-zone span{font-size:11px;color:var(--slate-400)}
+#upload-preview{display:none;max-width:100%;max-height:80px;margin:12px auto 0;border-radius:8px;border:1px solid var(--slate-200);display:block}
+
+.form-notice{
+  display:none;align-items:flex-start;gap:8px;
+  background:var(--red-bg);border:1px solid var(--red-border);
+  color:var(--red);border-radius:8px;padding:10px 14px;font-size:12px;line-height:1.5;
+}
+.form-notice.show{display:flex}
+.form-notice svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;flex-shrink:0;margin-top:1px}
+
+.consent-box{
+  background:var(--green-bg);border:1px solid var(--green-border);
+  border-radius:10px;padding:14px;display:flex;gap:10px;align-items:flex-start;
+}
+.consent-box input[type=checkbox]{margin-top:2px;width:15px;height:15px;flex-shrink:0;cursor:pointer;accent-color:var(--green)}
+.consent-box label{font-size:12px;color:#166534;line-height:1.55;cursor:pointer}
+
+.btn-submit{
+  background:linear-gradient(135deg,var(--indigo),var(--purple));color:#fff;
+  border:none;border-radius:10px;padding:15px;font-size:15px;font-weight:700;
+  font-family:inherit;cursor:pointer;display:flex;align-items:center;
+  justify-content:center;gap:8px;
+  box-shadow:0 4px 18px rgba(91,94,230,.35);
+  transition:opacity .2s,transform .1s;width:100%;
+}
+.btn-submit:hover{opacity:.92;transform:translateY(-1px)}
+.btn-submit:active{transform:translateY(0)}
+.btn-submit:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:none}
+.btn-submit svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+
+#screen-success{height:100%;align-items:center;justify-content:center;padding:48px 32px;text-align:center;gap:14px;flex-direction:column}
+.success-icon{
+  width:72px;height:72px;border-radius:50%;
+  background:linear-gradient(135deg,#22c55e,#15803d);
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 8px 24px rgba(34,197,94,.3);margin-bottom:4px;
+}
+.success-icon svg{width:32px;height:32px;stroke:#fff;fill:none;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.success-title{font-family:'DM Serif Display',serif;font-size:26px;color:var(--slate-900);letter-spacing:-.3px}
+.success-msg{font-size:13px;color:var(--slate-500);line-height:1.65;max-width:260px}
+.success-file{
+  background:var(--slate-50);border:1px solid var(--slate-200);border-radius:10px;
+  padding:12px 20px;font-size:12px;font-weight:600;color:var(--slate-700);
+  width:100%;text-align:center;display:flex;align-items:center;justify-content:center;gap:8px;
+}
+.success-file svg{width:15px;height:15px;stroke:var(--slate-400);fill:none;stroke-width:2;flex-shrink:0}
+
+@media(max-width:768px){
+  .layout{grid-template-columns:1fr;grid-template-rows:45vh 1fr}
+  .topbar-doc,.step-track{display:none}
+  .pdf-panel{padding:16px}
+  .email-hero{padding:24px 20px 20px}
+  .email-body{padding:20px}
+  .sign-body{padding:16px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- Topbar -->
+<div class="topbar">
+  <div class="topbar-logo">
+    <svg viewBox="0 0 24 24"><path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+  </div>
+  <div class="topbar-brand">LegalLens</div>
+  <div class="topbar-doc" id="topbar-contract">Loading…</div>
+  <!-- Step tracker -->
+  <div class="step-track">
+    <div class="step-pip active" id="pip-1">1</div>
+    <div class="step-line" id="line-1"></div>
+    <div class="step-pip" id="pip-2">2</div>
+    <div class="step-line" id="line-2"></div>
+    <div class="step-pip" id="pip-3">3</div>
+  </div>
+</div>
+
+<div class="layout">
+
+  <!-- ── PDF Panel (locked until email verified) ── -->
+  <div class="pdf-panel locked" id="pdf-panel">
+    <!-- Loading state -->
+    <div class="pdf-loading-box" id="pdf-loading">
+      <div class="spinner" style="border-color:rgba(255,255,255,.15);border-top-color:#fff"></div>
+      <span>Loading document…</span>
+    </div>
+
+    <!-- PDF renderer (pdf.js) -->
+    <div id="pdf-pages"></div>
+    <div class="pdf-toolbar" id="pdf-toolbar" style="display:none">
+      <span id="page-count">—</span>
+      <button onclick="changeZoom(-.25)">−</button>
+      <button onclick="changeZoom(.25)">+</button>
+    </div>
+
+    <!-- Plain-text viewer -->
+    <div id="txt-viewer" style="display:none;width:100%;max-width:860px">
+      <div style="background:#fff;border-radius:8px;box-shadow:0 4px 20px rgba(0,0,0,.4);overflow:hidden">
+        <div style="background:#2d3035;padding:10px 18px;font-size:12px;color:#94a3b8;font-weight:500;display:flex;align-items:center;gap:8px">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          <span id="txt-filename">document.txt</span>
+        </div>
+        <pre id="txt-content" style="padding:24px;font-family:'Courier New',monospace;font-size:13px;line-height:1.7;color:#1e293b;white-space:pre-wrap;word-break:break-word;max-height:calc(100vh - 200px);overflow-y:auto;margin:0"></pre>
+      </div>
+    </div>
+
+    <!-- DOCX download prompt (browsers can't render Word files inline) -->
+    <div id="docx-viewer" style="display:none;flex-direction:column;align-items:center;justify-content:center;gap:16px;margin-top:60px;text-align:center">
+      <div style="width:72px;height:72px;background:#2b579a;border-radius:16px;display:flex;align-items:center;justify-content:center">
+        <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+      </div>
+      <div style="color:#fff;font-size:16px;font-weight:700" id="docx-filename">Document.docx</div>
+      <div style="color:#94a3b8;font-size:13px;max-width:280px;line-height:1.6">
+        Word documents cannot be previewed in the browser.<br/>Download to view the full document before signing.
+      </div>
+      <button onclick="downloadDocx()" style="background:linear-gradient(135deg,#2b579a,#1e3f6f);color:#fff;border:none;border-radius:10px;padding:12px 24px;font-size:14px;font-weight:600;cursor:pointer;display:flex;align-items:center;gap:8px;box-shadow:0 4px 14px rgba(43,87,154,.4)">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Word Document
+      </button>
+      <div style="color:#64748b;font-size:11px">Read the document carefully before signing</div>
+    </div>
+
+    <!-- Error state -->
+    <div id="pdf-error" style="display:none;flex-direction:column;align-items:center;gap:12px;margin-top:60px;text-align:center;max-width:280px">
+      <div style="width:52px;height:52px;border-radius:50%;background:rgba(239,68,68,.15);border:1px solid rgba(239,68,68,.3);display:flex;align-items:center;justify-content:center">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <div style="color:#f87171;font-size:14px;font-weight:600">Document Preview Unavailable</div>
+      <div id="pdf-error-msg" style="color:#94a3b8;font-size:12px;line-height:1.6"></div>
+      <button onclick="retryLoadDoc()" style="background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;border-radius:8px;padding:8px 16px;font-size:12px;cursor:pointer;font-family:inherit">
+        Retry
+      </button>
+    </div>
+  </div>
+
+  <!-- PDF gate overlay (shown while locked) -->
+  <div class="pdf-gate-overlay" id="pdf-gate">
+    <div class="pdf-gate-card">
+      <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      <strong>Document Locked</strong>
+      <span>Verify your email on the right to view this document and access the signature panel.</span>
+    </div>
+  </div>
+
+  <!-- ── Sign Panel ── -->
+  <div class="sign-panel">
+
+    <!-- Loading -->
+    <div class="screen active" id="screen-loading">
+      <div class="spinner"></div>
+      <span>Verifying token…</span>
+      <span class="loading-sub">Please wait</span>
+    </div>
+
+    <!-- Error -->
+    <div class="screen" id="screen-error">
+      <div class="err-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+      </div>
+      <div class="err-title">Unable to Load</div>
+      <div class="err-msg" id="error-message">The signing link is invalid or has expired.</div>
+    </div>
+
+    <!-- Step 1: Email Verification -->
+    <div class="screen" id="screen-email">
+      <div class="email-hero">
+        <div class="email-hero-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <h2>Verify Your Identity</h2>
+        <p>Enter the email address where you received this invitation. If it matches, the document and signature panel will unlock.</p>
+      </div>
+
+      <div class="email-body">
+
+        <!-- Doc summary -->
+        <div class="doc-card">
+          <div class="doc-card-label">Document to Sign</div>
+          <div class="doc-card-name" id="contract-name-email">—</div>
+          <div class="doc-meta">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span id="signer-name">—</span>
+          </div>
+          <div class="doc-meta">
+            <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+            Expires <span id="expires-date" style="margin-left:3px;font-weight:600">—</span>
+          </div>
+        </div>
+
+        <!-- Email field -->
+        <div class="field-group">
+          <label class="field-label" for="email-input">Your Email Address</label>
+          <input
+            class="field-input" type="email" id="email-input"
+            placeholder="you@example.com" autocomplete="email"
+            onkeydown="if(event.key==='Enter')verifyEmail()"
+          />
+          <!-- Error message — replaces alert() -->
+          <div class="inline-msg error" id="email-error">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+            <span>Email does not match this invitation. Please check and try again.</span>
+          </div>
+          <!-- Hint -->
+          <div class="inline-msg info show" id="email-hint">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            <span>Use the same email address the invitation was sent to.</span>
+          </div>
+        </div>
+
+        <button class="btn-primary" onclick="verifyEmail()">
+          <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          Continue to Sign Document
+        </button>
+
+        <div class="secure-note">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Identity verified before signing · Single-use secure link
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Step 2: OTP Verification -->
+    <div class="screen" id="screen-otp">
+      <div class="otp-hero">
+        <div class="otp-hero-icon">
+          <svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        </div>
+        <h2>Enter Verification Code</h2>
+        <p>A 6-digit code has been sent to <strong id="otp-email-display"></strong>. Enter it below to verify your identity before signing.</p>
+      </div>
+
+      <div class="otp-body">
+
+        <!-- 6 digit boxes -->
+        <div class="otp-digits" id="otp-digits">
+          <input class="otp-digit" maxlength="1" inputmode="numeric" pattern="[0-9]" autocomplete="one-time-code" id="otp-0"/>
+          <input class="otp-digit" maxlength="1" inputmode="numeric" pattern="[0-9]" id="otp-1"/>
+          <input class="otp-digit" maxlength="1" inputmode="numeric" pattern="[0-9]" id="otp-2"/>
+          <input class="otp-digit" maxlength="1" inputmode="numeric" pattern="[0-9]" id="otp-3"/>
+          <input class="otp-digit" maxlength="1" inputmode="numeric" pattern="[0-9]" id="otp-4"/>
+          <input class="otp-digit" maxlength="1" inputmode="numeric" pattern="[0-9]" id="otp-5"/>
+        </div>
+
+        <!-- Error -->
+        <div class="inline-msg error" id="otp-error">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+          <span id="otp-error-text">Incorrect code. Please check and try again.</span>
+        </div>
+
+        <!-- Timer -->
+        <div class="otp-timer" id="otp-timer">Code expires in <strong id="otp-countdown">5:00</strong></div>
+
+        <button class="btn-primary" onclick="verifyOTPCode()">
+          <svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+          Verify Code
+        </button>
+
+        <button class="otp-resend" id="otp-resend-btn" onclick="resendOTP()" disabled>
+          Didn't receive it? Resend code
+        </button>
+
+        <div class="secure-note">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          One-time code · Expires in 5 minutes · Do not share
+        </div>
+      </div>
+    </div>
+
+    <!-- Step 3: Sign Document -->
+    <div class="screen" id="screen-sign">
+
+      <div class="sign-header">
+        <div class="verified-chip">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Identity &amp; OTP Verified
+        </div>
+        <div class="sign-doc-name" id="contract-name-sign">—</div>
+      </div>
+
+      <div class="sign-body">
+
+        <div class="section-label">Your Signature</div>
+
+        <!-- Sig tabs -->
+        <div>
+          <div class="sig-tab-bar">
+            <button class="sig-tab active" onclick="switchTab('draw',this)">
+              <svg viewBox="0 0 24 24"><path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+              Draw
+            </button>
+            <button class="sig-tab" onclick="switchTab('themes',this)">
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M6.3 17.7A8 8 0 1 0 12 4"/></svg>
+              Themes
+            </button>
+            <button class="sig-tab" onclick="switchTab('upload',this)">
+              <svg viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+              Upload
+            </button>
+          </div>
+
+          <!-- Draw -->
+          <div class="sig-tab-panel active" id="tab-draw">
+            <div class="canvas-wrap" id="canvas-wrap">
+              <canvas id="sig-canvas" height="120"></canvas>
+              <div class="canvas-hint" id="canvas-hint">
+                <svg viewBox="0 0 24 24"><path d="M17 3a2.83 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/></svg>
+                Draw your signature here
+              </div>
+            </div>
+            <div class="color-row">
+              <span class="color-label">Ink</span>
+              <button class="color-dot active" style="background:#1e293b" onclick="setColor('#1e293b',this)" title="Black"></button>
+              <button class="color-dot" style="background:#1d4ed8" onclick="setColor('#1d4ed8',this)" title="Blue"></button>
+              <button class="color-dot" style="background:#15803d" onclick="setColor('#15803d',this)" title="Green"></button>
+              <button class="color-dot" style="background:#7c3aed" onclick="setColor('#7c3aed',this)" title="Purple"></button>
+              <button class="btn-clear" onclick="clearSig()">Clear</button>
+            </div>
+          </div>
+
+          <!-- Themes -->
+          <div class="sig-tab-panel" id="tab-themes">
+            <div class="theme-grid" id="theme-grid"></div>
+            <div class="theme-canvas-wrap" id="theme-canvas-wrap">
+              <canvas id="theme-canvas" height="80"></canvas>
+            </div>
+          </div>
+
+          <!-- Upload -->
+          <div class="sig-tab-panel" id="tab-upload">
+            <div class="upload-zone" id="upload-zone"
+                 onclick="document.getElementById('sig-file').click()"
+                 ondragover="event.preventDefault();this.classList.add('drag')"
+                 ondragleave="this.classList.remove('drag')"
+                 ondrop="handleDrop(event)">
+              <div class="upload-zone-icon">
+                <svg viewBox="0 0 24 24"><polyline points="16 16 12 12 8 16"/><line x1="12" y1="12" x2="12" y2="21"/><path d="M20.39 18.39A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.3"/></svg>
+              </div>
+              <strong>Click or drag your signature image</strong>
+              <span>PNG or JPG · Transparent background recommended</span>
+              <img id="upload-preview" alt="Signature preview"/>
+            </div>
+            <input type="file" id="sig-file" accept="image/png,image/jpeg" style="display:none" onchange="handleUpload(event)"/>
+          </div>
+        </div>
+
+        <!-- Inline validation (replaces all alert() calls in submitSig) -->
+        <div class="form-notice" id="form-notice">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+          <span id="form-notice-text">Please provide your signature before submitting.</span>
+        </div>
+
+        <!-- Consent -->
+        <div class="consent-box">
+          <input type="checkbox" id="consent-check"/>
+          <label for="consent-check">I agree that this electronic signature is legally binding and that I have read and understood the document above.</label>
+        </div>
+
+        <!-- Submit -->
+        <button class="btn-submit" id="btn-submit" onclick="submitSig()">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+          Sign Document
+        </button>
+
+        <div class="secure-note">
+          <svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          Secured by LegalLens · Encrypted and timestamped
+        </div>
+
+      </div>
+    </div><!-- /screen-sign -->
+
+    <!-- Submitting -->
+    <div class="screen" id="screen-submitting">
+      <div class="spinner"></div>
+      <span style="font-weight:600;color:var(--slate-700)">Submitting signature…</span>
+      <span class="loading-sub">This may take a few seconds</span>
+    </div>
+
+    <!-- Success -->
+    <div class="screen" id="screen-success">
+      <div class="success-icon">
+        <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div class="success-title">Document Signed</div>
+      <div class="success-msg">Your signature has been applied and the signed PDF has been saved securely.</div>
+      <div class="success-file" id="success-filename">
+        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        <span>—</span>
+      </div>
+      <div class="success-msg" style="font-size:11px;color:var(--slate-400)">You may now close this window.</div>
+    </div>
+
+  </div><!-- /sign-panel -->
+</div><!-- /layout -->
+
+<script>
+const API_BASE = 'https://{AzureFunctionUrl}/api';
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+
+let tokenData        = null;
+let pdfDoc           = null;
+let scale            = 1.4;
+let hasDrawing       = false;
+let activeTab        = 'draw';
+let sigColor         = '#1e293b';
+let uploadedSig      = null;
+let selectedThemeSig = null;
+let selectedTheme    = null;
+
+const THEMES = [
+  { id:'classic', label:'Classic', font:'italic 28px Georgia,serif',              color:'#1e293b' },
+  { id:'modern',  label:'Modern',  font:'700 24px Arial,sans-serif',               color:'#1d4ed8' },
+  { id:'elegant', label:'Elegant', font:'italic 26px "Palatino Linotype",serif',   color:'#15803d' },
+  { id:'bold',    label:'Bold',    font:'700 26px Impact,sans-serif',              color:'#1e293b' },
+  { id:'script',  label:'Script',  font:'26px "Brush Script MT",cursive',          color:'#7c3aed' },
+  { id:'minimal', label:'Minimal', font:'20px "Courier New",monospace',            color:'#374151' },
+];
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById('screen-' + id).classList.add('active');
+}
+function showError(msg) {
+  document.getElementById('error-message').textContent = msg;
+  showScreen('error');
+}
+
+function showNotice(msg) {
+  const el  = document.getElementById('form-notice');
+  const txt = document.getElementById('form-notice-text');
+  txt.textContent = msg;
+  el.classList.add('show');
+  setTimeout(() => el.classList.remove('show'), 5000);
+}
+
+function setStep(n) {
+  const pip1  = document.getElementById('pip-1');
+  const pip2  = document.getElementById('pip-2');
+  const pip3  = document.getElementById('pip-3');
+  const line1 = document.getElementById('line-1');
+  const line2 = document.getElementById('line-2');
+  const done  = '<svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>';
+
+  pip1.className  = 'step-pip'; pip1.textContent = '1';
+  pip2.className  = 'step-pip'; pip2.textContent = '2';
+  pip3.className  = 'step-pip'; pip3.textContent = '3';
+  line1.className = 'step-line';
+  line2.className = 'step-line';
+
+  if (n === 1) {
+    pip1.className = 'step-pip active';
+  } else if (n === 2) {
+    pip1.className = 'step-pip done'; pip1.innerHTML = done;
+    pip2.className = 'step-pip active';
+    line1.className = 'step-line done';
+  } else {
+    pip1.className = 'step-pip done'; pip1.innerHTML = done;
+    pip2.className = 'step-pip done'; pip2.innerHTML = done;
+    pip3.className = 'step-pip active';
+    line1.className = 'step-line done';
+    line2.className = 'step-line done';
+  }
+}
+
+const params  = new URLSearchParams(location.search);
+const tokenId = params.get('token');
+
+window.addEventListener('DOMContentLoaded', () => {
+  if (!tokenId) return showError('No signing token found in the URL.');
+  buildThemeGrid();
+  initCanvas();
+  loadToken();
+  setStep(1);
+});
+
+async function loadToken() {
+  try {
+    const res = await fetch(`${API_BASE}/validate/${tokenId}`);
+    if (!res.ok) {
+      const e = await res.json().catch(() => ({}));
+      throw new Error(e.error || `Server error (HTTP ${res.status})`);
+    }
+    tokenData = await res.json();
+    const t   = tokenData.token;
+
+    document.getElementById('contract-name-email').textContent = t.contractName;
+    document.getElementById('contract-name-sign').textContent  = t.contractName;
+    document.getElementById('signer-name').textContent         = t.signerName;
+    document.getElementById('expires-date').textContent        =
+      new Date(t.expires).toLocaleDateString('en-US', { dateStyle: 'long' });
+    document.getElementById('topbar-contract').textContent     = t.contractName;
+
+    showScreen('email');
+    loadPDF();
+  } catch (err) {
+    showError(err.message || 'Failed to validate token.');
+  }
+}
+
+function verifyEmail() {
+  const input  = document.getElementById('email-input');
+  const errEl  = document.getElementById('email-error');
+  const hintEl = document.getElementById('email-hint');
+  const val    = input.value.trim();
+
+  if (!val) {
+    input.classList.add('err');
+    errEl.querySelector('span').textContent = 'Please enter your email address.';
+    errEl.classList.add('show'); hintEl.classList.remove('show');
+    input.focus(); return;
+  }
+
+  if (val.toLowerCase() !== tokenData.token.signerEmail.toLowerCase()) {
+    input.classList.add('err');
+    errEl.querySelector('span').textContent = 'Email does not match this invitation. Please check and try again.';
+    errEl.classList.add('show'); hintEl.classList.remove('show');
+    input.focus(); return;
+  }
+
+  input.classList.remove('err');
+  errEl.classList.remove('show');
+  hintEl.classList.remove('show');
+
+  setStep(2);
+  showScreen('otp');
+  document.getElementById('otp-email-display').textContent = val;
+  sendOTPToEmail(val);
+}
+
+let docxBlobUrl = null;
+
+function showPdfError(msg) {
+  document.getElementById('pdf-loading').style.display  = 'none';
+  document.getElementById('pdf-error').style.display    = 'flex';
+  document.getElementById('pdf-error-msg').textContent  = msg;
+}
+function hideAllViewers() {
+  document.getElementById('pdf-loading').style.display  = 'none';
+  document.getElementById('pdf-pages').style.display    = 'none';
+  document.getElementById('pdf-toolbar').style.display  = 'none';
+  document.getElementById('txt-viewer').style.display   = 'none';
+  document.getElementById('docx-viewer').style.display  = 'none';
+  document.getElementById('pdf-error').style.display    = 'none';
+}
+
+async function loadPDF() {
+  try {
+    const res = await fetch(`${API_BASE}/document/${tokenId}`);
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({}));
+      showPdfError(err.error || `Server returned ${res.status}. The document may not exist in SharePoint.`);
+      return;
+    }
+
+    const contentType = (res.headers.get('Content-Type') || '').toLowerCase();
+    const buf = await res.arrayBuffer();
+
+    if (contentType.includes('pdf')) {
+      try {
+        pdfDoc = await pdfjsLib.getDocument({ data: new Uint8Array(buf) }).promise;
+      } catch (pdfErr) {
+        showPdfError('PDF could not be parsed. The file may be corrupted or password-protected.');
+        return;
+      }
+      hideAllViewers();
+      document.getElementById('pdf-pages').style.display   = 'block';
+      document.getElementById('pdf-toolbar').style.display = 'flex';
+      document.getElementById('page-count').textContent    =
+        pdfDoc.numPages + ' page' + (pdfDoc.numPages > 1 ? 's' : '');
+      renderAllPages();
+      return;
+    }
+
+    if (contentType.includes('text/plain') || contentType.includes('text/')) {
+      const text     = new TextDecoder('utf-8').decode(buf);
+      const filename = tokenData?.token?.fileName || 'document.txt';
+      hideAllViewers();
+      document.getElementById('txt-filename').textContent = filename;
+      document.getElementById('txt-content').textContent  = text || '(Empty document)';
+      document.getElementById('txt-viewer').style.display = 'block';
+      return;
+    }
+
+    if (contentType.includes('wordprocessingml') || contentType.includes('msword') || contentType.includes('octet-stream')) {
+      const filename = tokenData?.token?.fileName || 'document.docx';
+      const blob     = new Blob([buf], { type: contentType });
+      docxBlobUrl    = URL.createObjectURL(blob);
+      hideAllViewers();
+      document.getElementById('docx-filename').textContent = filename;
+      document.getElementById('docx-viewer').style.display = 'flex';
+      return;
+    }
+
+    showPdfError(`Unsupported file type: ${contentType}. Only PDF, TXT, and DOCX are supported for preview.`);
+
+  } catch (fetchErr) {
+    showPdfError('Could not reach the document server. Check your connection and try again.');
+  }
+}
+
+function downloadDocx() {
+  if (!docxBlobUrl) return;
+  const a = document.createElement('a');
+  a.href     = docxBlobUrl;
+  a.download = tokenData?.token?.fileName || 'document.docx';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+function retryLoadDoc() {
+  document.getElementById('pdf-error').style.display   = 'none';
+  document.getElementById('pdf-loading').style.display = 'flex';
+  loadPDF();
+}
+
+async function renderAllPages() {
+  const container = document.getElementById('pdf-pages');
+  container.innerHTML = '';
+  for (let i = 1; i <= pdfDoc.numPages; i++) {
+    const page   = await pdfDoc.getPage(i);
+    const vp     = page.getViewport({ scale });
+    const wrap   = document.createElement('div'); wrap.className = 'pdf-page-wrapper';
+    const canvas = document.createElement('canvas');
+    canvas.width = vp.width; canvas.height = vp.height;
+    wrap.appendChild(canvas); container.appendChild(wrap);
+    await page.render({ canvasContext: canvas.getContext('2d'), viewport: vp }).promise;
+  }
+}
+
+async function changeZoom(d) {
+  scale = Math.max(.5, Math.min(3, scale + d));
+  if (pdfDoc) await renderAllPages();
+}
+
+let otpCountdownInterval = null;
+let otpResendTimer       = null;
+
+async function sendOTPToEmail(email) {
+  try {
+    const res = await fetch(`${API_BASE}/sendOTP`, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({
+        email,
+        tokenId:    tokenId,
+        signerName: tokenData?.token?.signerName || 'User',
+      }),
+    });
+    const data = await res.json();
+    if (!res.ok) throw new Error(data.error || `HTTP ${res.status}`);
+
+    console.log('[OTP] Sent. Expires in:', data.expiresIn, 's');
+    startOTPCountdown(data.expiresIn || 300);
+    startResendTimer();
+    setTimeout(() => document.getElementById('otp-0')?.focus(), 100);
+  } catch (err) {
+    console.error('[OTP] Send failed:', err);
+    document.getElementById('otp-error-text').textContent =
+      'Failed to send verification code. Please try again.';
+    document.getElementById('otp-error').classList.add('show');
+  }
+}
+
+function startOTPCountdown(seconds) {
+  if (otpCountdownInterval) clearInterval(otpCountdownInterval);
+  let remaining = seconds;
+
+  function tick() {
+    const m = Math.floor(remaining / 60);
+    const s = remaining % 60;
+    const el = document.getElementById('otp-countdown');
+    if (el) el.textContent = `${m}:${s.toString().padStart(2, '0')}`;
+    if (remaining <= 0) {
+      clearInterval(otpCountdownInterval);
+      if (el) el.closest('.otp-timer').innerHTML =
+        '<span style="color:var(--red);font-weight:600">Code expired. Please resend.</span>';
+    }
+    remaining--;
+  }
+  tick();
+  otpCountdownInterval = setInterval(tick, 1000);
+}
+
+function startResendTimer() {
+  const btn = document.getElementById('otp-resend-btn');
+  if (!btn) return;
+  btn.disabled = true;
+  let cooldown = 30;
+
+  function tick() {
+    btn.textContent = `Resend code (${cooldown}s)`;
+    if (cooldown <= 0) {
+      clearInterval(otpResendTimer);
+      btn.disabled = false;
+      btn.textContent = "Didn't receive it? Resend code";
+    }
+    cooldown--;
+  }
+  tick();
+  otpResendTimer = setInterval(tick, 1000);
+}
+
+async function resendOTP() {
+  const email = document.getElementById('email-input').value.trim();
+  clearOTPDigits();
+  document.getElementById('otp-error').classList.remove('show');
+  await sendOTPToEmail(email);
+}
+
+function clearOTPDigits() {
+  for (let i = 0; i < 6; i++) {
+    const el = document.getElementById(`otp-${i}`);
+    if (el) { el.value = ''; el.classList.remove('filled','err'); }
+  }
+}
+
+(function initOTPInputs() {
+  window.addEventListener('DOMContentLoaded', () => {
+    for (let i = 0; i < 6; i++) {
+      const el = document.getElementById(`otp-${i}`);
+      if (!el) continue;
+
+      el.addEventListener('input', function() {
+        this.value = this.value.replace(/\D/g, '');
+        if (this.value) {
+          this.classList.add('filled');
+          const next = document.getElementById(`otp-${i + 1}`);
+          if (next) next.focus();
+          if (i === 5) verifyOTPCode();
+        } else {
+          this.classList.remove('filled');
+        }
+      });
+
+      el.addEventListener('keydown', function(e) {
+        if (e.key === 'Backspace' && !this.value) {
+          const prev = document.getElementById(`otp-${i - 1}`);
+          if (prev) { prev.value = ''; prev.classList.remove('filled'); prev.focus(); }
+        }
+        if (e.key === 'Enter') verifyOTPCode();
+      });
+
+      if (i === 0) {
+        el.addEventListener('paste', function(e) {
+          e.preventDefault();
+          const pasted = (e.clipboardData || window.clipboardData)
+            .getData('text').replace(/\D/g, '').substring(0, 6);
+          for (let j = 0; j < pasted.length; j++) {
+            const box = document.getElementById(`otp-${j}`);
+            if (box) { box.value = pasted[j]; box.classList.add('filled'); }
+          }
+          if (pasted.length === 6) verifyOTPCode();
+        });
+      }
+    }
+  });
+})();
+
+function getOTPCode() {
+  return Array.from({ length: 6 }, (_, i) => {
+    return (document.getElementById(`otp-${i}`)?.value || '');
+  }).join('');
+}
+
+async function verifyOTPCode() {
+  const code  = getOTPCode();
+  const email = document.getElementById('email-input').value.trim();
+  const errEl = document.getElementById('otp-error');
+
+  if (code.length < 6) {
+    document.getElementById('otp-error-text').textContent = 'Please enter all 6 digits.';
+    errEl.classList.add('show');
+    return;
+  }
+
+  errEl.classList.remove('show');
+
+  try {
+    const res = await fetch(`${API_BASE}/verifyOTP`, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ email, tokenId, code }),
+    });
+    const data = await res.json();
+
+    if (!res.ok || !data.success) {
+      for (let i = 0; i < 6; i++) {
+        const el = document.getElementById(`otp-${i}`);
+        if (el) el.classList.add('err');
+      }
+      document.getElementById('otp-error-text').textContent =
+        data.error || 'Invalid code. Please try again.';
+      errEl.classList.add('show');
+      return;
+    }
+
+    if (otpCountdownInterval) clearInterval(otpCountdownInterval);
+    if (otpResendTimer)       clearInterval(otpResendTimer);
+
+    document.getElementById('pdf-panel').classList.remove('locked');
+    document.getElementById('pdf-gate').style.display = 'none';
+
+    setStep(3);
+    showScreen('sign');
+
+  } catch (err) {
+    document.getElementById('otp-error-text').textContent =
+      'Could not verify code. Check your connection and try again.';
+    errEl.classList.add('show');
+  }
+}
+
+function initCanvas() {
+  const canvas = document.getElementById('sig-canvas');
+  const ctx    = canvas.getContext('2d');
+  let drawing  = false;
+
+  function sizeCanvas() {
+    const wrap = document.getElementById('canvas-wrap');
+    const w    = wrap.clientWidth || 370;
+    canvas.width  = w * devicePixelRatio;
+    canvas.height = 120 * devicePixelRatio;
+    canvas.style.width  = w + 'px';
+    canvas.style.height = '120px';
+    ctx.scale(devicePixelRatio, devicePixelRatio);
+    ctx.strokeStyle = sigColor; ctx.lineWidth = 2.5;
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+  }
+  sizeCanvas();
+  window.addEventListener('resize', sizeCanvas);
+
+  function getPos(e) {
+    const r = canvas.getBoundingClientRect();
+    const s = e.touches ? e.touches[0] : e;
+    return { x: s.clientX - r.left, y: s.clientY - r.top };
+  }
+  function onStart(e) {
+    e.preventDefault(); drawing = true;
+    const p = getPos(e); ctx.beginPath(); ctx.moveTo(p.x, p.y);
+  }
+  function onMove(e) {
+    if (!drawing) return; e.preventDefault();
+    const p = getPos(e);
+    ctx.strokeStyle = sigColor; ctx.lineTo(p.x, p.y); ctx.stroke();
+    hasDrawing = true;
+    document.getElementById('canvas-hint').style.opacity = '0';
+    document.getElementById('canvas-wrap').classList.add('has-sig');
+  }
+  function onStop() { drawing = false; }
+
+  canvas.addEventListener('mousedown',  onStart);
+  canvas.addEventListener('mousemove',  onMove);
+  canvas.addEventListener('mouseup',    onStop);
+  canvas.addEventListener('mouseleave', onStop);
+  canvas.addEventListener('touchstart', onStart, { passive: false });
+  canvas.addEventListener('touchmove',  onMove,  { passive: false });
+  canvas.addEventListener('touchend',   onStop);
+}
+
+function setColor(c, btn) {
+  sigColor = c;
+  document.querySelectorAll('.color-dot').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  if (selectedTheme) drawThemeSig(selectedTheme);
+}
+
+function clearSig() {
+  const canvas = document.getElementById('sig-canvas');
+  canvas.getContext('2d').clearRect(0, 0, canvas.width, canvas.height);
+  hasDrawing = false; uploadedSig = null; selectedThemeSig = null; selectedTheme = null;
+  document.getElementById('canvas-hint').style.opacity   = '1';
+  document.getElementById('canvas-wrap').classList.remove('has-sig');
+  document.getElementById('upload-preview').style.display = 'none';
+  document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('selected'));
+  document.getElementById('theme-canvas-wrap').style.display = 'none';
+}
+
+function switchTab(name, btn) {
+  activeTab = name;
+  document.querySelectorAll('.sig-tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.sig-tab-panel').forEach(p => p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+}
+
+function buildThemeGrid() {
+  const grid = document.getElementById('theme-grid');
+  THEMES.forEach(t => {
+    const btn = document.createElement('button');
+    btn.className  = 'theme-btn';
+    btn.dataset.id = t.id;
+    btn.innerHTML  = `
+      <div class="theme-preview" style="font:${t.font};color:${t.color}">Sign</div>
+      <div class="theme-name">${t.label}</div>`;
+    btn.onclick = () => {
+      document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('selected'));
+      btn.classList.add('selected');
+      selectedTheme = t;
+      drawThemeSig(t);
+    };
+    grid.appendChild(btn);
+  });
+}
+
+function drawThemeSig(t) {
+  const name   = tokenData?.token?.signerName || 'Signature';
+  const wrap   = document.getElementById('theme-canvas-wrap');
+  const canvas = document.getElementById('theme-canvas');
+  const ctx    = canvas.getContext('2d');
+  const w      = wrap.clientWidth || 392;
+  canvas.width  = w * devicePixelRatio;
+  canvas.height = 80 * devicePixelRatio;
+  canvas.style.width  = '100%';
+  canvas.style.height = '80px';
+  ctx.scale(devicePixelRatio, devicePixelRatio);
+  ctx.clearRect(0, 0, w, 80);
+  ctx.fillStyle = '#f8fafc'; ctx.fillRect(0, 0, w, 80);
+  ctx.font = t.font; ctx.fillStyle = sigColor || t.color;
+  ctx.textBaseline = 'middle'; ctx.fillText(name, 16, 40);
+  selectedThemeSig = canvas.toDataURL('image/png');
+  wrap.style.display = 'block';
+}
+
+function handleDrop(e) {
+  e.preventDefault();
+  document.getElementById('upload-zone').classList.remove('drag');
+  const file = e.dataTransfer.files[0]; if (file) readImage(file);
+}
+function handleUpload(e) { const file = e.target.files[0]; if (file) readImage(file); }
+function readImage(file) {
+  const r = new FileReader();
+  r.onload = ev => {
+    uploadedSig = ev.target.result;
+    const img = document.getElementById('upload-preview');
+    img.src = uploadedSig; img.style.display = 'block';
+  };
+  r.readAsDataURL(file);
+}
+
+function getFinalSig() {
+  if (activeTab === 'upload') return uploadedSig;
+  if (activeTab === 'themes') return selectedThemeSig;
+  if (!hasDrawing) return null;
+  return document.getElementById('sig-canvas').toDataURL('image/png');
+}
+
+async function submitSig() {
+  const sig = getFinalSig();
+
+  if (!sig) {
+    showNotice('Please provide your signature before submitting.');
+    return;
+  }
+  if (!document.getElementById('consent-check').checked) {
+    showNotice('Please tick the consent checkbox to confirm you agree to sign.');
+    return;
+  }
+
+  const email = document.getElementById('email-input').value.trim();
+  showScreen('submitting');
+
+  try {
+    const res = await fetch(`${API_BASE}/submitSignature`, {
+      method:  'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body:    JSON.stringify({ tokenId, email, signature: sig }),
+    });
+    const result = await res.json();
+    if (!res.ok) throw new Error(result.error || `HTTP ${res.status}`);
+    const fileEl = document.querySelector('#success-filename span');
+    if (fileEl) fileEl.textContent = result.signedDocument || 'Document signed successfully';
+    showScreen('success');
+  } catch (err) {
+    showError('Submission failed: ' + (err.message || 'Unknown error'));
+  }
+}
+</script>
+</body>
+</html>

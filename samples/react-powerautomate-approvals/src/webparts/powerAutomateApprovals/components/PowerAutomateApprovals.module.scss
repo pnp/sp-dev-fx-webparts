@@ -1,0 +1,345 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.powerAutomateApprovals {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.header {
+  margin-bottom: 1em;
+}
+
+.subtitle {
+  margin-top: 2px;
+  color: "[theme:neutralSecondary, default: #605e5c]";
+  color: var(--neutralSecondary, #605e5c);
+}
+
+.backLink {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: #2f6fed;
+  cursor: pointer;
+  font-size: 13px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.loading {
+  margin: 2em 0;
+}
+
+.statePill {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.statePending {
+  background-color: #fff4ce;
+  color: #8a6d00;
+}
+
+.stateApproved {
+  background-color: #dff6dd;
+  color: #0f7b0f;
+}
+
+.stateRejected {
+  background-color: #fde7e9;
+  color: #a80000;
+}
+
+.stateCanceled {
+  background-color: #f3f2f1;
+  color: #605e5c;
+}
+
+.sectionHeading {
+  margin: 24px 0 12px;
+  font-weight: 600;
+}
+
+.statTiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 20px 0;
+}
+
+.statTile {
+  background: #fff;
+  border: 1px solid #edebe9;
+  border-top: 3px solid transparent;
+  border-radius: 4px;
+  padding: 16px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.statTileBlue {
+  border-top-color: #2f6fed;
+}
+
+.statTileGreen {
+  border-top-color: #107c10;
+}
+
+.statTileOrange {
+  border-top-color: #d83b01;
+}
+
+.statTilePurple {
+  border-top-color: #5c2d91;
+}
+
+.statTileLabel {
+  color: "[theme:neutralSecondary, default: #605e5c]";
+  color: var(--neutralSecondary, #605e5c);
+}
+
+.statTileNumber {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 8px 0;
+}
+
+.viewAllLink {
+  padding: 0;
+  border: none;
+  background: none;
+  color: #2f6fed;
+  cursor: pointer;
+  font-size: 13px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.searchSortBar {
+  margin-bottom: 16px;
+}
+
+.searchBox {
+  flex: 1;
+}
+
+.sortDropdown {
+  min-width: 160px;
+}
+
+.rowList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 12px 16px;
+  background: #fff;
+  border: 1px solid #edebe9;
+  border-left: 4px solid transparent;
+  border-radius: 4px;
+  cursor: pointer;
+  text-align: left;
+  font: inherit;
+  color: inherit;
+
+  &:hover {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+  }
+}
+
+.rowBarPending {
+  border-left-color: #2f6fed;
+}
+
+.rowBarApproved {
+  border-left-color: #107c10;
+}
+
+.rowBarRejected {
+  border-left-color: #a80000;
+}
+
+.rowBarCanceled {
+  border-left-color: #605e5c;
+}
+
+.rowMain {
+  min-width: 0;
+  margin-right: 12px;
+}
+
+.rowTitle {
+  font-weight: 600;
+}
+
+.rowSubtitle {
+  color: "[theme:neutralSecondary, default: #605e5c]";
+  color: var(--neutralSecondary, #605e5c);
+  margin-top: 2px;
+}
+
+.rowRight {
+  flex-shrink: 0;
+  text-align: right;
+}
+
+.rowDate {
+  margin-top: 4px;
+  color: "[theme:neutralSecondary, default: #605e5c]";
+  color: var(--neutralSecondary, #605e5c);
+}
+
+.panelHeader {
+  text-align: left;
+  margin-bottom: 4px;
+}
+
+.panelTitle {
+  margin-top: 8px;
+}
+
+.metaGrid {
+  margin: 4px 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.metaRow {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.metaLabel {
+  color: "[theme:neutralSecondary, default: #605e5c]";
+  color: var(--neutralSecondary, #605e5c);
+}
+
+.metaValue {
+  font-weight: 600;
+  text-align: right;
+}
+
+.placeholderText {
+  color: "[theme:neutralSecondary, default: #605e5c]";
+  color: var(--neutralSecondary, #605e5c);
+}
+
+.activityList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.activityEntry {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+
+.activityDot {
+  width: 8px;
+  height: 8px;
+  margin-top: 6px;
+  border-radius: 50%;
+  background: #2f6fed;
+  flex-shrink: 0;
+}
+
+.timestamp {
+  color: "[theme:neutralSecondary, default: #605e5c]";
+  color: var(--neutralSecondary, #605e5c);
+}
+
+.activityComment {
+  font-style: italic;
+  margin-top: 2px;
+}
+
+.reassignRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.markdownBody {
+  line-height: 1.5;
+
+  > :first-child {
+    margin-top: 0;
+  }
+
+  p,
+  ul,
+  ol {
+    margin: 0 0 12px;
+  }
+
+  ul,
+  ol {
+    padding-left: 20px;
+  }
+
+  strong {
+    font-weight: 600;
+  }
+}
+
+.commentBox {
+  margin-top: 20px;
+}
+
+.debugLink {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 0;
+  border: none;
+  background: none;
+  color: "[theme:neutralSecondary, default: #605e5c]";
+  color: var(--neutralSecondary, #605e5c);
+  cursor: pointer;
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+.approveButton {
+  background-color: #107c10;
+  border-color: #107c10;
+
+  &:hover {
+    background-color: #0b5a0b;
+    border-color: #0b5a0b;
+  }
+}
+
+.rejectButton {
+  color: #a80000;
+  border-color: #a80000;
+
+  &:hover {
+    color: #a80000;
+    border-color: #a80000;
+    background-color: #fde7e9;
+  }
+}

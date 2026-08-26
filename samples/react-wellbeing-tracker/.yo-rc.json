@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.20.6",
+    "sdksVersions": {},
+    "version": "1.20.0",
+    "libraryName": "react-wellbeing-tracker",
+    "libraryId": "c8d4e2f1-a3b5-4e67-8901-2345678901ab",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-wellbeing-tracker",
+    "solutionShortDescription": "Wellbeing & Engagement Tracker web part",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

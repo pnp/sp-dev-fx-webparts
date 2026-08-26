@@ -28,7 +28,7 @@
     "@rushstack/eslint-config": "2.5.1",
     "@microsoft/eslint-plugin-spfx": "1.18.0",
     "@microsoft/eslint-config-spfx": "1.18.0",
-    "@microsoft/sp-build-web": "1.18.0",
+    "@microsoft/sp-build-web": "1.21.1",
     "@types/webpack-env": "~1.15.2",
     "ajv": "^6.12.5",
     "eslint": "8.7.0",

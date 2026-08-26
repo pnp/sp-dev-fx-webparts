@@ -14,7 +14,7 @@
     "@microsoft/sp-office-ui-fabric-core": "1.15.0-beta.1",
     "@microsoft/sp-property-pane": "1.15.0-beta.1",
     "@microsoft/sp-webpart-base": "1.15.0-beta.1",
-    "@pnp/spfx-controls-react": "3.7.0",
+    "@pnp/spfx-controls-react": "3.21.0",
     "office-ui-fabric-react": "7.181.1",
     "property-pane-portal": "^0.2.1",
     "react": "16.13.1",
@@ -23,7 +23,7 @@
   },
   "devDependencies": {
     "@microsoft/rush-stack-compiler-3.9": "^0.4.48",
-    "@microsoft/sp-build-web": "1.18.0",
+    "@microsoft/sp-build-web": "1.23.2",
     "@microsoft/sp-module-interfaces": "1.15.0-beta.1",
     "@microsoft/sp-tslint-rules": "1.15.0-beta.1",
     "@types/react": "16.9.51",

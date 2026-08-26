@@ -9,7 +9,14 @@ node_modules
 # Build generated files
 dist
 lib
+lib-dts
+lib-commonjs
+lib-esm
+jest-output
+release
+solution
 temp
+*.sppkg
 .heft
 release
 package-lock.json
@@ -31,3 +38,4 @@ obj
 
 # Styles Generated Code
 *.scss.ts
+

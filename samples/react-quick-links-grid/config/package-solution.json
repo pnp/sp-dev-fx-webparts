@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-quick-links-grid-client-side-solution",
     "id": "676f926c-fcfa-4921-a624-a6e16aaa511a",
-    "version": "1.0.0.0",
+    "version": "1.0.1.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "452d2f37-49df-4501-8792-eb79c5b22c2b",
+  "alias": "NewsWebPart",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+  "supportsFullBleed": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
+    "group": { "default": "Advanced" },
+    "title": { "default": "News" },
+    "description": { "default": "News web part" },
+    "iconImageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA2NCA2NCcgZmlsbD0nbm9uZSc+CiAgPHJlY3QgeD0nNicgeT0nMicgd2lkdGg9JzQ0JyBoZWlnaHQ9JzU4JyByeD0nNCcgZmlsbD0nd2hpdGUnIHN0cm9rZT0nIzlFOUVBNycgc3Ryb2tlLXdpZHRoPSczJy8+CiAgPHJlY3QgeD0nMicgeT0nMjInIHdpZHRoPSc4JyBoZWlnaHQ9JzMyJyByeD0nMicgZmlsbD0nd2hpdGUnIHN0cm9rZT0nIzlFOUVBNycgc3Ryb2tlLXdpZHRoPScyLjUnLz4KICA8cmVjdCB4PScxMicgeT0nOCcgd2lkdGg9JzMyJyBoZWlnaHQ9JzE0JyByeD0nMicgZmlsbD0nI0YyNTI3MCcvPgogIDxyZWN0IHg9JzEyJyB5PScyOCcgd2lkdGg9JzE0JyBoZWlnaHQ9JzEyJyByeD0nMicgZmlsbD0nI0YyNTI3MCcgb3BhY2l0eT0nMC4yNScvPgogIDxyZWN0IHg9JzI4JyB5PSczMCcgd2lkdGg9JzE2JyBoZWlnaHQ9JzIuNScgcng9JzEuMjUnIGZpbGw9JyM5RTlFQTcnLz4KICA8cmVjdCB4PScyOCcgeT0nMzUnIHdpZHRoPScxNicgaGVpZ2h0PScyLjUnIHJ4PScxLjI1JyBmaWxsPScjOUU5RUE3Jy8+CiAgPHJlY3QgeD0nMjgnIHk9JzQwJyB3aWR0aD0nMTEnIGhlaWdodD0nMi41JyByeD0nMS4yNScgZmlsbD0nIzlFOUVBNycvPgogIDxyZWN0IHg9JzEyJyB5PSc0Nicgd2lkdGg9JzMyJyBoZWlnaHQ9JzIuNScgcng9JzEuMjUnIGZpbGw9JyM5RTlFQTcnLz4KICA8cmVjdCB4PScxMicgeT0nNTEnIHdpZHRoPSczMicgaGVpZ2h0PScyLjUnIHJ4PScxLjI1JyBmaWxsPScjOUU5RUE3Jy8+Cjwvc3ZnPg==",
+    "fullPageAppIconImageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA2NCA2NCcgZmlsbD0nbm9uZSc+CiAgPHJlY3QgeD0nNicgeT0nMicgd2lkdGg9JzQ0JyBoZWlnaHQ9JzU4JyByeD0nNCcgZmlsbD0nd2hpdGUnIHN0cm9rZT0nIzlFOUVBNycgc3Ryb2tlLXdpZHRoPSczJy8+CiAgPHJlY3QgeD0nMicgeT0nMjInIHdpZHRoPSc4JyBoZWlnaHQ9JzMyJyByeD0nMicgZmlsbD0nd2hpdGUnIHN0cm9rZT0nIzlFOUVBNycgc3Ryb2tlLXdpZHRoPScyLjUnLz4KICA8cmVjdCB4PScxMicgeT0nOCcgd2lkdGg9JzMyJyBoZWlnaHQ9JzE0JyByeD0nMicgZmlsbD0nI0YyNTI3MCcvPgogIDxyZWN0IHg9JzEyJyB5PScyOCcgd2lkdGg9JzE0JyBoZWlnaHQ9JzEyJyByeD0nMicgZmlsbD0nI0YyNTI3MCcgb3BhY2l0eT0nMC4yNScvPgogIDxyZWN0IHg9JzI4JyB5PSczMCcgd2lkdGg9JzE2JyBoZWlnaHQ9JzIuNScgcng9JzEuMjUnIGZpbGw9JyM5RTlFQTcnLz4KICA8cmVjdCB4PScyOCcgeT0nMzUnIHdpZHRoPScxNicgaGVpZ2h0PScyLjUnIHJ4PScxLjI1JyBmaWxsPScjOUU5RUE3Jy8+CiAgPHJlY3QgeD0nMjgnIHk9JzQwJyB3aWR0aD0nMTEnIGhlaWdodD0nMi41JyByeD0nMS4yNScgZmlsbD0nIzlFOUVBNycvPgogIDxyZWN0IHg9JzEyJyB5PSc0Nicgd2lkdGg9JzMyJyBoZWlnaHQ9JzIuNScgcng9JzEuMjUnIGZpbGw9JyM5RTlFQTcnLz4KICA8cmVjdCB4PScxMicgeT0nNTEnIHdpZHRoPSczMicgaGVpZ2h0PScyLjUnIHJ4PScxLjI1JyBmaWxsPScjOUU5RUE3Jy8+Cjwvc3ZnPg==",
+    "properties": {
+      "description": "News"
+    }
+  }]
+}

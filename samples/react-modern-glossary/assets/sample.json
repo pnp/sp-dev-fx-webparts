@@ -1,0 +1,90 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-modern-glossary",
+    "source": "pnp",
+    "title": "Modern Glossary",
+    "shortDescription": "A dynamic SharePoint Framework web part displaying an A-Z indexed, accordion-style glossary with alphabet navigation, in-place item management, and Active/Inactive content lifecycle control.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-glossary",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-modern-glossary",
+    "longDescription": [
+      "A dynamic SharePoint Framework (SPFx) web part that displays glossary terms sourced from a SharePoint list in an A-Z indexed, accordion-style layout. Features include alphabet-based navigation with disabled states for empty letters, expand/collapse-all controls, free-text search across title and description, and in-place add/edit/delete item management surfaced through a gear icon visible only in page Edit mode. Content lifecycle is controlled through an Active/Inactive Status field, filtered server-side so retired terms are never sent to the browser. Perfect for IT glossaries, acronym libraries, application directories, and other structured reference content on SharePoint pages."
+    ],
+    "creationDateTime": "2026-08-08",
+    "updateDateTime": "2026-08-08",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.23.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "modern-glossary-demo.gif",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-glossary/assets/modern-glossary-demo.gif",
+        "alt": "Modern Glossary web part demo showing A-Z navigation and accordion expansion"
+      },
+      {
+        "type": "image",
+        "order": 200,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-glossary/assets/alphabet-navigation.png",
+        "alt": "A-Z alphabet navigation strip with Show All and Expand All controls"
+      },
+      {
+        "type": "image",
+        "order": 300,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-glossary/assets/manage-items-panel.png",
+        "alt": "Manage Glossary Items panel with add, edit, and delete operations"
+      },
+      {
+        "type": "image",
+        "order": 500,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-glossary/assets/accordion-expanded.png",
+        "alt": "Expanded accordion item showing description, application URL, and details URL"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "saiiiiiii",
+        "pictureUrl": "https://github.com/saiiiiiii.png",
+        "name": "Sai Siva Ram Bandaru"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Using PnP JS with SharePoint Framework",
+        "description": "Learn how to use PnP JS library in your SharePoint Framework solutions for modern SharePoint REST API interactions.",
+        "url": "https://pnp.github.io/pnpjs/getting-started/"
+      },
+      {
+        "name": "Fluent UI React Components",
+        "description": "Fluent UI React is a collection of robust React-based components designed to make it simple for you to create consistent web experiences using the Fluent Design Language.",
+        "url": "https://developer.microsoft.com/fluentui#/controls/web"
+      },
+      {
+        "name": "Working with Lists and Items using PnP JS",
+        "description": "Learn how to work with SharePoint lists and list items using the PnP JS library, including create, read, update, and delete operations.",
+        "url": "https://pnp.github.io/pnpjs/sp/items/"
+      },
+      {
+        "name": "SharePoint Framework display modes",
+        "description": "Learn how to detect and respond to a web part's display mode (Read vs Edit) to conditionally render editing controls.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/basics/handle-web-part-configuration"
+      }
+    ]
+  }
+]

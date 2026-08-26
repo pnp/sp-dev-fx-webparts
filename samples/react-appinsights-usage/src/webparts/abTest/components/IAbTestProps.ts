@@ -8,4 +8,5 @@ export interface IAbTestProps {
   userDisplayName: string;
   trackEvent: (eventName: string, properties?: { [key: string]: string }) => void;
   log:(entry: IAILogEntry)=> void;
+  isAppInsightsConfigured: boolean;
 }

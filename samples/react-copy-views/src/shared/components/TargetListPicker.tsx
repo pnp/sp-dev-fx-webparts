@@ -4,9 +4,7 @@ import { IList } from './../interfaces';
 import { ServiceScope } from '@microsoft/sp-core-library';
 import { IListsService, ListsService } from './../services';
 import * as strings from 'CopyViewsSharedStrings';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { Label } from 'office-ui-fabric-react/lib/Label';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Stack, Label, Checkbox } from '@fluentui/react';
 import { BaseType } from '../enums';
 
 interface ITargetListPickerProps {

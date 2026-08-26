@@ -18,7 +18,7 @@ import { IUserInfo } from "../../models/IUserInfo";
 export const ExpandedCard: React.FunctionComponent<IExpandedCardProps> = (
   props: IExpandedCardProps
 ) => {
-  const { user } = props;
+  const { user, sp } = props;
   const { expandedCardStackStyle, hoverCardStyles } = useHoverCardStyles();
 
   const stackFieldTokens: IStackTokens = {
@@ -38,13 +38,13 @@ export const ExpandedCard: React.FunctionComponent<IExpandedCardProps> = (
     (async () => {
       if (!user.manager) return;
 
-      const userProfileResponse = await getUserProfile(user.manager);
+      const userProfileResponse = await getUserProfile(sp, user.manager);
       if (!userProfileResponse) return;
 
       const wManager: IUserInfo = await manpingUserProperties(userProfileResponse.currentUserProfile);
       setManager(wManager);
     })();
-  }, [getUserProfile, user.manager]);
+  }, [getUserProfile, sp, user.manager]);
 
   return (
     <>

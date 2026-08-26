@@ -10,14 +10,14 @@
 - [ ] Bug fix/update
 - [ ] Related issues: fixes #X, partially #Y, mentioned in #Z
 
-
 ## What's in this Pull Request?
 
 > Please describe the changes in this PR. Sample description or details around bugs which are being fixed.
-> 
+>
 > _(DELETE THIS PARAGRAPH AFTER READING)_
 
 ## Node Version
+
 > (Use `node -v` to get the version of Node you used to build this sample)
 
 Node version used:
@@ -36,15 +36,13 @@ Node version used:
 - [ ] My solution includes a `.nvmrc` file indicating the version of Node.js
 
 ## Submitter Guidance (DELETE AFTER READING)
-> 
+>
 > *Please update this PR information accordingly. We'll use this as part of our release notes in monthly communications.*
 >
 > *Pull requests that do not follow this template will be automatically rejected.*
-> 
+>
 > *Please target your PR to `main` branch.*
 >
 > *Remember that this repository is maintained by community members who volunteer their time to help. Be courteous and patient.*
 >
 > _(DELETE THIS SECTION AFTER READING)_
-
-

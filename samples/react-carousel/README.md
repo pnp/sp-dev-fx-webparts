@@ -15,8 +15,8 @@ It uses Microsoft Graph API to get image/video url and use PnPjs to load files f
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
-![Node.js v20 ](https://img.shields.io/badge/Node.js-v20-green.svg) 
+![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
+![Node.js v22.15.0](https://img.shields.io/badge/Node.js-%20v22.15.0-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -64,6 +64,7 @@ Version|Date|Comments
 3.0.0|October 31, 2020|Upgraded to SPFx v1.11.0 (Don Kirkham)
 4.0.0|June 10, 2021|Upgraded to SPFx v1.12.1 (Giuliano De Luca)
 5.0.0|October 15, 2024|Upgraded to SPFx v1.20.0 (Mohammad Amer)
+5.1.0|October 2025|Upgraded to 1.21.1
 
 ## Minimal Path to Awesome
 

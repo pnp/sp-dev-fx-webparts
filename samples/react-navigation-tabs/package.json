@@ -1,0 +1,63 @@
+{
+  "name": "navigation-tabs-webpart",
+  "version": "1.0.0",
+  "description": "A SharePoint Framework (SPFx) web part that displays navigation links organized by tabbed categories with multiple layout options.",
+  "author": "W. Kevin Wolff - Wolff Creative LLC",
+  "license": "MIT",
+  "homepage": "https://github.com/wkwolff/navigation-tabs-webpart#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/wkwolff/navigation-tabs-webpart.git"
+  },
+  "keywords": [
+    "sharepoint",
+    "spfx",
+    "webpart",
+    "navigation",
+    "tabs",
+    "links",
+    "sharepoint-framework",
+    "office365",
+    "microsoft365"
+  ],
+  "engines": {
+    "node": ">=18.17.1 <19.0.0 || >=20.9.0 <21.0.0 || >=22.0.0 <23.0.0"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "heft clean && heft run --to build",
+    "clean": "heft clean",
+    "test": "heft run --to test",
+    "start": "heft start",
+    "package": "heft clean && heft run --to build -- --production && heft run --only package-solution -- --production"
+  },
+  "dependencies": {
+    "@microsoft/sp-component-base": "1.22.1",
+    "@microsoft/sp-core-library": "1.22.1",
+    "@microsoft/sp-lodash-subset": "1.22.1",
+    "@microsoft/sp-office-ui-fabric-core": "1.22.1",
+    "@microsoft/sp-property-pane": "1.22.1",
+    "@microsoft/sp-webpart-base": "1.22.1",
+    "@pnp/logging": "4.17.0",
+    "@pnp/sp": "4.17.0",
+    "@pnp/spfx-property-controls": "3.22.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "tslib": "2.3.1"
+  },
+  "devDependencies": {
+    "@microsoft/eslint-config-spfx": "1.22.1",
+    "@microsoft/eslint-plugin-spfx": "1.22.1",
+    "@microsoft/sp-module-interfaces": "1.22.1",
+    "@microsoft/spfx-heft-plugins": "1.22.1",
+    "@microsoft/spfx-web-build-rig": "1.22.1",
+    "@rushstack/eslint-config": "4.5.2",
+    "@rushstack/heft": "1.1.2",
+    "@types/react": "17.0.45",
+    "@types/react-dom": "17.0.17",
+    "@typescript-eslint/parser": "8.46.2",
+    "eslint": "8.57.0",
+    "eslint-plugin-react-hooks": "^4.6.2",
+    "typescript": "5.6.3"
+  }
+}

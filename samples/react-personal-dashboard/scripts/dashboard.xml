@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2022/09/ProvisioningSchema">
+	<pnp:Preferences Generator="PnP.Framework, Version=1.12.2.0, Culture=neutral, PublicKeyToken=0d501f89f11b748c" />
+	<pnp:Templates ID="CONTAINER-TEMPLATE-DASHBOARD">
+		<pnp:ProvisioningTemplate ID="TEMPLATE-DASHBOARD" Version="1">
+			<pnp:SiteFields>
+				<Field Type="Text" DisplayName="Widget Title" Required="TRUE" EnforceUniqueValues="TRUE" Indexed="TRUE" MaxLength="255" Group="Dashboard" ID="{48fda4a6-4294-44dc-b9a1-7097a666cfd8}" SourceID="{7f48bc48-032e-455f-a53c-8b43c431883b}" StaticName="SC_WidgetTitle" Name="SC_WidgetTitle" CustomFormatter=""></Field>
+				<Field Type="Text" DisplayName="Icon Name" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Dashboard" ID="{26b0d899-bec5-4070-8a38-f1bf7cb5c779}" SourceID="{7f48bc48-032e-455f-a53c-8b43c431883b}" StaticName="SC_IconName" Name="SC_IconName" CustomFormatter=""></Field>
+				<Field Type="Note" DisplayName="Display Template" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="FALSE" RichTextMode="Compatible" IsolateStyles="FALSE" Sortable="FALSE" Group="Dashboard" ID="{3e58fe43-3767-40d7-878c-2463c79a0f72}" SourceID="{7f48bc48-032e-455f-a53c-8b43c431883b}" StaticName="SC_DisplayTemplate" Name="SC_DisplayTemplate" CustomFormatter="" RestrictedMode="TRUE" AppendOnly="FALSE" UnlimitedLengthInDocumentLibrary="FALSE"></Field>
+				<Field Type="Note" DisplayName="Error Template" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" NumLines="6" RichText="FALSE" RichTextMode="Compatible" IsolateStyles="FALSE" Sortable="FALSE" Group="Dashboard" ID="{40265ed5-730c-4192-a0db-57063fbd7f32}" SourceID="{7f48bc48-032e-455f-a53c-8b43c431883b}" StaticName="SC_ErrorTemplate" Name="SC_ErrorTemplate" CustomFormatter="" RestrictedMode="TRUE" AppendOnly="FALSE" UnlimitedLengthInDocumentLibrary="FALSE"></Field>
+				<Field Type="Text" DisplayName="Resource Endpoint" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Dashboard" ID="{3a9fc252-0c89-4e58-873e-18fec892a969}" SourceID="{7f48bc48-032e-455f-a53c-8b43c431883b}" StaticName="SC_ResourceEndpoint" Name="SC_ResourceEndpoint" CustomFormatter=""></Field>
+				<Field Type="Text" DisplayName="AAD Client Id" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Dashboard" ID="{3e32a4ac-46af-4f15-bd55-a61ec937caa3}" SourceID="{7f48bc48-032e-455f-a53c-8b43c431883b}" StaticName="SC_AADClientId" Name="SC_AADClientId" CustomFormatter=""></Field>
+				<Field Type="Text" DisplayName="Help URL" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Dashboard" ID="{f2dbde4c-5fec-4426-8f85-96cdb77c8365}" SourceID="{7f48bc48-032e-455f-a53c-8b43c431883b}" StaticName="SC_HelpURL" Name="SC_HelpURL" CustomFormatter=""></Field>
+				<Field Type="Text" DisplayName="View Details" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Dashboard" ID="{6521f1a8-3dc9-466c-9ab7-0ca2112017d7}" SourceID="{7f48bc48-032e-455f-a53c-8b43c431883b}" StaticName="SC_ViewDetails" Name="SC_ViewDetails" CustomFormatter=""></Field>
+			</pnp:SiteFields>
+			<pnp:ContentTypes>
+				<pnp:ContentType DisplayFormClientSideComponentId="" DisplayFormClientSideComponentProperties="" NewFormClientSideComponentProperties="" EditFormClientSideComponentId="" EditFormClientSideComponentProperties="" ID="0x0100C65064DCEED9C649AE70F82E8E3A1DDD" Name="Widget" Description="" Group="Dashboard" NewFormUrl="" EditFormUrl="" DisplayFormUrl="" UpdateChildren="false">
+					<pnp:FieldRefs>
+						<pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" UpdateChildren="true" />
+						<pnp:FieldRef ID="48fda4a6-4294-44dc-b9a1-7097a666cfd8" Name="SC_WidgetTitle" Required="true" UpdateChildren="true" />
+						<pnp:FieldRef ID="26b0d899-bec5-4070-8a38-f1bf7cb5c779" Name="SC_IconName" UpdateChildren="true" />
+						<pnp:FieldRef ID="3e58fe43-3767-40d7-878c-2463c79a0f72" Name="SC_DisplayTemplate" UpdateChildren="true" />
+						<pnp:FieldRef ID="40265ed5-730c-4192-a0db-57063fbd7f32" Name="SC_ErrorTemplate" UpdateChildren="true" />
+						<pnp:FieldRef ID="3a9fc252-0c89-4e58-873e-18fec892a969" Name="SC_ResourceEndpoint" UpdateChildren="true" />
+						<pnp:FieldRef ID="3e32a4ac-46af-4f15-bd55-a61ec937caa3" Name="SC_AADClientId" UpdateChildren="true" />
+						<pnp:FieldRef ID="f2dbde4c-5fec-4426-8f85-96cdb77c8365" Name="SC_HelpURL" UpdateChildren="true" />
+						<pnp:FieldRef ID="6521f1a8-3dc9-466c-9ab7-0ca2112017d7" Name="SC_ViewDetails" UpdateChildren="true" />
+					</pnp:FieldRefs>
+				</pnp:ContentType>
+			</pnp:ContentTypes>
+			<pnp:Lists>
+				<pnp:ListInstance Title="Dashobard Widgets" Description="" DocumentTemplate="" OnQuickLaunch="true" TemplateType="100" Url="Lists/DashobardWidgets" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" ContentTypesEnabled="true" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/DashobardWidgets/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/DashobardWidgets/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/DashobardWidgets/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=47" IrmExpire="false" IrmReject="false" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
+					<pnp:ContentTypeBindings>
+						<pnp:ContentTypeBinding ContentTypeID="0x0100C65064DCEED9C649AE70F82E8E3A1DDD" Default="true" />
+						<pnp:ContentTypeBinding ContentTypeID="0x0120" />
+					</pnp:ContentTypeBindings>
+					<pnp:DataRows>
+						<pnp:DataRow>
+							<pnp:DataValue FieldName="Title">Laugh Fountain</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_WidgetTitle">Laugh Fountain</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_IconName">12PointStar</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_DisplayTemplate">
+								<![CDATA[
+									<div class="joke-container">
+                                        <div class="text-overlay-box">
+                                            <h3 class="joke-setup">{{setup}}</h3>
+                                            <p class="joke-delivery">{{punchline}}</p>
+                                        </div>
+                                    </div>
+                                    <style>
+                                        .joke-container {
+                                        position: relative;
+                                        padding: 20px;
+                                        border-radius: 5px;
+                                        color: #fff;
+                                        overflow: hidden;
+                                        min-height: 195px;
+                                        }
+
+                                        .joke-container::before {
+                                        content: "";
+                                        position: absolute;
+                                        top: 0; left: 0; right: 0; bottom: 0;
+                                        background-image: url('https://assets.codepen.io/9729/IMG_2249.webp');
+                                        background-size: cover;
+                                        background-position: center;
+                                        filter: blur(1px);
+                                        transform: scale(1.1);
+                                        z-index: 0;
+                                        }
+
+                                        .joke-container::after {
+                                        content: "";
+                                        position: absolute;
+                                        top: 0; left: 0; right: 0; bottom: 0;
+                                        background: rgba(0, 0, 0, 0.4);
+                                        z-index: 1;
+                                        }
+
+                                        /* New overlay box for text */
+                                        .text-overlay-box {
+                                        position: relative;
+                                        z-index: 2;
+                                        background: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+                                        padding: 15px;
+                                        border-radius: 5px;
+                                        max-width: 90%;
+                                        margin: 0 auto; /* Center horizontally */
+                                        }
+
+                                        .joke-setup {
+                                        font-size: 18px;
+                                        font-weight: bold;
+                                        margin-bottom: 10px;
+                                        }
+
+                                        .joke-delivery {
+                                        font-size: 16px;
+                                        }
+
+                                        .funny-picture {
+                                        max-width: 100%;
+                                        margin-top: 10px;
+                                        }
+                                    </style>
+								]]>
+							</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_ErrorTemplate">
+								<![CDATA[
+								<span class="no-info">No information could be found at this moment.</span>
+                                <style>
+                                    .no-info {
+                                        margin: 5px;
+                                        color: #000;
+                                        display: inline-block;
+                                    }
+                                </style>
+								]]>
+							</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_ResourceEndpoint">https://official-joke-api.appspot.com/random_joke</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_AADClientId"></pnp:DataValue>
+							<pnp:DataValue FieldName="SC_HelpURL"></pnp:DataValue>
+							<pnp:DataValue FieldName="SC_ViewDetails"></pnp:DataValue>
+						</pnp:DataRow>
+						<pnp:DataRow>
+							<pnp:DataValue FieldName="Title">My Tasks</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_WidgetTitle">My Tasks</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_IconName">Suitcase</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_DisplayTemplate">
+								<![CDATA[
+								<div class="task-list">
+                                {{#each value}}
+                                <div class="task {{#if (isDueDatePassed dueDateTime) }}overdue{{/if}}">
+                                    <div class="title">{{title}}</div>
+                                    <div class="due-date">{{dateFormat dueDateTime}}</div>
+                                </div>
+                                {{/each}}
+                                </div>
+
+                                <style>
+                                .task-list {
+                                display: flex;
+                                flex-direction: column;
+                                font-family: Arial, sans-serif;
+                                color: #333;
+                                }
+
+                                .task {
+                                margin-bottom: 6px;
+                                padding: 10px;
+                                border: 1px solid #ccc;
+                                background-color: #fff;
+                                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+                                }
+
+                                .task.overdue {
+                                border-color: #e74c3c;
+                                background-color: #f8d7da;
+                                }
+
+                                .title {
+                                font-weight: bold;
+                                    font-size: 12px;
+                                    margin-bottom: 5px;
+                                    padding: 0;
+                                }
+
+                                .due-date {
+                                margin: 5px 0;
+                                    padding: 0;
+                                    font-size: 12px;
+                                }
+
+                                </style>
+								]]>
+							</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_ErrorTemplate">
+								<![CDATA[
+								<span class="no-info">No information could be found at this moment.</span>
+                                <style>
+                                    .no-info {
+                                        margin: 5px;
+                                        color: #000;
+                                        display: inline-block;
+                                    }
+                                </style>
+								]]>
+							</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_ResourceEndpoint">https://graph.microsoft.com/v1.0/me/planner/tasks?$select=title,dueDateTime</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_AADClientId"></pnp:DataValue>
+							<pnp:DataValue FieldName="SC_HelpURL">https://www.microsoft.com/en-us/microsoft-365/task-management-in-microsoft-365</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_ViewDetails">https://tasks.office.com/</pnp:DataValue>
+						</pnp:DataRow>
+						<pnp:DataRow>
+							<pnp:DataValue FieldName="Title">My Recent Documents</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_WidgetTitle">My Recent Documents</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_IconName">DocumentSet</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_DisplayTemplate">
+								<![CDATA[
+								<ul class="document-list">
+                                {{#each value}}
+                                    <li>
+                                    <a href="{{webUrl}}" target="_blank" title="{{name}}">
+                                        <span class="doc-icon">📄</span>
+                                        <span class="doc-name">{{name}}</span>
+                                    </a>
+                                    </li>
+                                {{/each}}
+                                </ul>
+
+                                <style>
+                                .document-list {
+                                    margin: 0;
+                                    padding: 0;
+                                    list-style: none;
+                                    border-radius: 12px;
+                                    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+                                    overflow: hidden;
+                                    max-height: 400px;
+                                    overflow-y: auto;
+                                }
+
+                                .document-list li {
+                                    border-bottom: 1px solid #f0f0f0;
+                                }
+
+                                .document-list li:last-child {
+                                    border-bottom: none;
+                                }
+
+                                .document-list li a {
+                                    display: flex;
+                                    align-items: center;
+                                    padding: 6px;
+                                    font-weight: 500;
+                                    font-size: 12px;
+                                    text-decoration: none;
+                                    transition: background-color 0.3s ease, color 0.3s ease;
+                                }
+
+                                .document-list li a:hover {
+                                    background-color: #f9f9f9;
+                                    color: #0078d4; 
+                                }
+
+                                .doc-icon {
+                                    margin-right: 12px;
+                                    font-size: 20px;
+                                    color: #0078d4;
+                                    flex-shrink: 0;
+                                }
+
+                                .doc-name {
+                                    white-space: nowrap;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                }
+
+                                .document-list::-webkit-scrollbar {
+                                    width: 6px;
+                                }
+
+                                .document-list::-webkit-scrollbar-thumb {
+                                    background-color: rgba(0, 0, 0, 0.1);
+                                    border-radius: 4px;
+                                }
+
+                                .document-list::-webkit-scrollbar-track {
+                                    background: transparent;
+                                }
+                                </style>
+								]]>
+							</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_ErrorTemplate">
+								<![CDATA[
+								<span class="no-info">No information could be found at this moment.</span>
+                                <style>
+                                    .no-info {
+                                        margin: 5px;
+                                        color: #000;
+                                        display: inline-block;
+                                    }
+                                </style>
+								]]>
+							</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_ResourceEndpoint">https://graph.microsoft.com/v1.0/me/drive/recent?top=10</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_AADClientId"></pnp:DataValue>
+							<pnp:DataValue FieldName="SC_HelpURL"></pnp:DataValue>
+							<pnp:DataValue FieldName="SC_ViewDetails"></pnp:DataValue>
+						</pnp:DataRow>
+						<pnp:DataRow>
+							<pnp:DataValue FieldName="Title">My Emails</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_WidgetTitle">My Emails</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_IconName">CreateMailRule</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_DisplayTemplate">
+								<![CDATA[
+								{{#each value}}
+                                    <div class="myemail">
+                                    <h3>{{subject}}</h3>
+                                    <p class="body-preview">{{bodyPreview}}</p>
+                                    <p>From: {{from.emailAddress.name}}</p>
+                                    <a href="{{webLink}}" target="_blank">Read More</a>
+                                    </div>
+                                {{/each}}
+
+
+                                <style>
+                                .myemail {
+                                    margin-bottom: 6px;
+                                    border: 1px solid #ccc;
+                                    padding: 10px;
+                                    background-color: #fff;
+                                    color: #000
+                                    }
+                                .myemail h3 {
+                                    font-size: 12px;
+                                    margin: 0;
+                                    padding: 0;
+                                    }
+
+                                .myemail p {
+                                    margin: 5px 0;
+                                    padding: 0;
+                                    font-size: 12px;
+                                    }
+
+                                .body-preview {
+                                    display: -webkit-box;
+                                    -webkit-box-orient: vertical;
+                                    -webkit-line-clamp: 2;
+                                    overflow: hidden;
+                                    text-overflow: ellipsis;
+                                    }
+
+                                .myemail a {
+                                display: block;
+                                color: #007bff;
+                                text-decoration: none;
+                                    font-size: 12px;
+                                }
+
+                                .myemail a:hover {
+                                    text-decoration: underline;
+                                    }
+
+                                </style>
+								]]>
+							</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_ErrorTemplate">
+								<![CDATA[
+								<span class="no-info">No information could be found at this moment.</span>
+                                <style>
+                                    .no-info {
+                                        margin: 5px;
+                                        color: #000;
+                                        display: inline-block;
+                                    }
+                                </style>
+								]]>
+							</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_ResourceEndpoint">https://graph.microsoft.com/v1.0/me/messages?$top=5</pnp:DataValue>
+							<pnp:DataValue FieldName="SC_AADClientId"></pnp:DataValue>
+							<pnp:DataValue FieldName="SC_HelpURL"></pnp:DataValue>
+							<pnp:DataValue FieldName="SC_ViewDetails"></pnp:DataValue>
+						</pnp:DataRow>
+					</pnp:DataRows>
+					<pnp:Views>
+						<View Name="{DFC71656-7788-4507-BA7E-DA904F7F8BB1}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Items" Url="{site}/Lists/DashobardWidgets/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=47">
+							<Query>
+								<OrderBy>
+									<FieldRef Name="ID" />
+								</OrderBy>
+							</Query>
+							<ViewFields>
+								<FieldRef Name="ID" />
+								<FieldRef Name="LinkTitle" />
+								<FieldRef Name="SC_WidgetTitle" />
+								<FieldRef Name="SC_IconName" />
+								<FieldRef Name="SC_DisplayTemplate" />
+								<FieldRef Name="SC_ErrorTemplate" />
+								<FieldRef Name="SC_ResourceEndpoint" />
+								<FieldRef Name="SC_AADClientId" />
+								<FieldRef Name="Modified" />
+							</ViewFields>
+							<RowLimit Paged="TRUE">30</RowLimit>
+							<Aggregations Value="Off" />
+							<JSLink>clienttemplates.js</JSLink>
+							<ViewData />
+						</View>
+					</pnp:Views>
+					<pnp:Fields>
+						<Field ID="{76d13cd2-1bae-45a5-8b74-545b87b65037}" Name="_ColorTag" DisplaceOnUpgrade="TRUE" ShowInFileDlg="FALSE" ReadOnly="TRUE" Type="Text" DisplayName="Color Tag" SourceID="http://schemas.microsoft.com/sharepoint/v3" StaticName="_ColorTag" FromBaseType="TRUE" ColName="nvarchar9" />
+					</pnp:Fields>
+					<pnp:FieldRefs>
+						<pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" DisplayName="Title" />
+						<pnp:FieldRef ID="48fda4a6-4294-44dc-b9a1-7097a666cfd8" Name="SC_WidgetTitle" DisplayName="Widget Title" />
+						<pnp:FieldRef ID="3a9fc252-0c89-4e58-873e-18fec892a969" Name="SC_ResourceEndpoint" DisplayName="Resource Endpoint" />
+						<pnp:FieldRef ID="3e32a4ac-46af-4f15-bd55-a61ec937caa3" Name="SC_AADClientId" DisplayName="AAD Client Id" />
+						<pnp:FieldRef ID="3e58fe43-3767-40d7-878c-2463c79a0f72" Name="SC_DisplayTemplate" DisplayName="Display Template" />
+						<pnp:FieldRef ID="40265ed5-730c-4192-a0db-57063fbd7f32" Name="SC_ErrorTemplate" DisplayName="Error Template" />
+						<pnp:FieldRef ID="26b0d899-bec5-4070-8a38-f1bf7cb5c779" Name="SC_IconName" DisplayName="Icon Name" />
+						<pnp:FieldRef ID="f2dbde4c-5fec-4426-8f85-96cdb77c8365" Name="SC_HelpURL" DisplayName="Help URL" />
+						<pnp:FieldRef ID="6521f1a8-3dc9-466c-9ab7-0ca2112017d7" Name="SC_ViewDetails" DisplayName="View Details" />
+					</pnp:FieldRefs>
+				</pnp:ListInstance>
+			</pnp:Lists>
+		</pnp:ProvisioningTemplate>
+	</pnp:Templates>
+</pnp:Provisioning>

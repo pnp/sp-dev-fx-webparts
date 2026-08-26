@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.0.0",
+    "sdksVersions": {},
+    "version": "1.23.0",
+    "libraryName": "react-power-platform-environments",
+    "libraryId": "98779ce3-50e4-4ce3-b9d6-702507271995",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-power-platform-environments",
+    "solutionShortDescription": "react-power-platform-environments description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

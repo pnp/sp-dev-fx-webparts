@@ -1,0 +1,20 @@
+.editer-wrapper{
+    overflow: hidden;
+    color: '#323130 !important';
+    margin:0 auto;
+  }
+  .editor{
+    min-height: 200px;
+    color: inherit !important;
+    padding: 5px;
+    border: 1px solid #e9a2a2;
+  }
+
+  span[role="link"]::after {
+    content: attr(data-href);
+    pointer-events: all;
+  }
+  span[role="link"] {
+    cursor: pointer;
+  }
+  

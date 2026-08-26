@@ -1,0 +1,103 @@
+// Theme classes — applied to .appWrap root to switch CSS variable sets
+
+.themeDark {
+    --ll-bg-app: linear-gradient(135deg, #0a1628, #0f172a 50%, #1e293b);
+    --ll-bg-header: rgba(15, 23, 42, 0.8);
+    --ll-bg-main-title: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+    --ll-cl-text: #e2e8f0;
+    --ll-cl-text-muted: #94a3b8;
+    --ll-cl-text-faint: #64748b;
+    --ll-cl-accent: #818cf8;
+    --ll-cl-accent-soft: #a5b4fc;
+    --ll-bg-card: rgba(255, 255, 255, 0.03);
+    --ll-bd-card: rgba(255, 255, 255, 0.1);
+    --ll-bd-subtle: rgba(255, 255, 255, 0.06);
+    --ll-box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+
+    //Tags
+    --ll-bg-tag: rgba(6, 182, 212, 0.08);
+    --ll-bd-tag: rgba(6, 182, 212, 0.18);
+    --ll-cl-tag: #67e8f9;
+    --ll-bg-tag-hover: rgba(6, 182, 212, 0.12);
+    --ll-bg-tag-selected: rgba(6, 182, 212, 0.2);
+    --ll-bd-tag-selected: rgba(6, 182, 212, 0.4);
+    --ll-cl-tag-selected: #22d3ee;
+
+    // Language selector
+    --ll-bg-lang-selected: rgba(99, 102, 241, 0.15);
+    --ll-bd-lang-selected: rgba(99, 102, 241, 0.4);
+    --ll-cl-lang-selected: #fff;
+
+    // dropdown
+    --ll-bg-dropdown: #1e293b;
+    --ll-bd-dropdown: rgba(255, 255, 255, 0.1);
+    --ll-cl-dropdown: #e2e8f0;
+    --ll-icon-select: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%23e2e8f0' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.themeLight {
+    --ll-bg-app: linear-gradient(135deg, #ffffff, #f1f5f9 50%, #e2e8f0);
+    --ll-bg-header: transparent;
+    --ll-bg-main-title: linear-gradient(135deg, #0f172a 0%, #7c3aed 100%);
+    --ll-cl-text: #1e293b;
+    --ll-cl-text-muted: #475569;
+    --ll-cl-text-faint: #64748b;
+    --ll-cl-accent: #4f46e5;
+    --ll-cl-accent-soft: #6366f1;
+    --ll-bg-card: rgba(0, 0, 0, 0.03);
+    --ll-bd-card: rgba(0, 0, 0, 0.1);
+    --ll-bd-subtle: rgba(0, 0, 0, 0.06);
+    --ll-box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+
+    --ll-bg-tag: rgba(14, 116, 144, 0.08);
+    --ll-bd-tag: rgba(14, 116, 144, 0.28);
+    --ll-cl-tag: #0e7490;
+    --ll-bg-tag-hover: rgba(14, 116, 144, 0.14);
+    --ll-bg-tag-selected: rgba(14, 116, 144, 0.16);
+    --ll-bd-tag-selected: rgba(14, 116, 144, 0.45);
+    --ll-cl-tag-selected: #0e7490;
+
+    // Language selector
+    --ll-bg-lang-selected: rgba(79, 70, 229, 0.1);
+    --ll-bd-lang-selected: rgba(79, 70, 229, 0.4);
+    --ll-cl-lang-selected: #4f46e5;
+
+    // dropdown
+    --ll-bg-dropdown: #e2e8f0;
+    --ll-bd-dropdown: rgba(255, 255, 255, 0.1);
+    --ll-cl-dropdown: #0f172a;
+    --ll-icon-select: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%23475569' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+
+.themeSite {
+    --ll-bg-app: linear-gradient(135deg, var(--white, #ffffff), var(--neutralLighterAlt, #faf9f8) 50%, var(--themeLighterAlt, #eff6fc));
+    --ll-bg-header: transparent;
+    --ll-bg-main-title: var(--themePrimary, #0078d4);
+    --ll-cl-text: var(--neutralPrimary, #323130);
+    --ll-cl-text-muted: var(--neutralSecondary, #605e5c);
+    --ll-cl-text-faint: var(--neutralTertiary, #a19f9d);
+    --ll-cl-accent: var(--themePrimary, #0078d4);
+    --ll-cl-accent-soft: var(--themeSecondary, #2b88d8);
+    --ll-bg-card: rgba(0, 0, 0, 0.03);
+    --ll-bd-card: rgba(0, 0, 0, 0.1);
+    --ll-bd-subtle: rgba(0, 0, 0, 0.06);
+    --ll-box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+
+    --ll-bg-tag: rgba(0, 120, 212, 0.08);
+    --ll-bd-tag: rgba(0, 120, 212, 0.22);
+    --ll-cl-tag: var(--themePrimary, #0078d4);
+    --ll-bg-tag-hover: rgba(0, 120, 212, 0.14);
+    --ll-bg-tag-selected: rgba(0, 120, 212, 0.16);
+    --ll-bd-tag-selected: rgba(0, 120, 212, 0.4);
+    --ll-cl-tag-selected: var(--themeDarker, #005a9e);
+
+    // Language selector
+    --ll-bg-lang-selected: rgba(0, 120, 212, 0.1);
+    --ll-bd-lang-selected: rgba(0, 120, 212, 0.4);
+    --ll-cl-lang-selected: var(--themePrimary, #0078d4);
+    
+    --ll-bg-dropdown: var(--neutralLighterAlt, #faf9f8);
+    --ll-bd-dropdown: rgba(255, 255, 255, 0.1);
+    --ll-cl-dropdown: var(--themeDarker, #005a9e);
+    --ll-icon-select: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' stroke='%23605e5c' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}

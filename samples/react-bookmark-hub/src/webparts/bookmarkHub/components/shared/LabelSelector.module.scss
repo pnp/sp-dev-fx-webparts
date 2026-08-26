@@ -1,0 +1,32 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.labelSelectorCallout {
+  max-width: 400px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.container {
+  padding: 16px;
+  min-width: 300px;
+  max-height: 400px;
+}
+
+.labelList {
+  max-height: 250px;
+  overflow-y: auto;
+  padding: 4px 0;
+}
+
+.labelOption {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 0;
+  
+  &:hover {
+    background-color: #f3f2f1;
+    border-radius: 4px;
+    padding-left: 4px;
+    padding-right: 4px;
+  }
+}

@@ -7,7 +7,7 @@ import "@pnp/sp/fields";
 import "@pnp/sp/views";
 import { IInvoice } from '../models/index'
 import { WebPartContext } from "@microsoft/sp-webpart-base";
-import { IFieldAddResult, FieldTypes } from "@pnp/sp/fields/types";
+import { FieldTypes } from "@pnp/sp/fields/types";
 import { IListInfo } from "@pnp/sp/lists";
 
 export class InvoiceService {
@@ -25,29 +25,36 @@ export class InvoiceService {
       const items = await list.items.select('ID', 'Title', 'billTo')();
       return items;
       }
+      return [];
     } catch (error) {
       console.error('Error loading invoices:', error);
-      return null;
+      return [];
     }
   }
 
 
-// eslint-disable-next-line  @typescript-eslint/no-explicit-any
-  public async createList(listName: string): Promise<any> {
+  /**
+   * Provision the invoice list if it does not already exist, and return its ID.
+   * Uses the atomic `lists.ensure()` so a re-run is idempotent: an existing list is
+   * reused rather than erroring, and the `billTo` field is only added on first creation.
+   * Returns undefined on failure.
+   */
+  public async ensureList(listName: string): Promise<string | undefined> {
     try {
-      // create list
-      const createList = await this.sp.web.lists.add(listName, "List created by Invoice Generator web part");
-      const field: IFieldAddResult = await this.sp.web.lists.getByTitle(listName).fields.add("billTo", FieldTypes.Text,
-        { FieldTypeKind: 3, Group: "Invoice Generator Fields" });
-      // return list ID
-      console.log(`List '${listName}' created with ID '${createList.data.Id}' and field '${field.data.InternalName}'.`);
-      await this.sp.web.lists.getByTitle(listName).defaultView.fields.add("billTo");
-      return createList.data.Id;
+      const result = await this.sp.web.lists.ensure(listName, "List created by Invoice Generator web part");
+      if (result.created) {
+        const field = await result.list.fields.add("billTo", FieldTypes.Text,
+          { FieldTypeKind: 3, Group: "Invoice Generator Fields" });
+        await result.list.defaultView.fields.add("billTo");
+        console.log(`List '${listName}' created with ID '${result.data.Id}' and field '${field.InternalName}'.`);
+      } else {
+        console.log(`List '${listName}' already exists (ID '${result.data.Id}') — reusing.`);
+      }
+      return result.data.Id;
     } catch (error) {
-      console.log("Error creating list or field:", error);
-      return null;
+      console.log("Error ensuring list or field:", error);
+      return undefined;
     }
-
   }
 
   public async getLists(): Promise<IListInfo[]> {
@@ -56,7 +63,7 @@ export class InvoiceService {
       return lists;
     } catch (error) {
       console.log(`Error retrieving lists: ${error}`);
-      return null;
+      return [];
     }
   }
 

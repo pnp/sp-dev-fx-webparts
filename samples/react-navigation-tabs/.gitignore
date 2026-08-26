@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+lib/
+lib-commonjs/
+release/
+temp/
+
+# Package output
+sharepoint/
+*.sppkg
+
+# IDE
+.vs/
+.vscode/
+*.sublime-*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*
+
+# Environment
+.env
+.env.local

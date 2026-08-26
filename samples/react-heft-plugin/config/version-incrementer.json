@@ -1,0 +1,6 @@
+{
+  "$schema": "../heft-plugins/version-incrementer-plugin/src/version-incrementer-plugin.schema.json",
+  "strategy": "patch",
+  "productionOnly": true,
+  "updatePackageSolution": true
+}

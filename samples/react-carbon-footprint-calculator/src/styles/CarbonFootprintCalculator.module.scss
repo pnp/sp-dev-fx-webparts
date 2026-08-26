@@ -1,0 +1,50 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+// Colours are not set here: they come from the section theme variant, applied
+// inline by the component, so the web part follows the site instead of
+// shipping its own light and dark palettes.
+.carbonFootprintCalculator {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  box-sizing: border-box;
+  font-family: $ms-font-family-fallbacks;
+
+  // Long category names and values wrap rather than widening the web part
+  // beyond its column.
+  overflow-wrap: break-word;
+}
+
+// Room to breathe once the column is wide enough to afford it.
+@media (min-width: 640px) {
+  .carbonFootprintCalculator {
+    padding: 2rem;
+  }
+}
+
+.noPrint {
+  display: block;
+}
+
+/* Print layout for the "Print or save as PDF" command. */
+@media print {
+  .noPrint {
+    display: none !important;
+  }
+
+  // Ink on paper, whatever the theme on screen was. The theme colours are
+  // applied inline, so overriding them needs !important.
+  .carbonFootprintCalculator {
+    max-width: none;
+    padding: 0;
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+
+  // Keep a category and its bar together on the page.
+  dl > div {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}

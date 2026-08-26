@@ -1,0 +1,41 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "f14a955f-04a6-49fa-a478-3cb122380fb8",
+  "alias": "LearnAgentWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "SharePointWebPart",
+    "TeamsPersonalApp",
+    "TeamsTab",
+    "SharePointFullPage"
+  ],
+  "supportsFullBleed": true,
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": {
+        "default": "Advanced"
+      },
+      "title": {
+        "default": "[365C] Microsoft Learn Agent"
+      },
+      "description": {
+        "default": "LearnAgent description"
+      },
+      "officeFabricIconFontName": "KnowledgeArticle",
+      "properties": {
+        "description": "Microsoft Learn Agent",
+        "environmentId": "",
+        "agentIdentifier": "",
+        "tenantId": "",
+        "appClientId": "",
+        "useWebChatMode": false,
+        "directConnectUrl": ""
+      }
+    }
+  ]
+}

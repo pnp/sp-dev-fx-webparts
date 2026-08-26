@@ -9,6 +9,8 @@ node_modules
 # Build generated files
 dist
 lib
+lib-commonjs
+jest-output
 release
 solution
 temp

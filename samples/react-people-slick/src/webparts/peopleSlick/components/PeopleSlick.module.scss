@@ -1,0 +1,67 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.peopleSlick {
+  overflow: hidden;
+  background-color: #ffffff;
+  color: #252525;
+  min-height: 420px;
+  font-size: 16px;
+  font-family: var(--fontFamilyCustomFont100);
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  .webpartName {
+    font-weight: 800;
+    font-size: 30px;
+    font-family: var(--fontFamilyCustomFont1000);
+    text-align: center;
+  }
+
+  .mainContainer {
+    .carousalItem {
+      position: relative;
+      height: 265px;
+      padding: 12px;
+
+      .title {
+        font-weight: 800;
+        margin: 6px 0;
+        font-family: var(--fontFamilyCustomFont1000);
+        text-align: center;
+      }
+
+      .description {
+        opacity: 0.8;
+        margin: 8px 0;
+        text-align: center;
+
+      }
+
+      .profile img {
+        margin: auto;
+      }
+
+      .viewMoreP {
+        text-align: center;
+        margin: auto;
+      }
+
+      .viewMore {
+        border: none;
+        padding: 4px 6px;
+        background-color: #0063AC;
+        color: white;
+
+        //position: absolute;
+        //bottom: 0;
+        //left: 12px;
+        cursor: pointer;
+        text-align: center;
+      }
+    }
+  }
+}

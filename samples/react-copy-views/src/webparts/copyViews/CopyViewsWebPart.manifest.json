@@ -14,7 +14,7 @@
     "group": { "default": "Other", "nl-nl": "Overige" },
     "title": { "default": "Copy views", "nl-nl": "Weergaven kopiëren" },
     "description": { "default": "Copy views from one list to another.", "nl-nl": "Weergaven kopiëren van één lijst naar een andere." },
-    "officeFabricIconFontName": "Page",
+    "officeFabricIconFontName": "Copy",
     "properties": {
     }
   }]

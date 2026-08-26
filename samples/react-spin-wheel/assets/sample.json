@@ -1,0 +1,71 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-spin-wheel",
+    "source": "pnp",
+    "title": "Spin Wheel Game",
+    "shortDescription": "An interactive daily spin wheel game with probability-based rewards, built with React and PnPjs v4",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-spin-wheel",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-spin-wheel",
+    "longDescription": [
+      "A beautiful, interactive spin wheel game built with SharePoint Framework (SPFx), React, and PnPjs v4. Users can spin the wheel once per day to earn points and rewards. Features include smooth animations, sound effects, probability-based reward selection, spin history tracking, and a modern responsive design."
+    ],
+    "creationDateTime": "2026-02-08",
+    "updateDateTime": "2026-02-08",
+    "products": [
+      "SharePoint",
+      "Office"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      },
+      {
+        "key": "PNPJS-VERSION", 
+        "value": "4.7.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-spin-wheel/assets/spin-wheel-demo.gif",
+        "alt": "Spin wheel game in action"
+      },
+      {
+        "type": "image",
+        "order": 200,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-spin-wheel/assets/spin-wheel-preview.png",
+        "alt": "Spin wheel on mobile device"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "saiiiiiii",
+        "pictureUrl": "https://github.com/saiiiiiii.png",
+        "name": "Sai Siva Ram Bandaru"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "PnPjs Library",
+        "description": "PnPjs is a collection of fluent libraries for consuming SharePoint, Graph, and Office 365 REST APIs in a type-safe way.",
+        "url": "https://pnp.github.io/pnpjs/"
+      },
+      {
+        "name": "Using React in SharePoint Framework",
+        "description": "Learn how to use React to build SharePoint Framework client-side web parts.",
+        "url": "https://docs.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-web-part-as-ms-teams-tab"
+      }
+    ]
+  }
+]

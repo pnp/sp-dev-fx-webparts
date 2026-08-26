@@ -42,18 +42,21 @@ export class SPService {
   /**
    * Returns the Anchor Links for Nav element
    * @param context Web part context
+   * @param isExpanded whether navigation links should be expanded by default
    * @returns anchorLinks
    */
-  public static async GetAnchorLinks(context: WebPartContext): Promise<INavLink[]> {
+  public static async GetAnchorLinks(context: WebPartContext, isExpanded: boolean = false): Promise<INavLink[]> {
     const anchorLinks: INavLink[] = [];
 
     try {
       const currentPageRelativeUrl = context.pageContext.site.serverRequestPath;
       const currentPageSiteRelativeURl = context.pageContext.site.serverRelativeUrl;
       const currentPageUrl = currentPageRelativeUrl.replace(`${currentPageSiteRelativeURl}/`, '')
+      // encoding currentPageUrl to ensure special characters don't break the request
+      const encodedPageUrl = encodeURIComponent(currentPageUrl);
 
       /* Get the canvasContent1 data for the page which consists of all the HTML */
-      const data = await context.spHttpClient.get(`${context.pageContext.web.absoluteUrl}/_api/sitepages/pages?$select=CanvasContent1&$filter=Url eq '${currentPageUrl}'`, SPHttpClient.configurations.v1);
+      const data = await context.spHttpClient.get(`${context.pageContext.web.absoluteUrl}/_api/sitepages/pages?$select=CanvasContent1&$filter=Url eq '${encodedPageUrl}'`, SPHttpClient.configurations.v1);
       const jsonData = await data.json();
 
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -108,7 +111,7 @@ export class SPService {
             this.allUrls.push(anchorUrl);
 
             // Add link to nav element
-            const newNavLink: INavLink = { name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: true };
+            const newNavLink: INavLink = { name: headingValue, key: anchorUrl, url: anchorUrl, links: [], isExpanded: isExpanded };
             navLinkBuilder.build<INavLink>(anchorLinks, newNavLink, headingOrder);
           });
         }

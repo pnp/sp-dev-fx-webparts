@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "8a633c89-d998-45e4-9bd2-c59f62cab229",
+  "alias": "DemoTimeWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Advanced" },
+    "title": { "default": "demo-time" },
+    "description": { "default": "demo-time description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "demo-time"
+    }
+  }]
+}

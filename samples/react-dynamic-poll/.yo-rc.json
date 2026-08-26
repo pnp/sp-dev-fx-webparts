@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.18.0",
+    "sdksVersions": {},
+    "version": "1.21.0",
+    "libraryName": "react-dynamic-poll",
+    "libraryId": "0e07225f-c309-401c-ab47-1fed99cfc551",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-dynamic-poll",
+    "solutionShortDescription": "react-dynamic-poll description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

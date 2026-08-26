@@ -17,7 +17,7 @@
   "preconfiguredEntries": [{
     "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
     "group": { "default": "Other" },
-    "title": { "default": "KanbanBoard" },
+    "title": { "default": "Kanban board" },
     "description": { "default": "Adds a Kanban board showing the tasks from the selected tasks list" },
     "officeFabricIconFontName": "BacklogBoard",
     "properties": {

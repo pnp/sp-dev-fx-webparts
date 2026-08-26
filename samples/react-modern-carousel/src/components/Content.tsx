@@ -11,14 +11,14 @@ export const Content = ({ user }: ContentProps): JSX.Element => {
   return (
     <section className={styles.contentWrapper}>
       <Text size={600} weight='semibold' className={styles.webpartTitle}>
-        {contextInfo.webpartTitle}
+        {contextInfo.mainHeading}
       </Text>
       <div className={styles.contentDescriptionWrapper}>
         <Text size={400} weight='semibold' className={styles.contentTitle}>
-          {contextInfo.contentTitle}
+          {contextInfo.subHeading}
         </Text>
         <Text size={300} className={styles.contentDescription}>
-          {contextInfo.contentDescription}
+          {contextInfo.subHeadingDescription}
         </Text>
       </div>
 

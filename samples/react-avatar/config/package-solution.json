@@ -18,7 +18,29 @@
       "termsOfUseUrl": "https://contoso.com/terms-of-use",
       "websiteUrl": "https://contoso.com/my-app",
       "mpnId": "m365pnp"
-    }
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-avatars description"
+      },
+      "longDescription": {
+        "default": "react-avatars description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-avatars AvatarGeneratorWebPart Feature",
+        "description": "The feature that activates AvatarGeneratorWebPart from the react-avatars solution.",
+        "id": "4052b4ec-72e9-4248-b411-18a4cd438d4b",
+        "version": "1.0.1.0",
+        "componentIds": [
+          "4052b4ec-72e9-4248-b411-18a4cd438d4b"
+        ]
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/react-avatars.sppkg"

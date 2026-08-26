@@ -24,14 +24,14 @@ export class RssHttpClientFeed2JsonService implements IRssHttpClientComponentSer
     const p = new Promise<IRssReaderResponse>(async (resolve, reject) => {
 
       let rawFeedOutput: any = null;
-      let response: IRssReaderResponse = null;
+      let response: IRssReaderResponse | null = null;
 
       try {
 
         //Create the url to the feed2json service url per documentation at: https://feed2json.org/
-        const rssUrl: string = (feedRequest.feedServiceUrl ? feedRequest.feedServiceUrl : "https://www.toptal.com/developers/feed2json/convert") + "?url=" + feedRequest.url;
+        const rssUrl: string = (feedRequest.feedServiceUrl ? feedRequest.feedServiceUrl : "https://www.toptal.com/developers/feed2json/convert") + "?url=" + (feedRequest.url || "");
 
-        rawFeedOutput = await RssHttpClientService.getRssJson(rssUrl, feedRequest.useCorsProxy ? feedRequest.corsProxyUrl : "", feedRequest.disableCorsMode);
+        rawFeedOutput = await RssHttpClientService.getRssJson(rssUrl, feedRequest.useCorsProxy ? (feedRequest.corsProxyUrl || "") : "", feedRequest.disableCorsMode ?? false);
 
       }
       catch (err) {
@@ -65,10 +65,10 @@ export class RssHttpClientFeed2JsonService implements IRssHttpClientComponentSer
   }
 
   public convertRssFeedToRssReaderResponse(input: any, maxCount: number) : IRssReaderResponse {
-    const response: IRssReaderResponse = {query: null} as IRssReaderResponse;
+    const response: IRssReaderResponse = {query: null} as unknown as IRssReaderResponse;
 
     if (!input) {
-      return null;
+      return null as unknown as IRssReaderResponse;
     }
 
     response.query = {
@@ -90,7 +90,7 @@ export class RssHttpClientFeed2JsonService implements IRssHttpClientComponentSer
           } as IRssHeaders
         } as IRssUrl,
       } as IRssQueryMetaData,
-      results: null
+      results: undefined
     };
 
     //feed items
@@ -117,14 +117,14 @@ export class RssHttpClientFeed2JsonService implements IRssHttpClientComponentSer
           content: item.guid
         } as IRssGuid;
 
-        response.query.results.rss.push(newItem);
+        response.query.results!.rss!.push(newItem);
 
       });
 
       //ensure that we only get maxCount records
-      if (response.query.results.rss.length > maxCount) {
+      if (response.query.results!.rss!.length > maxCount) {
 
-        response.query.results.rss = response.query.results.rss.splice(0, maxCount);
+        response.query.results!.rss = response.query.results!.rss!.splice(0, maxCount);
 
       }
     }

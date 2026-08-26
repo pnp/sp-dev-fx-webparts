@@ -1,0 +1,137 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-height: 220px;
+  padding: 8px 2px 4px;
+}
+
+.section {
+  margin-bottom: 16px;
+}
+
+.searchRow {
+  display: flex;
+  gap: 8px;
+  align-items: flex-end;
+}
+
+.searchField {
+  flex: 1;
+}
+
+.resultsSection {
+  margin-top: 8px;
+  padding: 8px 10px 4px;
+  border-radius: 8px;
+  background: linear-gradient(180deg, #faf9f8 0%, #f3f2f1 100%);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+
+.resultsTitle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+  color: #201f1e;
+}
+
+.permissionRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background: #f8f8f8;
+  margin-bottom: 6px;
+  border: 1px solid #edebe9;
+
+  &:hover {
+    background: #f3f2f1;
+  }
+}
+
+.permissionRowLeft {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.groupRow {
+  padding: 10px 10px 8px;
+  border: 1px solid #edebe9;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  background: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+.groupHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+
+.groupName {
+  font-weight: 600;
+  color: #201f1e;
+}
+
+.groupPermLevels {
+  font-size: 12px;
+  color: #605e5c;
+  margin-top: 2px;
+}
+
+.groupDescription {
+  font-size: 12px;
+  color: #605e5c;
+  margin-bottom: 8px;
+}
+
+.groupActionDanger {
+  border-radius: 16px;
+  padding-inline: 10px;
+  background-color: #fdf3f2;
+  border: 1px solid #f3d6d7;
+  color: #a4262c;
+
+  &:hover {
+    background-color: #fbe4e2;
+    border-color: #e6b7b9;
+  }
+
+  &:active {
+    background-color: #f8d0ce;
+    border-color: #d79698;
+  }
+}
+
+.emptyHint {
+  color: #a19f9d;
+  font-style: italic;
+  font-size: 13px;
+  margin-top: 4px;
+}
+
+.dangerPrimary {
+  background-color: #d13438;
+  border-color: #d13438;
+  color: #ffffff;
+
+  &:hover {
+    background-color: #a4262c;
+    border-color: #a4262c;
+  }
+
+  &:active {
+    background-color: #8a1c21;
+    border-color: #8a1c21;
+  }
+}

@@ -5,6 +5,8 @@
 This sample web part shows the list of your applications registered in Azure AD along with their associated client secret/certificate expiration date.
 I got the idea from this great article [Use Power Automate to Notify of Upcoming Azure AD App Client Secrets and Certificate Expirations](https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/use-power-automate-to-notify-of-upcoming-azure-ad-app-client/ba-p/2406145) and thought it would be nice to have a SPFx web part version of it.
 
+![Static sample](./assets/secretExpiration.png)
+
 ![Animated sample](./assets/react-graph-app-secret-expiration-animated.gif)
 
 ## Compatibility
@@ -14,8 +16,8 @@ I got the idea from this great article [Use Power Automate to Notify of Upcoming
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
-![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
+![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
+![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -44,6 +46,7 @@ Version|Date|Comments
 1.4|July 07, 2022|Upgrade to SPFx v1.15.0
 1.5|March 06, 2023|Upgrade to SPFx v1.16.1
 1.6|December 09, 2024|Upgrade to SPFx v1.20.0
+1.7|May 26, 2025|Upgrade to SPFx v1.21.1
 
 
 ## Minimal path to awesome

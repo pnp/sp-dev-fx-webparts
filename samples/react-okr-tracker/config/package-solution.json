@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "goals-okrs-tracker-client-side-solution",
+    "id": "2ba0286b-112f-4089-b731-ff22bfe6ad1a",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "goals-okrs-tracker description"
+      },
+      "longDescription": {
+        "default": "goals-okrs-tracker description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "goals-okrs-tracker Feature",
+        "description": "The feature that activates elements of the goals-okrs-tracker solution.",
+        "id": "43fa9f98-a956-477a-af63-a2f4d2416375",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/goals-okrs-tracker.sppkg"
+  }
+}

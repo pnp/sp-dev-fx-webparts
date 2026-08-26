@@ -1,14 +1,9 @@
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
-import {
-  BaseClientSideWebPart,
-  IPropertyPaneConfiguration,
-  PropertyPaneLabel,
-  PropertyPaneTextField,
-  PropertyPaneToggle
-} from '@microsoft/sp-webpart-base';
 
+import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
+import { IPropertyPaneConfiguration, PropertyPaneLabel, PropertyPaneTextField, PropertyPaneToggle } from "@microsoft/sp-property-pane";
 import * as strings from 'ReactImageEditorWebPartStrings';
 import ReactImageEditor, { IReactImageEditorBaseProps, IReactImageEditorProps } from './components/ReactImageEditor';
 import { IImageManipulationSettings } from '../../components';

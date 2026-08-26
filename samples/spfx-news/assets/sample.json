@@ -1,0 +1,47 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-spfx-news",
+    "source": "pnp",
+    "title": "News Web Part",
+    "shortDescription": "A SharePoint Framework (SPFx) web part that displays SharePoint news in 6 configurable layout modes, with support for data source selection, auto-refresh, card customization, and full Fluent UI v9 theming. Built with @spteck/react-controls-v2 and runs on SharePoint Online, Microsoft Teams, and Microsoft 365 (Office) hosts.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/spfx-news",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/spfx-news",
+    "longDescription": [
+      "A SharePoint Framework (SPFx) web part that displays SharePoint news in 6 configurable layout modes, with support for data source selection, auto-refresh, card customization, and full Fluent UI v9 theming. Built with @spteck/react-controls-v2 and runs on SharePoint Online, Microsoft Teams, and Microsoft 365 (Office) hosts."
+    ],
+    "creationDateTime": "2026-05-17",
+    "updateDateTime": "2026-05-17",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.22.2"
+      }
+    ],
+    "thumbnails": [],
+    "authors": [
+      {
+        "gitHubAccount": "joaojmendes",
+        "pictureUrl": "https://github.com/joaojmendes.png",
+        "name": "João Mendes"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

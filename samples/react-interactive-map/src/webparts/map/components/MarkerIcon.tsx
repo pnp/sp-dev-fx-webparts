@@ -1,4 +1,4 @@
-import { Icon } from 'office-ui-fabric-react';
+import { Icon } from '@fluentui/react';
 import * as React from 'react';
 import { IMarkerIcon } from './IMapProps';
 

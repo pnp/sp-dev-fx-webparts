@@ -1,0 +1,26 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "88a8ed22-5221-47ab-ab65-9d7cbd8adad1",
+  "alias": "OrganisationChartWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", 
+    "group": { "default": "Advanced" },
+    "title": { "default": "Organisation Chart" },
+    "description": { "default": "Organisation Chart description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "Organisation Chart",
+      "gradientStart": "#6a11cb",
+      "gradientEnd": "#2575fc"
+    }
+  }]
+}

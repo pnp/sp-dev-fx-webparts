@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "easter-egg-hunt-game-spf-xwebpart-client-side-solution",
+    "id": "a4367735-eff8-423c-80d8-b86857d53400",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "easter-egg-hunt-game-spf-xwebpart description"
+      },
+      "longDescription": {
+        "default": "easter-egg-hunt-game-spf-xwebpart description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "easter-egg-hunt-game-spf-xwebpart Feature",
+        "description": "The feature that activates elements of the easter-egg-hunt-game-spf-xwebpart solution.",
+        "id": "220e1aca-b609-4975-a672-774f251d25eb",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/easter-egg-hunt-game-spf-xwebpart.sppkg"
+  }
+}

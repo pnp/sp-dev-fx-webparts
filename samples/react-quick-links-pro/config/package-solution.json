@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "quick-links-pro-client-side-solution",
+    "id": "897a2013-dfb6-4979-9e5e-028ff98cbe6d",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "quick-links-pro description"
+      },
+      "longDescription": {
+        "default": "quick-links-pro description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "quick-links-pro Feature",
+        "description": "The feature that activates elements of the quick-links-pro solution.",
+        "id": "9fd07f91-59c8-4875-a33a-a7f4e9f3d8c1",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/quick-links-pro.sppkg"
+  }
+}

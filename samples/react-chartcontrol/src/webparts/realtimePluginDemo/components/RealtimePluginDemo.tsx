@@ -46,7 +46,7 @@ export class RealtimePluginDemo extends React.Component<IRealtimePluginDemoProps
             duration: 20000,
             refresh: 1000,
             delay: 2000,
-            onRefresh: (chart) => this._onRefresh(chart)
+            onRefresh: (chart: any) => this._onRefresh(chart)
           }
         }],
         yAxes: [{
@@ -100,8 +100,8 @@ export class RealtimePluginDemo extends React.Component<IRealtimePluginDemoProps
     return (Math.random() > 0.5 ? 1.0 : -1.0) * Math.round(Math.random() * 100);
   }
 
-  private _onRefresh(chart) {
-    chart.config.data.datasets.forEach((dataset) => {
+  private _onRefresh(chart: any) {
+    chart.config.data.datasets.forEach((dataset: any) => {
       dataset.data.push({
         x: Date.now(),
         y: this._randomScalingFactor()
@@ -190,14 +190,14 @@ export class RealtimePluginDemo extends React.Component<IRealtimePluginDemoProps
 
     var colorNames = Object.keys(chartColors);
     var colorName = colorNames[data.datasets.length % colorNames.length];
-    var newColor = chartColors[colorName];
+    var newColor = (chartColors as any)[colorName];
     var newDataset = {
       label: `${strings.DatasetPrefix} ${data.datasets.length + 1}`,
       backgroundColor: Color(newColor).alpha(0.5).toString(),
       borderColor: newColor,
       fill: false,
       lineTension: 0,
-      data: []
+      data: [] as any[]
     };
 
     data.datasets.push(newDataset);

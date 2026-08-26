@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-document-explorer-client-side-solution",
+    "id": "1895e1b5-bc14-4fe6-af9b-73b94bc98c91",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "spfx-document-explorer description"
+      },
+      "longDescription": {
+        "default": "spfx-document-explorer description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "spfx-document-explorer Feature",
+        "description": "The feature that activates elements of the spfx-document-explorer solution.",
+        "id": "fcdbda3c-4e80-4129-99ee-76cb01aaacbf",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-document-explorer.sppkg"
+  }
+}

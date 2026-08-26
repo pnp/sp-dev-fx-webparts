@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.21.1",
+    "sdksVersions": {},
+    "version": "1.22.2",
+    "libraryName": "spfx-gantt",
+    "libraryId": "bbbe734d-317d-44e0-aa7b-9d5735cb6849",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "spfx-gantt",
+    "solutionShortDescription": "spfx-gantt description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

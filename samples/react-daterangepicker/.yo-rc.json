@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "nodeVersion": "18.18.0",
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "version": "1.20.0",
+    "libraryName": "spfx-react-daterangepicker",
+    "libraryId": "4c56d238-26d6-4fae-a30f-6b6ab3cc9d52",
+    "packageManager": "npm",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "plusBeta": false,
+    "componentType": "webpart",
+    "sdkVersions": {
+      "@microsoft/teams-js": "2.24.0",
+      "@microsoft/microsoft-graph-client": "3.0.2"
+    }
+  }
+}

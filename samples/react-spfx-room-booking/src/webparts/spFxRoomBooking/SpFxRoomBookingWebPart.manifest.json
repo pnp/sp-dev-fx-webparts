@@ -1,0 +1,31 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "f1610d6d-865e-49a4-8a9d-32b3d18fb862",
+  "alias": "SpFxRoomBookingWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "SharePointWebPart",
+    "TeamsPersonalApp",
+    "TeamsTab",
+    "SharePointFullPage"
+  ],
+  "supportsThemeVariants": true,
+  "supportsFullBleed": true,
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": { "default": "Advanced" },
+      "title": { "default": "SPFx Room Booking" },
+      "description": { "default": "SPFx Room Booking description" },
+      "officeFabricIconFontName": "Room",
+      "properties": {
+        "description": "SPFx Room Booking"
+      }
+    }
+  ]
+}

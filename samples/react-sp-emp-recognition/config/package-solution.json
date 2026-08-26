@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-sp-emp-recognition-client-side-solution",
+    "id": "b8b80533-7d6d-4118-8cce-6f588c306c04",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-sp-emp-recognition description"
+      },
+      "longDescription": {
+        "default": "react-sp-emp-recognition description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-sp-emp-recognition Feature",
+        "description": "The feature that activates elements of the react-sp-emp-recognition solution.",
+        "id": "119e86cc-c80c-44e1-9bbd-c899d4828e83",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-sp-emp-recognition.sppkg"
+  }
+}

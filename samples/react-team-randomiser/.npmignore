@@ -1,0 +1,7 @@
+!dist
+config
+gulp*.js
+src
+node_modules
+sharepoint
+config

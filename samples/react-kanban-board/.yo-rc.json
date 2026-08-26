@@ -1,15 +1,16 @@
 {
   "@microsoft/generator-sharepoint": {
-    "nodeVersion": "18.20.3",
+    "nodeVersion": "22.14.0",
     "isCreatingSolution": true,
     "environment": "spo",
-    "version": "1.20.0",
+    "version": "1.22.1",
     "libraryName": "react-kanban-board",
     "libraryId": "cccbd72b-7b89-4128-9348-0a4850ded8fd",
     "packageManager": "npm",
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
     "plusBeta": false,
+    "useGulp": false,
     "componentType": "webpart",
     "sdkVersions": {
       "@microsoft/teams-js": "2.24.0",

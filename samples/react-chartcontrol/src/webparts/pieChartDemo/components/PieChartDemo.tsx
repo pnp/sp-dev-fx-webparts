@@ -46,7 +46,7 @@ export class PieChartDemo extends React.Component<IPieChartDemoProps, {}> {
   /**
    * Handle to async requests
    */
-  private _asyncRequest = undefined;
+  private _asyncRequest: any = undefined;
 
   /**
   * When component is mounted, get the data
@@ -167,8 +167,8 @@ export class PieChartDemo extends React.Component<IPieChartDemoProps, {}> {
           } else {
             // this is a new dataset!
             const newDataset = {
-              backgroundColor: [],
-              data: [],
+              backgroundColor: [] as string[],
+              data: [] as number[],
               // create a dataset label (e.g.: Dataset 1)
               label: strings.DataSetLabel + (dsIndex + 1).toString(),
             };
@@ -210,8 +210,8 @@ export class PieChartDemo extends React.Component<IPieChartDemoProps, {}> {
 
     // create a new dataset
     var newDataset = {
-      backgroundColor: [],
-      data: [],
+      backgroundColor: [] as string[],
+      data: [] as number[],
       // give it a label (e.g.: Dataset 1)
       label: strings.DataSetLabel + data.datasets.length.toString(),
     };

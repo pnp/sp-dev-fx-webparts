@@ -1,0 +1,16 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "solutionName": "navigation-tabs",
+    "solutionShortDescription": "Navigation Tabs Web Part",
+    "shouldRaiseValetError": true,
+    "isCreatingSolution": true,
+    "environment": "spo",
+    "packageManager": "npm",
+    "componentType": "webpart",
+    "framework": "react",
+    "componentName": "NavigationTabs",
+    "componentDescription": "Displays SharePoint list links in tabbed categories",
+    "isDomainIsolated": false,
+    "version": "1.22.1"
+  }
+}

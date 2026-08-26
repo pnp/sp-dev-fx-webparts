@@ -1,0 +1,299 @@
+// AccordianFaq.module.scss
+
+// Variables
+$primary-color: #0078d4;
+$secondary-color: #106ebe;
+$text-primary: #323130;
+$text-secondary: #605e5c;
+$background-light: #ffffff;
+$background-dark: #1b1a19;
+$dark-header-bg: #3b3a39;
+$dark-panel-bg: #2d2c2c;
+$error-color: #a4262c;
+$border-radius: 4px;
+$transition-speed: 0.2s;
+$standard-border-color: #edebe9;
+$hover-color: #f3f2f1;
+
+// Mixins
+@mixin focus-outline {
+  outline: 2px solid $primary-color;
+  outline-offset: 2px;
+}
+
+@mixin button-base {
+  padding: 8px 16px;
+  border-radius: $border-radius;
+  border: 1px solid $primary-color;
+  cursor: pointer;
+  transition: all $transition-speed ease-in-out;
+  font-size: 14px;
+  line-height: 20px;
+  background-color: $primary-color;
+  color: white;
+  
+  &:focus-visible {
+    @include focus-outline;
+  }
+
+  &:hover:not(:disabled) {
+    background-color: $secondary-color;
+    border-color: $secondary-color;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+// Container
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  color: $text-primary;
+  background-color: $background-light;
+
+  &.dark {
+    color: #ffffff;
+    background-color: $background-dark;
+
+    .header {
+      background-color: $dark-header-bg;
+      color: #ffffff;
+    }
+    .panel {
+      background-color: $dark-panel-bg;
+      color: #ffffff;
+      border-color: lighten($dark-panel-bg, 10%);
+    }
+    .searchInput {
+      background-color: $dark-panel-bg;
+      color: #ffffff;
+      border-color: #605e5c;
+
+      &::placeholder {
+        color: lighten(#605e5c, 20%);
+      }
+    }
+    .expandButton {
+      background-color: $dark-header-bg;
+      color: #ffffff;
+      border-color: #605e5c;
+
+      &:hover {
+        background-color: darken($dark-header-bg, 5%);
+      }
+    }
+  }
+}
+
+// Web Part Title
+.webPartTitle {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: inherit;
+}
+
+// Expand/Collapse Buttons Container
+.expandButtons {
+  margin-bottom: 16px;
+  display: flex;
+  gap: 8px;
+
+  &.left {
+    justify-content: flex-start;
+  }
+  &.right {
+    justify-content: flex-end;
+  }
+}
+
+.expandButton {
+  @include button-base;
+}
+
+// Search Container & Input
+.searchContainer {
+  margin-bottom: 20px;
+  position: relative;
+  width: 100%;
+
+  .searchIcon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $text-secondary;
+    pointer-events: none;
+    font-size: 20px;
+  }
+}
+
+.searchInput {
+  width: 100%;
+  padding: 8px 12px 8px 36px; // extra left space for icon
+  border: 1px solid $standard-border-color;
+  border-radius: $border-radius;
+  font-size: 14px;
+  line-height: 20px;
+  transition: border-color $transition-speed ease;
+  background-color: $background-light;
+
+  &:focus {
+    @include focus-outline;
+    border-color: $primary-color;
+  }
+
+  &::placeholder {
+    color: $text-secondary;
+  }
+}
+
+// Group Section & Header
+.groupSection {
+  margin-bottom: 24px;
+}
+
+.groupHeader {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 16px;
+  color: inherit;
+}
+
+// Accordion Styles
+.accordion {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+// Header for Accordion Items
+// Accordion Header Styles
+.header {
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: $hover-color;
+  border-radius: $border-radius;
+  transition: all $transition-speed ease;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    background-color: darken($hover-color, 5%);
+  }
+
+  &[aria-expanded="true"] {
+    background-color: $primary-color;
+    color: #ffffff;
+  }
+
+  strong {
+    font-weight: 700;
+  }
+}
+
+// New top-level modifier classes for header position
+.leftHeader {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+.centerHeader {
+  justify-content: center;
+  text-align: center;
+}
+
+// Panel for Accordion Items
+.panel {
+  padding: 16px;
+  background-color: $background-light;
+  border: 1px solid $standard-border-color;
+  border-top: none;
+  border-radius: 0 0 $border-radius $border-radius;
+
+  p {
+    margin: 0 0 16px;
+    line-height: 1.5;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// Error Message
+.errorMessage {
+  padding: 16px;
+  margin: 16px 0;
+  background-color: #fde7e9;
+  border: 1px solid $error-color;
+  border-radius: $border-radius;
+  color: $error-color;
+}
+
+// Screen Reader Only
+.srOnly {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+  
+  .webPartTitle {
+    font-size: 20px;
+  }
+  
+  .groupHeader {
+    font-size: 18px;
+  }
+  
+  .header {
+    padding: 12px;
+    font-size: 15px;
+  }
+  
+  .panel {
+    padding: 12px;
+  }
+  
+  .expandButtons {
+    flex-wrap: wrap;
+  }
+  
+  .expandButton {
+    flex: 1;
+    text-align: center;
+    min-width: 120px;
+  }
+  
+  .searchInput {
+    padding: 10px 10px 10px 36px;
+  }
+}
+
+// Reduce Motion
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -14,7 +14,8 @@ import * as strings from 'ChatStreamingWebPartStrings';
 import ChatStreaming from './components/ChatStreaming';
 import { IChatStreamingProps } from './components/IChatStreamingProps';
 
-import { Providers, SharePointProvider } from '@microsoft/mgt-spfx';
+import { Providers } from '@microsoft/mgt-element';
+import { SharePointProvider } from '@microsoft/mgt-sharepoint-provider';
 
 export interface IChatStreamingWebPartProps {
   openAiApiKey: string;
@@ -47,10 +48,14 @@ export default class ChatStreamingWebPart extends BaseClientSideWebPart<IChatStr
     ReactDom.render(element, this.domElement);
   }
 
-  protected onInit(): Promise<void> {
+  protected async onInit(): Promise<void> {
     if (!Providers.globalProvider) {
       Providers.globalProvider = new SharePointProvider(this.context);
     }
+    
+    // Dynamically import MGT components
+    await import(/* webpackChunkName: 'mgt-components' */ '@microsoft/mgt-components');
+    
     return this._getEnvironmentMessage().then(message => {
       this._environmentMessage = message;
     });

@@ -1,0 +1,306 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.documentExplorer {
+  padding: 20px;
+  background-color: $ms-color-white;
+  min-height: 500px;
+
+  .header {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid $ms-color-neutralLight;
+
+    .headerTop {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: 24px;
+      font-weight: 600;
+      color: $ms-color-themePrimary;
+    }
+
+    .searchBox {
+      width: 300px;
+    }
+
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      padding: 8px 12px;
+      background-color: $ms-color-neutralLighterAlt;
+      border-radius: 4px;
+      font-size: 13px;
+      color: $ms-color-neutralSecondary;
+
+      .breadcrumbIcon {
+        margin-right: 8px;
+        color: $ms-color-themePrimary;
+      }
+
+      .breadcrumbText {
+        flex: 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+  }
+
+  .content {
+    display: flex;
+    gap: 15px;
+    min-height: 600px;
+
+    &.rowLayout {
+      flex-direction: row;
+    }
+
+    &.stackedLayout {
+      flex-direction: column;
+
+      .column {
+        width: 100% !important;
+        min-height: 300px;
+      }
+    }
+  }
+
+  .column {
+    background-color: $ms-color-white;
+    border: 1px solid $ms-color-neutralLight;
+    border-radius: 4px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .panelHeader {
+    padding: 12px 16px;
+    background-color: $ms-color-neutralLighter;
+    border-bottom: 1px solid $ms-color-neutralLight;
+    font-weight: 600;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: $ms-color-themePrimary;
+
+    i {
+      font-size: 16px;
+    }
+  }
+
+  // Folder Tree Styles
+  .folderTree {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .treeContent {
+      overflow-y: auto;
+      flex: 1;
+      padding: 8px;
+    }
+
+    .treeNode {
+      margin-bottom: 2px;
+
+      .treeNodeContent {
+        display: flex;
+        align-items: center;
+        padding: 6px 8px;
+        cursor: pointer;
+        border-radius: 3px;
+        transition: background-color 0.15s ease;
+
+        &:hover {
+          background-color: $ms-color-neutralLighter;
+        }
+
+        &:active {
+          background-color: $ms-color-neutralLight;
+        }
+
+        &.selectedNode {
+          background-color: $ms-color-themeLighter;
+          border-left: 3px solid $ms-color-themePrimary;
+          padding-left: 5px;
+          
+          .treeNodeLabel {
+            font-weight: 600;
+            color: $ms-color-themePrimary;
+          }
+        }
+
+        .treeNodeToggle {
+          width: 20px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+          
+          i {
+            font-size: 12px;
+            color: $ms-color-neutralSecondary;
+          }
+
+          &:hover i {
+            color: $ms-color-themePrimary;
+          }
+        }
+
+        .treeNodeSpacer {
+          width: 20px;
+          display: inline-block;
+        }
+
+        .treeNodeIcon {
+          margin-right: 8px;
+          font-size: 16px;
+          color: $ms-color-themePrimary;
+        }
+
+        .treeNodeLabel {
+          font-size: 14px;
+          color: $ms-color-neutralPrimary;
+          flex: 1;
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+      }
+
+      .treeNodeChildren {
+        margin-left: 0;
+      }
+    }
+  }
+
+  // File List Styles
+  .fileList {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .listContent {
+      overflow-y: auto;
+      flex: 1;
+      padding: 8px;
+
+      // Override DetailsList styles
+      :global {
+        .ms-DetailsList {
+          .ms-DetailsRow {
+            &:hover {
+              background-color: $ms-color-neutralLighter;
+            }
+          }
+
+          .ms-DetailsHeader {
+            padding-top: 0;
+          }
+        }
+      }
+    }
+
+    .fileLink {
+      color: $ms-color-themePrimary;
+      text-decoration: none;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  // Filter Panel Styles
+  .filterPanel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+
+    .filterContent {
+      padding: 16px;
+      overflow-y: auto;
+      flex: 1;
+    }
+
+    .filterGroup {
+      margin-bottom: 20px;
+
+      .filterLabel {
+        display: block;
+        margin-bottom: 8px;
+        font-weight: 600;
+        font-size: 13px;
+        color: $ms-color-neutralPrimary;
+      }
+    }
+  }
+
+  // Empty State
+  .emptyState {
+    padding: 40px 20px;
+    text-align: center;
+    color: $ms-color-neutralSecondary;
+    font-size: 14px;
+  }
+
+  // Loading Container
+  .loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    min-height: 200px;
+  }
+
+  // Responsive Design
+  @media (max-width: 1024px) {
+    .content.rowLayout {
+      flex-direction: column;
+
+      .column {
+        width: 100% !important;
+        min-height: 300px;
+      }
+    }
+
+    .header {
+      .headerTop {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+      }
+
+      .searchBox {
+        width: 100%;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 10px;
+
+    .header {
+      h2 {
+        font-size: 20px;
+      }
+      
+      .breadcrumb {
+        font-size: 12px;
+      }
+    }
+
+    .content {
+      gap: 10px;
+    }
+  }
+}

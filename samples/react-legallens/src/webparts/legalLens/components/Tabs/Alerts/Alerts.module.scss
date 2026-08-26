@@ -1,0 +1,152 @@
+@use '../../mixins' as *;
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.alertsContainer {
+  animation: fadeIn 0.35s ease;
+}
+
+.header {
+  margin-bottom: 20px;
+}
+
+.title {
+  @include tabTitle;
+  width: 250px;
+  margin: 0 0 3px;
+}
+
+.subtitle {
+  margin: 0;
+  font-size: 11px;
+  color: var(--ll-cl-text-faint);
+}
+
+// Empty state
+.emptyState {
+  background: rgba(16, 185, 129, 0.05);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 12px;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.emptyIcon {
+  font-size: 32px;
+  margin-bottom: 10px;
+  color: #10b981;
+}
+
+.emptyTitle {
+  font-size: 13px;
+  color: #10b981;
+  font-weight: 600;
+}
+
+.emptySubtitle {
+  font-size: 10px;
+  color: var(--ll-cl-text-faint);
+  margin-top: 5px;
+}
+
+// Alert tile
+.alertTile {
+  border-radius: 12px;
+  padding: 20px;
+
+  &.critical {
+    background: rgba(239, 68, 68, 0.05);
+    border: 1px solid rgba(239, 68, 68, 0.2);
+  }
+
+  &.warning {
+    background: rgba(245, 158, 11, 0.04);
+    border: 1px solid rgba(245, 158, 11, 0.2);
+  }
+}
+
+.alertHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.alertInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.alertIcon {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+
+  &.critical {
+    background: rgba(239, 68, 68, 0.15);
+  }
+
+  &.warning {
+    background: rgba(245, 158, 11, 0.12);
+  }
+}
+
+.alertTitle {
+  font-size: 12.5px;
+  color: var(--ll-cl-text);
+  font-weight: 600;
+}
+
+.alertSeverity {
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  border-radius: 3px;
+  padding: 1px 5px;
+  width: fit-content;
+
+  &.critical {
+    color: #ef4444;
+    background: rgba(239, 68, 68, 0.12);
+  }
+
+  &.warning {
+    color: #f59e0b;
+    background: rgba(245, 158, 11, 0.1);
+  }
+}
+
+.alertTime {
+  font-size: 8.5px;
+  color: var(--ll-cl-text-faint);
+}
+
+.alertDesc {
+  font-size: 11px;
+  color: var(--ll-cl-text-muted);
+  line-height: 1.7;
+}
+
+.iconDuplicate {
+  font-size: 16px;
+  color: var(--ll-cl-accent);
+}
+
+.iconConflict {
+  font-size: 16px;
+  color: #f59e0b;
+}
+
+.iconExpiry {
+  font-size: 16px;
+  color: #ef4444;
+}

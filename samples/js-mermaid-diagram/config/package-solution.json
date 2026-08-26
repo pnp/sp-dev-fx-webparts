@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-mermaid-diagram-client-side-solution",
+    "id": "c8a586df-9193-4d14-8156-0c2d46493604",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "spfx-mermaid-diagram description"
+      },
+      "longDescription": {
+        "default": "spfx-mermaid-diagram description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "spfx-mermaid-diagram Feature",
+        "description": "The feature that activates elements of the spfx-mermaid-diagram solution.",
+        "id": "27029121-b93a-4632-9b0a-23f7b49f350a",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/spfx-mermaid-diagram.sppkg"
+  }
+}

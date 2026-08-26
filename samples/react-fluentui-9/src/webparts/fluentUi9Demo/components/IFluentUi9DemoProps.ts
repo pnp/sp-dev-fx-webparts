@@ -6,5 +6,5 @@ export interface IFluentUi9DemoProps {
   hasTeamsContext: boolean;
   userDisplayName: string;
   context: WebPartContext;
-  appMode: AppMode
-}
+  appMode: AppMode;
+};

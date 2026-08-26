@@ -1,0 +1,36 @@
+.commandBar {
+  margin-bottom: 8px;
+}
+
+.emptyMessage {
+  padding: 16px 0;
+}
+
+.formField {
+  padding-bottom: 4px;
+}
+
+.colorSwatch {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  vertical-align: middle;
+  margin-right: 8px;
+}
+
+.colorCell {
+  display: flex;
+  align-items: center;
+}
+
+.colorPickerSection {
+  padding-top: 4px;
+}
+
+.colorPickerLabel {
+  font-size: 14px;
+  font-weight: 600;
+  padding-bottom: 6px;
+}

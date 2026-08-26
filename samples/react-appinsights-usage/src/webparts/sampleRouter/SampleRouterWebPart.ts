@@ -20,15 +20,21 @@ import { AIConnectionString } from '../../EnvProps';
 
 export interface ISampleRouterWebPartProps {
   description: string;
+  applicationInsightsConnectionString: string;
 }
 
 export default class SampleRouterWebPart extends BaseClientSideWebPart<ISampleRouterWebPartProps> {
 
   private _isDarkTheme: boolean = false;
   private _environmentMessage: string = '';
-  
 
   public render(): void {
+    const userId: string = this.context.pageContext.user.loginName.replace(/([\\|:;=])/g, '');
+
+    // Get connection string from web part property or fallback to EnvProps
+    const connectionString = this.properties.applicationInsightsConnectionString || AIConnectionString;
+    const isConfigured = !!(connectionString && connectionString !== 'set-your-connection-string-here');
+
     const element: React.ReactElement<ISampleRouterProps> = React.createElement(
       SampleRouter,
       {
@@ -36,33 +42,37 @@ export default class SampleRouterWebPart extends BaseClientSideWebPart<ISampleRo
         isDarkTheme: this._isDarkTheme,
         environmentMessage: this._environmentMessage,
         hasTeamsContext: !!this.context.sdks.microsoftTeams,
-        userDisplayName:this.context.pageContext.user.displayName
-        
+        userDisplayName:this.context.pageContext.user.displayName,
+        isAppInsightsConfigured: isConfigured
       }
     );
-    const userId: string = this.context.pageContext.user.loginName.replace(/([\\|:;=])/g, '');
 
-    const reactPlugin = new ReactPlugin();
-    const appInsights = new ApplicationInsights({
-        config: {
-            connectionString: AIConnectionString,
-            accountId: userId,
-            extensions: [reactPlugin],
-            enableAutoRouteTracking: true,
-            autoTrackPageVisitTime: true,
+    // Only initialize Application Insights if a valid connection string is provided
+    if (connectionString && connectionString !== 'set-your-connection-string-here') {
+      const reactPlugin = new ReactPlugin();
+      const appInsights = new ApplicationInsights({
+          config: {
+              connectionString: connectionString,
+              accountId: userId,
+              extensions: [reactPlugin],
+              enableAutoRouteTracking: true,
+              autoTrackPageVisitTime: true,
+          }
+      });
+      appInsights.loadAppInsights();
+      appInsights.addTelemetryInitializer((telemetryItem: ITelemetryItem) => {
+        if (telemetryItem) {
+          if (!telemetryItem.tags) telemetryItem.tags = {};
+          telemetryItem.tags['ai.cloud.role'] = "app-insights-spfx-webparts";
+          telemetryItem.tags['ai.cloud.roleInstance'] = "SampleRouterWebPart";
         }
-    });
-    appInsights.loadAppInsights();
-    appInsights.addTelemetryInitializer((telemetryItem: ITelemetryItem) => {
-      if (telemetryItem) {
-        if (!telemetryItem.tags) telemetryItem.tags = {};
-        telemetryItem.tags['ai.cloud.role'] = "app-insights-spfx-webparts";
-        telemetryItem.tags['ai.cloud.roleInstance'] = "SampleRouterWebPart";
-      }
-    });
-    appInsights.setAuthenticatedUserContext(userId, userId, true);
-    appInsights.trackPageView();
-    
+      });
+      appInsights.setAuthenticatedUserContext(userId, userId, true);
+      appInsights.trackPageView();
+    } else {
+      console.warn('Application Insights connection string not configured. Please set it in the web part properties or in src/EnvProps.ts');
+    }
+
     ReactDom.render(element, this.domElement);
   
 
@@ -129,6 +139,42 @@ export default class SampleRouterWebPart extends BaseClientSideWebPart<ISampleRo
     return Version.parse('1.0');
   }
 
+  protected onPropertyPaneFieldChanged(propertyPath: string, oldValue: string, newValue: string): void {
+    // Re-initialize Application Insights if the connection string changes
+    if (propertyPath === 'applicationInsightsConnectionString' && newValue && newValue !== oldValue) {
+      const userId: string = this.context.pageContext.user.loginName.replace(/([\\|:;=])/g, '');
+      const connectionString = newValue;
+
+      if (connectionString && connectionString !== 'set-your-connection-string-here') {
+        const reactPlugin = new ReactPlugin();
+        const appInsights = new ApplicationInsights({
+            config: {
+                connectionString: connectionString,
+                accountId: userId,
+                extensions: [reactPlugin],
+                enableAutoRouteTracking: true,
+                autoTrackPageVisitTime: true,
+            }
+        });
+        appInsights.loadAppInsights();
+        appInsights.addTelemetryInitializer((telemetryItem: ITelemetryItem) => {
+          if (telemetryItem) {
+            if (!telemetryItem.tags) telemetryItem.tags = {};
+            telemetryItem.tags['ai.cloud.role'] = "app-insights-spfx-webparts";
+            telemetryItem.tags['ai.cloud.roleInstance'] = "SampleRouterWebPart";
+          }
+        });
+        appInsights.setAuthenticatedUserContext(userId, userId, true);
+        appInsights.trackPageView();
+      }
+
+      // Re-render to update the UI
+      this.render();
+    }
+
+    super.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue);
+  }
+
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
     return {
       pages: [
@@ -142,6 +188,18 @@ export default class SampleRouterWebPart extends BaseClientSideWebPart<ISampleRo
               groupFields: [
                 PropertyPaneTextField('description', {
                   label: strings.DescriptionFieldLabel
+                })
+              ]
+            },
+            {
+              groupName: 'Application Insights Configuration',
+              groupFields: [
+                PropertyPaneTextField('applicationInsightsConnectionString', {
+                  label: 'Application Insights Connection String',
+                  description: 'Enter your Azure Application Insights connection string. You can find this in the Azure Portal under your Application Insights resource.',
+                  placeholder: 'InstrumentationKey=...',
+                  multiline: true,
+                  rows: 3
                 })
               ]
             }

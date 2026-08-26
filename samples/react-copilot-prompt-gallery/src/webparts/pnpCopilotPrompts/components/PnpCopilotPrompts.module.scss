@@ -1,0 +1,215 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+$bodyText: #323130;
+$primaryGradient: linear-gradient(45deg, #0078d4, #764ba2);
+
+.pnpCopilotPrompts {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+
+  .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .header {
+    text-align: center;
+    margin-bottom: 40px;
+
+    h1 {
+      color: #2c3e50;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+      background: $primaryGradient;
+      background-clip: text;
+    }
+
+    p {
+      color: #666;
+      font-size: 1.1rem;
+    }
+  }
+
+  .stats {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+
+    .statItem {
+      background: $primaryGradient;
+      color: white;
+      padding: 15px 25px;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+
+      .statNumber {
+        font-size: 2rem;
+        font-weight: bold;
+        display: block;
+      }
+
+      .statLabel {
+        font-size: 0.9rem;
+        opacity: 0.9;
+      }
+    }
+  }
+
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+
+    .sampleCard {
+      background: white;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 1px solid #e1e8ed;
+      position: relative;
+      overflow: hidden;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 4px;
+        background: $primaryGradient;
+      }
+
+      .sampleTitle {
+        color: darkblue;
+        font-size: 1.2rem;
+        font-weight: 600;
+        margin-bottom: 15px;
+        line-height: 1.4;
+      }
+
+      .sampleDescription {
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 15px;
+      }
+
+      .samplePrompt {
+        background: #f8f9fa;
+        border-left: 4px solid #0078d4;
+        padding: 12px;
+        margin: 15px 0;
+        font-size: 0.9rem;
+        border-radius: 0 8px 8px 0;
+        font-family: 'Courier New', monospace;
+        position: relative;
+      }
+
+      .sampleMeta {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 20px;
+        flex-wrap: wrap;
+        gap: 10px;
+
+        .prerequisiteTag {
+          display: inline-block;
+          background: $primaryGradient;
+          color: white;
+          padding: 4px 12px;
+          border-radius: 15px;
+          font-size: 0.8rem;
+          font-weight: 500;
+          margin-right: 5px;
+        }
+
+        .sampleActions {
+          display: flex;
+          gap: 10px;
+
+          .btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            background: #f8f9fa;
+            color: #666;
+            border: 1px solid #e1e8ed;
+
+            &:hover {
+              transform: translateY(-2px);
+              box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            }
+          }
+        }
+      }
+
+      .contributorInfo {
+        color: #666;
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+
+        a {
+          color: #0078d4;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 20px;
+      margin: 10px;
+    }
+
+    .header h1 {
+      font-size: 2rem;
+    }
+
+    .stats {
+      gap: 15px;
+    }
+
+    .gallery {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+
+    .sampleMeta {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+}

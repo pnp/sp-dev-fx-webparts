@@ -27,6 +27,7 @@ export class GraphService implements IGraphService {
       const retrievedWebParts: GraphWebPartCollection = await client.api("sites/" + siteId + "/pages/microsoft.graph.sitePage/" + pageId + "/webparts").version('beta').get();
       return retrievedWebParts;
     } catch (error) {
+      console.error('Error retrieving web parts:', error);
       return null;
     }
   }

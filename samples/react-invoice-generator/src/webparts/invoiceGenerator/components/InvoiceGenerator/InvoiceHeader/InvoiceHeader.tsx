@@ -43,7 +43,7 @@ export const InvoiceHeader: React.FC<IInvoiceHeaderProps> = (props) => {
               dateConvention={DateConvention.Date}
               showLabels={false}
               value={issueDate}
-              onChange={(date) => onIssueDateChange(date)}
+              onChange={(date) => date && onIssueDateChange(date)}
             />
           </div>
         </div>
@@ -61,7 +61,7 @@ export const InvoiceHeader: React.FC<IInvoiceHeaderProps> = (props) => {
               dateConvention={DateConvention.Date}
               showLabels={false}
               value={dueDate}
-              onChange={(date) => onDueDateChange(date)}
+              onChange={(date) => date && onDueDateChange(date)}
             />
           </div>
         </div>

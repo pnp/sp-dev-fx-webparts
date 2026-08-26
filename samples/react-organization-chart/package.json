@@ -1,54 +1,64 @@
 {
   "name": "react-organization-chart",
-  "version": "1.2.0.0",
+  "version": "1.4.0.0",
   "private": true,
   "engines": {
-    "node": ">=18.17.1 <19.0.0"
+    "node": ">=22.14.0 < 23.0.0"
   },
-  "main": "lib/index.js",
   "scripts": {
-    "build": "gulp bundle",
-    "clean": "gulp clean",
-    "test": "gulp test"
+    "build": "heft build --clean",
+    "test": "heft test",
+    "test-only": "heft run --only test --",
+    "clean": "heft clean",
+    "deploy": "heft dev-deploy",
+    "start": "heft start --clean",
+    "build-watch": "heft build --lite",
+    "package-solution": "heft package-solution",
+    "deploy-azure-storage": "heft deploy-azure-storage",
+    "eject-webpack": "heft eject-webpack",
+    "trust-dev-cert": "heft trust-dev-cert",
+    "untrust-dev-cert": "heft untrust-dev-cert"
   },
   "dependencies": {
-    "@fluentui/react": "^8.115.6",
-    "@microsoft/sp-component-base": "1.18.2",
-    "@microsoft/sp-core-library": "1.18.2",
-    "@microsoft/sp-lodash-subset": "1.18.2",
-    "@microsoft/sp-office-ui-fabric-core": "1.18.2",
-    "@microsoft/sp-property-pane": "1.18.2",
-    "@microsoft/sp-webpart-base": "1.18.2",
-    "@pnp/sp": "^1.3.11",
-    "@pnp/spfx-controls-react": "^3.17.0",
-    "@pnp/spfx-property-controls": "^3.16.0",
+    "@fluentui/react": "8.106.4",
+    "@microsoft/sp-adaptive-card-extension-base": "1.22.1",
+    "@microsoft/sp-component-base": "1.22.1",
+    "@microsoft/sp-core-library": "1.22.1",
+    "@microsoft/sp-lodash-subset": "1.22.1",
+    "@microsoft/sp-office-ui-fabric-core": "1.22.1",
+    "@microsoft/sp-property-pane": "1.22.1",
+    "@microsoft/sp-webpart-base": "1.22.1",
+    "@pnp/sp": "^4.17.0",
+    "@pnp/spfx-controls-react": "3.23.0",
+    "@pnp/spfx-property-controls": "3.22.0",
     "idb-keyval": "^6.2.1",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "spfx-uifabric-themes": "^0.9.0",
     "tslib": "2.3.1"
   },
+  "resolutions": {
+    "@types/react": "17.0.45"
+  },
+  "overrides": {
+    "@rushstack/heft": "1.1.2"
+  },
   "devDependencies": {
-    "@microsoft/eslint-config-spfx": "1.20.2",
-    "@microsoft/eslint-plugin-spfx": "1.20.2",
-    "@microsoft/rush-stack-compiler-4.5": "0.5.0",
-    "@microsoft/rush-stack-compiler-4.7": "0.1.0",
-    "@microsoft/sp-build-web": "1.20.2",
-    "@microsoft/sp-module-interfaces": "1.20.2",
-    "@microsoft/sp-tslint-rules": "1.14.0",
-    "@microsoft/sp-webpart-workbench": "1.12.1",
-    "@rushstack/eslint-config": "4.0.1",
-    "@types/chai": "3.4.34",
-    "@types/es6-promise": "0.0.33",
-    "@types/mocha": "2.2.38",
+    "@microsoft/eslint-config-spfx": "1.22.1",
+    "@microsoft/eslint-plugin-spfx": "1.22.1",
+    "@microsoft/sp-module-interfaces": "1.22.1",
+    "@microsoft/spfx-heft-plugins": "1.22.1",
+    "@microsoft/spfx-web-build-rig": "1.22.1",
+    "@rushstack/eslint-config": "4.5.2",
+    "@rushstack/heft": "1.1.2",
+    "@types/heft-jest": "1.0.2",
     "@types/react": "17.0.45",
     "@types/react-dom": "17.0.17",
     "@types/webpack-env": "1.15.2",
-    "ajv": "6.12.5",
-    "eslint": "8.57.0",
+    "@typescript-eslint/parser": "8.46.2",
+    "css-loader": "7.1.2",
+    "eslint": "8.57.1",
     "eslint-plugin-react-hooks": "4.3.0",
-    "gulp": "4.0.2",
-    "tslint-microsoft-contrib": "5.0.0",
-    "typescript": "4.7.4"
+    "typescript": "5.8.3"
   }
 }
