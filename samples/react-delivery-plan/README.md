@@ -76,7 +76,7 @@ Use the included PowerShell script to create the list and columns automatically 
 
 | Version | Date | Comments |
 |---|---|---|
-| 1.0 | August 2026 | Initial release |
+| 1.0 | 26 August 2026 | Initial release |
 
 ## Minimal Path to Awesome
 
