@@ -32,6 +32,8 @@
 .deliveryPlan {
   font-family: inherit;
   padding: 20px;
+  background: var(--dp-bg-page);
+  border-radius: 4px;
 
   .header {
     display: flex;
