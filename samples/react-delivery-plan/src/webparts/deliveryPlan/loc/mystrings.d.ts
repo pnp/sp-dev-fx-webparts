@@ -4,6 +4,11 @@ declare interface IDeliveryPlanWebPartStrings {
   ListNameFieldLabel: string;
   TitleFieldLabel: string;
   SubtitleFieldLabel: string;
+  ThemeModeGroupName: string;
+  ThemeModeFieldLabel: string;
+  ThemeModeAuto: string;
+  ThemeModeLight: string;
+  ThemeModeDark: string;
 }
 
 declare module 'DeliveryPlanWebPartStrings' {

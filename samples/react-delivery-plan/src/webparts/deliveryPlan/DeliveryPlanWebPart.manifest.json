@@ -18,7 +18,8 @@
       "properties": {
         "listName": "DeliveryPlan",
         "title": "Delivery Plan",
-        "subtitle": ""
+        "subtitle": "",
+        "themeMode": "auto"
       }
     }
   ]

@@ -3,7 +3,8 @@ import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import {
   IPropertyPaneConfiguration,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneChoiceGroup
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
@@ -12,10 +13,13 @@ import { DeliveryPlan } from './components/DeliveryPlan';
 import { IDeliveryPlanProps, IDeliveryPlanTask } from './components/IDeliveryPlanProps';
 import { getSP } from './pnpjsConfig';
 
+export type ThemeMode = 'auto' | 'light' | 'dark';
+
 export interface IDeliveryPlanWebPartProps {
   listName: string;
   title: string;
   subtitle: string;
+  themeMode: ThemeMode;
 }
 
 export default class DeliveryPlanWebPart extends BaseClientSideWebPart<IDeliveryPlanWebPartProps> {
@@ -62,6 +66,13 @@ export default class DeliveryPlanWebPart extends BaseClientSideWebPart<IDelivery
     }
   }
 
+  private _resolvedDarkTheme(): boolean {
+    const mode = this.properties.themeMode || 'auto';
+    if (mode === 'dark') return true;
+    if (mode === 'light') return false;
+    return this._isDarkTheme;
+  }
+
   public render(): void {
     const element: React.ReactElement<IDeliveryPlanProps> = React.createElement(DeliveryPlan, {
       tasks: this._tasks,
@@ -69,7 +80,7 @@ export default class DeliveryPlanWebPart extends BaseClientSideWebPart<IDelivery
       subtitle: this.properties.subtitle || '',
       listName: this.properties.listName || 'DeliveryPlan',
       errorMessage: this._errorMessage || undefined,
-      isDarkTheme: this._isDarkTheme,
+      isDarkTheme: this._resolvedDarkTheme(),
       hasTeamsContext: !!this.context.sdks.microsoftTeams,
       userDisplayName: this.context.pageContext.user.displayName
     });
@@ -105,6 +116,31 @@ export default class DeliveryPlanWebPart extends BaseClientSideWebPart<IDelivery
                 PropertyPaneTextField('listName', { label: strings.ListNameFieldLabel }),
                 PropertyPaneTextField('title', { label: strings.TitleFieldLabel }),
                 PropertyPaneTextField('subtitle', { label: strings.SubtitleFieldLabel })
+              ]
+            },
+            {
+              groupName: strings.ThemeModeGroupName,
+              groupFields: [
+                PropertyPaneChoiceGroup('themeMode', {
+                  label: strings.ThemeModeFieldLabel,
+                  options: [
+                    {
+                      key: 'auto',
+                      text: strings.ThemeModeAuto,
+                      iconProps: { officeFabricIconFontName: 'Contrast' }
+                    },
+                    {
+                      key: 'light',
+                      text: strings.ThemeModeLight,
+                      iconProps: { officeFabricIconFontName: 'Sunny' }
+                    },
+                    {
+                      key: 'dark',
+                      text: strings.ThemeModeDark,
+                      iconProps: { officeFabricIconFontName: 'ClearNight' }
+                    }
+                  ]
+                })
               ]
             }
           ]

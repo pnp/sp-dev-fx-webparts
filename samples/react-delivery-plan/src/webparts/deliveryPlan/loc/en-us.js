@@ -4,6 +4,11 @@ define([], function() {
     BasicGroupName: 'Settings',
     ListNameFieldLabel: 'List name',
     TitleFieldLabel: 'Title',
-    SubtitleFieldLabel: 'Subtitle'
+    SubtitleFieldLabel: 'Subtitle',
+    ThemeModeGroupName: 'Appearance',
+    ThemeModeFieldLabel: 'Theme',
+    ThemeModeAuto: 'Auto (follow site theme)',
+    ThemeModeLight: 'Light',
+    ThemeModeDark: 'Dark'
   };
 });
