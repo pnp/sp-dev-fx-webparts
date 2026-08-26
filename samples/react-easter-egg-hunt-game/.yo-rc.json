@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "20.16.0",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "version": "1.20.0",
+    "libraryName": "easter-egg-hunt-game-spf-xwebpart",
+    "libraryId": "a4367735-eff8-423c-80d8-b86857d53400",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "easter-egg-hunt-game-spf-xwebpart",
+    "solutionShortDescription": "easter-egg-hunt-game-spf-xwebpart description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

@@ -1,4 +1,4 @@
-
+@import '~@fluentui/react/dist/sass/References.scss';
 
 .historyItem {
   .historyItemText,
@@ -15,6 +15,7 @@ display: inline;
 }
 .svgbuttonPanel {
   height: 40px;
+
 }
 .buttonHolderPanel {
  &>button {
@@ -25,6 +26,7 @@ display: inline;
 
 
 .imageEditor{
+  
   width: 100%;
   position: relative;
   .commandBar{
@@ -35,6 +37,8 @@ display: inline;
     }
     .svgbutton {
       height: 20px;
+      width: 20px;
+      display: flex;
     }
   }
   .imageplaceholder{
@@ -51,13 +55,13 @@ display: inline;
   margin-right: 3px;
   height: 50px;
   &>div{
-    display: inline-block;
+    display: flex;
   }
   .imgtext{
-    display: block;
+    display: flex;
   }
   .imgicon{
-    display: block;
+    display: flex;
   }
 
 }

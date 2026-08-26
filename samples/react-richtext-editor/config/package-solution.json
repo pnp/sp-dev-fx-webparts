@@ -1,0 +1,38 @@
+{
+    "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+    "solution": {
+        "name": "O365C - RichText Editor",
+        "id": "a480a902-33d3-4bb2-b121-fa8f652b3df3",
+        "version": "1.0.0.0",
+        "includeClientSideAssets": true,
+        "skipFeatureDeployment": true,
+        "isDomainIsolated": false,
+        "developer": {
+            "name": "",
+            "websiteUrl": "",
+            "privacyUrl": "",
+            "termsOfUseUrl": "",
+            "mpnId": "Undefined-1.20.0"
+        },
+        "metadata": {
+            "shortDescription": {
+                "default": "O365C - RichText Editor description"
+            },
+            "longDescription": {
+                "default": "O365C - RichText Editor description"
+            },
+            "screenshotPaths": [],
+            "videoUrl": "",
+            "categories": []
+        },
+        "features": [{
+            "title": "O365C - RichText Editor Feature",
+            "description": "The feature that activates elements of the O365C - RichText Editor solution.",
+            "id": "489f5600-b0bc-49ec-986d-d2feacb86151",
+            "version": "1.0.0.0"
+        }]
+    },
+    "paths": {
+        "zippedPackage": "solution/o365c-richtext-editor.sppkg"
+    }
+}

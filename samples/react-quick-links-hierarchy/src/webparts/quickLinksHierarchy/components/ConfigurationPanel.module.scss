@@ -1,0 +1,201 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.configWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background-color: $ms-color-neutralLighter;
+}
+
+.panel {
+  :global(.ms-Panel-main) {
+    background-color: $ms-color-white;
+  }
+}
+
+.messageBar {
+  margin-bottom: 16px;
+  border-radius: 4px;
+  box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+}
+
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: $ms-color-white;
+  border-bottom: 1px solid $ms-color-neutralLight;
+  gap: 12px;
+  flex-wrap: wrap;
+
+  button {
+    box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+  }
+}
+
+.mainContainer {
+  display: flex;
+  flex: 1;
+  gap: 16px;
+  padding: 16px;
+  overflow: hidden;
+  background-color: $ms-color-neutralLighter;
+}
+
+.leftPane {
+  width: 20%;
+  min-width: 250px;
+  display: flex;
+  flex-direction: column;
+  background-color: $ms-color-white;
+  border-radius: 4px;
+  padding: 16px;
+  box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+  overflow: hidden;
+}
+
+.actionButtons {
+  margin-bottom: 12px;
+  
+  button {
+    flex: 1;
+    min-width: 0;
+  }
+}
+
+.treeContainer {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 8px 4px;
+  border: 1px solid $ms-color-neutralLight;
+  border-radius: 4px;
+  background-color: $ms-color-neutralLighterAlt;
+}
+
+.rightPane {
+  flex: 1;
+  background-color: $ms-color-white;
+  border-radius: 4px;
+  padding: 20px;
+  overflow-y: auto;
+  box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+}
+
+.treeLevel {
+  display: flex;
+  flex-direction: column;
+}
+
+.treeNode {
+  margin-bottom: 2px;
+}
+
+.treeItem {
+  display: flex;
+  align-items: center;
+  padding: 6px 8px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+  background-color: transparent;
+
+  &:hover {
+    background-color: $ms-color-themeLighter;
+    box-shadow: 0 0.3px 0.9px rgba(0, 0, 0, 0.1);
+  }
+
+  &:active {
+    background-color: $ms-color-themeLight;
+  }
+}
+
+.treeSelected {
+  background-color: $ms-color-themePrimary !important;
+  color: $ms-color-white !important;
+  font-weight: 600;
+
+  .iconFolder,
+  .iconLink {
+    color: $ms-color-white !important;
+  }
+
+  &:hover {
+    background-color: $ms-color-themeDark !important;
+  }
+}
+
+.treeSpacer {
+  display: inline-block;
+  width: 28px;
+  flex-shrink: 0;
+}
+
+.treeChildren {
+  margin-left: 8px;
+  border-left: 2px solid $ms-color-neutralLight;
+  padding-left: 8px;
+}
+
+.iconFolder {
+  margin-right: 8px;
+  font-size: 16px;
+  color: $ms-color-themePrimary;
+  flex-shrink: 0;
+}
+
+.iconLink {
+  margin-right: 8px;
+  font-size: 14px;
+  color: $ms-color-themeSecondary;
+  flex-shrink: 0;
+}
+
+.treeTitle {
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.formLabel {
+  font-size: 18px;
+  font-weight: 600;
+  color: $ms-color-themePrimary;
+  margin-bottom: 16px;
+  padding-bottom: 8px;
+  border-bottom: 2px solid $ms-color-themeLighter;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  > * {
+    margin-bottom: 0 !important;
+  }
+
+  :global(.ms-TextField-wrapper),
+  :global(.ms-Dropdown-container),
+  :global(.ms-Checkbox) {
+    background-color: $ms-color-neutralLighterAlt;
+    padding: 4px;
+    border-radius: 4px;
+  }
+
+  :global(.ms-TextField-fieldGroup) {
+    border-color: $ms-color-neutralTertiary;
+    
+    &:hover {
+      border-color: $ms-color-themePrimary;
+    }
+
+    &:focus-within {
+      border-color: $ms-color-themePrimary;
+      border-width: 2px;
+    }
+  }
+}

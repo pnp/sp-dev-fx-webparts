@@ -1,0 +1,73 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.siteSelector {
+  .searchBox {
+    margin-bottom: 16px;
+  }
+
+  .contentContainer {
+    min-height: 400px;
+    max-height: 600px;
+    overflow-y: auto;
+    border: 1px solid $ms-color-neutralLight;
+    border-radius: 2px;
+  }
+
+  .sitesList {
+    .currentSite {
+      font-weight: 600;
+      color: $ms-color-themePrimary;
+    }
+  }
+
+  .loadingContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    flex-direction: column;
+  }
+
+  .emptyState {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 200px;
+    text-align: center;
+    padding: 32px;
+
+    .emptyIcon {
+      font-size: 48px;
+      color: $ms-color-neutralSecondary;
+      margin-bottom: 16px;
+    }
+
+    .emptyTitle {
+      color: $ms-color-neutralPrimary;
+      margin-bottom: 8px;
+    }
+
+    .emptyText {
+      color: $ms-color-neutralSecondary;
+      max-width: 300px;
+    }
+  }
+
+  .resultsSummary {
+    color: $ms-color-neutralSecondary;
+    text-align: center;
+    padding: 8px;
+    background-color: $ms-color-neutralLighterAlt;
+    border-radius: 2px;
+  }
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .siteSelector {
+    .contentContainer {
+      max-height: 400px;
+    }
+  }
+}

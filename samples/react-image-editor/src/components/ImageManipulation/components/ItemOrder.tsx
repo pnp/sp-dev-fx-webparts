@@ -1,13 +1,14 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { isEqual } from '@microsoft/sp-lodash-subset';
-import { EventGroup, IButtonStyles, IconButton, ISelection, Label } from 'office-ui-fabric-react';
-import { DragDropHelper, IDragDropContext } from 'office-ui-fabric-react/lib-es2015/utilities/dragdrop';
+import { EventGroup, IButtonStyles, IconButton, ISelection, Label,DragDropHelper, IDragDropContext } from '@fluentui/react';
+
 import * as React from 'react';
 import styles from './ItemOrder.module.scss';
 
 export interface IItemOrderProps {
   label: string;
   disabled: boolean;
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line: no-any
   items: Array<any>;
   textProperty?: string;
   moveUpIconName: string;
@@ -15,25 +16,25 @@ export interface IItemOrderProps {
   disableDragAndDrop: boolean;
   removeArrows: boolean;
   maxHeight?: number;
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line: no-any
   valueChanged: (newValue: Array<any>) => void;
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line: no-any
   onRenderItem?: (item: any, index: number) => JSX.Element;
 }
 
 export interface IItemOrderState {
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line: no-any
   items: Array<any>;
 }
 
 export default class ItemOrder extends React.Component<IItemOrderProps, IItemOrderState> {
 
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line: no-any
   private _draggedItem: any;
-  private _selection: ISelection;
+  private _selection: ISelection|undefined;
   private _ddHelper: DragDropHelper;
   private _refs: Array<HTMLElement>;
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line: no-any
   private _ddSubs: Array<any>;
   private _lastBox: HTMLElement;
 
@@ -42,11 +43,11 @@ export default class ItemOrder extends React.Component<IItemOrderProps, IItemOrd
 
     this._selection = undefined;
     this._ddHelper = new DragDropHelper({
-      selection: this._selection
+      selection: this._selection!
     });
 
     this._refs = new Array<HTMLElement>();
-    // tslint:disable-next-line: no-any
+    // eslint-disable-next-line: no-any
     this._ddSubs = new Array<any>();
 
     this._draggedItem = undefined;
@@ -65,10 +66,10 @@ export default class ItemOrder extends React.Component<IItemOrderProps, IItemOrd
         {this.props.label && <Label>{this.props.label}</Label>}
         <ul
         style={{ maxHeight: this.props.maxHeight ? this.props.maxHeight + 'px' : '100%' }}
-        className={!this.props.disabled ? styles.enabled : styles.disabled}>
+        className={!this.props.disabled ? styles.enabled : styles.disabled} >
           {
             (items && items.length > 0) && (
-              // tslint:disable-next-line: no-any
+              // eslint-disable-next-line: no-any
               items.map((value: any, index: number) => {
                 return (
                   <li
@@ -84,14 +85,14 @@ export default class ItemOrder extends React.Component<IItemOrderProps, IItemOrd
           {
             (items && items.length > 0) && <div
             className={styles.lastBox}
-            ref={(ref: HTMLElement) => { this._lastBox = ref; }} />
+            ref={(ref: HTMLDivElement | null) => { if (ref) this._lastBox = ref; }} />
           }
         </ul>
       </div>
     );
   }
 
-  public componentWillMount(): void {
+  public UNSAFE_componentWillMount(): void {
     this.setState({
       items: this.props.items || []
     });
@@ -101,7 +102,7 @@ export default class ItemOrder extends React.Component<IItemOrderProps, IItemOrd
     this.setupSubscriptions();
   }
 
-  public componentWillUpdate(nextProps: IItemOrderProps): void {
+  public UNSAFE_componentWillUpdate(nextProps: IItemOrderProps): void {
     // Check if the provided items are still the same
     if (!isEqual(nextProps.items, this.state.items)) {
       this.setState({
@@ -119,7 +120,7 @@ export default class ItemOrder extends React.Component<IItemOrderProps, IItemOrd
     this.cleanupSubscriptions();
   }
 
-  // tslint:disable-next-line: no-any
+  // eslint-disable-next-line: no-any
   private renderItem(item: any, index: number): JSX.Element {
     return (
       <div>
@@ -133,7 +134,7 @@ export default class ItemOrder extends React.Component<IItemOrderProps, IItemOrd
     );
   }
 
-  // tslint:disable-next-line: no-any
+   // eslint-disable-next-line: no-any
   private renderDisplayValue(item: any, index: number): JSX.Element {
     if (typeof this.props.onRenderItem === 'function') {
       return this.props.onRenderItem(item, index);
@@ -177,8 +178,10 @@ export default class ItemOrder extends React.Component<IItemOrderProps, IItemOrd
     );
   }
 
-  private registerRef = (ref: HTMLElement): void => {
-    this._refs.push(ref);
+  private registerRef = (ref: HTMLElement | null): void => {
+    if (ref) {
+      this._refs.push(ref);
+    }
   }
 
   private setupSubscriptions = (): void => {
@@ -187,7 +190,7 @@ export default class ItemOrder extends React.Component<IItemOrderProps, IItemOrd
         this._ddSubs.push(this._ddHelper.subscribe(value, new EventGroup(value), {
           eventMap: [
             {
-              // tslint:disable-next-line: no-any
+              // eslint-disable-next-line: no-any
               callback: (context: IDragDropContext, _event?: any) => {
                 this._draggedItem = context.data;
               },
@@ -206,11 +209,11 @@ export default class ItemOrder extends React.Component<IItemOrderProps, IItemOrd
           canDrop: (_dropContext?: IDragDropContext, _dragContext?: IDragDropContext) => {
             return true;
           },
-          // tslint:disable-next-line: no-any
+            // eslint-disable-next-line: no-any
           canDrag: (_item?: any) => {
             return true;
           },
-          // tslint:disable-next-line: no-any
+          // eslint-disable-next-line: no-any
           onDrop: (item?: any, _event?: DragEvent) => {
             if (this._draggedItem) {
               this.insertBeforeItem(item);
@@ -220,7 +223,7 @@ export default class ItemOrder extends React.Component<IItemOrderProps, IItemOrd
             //Never called for some reason, so using eventMap above
             this._draggedItem = item;
           },*/
-          // tslint:disable-next-line: no-any
+          // eslint-disable-next-line: no-any
           onDragEnd: (_item?: any, _event?: DragEvent) => {
             this._draggedItem = undefined;
           }
@@ -242,7 +245,7 @@ export default class ItemOrder extends React.Component<IItemOrderProps, IItemOrd
           canDrop: (_dropContext?: IDragDropContext, _dragContext?: IDragDropContext) => {
             return true;
           },
-          // tslint:disable-next-line: no-any
+          // eslint-disable-next-line: no-any
           onDrop: (_item?: any, _event?: DragEvent) => {
             if (this._draggedItem) {
               const itemIndex: number = this.state.items.indexOf(this._draggedItem);
@@ -256,14 +259,14 @@ export default class ItemOrder extends React.Component<IItemOrderProps, IItemOrd
 
   private cleanupSubscriptions = (): void => {
     while (this._ddSubs.length) {
-      // tslint:disable-next-line: no-any
+      // eslint-disable-next-line: no-any
       const sub: any = this._ddSubs.pop();
       sub.dispose();
     }
   }
 
-  // tslint:disable-next-line: no-any
-  private insertBeforeItem = (item: any) => {
+  // eslint-disable-next-line: no-any
+  private insertBeforeItem = (item: any):void => {
     const itemIndex: number = this.state.items.indexOf(this._draggedItem);
     let targetIndex: number = this.state.items.indexOf(item);
     if (itemIndex < targetIndex) {
@@ -289,7 +292,7 @@ export default class ItemOrder extends React.Component<IItemOrderProps, IItemOrd
       && itemIndex > -1 && targetIndex > -1
       && itemIndex < this.state.items.length
       && targetIndex < this.state.items.length) {
-      // tslint:disable-next-line: no-any
+      // eslint-disable-next-line: no-any
       const items: Array<any> = this.state.items;
       items.splice(targetIndex, 0, ...items.splice(itemIndex, 1)[0]);
 

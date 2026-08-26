@@ -1,0 +1,97 @@
+.panel {
+  :global(.fui-DrawerBody) {
+    padding: 16px;
+    overflow-y: auto;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.section {
+  margin-bottom: 20px;
+}
+
+.sectionTitle {
+  font-weight: 600;
+  color: var(--colorBrandForeground1);
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 2px solid var(--colorBrandBackground2);
+}
+
+.permissionRow {
+  display: flex;
+  flex-direction: column;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--colorNeutralStroke2);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.permDescription {
+  font-size: 11px;
+  color: var(--colorNeutralForeground3);
+  padding-left: 26px;
+  margin-top: 2px;
+}
+
+.actions {
+  display: flex;
+  gap: 8px;
+  padding: 16px 0;
+  border-top: 1px solid var(--colorNeutralStroke2);
+  margin-top: 8px;
+}
+
+.dangerPrimary {
+  background-color: #d13438;
+  border-color: #d13438;
+  color: #ffffff;
+
+  &:hover {
+    background-color: #a4262c;
+    border-color: #a4262c;
+  }
+
+  &:active {
+    background-color: #8a1c21;
+    border-color: #8a1c21;
+  }
+}
+
+.feedback {
+  margin-bottom: 12px;
+}
+
+.nameField {
+  margin-bottom: 12px;
+}
+
+.descriptionField {
+  margin-bottom: 16px;
+}
+
+.drawerBody {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+
+.scrollContent {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 16px;
+}

@@ -1,0 +1,163 @@
+// Custom Action Manager Styles
+
+.container {
+  background-color: #faf9f8;
+  border-radius: 6px;
+  padding: 24px;
+  min-height: 400px;
+  font-family: "Segoe UI", "Segoe UI Web (West European)", "Segoe UI", -apple-system, BlinkMacSystemFont, Roboto, "Helvetica Neue", sans-serif;
+}
+
+.header {
+  margin-bottom: 24px;
+  
+  .headerTitle {
+    display: block;
+    font-size: 28px;
+    font-weight: 600;
+    color: #0078d4;
+    margin-bottom: 8px;
+    line-height: 1.2;
+  }
+  
+  .headerDescription {
+    display: block;
+    font-size: 14px;
+    color: #605e5c;
+    margin-top: 4px;
+    line-height: 1.4;
+  }
+}
+
+.toolbar {
+  background-color: #ffffff;
+  border-radius: 2px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+}
+
+.listContainer {
+  background-color: #ffffff;
+  border-radius: 2px;
+  box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+  min-height: 300px;
+}
+
+.loadingContainer {
+  text-align: center;
+  padding: 48px;
+}
+
+.emptyState {
+  text-align: center;
+  padding: 48px;
+  color: #605e5c;
+  
+  i {
+    font-size: 48px;
+    margin-bottom: 16px;
+    display: block;
+  }
+  
+  .emptyStateTitle {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+  
+  .emptyStateText {
+    font-size: 14px;
+    color: #605e5c;
+  }
+}
+
+.scopeIndicator {
+  font-weight: 600;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  text-transform: uppercase;
+  display: inline-block;
+  
+  &.webScope {
+    background-color: #107c10;
+    color: #ffffff;
+  }
+  
+  &.siteScope {
+    background-color: #0078d4;
+    color: #ffffff;
+  }
+}
+
+// Search and filter controls
+.searchBox {
+  width: 300px;
+}
+
+.scopeDropdown {
+  width: 150px;
+}
+
+.descriptionCell {
+  max-height: 140px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+// Responsive design
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+  
+  .header {
+    margin-bottom: 16px;
+    
+    .headerTitle {
+      font-size: '[theme:fonts.xLarge.fontSize, default: 20px]';
+    }
+  }
+  
+  .toolbar {
+    padding: 12px;
+  }
+  
+  .searchBox {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+  
+  .scopeDropdown {
+    width: 100%;
+  }
+}
+
+// High contrast mode support
+@media screen and (-ms-high-contrast: active) {
+  .container {
+    border: 1px solid windowText;
+  }
+  
+  .toolbar,
+  .listContainer {
+    border: 1px solid windowText;
+  }
+  
+  .scopeIndicator {
+    &.webScope,
+    &.siteScope {
+      background-color: highlight;
+      color: highlightText;
+    }
+  }
+}
+
+// Focus styles for accessibility
+.container {
+  :global(.ms-Button:focus) {
+    outline: 2px solid #0078d4;
+    outline-offset: 2px;
+  }
+}

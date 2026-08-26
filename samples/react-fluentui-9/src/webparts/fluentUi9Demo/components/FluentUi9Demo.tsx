@@ -3,10 +3,12 @@ import styles from './FluentUi9Demo.module.scss';
 import { IFluentUi9DemoProps } from './IFluentUi9DemoProps';
 import { escape } from '@microsoft/sp-lodash-subset';
 import { Button, Link, Text, Tab, TabList, Avatar, useId, ToggleButton, Slider, Divider, Label, Input, Checkbox, RadioGroup, Radio, Switch, Body1, Caption1, CompoundButton, Menu, MenuButtonProps, MenuItem, MenuList, MenuPopover, MenuTrigger, SplitButton, Card, CardHeader, CardPreview, CardFooter } from '@fluentui/react-components';
-import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular } from '@fluentui/react-icons';
+import { bundleIcon, CalendarMonthFilled, CalendarMonthRegular, MoreHorizontal20Regular } from '@fluentui/react-icons';
 import { ArrowReplyRegular, ShareRegular, DocumentText24Regular } from '@fluentui/react-icons';
 import { ResponseType } from "@microsoft/microsoft-graph-clientv1";
 import { AppMode } from '../FluentUi9DemoWebPart';
+import welcomeDark from '../assets/welcome-dark.png';
+import welcomeLight from '../assets/welcome-light.png';
 
 const CalendarMonth = bundleIcon(CalendarMonthFilled, CalendarMonthRegular);
 
@@ -27,8 +29,8 @@ export default function FluentUi9Demo(props: IFluentUi9DemoProps): React.ReactEl
       case AppMode.SharePointLocal: return "SharePoint Local";
       case AppMode.Teams: return "Teams";
       case AppMode.TeamsLocal: return "Teams Local";
+      default: return "unknown";
     }
-    return "unknown";
   }
 
   React.useEffect(() => {
@@ -50,7 +52,7 @@ export default function FluentUi9Demo(props: IFluentUi9DemoProps): React.ReactEl
   return (
     <section>
       <div className={styles.welcome}>
-        <img alt="" src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} className={styles.welcomeImage} />
+        <img alt="" src={isDarkTheme ? welcomeDark : welcomeLight} className={styles.welcomeImage} />
         <h2>Well done, {escape(userDisplayName)}!</h2>
         <div>This app is running in {am()}</div>
       </div>
@@ -63,7 +65,6 @@ export default function FluentUi9Demo(props: IFluentUi9DemoProps): React.ReactEl
         <div className={styles.stack}>
           <TabList onTabSelect={(e, data) => setTab(data.value)} defaultSelectedValue="buttons">
             <Tab value="buttons">Buttons</Tab>
-            <Tab value="cards">Cards</Tab>
             <Tab value="inputs">Inputs</Tab>
           </TabList>
           {tab === 'buttons' && <div className={styles.stack} style={{ padding: 10 }}>
@@ -89,7 +90,6 @@ export default function FluentUi9Demo(props: IFluentUi9DemoProps): React.ReactEl
             </div>
             <Divider appearance='brand'>Split Button</Divider>
             <div className={`${styles.stackHoz} ${styles.spaceBetween}`}>
-              {/* @ts-expect-error Issue with the menu object with Typescript sub elements not resolving correctly */}
               <Menu positioning="below-end">
                 <MenuTrigger disableButtonEnhancement>
                   {(triggerProps: MenuButtonProps) => <SplitButton menuButton={triggerProps}>Default</SplitButton>}
@@ -102,7 +102,6 @@ export default function FluentUi9Demo(props: IFluentUi9DemoProps): React.ReactEl
                   </MenuList>
                 </MenuPopover>
               </Menu>
-              {/* @ts-expect-error Issue with the menu object with Typescript sub elements not resolving correctly */}
               <Menu positioning="below-end">
                 <MenuTrigger disableButtonEnhancement>
                   {(triggerProps: MenuButtonProps) => (
@@ -119,7 +118,6 @@ export default function FluentUi9Demo(props: IFluentUi9DemoProps): React.ReactEl
                   </MenuList>
                 </MenuPopover>
               </Menu>
-              {/* @ts-expect-error Issue with the menu object with Typescript sub elements not resolving correctly */}
               <Menu positioning="below-end">
                 <MenuTrigger disableButtonEnhancement>
                   {(triggerProps: MenuButtonProps) => (
@@ -136,7 +134,6 @@ export default function FluentUi9Demo(props: IFluentUi9DemoProps): React.ReactEl
                   </MenuList>
                 </MenuPopover>
               </Menu>
-              {/* @ts-expect-error Issue with the menu object with Typescript sub elements not resolving correctly */}
               <Menu positioning="below-end">
                 <MenuTrigger disableButtonEnhancement>
                   {(triggerProps: MenuButtonProps) => (
@@ -153,7 +150,6 @@ export default function FluentUi9Demo(props: IFluentUi9DemoProps): React.ReactEl
                   </MenuList>
                 </MenuPopover>
               </Menu>
-              {/* @ts-expect-error Issue with the menu object with Typescript sub elements not resolving correctly */}
               <Menu positioning="below-end">
                 <MenuTrigger disableButtonEnhancement>
                   {(triggerProps: MenuButtonProps) => (
@@ -172,27 +168,6 @@ export default function FluentUi9Demo(props: IFluentUi9DemoProps): React.ReactEl
               </Menu>
             </div>
           </div>}
-          {tab === 'cards' && <>
-            <Card>
-              <CardHeader
-                image={<Avatar name={userDisplayName} image={me ? { src: me } : null} />}
-                header={
-                  <Body1>
-                    <b>{userDisplayName}</b> mentioned
-                  </Body1>
-                }
-                description={<Caption1>5h ago · About us - Overview</Caption1>}
-              />
-
-              <CardPreview logo={<DocumentText24Regular />}>
-                <img src={isDarkTheme ? require('../assets/welcome-dark.png') : require('../assets/welcome-light.png')} alt="Preview of a Word document " />
-              </CardPreview>
-              <CardFooter>
-                <Button icon={<ArrowReplyRegular fontSize={16} />}>Reply</Button>
-                <Button icon={<ShareRegular fontSize={16} />}>Share</Button>
-              </CardFooter>
-            </Card>
-          </>}
           {tab === 'inputs' && <div style={{ padding: 10 }} className={styles.stack}>
             <div><Label htmlFor={outlineId}>Outline (default)</Label><Input appearance="outline" id={outlineId} /></div>
             <div><Label htmlFor={underlineId}>Underline</Label><Input appearance="underline" id={underlineId} /></div>

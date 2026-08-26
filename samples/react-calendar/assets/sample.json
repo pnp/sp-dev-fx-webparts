@@ -9,9 +9,15 @@
       "This Web Part allows you to manage events in a calendar. Uses a list of existing calendars on any website. The location and name of the list and the dates of the events to be displayed are defined in the properties of the web part."
     ],
     "creationDateTime": "2020-12-04",
-    "updateDateTime": "2025-01-15",
-    "products": ["SharePoint"],
+    "updateDateTime": "2025-10-07",
+    "products": [
+      "SharePoint"
+    ],
     "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
       {
         "key": "CLIENT-SIDE-DEV",
         "value": "React"
@@ -31,9 +37,9 @@
     ],
     "thumbnails": [
       {
-        "type": "video",
+        "type": "image",
         "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/refs/heads/main/samples/react-calendar/assets/react-calendar-categories.mp4",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-calendar/assets/react-calendar-categories.png",
         "alt": "Calendar"
       },
       {
@@ -168,7 +174,7 @@
         "gitHubAccount": "joaojmendes",
         "company": "Storm Technology Ltd",
         "pictureUrl": "https://github.com/joaojmendes.png",
-        "name": "Jo\u00E3o Mendes",
+        "name": "João Mendes",
         "twitter": "joaojmendes"
       },
       {
@@ -194,7 +200,7 @@
       {
         "gitHubAccount": "Abderahman88",
         "company": "",
-        "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460\u0026u=afdd5f6681bc375ee3811482dec79824c12d8170\u0026v=4",
+        "pictureUrl": "https://avatars.githubusercontent.com/u/36161889?s=460&u=afdd5f6681bc375ee3811482dec79824c12d8170&v=4",
         "name": "Abderahman Moujahid"
       },
       {
@@ -207,7 +213,13 @@
       {
         "gitHubAccount": "Eli-Schei",
         "name": "Eli H. Schei",
-        "pictureUrl": "https://github.com/Eli-Schei"
+        "pictureUrl": "https://github.com/Eli-Schei.png"
+      },
+      {
+        "gitHubAccount": "Dhananjay-12",
+        "company": "",
+        "pictureUrl": "https://github.com/Dhananjay-12.png",
+        "name": "Dhananjay Pant"
       }
     ],
     "references": [
@@ -221,6 +233,7 @@
         "description": "Starting with SharePoint Framework v1.8, you can build tabs for Microsoft Teams with the SharePoint Framework tooling and use SharePoint as a host for your solutions. As part of the SharePoint Framework v1.10 you can also publish your solution as Microsoft Teams personal app.",
         "url": "https://learn.microsoft.com/sharepoint/dev/spfx/integrate-with-teams-introduction"
       }
-    ]
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-calendar"
   }
 ]

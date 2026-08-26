@@ -1,0 +1,74 @@
+.actionsRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.actionsRight {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.section {
+  margin-bottom: 12px;
+}
+
+.inlineField {
+  margin-top: 10px;
+}
+
+.fileInput {
+  width: 100%;
+}
+
+.fileMeta {
+  color: var(--colorNeutralForeground3);
+  margin-top: 8px;
+}
+
+.invalidList {
+  margin-top: 8px;
+  color: var(--colorPaletteRedForeground1);
+}
+
+.dangerAction {
+  border-radius: 16px;
+  padding-inline: 8px;
+  background-color: #fdf3f2;
+  border: 1px solid #f3d6d7;
+  color: #a4262c;
+
+  &:hover {
+    background-color: #fbe4e2;
+    border-color: #e6b7b9;
+  }
+
+  &:active {
+    background-color: #f8d0ce;
+    border-color: #d79698;
+  }
+}
+
+.dangerPrimary {
+  background-color: #d13438;
+  border-color: #d13438;
+  color: #ffffff;
+
+  &:hover {
+    background-color: #a4262c;
+    border-color: #a4262c;
+  }
+
+  &:active {
+    background-color: #8a1c21;
+    border-color: #8a1c21;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+}

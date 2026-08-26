@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "f9c5c5e5-7e4a-4f3a-9b1a-2d3c4e5f6a7b",
+  "alias": "DocumentExplorerWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab"],
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": { "default": "Content" },
+      "title": { "default": "Document Explorer" },
+      "description": { "default": "Browse and filter documents from multiple SharePoint libraries" },
+      "officeFabricIconFontName": "FabricFolder",
+      "properties": {
+        "description": "Document Explorer",
+        "selectedLibrary": "",
+        "manualLibraries": "",
+        "showFolderTree": true,
+        "showFileList": true,
+        "showFilterPanel": true,
+        "layoutType": "row"
+      }
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "TENANT_ID": "TENANT_ID",
+    "CLIENT_ID": "CLIENT_ID",
+    "CLIENT_SECRET": "CLIENT_SECRET",
+    "SHAREPOINT_SITE_URL": "https://{SHAREPOINT_SITE_URL}",
+    "SHAREPOINT_SITE_ID": "SHAREPOINT_SITE_URL (Without https),DOC_LIBRARY_ID_1(Contracts),DOC_LIBRARY_ID_2(Signed Documents);",
+    "CONTRACTS_LIBRARY_ID": "CONTRACTS_LIBRARY_Drive_ID (ex: b!h.....)",
+    "SIGNED_DOCS_LIBRARY_ID": "SIGNED_DOCS_LIBRARY_Drive_ID (ex: b!h.....)",
+    "TOKENS_LIST_ID": "TOKENS_LIST_ID",
+    "SENDER_EMAIL": "If Domain available please use (SENDER_EMAIL) otherwise add gmail account below account",
+    "GMAIL_USER": "GMAIL_USER_ID (sai@gmail.com)",
+    "GMAIL_APP_PASSWORD": "GMAIL_APP_PASSWORD (App password generated from google account)",
+    "NOTIFICATION_EMAIL": "**Email address to receive notifications, can be same as sender email**",
+    "ENABLE_NOTIFICATIONS": "true",
+    "ENABLE_OTP": "true",
+    "ENABLE_SECURITY_LOGGING": "true",
+    "IPINFO_API_KEY": "**IPINFO_API_KEY for fetching user location from IP address, optional if you want to log user location in security audit list**",
+    "SECURITY_AUDIT_LIST_ID": "SECURITY_AUDIT_LIST_ID (Optional, if you want to log security events like OTP verification, signature completion etc.)"
+  },
+  "Host": {
+    "CORS": "*",
+    "CORSCredentials": false
+  }
+}

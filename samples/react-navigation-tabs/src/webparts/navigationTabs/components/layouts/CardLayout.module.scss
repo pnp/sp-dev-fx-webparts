@@ -1,0 +1,67 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.cardGrid {
+  display: grid;
+  gap: 8px;
+  grid-template-columns: repeat(var(--cards-per-row, 3), 1fr);
+
+  @media (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.card {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 10px;
+  background: $ms-color-white;
+  border: 1px solid #e1e1e1;
+  border-radius: 3px;
+  text-decoration: none;
+  color: $ms-color-neutralPrimary;
+  transition: box-shadow 0.15s ease, border-color 0.15s ease;
+
+  &:hover {
+    border-color: $ms-color-themePrimary;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  &:focus {
+    outline: 2px solid $ms-color-themePrimary;
+    outline-offset: -2px;
+  }
+}
+
+.cardIcon {
+  flex-shrink: 0;
+  color: $ms-color-themePrimary;
+}
+
+.cardContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.cardTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: $ms-color-neutralPrimary;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  margin-bottom: 4px;
+}
+
+.cardDescription {
+  font-size: 12px;
+  color: $ms-color-neutralSecondary;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  white-space: normal;
+  margin-top: 4px;
+}

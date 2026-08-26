@@ -8,16 +8,20 @@
   }
  
   .treeContainer{
-  height: auto;
-  overflow: auto;
- }
-  
+    height: auto;
+    overflow: auto;
+  }
+
+
   .row {
     @include ms-Grid-row;
     @include ms-fontColor-white;
+    
+    & {
     background-color: $ms-color-themeDark;
-    padding: 20px;
+    padding: 20px 20px;
   }
+ }
 
   .column {
     @include ms-Grid-col;
@@ -25,7 +29,9 @@
     @include ms-xl8;
     @include ms-xlPush2;
     @include ms-lgPush1;
+
   }
+  
 
   .title {
     @include ms-font-xl;

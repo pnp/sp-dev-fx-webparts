@@ -1,6 +1,8 @@
 $ms-color-themePrimary: '[theme:themePrimary, default:#0078d7]';
 $ms-color-neutralLight: '[theme:neutralLight, default:#eaeaea]';
 $ms-color-neutralLighter: '[theme:neutralLighter, default:#f4f4f4]';
+@import '~@fluentui/react/dist/sass/References.scss';
+
 $ms-color-neutralTertiary: '[theme:neutralTertiary, default:#a6a6a6]';
 $ms-color-white: '[theme:white, default:#ffffff]';
 

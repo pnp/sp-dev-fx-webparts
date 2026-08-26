@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "8dd1b4b7-09f0-4847-bbd4-a9b6499517a8",
+  "alias": "CarbonFootprintCalculatorWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Advanced" },
+    "title": { "default": "Carbon Footprint Calculator" },
+    "description": { "default": "A tool to calculate your carbon footprint" },
+    "officeFabricIconFontName": "Home",
+    "properties": {
+      "description": "Calculate and reduce your carbon footprint with ease",
+      "title": "Carbon Footprint Calculator"
+    }
+  }]
+}

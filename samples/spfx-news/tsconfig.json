@@ -1,0 +1,19 @@
+{
+  "extends": "./node_modules/@microsoft/spfx-web-build-rig/profiles/default/tsconfig-base.json",
+  "compilerOptions": {
+    "ignoreDeprecations": "5.0",
+    "baseUrl": ".",
+    "preserveSymlinks": true,
+    "skipLibCheck": true,
+    "paths": {
+      "react": ["./node_modules/@types/react/index"],
+      "react/jsx-runtime": ["./node_modules/@types/react/jsx-runtime"],
+      "react/jsx-dev-runtime": ["./node_modules/@types/react/jsx-dev-runtime"],
+      "react-dom": ["./node_modules/@types/react-dom/index"]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "lib"
+  ]
+}

@@ -1,68 +1,227 @@
 @import '~@fluentui/react/dist/sass/References.scss';
 
 .chatgpt {
-  overflow: hidden;
-  padding: 1em;
+  padding: 32px 24px 48px;
+  background: linear-gradient(160deg, rgba(3, 120, 124, 0.05) 0%, rgba(247, 247, 247, 0.4) 45%, rgba(255, 255, 255, 1) 100%);
   color: "[theme:bodyText, default: #323130]";
   color: var(--bodyText);
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
   &.teams {
     font-family: $ms-font-family-fallbacks;
   }
 }
 
-.container {
-  border: 1px solid grey;
-  padding: 25px 35px;
-  margin-top: 20px;
-  border-width: 3px;
-  border-style: solid;
-  border-image: linear-gradient( to bottom, "[theme: themePrimary, default: #03787c]", rgba(0, 0, 0, 0) ) 1 100%;
-}
-
-.questionContainer {
+.surface {
+  width: 100%;
+  max-width: 960px;
   display: flex;
-}
-
-.answerContainer{
-  display: flex
-}
-
-button {
-  margin-right: 10px;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .welcome {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
   text-align: center;
+  padding: 8px 0 4px;
 }
 
-.welcomeImage {
+.welcomeContent {
+  text-align: center;
+  color: "[theme:neutralPrimary, default:#323130]";
+}
+
+.welcomeEyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: "[theme:neutralSecondary, default:#666666]";
+  margin-bottom: 4px;
+  font-weight: 600;
+  position: relative;
+  z-index: 1;
+}
+
+.welcomeTitle {
+  margin: 0 0 8px;
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: "[theme:neutralPrimary, default:#323130]";
+  position: relative;
+  z-index: 1;
+}
+
+.welcomeSubtitle {
+  margin: 0;
+  font-size: 1rem;
+  color: "[theme:neutralSecondary, default:#666666]";
+  position: relative;
+  z-index: 1;
+}
+
+.apiKeyMessage {
   width: 100%;
-  max-width: 420px;
+  max-width: 760px;
 }
 
-.textfield{
-  margin-bottom: 10px;
+.chatArea {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
-.question {
-  background-color: "[theme: themePrimary, default: #03787c]";
-  color: white;
-  padding: 20px;
-  border-radius: 1.125rem 1.125rem 1.125rem 0;
-  margin-bottom: 8px;
+.promptCard {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.answer {
-  background-color: #d2d2d2;
-  color: black;
-  padding: 20px;
-  border-radius: 1.125rem 1.125rem 0 1.125rem;
-  margin-bottom: 8px;
-  margin-left: 25%;
+.promptInput {
+  :global(.ms-TextField-fieldGroup) {
+    border-radius: 16px;
+    border: 1px solid rgba(3, 120, 124, 0.2);
+    padding: 4px 12px;
+    transition: border-color 0.2s ease, border-width 0.2s ease;
+    background: white;
+  }
+
+  :global(.ms-TextField-field) {
+    font-size: 1rem;
+    padding: 12px 4px;
+  }
+
+  :global(.ms-Label) {
+    font-weight: 600;
+    color: "[theme:neutralPrimary, default:#323130]";
+    margin-bottom: 6px;
+  }
+
+  :global(.ms-TextField-fieldGroup:is(:hover, :focus-within)) {
+    border-color: rgba(3, 120, 124, 0.55);
+    border-width: 2px;
+  }
+
+  :global(.ms-TextField-fieldGroup:focus-within) {
+    outline: none;
+  }
+
+  :global(.ms-TextField-fieldGroup::after) {
+    border-radius: 16px;
+  }
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.actions :global(.ms-Button) {
+  min-width: 140px;
+  border-radius: 24px;
+  font-weight: 600;
 }
 
 .loadingContainer {
-  height: 90px
+  display: flex;
+  justify-content: center;
+  min-height: 20px;
+}
+
+@media screen and (max-width: 640px) {
+  .welcomeContent {
+    text-align: center;
+  }
+}
+
+.conversation {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.messageGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.messageRow {
+  display: flex;
+  width: 100%;
+}
+
+.incoming {
+  justify-content: flex-start;
+}
+
+.outgoing {
+  justify-content: flex-end;
+}
+
+.messageBubble {
+  max-width: min(100%, 620px);
+  padding: 16px 20px;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  line-height: 1.5;
+  font-size: 0.975rem;
+}
+
+.questionBubble {
+  background: linear-gradient(135deg, "[theme:themePrimary, default:#03787c]" 0%, "[theme:themeDarkAlt, default:#025d60]" 100%);
+  color: white;
+  border-bottom-right-radius: 4px;
+}
+
+.answerBubble {
+  background: white;
+  color: "[theme:neutralPrimary, default:#323130]";
+  border-top-left-radius: 4px;
+}
+
+.typingIndicator {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 6px;
+  min-height: 12px;
+}
+
+.typingIndicator span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(3, 120, 124, 0.6);
+  animation: typingBounce 0.8s infinite ease-in-out;
+}
+
+.typingIndicator span:nth-child(2) {
+  animation-delay: 0.12s;
+}
+
+.typingIndicator span:nth-child(3) {
+  animation-delay: 0.24s;
+}
+
+@keyframes typingBounce {
+  0%, 80%, 100% {
+    transform: translateY(0);
+    opacity: 0.55;
+  }
+  40% {
+    transform: translateY(-4px);
+    opacity: 1;
+  }
 }
 
 .loader {

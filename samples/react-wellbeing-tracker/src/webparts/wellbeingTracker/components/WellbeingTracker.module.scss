@@ -1,0 +1,483 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+// ─── Theme tokens ─────────────────────────────────────────────────────────────
+// All neutral colors live here. Accent colors (blue, green, etc.) stay hardcoded
+// because they look fine in both modes and don't need separate tokens.
+
+.container {
+  // Light mode defaults
+  --wt-bg:              #ffffff;
+  --wt-recessed:        #f8fafc;
+  --wt-subtle:          #f1f5f9;
+  --wt-hover:           #dde5f0;
+  --wt-shadow:          rgba(0, 0, 0, 0.08);
+  --wt-border:          #e2e8f0;
+  --wt-border-light:    #f1f5f9;
+  --wt-scrollbar-thumb: #cbd5e1;
+  --wt-nav-hover:       #eff6ff;
+  --wt-title:           #0f172a;
+  --wt-text:            #1e293b;
+  --wt-text-2:          #374151;
+  --wt-text-muted:      #94a3b8;
+  --wt-text-dim:        #64748b;
+  --wt-select-arrow:    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%236b7280' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+
+  background: var(--wt-bg);
+  border-radius: 16px;
+  box-shadow: 0 4px 24px var(--wt-shadow);
+  padding: 24px;
+  font-family: $ms-font-family-fallbacks;
+  overflow: hidden;
+  position: relative;
+  transition: background 0.25s, box-shadow 0.25s;
+
+  // Dark mode overrides — applied via .dark class toggled from the component
+  &.dark {
+    --wt-bg:              #1e293b;
+    --wt-recessed:        #0f172a;
+    --wt-subtle:          #253447;
+    --wt-hover:           #334155;
+    --wt-shadow:          rgba(0, 0, 0, 0.4);
+    --wt-border:          #334155;
+    --wt-border-light:    #253447;
+    --wt-scrollbar-thumb: #475569;
+    --wt-nav-hover:       #1e3a5f;
+    --wt-title:           #f1f5f9;
+    --wt-text:            #e2e8f0;
+    --wt-text-2:          #cbd5e1;
+    --wt-text-muted:      #94a3b8;
+    --wt-text-dim:        #cbd5e1;
+    --wt-select-arrow:    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  }
+}
+
+// ─── Header ──────────────────────────────────────────────────────────────────
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--wt-title);
+  margin: 0;
+}
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.navGroup {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+// darkToggle shares all nav-button chrome; only the icon and position differ.
+.navBtn,
+.darkToggle {
+  width: 30px;
+  height: 30px;
+  border: 1.5px solid var(--wt-border);
+  background: var(--wt-bg);
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--wt-text-2);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  padding: 0;
+
+  &:hover {
+    border-color: #3b82f6;
+    color: #3b82f6;
+    background: var(--wt-nav-hover);
+  }
+}
+
+// Anchored to the bottom-right corner of the container.
+.darkToggle {
+  position: absolute;
+  top: 16px;
+  right: 24px;
+}
+
+.periodLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--wt-text-2);
+  min-width: 110px;
+  text-align: center;
+}
+
+.addBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: #3b82f6;
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  white-space: nowrap;
+
+  &:hover {
+    background: #2563eb;
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// ─── Divider ─────────────────────────────────────────────────────────────────
+
+.divider {
+  height: 1px;
+  background: var(--wt-border);
+  margin: 4px 0 16px;
+}
+
+// ─── Grid ────────────────────────────────────────────────────────────────────
+
+.gridContainer {
+  overflow-x: auto;
+  margin-bottom: 20px;
+  padding-bottom: 4px;
+
+  &::-webkit-scrollbar { height: 4px; }
+  &::-webkit-scrollbar-track  { background: var(--wt-subtle);          border-radius: 2px; }
+  &::-webkit-scrollbar-thumb  { background: var(--wt-scrollbar-thumb); border-radius: 2px; }
+}
+
+.gridWrapper {
+  display: grid;
+  min-width: min-content;
+}
+
+// Precomputed column templates for every possible view — avoids any inline style.
+.gridWeek    { grid-template-columns: 200px repeat(7,  44px) 185px; }
+.gridMonth28 { grid-template-columns: 160px repeat(28, 28px) 185px; }
+.gridMonth29 { grid-template-columns: 160px repeat(29, 28px) 185px; }
+.gridMonth30 { grid-template-columns: 160px repeat(30, 28px) 185px; }
+.gridMonth31 { grid-template-columns: 160px repeat(31, 28px) 185px; }
+
+// ─── Column headers ───────────────────────────────────────────────────────────
+
+.colHeaderActivity {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--wt-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 6px 12px 6px 8px;
+  align-self: center;
+}
+
+.colHeaderDay {
+  text-align: center;
+  padding: 6px 0;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--wt-text-muted);
+  letter-spacing: 0.3px;
+
+  &.today { color: #3b82f6; }
+}
+
+.colHeaderProgress {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--wt-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  padding: 6px 0 6px 16px;
+  align-self: center;
+}
+
+// ─── Grid separator ───────────────────────────────────────────────────────────
+
+.rowSeparator {
+  height: 1px;
+  background: var(--wt-border-light);
+  grid-column: 1 / -1;
+}
+
+// ─── Activity name cell ───────────────────────────────────────────────────────
+
+.activityName {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px 10px 8px;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--wt-text);
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.categoryLabel {
+  opacity: 0.55;
+  font-weight: 400;
+}
+
+.categoryDot { flex-shrink: 0; }
+
+// ─── Day cell ─────────────────────────────────────────────────────────────────
+
+.cellWeek  { width: 36px; height: 36px; }
+.cellMonth { width: 22px; height: 22px; }
+
+.cellWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px 0;
+}
+
+.cell {
+  border: none;
+  border-radius: 9px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0;
+  transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+  outline: none;
+
+  &:focus-visible {
+    outline: 2px solid #3b82f6;
+    outline-offset: 2px;
+  }
+}
+
+.cellEmpty {
+  background: var(--wt-subtle);
+
+  &:hover {
+    background: var(--wt-hover);
+    transform: scale(1.12);
+  }
+}
+
+.cellCompleted {
+  background: #22c55e;
+  box-shadow: 0 2px 8px rgba(34, 197, 94, 0.3);
+
+  &:hover {
+    background: #16a34a;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(34, 197, 94, 0.4);
+  }
+}
+
+.cellFuture {
+  background: var(--wt-recessed);
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
+}
+
+// ─── Progress cell ────────────────────────────────────────────────────────────
+
+.progressCell {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 0 0 16px;
+}
+
+.progressBar {
+  appearance: none;
+  flex: 1;
+  min-width: 70px;
+  max-width: 90px;
+  height: 7px;
+  border: none;
+  border-radius: 4px;
+  background: var(--wt-border);
+
+  &::-webkit-progress-bar { background: var(--wt-border); border-radius: 4px; }
+}
+
+// Fill colours via pseudo-elements — no inline style needed.
+.progressHigh {
+  &::-webkit-progress-value { background: linear-gradient(90deg, #22c55e, #16a34a); border-radius: 4px; }
+  &::-moz-progress-bar      { background: linear-gradient(90deg, #22c55e, #16a34a); border-radius: 4px; }
+}
+.progressMid {
+  &::-webkit-progress-value { background: linear-gradient(90deg, #3b82f6, #06b6d4); border-radius: 4px; }
+  &::-moz-progress-bar      { background: linear-gradient(90deg, #3b82f6, #06b6d4); border-radius: 4px; }
+}
+.progressLow {
+  &::-webkit-progress-value { background: linear-gradient(90deg, #f59e0b, #f97316); border-radius: 4px; }
+  &::-moz-progress-bar      { background: linear-gradient(90deg, #f59e0b, #f97316); border-radius: 4px; }
+}
+
+.progressText {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--wt-text-dim);
+  white-space: nowrap;
+}
+
+// ─── Empty state ──────────────────────────────────────────────────────────────
+
+.emptyState {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 48px 24px;
+  gap: 12px;
+  color: var(--wt-text-muted);
+
+  p {
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+  }
+}
+
+// ─── Add Activity Panel ───────────────────────────────────────────────────────
+
+.addPanel {
+  border-top: 1.5px solid var(--wt-border-light);
+  padding-top: 20px;
+}
+
+.addPanelLabel {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--wt-text-muted);
+  margin-bottom: 10px;
+}
+
+.addPanelForm {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.activityInput {
+  flex: 1;
+  min-width: 180px;
+  padding: 9px 14px;
+  border: 1.5px solid var(--wt-border);
+  border-radius: 9px;
+  font-size: 13px;
+  color: var(--wt-text);
+  background: var(--wt-bg);
+  outline: none;
+  font-family: inherit;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.25s;
+
+  &::placeholder { color: var(--wt-text-muted); }
+
+  &:focus {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.12);
+  }
+
+  &.inputError {
+    border-color: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.12);
+  }
+}
+
+.createBtn {
+  padding: 9px 20px;
+  background: #22c55e;
+  color: #ffffff;
+  border: none;
+  border-radius: 9px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.15s;
+  font-family: inherit;
+  white-space: nowrap;
+
+  &:hover {
+    background: #16a34a;
+    transform: translateY(-1px);
+  }
+
+  &:active  { transform: translateY(0); }
+  &:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
+}
+
+// ─── Native select ────────────────────────────────────────────────────────────
+
+.nativeSelect {
+  appearance: none;
+  padding: 7px 28px 7px 12px;
+  border: 1.5px solid var(--wt-border);
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--wt-text-2);
+  background-color: var(--wt-bg);
+  background-image: var(--wt-select-arrow);
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  cursor: pointer;
+  outline: none;
+  transition: background-color 0.25s, border-color 0.2s, color 0.25s;
+}
+
+// ─── Error / Loading wrappers ─────────────────────────────────────────────────
+
+.errorWrapper   { margin-bottom: 16px; }
+
+.spinnerWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 40px 0;
+}
+
+// ─── Error / Loading ──────────────────────────────────────────────────────────
+
+.setupMessage {
+  background: #fffbeb;
+  border: 1.5px solid #fbbf24;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin-bottom: 16px;
+  font-size: 13px;
+  color: #92400e;
+
+  h3 { font-size: 14px; font-weight: 700; margin: 0 0 8px; }
+  ul  { margin: 8px 0 0 20px; padding: 0; line-height: 1.8; }
+}
+
+// ─── Responsive ───────────────────────────────────────────────────────────────
+
+@media (max-width: 640px) {
+  .container   { padding: 16px; border-radius: 12px; }
+  .title       { font-size: 16px; }
+  .periodLabel { min-width: 80px; font-size: 12px; }
+}

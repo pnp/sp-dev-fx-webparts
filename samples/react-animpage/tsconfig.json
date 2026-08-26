@@ -1,0 +1,67 @@
+{
+  "extends": "./node_modules/@microsoft/spfx-web-build-rig/profiles/default/tsconfig-base.json",
+    "compilerOptions": {
+    "target": "es5",
+    "forceConsistentCasingInFileNames": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "react",
+    "declaration": true,
+    "sourceMap": true,
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "outDir": "lib",
+    "inlineSources": false,
+    "strictNullChecks": false,
+    "noUnusedLocals": false,
+    "allowSyntheticDefaultImports": true,
+    "allowJs": true,
+    "noUnusedParameters": true,
+    "noImplicitAny": true,
+    "paths": {
+      "components/*": [
+        "./src/components/*"
+      ],
+      "extensions/*": [
+        "./src/extensions/*"
+      ],
+      "globals/*": [
+        "./src/globals/*"
+      ],
+      "helpers/*": [
+        "./src/helpers/*"
+      ],
+      "models/*": [
+        "./src/models/*"
+      ],
+      "services/*": [
+        "./src/services/*"
+      ],
+      "webparts/*": [
+        "./src/webparts/*"
+      ]
+    },
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/@microsoft"
+    ],
+    "types": [
+      "webpack-env"
+    ],
+    "lib": [
+      "es2021",
+      "es5",
+      "dom",
+      "es2015.collection",
+      "es2015.promise"
+    ]
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx"
+  ],
+  "exclude": [
+    "src/test/*",
+    "src/**/*.test.tsx"
+  ]
+}

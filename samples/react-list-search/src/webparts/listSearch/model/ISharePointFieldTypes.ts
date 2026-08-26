@@ -95,6 +95,10 @@ export class SharePointFieldTypes {
         result = SharePointType.Guid;
         break;
       }
+      case 'Computed': {
+        result = SharePointType.Computed;
+        break;
+      }
       default: {
         result = SharePointType.Text;
       }

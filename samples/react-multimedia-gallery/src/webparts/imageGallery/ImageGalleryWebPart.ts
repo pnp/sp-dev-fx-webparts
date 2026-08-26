@@ -1,4 +1,3 @@
-import '@pnp/polyfill-ie11';
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
@@ -51,7 +50,7 @@ export default class ImageGalleryWebPart extends BaseClientSideWebPart<IImageGal
   }
 
 
-  protected async onPropertyPaneConfigurationStart() {
+  protected async onPropertyPaneConfigurationStart(): Promise<void> {
 
     try {
       if (this.properties.siteUrl) {
@@ -69,7 +68,7 @@ export default class ImageGalleryWebPart extends BaseClientSideWebPart<IImageGal
       }
 
     } catch (error) {
-
+      console.log('Error loading lists', error);
     }
   }
 
@@ -88,7 +87,7 @@ export default class ImageGalleryWebPart extends BaseClientSideWebPart<IImageGal
     return _lists;
   }
 
-  private onSiteUrlGetErrorMessage(value: string) {
+  private onSiteUrlGetErrorMessage(value: string): string {
     let returnValue: string = '';
     if (value) {
       returnValue = '';
@@ -100,14 +99,18 @@ export default class ImageGalleryWebPart extends BaseClientSideWebPart<IImageGal
       this.properties.siteUrl = undefined;
       this.lists = [];
       this.listsDropdownDisabled = true;
-      this.onPropertyPaneFieldChanged('list', previousList, this.properties.list);
-      this.onPropertyPaneFieldChanged('siteUrl', previousSiteUrl, this.properties.siteUrl);
+      this.onPropertyPaneFieldChanged('list', previousList, this.properties.list).catch((error) => {
+        this.errorMessage =  `${escape(error.message.toString())} -  please check if site url if valid.` ;
+      });
+      this.onPropertyPaneFieldChanged('siteUrl', previousSiteUrl, this.properties.siteUrl).catch((error) => {
+        this.errorMessage =  `${escape(error.message.toString())} -  please check if site url if valid.` ;    
       this.context.propertyPane.refresh();
-    }
+    });
+  }
     return returnValue;
   }
 
-  protected async onPropertyPaneFieldChanged(propertyPath: string, oldValue: string, newValue: string) {
+  protected async onPropertyPaneFieldChanged(propertyPath: string, oldValue: string, newValue: string): Promise<void> {
     try {
       // reset any error
       this.properties.errorMessage = undefined;
@@ -117,7 +120,9 @@ export default class ImageGalleryWebPart extends BaseClientSideWebPart<IImageGal
       if (propertyPath === 'siteUrl' && newValue) {
         super.onPropertyPaneFieldChanged(propertyPath, oldValue, newValue);
         const _oldValue = this.properties.list;
-        this.onPropertyPaneFieldChanged('list', _oldValue, this.properties.list);
+        this.onPropertyPaneFieldChanged('list', _oldValue, this.properties.list).catch((error) => {
+          this.errorMessage =  `${escape(error.message.toString())} -  please check if site url if valid.` ;
+        });
         this.context.propertyPane.refresh();
         const _lists = await this.loadLists();
         this.lists = _lists;

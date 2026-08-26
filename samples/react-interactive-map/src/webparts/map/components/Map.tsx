@@ -4,10 +4,12 @@ import styles from './Map.module.scss';
 import { IMapProps, IMarker, IMarkerCategory, IMarkerIcon, emptyMarkerItem } from './IMapProps';
 import { cloneDeep } from '@microsoft/sp-lodash-subset';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import "leaflet/dist/leaflet.css";
 import "react-leaflet-markercluster/dist/styles.min.css";
 import * as L from 'leaflet';
-import { ContextualMenu, IContextualMenuItem, Panel, Dialog, IPanelProps, DefaultButton, PanelType, DialogType, DialogContent, Label, Separator, PrimaryButton } from 'office-ui-fabric-react';
+import { SPComponentLoader } from '@microsoft/sp-loader';
+
+SPComponentLoader.loadCss('https://unpkg.com/leaflet@1.9.4/dist/leaflet.css');
+import { ContextualMenu, IContextualMenuItem, Panel, Dialog, IPanelProps, DefaultButton, PanelType, DialogType, DialogContent, Label, Separator, PrimaryButton } from '@fluentui/react';
 import { isset, isNullOrEmpty, getDeepOrDefault, cssClasses } from '@spfxappdev/utility';
 import '@spfxappdev/utility/lib/extensions/StringExtensions';
 import '@spfxappdev/utility/lib/extensions/ArrayExtensions';
@@ -19,13 +21,13 @@ import { isFunction } from 'lodash';
 import { MarkerIcon } from './MarkerIcon';
 import MarkerClusterGroup from 'react-leaflet-markercluster';
 import * as strings from 'MapWebPartStrings';
-import SearchPlugin from './plugins/search/SearchPlugin';
+import PlaceSearch from './PlaceSearch';
 import LegendPlugin from './plugins/legend/LegendPlugin';
 
 interface IMapState {
   markerItems: IMarker[];
   markerCategories: IMarkerCategory[];
-  rightMouseTarget?: any;
+  rightMouseTarget?: { x: number; y: number };
   showAddOrEditMarkerPanel: boolean;
   currentMarker?: IMarker;
   showClickContent: boolean;
@@ -61,11 +63,11 @@ export default class Map extends React.Component<IMapProps, IMapState> {
     }
   ];
 
-  private map: L.Map = null;
+  private map: L.Map | undefined = undefined;
 
   private allLeafletMarker: Record<string, L.Marker> = {};
 
-  private lastLatLngRightClickPosition: L.LatLng;
+  private lastLatLngRightClickPosition!: L.LatLng;
 
 
   constructor(props: IMapProps) {
@@ -73,7 +75,7 @@ export default class Map extends React.Component<IMapProps, IMapState> {
     this.setAllCatagoriesDictionary();
   }
 
-  public componentDidUpdate(prevProps: Readonly<IMapProps>, prevState: Readonly<IMapState>, snapshot?: any): void {
+  public componentDidUpdate(prevProps: Readonly<IMapProps>, prevState: Readonly<IMapState>, snapshot?: unknown): void {
 
     if(!JSON.stringify(prevProps.markerCategories).Equals(JSON.stringify(this.props.markerCategories))) {
       this.setState({
@@ -97,15 +99,27 @@ export default class Map extends React.Component<IMapProps, IMapState> {
       <div className={styles.map}>
         {(this.props.isEditMode || (!this.props.isEditMode && !isNullOrEmpty(this.props.title))) &&
           <WebPartTitle displayMode={this.props.isEditMode?DisplayMode.Edit:DisplayMode.Read}
-                title={this.props.title}
-                updateProperty={this.props.onTitleUpdate} />
+                title={this.props.title!}
+                updateProperty={this.props.onTitleUpdate!} />
         }      
         
+      {/* A full-width, always-visible search bar above the map (the standard M365
+          pattern) rather than a collapsed icon overlaid in the map corner. */}
+      {this.props.plugins.searchBox &&
+        <div style={{ marginBottom: 8 }}>
+          <PlaceSearch
+            placeholder="Search for a location…"
+            onPlaceSelected={(lat: number, lon: number, _name: string, bounds?: [number, number, number, number]) => this.onSearchLocationSelected(lat, lon, bounds)}
+          />
+        </div>
+      }
       <MapContainer
         className={this.props.isEditMode ? "edit-mode" : "display-mode"}
-        zoomControl={isZoomControlEnabled} 
-        center={this.props.center} 
-        zoom={this.props.zoom} 
+        zoomControl={isZoomControlEnabled}
+        // Fallback to the manifest default (London) if no start view was configured —
+        // an undefined center/zoom makes react-leaflet's MapContainer fail silently.
+        center={this.props.center ?? [51.505, -0.09]}
+        zoom={this.props.zoom ?? 13}
         maxZoom={this.props.maxZoom}
         minZoom={this.props.minZoom} 
         scrollWheelZoom={isScrollWheelZoomEnabled}
@@ -119,20 +133,26 @@ export default class Map extends React.Component<IMapProps, IMapState> {
                 return;
               }
 
-              this.lastLatLngRightClickPosition = (ev as any).latlng;
+              this.lastLatLngRightClickPosition = (ev as L.LeafletMouseEvent).latlng;
 
               this.setState({
                 rightMouseTarget: {
-                  x: ((ev as any).originalEvent as MouseEvent).clientX, 
-                  y: ((ev as any).originalEvent as MouseEvent).clientY 
+                  x: (ev as L.LeafletMouseEvent).originalEvent.clientX,
+                  y: (ev as L.LeafletMouseEvent).originalEvent.clientY
                 }
               });
 
             });
 
             this.map = map;
+
+            // In display mode, frame all markers so visitors see every point on load —
+            // a fixed start view would hide markers configured in other cities.
+            if (this.props.fitToMarkers && !this.props.isEditMode) {
+              this.fitMapToMarkers(map);
+            }
           }
-        }  
+        }
         style={{height: isNullOrEmpty(this.props.height) ? "400px" : `${this.props.height}px`}}
         >
         <TileLayer
@@ -150,17 +170,15 @@ export default class Map extends React.Component<IMapProps, IMapState> {
         {!this.props.plugins.markercluster &&
             this.renderMarker()
         }
-        
-        {this.renderSearchBox()}
+
         {this.renderLegend(isZoomControlEnabled)}
       </MapContainer>
-      
-      
+
 
         {this.props.isEditMode &&
           <ContextualMenu
             items={this.menuItems}
-            hidden={typeof this.state.rightMouseTarget == "undefined"}
+            hidden={typeof this.state.rightMouseTarget === "undefined"}
             target={this.state.rightMouseTarget}
             onItemClick={() => {
 
@@ -183,8 +201,8 @@ export default class Map extends React.Component<IMapProps, IMapState> {
       <>
       {this.state.markerItems.map((marker: IMarker, index: number): JSX.Element => {
       const useCategory: boolean = isset(this.allCatagories[marker.categoryId]);
-      const markerCategory: IMarkerCategory = useCategory ? this.allCatagories[marker.categoryId] : null;
-      const popupText: string = !useCategory ? marker.popuptext : isNullOrEmpty(markerCategory.popuptext) ? markerCategory.name : markerCategory.popuptext;
+      const markerCategory: IMarkerCategory | undefined = useCategory ? this.allCatagories[marker.categoryId] : undefined;
+      const popupText: string | undefined = !useCategory ? marker.popuptext : isNullOrEmpty(markerCategory!.popuptext) ? markerCategory!.name : markerCategory!.popuptext;
       const isDraggable: boolean = marker.id.Equals(this.state.changePositionMarkerId);
 
       return (
@@ -217,7 +235,7 @@ export default class Map extends React.Component<IMapProps, IMapState> {
                   return;
                 }
 
-                let showEditPanel: boolean = this.props.isEditMode;
+                const showEditPanel: boolean = this.props.isEditMode;
 
                 this.setState({
                   currentMarker: marker,
@@ -235,7 +253,7 @@ export default class Map extends React.Component<IMapProps, IMapState> {
                   return;
               }
 
-              (ev.target as any).openPopup();                  
+              (ev.target as L.Marker).openPopup();
             },
             mouseout: (ev: L.LeafletMouseEvent) => {
 
@@ -247,10 +265,10 @@ export default class Map extends React.Component<IMapProps, IMapState> {
                 return;
               }
 
-              (ev.target as any).closePopup();                  
+              (ev.target as L.Marker).closePopup();
             },
             dragend: (ev: L.DragEndEvent) => {
-              const currentMarker = (ev.target as any);
+              const currentMarker = (ev.target as L.Marker);
 
               setTimeout(() => {
                 if(isset(marker)) {
@@ -261,13 +279,13 @@ export default class Map extends React.Component<IMapProps, IMapState> {
           }
         } 
         >
-          {this.props.showPopUp && this.state.changePositionMarkerId != marker.id && !isNullOrEmpty(popupText) &&
+          {this.props.showPopUp && this.state.changePositionMarkerId !== marker.id && !isNullOrEmpty(popupText) &&
             <Popup>
               {popupText}
             </Popup>
           }
 
-          {this.state.changePositionMarkerId == marker.id &&
+          {this.state.changePositionMarkerId === marker.id &&
             <Popup>
               <div className="change-position-popup">
               <Label>{strings.LabelChangePosition}</Label>
@@ -279,15 +297,16 @@ export default class Map extends React.Component<IMapProps, IMapState> {
                   const currentMarker = this.allLeafletMarker[marker.id];
                   const latLng: L.LatLng = currentMarker.getLatLng();
 
-                  this.state.markerItems[index].latitude = latLng.lat;
-                  this.state.markerItems[index].longitude = latLng.lng;
+                  const markerItems = this.state.markerItems;
+                  markerItems[index].latitude = latLng.lat;
+                  markerItems[index].longitude = latLng.lng;
 
-                  currentMarker.dragging.disable();
+                  currentMarker.dragging!.disable();
 
                   this.setState({
                     changePositionMarkerId: "-1",
                     showAddOrEditMarkerPanel: true,
-                    markerItems: this.state.markerItems
+                    markerItems
                   });
 
                   if(isFunction(this.props.onMarkerCollectionChanged)) {
@@ -303,7 +322,7 @@ export default class Map extends React.Component<IMapProps, IMapState> {
                   const currentMarker = this.allLeafletMarker[marker.id];
                   currentMarker.setLatLng([marker.latitude, marker.longitude]);
 
-                  currentMarker.dragging.disable();
+                  currentMarker.dragging!.disable();
 
                   this.setState({
                     changePositionMarkerId: "-1",
@@ -331,40 +350,58 @@ export default class Map extends React.Component<IMapProps, IMapState> {
     );
   }
 
-  private renderSearchBox(): JSX.Element {
+  private fitMapToMarkers(map: L.Map): void {
+    const points = this.state.markerItems
+      .filter(m => !isNaN(m.latitude) && !isNaN(m.longitude))
+      .map(m => [m.latitude, m.longitude] as [number, number]);
 
-    if(!this.props.plugins.searchBox) {
-      return (<></>);
+    if (points.length === 0) {
+      return;
     }
 
-    return (
-      <SearchPlugin onLocationSelected={(lat: number, lon: number) => {
-        this.map.setView([lat, lon], this.props.maxZoom > 18 ? 18 : this.props.maxZoom);
+    // maxZoom caps how far in a single marker (a zero-size bounds) zooms.
+    map.fitBounds(L.latLngBounds(points), { maxZoom: 16, padding: [30, 30] });
+  }
 
-        const defaultRadius = 12;
-        const circleOptions = {
-            inner: {
-                color: '#136AEC',
-                fillColor: '#2A93EE',
-                fillOpacity: 1,
-                weight: 1.5,
-                opacity: 0.7,
-                radius: defaultRadius / 4
-            },
-            outer: {
-                color: "#136AEC",
-                fillColor: "#136AEC",
-                fillOpacity: 0.15,
-                opacity: 0.3,
-                weight: 1,
-                radius: defaultRadius
-            }
-        };
+  private onSearchLocationSelected(lat: number, lon: number, boundingBox?: [number, number, number, number]): void {
+    if (!this.map) {
+      return;
+    }
 
-        L.circle([lat, lon], circleOptions.outer).addTo(this.map);
-        L.circle([lat, lon], circleOptions.inner).addTo(this.map);
-      }} />
-    );
+    // Frame the map to the place's bounding box — a city frames the whole city, a
+    // precise address zooms to the street — instead of a fixed deep zoom that dropped
+    // the pin on a random point inside the city. Capped so addresses don't over-zoom.
+    if (boundingBox) {
+      this.map.fitBounds(
+        [[boundingBox[0], boundingBox[2]], [boundingBox[1], boundingBox[3]]],
+        { maxZoom: 16, padding: [20, 20] }
+      );
+    } else {
+      this.map.setView([lat, lon], Math.min(13, this.props.maxZoom ?? 13));
+    }
+
+    const defaultRadius = 12;
+    const circleOptions = {
+        inner: {
+            color: '#136AEC',
+            fillColor: '#2A93EE',
+            fillOpacity: 1,
+            weight: 1.5,
+            opacity: 0.7,
+            radius: defaultRadius / 4
+        },
+        outer: {
+            color: "#136AEC",
+            fillColor: "#136AEC",
+            fillOpacity: 0.15,
+            opacity: 0.3,
+            weight: 1,
+            radius: defaultRadius
+        }
+    };
+
+    L.circle([lat, lon], circleOptions.outer).addTo(this.map);
+    L.circle([lat, lon], circleOptions.inner).addTo(this.map);
   }
 
   private showClickContent(): JSX.Element {
@@ -372,23 +409,23 @@ export default class Map extends React.Component<IMapProps, IMapState> {
       return (<></>);
     }
 
-    if(this.state.currentMarker.type == "None") {
+    if(this.state.currentMarker!.type === "None") {
       return (<></>);
     }
 
-    if(this.state.currentMarker.type == "Url" && this.state.currentMarker.markerClickProps.url.target != "embedded") {
-      window.open(this.state.currentMarker.markerClickProps.url.href, this.state.currentMarker.markerClickProps.url.target);
+    if(this.state.currentMarker!.type === "Url" && this.state.currentMarker!.markerClickProps!.url.target !== "embedded") {
+      window.open(this.state.currentMarker!.markerClickProps!.url.href, this.state.currentMarker!.markerClickProps!.url.target);
       return (<></>);
     }
 
-    if (this.state.currentMarker.type == "Panel") {
+    if (this.state.currentMarker!.type === "Panel") {
       return (<Panel
         type={PanelType.medium}
         isOpen={true}
         onDismiss={() => { this.onContentPanelOrDialogDismiss(); }}
-        headerText={this.state.currentMarker.markerClickProps.content.headerText}
+        headerText={this.state.currentMarker!.markerClickProps!.content.headerText}
         closeButtonAriaLabel="Close"
-        onRenderFooterContent={(props: IPanelProps) => {
+        onRenderFooterContent={(props?: IPanelProps) => {
           return (<div>
             <DefaultButton onClick={() => { this.onContentPanelOrDialogDismiss(); }}>Close</DefaultButton>
           </div>);
@@ -397,7 +434,7 @@ export default class Map extends React.Component<IMapProps, IMapState> {
         // at the bottom of the page
         isFooterAtBottom={true}
       >
-        <RichText isEditMode={false} value={this.state.currentMarker.markerClickProps.content.html} />
+        <RichText isEditMode={false} value={this.state.currentMarker!.markerClickProps!.content.html} />
 
       </Panel>);
     }
@@ -406,7 +443,7 @@ export default class Map extends React.Component<IMapProps, IMapState> {
     const height: number = window.innerHeight - 300;
     let dialogWidth = 900;
     
-    if(width < dialogWidth || this.state.currentMarker.type == "Url") {
+    if(width < dialogWidth || this.state.currentMarker!.type === "Url") {
       dialogWidth = width; 
     }
 
@@ -415,7 +452,7 @@ export default class Map extends React.Component<IMapProps, IMapState> {
             hidden={false}
             onDismiss={() => { this.onContentPanelOrDialogDismiss(); }}
             dialogContentProps={{
-                title: this.state.currentMarker.markerClickProps.content.headerText,
+                title: this.state.currentMarker!.markerClickProps!.content.headerText,
                 type: DialogType.close
             }}
             minWidth={dialogWidth}
@@ -425,10 +462,10 @@ export default class Map extends React.Component<IMapProps, IMapState> {
             }}
         >
           <DialogContent>
-              {this.state.currentMarker.type == "Dialog" && <RichText isEditMode={false} value={this.state.currentMarker.markerClickProps.content.html} />}
-              {this.state.currentMarker.type == "Url" && 
+              {this.state.currentMarker!.type === "Dialog" && <RichText isEditMode={false} value={this.state.currentMarker!.markerClickProps!.content.html} />}
+              {this.state.currentMarker!.type === "Url" && 
                 <div style={{height: `${height}px`}}>
-                  <iframe src={this.state.currentMarker.markerClickProps.url.href}></iframe>
+                  <iframe src={this.state.currentMarker!.markerClickProps!.url.href} />
                 </div>
               }
           </DialogContent>
@@ -446,23 +483,22 @@ export default class Map extends React.Component<IMapProps, IMapState> {
     return (
       <AddOrEditPanel 
         markerCategories={this.state.markerCategories} 
-        markerItem={this.state.currentMarker} 
+        markerItem={this.state.currentMarker!}
         onDismiss={() => { this.onConfigPanelDismiss(); }}
         onDeleteMarker={(markerItem: IMarker) => {
 
-          const markerIndex: number = this.state.markerItems.IndexOf(m => m.id == markerItem.id);
-
+          const markerIndex: number = this.state.markerItems.IndexOf(m => m.id === markerItem.id);
 
           this.state.markerItems.RemoveAt(markerIndex);
-          
+
           if(isFunction(this.props.onMarkerCollectionChanged)) {
-            this.props.onMarkerCollectionChanged(this.state.markerItems); 
+            this.props.onMarkerCollectionChanged(this.state.markerItems);
           }
 
-          this.state.rightMouseTarget = undefined;
+          this.setState({ rightMouseTarget: undefined });
           this.onConfigPanelDismiss();
 
-          
+
         }}
         onChangePositionClick={(markerItem: IMarker) => {
 
@@ -475,13 +511,12 @@ export default class Map extends React.Component<IMapProps, IMapState> {
           
         }}
         onMarkerCategoriesChanged={(markerCategories: IMarkerCategory[]) => {
-          this.state.markerCategories = markerCategories;
 
           if(isFunction(this.props.onMarkerCategoriesChanged)) {
-            this.props.onMarkerCategoriesChanged(markerCategories); 
+            this.props.onMarkerCategoriesChanged(markerCategories);
           }
 
-          this.setAllCatagoriesDictionary();
+          this.setAllCatagoriesDictionary(markerCategories);
 
           this.setState({
             markerCategories: markerCategories
@@ -489,21 +524,23 @@ export default class Map extends React.Component<IMapProps, IMapState> {
         }}
         onMarkerChanged={(markerItem: IMarker, isNewMarker: boolean) => {
 
+          const markerItems = this.state.markerItems;
+
           if(isNewMarker) {
-            this.state.markerItems.push(markerItem);
+            markerItems.push(markerItem);
           }
           else {
-            const markerIndex: number = this.state.markerItems.IndexOf(m => m.id == markerItem.id);
+            const markerIndex: number = markerItems.IndexOf(m => m.id === markerItem.id);
 
             if(markerIndex >= 0) {
-              this.state.markerItems[markerIndex] = markerItem;
+              markerItems[markerIndex] = markerItem;
             }
           }
 
-          this.state.rightMouseTarget = undefined;
+          this.setState({ markerItems, rightMouseTarget: undefined });
 
           if(isFunction(this.props.onMarkerCollectionChanged)) {
-            this.props.onMarkerCollectionChanged(this.state.markerItems); 
+            this.props.onMarkerCollectionChanged(this.state.markerItems);
           }
 
           this.onConfigPanelDismiss();
@@ -515,67 +552,73 @@ export default class Map extends React.Component<IMapProps, IMapState> {
   private onConfigPanelDismiss(): void {
     this.setState({
       showAddOrEditMarkerPanel: false,
-      currentMarker: null
+      currentMarker: undefined
     });
   }
 
   private onContentPanelOrDialogDismiss(): void {
     this.setState({
       showClickContent: false,
-      currentMarker: null
+      currentMarker: undefined
     });
   }
 
-  private createIcon(marker: IMarker, markerCategory: IMarkerCategory ): L.Icon {
+  private createIcon(marker: IMarker, markerCategory: IMarkerCategory | undefined): L.Icon {
     const markerIcon = new L.Icon({
       iconAnchor: [13, 36],
       popupAnchor: [0, -36],
-      shadowUrl: null,
-      shadowSize: null,
-      shadowAnchor: null,
+      shadowUrl: undefined,
+      shadowSize: undefined,
+      shadowAnchor: undefined,
       iconSize: new L.Point(27, 36),
       className: cssClasses('leaflet-div-icon', `marker-type-${marker.type.toLowerCase()}`)
     });
-    
+
     markerIcon.createIcon = (oldIcon: HTMLElement) => {
-      const wrapper = document.createElement("div");    
+      if(isset(oldIcon)) {
+        ReactDom.unmountComponentAtNode(oldIcon);
+      }
+
+      const wrapper = document.createElement("div");
       wrapper.classList.add("leaflet-marker-icon");
       wrapper.classList.add(`marker-type-${marker.type.toLowerCase()}`);
 
       wrapper.dataset.markerid = marker.id;
-    
-      wrapper.style.marginLeft = (markerIcon.options.iconAnchor[0] * -1) + "px";
-      wrapper.style.marginTop = (markerIcon.options.iconAnchor[1] * -1) + "px";
-      const iconProperties: IMarkerIcon = isNullOrEmpty(markerCategory) ? marker.iconProperties : markerCategory.iconProperties;
+
+      wrapper.style.marginLeft = ((markerIcon.options.iconAnchor! as [number, number])[0] * -1) + "px";
+      wrapper.style.marginTop = ((markerIcon.options.iconAnchor! as [number, number])[1] * -1) + "px";
+      const iconProperties: IMarkerIcon = (isNullOrEmpty(markerCategory) ? marker.iconProperties : markerCategory!.iconProperties)!;
       ReactDom.render(<MarkerIcon {...iconProperties} />, wrapper);
     
       return wrapper;
     };
 
-    return markerIcon as any as L.Icon;
+    return markerIcon as unknown as L.Icon;
   }
 
   private onCreateNewMarkerContextMenuItemClick(): void {
-    this.state.currentMarker = cloneDeep(emptyMarkerItem);
-    this.state.currentMarker.latitude = this.lastLatLngRightClickPosition.lat;
-    this.state.currentMarker.longitude = this.lastLatLngRightClickPosition.lng;
-    this.state.showAddOrEditMarkerPanel = true;
+    const currentMarker = cloneDeep(emptyMarkerItem);
+    currentMarker.latitude = this.lastLatLngRightClickPosition.lat;
+    currentMarker.longitude = this.lastLatLngRightClickPosition.lng;
 
-    this.setState({...this.state});
+    this.setState({
+      currentMarker,
+      showAddOrEditMarkerPanel: true
+    });
   }
 
   private onSetStartView(): void {
 
     if(isFunction(this.props.onStartViewSet)) {
-      const zoom: number = this.map.getZoom();
-      const latLng: L.LatLng = this.map.getCenter();
+      const zoom: number = this.map!.getZoom();
+      const latLng: L.LatLng = this.map!.getCenter();
       this.props.onStartViewSet(zoom, latLng.lat, latLng.lng);
     }
   }
 
-  private setAllCatagoriesDictionary(): void {
+  private setAllCatagoriesDictionary(markerCategories: IMarkerCategory[] = this.state.markerCategories): void {
     this.allCatagories = {};
-    this.state.markerCategories.forEach((category: IMarkerCategory) => {
+    markerCategories.forEach((category: IMarkerCategory) => {
       this.allCatagories[category.id] = category;
     });
   }

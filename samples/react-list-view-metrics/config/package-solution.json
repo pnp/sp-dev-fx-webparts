@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "List View Metrics Web Part",
+    "id": "810861d1-e880-4565-937a-25c02df93dd1",
+    "version": "1.0.0.11",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Tanel Vahk",
+      "websiteUrl": "https://deptive.co.nz/",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.18.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "The List View Metrics Web Part displays key metrics from SharePoint lists."
+      },
+      "longDescription": {
+        "default": "The List View Metrics Web Part displays key metrics from SharePoint lists."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "List View Metrics Web Part",
+        "description": "The feature that activates elements of the listviewmetricswebpart solution.",
+        "id": "41443151-ee94-45b7-9cc9-181ece36cbab",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/listviewmetricswebpart.sppkg"
+  }
+}

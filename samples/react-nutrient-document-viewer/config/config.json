@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "nutrient-pdf-viewer-web-part-for-share-point-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/nutrientPdfViewerWebPartForSharePoint/NutrientPdfViewerWebPartForSharePointWebPart.js",
+          "manifest": "./src/webparts/nutrientPdfViewerWebPartForSharePoint/NutrientPdfViewerWebPartForSharePointWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "NutrientPdfViewerWebPartForSharePointWebPartStrings": "lib/webparts/nutrientPdfViewerWebPartForSharePoint/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}

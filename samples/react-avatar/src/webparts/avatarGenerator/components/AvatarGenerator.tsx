@@ -1,5 +1,3 @@
-/* global _topvar, var2 */
-
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import styles from './AvatarGenerator.module.scss';
@@ -12,8 +10,8 @@ import { TabPanel } from "./TabPanel";
 import * as ReactDOM from 'react-dom';
 import Button from '@material-ui/core/Button';
 import * as FileSaver from 'file-saver';
-import { MSGraphClient } from "@microsoft/sp-http";
-import { ChoiceGroup, IChoiceGroupOption } from 'office-ui-fabric-react/lib/ChoiceGroup';
+import { MSGraphClientV3 } from "@microsoft/sp-http";
+import { ChoiceGroup, IChoiceGroupOption } from '@fluentui/react/lib/ChoiceGroup';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -63,8 +61,7 @@ export default class AvatarGenerator extends React.Component<IAvatarGeneratorPro
   public componentDidMount() {
 
     const { optionContext } = this;
-    const value = optionContext.options;
-    optionContext.options.map((option, index) => {
+    optionContext.options.map((option) => {
       const optionState = optionContext.getOptionState(option.key)!;
       if (optionState.available <= 0) {
         return null;
@@ -73,7 +70,7 @@ export default class AvatarGenerator extends React.Component<IAvatarGeneratorPro
     this.forceUpdate();
   }
 
-  public a11yProps(index) {
+  public a11yProps(index: number) {
     return {
       id: `scrollable-auto-tab-${index}`,
       'aria-controls': `scrollable-auto-tabpanel-${index}`,
@@ -85,13 +82,13 @@ export default class AvatarGenerator extends React.Component<IAvatarGeneratorPro
   }
 
   private saveAsProfile = (imageBlob: Blob) => {
-    var reader = new FileReader();
-    var tempfile = new File([imageBlob], "myavataaars.png", { type: "image/png" });
+    const tempfile = new File([imageBlob], "myavataaars.png", { type: "image/png" });
     this.props.context.msGraphClientFactory
-      .getClient().then((client: MSGraphClient) => {
+      .getClient('3')
+      .then((client: MSGraphClientV3) => {
         client
           .api("me/photo/$value")
-          .version("v1.0").header("Content-Type", "image/png").put(tempfile, (err, res) => {
+          .version("v1.0").header("Content-Type", "image/png").put(tempfile, (err) => {
             if (!err) {
               this.setState({
                 open: true, savedMessage: "Your profile picture is updated",
@@ -108,15 +105,15 @@ export default class AvatarGenerator extends React.Component<IAvatarGeneratorPro
   }
 
   private onDownloadPNG = (isDownload: boolean) => {
+    // eslint-disable-next-line react/no-find-dom-node
     const svgNode = ReactDOM.findDOMNode(this.avatarRef!);
     const canvas = this.canvasRef!;
     const ctx = canvas.getContext('2d')!;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    const anyWindow = window as any;
-    const DOMURL = anyWindow.URL || anyWindow.webkitURL || window;
+    const DOMURL = window.URL || (window as { webkitURL?: typeof URL }).webkitURL || window.URL;
 
-    const data = svgNode["outerHTML"];
+    const data = (svgNode as Element).outerHTML;
     const img = new Image(canvas.width, canvas.height);
     const svg = new Blob([data], { type: 'image/svg+xml' });
     const url = DOMURL.createObjectURL(svg);
@@ -161,12 +158,12 @@ export default class AvatarGenerator extends React.Component<IAvatarGeneratorPro
               />
               <ChoiceGroup styles={{ flexContainer: { display: "flex" } }}
                 defaultSelectedKey={AvatarStyle.Circle} options={options} onChange={this._onChange} label="Avatar Style" />
-              <Button variant="contained" style={{ marginTop: 10 }} color="primary" onClick={(ev) => {
+              <Button variant="contained" style={{ marginTop: 10 }} color="primary" onClick={() => {
                 this.onDownloadPNG(false);
               }}>
                 Save as Profile Picture
               </Button>
-              <Button variant="contained" style={{ marginTop: 10 }} color="primary" onClick={(ev) => {
+              <Button variant="contained" style={{ marginTop: 10 }} color="primary" onClick={() => {
                 this.onDownloadPNG(true);
               }}>
                 Download as Image
@@ -181,18 +178,18 @@ export default class AvatarGenerator extends React.Component<IAvatarGeneratorPro
                   value={this.state.value}
                   onChange={(ev, num) => { this.setState({ value: num }); }}
                   aria-label="simple tabs example">
-                  {this.optionContext.options.map((option, index) => {
+                  {this.optionContext.options.map((option) => {
                     const optionState = this.optionContext.getOptionState(option.key)!;
                     if (optionState.available <= 0) {
                       return null;
                     } else {
                       count++;
-                      return <Tab label={option.label} {...this.a11yProps(count)}></Tab>;
+                      return <Tab key={count} label={option.label} {...this.a11yProps(count)} />;
                     }
                   })}
                 </Tabs>
               </AppBar>
-              {this.optionContext.options.map((option, index) => {
+              {this.optionContext.options.map((option) => {
                 const optionState = this.optionContext.getOptionState(option.key)!;
                 if (optionState.available <= 0) {
                   return null;
@@ -200,34 +197,31 @@ export default class AvatarGenerator extends React.Component<IAvatarGeneratorPro
                   internalcount++;
                   switch (option.key) {
                     case "topType":
-                      return <TabPanel value={this.state.value} index={internalcount}>
+                      return <TabPanel key={internalcount} value={this.state.value} index={internalcount}>
                         {optionState.options
-                          .map(type => {
-                            return (<div className={styles.piece}
-                              onClick={(ev) => {
-								
-                                var selectedData = this.optionContext["_data"];
+                          .map((type, idx) => {
+                            return (<div key={idx} className={styles.piece}
+                              onClick={() => {
+                                const selectedData = this.optionContext["_data"];
                                 selectedData[`${option.key}`] = type;
-								this.optionContext.setData(selectedData as any);
-								let _topvar = "LongHairFro";
-								}}
+                                this.optionContext.setData(selectedData as Record<string, string>);
+                              }}
                             ><Piece avatarStyle="Circle"
                               pieceType="top"
                               pieceSize="100"
-							  topType={type} /></div>);
-                          })						  }
-						  
+                              topType={type} /></div>);
+                          })}
                       </TabPanel>;
-					  					  break;
+                      break;
                     case "accessoriesType":
-                      return <TabPanel value={this.state.value} index={internalcount}>
+                      return <TabPanel key={internalcount} value={this.state.value} index={internalcount}>
                         {optionState.options
-                          .map(type => {
-                            return (<div className={styles.piece}
-                              onClick={(ev) => {
-                                var selectedData = this.optionContext["_data"];
+                          .map((type, idx) => {
+                            return (<div key={idx} className={styles.piece}
+                              onClick={() => {
+                                const selectedData = this.optionContext["_data"];
                                 selectedData[`${option.key}`] = type;
-                                this.optionContext.setData(selectedData as any);
+                                this.optionContext.setData(selectedData as Record<string, string>);
                               }}
                             ><Piece avatarStyle=""
                               pieceType="accessories"
@@ -235,55 +229,54 @@ export default class AvatarGenerator extends React.Component<IAvatarGeneratorPro
                               accessoriesType={type} /></div>);
                           })}
                       </TabPanel>;
-					  break;
-					case "hairColor":
-                      return <TabPanel value={this.state.value} index={internalcount}>
+                      break;
+                    case "hairColor":
+                      return <TabPanel key={internalcount} value={this.state.value} index={internalcount}>
                         {optionState.options
-                          .map(type => {
-                            return (<div className={styles.piece}
-                              onClick={(ev) => {
-                                var selectedData = this.optionContext["_data"];
-								selectedData[`${option.key}`] = type;
-                                this.optionContext.setData(selectedData as any);
-								
+                          .map((type, idx) => {
+                            return (<div key={idx} className={styles.piece}
+                              onClick={() => {
+                                const selectedData = this.optionContext["_data"];
+                                selectedData[`${option.key}`] = type;
+                                this.optionContext.setData(selectedData as Record<string, string>);
                               }}
                             > <Piece
                                 avatarStyle=""
                                 pieceType="top"
                                 pieceSize="100"
-								hairColor={type} />
-                            </div>); 
+                                hairColor={type} />
+                            </div>);
                           })}
                       </TabPanel>;
-					  break;
-					case "hatColor":
-                      return <TabPanel value={this.state.value} index={internalcount}>
+                      break;
+                    case "hatColor":
+                      return <TabPanel key={internalcount} value={this.state.value} index={internalcount}>
                         {optionState.options
-                          .map(type => {
-                            return (<div className={styles.piece}
-                              onClick={(ev) => {
-                                var selectedData = this.optionContext["_data"];
+                          .map((type, idx) => {
+                            return (<div key={idx} className={styles.piece}
+                              onClick={() => {
+                                const selectedData = this.optionContext["_data"];
                                 selectedData[`${option.key}`] = type;
-                                this.optionContext.setData(selectedData as any);
+                                this.optionContext.setData(selectedData as Record<string, string>);
                               }}
                             > <Piece
                                 avatarStyle=""
                                 pieceType="top"
                                 pieceSize="100"
                                 topType="WinterHat1"
-								hatColor={type} /></div>);
+                                hairColor={type} /></div>);
                           })}
                       </TabPanel>;
                       break;
                     case "facialHairType":
-                      return <TabPanel value={this.state.value} index={internalcount}>
+                      return <TabPanel key={internalcount} value={this.state.value} index={internalcount}>
                         {optionState.options
-                          .map(type => {
-                            return (<div className={styles.piece}
-                              onClick={(ev) => {
-                                var selectedData = this.optionContext["_data"];
+                          .map((type, idx) => {
+                            return (<div key={idx} className={styles.piece}
+                              onClick={() => {
+                                const selectedData = this.optionContext["_data"];
                                 selectedData[`${option.key}`] = type;
-                                this.optionContext.setData(selectedData as any);
+                                this.optionContext.setData(selectedData as Record<string, string>);
                               }}
                             ><Piece avatarStyle=""
                               pieceType="facialHair"
@@ -292,33 +285,33 @@ export default class AvatarGenerator extends React.Component<IAvatarGeneratorPro
                           })}
                       </TabPanel>;
                       break;
-					case "facialHairColor":
-                      return <TabPanel value={this.state.value} index={internalcount}>
+                    case "facialHairColor":
+                      return <TabPanel key={internalcount} value={this.state.value} index={internalcount}>
                         {optionState.options
-                          .map(type => {
-                            return (<div className={styles.piece}
-                              onClick={(ev) => {
-                                var selectedData = this.optionContext["_data"];
+                          .map((type, idx) => {
+                            return (<div key={idx} className={styles.piece}
+                              onClick={() => {
+                                const selectedData = this.optionContext["_data"];
                                 selectedData[`${option.key}`] = type;
-                                this.optionContext.setData(selectedData as any);
+                                this.optionContext.setData(selectedData as Record<string, string>);
                               }}
                             ><Piece avatarStyle=""
                               pieceType="facialHair"
                               pieceSize="100"
-							  facialHairType="BeardMajestic"
+                              facialHairType="BeardMajestic"
                               facialHairColor={type} /></div>);
                           })}
                       </TabPanel>;
                       break;
                     case "clotheType":
-                      return <TabPanel value={this.state.value} index={internalcount}>
+                      return <TabPanel key={internalcount} value={this.state.value} index={internalcount}>
                         {optionState.options
-                          .map(type => {
-                            return (<div className={styles.piece}
-                              onClick={(ev) => {
-                                var selectedData = this.optionContext["_data"];
+                          .map((type, idx) => {
+                            return (<div key={idx} className={styles.piece}
+                              onClick={() => {
+                                const selectedData = this.optionContext["_data"];
                                 selectedData[`${option.key}`] = type;
-                                this.optionContext.setData(selectedData as any);
+                                this.optionContext.setData(selectedData as Record<string, string>);
                               }}
                             ><Piece avatarStyle=""
                               pieceType="clothe"
@@ -328,50 +321,50 @@ export default class AvatarGenerator extends React.Component<IAvatarGeneratorPro
                       </TabPanel>;
                       break;
                     case "clotheColor":
-                      return <TabPanel value={this.state.value} index={internalcount}>
+                      return <TabPanel key={internalcount} value={this.state.value} index={internalcount}>
                         {optionState.options
-                          .map(type => {
-                            return (<div className={styles.piece}
-                              onClick={(ev) => {
-                                var selectedData = this.optionContext["_data"];
+                          .map((type, idx) => {
+                            return (<div key={idx} className={styles.piece}
+                              onClick={() => {
+                                const selectedData = this.optionContext["_data"];
                                 selectedData[`${option.key}`] = type;
-                                this.optionContext.setData(selectedData as any);
+                                this.optionContext.setData(selectedData as Record<string, string>);
                               }}
                             ><Piece avatarStyle=""
                               pieceType="clothe"
                               pieceSize="100"
-							  clotheType="ShirtCrewNeck"
+                              clotheType="ShirtCrewNeck"
                               clotheColor={type} /></div>);
                           })}
                       </TabPanel>;
                       break;
                     case "graphicType":
-                      return <TabPanel value={this.state.value} index={internalcount}>
+                      return <TabPanel key={internalcount} value={this.state.value} index={internalcount}>
                         {optionState.options
-                          .map(type => {
-                            return (<div className={styles.piece}
-                              onClick={(ev) => {
-                                var selectedData = this.optionContext["_data"];
+                          .map((type, idx) => {
+                            return (<div key={idx} className={styles.piece}
+                              onClick={() => {
+                                const selectedData = this.optionContext["_data"];
                                 selectedData[`${option.key}`] = type;
-                                this.optionContext.setData(selectedData as any);
+                                this.optionContext.setData(selectedData as Record<string, string>);
                               }}
                             ><Piece avatarStyle=""
                               pieceType="graphics"
                               pieceSize="200"
-							  style={{filter: 'invert(1)'}}
+                              style={{filter: 'invert(1)'}}
                               graphicType={type} /></div>);
                           })}
                       </TabPanel>;
                       break;
                     case "eyeType":
-                      return <TabPanel value={this.state.value} index={internalcount}>
+                      return <TabPanel key={internalcount} value={this.state.value} index={internalcount}>
                         {optionState.options
-                          .map(type => {
-                            return (<div className={styles.piece}
-                              onClick={(ev) => {
-                                var selectedData = this.optionContext["_data"];
+                          .map((type, idx) => {
+                            return (<div key={idx} className={styles.piece}
+                              onClick={() => {
+                                const selectedData = this.optionContext["_data"];
                                 selectedData[`${option.key}`] = type;
-                                this.optionContext.setData(selectedData as any);
+                                this.optionContext.setData(selectedData as Record<string, string>);
                               }}
                             ><Piece avatarStyle=""
                               pieceType="eyes"
@@ -381,14 +374,14 @@ export default class AvatarGenerator extends React.Component<IAvatarGeneratorPro
                       </TabPanel>;
                       break;
                     case "eyebrowType":
-                      return <TabPanel value={this.state.value} index={internalcount}>
+                      return <TabPanel key={internalcount} value={this.state.value} index={internalcount}>
                         {optionState.options
-                          .map(type => {
-                            return (<div className={styles.piece}
-                              onClick={(ev) => {
-                                var selectedData = this.optionContext["_data"];
+                          .map((type, idx) => {
+                            return (<div key={idx} className={styles.piece}
+                              onClick={() => {
+                                const selectedData = this.optionContext["_data"];
                                 selectedData[`${option.key}`] = type;
-                                this.optionContext.setData(selectedData as any);
+                                this.optionContext.setData(selectedData as Record<string, string>);
                               }}
                             ><Piece avatarStyle=""
                               pieceType="eyebrows"
@@ -398,14 +391,14 @@ export default class AvatarGenerator extends React.Component<IAvatarGeneratorPro
                       </TabPanel>;
                       break;
                     case "mouthType":
-                      return <TabPanel value={this.state.value} index={internalcount}>
+                      return <TabPanel key={internalcount} value={this.state.value} index={internalcount}>
                         {optionState.options
-                          .map(type => {
-                            return (<div className={styles.piece}
-                              onClick={(ev) => {
-                                var selectedData = this.optionContext["_data"];
+                          .map((type, idx) => {
+                            return (<div key={idx} className={styles.piece}
+                              onClick={() => {
+                                const selectedData = this.optionContext["_data"];
                                 selectedData[`${option.key}`] = type;
-                                this.optionContext.setData(selectedData as any);
+                                this.optionContext.setData(selectedData as Record<string, string>);
                               }}
                             ><Piece avatarStyle=""
                               pieceType="mouth"
@@ -415,14 +408,14 @@ export default class AvatarGenerator extends React.Component<IAvatarGeneratorPro
                       </TabPanel>;
                       break;
                     case "skinColor":
-                      return <TabPanel value={this.state.value} index={internalcount}>
+                      return <TabPanel key={internalcount} value={this.state.value} index={internalcount}>
                         {optionState.options
-                          .map(type => {
-                            return (<div className={styles.piece}
-                              onClick={(ev) => {
-                                var selectedData = this.optionContext["_data"];
+                          .map((type, idx) => {
+                            return (<div key={idx} className={styles.piece}
+                              onClick={() => {
+                                const selectedData = this.optionContext["_data"];
                                 selectedData[`${option.key}`] = type;
-                                this.optionContext.setData(selectedData as any);
+                                this.optionContext.setData(selectedData as Record<string, string>);
                               }}
                             ><Piece avatarStyle=""
                               pieceType="skin"
@@ -433,7 +426,6 @@ export default class AvatarGenerator extends React.Component<IAvatarGeneratorPro
                       break;
                     default:
                       return null;
-                      break;
                   }
                 }
               })}

@@ -1,0 +1,378 @@
+.smartTocWrapper {
+  position: relative;
+}
+
+.smartToc {
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.card {
+  background: #ffffff;
+  border: 1px solid #c8c6c4;
+  border-radius: 6px;
+  padding: 12px;
+  box-shadow: none;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #323130;
+  padding: 0;
+  margin: 8px 0;
+  border-bottom: 1px solid #edebe9;
+}
+
+.metadata {
+  margin-top: 2px;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #605e5c;
+}
+
+.searchBox {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 8px 0 4px 0;
+  padding: 7px 10px;
+  position: relative;
+  z-index: 1;
+
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 13px;
+  color: #323130;
+
+  background: #ffffff;
+  border: 1px solid #c8c6c4;
+  border-radius: 4px;
+  outline: none;
+
+  transition:
+    border-color 0.15s ease-in-out,
+    box-shadow 0.15s ease-in-out;
+}
+
+.searchBox:focus {
+  border-color: #0078d4;
+  box-shadow: 0 0 0 1px #0078d4;
+}
+
+.searchHidden {
+  display: none !important;
+}
+
+.empty,
+.emptyMessage {
+  font-size: 13px;
+  color: #605e5c;
+  padding: 8px;
+  background: #f3f2f1;
+  border: 1px solid #edebe9;
+  border-radius: 6px;
+}
+
+.rootList,
+.childList {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+}
+
+.childList {
+  margin-left: 0;
+  padding-left: 20px;
+}
+
+.item {
+  margin: 0;
+}
+
+.link,
+.tocItem {
+  display: flex;
+  flex-direction: column;
+
+  width: 100%;
+  box-sizing: border-box;
+  padding: 6px 20px;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  font-weight: 500;
+  color: #605e5c;
+  text-align: left;
+  text-decoration: none;
+  background: transparent;
+  border: 0;
+  border-left: 2px solid transparent;
+  border-radius: 0;
+  cursor: pointer;
+  transition:
+    color 0.15s ease-in-out,
+    background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out,
+    padding-left 0.15s ease-in-out;
+}
+
+.link:hover,
+.tocItem:hover {
+  color: #0078d4;
+  border-left: 2px solid #80bdff;
+  padding-left: 18px;
+  background: rgba(0, 120, 212, 0.04);
+  text-decoration: none;
+}
+
+.link:focus,
+.tocItem:focus {
+  outline: none;
+  color: #0078d4;
+  border-left: 2px solid #0078d4;
+  padding-left: 18px;
+  background: rgba(0, 120, 212, 0.06);
+}
+
+.active,
+.active:hover,
+.active:focus {
+  padding-left: 18px;
+  font-weight: 700;
+  color: #0078d4;
+  background: rgba(0, 120, 212, 0.08);
+  border-left: 2px solid #0078d4;
+}
+
+.number {
+  display: inline-block;
+  min-width: 28px;
+  margin-right: 6px;
+  color: #605e5c;
+  font-variant-numeric: tabular-nums;
+}
+
+.level1 .link,
+.level1.tocItem {
+  padding-left: 20px;
+  font-weight: 700;
+  color: #0066ff;
+}
+
+.level1 .link:hover,
+.level1 .tocItem:hover,
+.level1 .link:focus,
+.level1 .tocItem:focus,
+.level1 .active {
+  padding-left: 18px;
+}
+
+.level2 .link,
+.level2.tocItem {
+  padding-left: 32px;
+  font-weight: 500;
+  color: #605e5c;
+}
+
+.level2 .link:hover,
+.level2 .tocItem:hover,
+.level2 .link:focus,
+.level2 .tocItem:focus,
+.level2 .active {
+  padding-left: 30px;
+}
+
+.level3 .link,
+.level3.tocItem {
+  padding-left: 48px;
+  font-weight: 500;
+  color: #605e5c;
+}
+
+.level3 .link:hover,
+.level3 .tocItem:hover,
+.level3 .link:focus,
+.level3 .tocItem:focus,
+.level3 .active {
+  padding-left: 46px;
+}
+
+.level4 .link,
+.level4.tocItem {
+  padding-left: 64px;
+  font-weight: 500;
+  color: #605e5c;
+}
+
+.level4 .link:hover,
+.level4 .tocItem:hover,
+.level4 .link:focus,
+.level4 .tocItem:focus,
+.level4 .active {
+  padding-left: 62px;
+}
+
+.sticky {
+  position: sticky;
+  top: 88px;
+  z-index: 10;
+}
+
+.floatingButton {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  width: 52px;
+  height: 52px;
+  z-index: 10001;
+  background: #0078d4;
+  color: #ffffff;
+  border: 1px solid #0078d4;
+  border-radius: 50%;
+  padding: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 52px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  transition:
+    background 0.15s ease-in-out,
+    border-color 0.15s ease-in-out;
+}
+
+.floatingButton:hover {
+  background: #106ebe;
+  border-color: #106ebe;
+}
+
+.floatingButton:focus {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.drawerOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  background: rgba(50, 49, 48, 0.35);
+  animation: fadeIn 160ms ease-out;
+}
+
+.drawerPanel,
+.drawer {
+  position: fixed;
+  top: 48px;
+  right: -380px;
+  width: 340px;
+  max-width: 92vw;
+  height: calc(100vh - 48px);
+  z-index: 10000;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  background: #ffffff;
+  border-left: 1px solid #c8c6c4;
+  box-shadow: -12px 0 32px rgba(50, 49, 48, 0.18);
+  border-radius: 0;
+  transition: right 0.25s ease;
+}
+
+.drawerOpen {
+  right: 0;
+}
+
+.drawerHeader,
+.header {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 6px;
+
+  padding: 8px 16px;
+  min-height: 44px;
+
+  border-bottom: 1px solid #edebe9;
+  background: #f3f2f1;
+
+  position: relative;
+  z-index: 2;
+}
+
+.headerTopRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.drawerTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #323130;
+}
+
+.closeButton,
+.nativeClose {
+  width: 32px;
+  height: 32px;
+  margin-left: auto;
+  border: 1px solid #c8c6c4;
+  border-radius: 6px;
+  background: #ffffff;
+  color: #323130;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.15s ease-in-out;
+}
+
+.closeButton:hover,
+.nativeClose:hover {
+  background: #f3f2f1;
+}
+
+.drawerBody,
+.tocList {
+  flex: 1 1 auto;
+  min-height: 0;
+
+  padding: 12px 16px 24px 16px;
+
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  position: relative;
+  z-index: 1;
+
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+.collapsedChild {
+  display: none;
+}
+
+.childVisible {
+  display: block;
+}
+
+.tocList:hover .collapsedChild,
+.tocList:focus-within .collapsedChild {
+  display: block;
+  position: relative;
+}

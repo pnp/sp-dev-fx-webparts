@@ -63,7 +63,7 @@ import { getClassNames } from './PlaceholderComponent.styles';
  * Placeholder component
  */
 export class Placeholder extends React.Component<IPlaceholderProps, IPlaceholderState> {
-  private _crntElm: HTMLDivElement = null;
+  private _crntElm: HTMLDivElement | null = null;
 
   /**
    * Constructor
@@ -72,7 +72,7 @@ export class Placeholder extends React.Component<IPlaceholderProps, IPlaceholder
     super(props);
 
     this.state = {
-      width: null
+      width: 0
     };
 
     
@@ -118,16 +118,18 @@ export class Placeholder extends React.Component<IPlaceholderProps, IPlaceholder
    * Execute the onConfigure function
    */
   private _handleBtnClick = (event?: React.MouseEvent<HTMLButtonElement>): void => {
-    this.props.onConfigure();
+    this.props.onConfigure?.();
   }
 
   /**
    * Set the current zone width
    */
   private _setZoneWidth = (): void => {
-    this.setState({
-      width: this._crntElm.clientWidth
-    });
+    if (this._crntElm) {
+      this.setState({
+        width: this._crntElm.clientWidth
+      });
+    }
   }
 
   /**
@@ -186,7 +188,8 @@ export class Placeholder extends React.Component<IPlaceholderProps, IPlaceholder
                       text={buttonLabel}
                       ariaLabel={buttonLabel}
                       ariaDescription={typeof description === 'string' ? description : ''}
-                      onClick={this._handleBtnClick}
+                      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                      onClick={this._handleBtnClick as any}
                       theme={themeToApply} />
                   }
                 </div>

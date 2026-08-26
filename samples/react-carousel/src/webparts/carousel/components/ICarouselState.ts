@@ -1,5 +1,7 @@
+import * as React from 'react';
+
 export interface ICarouselState {
-  carouselImages: any[];
+  carouselImages: React.ReactElement<HTMLElement>[];
   isLoading: boolean;
   errorMessage: string;
   hasError: boolean;

@@ -24,7 +24,11 @@
       "description": { "default": "AwardRecognition description" },
       "officeFabricIconFontName": "Medal",
       "properties": {
-        "description": "Award Recognition"
+        "mainHeading": "Award Recognition",
+        "subHeading": "Employee of the month",
+        "cardType": "coverEffect",
+        "cardStyle": "rounded",
+        "animationChoice": "off"
       }
     }
   ]

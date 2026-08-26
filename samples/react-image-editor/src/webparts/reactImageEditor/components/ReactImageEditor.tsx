@@ -1,13 +1,22 @@
 import * as React from 'react';
 import styles from './ReactImageEditor.module.scss';
 import { WebPartTitle } from '@pnp/spfx-controls-react/lib/WebPartTitle';
-import { DisplayMode, Environment, EnvironmentType } from '@microsoft/sp-core-library';
+import { DisplayMode} from '@microsoft/sp-core-library';
 import { Placeholder } from '@pnp/spfx-controls-react/lib/Placeholder';
 import { WebPartContext } from '@microsoft/sp-webpart-base';
 import { FilePicker, IFilePickerResult } from '@pnp/spfx-controls-react/lib/FilePicker';
 import { ImageManipulation, IImageManipulationSettings } from '../../../components/ImageManipulation';
-import { IconButton } from 'office-ui-fabric-react';
-import { sp } from "@pnp/sp";
+
+
+import { ISPFXContext, spfi, SPFI, SPFx as spSPFx } from "@pnp/sp";
+
+
+import "@pnp/sp/webs";
+import "@pnp/sp/files";
+import "@pnp/sp/folders";
+
+import { IconButton } from '@fluentui/react';
+
 
 
 export interface IReactImageEditorBaseProps {
@@ -42,6 +51,7 @@ export interface IReactImageEditorState {
 }
 
 export default class ReactImageEditor extends React.Component<IReactImageEditorProps, IReactImageEditorState> {
+  private _sp: SPFI;
   constructor(props: IReactImageEditorProps) {
     super(props);
     this.state = {
@@ -51,13 +61,11 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
     this._onConfigure = this._onConfigure.bind(this);
     this._onUrlChanged = this._onUrlChanged.bind(this);
     this._onSettingsChanged = this._onSettingsChanged.bind(this);
-     // Initialize the PnPjs `sp` object with the web part context
-     sp.setup({
-      spfxContext: this.props.context
-  });
+     
+    this._sp = spfi().using(spSPFx(this.props.context as ISPFXContext));
   }
   public render(): React.ReactElement<IReactImageEditorProps> {
-    const { url, settings } = this.props;
+    const { url } = this.props;
     const { isFilePickerOpen } = this.state;
     const isConfigured: boolean = !!url && url.length > 0;
     return (
@@ -81,21 +89,33 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
             isPanelOpen={isFilePickerOpen}
             accepts={['.gif', '.jpg', '.jpeg', '.png']}
             buttonIcon={'FileImage'}
-            onSave={this.handleFileSave}
+            onSave={(filePickerResult: IFilePickerResult[]) => {
+             if(filePickerResult.length > 0){ 
+              this.handleFileSave(filePickerResult[0]).catch((error => {
+              console.error("Error in handleFileSave:", error);
+            }));
+          }
+          
+          }}
+            
             onCancel={() => {
               this.setState({ isFilePickerOpen: false });
             }}
-            onChanged={(filePickerResult: IFilePickerResult) => {
-              this.setState({ isFilePickerOpen: false }, () => this._onUrlChanged(filePickerResult.fileAbsoluteUrl));
+            onChange={(filePickerResult: IFilePickerResult[]) =>  {
+              if(filePickerResult.length >0){
+              this.setState({ isFilePickerOpen: false }, () => this._onUrlChanged(filePickerResult[0].fileAbsoluteUrl));
+              }
 
             }}
-            context={this.props.context}
+            
+            /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
+            context={this.props.context as any}
 
 
           />)}
         {!isConfigured && this.props.displayMode !== DisplayMode.Edit ?
           <Placeholder iconName='Edit' iconText='Configure your web part'
-            description='This web parts requires configuration. When you switch the page to edit mode it will enable you to select an image to display here.' /> : <div></div>
+            description='This web parts requires configuration. When you switch the page to edit mode it will enable you to select an image to display here.' /> : <div />
         }
         {!isConfigured && this.props.displayMode === DisplayMode.Edit ? (<Placeholder iconName='Edit'
           iconText='Select Image'
@@ -119,7 +139,7 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
                       ariaLabel="Change image"
                       onClick={() => { this.setState({ isFilePickerOpen: true }) }}
                     />
-                  </div> : <div></div>
+                  </div> : <div />
 
 
               } <ImageManipulation
@@ -130,7 +150,7 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
                 }
                 displayMode={this.props.displayMode}
                 settingsChanged={this._onSettingsChanged}
-                src={this.props.url} altText={this.props.altText}
+                src={this.props.url!} altText={this.props.altText? this.props.altText : "Image"}
               />
             </div>
           )
@@ -138,7 +158,7 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
       </div >
     );
   }
-  private handleFileSave = async (filePickerResult: IFilePickerResult) => {
+  private handleFileSave = async (filePickerResult: IFilePickerResult):Promise<void> => {
     try {
       if (!filePickerResult.downloadFileContent) {
         this.setState(
@@ -156,7 +176,6 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
 
       // Upload the file to the folder and get its absolute URL
       const uploadedFileUrl = await this.uploadFileToFolder(filePickerResult, pageFolderUrl);
-
       if (uploadedFileUrl) {
         // Update state and trigger URL change callback
         this.setState(
@@ -222,14 +241,15 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
    * @param folderName The name of the folder to ensure.
    */
   private async ensureFolder(parentFolderUrl: string, folderName: string): Promise<void> {
+    const folderUrl = `${parentFolderUrl}/${folderName}`;
     try {
-      const folderUrl = `${parentFolderUrl}/${folderName}`;
-      const folder = await sp.web.getFolderByServerRelativeUrl(folderUrl).get();
+     const folderItem = await this._sp.web.getFolderByServerRelativePath(folderUrl)();
+      console.log(`Folder '${folderItem}'`);
       console.log(`Folder '${folderName}' already exists under '${parentFolderUrl}'`);
     } catch (error) {
       if (error.message.includes("404")) {
         // If the folder does not exist (404 error), create it
-        await sp.web.getFolderByServerRelativeUrl(parentFolderUrl).folders.add(folderName);
+        await this._sp.web.folders.addUsingPath(folderUrl);
         console.log(`Folder '${folderName}' created under '${parentFolderUrl}'`);
       } else {
         console.error("Error checking or creating folder:", error);
@@ -246,6 +266,7 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
    * @param folderUrl The URL of the folder to upload the file to.
    * @returns The absolute URL of the uploaded file.
    */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private async uploadFileToFolder(filePickerResult: any, folderUrl: string): Promise<string | null> {
     try {
       if (!filePickerResult.downloadFileContent) {
@@ -263,38 +284,33 @@ export default class ReactImageEditor extends React.Component<IReactImageEditorP
       const arrayBuffer = await fileBlob.arrayBuffer();
 
       // Upload the file
-      const uploadResult = await sp.web.getFolderByServerRelativeUrl(folderUrl).files.add(uniqueFileName, arrayBuffer, true);
-
+     
+      const uploadResult = await this._sp.web.getFolderByServerRelativePath(folderUrl).files.addUsingPath(uniqueFileName, arrayBuffer);
+      
       // Return the absolute URL of the uploaded file
-      return `${this.props.context.pageContext.web.absoluteUrl}${uploadResult.data.ServerRelativeUrl}`;
+      //${this.props.context.pageContext.web.absoluteUrl}
+      return `${uploadResult.ServerRelativeUrl}`;
     } catch (error) {
       console.error("Error uploading file:", error);
       return null;
     }
   }
 
-  private _clearSelection = () => {
+  private _clearSelection = ():void => {
     this.props.updateUrlProperty("");
     this.setState({
       isFilePickerOpen: false
     });
   }
-  private _onConfigure = () => {
-    if (Environment.type === EnvironmentType.Local) {
-      this.setState({ isFilePickerOpen: false }, () => {
-        this._onUrlChanged(
-          'https://media.gettyimages.com/photos/'
-          + 'whitewater-paddlers-descend-vertical-waterfall-in-kayak-picture-id1256321293?s=2048x2048'
-        );
-      });
-    } else {
+  private _onConfigure = ():void => {
+   
       this.setState({ isFilePickerOpen: true });
-    }
+   
   }
-  private _onUrlChanged = (url: string) => {
+  private _onUrlChanged = (url: string):void => {
     this.props.updateUrlProperty(url);
   }
-  private _onSettingsChanged = (settings: IImageManipulationSettings[]) => {
+  private _onSettingsChanged = (settings: IImageManipulationSettings[]):void => {
     this.props.updateManipulationSettingsProperty(settings);
   }
 }

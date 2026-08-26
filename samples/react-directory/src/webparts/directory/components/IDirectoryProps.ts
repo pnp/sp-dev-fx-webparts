@@ -1,5 +1,6 @@
 import { WebPartContext } from "@microsoft/sp-webpart-base";
 import { DisplayMode } from "@microsoft/sp-core-library";
+
 export interface IDirectoryProps {
   title: string;
   displayMode: DisplayMode;
@@ -9,5 +10,7 @@ export interface IDirectoryProps {
   searchProps?: string;
   clearTextSearchProps?: string;
   pageSize?: number;
-  useSpaceBetween?:boolean;
+  useSpaceBetween?: boolean;
+  isDarkTheme: boolean;
+  hasTeamsContext: boolean;
 }

@@ -29,7 +29,6 @@ Whenever you are submitting any changes to the SharePoint repositories, please f
 * If you are submitting multiple samples, please create a specific PR for each of them
 * If you are submitting typo or documentation fix, you can combine modifications to single PR where suitable
 
-
 ## Sample Naming and Structure Guidelines
 
 When you submit a new sample, please follow these guidelines:
@@ -53,10 +52,21 @@ When you submit a new sample, please follow these guidelines:
 * If your solution is demonstrating multiple technologies, please use functional terms as the name for the solution folder
 * Do not use period/dot in the folder name of the provided sample
 
-### Source Code
+### Source Code Only
 
 * For security reasons, we do not accept pull requests containing `.sppkg` files. We only accept source code files for applications. 
 * Make sure to place the root of your solution's source code in sample folder
+
+### AI-assisted contributions
+
+AI-assisted development is welcome -- and encouraged. However, contributors are responsible for ensuring that every sample is accurate, complete, well-tested, and does what it claims to do. Pull requests containing unreviewed AI-generated code, hallucinated implementations, placeholder content, or samples that do not function as described will be rejected.
+
+### No unnecessary files
+
+Remember that those using your samples may be new to SPFx, and they may not quite know what files are needed or not -- yet. As such, try to remove unecessary files to help them.
+
+* No `upgrade-reports.md`: thanks for upgrading the sample, but nobody else needs to know what steps you had to take.
+* No default/unused assets: I'm looking at you, `welcome-dark.png‎` and `welcome-light.png‎`. If you don't need them in your sample, remove them!
 
 ### README.md
 
@@ -71,6 +81,8 @@ When you submit a new sample, please follow these guidelines:
 * The README template contains a specific tracking image at the end of the file with an `img` element pointing to `https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/YOUR-SOLUTION-NAME`. This is a transparent image which is used to track how many visits each sample receives in GitHub.
 * Update the image `src` attribute according with the repository name and folder information. For example, if your sample is named `react-todo` in the `samples` folder, you should update the `src` attribute to `https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-todo`
   * Update the image `src` attribute according with the repository name and folder information.
+
+> **⚠️ IMPORTANT:** The automated validation bot checks for an `<img>` HTML element in your README. Using Markdown image syntax like `![Visitor count](...)` will trigger a validation **warning** and may delay your PR. Always use the `<img>` tag format shown in the template above.
 
 #### Contributors
 
@@ -99,7 +111,7 @@ Each version of SPFx supports only a limited number of Node.js versions. To help
 
 * Create a new file with the name `.nvmrc` (including the dot at the beginning of the file name).
 * Open the .`nvmrc` file in a text editor and specify the desired Node.js version. The version should be in the format `vMajor.Minor.Patch`. For example, if you want to use Node.js version 14.17.0, simply write `v14.17.0` in the file. Make sure there are no leading or trailing spaces in the file.
-* Save the .nvmrc file in the root directory of your project.
+* Save the `.nvmrc` file in the root directory of your project.
 
 > To generate this file automatically, you can use the following command:
 >

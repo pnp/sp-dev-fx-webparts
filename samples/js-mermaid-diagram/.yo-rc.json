@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.20.3",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "version": "1.20.0",
+    "libraryName": "spfx-mermaid-diagram",
+    "libraryId": "c8a586df-9193-4d14-8156-0c2d46493604",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "spfx-mermaid-diagram",
+    "solutionShortDescription": "spfx-mermaid-diagram description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

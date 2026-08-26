@@ -2,10 +2,10 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { Version } from '@microsoft/sp-core-library';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
-import { IReadonlyTheme } from '@microsoft/sp-component-base';
+import { IReadonlyTheme, ThemeProvider } from '@microsoft/sp-component-base';
 import FluentUi9Demo from './components/FluentUi9Demo';
 import { IFluentUi9DemoProps } from './components/IFluentUi9DemoProps';
-import { FluentProvider, FluentProviderProps, teamsDarkTheme, teamsLightTheme, webLightTheme, webDarkTheme, Theme } from '@fluentui/react-components';
+import { FluentProvider, FluentProviderProps, teamsDarkTheme, teamsLightTheme, webLightTheme, webDarkTheme, Theme, IdPrefixProvider } from '@fluentui/react-components';
 import { createV9Theme } from "@fluentui/react-migration-v8-v9";
 
 export enum AppMode {
@@ -16,7 +16,7 @@ export default class FluentUi9DemoWebPart extends BaseClientSideWebPart<{}> {
 
   private _isDarkTheme: boolean = false;
   private _appMode: AppMode = AppMode.SharePoint;
-  private _theme: Theme = webLightTheme;
+  private _theme: Theme | undefined;
 
   protected async onInit(): Promise<void> {
     const _l = this.context.isServedFromLocalhost;
@@ -29,6 +29,10 @@ export default class FluentUi9DemoWebPart extends BaseClientSideWebPart<{}> {
         default: throw new Error('Unknown host');
       }
     } else this._appMode = _l ? AppMode.SharePointLocal : AppMode.SharePoint;
+    const themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
+    const _theme = themeProvider.tryGetTheme();
+    this._theme = createV9Theme(_theme as never, _theme?.isInverted ? webDarkTheme : webLightTheme);
+;
     return super.onInit();
   }
 
@@ -57,16 +61,22 @@ export default class FluentUi9DemoWebPart extends BaseClientSideWebPart<{}> {
       element
     );
 
-    ReactDom.render(fluentElement, this.domElement);
+    const idprefixProvider =  React.createElement(
+      IdPrefixProvider, 
+      { 
+        value: this.componentId
+      },
+      fluentElement
+    )
+
+    ReactDom.render(idprefixProvider, this.domElement);
   }
 
   protected onThemeChanged(currentTheme: IReadonlyTheme | undefined): void {
     if (!currentTheme) return;
     this._isDarkTheme = !!currentTheme.isInverted;
     //if the app mode is sharepoint, adjust the fluent ui 9 web light theme to use the sharepoint theme color, teams/dark mode should be fine on default
-    if (this._appMode === AppMode.SharePoint || this._appMode === AppMode.SharePointLocal) {
-      this._theme = createV9Theme(currentTheme as undefined, webLightTheme);
-    }
+    this._theme = createV9Theme(currentTheme as never, currentTheme.isInverted ? webDarkTheme : webLightTheme);
   }
 
   protected onDispose(): void {

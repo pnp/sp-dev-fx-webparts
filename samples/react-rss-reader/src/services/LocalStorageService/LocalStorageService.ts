@@ -42,19 +42,24 @@ class LocalStorageService implements ILocalStorageService {
           console.log("LS get: storagekey - " + storageKey);
 
           //attempt to get the key/value from local storage based on storageKey
-          const keyValue: ILocalStorageObject = JSON.parse(localStorage.getItem(storageKey)) as ILocalStorageObject;
+          const rawValue = localStorage.getItem(storageKey);
+          if (!rawValue) {
+            resolve(returnValue);
+            return;
+          }
+          const keyValue: ILocalStorageObject = JSON.parse(rawValue) as ILocalStorageObject;
 
           //with a valid response, we can continue
           if (keyValue) {
 
             //check timeout if one provided
-            if (keyToken.timeOutInMinutes > 0) {
+            if (keyToken.timeOutInMinutes && keyToken.timeOutInMinutes > 0) {
 
               //have to get proper date object
               const keyDate: Date = new Date(keyValue.keyDate.toString());
 
               //determine the local time at which this key/value should expire
-              const timeout: Date = new Date(keyDate.getTime() + keyToken.timeOutInMinutes*60000);
+              const timeout: Date = new Date(keyDate.getTime() + (keyToken.timeOutInMinutes ?? 0)*60000);
 
               //console.log("LS get: now " + new Date(Date.now()).toString());
               //console.log("LS get: timeout " + timeout.toString());

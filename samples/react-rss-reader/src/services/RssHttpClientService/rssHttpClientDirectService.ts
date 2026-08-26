@@ -24,11 +24,11 @@ export class RssHttpClientDirectService implements IRssHttpClientComponentServic
     const p = new Promise<IRssReaderResponse>(async (resolve, reject) => {
 
       let rawFeedOutput: any = null;
-      let response: IRssReaderResponse = null;
+      let response: IRssReaderResponse | null = null;
 
       try {
 
-        rawFeedOutput = await RssHttpClientService.getRssXml(feedRequest.url, feedRequest.useCorsProxy ? feedRequest.corsProxyUrl : "", feedRequest.disableCorsMode);
+        rawFeedOutput = await RssHttpClientService.getRssXml(feedRequest.url, feedRequest.useCorsProxy ? (feedRequest.corsProxyUrl || "") : "", feedRequest.disableCorsMode ?? false);
 
       }
       catch (err) {
@@ -73,10 +73,10 @@ export class RssHttpClientDirectService implements IRssHttpClientComponentServic
   }
 
   public convertRssFeedToRssReaderResponse(input: any, maxCount: number) : IRssReaderResponse {
-    const response: IRssReaderResponse = {query: null} as IRssReaderResponse;
+    const response: IRssReaderResponse = {query: null} as unknown as IRssReaderResponse;
 
     if (!input) {
-      return null;
+      return null as unknown as IRssReaderResponse;
     }
 
     response.query = {
@@ -98,7 +98,7 @@ export class RssHttpClientDirectService implements IRssHttpClientComponentServic
           } as IRssHeaders
         } as IRssUrl,
       } as IRssQueryMetaData,
-      results: null
+      results: undefined
     };
 
     //feed items
@@ -125,13 +125,13 @@ export class RssHttpClientDirectService implements IRssHttpClientComponentServic
           content: item.guid
         } as IRssGuid;
 
-        response.query.results.rss.push(newItem);
+        response.query.results!.rss!.push(newItem);
       });
 
       //ensure that we only get maxCount records
-      if (response.query.results.rss.length > maxCount) {
+      if (response.query.results!.rss!.length > maxCount) {
 
-        response.query.results.rss = response.query.results.rss.splice(0, maxCount);
+        response.query.results!.rss = response.query.results!.rss!.splice(0, maxCount);
 
       }
     }

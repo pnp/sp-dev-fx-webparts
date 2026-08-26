@@ -1,7 +1,6 @@
-import { Callout } from '@microsoft/office-ui-fabric-react-bundle';
 import { randomString } from '@spfxappdev/utility';
 import * as strings from 'MapWebPartStrings';
-import { Icon, Label, Separator } from 'office-ui-fabric-react';
+import { Callout, Icon, Label, Separator } from '@fluentui/react';
 import * as React from 'react';
 import { IMarkerCategory } from '../../IMapProps';
 import { MarkerIcon } from '../../MarkerIcon';

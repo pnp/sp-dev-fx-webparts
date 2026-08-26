@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-ticket-mgnt-client-side-solution",
+    "id": "4189cf2a-a483-4482-a137-cfc46dac8adf",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-ticket-mgnt description"
+      },
+      "longDescription": {
+        "default": "react-ticket-mgnt description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-ticket-mgnt Feature",
+        "description": "The feature that activates elements of the react-ticket-mgnt solution.",
+        "id": "693c0d31-5449-469f-8c7d-b713394e376d",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-ticket-mgnt.sppkg"
+  }
+}

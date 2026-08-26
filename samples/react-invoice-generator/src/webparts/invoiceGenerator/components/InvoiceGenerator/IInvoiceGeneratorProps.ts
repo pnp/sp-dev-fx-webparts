@@ -1,4 +1,5 @@
 import { WebPartContext } from "@microsoft/sp-webpart-base";
+import { DisplayMode } from '@microsoft/sp-core-library';
 import {
   IReadonlyTheme
 } from '@microsoft/sp-component-base';
@@ -9,5 +10,6 @@ export interface IInvoiceGeneratorProps {
   taxRate: number;
   companyName: string;
   companyAddress: string;
-  themeVariant: IReadonlyTheme;
+  themeVariant: IReadonlyTheme | undefined;
+  displayMode: DisplayMode;
 }

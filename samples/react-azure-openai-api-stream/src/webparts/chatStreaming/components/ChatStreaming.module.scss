@@ -36,11 +36,19 @@
 
 .userQuestion {
   padding-bottom: 8px;
-  gap: 12px;
+  align-items: flex-start;
+
+  .avatarContainer {
+    display: flex;
+    align-items: center;
+    height: auto;
+    margin-top: 10px;
+  }
 
   .avatar {
-    --person-avatar-size: 32px;
-    margin-top: 8px;
+    --person-avatar-size: 40px;
+    display: block;
+    cursor: pointer;
   }
 
   .beak {

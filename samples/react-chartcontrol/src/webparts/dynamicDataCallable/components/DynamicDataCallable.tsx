@@ -94,14 +94,14 @@ private _contributionsLegendElem: HTMLElement = undefined;
                     elem.style.left = positionX + tooltip.caretX + 'px';
                     elem.style.top = positionY + tooltip.caretY + 'px';
                     elem.style.fontFamily = tooltip._bodyFontFamily;
-                    elem.style.fontSize = tooltip.bodyFontSize;
+                    elem.style.fontSize = tooltip.bodyFontSize + 'px';
                     elem.style.fontStyle = tooltip._bodyFontStyle;
                     elem.style.padding = tooltip.yPadding + 'px ' + tooltip.xPadding + 'px';
                     elem.style.backgroundColor = tooltip.backgroundColor;
-                    elem.style.borderRadius = tooltip.cornerRadius;
+                    elem.style.borderRadius = tooltip.cornerRadius + 'px';
                     elem.style.width = tooltip.width + 64 + 'px';
                     elem.style.borderColor = tooltip.borderColor;
-                    elem.style.borderWidth = tooltip.borderwidth;
+                    elem.style.borderWidth = tooltip.borderWidth + 'px';
 
                     // set the avatar img
                     this._tooltipImg.src = avatarUrl;
@@ -112,7 +112,7 @@ private _contributionsLegendElem: HTMLElement = undefined;
                     // set the alias
                     this._avatarTitleElem.innerText = alias;
                     this._avatarTitleElem.style.color = tooltip.titleFontColor;
-                    this._avatarTitleElem.style.fontSize = tooltip.titleFontSize;
+                    this._avatarTitleElem.style.fontSize = tooltip.titleFontSize + 'px';
                     this._avatarTitleElem.style.fontFamily = tooltip._titleFontFamily;
                     this._avatarTitleElem.style.fontWeight = tooltip._titleFontStyle;
                     this._avatarTitleElem.style.marginBottom = tooltip.titleMarginBottom + 'px';
@@ -120,14 +120,18 @@ private _contributionsLegendElem: HTMLElement = undefined;
                     // set the number of contributions
                     this._contributionsElem.innerText = contributions.toString();
                     this._contributionsElem.style.color = tooltip.bodyFontColor;
-                    this._contributionsElem.style.fontSize = tooltip.bodyFontSize;
+                    this._contributionsElem.style.fontSize = tooltip.bodyFontSize + 'px';
                     this._contributionsElem.style.fontFamily = tooltip._bodyFontFamily;
                     this._contributionsElem.style.fontWeight = tooltip._bodyFontStyle;
                     this._contributionsElem.style.paddingLeft = tooltip.bodySpacing + 'px';
 
                     // set the contribution legend
-                    this._contributionsLegendElem.style.backgroundColor = tooltip.labelColors[0].backgroundColor;
-                    this._contributionsLegendElem.style.borderColor = tooltip.labelColors[0].borderColor;
+                    const bgColor = tooltip.labelColors[0].backgroundColor;
+                    const borderColor = tooltip.labelColors[0].borderColor;
+                    this._contributionsLegendElem.style.backgroundColor = Array.isArray(bgColor) 
+                      ? bgColor[0] : (typeof bgColor === 'string' ? bgColor : bgColor.toString());
+                    this._contributionsLegendElem.style.borderColor = Array.isArray(borderColor) 
+                      ? borderColor[0] : (typeof borderColor === 'string' ? borderColor : borderColor.toString());
                   }
                 })
               }
@@ -136,8 +140,8 @@ private _contributionsLegendElem: HTMLElement = undefined;
           onClick={(_ignored?: MouseEvent, activeElements?: Array<{}>) => {
             try {
               const clickedElement = activeElements![0];
-              const clickedIndex: number = clickedElement!['_index'];
-              const clickedContributor: string = clickedElement!['_chart'].chart.data.labels[clickedIndex];
+              const clickedIndex: number = (clickedElement as any)['_index'];
+              const clickedContributor: string = (clickedElement as any)['_chart'].chart.data.labels[clickedIndex];
               console.log('Data Callable Contributor', clickedContributor);
               this.props.onSelectionChange(clickedContributor);
             } catch (error) {

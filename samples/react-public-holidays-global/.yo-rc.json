@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.20.8",
+    "sdksVersions": {
+      "@microsoft/microsoft-graph-client": "3.0.2",
+      "@microsoft/teams-js": "2.24.0"
+    },
+    "version": "1.20.0",
+    "libraryName": "react-public-holidays-global",
+    "libraryId": "a713c73b-9961-4e84-bbfb-54e3cceae8b9",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-public-holidays-global",
+    "solutionShortDescription": "react-public-holidays-global description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

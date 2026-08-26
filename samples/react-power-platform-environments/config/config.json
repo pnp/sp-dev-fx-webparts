@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "power-platform-environments-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/powerPlatformEnvironments/PowerPlatformEnvironmentsWebPart.js",
+          "manifest": "./src/webparts/powerPlatformEnvironments/PowerPlatformEnvironmentsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "PowerPlatformEnvironmentsWebPartStrings": "lib/webparts/powerPlatformEnvironments/loc/{locale}.js"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "dev-sky Modern Link Presenter",
+    "id": "cee514eb-1de8-4fdb-8de0-40dcb03dcdfe",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "iconPath": "assets/icon.png",
+    "developer": {
+      "name": "Marc Andre Schröder-Zhou",
+      "websiteUrl": "https://www.dev-sky.net",
+      "privacyUrl": "",
+      "termsOfUseUrl": "https://go.microsoft.com/fwlink/?linkid=2041178",
+      "mpnId": "#######"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "A modern, customizable web part for managing and displaying links in various layouts on SharePoint and Teams."
+      },
+      "longDescription": {
+        "default": "Modern Link Presenter is a flexible SharePoint Framework (SPFx) web part that allows users to manage and present collections of links in a variety of modern layouts. Features include: configurable link properties (title, URL, icon, description, summary, color, target, display format), multiple output formats (plain links, links with icons, inline tiles, and rich tile layouts), per-link color and display customization, search and filter functionality, and support for opening links in new tabs, the same tab, or a modal dialog. The tile layout offers additional customization such as tile size, mouse-over effects, and button text. The web part is fully localizable, supports accessibility, and is ideal for building modern dashboards, resource panels, or curated link collections in SharePoint Online and Microsoft Teams."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "dev-sky .:: Manage and display navigation links.",
+        "description": "The feature that activates elements of the demo-ai-spfx-01 solution.",
+        "id": "16977ffc-5ce3-43f4-bd29-d124ab67ead3",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/dev-sky-advanced-links-presenter.sppkg"
+  }
+}

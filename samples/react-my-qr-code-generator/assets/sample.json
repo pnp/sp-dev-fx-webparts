@@ -1,0 +1,69 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-my-qr-code-generator",
+    "source": "pnp",
+    "title": "QR Code Generator Web Part",
+    "shortDescription": "A modern, feature-rich SharePoint Framework (SPFx) web part for generating customizable QR codes directly within SharePoint. This solution provides an intuitive interface for creating QR codes for URLs, WiFi, Contacts, and now Teams Meetings, Meeting Rooms, and Calendar Events. It features advanced styling options, real-time preview, and seamless integration with SharePoint document libraries.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-qr-code-generator",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-my-qr-code-generator",
+    "longDescription": [
+      "A modern, feature-rich SharePoint Framework (SPFx) web part for generating customizable QR codes directly within SharePoint. This solution provides an intuitive interface for creating QR codes for URLs, WiFi, Contacts, and now Teams Meetings, Meeting Rooms, and Calendar Events. It features advanced styling options, real-time preview, and seamless integration with SharePoint document libraries."
+    ],
+    "creationDateTime": "2025-11-28",
+    "updateDateTime": "2025-11-28",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "qr-code-generator-preview-room.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-qr-code-generator/assets/qr-code-generator-preview-room.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "qr-code-generator-preview.png",
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-qr-code-generator/assets/qr-code-generator-preview.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "qr-code-generator-preview2.png",
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-qr-code-generator/assets/qr-code-generator-preview2.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "NicolasKheirallah",
+        "pictureUrl": "https://github.com/NicolasKheirallah.png",
+        "name": "Nicolas Kheirallah"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

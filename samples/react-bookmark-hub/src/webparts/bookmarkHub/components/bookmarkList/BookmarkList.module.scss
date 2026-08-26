@@ -1,0 +1,96 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.container {
+  margin-top: 1.5em;
+  background-color: #FFF9E6;
+  border-radius: 8px;
+  padding: 1.25em;
+  border: 1px solid #edebe9;
+  box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+  
+  :global(.ms-DetailsHeader) {
+    background-color: #FAF9F8;
+  }
+
+  :global(.ms-DetailsRow) {
+    background-color: #FFF9E6;
+  }
+}
+
+.headerContainer {
+  border-bottom: 2px solid #edebe9;
+  padding-bottom: 0.5em;
+  margin-bottom: 0.75em;
+  
+}
+
+.header {
+  font-size: 1.15em;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  border-bottom: none;
+}
+
+.copilotButton {
+  background-color: #ffffff;
+  border: 1px solid #6264A7;
+  color: #6264A7;
+  border-radius: 4px;
+  font-weight: 600;
+
+  &:hover,
+  &:focus {
+    background-color: #f0f0fb;
+    border-color: #464775;
+    color: #464775;
+  }
+
+  i {
+    font-size: 16px;
+    color: #6264A7;
+  }
+}
+
+.approveButton {
+  background-color: #ffffff;
+  border: 1px solid #107C10;
+  color: #107C10;
+  border-radius: 4px;
+  font-weight: 600;
+
+  &:hover,
+  &:focus {
+    background-color: #f0fbf0;
+    border-color: #0b5e0b;
+    color: #0b5e0b;
+  }
+}
+
+.declineButton {
+  background-color: #ffffff;
+  border: 1px solid #a4262c;
+  color: #a4262c;
+  border-radius: 4px;
+  font-weight: 600;
+
+  &:hover,
+  &:focus {
+    background-color: #fbf0f0;
+    border-color: #7a1a1e;
+    color: #7a1a1e;
+  }
+}
+
+.list {
+  margin-top: 0.5em;
+}
+
+.pagination {
+  margin-top: 0.5em;
+  justify-content: flex-end;
+}
+
+.emptyState {
+  margin-top: 1em;
+}

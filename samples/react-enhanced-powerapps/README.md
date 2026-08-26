@@ -48,16 +48,33 @@ Version|Date|Comments
 1.1|August 15, 2020|Added improved resize event handler
 1.2|January 20, 2022|Update to SPFx v1.13.1
 1.3|June 27, 2023|Added Hide web part on small devices
+1.4|April 10, 2025|Fixed package.json and package-lock.json to pull the correct version for SPFx v1.13.1. Added .nvmrc file for correct node version.
 
 ## Minimal Path to Awesome
 
 * Clone this repository
-* in the command line run:
+* use node v14.21.3 or if you have nvm installed, run this in command line:
+  * `nvm use`
+* Alternatively, if using nvs, run this command line:
+  * `nvs use`
+* Then run:
   * `npm install`
   * `gulp serve`
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for more information.
 
+## Minimal Path to Awesome - Build sppkg
+
+* Clone this repository
+* use node v14.21.3 or if you have nvm installed, run this in command line:
+  * `nvm use`
+* Alternatively, if using nvs, run this command line:
+  * `nvs use`
+* Then run:
+  * `npm install`
+  * `gulp build`
+  * `gulp bundle --ship`
+  * `gulp package-solution --ship`
 
 ### To Use
 

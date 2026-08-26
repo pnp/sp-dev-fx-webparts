@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "dynamic-poll-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/dynamicPoll/DynamicPollWebPart.js",
+          "manifest": "./src/webparts/dynamicPoll/DynamicPollWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "DynamicPollWebPartStrings": "lib/webparts/dynamicPoll/loc/{locale}.js"
+  }
+}

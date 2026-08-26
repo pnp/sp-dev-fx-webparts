@@ -2,11 +2,10 @@
   "@microsoft/generator-sharepoint": {
     "plusBeta": false,
     "isCreatingSolution": true,
-    "version": "1.17.2",
-    "nodeVersion": "16.20.0",
+    "version": "1.23.0",
+    "nodeVersion": "22.23.1",
     "sdksVersions": {
-      "@microsoft/microsoft-graph-client": "3.0.2",
-      "@microsoft/teams-js": "2.9.1"
+      "@microsoft/teams-js": "2.24.0"
     },
     "libraryName": "react-fluentui-9",
     "libraryId": "d955a989-7441-475a-b4eb-ff132968b3c5",
@@ -16,6 +15,7 @@
     "solutionShortDescription": "react-fluentui-9 description",
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
-    "componentType": "webpart"
+    "componentType": "webpart",
+    "useGulp": false
   }
 }

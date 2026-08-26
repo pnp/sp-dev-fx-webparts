@@ -37,3 +37,7 @@ obj
 
 .heft
 release
+lib-dts
+lib-commonjs
+lib-esm
+jest-output

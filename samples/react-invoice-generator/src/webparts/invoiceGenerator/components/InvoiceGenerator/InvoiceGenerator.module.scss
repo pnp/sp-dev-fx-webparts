@@ -1,5 +1,6 @@
-$primaryColor: "[theme: themePrimary, default: #0078d4]";
+@import 'pkg:@fluentui/react/dist/sass/References.scss';
 $neutralColor: "[theme: neutralPrimary, default: #323130]";
+$primaryColor: "[theme: themePrimary, default: #0078d4]";
 
 .invoiceGenerator {
   display: flex;

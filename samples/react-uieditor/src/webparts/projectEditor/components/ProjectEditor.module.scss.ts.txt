@@ -1,0 +1,35 @@
+
+require("./ProjectEditor.module.css");
+const styles = {
+  projectEditor: 'projectEditor_ad1c600e',
+  header: 'header_ad1c600e',
+  headerGlow: 'headerGlow_ad1c600e',
+  headerIcon: 'headerIcon_ad1c600e',
+  headerTitle: 'headerTitle_ad1c600e',
+  gearIcon: 'gearIcon_ad1c600e',
+  container: 'container_ad1c600e',
+  card: 'card_ad1c600e',
+  cardContent: 'cardContent_ad1c600e',
+  itemsGridCard: 'itemsGridCard_ad1c600e',
+  itemCard: 'itemCard_ad1c600e',
+  itemTitle: 'itemTitle_ad1c600e',
+  itemDescription: 'itemDescription_ad1c600e',
+  itemsGridAccordion: 'itemsGridAccordion_ad1c600e',
+  accordionItem: 'accordionItem_ad1c600e',
+  accordionItemHeader: 'accordionItemHeader_ad1c600e',
+  accordionItemTitle: 'accordionItemTitle_ad1c600e',
+  accordionChevron: 'accordionChevron_ad1c600e',
+  accordionChevronExpanded: 'accordionChevronExpanded_ad1c600e',
+  accordionItemContent: 'accordionItemContent_ad1c600e',
+  slideDown: 'slideDown_ad1c600e',
+  teams: 'teams_ad1c600e',
+  emptyState: 'emptyState_ad1c600e',
+  fadeIn: 'fadeIn_ad1c600e',
+  statusBadge: 'statusBadge_ad1c600e',
+  statusBadgeActive: 'statusBadgeActive_ad1c600e',
+  statusBadgeInactive: 'statusBadgeInactive_ad1c600e',
+  newItem: 'newItem_ad1c600e',
+  pulse: 'pulse_ad1c600e'
+};
+
+export default styles;

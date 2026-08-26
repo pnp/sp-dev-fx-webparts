@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "ae2ea843-56bf-4909-949d-66913e797172",
+  "alias": "M365PlannerTimelineWebPart",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "8a917378-172b-465b-bcb5-d37a1a644ff0", 
+    "title": { "default": "M365 Planner Timeline" },
+    "description": { "default": "M365 Planner Timeline description" },
+    "officeFabricIconFontName": "TimelineProgress",
+    "properties": {
+      "groupId": "",
+      "timeLinePlan": {
+        "planId": "",
+        "bucketId": "All"
+      },
+      "cacheId": "",      
+      "webPartTitle": "M365 Planner Timeline",
+      "showTitle": false,
+      "showActiveTasks": true
+    }
+  }]
+}

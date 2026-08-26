@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-office-breakout-client-side-solution",
+    "id": "6cafca11-d4f4-41d3-ba77-5628e528f25f",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-office-breakout description"
+      },
+      "longDescription": {
+        "default": "react-office-breakout description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-office-breakout Feature",
+        "description": "The feature that activates elements of the react-office-breakout solution.",
+        "id": "13534cea-788e-400e-b7d3-bdaec7aa9094",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-office-breakout.sppkg"
+  }
+}

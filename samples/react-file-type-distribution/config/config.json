@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "file-type-distribution-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/fileTypeDistribution/FileTypeDistributionWebPart.js",
+          "manifest": "./src/webparts/fileTypeDistribution/FileTypeDistributionWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "FileTypeDistributionWebPartStrings": "lib/webparts/fileTypeDistribution/loc/{locale}.js"
+  }
+}

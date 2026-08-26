@@ -1,0 +1,51 @@
+{
+    "$schema": "https://developer.microsoft.com/en-us/json-schemas/teams/v1.16/MicrosoftTeams.schema.json",
+    "manifestVersion": "1.16",
+    "version": "1.0.2",
+    "showLoadingIndicator": false,
+    "id": "35e2dd3e-3a0e-4bf5-b0ea-3063fc8e9288",
+    "packageName": "com.pnp.personaldashboard",
+    "developer": {	
+        "name": "PnP",	
+        "websiteUrl": "https://pnp.github.io/",	
+        "privacyUrl": "https://pnp.github.io/",	
+        "termsOfUseUrl": "https://pnp.github.io/"	
+    },
+    "icons": {
+        "color": "icon_color.png",
+        "outline": "icon_outline.png"
+    },
+    "name": {
+        "short": "Personal Dashboard",
+        "full": "Personal Dashboard"
+    },
+    "description": {
+        "short": "Personal Dashboard",
+        "full": "Allows users to create personalized dashboard by selecting and adding organization-wide apps"
+    },
+    "accentColor": "#FFFFFF",
+    "staticTabs": [
+        {
+            "entityId": "14092023",
+            "name": "Personal Dashboard",
+            "contentUrl": "https://{teamSiteDomain}/_layouts/15/TeamsLogon.aspx?SPFX=true&dest=/_layouts/15/teamshostedapp.aspx%3Fteams%26personal%26componentId=eae1a185-f369-4728-889f-12b7ebc2cda1%26forceLocale={locale}",
+            "scopes": [
+                "personal"
+            ]
+        },
+        {
+            "entityId": "about",
+            "scopes": [
+                "personal"
+            ]
+        }
+    ],
+    "permissions": [
+        "identity"
+    ],
+    "validDomains": [
+        "7566ava.sharepoint.com",
+        "m365x47213793.sharepoint.com",
+        "*.login.microsoftonline.com"
+    ]
+}

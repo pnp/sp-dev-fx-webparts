@@ -1,0 +1,13 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "AZURE_CLIENT_ID": "00000000-0000-0000-0000-000000000000",
+    "AZURE_TENANT_ID": "11111111-1111-1111-1111-111111111111",
+    "AZURE_CLIENT_SECRET": "your-azure-client-secret-here",
+    "API_AUDIENCE": "api://your-api-audience",
+    "API_SCOPE": "UserSettings.Manage",
+    "GRAPH_AUDIENCE": "https://graph.microsoft.com"
+  }
+}

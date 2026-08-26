@@ -2,7 +2,7 @@
   "@microsoft/generator-sharepoint": {
     "plusBeta": false,
     "isCreatingSolution": true,
-    "version": "1.15.2",
+    "version": "1.21.1",
     "libraryName": "react-birthdays-per-month",
     "libraryId": "e4cd97a3-4515-42cd-8a12-f765eaf60caa",
     "environment": "spo",
@@ -11,6 +11,11 @@
     "solutionShortDescription": "react-birthdays-per-month description",
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
-    "componentType": "webpart"
+    "componentType": "webpart",
+    "sdkVersions": {
+      "@microsoft/teams-js": "2.24.0",
+      "@microsoft/microsoft-graph-client": "3.0.2"
+    },
+    "nodeVersion": "22.15.0"
   }
 }

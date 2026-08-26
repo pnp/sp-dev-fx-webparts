@@ -5,6 +5,8 @@
 This SharePoint Framework (SPFx) web part introduces a contemporary carousel component leveraging Swiper, facilitating seamless traversal through content housed within a SharePoint site. This innovative feature enhances user experience by providing fluid navigation through various pieces of content, thereby adding a touch of elegance and sophistication to the SharePoint environment.
 
 ![Award Recognition](./assets/AwardRecognition.png)
+![Award Recognition Property Pane Configuration](./assets/Property_pane_options.png)
+![Award Recognition Dark Theme Appearance](./assets/Dark_theme_appearance.png)
 
 ## Compatibility
 
@@ -15,12 +17,10 @@ This SharePoint Framework (SPFx) web part introduces a contemporary carousel com
 
 ## Used SharePoint Framework Version
 
-![version](https://img.shields.io/badge/version-1.20.0-green.svg)
-
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
-![Node.js v18 | v16](https://img.shields.io/badge/Node.js-v18%20%7C%20v16-green.svg)
+![SPFx 1.21.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
+![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](<https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg> "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -56,6 +56,7 @@ Create a SharePoint custom list `Award Recognition` in the SPO site with below c
 | 1.0     | March 16, 2024   | Initial release                     |
 | 1.1     | October 19, 2024 | Upgrade to SPFx 1.20 & misc. changes |
 | 2.0     | November 1, 2024 | New feature: card styles & animations |
+| 2.1     | May 1, 2025 | Upgrade to SPFx 1.21 & code cleanup |
 
 ## Minimal Path to Awesome⚡
 
@@ -107,4 +108,4 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED _AS IS_ WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-![react-modern-carousel](https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-modern-carousel)
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-modern-carousel" />

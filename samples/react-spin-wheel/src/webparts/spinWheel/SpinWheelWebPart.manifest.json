@@ -1,0 +1,21 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "dcdd81fc-e9c1-4df0-9284-992f716a3f27",
+  "alias": "SpinWheelWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Advanced" },
+    "title": { "default": "Spin Wheel" },
+    "description": { "default": "A fun and interactive spin wheel game for earning rewards" },
+    "officeFabricIconFontName": "FavoriteStar",
+    "properties": {
+      "description": "Spin Wheel"
+    }
+  }]
+}

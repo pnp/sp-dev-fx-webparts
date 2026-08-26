@@ -1,43 +1,68 @@
-https://aka.ms/m365/devprogramhttps://aka.ms/m365/devprogramhttps://aka.ms/m365/devprogramhttps://aka.ms/m365/devprogram---
-page_type: sample
-products:
-- office-sp
-languages:
-- javascript
-- typescript
-extensions:
-  contentType: samples
-  technologies:
-  - SharePoint Framework
-  platforms:
-  - react
-  createdDate: 03/30/2022 12:00:00 AM
----
-# Tab Accordion Web Part with Property Field Collection Data and tinyMCE for Rich Text Editing
+# Tab Accordion Web Part with Modern Features
 
 ## Summary
 
-- This Web Part allows users to create content as Tabbed content using Property Field Collection Data and tinyMCE for Rich Text Editing targeted for SharePoint Online.
-- Provides options to view as an Accordion or Tab.
-- In mobile browser defaults to Accordion view.
+- This Web Part allows users to create content in Tab or Accordion format with rich editing capabilities.
+- Built on modern SPFx 1.20+ and Fluent UI React components for seamless SharePoint integration.
+- Responsive design automatically switches to Accordion view on mobile devices.
+- Extensive personalization options including audience targeting and multi-language support.
+- Deep linking capabilities for easy sharing of specific tabs.
+- Comprehensive styling options for complete visual customization.
 
 ![Web part preview](assets/TabAccordionWebpart.gif)
+![image](assets/image.png)
+![image](assets/Settings1.png)
+![image](assets/Settings2.png)
 
 ## Compatibility
 
-| :warning: Important          |
-|:---------------------------|
-| Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
-|Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
-
-![SPFx 1.13.1](https://img.shields.io/badge/SPFx-1.13.1-green.svg)
-![Node.js v14 | v12](https://img.shields.io/badge/Node.js-v14%20%7C%20v12-green.svg)
+![SPFx 1.20.0](https://img.shields.io/badge/SPFx-1.20.0-green.svg)
+![Node.js v16 | v18](https://img.shields.io/badge/Node.js-v16%20%7C%20v18-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
-![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
-![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
-![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
+![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
+## Features
+
+This enhanced web part includes the following features:
+
+### Core Functionality
+
+- **Tab/Accordion Toggle**: Display content in either Tab or Accordion format
+- **Mobile Responsive**: Automatically switches to Accordion view on mobile devices
+- **Rich Text Editing**: Advanced TinyMCE editor with enhanced media support
+- **Theme Integration**: Automatically adapts to SharePoint themes
+
+### Content Management
+
+- **Import/Export**: Backup and restore tab configurations as JSON
+- **Tab Duplication**: Easily duplicate tabs with a single click
+- **Drag & Drop Reordering**: Intuitive drag-and-drop interface for tab management
+- **SharePoint List Integration**: Pull tab content directly from SharePoint lists
+
+### Advanced Features
+
+- **Deep Linking**: Direct links to specific tabs via URL parameters
+- **Microsoft Graph Integration**: Personalization using Microsoft Graph data
+- **Audience Targeting**: Show different tabs to different user groups
+- **Multi-language Support**: Display content in the user's preferred language
+
+### Enhanced Styling Options
+
+- **Color Customization**: Customize header background and text colors
+- **Active State Styling**: Define unique styles for active tabs/accordion items
+- **Typography Control**: Customize font family, size, weight, and text transforms
+- **Content Typography**: Apply consistent typography settings to content areas
+- **Theme Override**: Choose between SharePoint theme colors or custom colors
+- **Border Control**: Toggle borders on and off for different visual styles
+
+### Enhanced Media Support
+
+- **Improved Embeds**: Better support for video, audio, and other media
+- **SharePoint Content Integration**: Embed document libraries and list views
+- **Templates**: Pre-defined content templates for common scenarios
+- **Consistent Font Rendering**: Typography settings apply to content editor
 
 ## Applies to
 
@@ -48,60 +73,144 @@ extensions:
 
 ## Prerequisites
 
-There are no pre-requisites to use these samples.
+- SharePoint Online tenant
+- Permission to deploy SPFx solutions
+- For Microsoft Graph features: Admin approval for required API permissions
 
 ## Contributors
 
-* [Arun Kumar Perumal](https://github.com/arunkumarperumal) 
+- [Nicolas Kheirallah](https://github.com/nicolaskheirallah)
+- [Arun Kumar Perumal](https://github.com/arunkumarperumal)
 
 ## Version history
 
 Version|Date|Comments
 -------|----|--------
 1.0|March 30, 2022|Initial release
-
+2.0|March 2025|Major update with modern SPFx, Fluent UI, and advanced features
+2.1|March 2025|Added comprehensive styling and typography controls
 
 ## Minimal path to awesome
 
-- Clone this repository (or [download this solution as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tabaccordion) then unzip it)
-- Ensure that you are at the solution folder
-- in the command-line run:
+- Clone this repository
+- In the command-line run:
   - `npm install`
   - `gulp serve`
 
-> This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
+For Microsoft Graph features:
+
+- Add the solution to the SharePoint App Catalog
+- Approve the requested API permissions in SharePoint Admin Center
 
 ## Features
 
-This Web Part allows users to create content as Tabbed content using Property Field Collection Data  and tinyMCE for Rich Text Editing targeted for SharePoint Online.
+### Core Features
 
-Has the following features:
+- Create and manage tabs with rich content using tinymce
+- Toggle between Tab and Accordion display modes
+- Seamless SharePoint theme integration
+- Mobile-responsive design
 
-- Ability to create Tabs or Accordions 
-- Ability to create Tabs with Rich Text Editor for Content using tinyMCE Control 
-- Defaults to Accordion in Mobile displays
-- Uses Custom Accordion components included in the code.
-- Uses Custom Tab components included in the code
-- Use the site Primary colors and themes for display 
+### Content Import/Export
 
+![Content Import/Export](assets/import-export.png)
 
-> Share your web part with others through Microsoft 365 Patterns and Practices program to get visibility and exposure. More details on the community, open-source projects and other activities from http://aka.ms/m365pnp.
+- Export all tabs to a JSON file for backup or sharing
+- Import tabs from JSON files
+- Validation to ensure proper data structure
 
-## References
+### Tab Reordering and Duplication
 
-- [Getting started with SharePoint Framework](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
-- [Building for Microsoft teams](https://learn.microsoft.com/sharepoint/dev/spfx/build-for-teams-overview)
-- [Use Microsoft Graph in your solution](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis)
-- [Publish SharePoint Framework applications to the Marketplace](https://learn.microsoft.com/sharepoint/dev/spfx/publish-to-marketplace-overview)
-- [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp) - Guidance, tooling, samples and open-source controls for your Microsoft 365 development
+- Drag and drop tabs to reorder
+- Duplicate tabs with a single click
+- Remove tabs with confirmation
 
+### SharePoint List Integration
+
+- Pull tab content directly from SharePoint lists
+- Configure list URL, columns, and sort order
+- Refresh from list with a single click
+
+### Enhanced Styling Options
+
+- Customize header and active state colors
+- Control typography with font family, size, weight options
+- Text transformation options (uppercase, lowercase, capitalize)
+- Content area font customization for consistent reading experience
+- Style reset option to quickly return to defaults
+
+### Typography Controls
+
+- Font family selection with web-safe font options
+- Font size control for headers and content
+- Font weight options from light to extra bold
+- Text transformation for creative styling
+- Consistent typography applied to TinyMCE editor
+
+### Enhanced Media Support
+
+- Improved support for video and audio content
+- Custom SharePoint content embedding
+- Pre-defined content templates
+
+### Deep Linking
+
+- Direct links to specific tabs
+- Copy link functionality for easy sharing
+- Browser history management
+
+### Microsoft Graph Integration & Audience Targeting
+
+- Target tabs to specific Microsoft 365 groups
+- Visual indicators for audience targeting
+- Integration with Microsoft Graph
+
+### Multi-language Support
+
+- Content in multiple languages
+- Automatic language detection
+- Language selector for manual switching
+
+## Configuration
+
+### Basic Configuration
+
+1. Add the web part to a page
+2. Set the title and display mode (Tab/Accordion)
+3. Add tabs with titles and content using the rich text editor
+
+### Visual Customization
+
+1. Navigate to the "Header/Tab Styling" section in properties
+2. Set custom colors for headers and active states
+3. Select font family, size, weight, and text transformation
+4. Configure content typography for a consistent reading experience
+5. Use the reset button to return to default styling if needed
+
+### SharePoint List Integration
+
+1. Enable "Use SharePoint List for content"
+2. Enter the list URL (relative to site)
+3. Configure column mappings for title and content
+4. Click "Refresh from List" to load content
+
+### Microsoft Graph Features
+
+1. Add the solution to the App Catalog
+2. Approve the requested Graph API permissions in SharePoint Admin Center
+3. Enable audience targeting in the web part properties
+4. Configure audience targets for individual tabs
+
+### Multi-language Support
+
+1. Enable multi-language support in the web part properties
+2. Add languages using the language selector
+3. Enter content for each language
+4. Users can switch languages using the language selector
 
 ## Help
 
-
-We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for  community members to volunteer their time and help resolve issues.
-
-If you're having issues building the solution, please run [spfx doctor](https://pnp.github.io/cli-microsoft365/cmd/spfx/spfx-doctor/) from within the solution folder to diagnose incompatibility issues with your environment.
+We do not support samples, but this community is always willing to help, and we want to improve these samples. We use GitHub to track issues, which makes it easy for community members to volunteer their time and help resolve issues.
 
 You can try looking at [issues related to this sample](https://github.com/pnp/sp-dev-fx-webparts/issues?q=label%3A%22sample%3A%20react-tabaccordion%22) to see if anybody else is having the same issues.
 

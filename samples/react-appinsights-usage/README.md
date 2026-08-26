@@ -4,6 +4,8 @@
 
 Application Insights provides telemetry data to monitor and improve application performance and user experience, while AB Testing, user flow analysis, and logging help in optimizing and debugging applications by comparing different versions, mapping user paths, and recording significant events. The 3 sample web part demonstrates web part functionalities to aid developers in integrating customizable components effectively.
 
+![All Webparts in Action](assets/AllWebparts.gif)
+
 ![UserFlow by Session](assets/SampleRouterUserFlow.png)
 
 more details after the `Features` section
@@ -17,8 +19,8 @@ more details after the `Features` section
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.18.2](https://img.shields.io/badge/SPFx-1.18.2-green.svg)
-![Node.js v16 | v18](https://img.shields.io/badge/Node.js-v16%20%7C%20v18-green.svg)
+![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
+![Node.js v22.15.0](https://img.shields.io/badge/Node.js-%20v22.15.0-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -40,49 +42,168 @@ This sample is optimally compatible with the following environment configuration
 
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
+| 1.2     | October 2025 | Upgraded to 1.21.1
 | 1.0     | Mai 26, 2024 | Initial release |
 
 
 ## Prerequisites
 
-Application Insight Service on Azure
-Add the connection string of this Service to the the variable ```AIConnectionString``` at ```src/EnvProps.ts```
+Azure Application Insights resource. If you don't have one:
+1. Go to [Azure Portal](https://portal.azure.com)
+2. Create a new Application Insights resource
+3. Copy the **Connection String** from the Overview page
 
+## Configuration
 
+You have **two options** to configure the Application Insights connection string:
+
+### Option 1: Web Part Properties (Recommended)
+
+This is the easiest and most secure way to configure Application Insights:
+
+**Steps:**
+1. Add any of the three web parts to a SharePoint page
+2. If not configured, you'll see a **yellow warning banner** with setup instructions
+3. Click the **Edit** (pencil) icon on the web part to open the property pane
+4. Scroll down to find the **Application Insights Configuration** section
+5. Paste your connection string in the **Application Insights Connection String** text field
+6. The connection string will be validated immediately
+7. Once valid, the warning disappears and you'll see a **green success banner**
+8. Save the page
+
+**Real-Time Configuration Feedback:**
+- The web part updates instantly when you paste the connection string
+- No need to save or reload - you'll see the configuration status change immediately
+- If the connection string is invalid, the warning remains visible
+
+**Benefits:**
+- ✅ No code changes needed
+- ✅ Connection string stays secure (not in source control)
+- ✅ Different web part instances can use different Application Insights resources
+- ✅ Easy to update without redeploying
+- ✅ Immediate visual feedback on configuration status
+
+### Option 2: Developer Configuration (For Development)
+
+For local development, you can set the connection string in code:
+1. Open `src/EnvProps.ts`
+2. Replace `'set-your-connection-string-here'` with your actual connection string
+3. **Important**: Do not commit this file with your real connection string to source control
 
 ## Minimal Path to Awesome
 
 - Clone this repository
 - Ensure that you are at the solution folder
-- Create or use Existing Azure Application Insights
-- Update `src/EnvProps.ts` and set `AIConnectionString`
 - in the command-line run:
   - `npm install`
   - `gulp serve`
+- Add the web part to a page and configure the Application Insights connection string using **Option 1** or **Option 2** above
 
+## Real-Time Event Tracking
+
+One of the key features of this sample is **real-time visibility** into what data is being sent to Application Insights. Unlike traditional implementations where you need to check the Azure Portal to verify data is flowing, these web parts show you exactly what's happening:
+
+### Visual Feedback
+
+All three web parts provide immediate visual feedback:
+
+- **Success banners** when Application Insights is configured correctly
+- **Warning messages** when configuration is missing, with step-by-step setup instructions
+- **Real-time displays** showing tracked events, logs, and page views as they're sent to Azure
+
+### Educational Purpose
+
+Each web part demonstrates Application Insights capabilities in an interactive way:
+
+1. **See what you're tracking**: Click buttons or navigate pages and immediately see the data that's sent
+2. **Understand the data structure**: View event names, properties, severity levels, and timestamps
+3. **Learn Azure Portal queries**: Each section includes sample KQL queries to analyze data in Azure
+4. **No waiting**: Don't wait for data to appear in Azure - see it instantly in the web part
+
+This makes the sample perfect for:
+- Learning how Application Insights works
+- Testing different tracking scenarios
+- Demonstrating telemetry to stakeholders
+- Debugging tracking implementation
 
 ## Features
 
-Description of the extension that expands upon high-level summary above.
+This sample includes three interactive web parts that demonstrate different Application Insights capabilities:
 
-This extension illustrates the following concepts:
+### 1. AB-Test WebPart - Event Tracking
 
-- Sample Router WebPart 
-      - Using Hash Router and use Page Tracking
-- ABTest WebPart (check User activity)
-    - Event Tracking
-    - Logging
-- PnP JS Logger
-    - Logging with PnPJS
+**What it demonstrates:**
+- Custom event tracking with properties
+- Multiple event sources (button clicks, menu actions)
+- Real-time event display with timestamps
+
+**Interactive Features:**
+- Add items via text field or contextual menu
+- See each tracked event immediately in the "Recent Events Tracked" section
+- View event properties (e.g., item names)
+- Success message confirms data sent to Application Insights
+
+**Use Cases:**
+- A/B testing different UI approaches
+- Tracking user interactions
+- Understanding feature usage patterns
+
+### 2. Sample Router WebPart - Page View Tracking
+
+**What it demonstrates:**
+- Automatic page view tracking with React Router
+- User flow analysis
+- Navigation pattern tracking
+
+**Interactive Features:**
+- Navigate between pages (Home, Page 1, Page 2, Page 3)
+- See each page view tracked in real-time
+- View complete navigation history with timestamps
+- Application Insights builds user flow diagrams from this data
+
+**Use Cases:**
+- Understanding navigation patterns
+- Identifying popular content
+- Finding navigation bottlenecks
+- Analyzing user journey flows
+
+### 3. PnPJS Logger WebPart - Logging Integration
+
+**What it demonstrates:**
+- Integration with PnPJS logging framework
+- Different log severity levels
+- Centralized logging to Application Insights
+
+**Interactive Features:**
+- Color-coded buttons for each log level (Verbose, Info, Warning, Error)
+- Real-time display of logged entries with severity colors
+- See logs sent to Azure under "Traces"
+
+**Use Cases:**
+- Application diagnostics and debugging
+- Error tracking and monitoring
+- Performance troubleshooting
+- Operational insights
 
 
-## Sample Router WebPart
+## Sample Router WebPart - Detailed View
 
-How is your application used by Users
+### How It Works
+
+This web part uses React Router (HashRouter) to create a single-page application with multiple routes. Application Insights automatically tracks each route change as a separate page view, allowing you to analyze user navigation patterns.
 
 ![Sample WebPart Screen](assets/SampleRouterUI.png)
 
-Analyze in Application Insight
+### Real-Time Navigation Tracking
+
+When you navigate between pages, the web part displays:
+- **Navigation History**: A list of all page views with timestamps
+- Each navigation is immediately visible in the web part before it appears in Azure
+- The Application Insights ReactPlugin handles automatic tracking
+
+### Analyze in Application Insights
+
+Once data flows to Azure, you can create powerful visualizations:
 
 ![UserFlow by Session](assets/SampleRouterUserFlow.png)
 
@@ -115,13 +236,29 @@ customMetrics
 
 ![Page visit duration evaluation](assets/SampleRouterDurationEvaluation.png)
 
-## AB-Test WebPart
+## AB-Test WebPart - Detailed View
 
-How users add new items?
+### How It Works
+
+This web part demonstrates event tracking for A/B testing scenarios. It tracks different ways users can add items (via text input button vs. contextual menu) to help you understand which UI approach works better.
 
 ![AB UI Screen](assets/ABTextUI.png)
 
-Query in Application Insights
+### Real-Time Event Tracking
+
+When you interact with the web part:
+1. **Add items** through the text field or "New" menu
+2. See a **green success message** confirming the event was tracked
+3. View the event in the **"Recent Events Tracked"** section with:
+   - Event name (e.g., "AddItemWebPartContext" or "AddItemContextualMenu")
+   - Timestamp
+   - Properties (e.g., item name)
+
+This immediate feedback helps you understand exactly what data Application Insights receives.
+
+### Analyze in Application Insights
+
+Query in Application Insights to compare different user actions:
 
 ```
 customEvents 
@@ -135,9 +272,33 @@ customEvents
 
 ![AB Evaluation](assets/ABEvaluation.png)
 
-## PnPJS Logger WebPart
+## PnPJS Logger WebPart - Detailed View
+
+### How It Works
+
+This web part demonstrates integration between PnPJS logging framework and Application Insights. All PnPJS log entries are automatically forwarded to Azure Application Insights for centralized monitoring.
 
 ![Logoutput with Browser Log Level Filter](assets/PNPJSLogger.png)
+
+### Real-Time Log Tracking
+
+The web part features color-coded buttons for different severity levels:
+- **Verbose** (Gray): Detailed diagnostic information
+- **Info** (Blue): General informational messages
+- **Warning** (Orange): Warning conditions
+- **Error** (Red): Error conditions
+
+When you click any button:
+1. The log entry is sent to Application Insights
+2. It appears in the **"Recent Logs Sent to Application Insights"** section
+3. Each entry shows:
+   - Severity level with color coding
+   - Log message
+   - Timestamp
+
+### View in Application Insights
+
+Logs appear in Azure under **Traces**. You can query them by severity level, message content, or time range to troubleshoot issues and monitor application health.
 
 
 ## Help

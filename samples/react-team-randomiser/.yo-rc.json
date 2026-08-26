@@ -1,0 +1,17 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "18.18.2",
+    "version": "1.20.0",
+    "libraryName": "react-team-randomiser",
+    "libraryId": "3a7f2e1d-b5c6-4d8e-9f0a-1b2c3d4e5f6a",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "ReactTeamRandomiser",
+    "solutionShortDescription": "Randomly assign people into groups",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

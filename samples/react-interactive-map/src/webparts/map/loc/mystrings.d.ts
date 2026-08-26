@@ -8,6 +8,8 @@ declare interface IMapWebPartStrings {
   WebPartPropertyPluginMarkerClusterLabel: string;
   WebPartPropertyPluginLegendLabel: string;
   WebPartPropertyButtonManageCategories: string;
+  WebPartPropertyButtonSetStartLocation: string;
+  WebPartPropertyFitToMarkersLabel: string;
   WebPartPropertyPluginZoomControlLabel: string;
   WebPartPropertyScrollWheelZoomLabel: string;
   WebPartPropertyMapDraggingLabel: string;
@@ -16,6 +18,7 @@ declare interface IMapWebPartStrings {
   WebPartPropertyMinZoomLabel: string;
   WebPartPropertyMaxZoomLabel: string;
   WebPartPropertyHeightLabel: string;
+  WebPartPropertyTileLayerPresetLabel: string;
   WebPartPropertyTileLayerUrlInformationLabel: string;
   WebPartPropertyTileLayerUrlLabel: string;
   WebPartPropertyTileLayerAttributionLabel: string;

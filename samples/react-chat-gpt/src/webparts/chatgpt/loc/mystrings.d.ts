@@ -1,5 +1,6 @@
 declare interface IChatgptWebPartStrings {
   ApiKeyFieldLabel: string;
+  ModelFieldLabel: string;
   AppLocalEnvironmentSharePoint: string;
   AppLocalEnvironmentTeams: string;
   AppLocalEnvironmentOffice: string;

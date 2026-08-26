@@ -18,7 +18,7 @@ export default class PropertyFieldOrderHost extends React.Component<IPropertyFie
 	//private _ddHelper: DragDropHelper;
 	private _refs: Array<HTMLElement>;
 	private _ddSubs: Array<any>; // eslint-disable-line @typescript-eslint/no-explicit-any
-	private _lastBox: HTMLDivElement;
+	private _lastBox: HTMLDivElement|undefined;
 
 	constructor(props: IPropertyFieldOrderHostProps, state: IPropertyFieldOrderHostState) {
 		super(props);

@@ -1,0 +1,291 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.summarizePageContent {
+  padding: 0;
+  background-color: transparent;
+  border-radius: 0;
+  box-shadow: none;
+  min-height: auto;
+
+  .actionContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+    gap: 12px;
+    margin-bottom: 0;
+    transition: margin-bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    
+    &.withMargin {
+      margin-bottom: 16px;
+    }
+
+    .summarizeButton,
+    .regenerateButton {
+      min-width: 200px;
+      height: 40px;
+      font-size: 14px;
+      font-weight: 600;
+      border-radius: 4px;
+      
+      &.hidden {
+        visibility: hidden;
+        pointer-events: none;
+      }
+    }
+
+    .hideButton {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: "[theme:themePrimary, default: #0078d4]";
+      color: var(--themePrimary);
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      
+      &:hover {
+        color: "[theme:themeDarker, default: #004578]";
+        color: var(--themeDarker);
+      }
+    }
+  }
+
+  .shimmerWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px 0;
+    min-height: 120px;
+    
+    &.fadeOut {
+      animation: fadeOutShimmer 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    }
+  }
+
+  .progressContainer {
+    margin: 16px 0;
+  }
+
+  .progressText {
+    margin-top: 12px;
+    text-align: center;
+    color: "[theme:themePrimary, default: #0078d4]";
+    color: var(--themePrimary);
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  .summaryContainer {
+    border-left: 5px solid "[theme:themeDarker, default: #004578]";
+    border-left: 5px solid var(--themeDarker);
+    background-color: "[theme:themePrimary, default: #0078d4]";
+    background-color: var(--themePrimary);
+    color: "[theme:white, default: #ffffff]";
+    color: var(--white);
+    border-radius: 5px;
+    box-shadow: 0 6.4px 14.4px 0 rgba(0,0,0,0.132), 0 1.2px 3.6px 0 rgba(0,0,0,0.108);
+    margin: 0;
+    overflow: hidden;
+    transform-origin: top center;
+    transform: scaleY(1);
+    opacity: 1;
+    max-height: 2000px;
+    transition: transform 0.4s ease-in-out,
+                opacity 0.4s ease-in-out,
+                max-height 0.4s ease-in-out,
+                margin 0.4s ease-in-out;
+    
+    &.collapsed {
+      transform: scaleY(0);
+      opacity: 0;
+      margin: 0;
+      max-height: 0;
+    }
+
+    &.fadeIn {
+      animation: fadeInContent 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .summaryInner {
+      padding: 20px;
+      overflow: hidden;
+    }
+
+    .translationError {
+      margin-bottom: 16px;
+      background-color: rgba(255, 255, 255, 0.95);
+    }
+
+    .translationSpinner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 0;
+      min-height: 120px;
+
+      :global {
+        .ms-Spinner {
+          .ms-Spinner-circle {
+            border-color: "[theme:white, default: #ffffff]";
+            border-color: var(--white);
+          }
+
+          .ms-Spinner-label {
+            color: "[theme:white, default: #ffffff]";
+            color: var(--white);
+            font-size: 14px;
+            margin-top: 12px;
+          }
+        }
+      }
+    }
+
+    .summaryHeader {
+      display: flex;
+      align-items: center;
+      margin-bottom: 16px;
+
+      .summaryIcon {
+        font-size: 24px;
+        color: "[theme:white, default: #ffffff]";
+        color: var(--white);
+        margin-right: 12px;
+      }
+
+      .summaryTitle {
+        font-size: 20px;
+        font-weight: 600;
+        color: "[theme:white, default: #ffffff]";
+        color: var(--white);
+      }
+    }
+
+    .summaryContent {
+      .summaryList {
+        margin: 0;
+        padding: 0;
+        list-style-position: inside;
+      }
+
+      .summaryLine {
+        margin: 8px 0;
+        font-size: 15px;
+        line-height: 1.6;
+        color: "[theme:white, default: #ffffff]";
+        color: var(--white);
+        font-weight: 400;
+        list-style-type: disc;
+        
+        &:first-child {
+          margin-top: 0;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .summaryText {
+      color: "[theme:white, default: #ffffff]";
+      color: var(--white);
+      font-size: 15px;
+      line-height: 1.6;
+      font-weight: 400;
+
+      // Style markdown rendered content
+      :global {
+        p {
+          margin: 8px 0;
+          
+          &:first-child {
+            margin-top: 0;
+          }
+
+          &:last-child {
+            margin-bottom: 0;
+          }
+        }
+
+        strong, b {
+          font-weight: 600;
+        }
+
+        em, i {
+          font-style: italic;
+        }
+
+        ul, ol {
+          margin: 8px 0;
+          padding-left: 20px;
+        }
+
+        li {
+          margin: 4px 0;
+        }
+      }
+
+      .summaryParagraph {
+        margin: 8px 0;
+        
+        &:first-child {
+          margin-top: 0;
+        }
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    .disclaimer {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255, 255, 255, 0.3);
+      font-size: 12px;
+      color: "[theme:white, default: #ffffff]";
+      color: var(--white);
+      font-style: italic;
+      opacity: 0.9;
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeInContent {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeOutShimmer {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.17.0",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "personal-settings",
+    "libraryId": "7e423dac-3195-4bd6-811e-3f176f73357e",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "personal-settings",
+    "solutionShortDescription": "personal-settings description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

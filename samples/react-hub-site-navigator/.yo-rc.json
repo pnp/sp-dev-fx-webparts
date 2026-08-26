@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.14.0",
+    "sdksVersions": {},
+    "version": "1.21.1",
+    "libraryName": "react-hub-site-navigator",
+    "libraryId": "7bbcc1e4-4948-4162-95c6-cfca4e4cbbeb",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-hub-site-navigator",
+    "solutionShortDescription": "hub-site-navigator description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

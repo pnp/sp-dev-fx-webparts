@@ -1,0 +1,1 @@
+{"version":3,"file":"IHotDeskBookingProps.d.ts","sourceRoot":"","sources":["IHotDeskBookingProps.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,4BAA4B,CAAC;AAE5D,MAAM,WAAW,oBAAoB;IACnC,KAAK,EAAE,MAAM,CAAC;IACd,iBAAiB,EAAE,MAAM,CAAC;IAC1B,gBAAgB,EAAE,MAAM,CAAC;IACzB,WAAW,EAAE,OAAO,CAAC;IACrB,mBAAmB,EAAE,MAAM,CAAC;IAC5B,OAAO,EAAE,cAAc,CAAC;CACzB"}

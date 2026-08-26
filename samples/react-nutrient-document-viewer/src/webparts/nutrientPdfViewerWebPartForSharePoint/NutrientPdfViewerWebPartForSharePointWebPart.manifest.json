@@ -1,0 +1,23 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "18567874-ba65-4960-9e0c-0aad0ba6c416",
+  "alias": "NutrientPdfViewerWebPartForSharePointWeb",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Advanced" },
+    "title": { "default": "Nutrient PDF Viewer Web Part for SharePoint" },
+    "description": { "default": "Nutrient PDF Viewer Web Part for SharePoint description" },
+    "officeFabricIconFontName": "Page",
+    "properties": {
+      "description": "Nutrient PDF Viewer Web Part for SharePoint"
+    }
+  }]
+}

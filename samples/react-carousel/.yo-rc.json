@@ -7,7 +7,7 @@
       "@microsoft/microsoft-graph-client": "3.0.2",
       "@microsoft/teams-js": "2.24.0"
     },
-    "version": "1.20.0",
+    "version": "1.21.1",
     "libraryName": "react-carousel",
     "libraryId": "263a1d21-f4c7-4a46-a364-e5f995286b9b",
     "environment": "spo",
@@ -15,6 +15,7 @@
     "framework": "react",
     "isCreatingSolution": true,
     "isDomainIsolated": false,
-    "componentType": "webpart"
+    "componentType": "webpart",
+    "nodeVersion": "22.15.0"
   }
 }

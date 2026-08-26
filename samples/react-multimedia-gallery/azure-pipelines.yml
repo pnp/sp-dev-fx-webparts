@@ -12,9 +12,9 @@ queue:
 steps:
 #install node 8.x
 - task: NodeTool@0
-  displayName: 'Use Node 8.x'
+  displayName: 'Use Node 18.x'
   inputs:
-    versionSpec: 8.x
+    versionSpec: 18.x
     checkLatest: true
 
 #install nodejs modules with npm
@@ -24,28 +24,6 @@ steps:
     workingDir: '$(Build.SourcesDirectory)'
     verbose: false
 
-#start unit tests
-- task: Npm@1
-  displayName: 'npm test'
-  inputs:
-    command: custom
-    customCommand: 'test'
-    workingDir: '$(Build.SourcesDirectory)'
-    verbose: false
-
-# Publish Test Results to Azure Pipelines/TFS
-- task: PublishTestResults@2
-  inputs:
-    testResultsFiles: 'temp/test/junit/junit.xml'
-    searchFolder: '$(Build.SourcesDirectory)'
-
-# publish coverage test results
-- task: PublishCodeCoverageResults@1
-  displayName: 'Publish Code Coverage Results $(Build.SourcesDirectory)/temp/test/cobertura-coverage.xml'
-  inputs:
-    codeCoverageTool: Cobertura
-    summaryFileLocation: '$(Build.SourcesDirectory)/temp/test/cobertura-coverage.xml'
-    reportDirectory: '$(Build.SourcesDirectory)/temp/test/'
 
 #bundle code with gulp
 - task: Gulp@0

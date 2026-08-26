@@ -1,0 +1,76 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.container {
+  padding: 24px;
+  max-width: 1200px;
+  font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #edebe9;
+}
+
+.toolbarSubtitle {
+  color: #605e5c;
+}
+
+.toolbarButton {
+  margin-left: auto;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px;
+}
+
+.emptyState {
+  margin-top: 8px;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 4px;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  padding: 16px;
+  padding-left: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 8px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #edebe9;
+}
+
+.cardHeaderTitle {
+  font-weight: 600;
+}
+
+.cardBadge {
+  background-color: #f3f2f1;
+  border-radius: 10px;
+  padding: 2px 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #605e5c;
+}
+
+.memberList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.memberItem {
+  padding: 4px 0;
+  color: #323130;
+}

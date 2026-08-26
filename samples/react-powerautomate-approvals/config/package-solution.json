@@ -1,0 +1,54 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-powerautomate-approvals-client-side-solution",
+    "id": "aea7c924-0732-4b18-824b-cd223c3c0d7a",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.22.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-powerautomate-approvals description"
+      },
+      "longDescription": {
+        "default": "react-powerautomate-approvals description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-powerautomate-approvals Feature",
+        "description": "The feature that activates elements of the react-powerautomate-approvals solution.",
+        "id": "4462611a-878a-45ce-8750-0b573f3827fa",
+        "version": "1.0.0.0"
+      }
+    ],
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "ApprovalSolution.ReadWrite"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "ApprovalSolutionResponse.ReadWrite"
+      },
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.ReadBasic.All"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-powerautomate-approvals.sppkg"
+  }
+}

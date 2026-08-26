@@ -19,10 +19,10 @@ extensions:
 Sample web part implementation that uses [Mobx](https://github.com/mobxjs/mobx) to keep track of its state.
 
 ### Reactive
-![](https://i.gyazo.com/e6f1903b9a9c8201985cd25cc1fe28bc.gif)
+![](assets/mobxreactive.gif)
 
 ### Non-Reactive
-![](https://i.gyazo.com/876858e31cf14de1b6d1a281a0636029.gif)
+![](assets/mobxnonreactive.gif)
 
 ## Compatibility
 

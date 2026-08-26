@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "quick-links-hierarchy-client-side-solution",
+    "id": "49534763-16f2-4281-b0ef-ebda9fb465ce",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "QuickLinksHierarchy description"
+      },
+      "longDescription": {
+        "default": "QuickLinksHierarchy description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "quick-links-hierarchy Feature",
+        "description": "The feature that activates elements of the quick-links-hierarchy solution.",
+        "id": "7fcc6ab4-0444-432b-8fba-48305b522606",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/quick-links-hierarchy.sppkg"
+  }
+}

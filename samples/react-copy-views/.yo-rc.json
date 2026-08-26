@@ -2,8 +2,8 @@
   "@microsoft/generator-sharepoint": {
     "plusBeta": false,
     "isCreatingSolution": false,
-    "version": "1.16.1",
-    "nodeVersion": "16.15.0",
+    "version": "1.21.1",
+    "nodeVersion": "22.15.0",
     "libraryName": "copy-views",
     "libraryId": "f9a94606-ce1c-487c-ab87-550b240421de",
     "environment": "spo",
@@ -15,7 +15,7 @@
     "componentType": "webpart",
     "sdkVersions": {
       "@microsoft/microsoft-graph-client": "3.0.2",
-      "@microsoft/teams-js": "2.4.1"
+      "@microsoft/teams-js": "2.24.0"
     }
   }
 }

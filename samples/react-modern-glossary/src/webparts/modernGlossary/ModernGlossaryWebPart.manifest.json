@@ -1,0 +1,26 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "c5c41d98-41da-47c4-bb80-d102a905c4ab",
+  "alias": "ModernGlossaryWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": { "default": "Advanced" },
+      "title": { "default": "Modern Glossary" },
+      "description": { "default": "A-Z indexed accordion glossary sourced from a SharePoint list, filtered by Active status." },
+      "officeFabricIconFontName": "AlignLeft",
+      "properties": {
+        "title": "All Application Glossary",
+        "listName": "ModernGlossary",
+        "pageSizeWarningThreshold": 500
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "legal-lens-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/legalLens/LegalLensWebPart.js",
+          "manifest": "./src/webparts/legalLens/LegalLensWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "LegalLensWebPartStrings": "lib/webparts/legalLens/loc/{locale}.js"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "spfx-gantt-client-side-solution",
+    "id": "bbbe734d-317d-44e0-aa7b-9d5735cb6849",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.22.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-gantt"
+      },
+      "longDescription": {
+        "default": "react-gantt SPFx Application"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-gantt Feature",
+        "description": "The feature that activates elements of the react-gantt solution.",
+        "id": "f08d162a-f5a7-4aa6-acb1-b329d43184b4",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-gantt.sppkg"
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "a1a24f13-da8b-45b4-b484-6b6f97bddfdf",
+  "alias": "EventsFeedWebPart",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsFullBleed": true,
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
+    "group": { "default": "Advanced" },
+    "title": { "default": "EventsFeed" },
+    "description": { "default": "Events Feed  " },
+ 
+    "iconImageUrl": "data:image/svg+xml;base64,PHN2ZyB4bWxucz0naHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmcnIHZpZXdCb3g9JzAgMCA2NCA2NCc+CiAgPHJlY3Qgd2lkdGg9JzY0JyBoZWlnaHQ9JzY0JyByeD0nMTAnIGZpbGw9JyMwMDc4RDQnLz4KICA8cmVjdCB4PScxMicgeT0nMjAnIHdpZHRoPSc0MCcgaGVpZ2h0PSczMicgcng9JzMnIGZpbGw9JyNmZmYnLz4KICA8cmVjdCB4PScxMicgeT0nMjAnIHdpZHRoPSc0MCcgaGVpZ2h0PScxMycgcng9JzMnIGZpbGw9JyMwRjZDQkQnLz4KICA8cmVjdCB4PScxMicgeT0nMjgnIHdpZHRoPSc0MCcgaGVpZ2h0PSc1JyBmaWxsPScjMEY2Q0JEJy8+CiAgPHJlY3QgeD0nMjInIHk9JzEzJyB3aWR0aD0nNCcgaGVpZ2h0PScxMScgcng9JzInIGZpbGw9JyNmZmYnLz4KICA8cmVjdCB4PSczOCcgeT0nMTMnIHdpZHRoPSc0JyBoZWlnaHQ9JzExJyByeD0nMicgZmlsbD0nI2ZmZicvPgogIDxyZWN0IHg9JzE2JyB5PSczOCcgd2lkdGg9JzcnIGhlaWdodD0nNycgcng9JzEnIGZpbGw9JyMwMDc4RDQnLz4KICA8cmVjdCB4PScyOCcgeT0nMzgnIHdpZHRoPSc3JyBoZWlnaHQ9JzcnIHJ4PScxJyBmaWxsPScjMDA3OEQ0Jy8+CiAgPHJlY3QgeD0nNDEnIHk9JzM4JyB3aWR0aD0nNycgaGVpZ2h0PSc3JyByeD0nMScgZmlsbD0nI0M0M0UxQycvPgogIDxyZWN0IHg9JzE2JyB5PSc0OCcgd2lkdGg9JzcnIGhlaWdodD0nMycgcng9JzEnIGZpbGw9JyNERUVDRjknLz4KICA8cmVjdCB4PScyOCcgeT0nNDgnIHdpZHRoPSc3JyBoZWlnaHQ9JzMnIHJ4PScxJyBmaWxsPScjREVFQ0Y5Jy8+Cjwvc3ZnPg==",
+    "properties": {
+      "title": "Events"
+    }
+  }]
+}

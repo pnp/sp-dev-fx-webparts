@@ -2,11 +2,9 @@
 import * as React from 'react';
 import { IList } from './../interfaces';
 import { ServiceScope } from '@microsoft/sp-core-library';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+import { Stack, SearchBox, Label } from '@fluentui/react';
 import * as strings from 'CopyViewsSharedStrings';
 import { TargetListPicker } from './TargetListPicker';
-import { Label } from 'office-ui-fabric-react/lib/Label';
 import { BaseType } from '../enums';
 import styles from '../SharedStyles.module.scss';
 

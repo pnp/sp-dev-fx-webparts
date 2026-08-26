@@ -1,0 +1,142 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.siteGame {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  background: #1e1e2e;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.gameContainer {
+  position: relative;
+  width: 100%;
+  display: block;
+  line-height: 0;
+}
+
+.gameCanvas {
+  display: block;
+  width: 100%;
+  cursor: default;
+  outline: none;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+.loadingOverlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(15, 15, 30, 0.9);
+  color: #fff;
+  font-family: sans-serif;
+  gap: 16px;
+  z-index: 10;
+}
+
+.loadingTitle {
+  font-size: 22px;
+  font-weight: 600;
+  color: #e0e0ff;
+  letter-spacing: 2px;
+}
+
+.loadingSubtitle {
+  font-size: 13px;
+  color: #aaa;
+}
+
+.errorOverlay {
+  padding: 24px;
+  color: #ff8888;
+  text-align: center;
+  background: #1e1e2e;
+  font-family: sans-serif;
+}
+
+.tooNarrow {
+  padding: 24px;
+  text-align: center;
+  color: #888;
+  font-family: sans-serif;
+  background: #1e1e2e;
+}
+
+.toastContainer {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.toast {
+  background: rgba(80, 0, 120, 0.92);
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-family: sans-serif;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.4);
+  animation: fadeInOut 3s ease forwards;
+
+  @keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(10px); }
+    15% { opacity: 1; transform: translateY(0); }
+    70% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-8px); }
+  }
+}
+
+.titleBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #12121f;
+  padding: 4px 10px;
+  border-bottom: 1px solid #333355;
+  font-family: sans-serif;
+}
+
+.siteTitleLabel {
+  font-size: 12px;
+  font-weight: 600;
+  color: #aaaadd;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 70%;
+}
+
+.refreshButton {
+  font-size: 11px;
+  padding: 3px 10px;
+  border: 1px solid #444466;
+  border-radius: 12px;
+  background: #1e1e3a;
+  color: #aaaadd;
+  cursor: pointer;
+  white-space: nowrap;
+
+  &:hover {
+    background: #2a2a55;
+    color: #fff;
+  }
+
+  &:active {
+    background: #3a3a70;
+  }
+}

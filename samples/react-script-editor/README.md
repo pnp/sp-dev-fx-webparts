@@ -206,6 +206,7 @@ Version|Date|Comments
 1.0.24.0|March 8, 2024|Upgrade to SPFx 1.18.2
 1.0.25.0|September 25, 2024|Upgrade to SPFx 1.19.0, added support for audience targeting using SharePoint Groups, Entra Groups and individuals.
 1.0.26.0|October 1, 2024|Upgrade to SPFx 1.20.0
+1.0.27.0|November 19, 2025|Upgrade to SPFx 1.20.1, added support for loading scripts via Function constructor to comply with CSP policies.
 
 ## Minimal Path to Awesome
 
