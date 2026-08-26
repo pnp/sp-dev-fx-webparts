@@ -29,7 +29,21 @@ A project delivery dashboard web part that reads tasks from a SharePoint list an
 
 Phases are auto-coloured from a 10-colour palette based on the unique values in your list's Phase column. The web part supports SharePoint's light and dark theme variants.
 
+### Timeline — Gantt chart by resource
+
 ![Timeline view showing Gantt chart by resource](./assets/timeline.png)
+
+### Weekly workload — concurrent task heat-map
+
+![Weekly workload heat-map showing concurrent tasks per resource per week](./assets/weekly-workload.png)
+
+### Task list — sortable table
+
+![Task list showing all tasks sorted by start date](./assets/task-list.png)
+
+### Phase summary — phase-level bars
+
+![Phase summary showing horizontal bars spanning each phase's date range](./assets/phase-summary.png)
 
 ## Compatibility
 
