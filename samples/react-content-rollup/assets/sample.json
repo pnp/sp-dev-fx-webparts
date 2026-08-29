@@ -1,0 +1,55 @@
+{
+  "$schema": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/sample.schema.json",
+  "name": "react-content-rollup",
+  "source": "pnp",
+  "title": "Content Rollup",
+  "shortDescription": "A reliable, low-config content rollup web part: roll up recent news from a list, or across sites via a Microsoft Search (KQL) query, with no CAML or Handlebars setup.",
+  "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-content-rollup",
+  "longDescription": [
+    "A dependency-light content rollup web part that surfaces recent news and content from across SharePoint sites. Point it at a list (for example, News) for curated, dependable results, or leave the list empty to fall back to a tenant-wide Microsoft Search (KQL) query. It needs no CAML or Handlebars configuration and handles tenants where search is restricted by letting you use a list instead, so it keeps working where older content-query web parts break."
+  ],
+  "creationDateTime": "2026-08-27",
+  "updateDateTime": "2026-08-27",
+  "products": [
+    "SharePoint"
+  ],
+  "metadata": [
+    {
+      "key": "CLIENT-SIDE-WEBPART",
+      "value": "Content Rollup"
+    },
+    {
+      "key": "SPFX-VERSION",
+      "value": "1.21.1"
+    }
+  ],
+  "thumbnails": [
+    {
+      "type": "image",
+      "order": 100,
+      "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-content-rollup/assets/screenshot.png",
+      "alt": "Content Rollup web part showing recent news in a card layout"
+    }
+  ],
+  "authors": [
+    {
+      "gitHubAccount": "gvijaikumar9",
+      "company": "",
+      "pictureUrl": "https://github.com/gvijaikumar9.png",
+      "name": "Vijay Kumar G",
+      "twitter": ""
+    }
+  ],
+  "references": [
+    {
+      "name": "Build your first SharePoint client-side web part",
+      "description": "Guidance for building SharePoint Framework client-side web parts.",
+      "url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+    },
+    {
+      "name": "Use the Microsoft Search API to query data",
+      "description": "Query SharePoint and Microsoft 365 content with the Microsoft Search API.",
+      "url": "https://learn.microsoft.com/en-us/graph/search-concept-overview"
+    }
+  ]
+}
