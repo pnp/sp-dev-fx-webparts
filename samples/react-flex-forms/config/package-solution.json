@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "flex-forms-client-side-solution",
+    "id": "4eef0acc-2c0e-4fa4-aeea-472b06a3be17",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "metadata": {
+      "shortDescription": {
+        "default": "Design and submit simple SharePoint-backed forms"
+      },
+      "longDescription": {
+        "default": "Two SharePoint web parts for authoring six supported field types and submitting published definitions to a list"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Flex Forms configuration list",
+        "description": "Provisions the list used to store Flex Forms definitions.",
+        "id": "2f59ae08-237c-44d0-a689-5c22ea74d674",
+        "version": "1.0.0.0",
+        "assets": {
+          "elementManifests": [
+            "elements.xml",
+            "schema.xml"
+          ]
+        }
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/flex-forms.sppkg"
+  }
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Elements xmlns="http://schemas.microsoft.com/sharepoint/">
+  <ListInstance
+    Title="Flex Forms"
+    OnQuickLaunch="FALSE"
+    TemplateType="100"
+    Url="Lists/FlexForms"
+    CustomSchema="schema.xml"
+    Description="Stores Flex Forms definitions" />
+</Elements>
