@@ -1,0 +1,30 @@
+{
+  "listTitle": "Approval Requests",
+  "pageSize": 10,
+  "fields": {
+    "title": "Title",
+    "status": "ApprovalStatus",
+    "approver": "AssignedApprover",
+    "requester": "SubmittedBy",
+    "submitted": "SubmittedOn",
+    "decisionDate": "DecisionOn",
+    "decisionComment": "DecisionNotes",
+    "requestType": "RequestType",
+    "amount": "Amount",
+    "description": "Description"
+  },
+  "items": [
+    {
+      "Title": "Developer laptop",
+      "ApprovalStatus": "Pending",
+      "AssignedApprover": "approver@example.com",
+      "SubmittedBy": "requester@example.com",
+      "SubmittedOn": "2026-08-01T10:00:00Z",
+      "DecisionOn": null,
+      "DecisionNotes": null,
+      "RequestType": "Hardware",
+      "Amount": 1250,
+      "Description": "Laptop for a new developer."
+    }
+  ]
+}
