@@ -1,0 +1,5 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": { "name": "document-lifecycle-version-review-client-side-solution", "id": "3f95d8c9-c391-4cda-b512-42c1be4eb45a", "version": "1.0.0.0", "includeClientSideAssets": true, "skipFeatureDeployment": false },
+  "paths": { "zippedPackage": "solution/document-lifecycle-version-review.sppkg" }
+}
