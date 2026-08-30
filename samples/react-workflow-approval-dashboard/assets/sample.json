@@ -17,6 +17,7 @@
       { "key": "SPFX-VERSION", "value": "1.23.2" },
       { "key": "UI-FRAMEWORK", "value": "Fluent UI v9" }
     ],
+    "thumbnails": [],
     "authors": [
       {
         "gitHubAccount": "vystartasv",
