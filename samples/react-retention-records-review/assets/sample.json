@@ -1,0 +1,26 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-retention-records-review",
+    "source": "pnp",
+    "title": "Retention and Records Review Dashboard",
+    "shortDescription": "A read-only SharePoint inventory and review aid for retention and records indicators.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-retention-records-review",
+    "longDescription": ["Reads configured SharePoint library and folder items, surfaces available retention and record indicators, and highlights missing review metadata. It does not enforce retention policy or change SharePoint data."],
+    "creationDateTime": "2026-08-30",
+    "updateDateTime": "2026-08-30",
+    "products": ["SharePoint"],
+    "metadata": [
+      { "key": "SAMPLE-TYPE", "value": "SPFx-WebPart" },
+      { "key": "CLIENT-SIDE-DEV", "value": "React" },
+      { "key": "SPFX-VERSION", "value": "1.23.2" },
+      { "key": "READ-ONLY", "value": "true" }
+    ],
+    "authors": [{ "gitHubAccount": "vystartasv", "name": "vystartasv", "pictureUrl": "https://github.com/vystartasv.png" }],
+    "references": [
+      { "name": "Records management in Microsoft Purview", "description": "Microsoft guidance for records management and retention.", "url": "https://learn.microsoft.com/purview/records-management" },
+      { "name": "SharePoint records management", "description": "Microsoft guidance for records management in SharePoint.", "url": "https://learn.microsoft.com/sharepoint/governance/records-management" },
+      { "name": "SharePoint Framework overview", "description": "Official Microsoft overview of the SharePoint Framework.", "url": "https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview" }
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-retention-records-review"
+  }
+]

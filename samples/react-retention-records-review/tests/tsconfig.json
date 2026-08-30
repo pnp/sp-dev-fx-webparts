@@ -1,0 +1,9 @@
+{
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es2020",
+    "types": ["node", "mocha"]
+  },
+  "include": ["./**/*.ts", "../src/services/**/*.ts", "../src/models/**/*.ts"]
+}

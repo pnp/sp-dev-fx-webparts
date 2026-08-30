@@ -1,0 +1,45 @@
+{
+  "name": "react-retention-records-review",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Read-only SharePoint retention and records review dashboard",
+  "engines": { "node": ">=22.14.0 <23.0.0" },
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "gulp bundle",
+    "clean": "gulp clean",
+    "test": "npm run test:unit",
+    "test:unit": "TS_NODE_PROJECT=tests/tsconfig.json NODE_OPTIONS=--experimental-default-type=commonjs mocha --require ts-node/register \"tests/**/*.test.ts\""
+  },
+  "dependencies": {
+    "@fluentui/react-components": "9.74.7",
+    "@microsoft/sp-component-base": "1.23.2",
+    "@microsoft/sp-core-library": "1.23.2",
+    "@microsoft/sp-http": "1.23.2",
+    "@microsoft/sp-lodash-subset": "1.23.2",
+    "@microsoft/sp-property-pane": "1.23.2",
+    "@microsoft/sp-webpart-base": "1.23.2",
+    "@pnp/sp": "4.21.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "tslib": "2.8.1"
+  },
+  "devDependencies": {
+    "@microsoft/eslint-config-spfx": "1.23.2",
+    "@microsoft/eslint-plugin-spfx": "1.23.2",
+    "@microsoft/rush-stack-compiler-5.3": "0.1.0",
+    "@microsoft/sp-build-web": "1.23.2",
+    "@microsoft/sp-module-interfaces": "1.23.2",
+    "@rushstack/eslint-config": "4.6.5",
+    "@types/mocha": "10.0.10",
+    "@types/node": "22.15.21",
+    "@types/react": "17.0.83",
+    "@types/react-dom": "17.0.26",
+    "@types/webpack-env": "1.18.8",
+    "eslint": "8.57.1",
+    "gulp": "4.0.2",
+    "mocha": "11.7.1",
+    "ts-node": "10.9.2",
+    "typescript": "5.3.3"
+  }
+}
