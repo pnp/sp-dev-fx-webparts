@@ -2,6 +2,8 @@
   {
     "name": "pnp-sp-dev-spfx-web-parts-react-content-owner-review-dashboard",
     "source": "pnp",
+    "creationDateTime": "2026-08-30",
+    "updateDateTime": "2026-08-30",
     "title": "Content Owner and Review Assignment Dashboard",
     "shortDescription": "Read-only heuristic dashboard for content owner and review signals.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-content-owner-review-dashboard",
