@@ -1,0 +1,24 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "56d5a5cc-35d7-4ee4-bbf9-2f77e92e6a3d",
+  "alias": "EffectiveAccessAuditWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": { "default": "Other" },
+      "title": { "default": "Effective Access Audit" },
+      "description": { "default": "Show direct SharePoint role assignments without changing permissions." },
+      "officeFabricIconFontName": "Permissions",
+      "properties": {
+        "rootPath": "",
+        "listTitle": ""
+      }
+    }
+  ]
+}
