@@ -15,6 +15,7 @@
       { "key": "SPFX-VERSION", "value": "1.23.2" },
       { "key": "READ-ONLY", "value": "true" }
     ],
+    "thumbnails": [],
     "authors": [{ "gitHubAccount": "vystartasv", "name": "vystartasv", "pictureUrl": "https://github.com/vystartasv.png" }],
     "references": [
       { "name": "Records management in Microsoft Purview", "description": "Microsoft guidance for records management and retention.", "url": "https://learn.microsoft.com/purview/records-management" },
