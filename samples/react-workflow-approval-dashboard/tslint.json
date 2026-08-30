@@ -1,0 +1,7 @@
+{
+  "extends": ["@microsoft/sp-tslint-rules/base-tslint.json"],
+  "rules": {
+    "quotemark": [true, "single", "jsx-double"],
+    "semicolon": [true, "always"]
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "configVersion": 1,
+  "limits": {
+    "maxSources": 4,
+    "pageSize": 50,
+    "maxPagesPerSource": 5,
+    "maxItemsPerSource": 200
+  },
+  "reviewSettings": {
+    "overdueAfterDays": 7
+  },
+  "sources": [
+    {
+      "id": "sharepoint-workflow-requests",
+      "label": "SharePoint workflow requests",
+      "enabled": true,
+      "endpoint": "/_api/web/lists/getbytitle('Workflow Requests')/items?$select=Id,Title,Status,Created,Modified,Requester/Title,Requester/EMail,Approvers,Stages,DueDate&$expand=Requester&$orderby=Modified desc"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-workflow-approval-dashboard",
+    "source": "pnp",
+    "title": "Workflow & Approval Status Dashboard",
+    "shortDescription": "A read-only SharePoint Framework dashboard for displaying workflow and approval status from bounded SharePoint REST list sources.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-workflow-approval-dashboard",
+    "longDescription": [
+      "This sample uses bounded SharePoint REST list sources to display workflow and approval status, including request details, approvers, stages, due dates, and overdue markers. It is intentionally read-only and never controls a workflow."
+    ],
+    "creationDateTime": "2026-08-30",
+    "updateDateTime": "2026-08-30",
+    "products": ["SharePoint"],
+    "metadata": [
+      { "key": "SAMPLE-TYPE", "value": "SPFx-WebPart" },
+      { "key": "CLIENT-SIDE-DEV", "value": "React" },
+      { "key": "SPFX-VERSION", "value": "1.23.2" },
+      { "key": "UI-FRAMEWORK", "value": "Fluent UI v9" }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "vystartasv",
+        "pictureUrl": "https://github.com/vystartasv.png",
+        "name": "vystartasv"
+      }
+    ],
+    "references": [
+      {
+        "name": "SPFx 1.23.2 release notes",
+        "description": "Official Microsoft documentation for the SharePoint Framework 1.23.2 release.",
+        "url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/release-1.23.2"
+      },
+      {
+        "name": "SPFx platform and toolchain compatibility",
+        "description": "Official Microsoft documentation for SharePoint Framework platform and toolchain compatibility.",
+        "url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/compatibility"
+      },
+      {
+        "name": "Using SharePoint REST APIs in SPFx",
+        "description": "Official Microsoft tutorial for using SharePoint REST APIs in SharePoint Framework web parts.",
+        "url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/use-rest-with-spfx-web-parts"
+      },
+      {
+        "name": "Building SPFx solutions that use Microsoft Graph",
+        "description": "Official Microsoft tutorial for building SharePoint Framework solutions that use Microsoft Graph.",
+        "url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis"
+      },
+      {
+        "name": "Microsoft Graph approval resource",
+        "description": "Official Microsoft Graph reference for the approval resource.",
+        "url": "https://learn.microsoft.com/en-us/graph/api/resources/approval?view=graph-rest-1.0"
+      },
+      {
+        "name": "Microsoft Graph Approvals app API overview",
+        "description": "Official Microsoft Graph overview of the Approvals app API.",
+        "url": "https://learn.microsoft.com/en-us/graph/approvals-app-api"
+      }
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-workflow-approval-dashboard"
+  }
+]

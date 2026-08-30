@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "f5a6a847-63e7-4d0e-a6a2-2a49eb80a2d0",
+  "alias": "WorkflowApprovalDashboard",
+  "componentType": "WebPart",
+  "version": "1.0.0.0",
+  "manifestVersion": 2,
+  "supportedHosts": ["SharePointWebPart"],
+  "preconfiguredEntries": [
+    {
+      "groupId": "1df7b28c-5c9d-4a5a-8f3d-41f5c2cf7f2d",
+      "group": { "default": "Monitoring" },
+      "title": { "default": "Workflow & approval status" },
+      "description": { "default": "Read-only workflow and approval status visibility." },
+      "officeFabricIconFontName": "TaskList",
+      "properties": { "description": "Read-only workflow and approval status visibility." }
+    }
+  ]
+}

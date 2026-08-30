@@ -1,0 +1,14 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-workflow-approval-dashboard",
+    "id": "abf9a194-7f28-4aa3-a8f7-a06e9f9e1160",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  },
+  "paths": {
+    "zippedPackage": "solution/react-workflow-approval-dashboard.sppkg"
+  }
+}
