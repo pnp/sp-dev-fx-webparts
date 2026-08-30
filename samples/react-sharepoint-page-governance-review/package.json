@@ -1,0 +1,38 @@
+{
+  "name": "react-sharepoint-page-governance-review",
+  "version": "0.0.1",
+  "private": true,
+  "engines": { "node": ">=22.14.0 <23.0.0" },
+  "scripts": {
+    "test": "tsx scripts/test.ts",
+    "verify": "node scripts/verify.js",
+    "build": "gulp bundle --ship",
+    "package": "gulp package-solution --ship",
+    "clean": "gulp clean"
+  },
+  "dependencies": {
+    "@fluentui/react-components": "9.70.0",
+    "@microsoft/sp-component-base": "1.23.2",
+    "@microsoft/sp-core-library": "1.23.2",
+    "@microsoft/sp-http": "1.23.2",
+    "@microsoft/sp-property-pane": "1.23.2",
+    "@microsoft/sp-webpart-base": "1.23.2",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "tslib": "2.3.1"
+  },
+  "devDependencies": {
+    "@microsoft/eslint-config-spfx": "1.23.2",
+    "@microsoft/eslint-plugin-spfx": "1.23.2",
+    "@microsoft/generator-sharepoint": "1.23.2",
+    "@microsoft/rush-stack-compiler-5.3": "0.1.0",
+    "@microsoft/sp-build-web": "1.23.2",
+    "@microsoft/sp-module-interfaces": "1.23.2",
+    "@types/react": "17.0.45",
+    "@types/react-dom": "17.0.17",
+    "@types/webpack-env": "1.18.8",
+    "gulp": "4.0.2",
+    "tsx": "4.20.3",
+    "typescript": "5.4.5"
+  }
+}

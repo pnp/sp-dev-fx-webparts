@@ -1,0 +1,5 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": { "name": "react-sharepoint-page-governance-review-client-solution", "id": "b4e5be35-405f-4a7e-a6f2-4bbf40e6d8be", "version": "1.0.0.0", "includeClientSideAssets": true, "skipFeatureDeployment": true, "isDomainIsolated": false, "developer": { "name": "Vilius Vystartas", "websiteUrl": "https://github.com/vystartas", "privacyUrl": "", "termsOfUseUrl": "", "mpnId": "Undefined-1.0.0" }, "metadata": { "shortDescription": { "default": "Read-only SharePoint page governance review." }, "longDescription": { "default": "Bounded, heuristic, read-only review of configured Site Pages sources." }, "features": [{ "title": "Page Governance Review", "description": "Provides a bounded read-only review surface.", "id": "6a9906d4-9fc2-4cc1-bb7b-04f4e5e8948a", "version": "1.0.0.0" }] } },
+  "paths": { "zippedPackage": "solution/page-governance-review.sppkg" }
+}
