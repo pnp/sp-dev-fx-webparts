@@ -1,0 +1,29 @@
+[
+  {
+    "query": "project plan",
+    "results": [
+      {
+        "title": "Project plan",
+        "path": "https://contoso.sharepoint.com/sites/demo/Shared%20Documents/project-plan.docx",
+        "description": "A sample SharePoint Search result.",
+        "summary": "Project plan summary",
+        "fileType": "docx",
+        "contentClass": "STS_ListItem_DocumentLibrary",
+        "lastModifiedTime": "2026-01-15T10:00:00Z"
+      }
+    ],
+    "refiners": [
+      {
+        "name": "FileType",
+        "entries": [{ "label": "Word", "token": "filetype:docx", "count": 1 }]
+      }
+    ],
+    "totalRows": 1,
+    "authors": [
+      {
+        "gitHubAccount": "vystartasv",
+        "pictureUrl": "https://github.com/vystartasv.png"
+      }
+    ]
+  }
+]

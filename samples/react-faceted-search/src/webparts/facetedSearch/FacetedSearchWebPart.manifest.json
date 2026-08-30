@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "9dcf6c70-42cc-4b9e-a75d-4cdbbbdb6d3d",
+  "alias": "FacetedSearchWebPart",
+  "componentType": "WebPart",
+  "version": "1.0.0",
+  "manifestVersion": 2,
+  "supportedHosts": ["SharePointWebPart"],
+  "preconfiguredEntries": [
+    {
+      "groupId": "c434d0f3-5f79-4e68-8e30-8e8c8f7f5e3f",
+      "group": { "default": "Advanced" },
+      "title": { "default": "Faceted search" },
+      "description": { "default": "Search SharePoint content with filters." },
+      "officeFabricIconFontName": "Search",
+      "properties": { "title": "Faceted search" }
+    }
+  ]
+}
