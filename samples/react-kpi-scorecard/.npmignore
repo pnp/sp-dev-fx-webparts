@@ -1,0 +1,6 @@
+# Ignore everything by default
+**
+!README.md
+!assets/**
+!lib/**
+!package.json

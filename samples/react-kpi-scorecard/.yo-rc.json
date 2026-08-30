@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.23.2",
+    "nodeVersion": "22.14.0",
+    "libraryName": "react-kpi-scorecard",
+    "libraryId": "6b1b3b8f-7f5d-4f34-8d2d-0b7d9f0d1e21",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-kpi-scorecard",
+    "solutionShortDescription": "Read-only operational KPI scorecard",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart",
+    "useGulp": false
+  }
+}
