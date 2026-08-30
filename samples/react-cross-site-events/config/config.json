@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "react-cross-site-events": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/reactCrossSiteEvents/ReactCrossSiteEventsWebPart.js",
+          "manifest": "./src/webparts/reactCrossSiteEvents/ReactCrossSiteEventsWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ReactCrossSiteEventsWebPartStrings": "./src/webparts/reactCrossSiteEvents/loc/{locale}.js"
+  }
+}
