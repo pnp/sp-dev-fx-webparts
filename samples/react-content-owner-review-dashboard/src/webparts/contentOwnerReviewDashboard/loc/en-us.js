@@ -1,0 +1,1 @@
+define([], function() { return { "PropertyPaneDescription": "Read-only dashboard settings", "SourcePathsFieldLabel": "List or library paths", "ReferenceDateFieldLabel": "Reference date (YYYY-MM-DD)", "DueWithinDaysFieldLabel": "Due threshold in days" }; });
