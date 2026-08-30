@@ -1,0 +1,43 @@
+{
+  "tenantHost": "",
+  "timezone": "UTC",
+  "defaultStartDate": "",
+  "defaultHorizonDays": 14,
+  "maxHorizonDays": 31,
+  "maxPageSize": 100,
+  "maxItems": 1000,
+  "workingHours": { "start": "09:00", "end": "17:00" },
+  "currentUserEndpoint": "/_api/web/currentuser?$select=Id,Title,Email,LoginName",
+  "sources": [
+    {
+      "id": "rooms",
+      "kind": "room",
+      "label": "Rooms",
+      "resourcesEndpoint": "/_api/web/lists/getbytitle('Rooms')/items?$select=Id,Title,Capacity,TimeZone",
+      "reservationsEndpoint": "/_api/web/lists/getbytitle('RoomReservations')/items?$select=Id,Title,RoomId,Start,End,Units",
+      "resourceIdField": "Id",
+      "resourceNameField": "Title",
+      "capacityField": "Capacity",
+      "timezoneField": "TimeZone",
+      "reservationResourceIdField": "RoomId",
+      "reservationStartField": "Start",
+      "reservationEndField": "End",
+      "reservationUnitsField": "Units"
+    },
+    {
+      "id": "shared-resources",
+      "kind": "shared-resource",
+      "label": "Shared resources",
+      "resourcesEndpoint": "/_api/web/lists/getbytitle('SharedResources')/items?$select=Id,Title,Capacity,TimeZone",
+      "reservationsEndpoint": "/_api/web/lists/getbytitle('ResourceReservations')/items?$select=Id,Title,ResourceId,Start,End,Units",
+      "resourceIdField": "Id",
+      "resourceNameField": "Title",
+      "capacityField": "Capacity",
+      "timezoneField": "TimeZone",
+      "reservationResourceIdField": "ResourceId",
+      "reservationStartField": "Start",
+      "reservationEndField": "End",
+      "reservationUnitsField": "Units"
+    }
+  ]
+}
