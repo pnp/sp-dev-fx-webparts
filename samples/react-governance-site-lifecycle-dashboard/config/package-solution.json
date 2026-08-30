@@ -1,0 +1,33 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "governance-site-lifecycle-dashboard-client-side-solution",
+    "id": "51af4fbb-36cb-4a9e-a0aa-b850b43b8c20",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "metadata": {
+      "shortDescription": {
+        "default": "Read-only governance review for bounded SharePoint site sources."
+      },
+      "longDescription": {
+        "default": "Surfaces SharePoint site metadata, usage and lifecycle review signals using same-tenant REST GET requests only."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Governance and Site Lifecycle Dashboard",
+        "description": "Activates the read-only governance dashboard web part.",
+        "id": "6a8a7db9-77b5-4a76-ae1b-99c3fa7777f3",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/governance-site-lifecycle-dashboard.sppkg"
+  }
+}
