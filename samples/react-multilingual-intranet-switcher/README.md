@@ -62,3 +62,5 @@ Browser locale matching is deterministic: exact supported tag, then matching lan
 - [Build a SharePoint Framework client-side web part](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part)
 
 PnP metadata is in [`assets/sample.json`](assets/sample.json), with the sample credited to `vystartasv` and dated `2026-08-30`.
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-multilingual-intranet-switcher" />
