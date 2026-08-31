@@ -192,6 +192,52 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-delivery-plan",
+    "source": "pnp",
+    "title": "Delivery Plan",
+    "shortDescription": "A project delivery dashboard web part that reads tasks from a SharePoint list and displays them across four interactive views. Resources, phases, and date ranges are all driven by list data — no hardcoded configuration required.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-delivery-plan",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-delivery-plan",
+    "updateDateTime": "2026-08-26",
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "sudeepghatak",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/sudeepghatak.72498f95b645.webp",
+        "name": "Sudeep Ghatak",
+        "avatarSourceUrl": "https://github.com/sudeepghatak.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-delivery-plan.webp",
+        "alt": "Delivery Plan"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-sp-site-user-groups",
     "source": "pnp",
     "title": "Site User and Group Information Web Part",
