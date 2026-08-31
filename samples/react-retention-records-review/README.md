@@ -66,3 +66,5 @@ The fixed fields are `Id`, `Title`, `FileRef`, `Modified`, `FSObjType`, `Content
 ## PnP sample metadata
 
 `assets/sample.json` contains one valid PnP sample entry, credited to `vystartasv`, dated `2026-08-30`, with the official references above.
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-retention-records-review" />
