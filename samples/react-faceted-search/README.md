@@ -22,3 +22,5 @@ The sample author picture is [https://github.com/vystartasv.png](https://github.
 ```bash
 npm test
 ```
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-faceted-search" />
