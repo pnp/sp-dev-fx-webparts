@@ -35,3 +35,5 @@ This sample does not replace Viva Engage, Teams notifications, SharePoint news d
 - Test future publish dates, expired items, missing dates, malformed rows, empty lists, partial pages, throttling, and service unavailable responses.
 - Confirm the audience label is maintained by the content owner and is not treated as group-membership or authorization evidence.
 - Confirm external images and links are intentionally rejected; review accessibility, privacy, retention, and page performance.
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-intranet-announcements-notification-center" />
