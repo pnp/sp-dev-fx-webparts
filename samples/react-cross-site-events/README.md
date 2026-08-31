@@ -52,3 +52,5 @@ gulp package-solution --ship
 ```
 
 Use the hosted workbench for Graph calls; the local workbench does not provide a production SharePoint page context.
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-cross-site-events" />
