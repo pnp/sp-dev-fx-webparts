@@ -38,3 +38,5 @@ Use the SharePoint workbench from `config/serve.json`, then package with `npm ru
 - [Microsoft Graph Approvals app API overview](https://learn.microsoft.com/en-us/graph/approvals-app-api)
 
 `assets/sample.json` is a valid one-element JSON sample asset credited to **vystartasv** on **2026-08-30**.
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-workflow-approval-dashboard" />
