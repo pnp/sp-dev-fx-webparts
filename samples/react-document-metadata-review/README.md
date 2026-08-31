@@ -53,3 +53,5 @@ The SharePoint hosted workbench is required for live REST access. The tests cove
 ## Gallery assets
 
 `assets/sample.json` contains the PnP sample gallery metadata. No screenshots are included: this sample does not claim screenshots that do not exist.
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-document-metadata-review" />
