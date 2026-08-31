@@ -9,8 +9,8 @@
     "longDescription": [
       "A SharePoint Framework web part that audits a site's document libraries against the documented constraints of Copilot Studio knowledge sources, and flags the content that will silently fail to ground."
     ],
-    "creationDateTime": "2026-12-25",
-    "updateDateTime": "2026-12-31",
+    "creationDateTime": "2026-08-15",
+    "updateDateTime": "2026-08-15",
     "products": [
       "SharePoint"
     ],
