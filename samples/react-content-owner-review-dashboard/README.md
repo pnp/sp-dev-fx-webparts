@@ -20,3 +20,5 @@ Paths reject traversal, control characters, backslashes, query/hash fragments, p
 ## Commands
 
 `npm test` runs deterministic production-linked classification, malformed-row, and URL tests. `npm run verify` scans `src` and `config` for write APIs, Graph/permission access, secrets, and unbounded `$top`; generated directories are skipped. `npm run build` bundles the web part. `npm run package` creates the production solution package.
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-content-owner-review-dashboard" />
