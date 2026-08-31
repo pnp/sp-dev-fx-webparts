@@ -1,0 +1,30 @@
+define([], function () {
+  return {
+    "PropertyPaneDescription": "This web part embeds a self-contained HTML application (HTML with inline JavaScript and CSS) into this page — designed in the first place for HTML apps generated with Microsoft Copilot: simply let Copilot create a single-file HTML app, save it as an .html file in a document library, and display it here.",
+    "HtmlSourceGroupName": "HTML source",
+    "HtmlFileWebUrlFieldLabel": "Site URL",
+    "HtmlFileServerRelativeUrlFieldLabel": "HTML file (server-relative URL)",
+    "FilePickerFieldLabel": "HTML application file",
+    "FilePickerButtonLabel": "Browse for file…",
+    "AdvancedGroupName": "Advanced: enter URL manually",
+    "AdvancedGroupDescription": "Use these fields only if the file picker cannot reach the site, or if you already know the exact URLs.",
+    "NoFileSelectedMessage": "No file selected yet.",
+    "CurrentFileLabelPrefix": "Currently configured file: ",
+    "ResolvingSiteUrlMessage": "Resolving the site URL for the selected file…",
+    "WebUrlResolutionFailedMessage": "The site for the selected file could not be determined: ",
+    "MinimumHeightFieldLabel": "Minimum height",
+    "MaximumHeightFieldLabel": "Maximum height",
+    "LoadingMessage": "Loading application…",
+    "ErrorPrefix": "The HTML application could not be loaded: ",
+    "SelectFileMessage": "Select an HTML file first.",
+    "SetupTitle": "How to set up this web part",
+    "SetupIntro": "This web part displays a self-contained HTML application (HTML with inline JavaScript and CSS) — designed in the first place for HTML apps generated with Microsoft Copilot: let Copilot create a single-file HTML app, save it as an .html file in a document library, and connect it here.",
+    "SetupStep1": "Open the web part settings (edit the page, then select the pencil icon on this web part).",
+    "SetupStep2": "Select \"Browse for file…\" and choose the .html file, from Recent files or from a document library in this site collection.",
+    "SetupStep3": "The web part automatically determines the file's site URL. If you already know the exact URLs, expand \"Advanced: enter URL manually\" instead.",
+    "SetupStep4": "Optionally adjust the minimum and maximum height — within these limits the web part resizes automatically — then click Apply to load the app.",
+    "SetupNote": "The app runs in a secure sandbox without access to the page or your SharePoint data. If it declares data sources in an embedded manifest, the web part loads SharePoint list or file data for it automatically.",
+    "OnlyHtmlFilesMessage": "Only .html files are supported.",
+    "WrongTenantMessage": "The HTML file must be stored in the current SharePoint tenant."
+  }
+});

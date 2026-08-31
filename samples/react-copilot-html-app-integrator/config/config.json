@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "copilot-app-integrator-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/copilotAppIntegrator/CopilotAppIntegratorWebPart.js",
+          "manifest": "./src/webparts/copilotAppIntegrator/CopilotAppIntegratorWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "CopilotAppIntegratorWebPartStrings": "lib/webparts/copilotAppIntegrator/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}
