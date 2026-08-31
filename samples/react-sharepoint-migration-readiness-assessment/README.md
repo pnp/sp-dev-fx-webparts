@@ -23,3 +23,5 @@ This is an assessment aid, not a migration tool or compatibility certification. 
 ## Reference
 
 [Microsoft SharePoint Framework documentation](https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview)
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-sharepoint-migration-readiness-assessment" />
