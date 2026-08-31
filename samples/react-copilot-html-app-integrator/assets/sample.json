@@ -1,0 +1,76 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-copilot-html-app-integrator",
+    "source": "pnp",
+    "title": "Integrate (Copilot) HTML apps seamlessly in SharePoint (WebPart)",
+    "shortDescription": "An SPFx web part that embeds small, self-contained HTML applications (HTML + inline JavaScript + CSS, stored in a SharePoint document library) into SharePoint pages without the SharePoint file-preview chrome (toolbar, download button).",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-html-app-integrator",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-html-app-integrator",
+    "longDescription": [
+      "An SPFx web part that embeds small, self-contained HTML applications (HTML + inline JavaScript + CSS, stored in a SharePoint document library) into SharePoint pages without the SharePoint file-preview chrome (toolbar, download button)."
+    ],
+    "creationDateTime": "2026-10-08",
+    "updateDateTime": "2026-10-08",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.23.2"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "app-screen-01.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-html-app-integrator/assets/app-screen-01.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "app-screen-02.png",
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-html-app-integrator/assets/app-screen-02.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "app-screen-03.png",
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-html-app-integrator/assets/app-screen-03.png",
+        "alt": "Web Part Preview"
+      },
+      {
+        "name": "app-screen-04.png",
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-html-app-integrator/assets/app-screen-04.png",
+        "alt": "Web Part Preview"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "maschroeder-z",
+        "pictureUrl": "https://github.com/maschroeder-z.png",
+        "name": "Marc André Schröder-Zhou"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]
