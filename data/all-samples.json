@@ -4726,6 +4726,52 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-copilot-html-app-integrator",
+    "source": "pnp",
+    "title": "Integrate (Copilot) HTML apps seamlessly in SharePoint (WebPart)",
+    "shortDescription": "An SPFx web part that embeds small, self-contained HTML applications (HTML + inline JavaScript + CSS, stored in a SharePoint document library) into SharePoint pages without the SharePoint file-preview chrome (toolbar, download button).",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-html-app-integrator",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-copilot-html-app-integrator",
+    "updateDateTime": "2026-10-08",
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.23.2"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "maschroeder-z",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/maschroeder-z.ee3d256a07e0.webp",
+        "name": "Marc André Schröder-Zhou",
+        "avatarSourceUrl": "https://github.com/maschroeder-z.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-copilot-html-app-integrator.webp",
+        "alt": "Integrate (Copilot) HTML apps seamlessly in SharePoint (WebPart)"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-teams-membership-updater",
     "source": "pnp",
     "title": "Teams Membership Updater Web Part",

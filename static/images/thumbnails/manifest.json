@@ -375,6 +375,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-modern-link-presenter/assets/modernlink-01.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-modern-link-presenter.webp"
   },
+  "pnp-sp-dev-spfx-web-parts-react-copilot-html-app-integrator": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-copilot-html-app-integrator/assets/app-screen-01.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-copilot-html-app-integrator.webp"
+  },
   "pnp-sp-dev-spfx-web-parts-react-teams-membership-updater": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-teams-membership-updater/assets/Screenshot-2020-05-01.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-teams-membership-updater.webp"
