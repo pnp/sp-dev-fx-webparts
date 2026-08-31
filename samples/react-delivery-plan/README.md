@@ -6,7 +6,7 @@
 A project delivery dashboard web part that reads tasks from a SharePoint list and displays them across four interactive views. Resources, phases, and date ranges are all driven by list data — no hardcoded configuration required.
 
 | View | Description |
-|---|---|
+| --- | --- |
 | **Timeline** | Gantt chart grouped by resource — tasks appear as colour-coded bars positioned by start date and duration, with week gridlines and a today marker |
 | **Weekly workload** | Heat-map grid showing how many tasks each resource has running concurrently per week — darker cells mean more concurrent work |
 | **Task list** | Sortable table of all tasks with resource, phase, start date, end date and duration |
@@ -33,7 +33,7 @@ Phases are auto-coloured from a 10-colour palette based on the unique values in 
 ## Compatibility
 
 | :warning: Important |
-|:---|
+| :--- |
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node. |
 | Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility. |
 
@@ -48,7 +48,7 @@ Phases are auto-coloured from a 10-colour palette based on the unique values in 
 ## Applies to
 
 - [SharePoint Framework](https://aka.ms/spfx)
-- [Microsoft 365 tenant](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/set-up-your-developer-tenant)
+- [Microsoft 365 tenant](https://docs.microsoft.com/sharepoint/dev/spfx/set-up-your-developer-tenant)
 
 > Get your own free development tenant by subscribing to the [Microsoft 365 developer program](http://aka.ms/o365devprogram).
 
@@ -59,7 +59,7 @@ Phases are auto-coloured from a 10-colour palette based on the unique values in 
 Create a SharePoint list named **DeliveryPlan** (configurable via the property pane) with the following columns:
 
 | Column display name | Internal name | Type | Required |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | Title | `Title` | Single line of text | Yes |
 | Resource | `Resource` | Person or Group (single selection) | Yes |
 | Phase | `Phase` | Choice or Single line of text | Yes |
@@ -181,7 +181,7 @@ The web part responds to SharePoint's site theme. All neutral colours (text, bac
 ### Property pane
 
 | Property | Default | Description |
-|---|---|---|
+| --- | --- | --- |
 | List name | `DeliveryPlan` | Internal name of the SharePoint list |
 | Title | `Delivery Plan` | Heading displayed above the dashboard |
 | Subtitle | *(empty)* | Optional sub-heading (e.g. project name or date range) |
