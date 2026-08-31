@@ -21,3 +21,5 @@ npm run package
 ```
 
 Before tenant use, confirm: the app is deployed only to intended sites; the configured paths are correct; least-privilege read access is sufficient; representative rows cover optional-field absence and unique permissions; labels and sharing policies are validated in authoritative tools; throttling and 401/403 behavior are understood; and the generated package is reviewed before deployment.
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-external-sharing-sensitive-review" />
