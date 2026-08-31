@@ -11,3 +11,5 @@ Run `npm ci`, then `npm test`, `npm run verify`, `npx gulp bundle --ship`, and `
 All network access is SharePoint REST GET-only through the SPFx HTTP client. URL shape, origin, OData next links, source count, page size, page count, item count, and stale horizon are bounded. No Graph access, credentials, secrets, external hosts, or administration operations are used. Malformed rows are skipped; permission, throttling, retry, generic, partial, empty, and loading states are surfaced. SharePoint field availability and tenant policies vary, so version counts, checkout, and approval values can be unavailable. This is not an authoritative compliance or records-management report.
 
 Official references: [SPFx web parts](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/overview), [SharePoint REST](https://learn.microsoft.com/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service), [SPFx HTTP client](https://learn.microsoft.com/javascript/api/sp-http/sphttpclient), and [Fluent UI React](https://react.fluentui.dev/).
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-document-lifecycle-version-review" />
