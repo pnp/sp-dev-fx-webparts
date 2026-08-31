@@ -17,3 +17,5 @@ npm run package
 Use the web part property pane to set a title and a JSON array. Cards require non-empty `title` and `summary`; optional `category` and `link` values are normalized. Links are retained only when they use `http` or `https`, and the list is capped at eight valid cards. The included `assets/sample.json` is the PnP gallery metadata record, not the card input.
 
 The cards are keyboard focusable and open with Enter or Space. Focus is visibly outlined, and the detail panel is announced as a live region. Contrast and responsive layout are designed with WCAG AA-conscious colors in mind.
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-viva-connections-ace-reference" />
