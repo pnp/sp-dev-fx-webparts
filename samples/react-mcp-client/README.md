@@ -153,13 +153,13 @@ npm run build
 
 ## Contributors
 
-- Elliot Margot
+- [Elliot Margot](https://github.com/OwnOptic)
 
 ## Version history
 
 | Version | Date | Comments |
 | --- | --- | --- |
-| 1.0 | TBD | Initial release |
+| 1.0 | August 15, 2026 | Initial release |
 
 ## References
 
