@@ -911,6 +911,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-list-search/assets/differentSources.gif",
     "file": "pnp-sp-dev-spfx-web-parts-react-list-search.webp"
   },
+  "pnp-sp-dev-spfx-web-parts-react-content-rollup": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-content-rollup/assets/screenshot.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-content-rollup.webp"
+  },
   "pnp-sp-dev-spfx-web-parts-react-my-dashboard": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-dashboard/assets/MyDashboard_default.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-my-dashboard.webp"

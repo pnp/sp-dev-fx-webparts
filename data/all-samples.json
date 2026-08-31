@@ -11455,6 +11455,64 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-content-rollup",
+    "source": "pnp",
+    "title": "Content Rollup",
+    "shortDescription": "Rolls up recent news from a chosen list, or across sites via a Microsoft Search (KQL) query, with no CAML or Handlebars setup.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-content-rollup",
+    "downloadUrl": null,
+    "updateDateTime": "2026-08-28",
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.1"
+      },
+      {
+        "key": "SPFX-TEAMSTAB",
+        "value": "true"
+      },
+      {
+        "key": "SPFX-TEAMSPERSONALAPP",
+        "value": "true"
+      },
+      {
+        "key": "SPFX-FULLPAGEAPP",
+        "value": "true"
+      },
+      {
+        "key": "SPFX-SUPPORTSTHEMEVARIANTS",
+        "value": "true"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "gvijaikumar9",
+        "name": "Vijay Kumar G",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/gvijaikumar9.6427f93d7900.webp",
+        "avatarSourceUrl": "https://github.com/gvijaikumar9.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-content-rollup.webp",
+        "alt": "Content Rollup"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-my-dashboard",
     "source": "pnp",
     "title": "My Dashboard Web Part",

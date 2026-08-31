@@ -1462,5 +1462,11 @@
     "file": "ownoptic.07a838ef8dda.webp",
     "sizePx": 28,
     "sha256_12": "07a838ef8dda"
+  },
+  "https://github.com/gvijaikumar9.png": {
+    "sourceUrl": "https://github.com/gvijaikumar9.png",
+    "file": "gvijaikumar9.6427f93d7900.webp",
+    "sizePx": 28,
+    "sha256_12": "6427f93d7900"
   }
 }
