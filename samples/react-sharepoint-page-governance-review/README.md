@@ -31,3 +31,5 @@ Configure `sourcesJson` as an array such as `[ { "label": "Site Pages", "path": 
 - Treat partial, empty, permission-denied, and throttled results as incomplete evidence.
 
 Official reference: [Build your first SharePoint client-side web part](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part).
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-sharepoint-page-governance-review" />
