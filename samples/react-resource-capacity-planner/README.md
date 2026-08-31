@@ -33,3 +33,5 @@ This sample intentionally uses SharePoint REST in the current user’s SharePoin
 - [Microsoft Graph Bookings API](https://learn.microsoft.com/graph/api/resources/booking-api-overview)
 
 Author: vystartasv · date: 2026-08-30
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-resource-capacity-planner" />
