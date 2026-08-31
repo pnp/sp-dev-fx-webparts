@@ -110,7 +110,7 @@ npm run build
 
 ## Contributors
 
-- Elliot Margot
+- [Elliot Margot](https://github.com/OwnOptic)
 
 ## Version history
 
