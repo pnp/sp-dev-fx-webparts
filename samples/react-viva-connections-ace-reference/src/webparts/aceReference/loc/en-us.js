@@ -1,0 +1,1 @@
+define([], function() { return { PropertyPaneDescription: 'Configure local ACE interaction patterns', TitleFieldLabel: 'Dashboard title', CardsFieldLabel: 'Cards JSON', CardsFieldDescription: 'A JSON array of cards. Valid cards need title and summary.' }; });
