@@ -39,3 +39,5 @@ Package the solution with `npm run package`. The sample uses Node 22.14.0, SPFx 
 ## Credits and dates
 
 Created and updated 2026-08-30. Credited to [vystartasv](https://github.com/vystartasv).
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-accessibility-content-auditor" />
