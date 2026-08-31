@@ -37,3 +37,5 @@ Using the injected reference date: a past review date is **stale**, a date withi
 ## References
 
 [Microsoft: Build your first SharePoint client-side web part](https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part)
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-knowledge-base-freshness-taxonomy" />
