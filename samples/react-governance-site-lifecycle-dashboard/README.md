@@ -58,3 +58,5 @@ This is not an administration tool. It cannot create, update, delete, permission
 - [SPHttpClient](https://learn.microsoft.com/javascript/api/sp-http/sphttpclient)
 - [SharePoint REST service](https://learn.microsoft.com/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service)
 - [SharePoint Framework v1.23 release notes](https://learn.microsoft.com/sharepoint/dev/spfx/release-1.23)
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-governance-site-lifecycle-dashboard" />
