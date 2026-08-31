@@ -2253,6 +2253,52 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-mcp-client",
+    "source": "pnp",
+    "title": "MCP Client for SharePoint",
+    "shortDescription": "A SharePoint Framework web part that acts as a Model Context Protocol (MCP) client from inside a SharePoint page. It connects to an MCP server over Streamable HTTP, lists the tools that server exposes, lets a user invoke one from a form generated out of the tool's JSON Schema, and renders the full HTTP and JSON-RPC trace so the protocol is visible rather than hidden inside an agent.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-mcp-client",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-mcp-client",
+    "updateDateTime": "2026-08-15",
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.23.2"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "OwnOptic",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/ownoptic.07a838ef8dda.webp",
+        "name": "Elliot Margot",
+        "avatarSourceUrl": "https://github.com/OwnOptic.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-mcp-client.webp",
+        "alt": "MCP Client for SharePoint"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-birthdays-per-month",
     "source": "pnp",
     "title": "Birthdays Per Month",

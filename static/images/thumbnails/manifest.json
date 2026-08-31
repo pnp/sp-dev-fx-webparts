@@ -183,6 +183,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-daterangepicker/assets/daterange1.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-daterangepicker.webp"
   },
+  "pnp-sp-dev-spfx-web-parts-react-mcp-client": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-mcp-client/assets/screenshot-sse.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-mcp-client.webp"
+  },
   "pnp-sp-dev-spfx-web-parts-react-birthdays-per-month": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-birthdays-per-month/assets/app.png",
     "file": "pnp-sp-dev-spfx-web-parts-react-birthdays-per-month.webp"
