@@ -1,0 +1,7 @@
+{
+  "extends": "@microsoft/spfx-web-build-rig/profiles/default/config/jest.config.json",
+  "setupFilesAfterEnv": ["<rootDir>/jest.setup.js"],
+  "moduleNameMapper": {
+    "^SiteDirectoryWebPartStrings$": "<rootDir>/jest.strings.js"
+  }
+}
