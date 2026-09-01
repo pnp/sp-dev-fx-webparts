@@ -1,0 +1,18 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-intranet-announcements-notification-center",
+    "source": "pnp",
+    "title": "Intranet Announcements and Targeted Notification Center",
+    "shortDescription": "A bounded, read-only SharePoint announcements presentation and review sample.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-intranet-announcements-notification-center",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-intranet-announcements-notification-center",
+    "longDescription": ["Reads configured SharePoint announcement lists with SharePoint REST GET only and presents eligible items with safe, bounded filtering."],
+    "creationDateTime": "2026-08-30",
+    "updateDateTime": "2026-08-30",
+    "products": ["SharePoint", "SPFx"],
+    "metadata": [{ "key": "SAMPLE-TYPE", "value": "SPFx-WebPart" }, { "key": "CLIENT-SIDE-DEV", "value": "React" }, { "key": "SPFX-VERSION", "value": "1.23.2" }],
+    "thumbnails": [],
+    "authors": [{ "gitHubAccount": "vystartasv", "pictureUrl": "https://github.com/vystartasv.png", "name": "Vilius Vystartas" }],
+    "references": [{ "name": "Build your first SharePoint client-side web part", "description": "Official Microsoft guide to building a SharePoint Framework client-side web part.", "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part" }]
+  }
+]
