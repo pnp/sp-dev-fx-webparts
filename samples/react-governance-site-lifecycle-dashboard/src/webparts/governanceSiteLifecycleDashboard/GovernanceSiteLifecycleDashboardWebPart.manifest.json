@@ -1,0 +1,25 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "acb2c38d-ec6f-46b3-a4bb-c398100e50b8",
+  "alias": "GovernanceSiteLifecycleDashboardWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": { "default": "Advanced" },
+      "title": { "default": "Governance and Site Lifecycle Dashboard" },
+      "description": { "default": "Review bounded SharePoint site governance signals." },
+      "officeFabricIconFontName": "BarChartVertical",
+      "properties": {
+        "sourcesJson": "[{\"id\":\"governance-sites\",\"label\":\"Governance sites\",\"url\":\"/_api/web/webinfos?$select=Title,Url,WebTemplate,WebTemplateConfiguration,LastItemUserModifiedDate,Created&$orderby=Title\",\"pageSize\":25,\"maxPages\":5,\"maxItems\":200}]",
+        "referenceDate": "2026-08-30",
+        "reviewHorizonDays": 60
+      }
+    }
+  ]
+}
