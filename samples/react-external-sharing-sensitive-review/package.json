@@ -1,0 +1,41 @@
+{
+  "name": "react-external-sharing-sensitive-review",
+  "version": "1.0.0",
+  "private": true,
+  "main": "lib/index.js",
+  "engines": { "node": ">=22.14.0 <23.0.0" },
+  "scripts": {
+    "test": "jest --runInBand",
+    "verify": "node scripts/verify-read-only.js",
+    "build": "gulp bundle --ship",
+    "package": "gulp package-solution --ship"
+  },
+  "dependencies": {
+    "@fluentui/react-components": "9.73.2",
+    "@microsoft/sp-core-library": "1.23.2",
+    "@microsoft/sp-http": "1.23.2",
+    "@microsoft/sp-lodash-subset": "1.23.2",
+    "@microsoft/sp-office-ui-fabric-core": "1.23.2",
+    "@microsoft/sp-property-pane": "1.23.2",
+    "@microsoft/sp-webpart-base": "1.23.2",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "tslib": "2.3.1"
+  },
+  "devDependencies": {
+    "@microsoft/eslint-config-spfx": "1.23.2",
+    "@microsoft/rush-stack-compiler-4.7": "0.1.0",
+    "@microsoft/sp-build-web": "1.23.2",
+    "@microsoft/sp-module-interfaces": "1.23.2",
+    "@microsoft/sp-tslint-rules": "1.23.2",
+    "@types/jest": "29.5.14",
+    "@types/react": "17.0.45",
+    "@types/react-dom": "17.0.17",
+    "@types/webpack-env": "1.18.8",
+    "eslint": "8.57.0",
+    "gulp": "4.0.2",
+    "jest": "29.7.0",
+    "ts-jest": "29.2.5",
+    "typescript": "4.7.4"
+  }
+}

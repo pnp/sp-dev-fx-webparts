@@ -1,0 +1,7 @@
+.root { font-family: Segoe UI, sans-serif; color: #242424; }
+.toolbar { display: flex; flex-wrap: wrap; gap: 12px; align-items: end; margin: 12px 0; }
+.table { width: 100%; border-collapse: collapse; }
+.table th, .table td { border-bottom: 1px solid #ddd; padding: 8px; text-align: left; vertical-align: top; }
+.high { border-left: 4px solid #d13438; } .medium { border-left: 4px solid #ca5010; } .low { border-left: 4px solid #107c10; }
+.muted { color: #605e5c; } .error { color: #a4262c; } .live { min-height: 24px; }
+@media (max-width: 700px) { .table { display: block; overflow-x: auto; } .table th, .table td { min-width: 130px; } }
