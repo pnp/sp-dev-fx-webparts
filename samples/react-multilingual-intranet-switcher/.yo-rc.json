@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "version": "1.23.2",
+    "libraryName": "multilingual-intranet-switcher",
+    "libraryId": "c9de8f07-70ae-4d19-b2a5-7ab36a0c6b54",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-multilingual-intranet-switcher",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart",
+    "framework": "react",
+    "webpartName": "MultilingualIntranetSwitcher",
+    "webpartDescription": "Read-only multilingual intranet navigation and content switcher",
+    "webpartHelpUrl": "",
+    "supportedHosts": ["SharePointWebPart"]
+  }
+}
