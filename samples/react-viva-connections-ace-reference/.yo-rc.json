@@ -1,0 +1,3 @@
+{
+  "@microsoft/generator-sharepoint": { "plusBeta": false, "isCreatingSolution": true, "nodeVersion": "18.17.1", "version": "1.23.2", "libraryName": "react-viva-connections-ace-reference", "libraryId": "6f9d7a1b-5f06-4eaf-9f8d-4c5e9b2a1d77", "environment": "spo", "packageManager": "npm", "solutionName": "ReactVivaConnectionsAceReference", "solutionShortDescription": "Viva Connections interaction patterns reference", "skipFeatureDeployment": true, "isDomainIsolated": false, "componentType": "webpart" }
+}
