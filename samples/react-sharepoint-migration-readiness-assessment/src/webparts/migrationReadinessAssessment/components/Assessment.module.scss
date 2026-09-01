@@ -1,0 +1,5 @@
+.assessment { font-family: Segoe UI, sans-serif; color: #242424; padding: 1rem; max-width: 1100px; }
+.disclaimer { font-weight: 600; } .note, .warning { color: #605e5c; } .warning { color: #a4262c; }
+.controls { display: flex; flex-wrap: wrap; gap: 1rem; align-items: end; margin: 1rem 0; } label { display: grid; gap: .25rem; font-weight: 600; } input { min-height: 32px; border: 1px solid #888; padding: .25rem; }
+.status { min-height: 36px; } .tableWrap { overflow-x: auto; } table { width: 100%; border-collapse: collapse; } th, td { text-align: left; padding: .6rem; border-bottom: 1px solid #ddd; vertical-align: top; } small { display: block; color: #605e5c; word-break: break-word; } .ready, .review, .blocked, .unknown { font-weight: 700; } .ready { color: #107c10; } .review { color: #8a5100; } .blocked { color: #a4262c; } .unknown { color: #605e5c; } .visuallyHidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+@media (max-width: 600px) { th:nth-child(n+4), td:nth-child(n+4) { display: none; } }
