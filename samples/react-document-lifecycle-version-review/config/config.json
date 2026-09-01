@@ -1,0 +1,7 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": { "document-lifecycle-version-review": { "components": [{ "entrypoint": "./lib/webparts/documentLifecycleVersionReview/DocumentLifecycleVersionReviewWebPart.js", "manifest": "./src/webparts/documentLifecycleVersionReview/DocumentLifecycleVersionReviewWebPart.manifest.json" }] } },
+  "externals": {},
+  "localizedResources": { "DocumentLifecycleVersionReviewWebPartStrings": "lib/webparts/documentLifecycleVersionReview/loc/{locale}.js" }
+}
