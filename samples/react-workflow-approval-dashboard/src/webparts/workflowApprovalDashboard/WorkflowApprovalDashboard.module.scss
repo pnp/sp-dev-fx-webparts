@@ -1,0 +1,13 @@
+.root { box-sizing: border-box; max-width: 1280px; margin: 0 auto; padding: 24px; color: #242424; }
+.header { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 20px; }
+.header :global(.fui-Subtitle1) { display: block; margin-top: 4px; color: #616161; }
+.notice, .threshold, .empty { padding: 12px 16px; margin: 12px 0; background: #f5f5f5; border-radius: 4px; }
+.empty { display: grid; gap: 4px; min-height: 80px; align-content: center; }
+.table { width: 100%; margin-top: 16px; }
+.table :global(.fui-TableCell) { vertical-align: top; }
+.table :global(.fui-TableCell) > * { display: block; margin-bottom: 4px; }
+.approvals { display: grid; gap: 4px; }
+.cards { display: none; }
+.card { display: grid; gap: 8px; margin-top: 12px; padding: 16px; }
+@media (max-width: 800px) { .root { padding: 16px; } .header { align-items: flex-start; } .table { display: none; } .cards { display: block; } }
+@media (max-width: 480px) { .header { flex-direction: column; } .header button { align-self: stretch; } }
