@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "d25b7ce6-c3c4-4f67-97c1-6b4107b8fa26",
+  "alias": "DocumentLibraryWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": { "default": "Other" },
+      "title": { "default": "Business Document Library" },
+      "description": { "default": "Browse files and folders in a configured SharePoint document library." },
+      "officeFabricIconFontName": "Library",
+      "properties": {
+        "libraryTitle": "Documents",
+        "libraryRootPath": "",
+        "webPartTitle": "Business documents",
+        "pageSize": 25,
+        "showFolders": true,
+        "showFileType": true,
+        "showModifiedDate": true
+      }
+    }
+  ]
+}
