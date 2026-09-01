@@ -1,0 +1,5 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "b0cf83b8-6b84-4cc4-b702-e5cf56db1f19", "alias": "KnowledgeBaseFreshnessTaxonomyWebPart", "componentType": "WebPart", "version": "*", "manifestVersion": 2, "requiresCustomScript": false, "supportedHosts": ["SharePointWebPart"], "supportsThemeVariants": true,
+  "preconfiguredEntries": [{ "groupId": "5c03119e-3074-46fd-976b-c60198311f70", "group": { "default": "Other" }, "title": { "default": "Knowledge Base Freshness and Taxonomy Hub" }, "description": { "default": "Read-only review aid for knowledge freshness and taxonomy metadata." }, "officeFabricIconFontName": "KnowledgeArticle", "properties": { "sources": "/SitePages" } }]
+}
