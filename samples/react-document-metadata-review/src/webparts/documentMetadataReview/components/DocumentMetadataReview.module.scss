@@ -1,0 +1,179 @@
+.container {
+  color: #242424;
+  font-family: "Segoe UI", sans-serif;
+  max-width: 100%;
+}
+
+.header {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.title {
+  color: #242424;
+  font-size: 24px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.subtitle {
+  color: #616161;
+  margin: 4px 0 0;
+}
+
+.toolbar {
+  align-items: end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.filter {
+  min-width: 190px;
+}
+
+.summary {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 12px 0;
+}
+
+.state {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.message {
+  margin: 12px 0;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.table {
+  border-collapse: collapse;
+  min-width: 760px;
+  width: 100%;
+}
+
+.table th,
+.table td {
+  border-bottom: 1px solid #e1dfdd;
+  padding: 12px 10px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.table th {
+  background: #faf9f8;
+  color: #424242;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.documentName {
+  display: block;
+  font-weight: 600;
+  max-width: 240px;
+  overflow-wrap: anywhere;
+}
+
+.documentDetails {
+  color: #616161;
+  display: block;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.metadataCell {
+  min-width: 150px;
+}
+
+.metadataValue {
+  display: block;
+  margin-bottom: 5px;
+  overflow-wrap: anywhere;
+}
+
+.emptyState {
+  align-items: center;
+  background: #faf9f8;
+  border: 1px dashed #c8c6c4;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  min-height: 160px;
+  padding: 24px;
+  text-align: center;
+}
+
+.loadingState {
+  align-items: center;
+  display: flex;
+  gap: 10px;
+  min-height: 120px;
+}
+
+.mobileList {
+  display: none;
+}
+
+.mobileCard {
+  margin-bottom: 12px;
+}
+
+.cardHeader {
+  align-items: flex-start;
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
+.cardField {
+  border-top: 1px solid #edebe9;
+  display: flex;
+  gap: 8px;
+  justify-content: space-between;
+  padding: 8px 0;
+}
+
+.cardFieldName {
+  color: #616161;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+:global(.sr-only) {
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@media (max-width: 700px) {
+  .header {
+    flex-direction: column;
+  }
+
+  .tableWrapper {
+    display: none;
+  }
+
+  .mobileList {
+    display: block;
+  }
+}

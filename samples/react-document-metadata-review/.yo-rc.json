@@ -1,0 +1,15 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "libraryName": "react-document-metadata-review",
+    "framework": "react",
+    "isDomainIsolated": false,
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-document-metadata-review",
+    "componentType": "webpart",
+    "skipFeatureDeployment": false,
+    "isCreatingSolution": true,
+    "isCreatingContainer": false,
+    "version": "1.23.2"
+  }
+}
