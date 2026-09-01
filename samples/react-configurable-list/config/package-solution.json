@@ -1,0 +1,41 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-configurable-list-client-side-solution",
+    "title": "Configurable SharePoint List",
+    "id": "3b66efab-2d8f-4e5a-a660-4bf27a8e0d2a",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Microsoft 365 Patterns and Practices",
+      "websiteUrl": "https://github.com/pnp/sp-dev-fx-webparts",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "m365pnp"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Browse a SharePoint list with configurable fields, sorting, search, and paging."
+      },
+      "longDescription": {
+        "default": "A read-only SharePoint list browser built with SPFx, React 17, Fluent UI 9, and PnPjs."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Configurable SharePoint List Feature",
+        "description": "Activates the Configurable SharePoint List web part.",
+        "id": "4d974b77-6db4-44bb-a1b0-c7b51d2f5c87",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-configurable-list.sppkg"
+  }
+}

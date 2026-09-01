@@ -1,0 +1,28 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "0f7a8f58-b7d5-4d25-8a02-4c9a9ad776d1",
+  "alias": "ConfigurableListWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+      "group": { "default": "Other" },
+      "title": { "default": "Configurable SharePoint list" },
+      "description": { "default": "Browse a SharePoint list with configurable fields, sorting, search, and paging." },
+      "officeFabricIconFontName": "List",
+      "properties": {
+        "listTitle": "Documents",
+        "visibleFields": "Title, Modified, Editor",
+        "title": "SharePoint list",
+        "pageSize": 20,
+        "defaultSortField": "Modified",
+        "defaultSortDirection": "desc",
+        "enableSearch": true
+      }
+    }
+  ]
+}

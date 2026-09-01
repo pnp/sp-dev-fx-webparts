@@ -1,0 +1,145 @@
+.root {
+  color: var(--colorNeutralForeground1);
+  font-family: var(--fontFamilyBase);
+  width: 100%;
+}
+
+.toolbar {
+  align-items: end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: space-between;
+  margin: 16px 0;
+}
+
+.search {
+  display: flex;
+  flex: 1 1 240px;
+  gap: 8px;
+  max-width: 520px;
+}
+
+.status {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  min-height: 100px;
+  padding: 16px;
+  text-align: center;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  border-collapse: collapse;
+  min-width: 560px;
+  width: 100%;
+}
+
+.table th,
+.table td {
+  border-bottom: 1px solid var(--colorNeutralStroke2);
+  padding: 10px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+
+.table th {
+  background: var(--colorNeutralBackground3);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.table tbody tr {
+  cursor: pointer;
+}
+
+.table tbody tr:hover,
+.table tbody tr:focus-visible,
+.selected {
+  background: var(--colorNeutralBackground1Hover);
+  outline: none;
+}
+
+.sortButton {
+  background: transparent;
+  border: 0;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+  padding: 0;
+}
+
+.sortButton:focus-visible,
+.card:focus-visible {
+  outline: 2px solid var(--colorStrokeFocus2);
+  outline-offset: 2px;
+}
+
+.cardList {
+  display: none;
+}
+
+.card {
+  background: var(--colorNeutralBackground1);
+  border: 1px solid var(--colorNeutralStroke2);
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  margin-bottom: 10px;
+  padding: 12px;
+  text-align: left;
+  width: 100%;
+}
+
+.card.selected {
+  border-color: var(--colorBrandStroke1);
+}
+
+.cardField {
+  display: grid;
+  gap: 2px;
+  grid-template-columns: minmax(90px, 35%) 1fr;
+  margin-bottom: 8px;
+}
+
+.cardField:last-child {
+  margin-bottom: 0;
+}
+
+.fieldName {
+  color: var(--colorNeutralForeground3);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.itemLink {
+  color: var(--colorBrandForeground1);
+  text-decoration: none;
+}
+
+.itemLink:hover {
+  text-decoration: underline;
+}
+
+.pager {
+  align-items: center;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 12px;
+}
+
+@media (max-width: 640px) {
+  .tableWrap {
+    display: none;
+  }
+
+  .cardList {
+    display: block;
+  }
+}
