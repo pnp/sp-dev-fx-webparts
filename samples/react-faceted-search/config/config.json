@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "faceted-search-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/facetedSearch/FacetedSearchWebPart.js",
+          "manifest": "./src/webparts/facetedSearch/FacetedSearchWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "FacetedSearchWebPartStrings": "lib/webparts/facetedSearch/loc/{locale}.js"
+  }
+}
