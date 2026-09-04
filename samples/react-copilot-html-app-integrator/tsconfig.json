@@ -1,0 +1,6 @@
+{
+  "extends": "./node_modules/@microsoft/spfx-web-build-rig/profiles/default/tsconfig-base.json",
+  "compilerOptions": {
+    "lib": ["dom", "dom.iterable", "es5", "es2015", "es2017", "es2019"]
+  }
+}
