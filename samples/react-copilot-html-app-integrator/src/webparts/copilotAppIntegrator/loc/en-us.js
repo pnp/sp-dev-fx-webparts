@@ -25,6 +25,12 @@ define([], function () {
     "SetupStep4": "Optionally adjust the minimum and maximum height — within these limits the web part resizes automatically — then click Apply to load the app.",
     "SetupNote": "The app runs in a secure sandbox without access to the page or your SharePoint data. If it declares data sources in an embedded manifest, the web part loads SharePoint list or file data for it automatically.",
     "OnlyHtmlFilesMessage": "Only .html files are supported.",
-    "WrongTenantMessage": "The HTML file must be stored in the current SharePoint tenant."
+    "WrongTenantMessage": "The HTML file must be stored in the current SharePoint tenant.",
+    "CompatibilityWarningsTitle": "Some parts of this app could not be adapted:",
+    "CompatibilityWarningsNote": "The rest of the app is unaffected. Handlers that rely on the browser's implicit element scope (for example onclick=\"form.reset()\") are not supported — rewrite them to use document.getElementById(...) instead. You can hide this notice under \"Advanced\" in the web part settings.",
+    "HideCompatibilityWarningsFieldLabel": "Compatibility warnings",
+    "HideCompatibilityWarningsDescription": "Warnings appear above the app when parts of it could not be adapted to the page's security policy. They are visible to everyone who can see the page; they are always written to the browser console regardless of this setting.",
+    "HideCompatibilityWarningsOnText": "Hidden",
+    "HideCompatibilityWarningsOffText": "Shown"
   }
 });
