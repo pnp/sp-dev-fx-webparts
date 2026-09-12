@@ -1,0 +1,48 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-my-workspaces-hub-client-side-solution",
+    "id": "3d39dc69-c25f-4053-891b-f19453779d48",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.23.0"
+    },
+    "webApiPermissionRequests": [
+      { "resource": "Microsoft Graph", "scope": "Sites.Read.All" },
+      { "resource": "Microsoft Graph", "scope": "Group.Read.All" },
+      { "resource": "Microsoft Graph", "scope": "GroupMember.ReadWrite.All" },
+      { "resource": "Microsoft Graph", "scope": "Directory.Read.All" },
+      { "resource": "Microsoft Graph", "scope": "Files.Read.All" },
+      { "resource": "Microsoft Graph", "scope": "People.Read" }
+    ],
+    "metadata": {
+      "shortDescription": {
+        "default": "react-my-workspaces-hub description"
+      },
+      "longDescription": {
+        "default": "Enterprise My Workspaces Hub - sites, teams, groups and OneDrive for the current user"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-my-workspaces-hub Feature",
+        "description": "The feature that activates elements of the react-my-workspaces-hub solution.",
+        "id": "be98aea1-d725-4ded-96ae-9300c63f89f1",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-my-workspaces-hub.sppkg"
+  }
+}
