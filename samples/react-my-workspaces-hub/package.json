@@ -1,0 +1,64 @@
+{
+  "name": "react-my-workspaces-hub",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=22.14.0 < 23.0.0"
+  },
+  "scripts": {
+    "build": "heft test --clean --production && heft package-solution --production",
+    "clean": "heft clean",
+    "eject-webpack": "heft eject-webpack",
+    "start": "heft start --clean"
+  },
+  "dependencies": {
+    "@fluentui/react": "^8.106.4",
+    "@fluentui/react-calendar-compat": "0.4.1",
+    "@fluentui/react-charting": "^5.23.1",
+    "@fluentui/react-components": "9.74.1",
+    "@fluentui/react-datepicker-compat": "0.6.31",
+    "@fluentui/react-icons": "2.0.330",
+    "@fluentui/react-virtualizer": "9.0.0-alpha.112",
+    "@microsoft/microsoft-graph-types": "^2.40.0",
+    "@microsoft/sp-component-base": "1.23.0",
+    "@microsoft/sp-core-library": "1.23.0",
+    "@microsoft/sp-lodash-subset": "1.23.0",
+    "@microsoft/sp-office-ui-fabric-core": "1.23.0",
+    "@microsoft/sp-property-pane": "1.23.0",
+    "@microsoft/sp-webpart-base": "1.23.0",
+    "@pnp/graph": "4.11.0",
+    "@pnp/sp": "4.11.0",
+    "@pnp/spfx-property-controls": "^3.24.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "react-window": "1.8.11",
+    "tslib": "2.3.1",
+    "xlsx": "0.18.5"
+  },
+  "devDependencies": {
+    "@microsoft/eslint-config-spfx": "1.23.0",
+    "@microsoft/eslint-plugin-spfx": "1.23.0",
+    "@microsoft/sp-module-interfaces": "1.23.0",
+    "@microsoft/spfx-heft-plugins": "1.23.0",
+    "@microsoft/spfx-web-build-rig": "1.23.0",
+    "@rushstack/heft": "1.2.17",
+    "@types/jest": "30.0.0",
+    "@types/react": "17.0.45",
+    "@types/react-dom": "17.0.17",
+    "@types/react-window": "1.8.8",
+    "@types/webpack-env": "~1.15.2",
+    "css-loader": "~7.1.2",
+    "eslint": "9.37.0",
+    "eslint-plugin-react-hooks": "5.2.0",
+    "typescript": "~5.8.0"
+  },
+  "overrides": {
+    "@rushstack/heft": "1.2.17",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "tabster": "8.5.5"
+  },
+  "resolutions": {
+    "tabster": "8.5.5"
+  }
+}

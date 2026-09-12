@@ -1,0 +1,65 @@
+.titleCell {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  width: 100%;
+}
+
+.titleText {
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+}
+
+.badges {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+  flex-shrink: 0;
+}
+
+.openButton {
+  flex-shrink: 0;
+  opacity: 0;
+  transform: translateX(-4px);
+  transition: opacity 120ms ease-in-out, transform 120ms ease-in-out;
+}
+
+.titleCell:hover .openButton,
+.titleCell:focus-within .openButton {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+// Touch devices never hover, so keep the affordance visible there.
+@media (hover: none) {
+  .openButton {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.starCell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.starButton {
+  transition: transform 120ms ease-in-out;
+
+  // Descendant selector so the colour wins over the Fluent Button's own class.
+  svg {
+    color: var(--colorNeutralForeground4);
+  }
+
+  &:hover {
+    transform: scale(1.15);
+  }
+}
