@@ -33,6 +33,7 @@ export default function DynamicPoll(
     props.initialTotalVotes || 0,
   );
   const [loading, setLoading] = React.useState<boolean>(false);
+  const [voteConfirmation, setVoteConfirmation] = React.useState<string>("");
 
   const refreshResults = React.useCallback(async (): Promise<void> => {
     if (!props.pollItem) return;
@@ -57,6 +58,7 @@ export default function DynamicPoll(
       );
 
       setVotedAnswer(selectedOption);
+      setVoteConfirmation(`Vote recorded. Your choice: ${selectedOption}.`);
       await refreshResults();
     } catch (err) {
       console.error("Error submitting vote:", err);
@@ -93,13 +95,7 @@ export default function DynamicPoll(
         <div className={styles.content}>
           <div className={styles.question}>{props.pollItem.Question}</div>
 
-          {votedAnswer ? (
-            <div className={styles.thankYou}>
-              <h3>Thanks for voting!</h3>
-              <p>You selected:</p>
-              <div className={styles.votedAnswer}>{votedAnswer}</div>
-            </div>
-          ) : (
+          {!votedAnswer && (
             <>
               <ChoiceGroup
                 options={options}
@@ -116,14 +112,18 @@ export default function DynamicPoll(
               </div>
             </>
           )}
+
+          <PollResults
+            pollItem={props.pollItem}
+            results={pollResults}
+            totalVotes={totalVotes}
+            votedAnswer={votedAnswer}
+          />
         </div>
       </div>
-
-      <PollResults
-        pollItem={props.pollItem}
-        results={pollResults}
-        totalVotes={totalVotes}
-      />
+      <div className={styles.screenReaderOnly} aria-live="polite" aria-atomic="true">
+        {voteConfirmation}
+      </div>
     </div>
   );
 }

@@ -70,7 +70,7 @@
 
 * **Dynamic Polling**: Fetches the currently active poll based on date and status.
 * **Interactive Voting**: Allows users to select an option and vote.
-* **Immediate Visual Feedback**: Displays a professional, colorful, and responsive UI with immediate feedback ("Thanks for voting!").
+* **Immediate Visual Feedback**: Highlights the voter’s selected result with a persistent “Your choice” label.
 * **Real-time Results**: Shows poll results using Fluent UI Progress Indicators immediately after voting.
 * **SharePoint Integration**: deeply integrated with SharePoint lists for data storage and user context (Email) for vote tracking.
 * **PnP JS Integration**: Uses PnP JS for efficient SharePoint data operations.
