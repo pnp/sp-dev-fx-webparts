@@ -39,6 +39,7 @@
  |Version|Date|Comments|
  |-------|----|--------|
  |1.0|February 7, 2026|Initial release|
+ |1.1|September 12, 2026|Improved layout and visual feedback|
 
 ## Prerequisites
 

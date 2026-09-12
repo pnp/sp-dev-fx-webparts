@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-dynamic-poll-client-side-solution",
     "id": "0e07225f-c309-401c-ab47-1fed99cfc551",
-    "version": "1.0.0.0",
+    "version": "1.1.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
