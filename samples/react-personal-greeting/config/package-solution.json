@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-personal-greeting-client-side-solution",
     "id": "5e7ea24d-fccc-4d96-a56c-488564d9c61c",
-    "version": "1.1.0.0",
+    "version": "2.0.0.0",
     "includeClientSideAssets": true,
     "isDomainIsolated": false,
     "developer": {
@@ -12,7 +12,29 @@
       "privacyUrl": "",
       "termsOfUseUrl": "",
       "websiteUrl": ""
-    }
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Displays a personalized greeting for the current SharePoint user."
+      },
+      "longDescription": {
+        "default": "Displays a configurable personalized greeting for the current SharePoint user."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Personal Greeting Web Part Feature",
+        "description": "Activates the Personal Greeting web part.",
+        "id": "c1627244-55ce-4a32-97a0-cb278d5d7a61",
+        "version": "1.1.0.0",
+        "componentIds": [
+          "c1627244-55ce-4a32-97a0-cb278d5d7a61"
+        ]
+      }
+    ]
   },
   "paths": {
     "zippedPackage": "solution/react-personal-greeting.sppkg"
