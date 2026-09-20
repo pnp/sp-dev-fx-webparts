@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "48bbeb84-9ff1-45df-8715-1c78ece5c97b",
+  "alias": "TeamAvailabilityCalendarWebPart",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
+    "group": { "default": "Advanced" },
+    "title": { "default": "Team Availability Calendar" },
+    "description": { "default": "Shows team vacations and absences from a SharePoint list on a month calendar, with multi-day bars, an 'Out this week' strip and per-person details." },
+    "officeFabricIconFontName": "Calendar",
+    "properties": {
+      "listName": "Team Absences",
+      "employeeFieldName": "Employee",
+      "typeFieldName": "AbsenceType",
+      "startDateFieldName": "StartDate",
+      "endDateFieldName": "EndDate",
+      "notesFieldName": "Notes",
+      "viewMode": "month",
+      "startWeekOnMonday": true,
+      "showWeekends": false,
+      "maxLanesPerDay": 3,
+      "showOutThisWeek": true,
+      "capacityWarningThreshold": 3,
+      "useMockData": false
+    }
+  }]
+}
