@@ -1,0 +1,221 @@
+.listDashboard {
+  --wp-ink: var(--bodyText, #242424);
+  --wp-muted: rgba(128, 128, 128, 0.85);
+  --wp-line: rgba(128, 128, 128, 0.18);
+  --wp-track: rgba(128, 128, 128, 0.12);
+  --wp-soft-error: #a8636a;
+
+  color: var(--wp-ink);
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  box-sizing: border-box;
+
+  * { box-sizing: border-box; }
+}
+
+.title {
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.note {
+  color: var(--wp-muted);
+  font-size: 13px;
+  padding: 12px 0;
+}
+
+.softError {
+  color: var(--wp-soft-error);
+  font-size: 13px;
+  padding: 12px 0;
+}
+
+.demoBadge {
+  display: inline-block;
+  font-size: 11px;
+  color: var(--wp-muted);
+  background: var(--wp-track);
+  border-radius: 10px;
+  padding: 2px 10px;
+  margin-bottom: 12px;
+}
+
+/* ---- Stat ---- */
+.stat { padding: 6px 0; }
+.statValue {
+  font-size: 40px;
+  font-weight: 700;
+  line-height: 1.05;
+  font-variant-numeric: tabular-nums;
+}
+.statLabel { font-size: 13px; color: var(--wp-muted); margin-top: 4px; }
+.statMeta { font-size: 12px; color: var(--wp-muted); margin-top: 2px; }
+
+/* ---- Tiles ---- */
+.tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+.tile {
+  border: 1px solid var(--wp-line);
+  border-top: 3px solid #0f6cbd;
+  border-radius: 8px;
+  padding: 12px 14px;
+  min-width: 0;
+}
+.tileValue {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+.tileLabel {
+  font-size: 13px;
+  margin-top: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.tileMeta { font-size: 11.5px; color: var(--wp-muted); margin-top: 2px; }
+
+/* ---- Bars ---- */
+.bars { display: flex; flex-direction: column; gap: 10px; }
+.barRow {
+  display: grid;
+  grid-template-columns: minmax(0, 150px) 1fr auto;
+  align-items: center;
+  gap: 12px;
+}
+.barLabel {
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.barTrack {
+  height: 18px;
+  background: var(--wp-track);
+  border-radius: 9px;
+  overflow: hidden;
+}
+.barFill {
+  height: 100%;
+  background: #0f6cbd;
+  border-radius: 9px;
+  min-width: 2px;
+  transition: width 0.3s ease;
+}
+.barValue {
+  font-size: 12.5px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ---- Column chart (vertical bars) ---- */
+.columns {
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+  height: 200px;
+}
+.column {
+  flex: 1 1 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+}
+.columnValue {
+  font-size: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 4px;
+  white-space: nowrap;
+}
+.columnBarWrap {
+  width: 100%;
+  flex: 1 1 auto;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.columnBar {
+  width: 62%;
+  max-width: 52px;
+  min-height: 2px;
+  border-radius: 6px 6px 0 0;
+  background: #0f6cbd;
+  transition: height 0.3s ease;
+}
+.columnLabel {
+  font-size: 12px;
+  margin-top: 6px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  color: var(--wp-muted);
+}
+
+/* ---- Pie / Donut ---- */
+.pieWrap {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-wrap: wrap;
+}
+.pieSvg { flex: 0 0 auto; color: var(--wp-ink); }
+.pieLegend {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  min-width: 140px;
+  flex: 1 1 160px;
+}
+.legendRow { display: flex; align-items: center; gap: 8px; font-size: 13px; }
+.legendSwatch { width: 12px; height: 12px; border-radius: 3px; flex: 0 0 auto; }
+.legendLabel { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.legendValue {
+  margin-left: auto;
+  padding-left: 12px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+/* ---- Line / Area ---- */
+.lineWrap { width: 100%; }
+.lineSvg { width: 100%; height: auto; display: block; overflow: visible; }
+
+/* ---- Table ---- */
+.tableWrap { overflow-x: auto; }
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+.table th {
+  text-align: left;
+  font-weight: 600;
+  color: var(--wp-muted);
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--wp-line);
+  white-space: nowrap;
+  cursor: pointer;
+  user-select: none;
+}
+.table td {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--wp-line);
+  vertical-align: top;
+}
+.table tbody tr:hover { background: var(--wp-track); }
+.num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
