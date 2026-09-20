@@ -19,9 +19,11 @@
 
  This sample is optimally compatible with the following environment configuration:
 
- ![SPFx 1.18.2](https://img.shields.io/badge/SPFx-1.18.2-green.svg)
- ![Node.js v16 | v18](https://img.shields.io/badge/Node.js-v16%20%7C%20v18-green.svg)
+ ![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
+ ![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
  ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
+
+ This sample requires SPFx **1.21.1** and Node.js **22.14.0 or later, but earlier than 23.0.0**. SPFx 1.21.1 includes the fix for the SPFx 1.21.0 production CSS Modules regression that caused deployed web parts to lose their custom styles.
 
 ## Applies to
 
@@ -39,6 +41,8 @@
  |Version|Date|Comments|
  |-------|----|--------|
  |1.0|February 7, 2026|Initial release|
+ |1.1|September 12, 2026|Improved layout and visual feedback|
+ |1.1.1|September 12, 2026|Updated to SPFx 1.21.1 to fix missing CSS Module styles in production deployments|
 
 ## Prerequisites
 
@@ -70,7 +74,7 @@
 
 * **Dynamic Polling**: Fetches the currently active poll based on date and status.
 * **Interactive Voting**: Allows users to select an option and vote.
-* **Immediate Visual Feedback**: Displays a professional, colorful, and responsive UI with immediate feedback ("Thanks for voting!").
+* **Immediate Visual Feedback**: Highlights the voter’s selected result with a persistent “Your choice” label.
 * **Real-time Results**: Shows poll results using Fluent UI Progress Indicators immediately after voting.
 * **SharePoint Integration**: deeply integrated with SharePoint lists for data storage and user context (Email) for vote tracking.
 * **PnP JS Integration**: Uses PnP JS for efficient SharePoint data operations.

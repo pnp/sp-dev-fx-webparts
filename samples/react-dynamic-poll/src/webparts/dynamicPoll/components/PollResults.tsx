@@ -7,39 +7,51 @@ export interface PollResultsProps {
   pollItem: Poll | undefined;
   results: PollResult[];
   totalVotes: number;
+  votedAnswer?: string;
 }
 
 export function PollResults(props: PollResultsProps): React.ReactElement {
-  const { pollItem, results, totalVotes } = props;
+  const { pollItem, results, totalVotes, votedAnswer } = props;
   if (!pollItem) return <></>;
 
   return (
-    <div className={styles.container}>
-      <div className={styles.header}>
-        <h2>Poll Results</h2>
-      </div>
-      <div className={styles.content}>
-        <p>
-          <strong>Total Votes:</strong> {totalVotes}
-        </p>
-        {results.map((result) => (
-          <div key={result.Answer} className={styles.pollResultsItem}>
+    <section className={styles.pollResults} aria-label="Poll results">
+      <h3>Poll Results</h3>
+      <p>
+        <strong>Total Votes:</strong> {totalVotes}
+      </p>
+      {results.map((result) => {
+        const isVotedAnswer = result.Answer === votedAnswer;
+        const voteSummary = `${result.Count} votes (${Math.round(
+          result.Percentage * 100,
+        )}%)`;
+
+        return (
+          <div
+            key={result.Answer}
+            className={`${styles.pollResultsItem} ${
+              isVotedAnswer ? styles.selectedResult : ""
+            }`}
+          >
             <div className={styles.pollResultsRow}>
-              <span>{result.Answer}</span>
-              <span>
-                {result.Count} votes ({Math.round(result.Percentage * 100)}%)
-              </span>
+              <div className={styles.pollResultsAnswer}>
+                {result.Answer}
+                {isVotedAnswer && (
+                  <span className={styles.yourChoice}>Your choice</span>
+                )}
+              </div>
+              <span className={styles.voteSummary}>{voteSummary}</span>
             </div>
             <ProgressIndicator
               percentComplete={result.Percentage}
               barHeight={10}
               styles={{
-                progressBar: { background: "#0078d4" },
+                progressBar: styles.progressBar,
               }}
             />
           </div>
-        ))}
-      </div>
-    </div>
+        );
+      })}
+    </section>
   );
 }
