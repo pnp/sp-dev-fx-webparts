@@ -1675,6 +1675,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-appinsights-usage/assets/AllWebparts.gif",
     "file": "pnp-sp-dev-spfx-web-parts-react-appinsights-usage.webp"
   },
+  "pnp-sp-dev-spfx-web-parts-react-my-workspaces-hub": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-my-workspaces-hub/assets/AllSites.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-my-workspaces-hub.webp"
+  },
   "pnp-sp-dev-spfx-web-parts-js-theme-manager": {
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-theme-manager/assets/create-a-theme.png",
     "file": "pnp-sp-dev-spfx-web-parts-js-theme-manager.webp"
