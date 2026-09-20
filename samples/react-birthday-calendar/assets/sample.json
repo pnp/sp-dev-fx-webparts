@@ -1,0 +1,59 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-birthday-calendar",
+    "source": "pnp",
+    "title": "Birthday Calendar View",
+    "shortDescription": "Shows team birthdays from a SharePoint list on a month calendar, with person cards showing department, job title and office, and one-click email or Teams greetings. No Microsoft Graph permissions required.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-birthday-calendar",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-birthday-calendar",
+    "longDescription": [
+      "A SharePoint Framework web part that shows your team's birthdays on a month calendar. Each birthday is a pill in its day cell; selecting one opens a person card with department, job title, office and phone from the SharePoint user profile, plus one-click Email and Teams buttons to send a greeting. A 'Coming up' strip lists the next birthdays. The web part reads a plain SharePoint list that people opt into - the list title and every column's internal name are configurable in the property pane - and needs no Microsoft Graph permissions, no tenant-admin API approval and no Azure Function."
+    ],
+    "creationDateTime": "2026-09-06",
+    "updateDateTime": "2026-09-06",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.23.2"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-birthday-calendar/assets/screenshot.png",
+        "alt": "Birthday Calendar View showing a month grid with birthday pills, a 'Coming up' strip and today highlighted"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "Niacrisss",
+        "pictureUrl": "https://github.com/Niacrisss.png",
+        "name": "Alexandr Abdulca"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Connect to SharePoint APIs",
+        "description": "Access SharePoint data from a client-side web part using SPHttpClient.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/connect-to-sharepoint"
+      }
+    ]
+  }
+]

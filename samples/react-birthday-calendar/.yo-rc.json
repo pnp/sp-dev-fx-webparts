@@ -1,0 +1,22 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "SPFx-Bday-CalendarView",
+    "useGulp": false,
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "Birthday Calendar View",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.22.0",
+    "sdksVersions": {},
+    "version": "1.23.2",
+    "libraryName": "sp-fx-bday-calendar-view",
+    "libraryId": "82d3a109-5293-435e-9a5f-88ed8478ef5e",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionShortDescription": "SPFx-Bday-CalendarView description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  }
+}
