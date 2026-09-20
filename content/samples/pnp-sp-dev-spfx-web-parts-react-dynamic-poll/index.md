@@ -7,7 +7,7 @@ sampleName: "pnp-sp-dev-spfx-web-parts-react-dynamic-poll"
 thumbnail: "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-dynamic-poll.webp"
 images: ["/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-dynamic-poll.webp"]
 thumbnailAlt: "React Dynamic Poll"
-lastmod: "2026-02-07T00:00:00.000Z"
+lastmod: "2026-09-12T00:00:00.000Z"
 tags: []
 categories: []
 openInGalleryUrl: "/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-web-parts-react-dynamic-poll"
