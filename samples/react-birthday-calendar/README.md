@@ -83,7 +83,7 @@ Nothing here needs a year or an age — enter `1990-09-16` or `2000-09-16`, the 
 From the sample folder:
 
 ```bash
-cd samples/birthday-calendar
+cd samples/react-birthday-calendar
 npm install
 npm run build        # heft test --production && heft package-solution --production
 ```
