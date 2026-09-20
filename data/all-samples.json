@@ -23569,6 +23569,52 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-birthday-calendar",
+    "source": "pnp",
+    "title": "Birthday Calendar View",
+    "shortDescription": "Shows team birthdays from a SharePoint list on a month calendar, with person cards showing department, job title and office, and one-click email or Teams greetings. No Microsoft Graph permissions required.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-birthday-calendar",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-birthday-calendar",
+    "updateDateTime": "2026-09-06",
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.23.2"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "Niacrisss",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/niacrisss.71e9b2314346.webp",
+        "name": "Alexandr Abdulca",
+        "avatarSourceUrl": "https://github.com/Niacrisss.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-birthday-calendar.webp",
+        "alt": "Birthday Calendar View"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-angular-todo",
     "source": "pnp",
     "title": "Angular client-side web part",
