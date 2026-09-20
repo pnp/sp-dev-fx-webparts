@@ -9,8 +9,8 @@
     "longDescription": [
       "An SPFx web part that embeds small, self-contained HTML applications (HTML + inline JavaScript + CSS, stored in a SharePoint document library) into SharePoint pages without the SharePoint file-preview chrome (toolbar, download button)."
     ],
-    "creationDateTime": "2026-10-08",
-    "updateDateTime": "2026-10-08",
+    "creationDateTime": "2026-09-08",
+    "updateDateTime": "2026-09-08",
     "products": [
       "SharePoint"
     ],
