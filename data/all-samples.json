@@ -22951,7 +22951,7 @@
     "shortDescription": "The web part pulls in the current user's name and displays it on the page. The greeting text before the name is customizable through the property pane. Additionally the position of the greeting and color of the text can be adjusted through the property pane as well.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-personal-greeting",
     "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-personal-greeting",
-    "updateDateTime": "2020-10-18",
+    "updateDateTime": "2026-09-13",
     "metadata": [
       {
         "key": "SAMPLE-TYPE",
@@ -22963,7 +22963,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.11.0"
+        "value": "1.23.2"
       }
     ],
     "tags": [],
@@ -22975,6 +22975,13 @@
         "pictureUrl": "/sp-dev-fx-webparts/images/avatars/zachroberts8668.1117540c9446.webp",
         "name": "Zach Roberts",
         "avatarSourceUrl": "https://github.com/zachroberts8668.png"
+      },
+      {
+        "gitHubAccount": "AriGunawan",
+        "company": "",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/arigunawan.d8e771e0c819.webp",
+        "name": "Ari Gunawan",
+        "avatarSourceUrl": "https://github.com/AriGunawan.png"
       }
     ],
     "thumbnails": [
