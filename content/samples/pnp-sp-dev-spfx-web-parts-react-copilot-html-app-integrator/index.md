@@ -7,7 +7,7 @@ sampleName: "pnp-sp-dev-spfx-web-parts-react-copilot-html-app-integrator"
 thumbnail: "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-copilot-html-app-integrator.webp"
 images: ["/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-copilot-html-app-integrator.webp"]
 thumbnailAlt: "Integrate (Copilot) HTML apps seamlessly in SharePoint (WebPart)"
-lastmod: "2026-10-08T00:00:00.000Z"
+lastmod: "2026-09-08T00:00:00.000Z"
 tags: []
 categories: []
 openInGalleryUrl: "/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-web-parts-react-copilot-html-app-integrator"
