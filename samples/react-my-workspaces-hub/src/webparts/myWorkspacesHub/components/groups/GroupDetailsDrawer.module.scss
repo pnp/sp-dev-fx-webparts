@@ -1,0 +1,96 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.summary {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--colorNeutralStroke2);
+  border-radius: 8px;
+  background: var(--colorNeutralBackground2);
+}
+
+.summaryHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.muted {
+  color: var(--colorNeutralForeground3);
+}
+
+.description {
+  color: var(--colorNeutralForeground2);
+  line-height: 1.45;
+}
+
+.metaGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px 18px;
+  margin: 0;
+}
+
+.metaGrid div {
+  min-width: 0;
+}
+
+.metaGrid dt {
+  margin: 0 0 3px;
+  color: var(--colorNeutralForeground3);
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.metaGrid dd {
+  margin: 0;
+  color: var(--colorNeutralForeground1);
+  line-height: 20px;
+  overflow-wrap: anywhere;
+}
+
+.peopleTabs {
+  border-bottom: 1px solid var(--colorNeutralStroke2);
+}
+
+.manageBar {
+  display: flex;
+  align-items: end;
+  gap: 10px;
+}
+
+.manageField {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.loadingState {
+  display: flex;
+  justify-content: center;
+  padding: 28px 0;
+}
+
+@media (max-width: 640px) {
+  .summary {
+    padding: 14px;
+  }
+
+  .summaryHeader {
+    flex-direction: column;
+  }
+
+  .metaGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .manageBar {
+    align-items: stretch;
+    flex-direction: column;
+  }
+}

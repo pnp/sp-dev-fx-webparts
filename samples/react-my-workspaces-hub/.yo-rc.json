@@ -1,0 +1,23 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "react-my-workspaces-hub",
+    "useGulp": false,
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "MyWorkspacesHub",
+    "componentDescription": "Enterprise My Workspaces Hub - sites, teams, groups and OneDrive for the current user",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.14.0",
+    "sdksVersions": {},
+    "version": "1.23.0",
+    "libraryName": "react-my-workspaces-hub",
+    "libraryId": "3d39dc69-c25f-4053-891b-f19453779d48",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionShortDescription": "react-my-workspaces-hub description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  }
+}

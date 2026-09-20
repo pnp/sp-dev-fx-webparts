@@ -1,0 +1,9 @@
+.peopleGroups {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.groupTitle {
+  border-bottom: 1px solid var(--colorNeutralStroke2);
+}

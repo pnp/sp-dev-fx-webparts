@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "my-workspaces-hub-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/myWorkspacesHub/MyWorkspacesHubWebPart.js",
+          "manifest": "./src/webparts/myWorkspacesHub/MyWorkspacesHubWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "MyWorkspacesHubWebPartStrings": "lib/webparts/myWorkspacesHub/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}

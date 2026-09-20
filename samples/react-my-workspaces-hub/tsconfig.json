@@ -1,0 +1,13 @@
+{
+  "extends": "./node_modules/@microsoft/spfx-web-build-rig/profiles/default/tsconfig-base.json",
+  "compilerOptions": {
+    "target": "ES2019",
+    "downlevelIteration": true,
+    "lib": [
+      "DOM",
+      "DOM.Iterable",
+      "ES2019",
+      "ES2020.Intl"
+    ]
+  }
+}
