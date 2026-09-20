@@ -5,13 +5,14 @@ import {
   IPropertyPaneConfiguration,
   PropertyPaneTextField,
   PropertyPaneDropdown,
-  IPropertyPaneDropdownOption
+  IPropertyPaneDropdownOption,
+  PropertyPaneFieldType
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart, WebPartContext } from '@microsoft/sp-webpart-base';
+import { ColorPicker, IColor, Label } from '@fluentui/react';
 
 import PersonalGreeting from './components/PersonalGreeting';
 import { IPersonalGreetingProps } from './components/IPersonalGreetingProps';
-import { PropertyFieldColorPicker, PropertyFieldColorPickerStyle } from '@pnp/spfx-property-controls/lib/PropertyFieldColorPicker';
 
 export interface IPersonalGreetingWebPartProps {
   greetingText: string;
@@ -130,19 +131,46 @@ export default class PersonalGreetingWebPart extends BaseClientSideWebPart <IPer
                   options: fontSizeOptions,
                   selectedKey: 20
                 }),
-                PropertyFieldColorPicker('textColor', {
-                  label: 'Text Color',
-                  properties: this.properties,
-                  onPropertyChange: this.onPropertyPaneFieldChanged,
-                  selectedColor: this.properties.textColor,
-                  style: PropertyFieldColorPickerStyle.Full,
-                  key: 'textColor'
-                })
+                {
+                  type: PropertyPaneFieldType.Custom,
+                  targetProperty: 'textColor',
+                  properties: {
+                    key: 'textColor',
+                    onRender: this._renderColorPicker,
+                    onDispose: this._disposeColorPicker,
+                    isInternal: false
+                  }
+                }
               ]
             }
           ]
         }
       ]
     };
+  }
+
+  private _renderColorPicker = (
+    domElement: HTMLElement,
+    _context?: unknown,
+    changeCallback?: (targetProperty?: string, newValue?: unknown, isValidEntry?: boolean) => void
+  ): void => {
+    const colorPicker: React.ReactElement = React.createElement(
+      React.Fragment,
+      undefined,
+      React.createElement(Label, undefined, 'Text Color'),
+      React.createElement(ColorPicker, {
+        alphaType: 'none',
+        color: this.properties.textColor || '#000000',
+        onChange: (_event: React.SyntheticEvent<HTMLElement>, color: IColor): void => {
+          changeCallback?.('textColor', `#${color.hex}`);
+        }
+      })
+    );
+
+    ReactDom.render(colorPicker, domElement);
+  }
+
+  private _disposeColorPicker = (domElement: HTMLElement): void => {
+    ReactDom.unmountComponentAtNode(domElement);
   }
 }
