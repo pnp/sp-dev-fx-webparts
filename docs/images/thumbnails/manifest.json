@@ -1571,6 +1571,10 @@
     "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-page-navigator/assets/PageNavigator.gif",
     "file": "pnp-sp-dev-spfx-web-parts-react-page-navigator.webp"
   },
+  "pnp-sp-dev-spfx-web-parts-react-list-dashboard": {
+    "sourceUrl": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-list-dashboard/assets/screenshot.png",
+    "file": "pnp-sp-dev-spfx-web-parts-react-list-dashboard.webp"
+  },
   "pnp-sp-dev-spfx-web-parts-react-personal-calendar": {
     "sourceUrl": "https://github.com/pnp/sp-starter-kit/raw/master/assets/images/components/part-personal-calendar.gif",
     "file": "pnp-sp-dev-spfx-web-parts-react-personal-calendar.webp"

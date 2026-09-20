@@ -19937,6 +19937,48 @@
     }
   },
   {
+    "name": "pnp-sp-dev-spfx-web-parts-react-list-dashboard",
+    "source": "pnp",
+    "title": "List Dashboard",
+    "shortDescription": "One versatile web part that turns any SharePoint list or library into a dashboard - stat, KPI tiles, bar, column, pie, donut, line, area, or table - with colourblind-safe palettes, status-vs-target colouring, and number formatting, and no Power BI or external chart library.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-list-dashboard",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-list-dashboard",
+    "updateDateTime": "2026-09-10",
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.1"
+      }
+    ],
+    "tags": [],
+    "categories": [],
+    "authors": [
+      {
+        "gitHubAccount": "gvijaikumar9",
+        "pictureUrl": "/sp-dev-fx-webparts/images/avatars/gvijaikumar9.6427f93d7900.webp",
+        "name": "Vijay Kumar G",
+        "avatarSourceUrl": "https://github.com/gvijaikumar9.png"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-list-dashboard.webp",
+        "alt": "List Dashboard"
+      }
+    ],
+    "reactions": {
+      "url": "",
+      "totalReactions": 0,
+      "allReactors": []
+    }
+  },
+  {
     "name": "pnp-sp-dev-spfx-web-parts-react-personal-calendar",
     "source": "pnp",
     "title": "Personal Calendar Web Part",
