@@ -39,7 +39,7 @@
     "ajv": "^6.12.5",
     "eslint-plugin-react-hooks": "4.3.0",
     "gulp": "4.0.2",
-    "spfx-fast-serve-helpers": "1.15.5",
+    "spfx-fast-serve-helpers": "1.21.1",
     "typescript": "5.3.3",
     "eslint": "8.57.1",
     "@microsoft/rush-stack-compiler-5.3": "0.1.0"
