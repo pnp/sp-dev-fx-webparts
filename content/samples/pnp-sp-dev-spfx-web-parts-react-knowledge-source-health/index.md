@@ -7,7 +7,7 @@ sampleName: "pnp-sp-dev-spfx-web-parts-react-knowledge-source-health"
 thumbnail: "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-knowledge-source-health.webp"
 images: ["/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-knowledge-source-health.webp"]
 thumbnailAlt: "Knowledge Source Health"
-lastmod: "2026-12-31T00:00:00.000Z"
+lastmod: "2026-08-15T00:00:00.000Z"
 tags: []
 categories: []
 openInGalleryUrl: "/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-web-parts-react-knowledge-source-health"
