@@ -33,7 +33,8 @@
         "htmlFileWebUrl": "",
         "htmlFileServerRelativeUrl": "",
         "minimumHeight": 300,
-        "maximumHeight": 5000
+        "maximumHeight": 5000,
+        "hideCompatibilityWarnings": false
       }
     }
   ]

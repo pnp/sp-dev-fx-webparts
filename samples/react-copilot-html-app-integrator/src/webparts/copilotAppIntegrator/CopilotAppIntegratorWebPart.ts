@@ -3,7 +3,8 @@ import {
   type IPropertyPaneConfiguration,
   PropertyPaneLabel,
   PropertyPaneSlider,
-  PropertyPaneTextField
+  PropertyPaneTextField,
+  PropertyPaneToggle
 } from '@microsoft/sp-property-pane';
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import {
@@ -25,6 +26,7 @@ export interface ICopilotAppIntegratorWebPartProps {
   htmlFilePickerResult?: IFilePickerResult;
   minimumHeight: number;
   maximumHeight: number;
+  hideCompatibilityWarnings: boolean;
 }
 
 interface IHostMessage {
@@ -34,11 +36,16 @@ interface IHostMessage {
   message?: string;
 }
 
+/** Keeps a handler that fails on every event from filling the page. */
+const MAXIMUM_WARNINGS = 5;
+
 export default class CopilotAppIntegratorWebPart
   extends BaseClientSideWebPart<ICopilotAppIntegratorWebPartProps> {
 
   private _loadVersion: number = 0;
   private _iframe?: HTMLIFrameElement;
+  private _warningHost?: HTMLElement;
+  private _warnings: string[] = [];
   private _messageHandler?: (event: MessageEvent) => void;
   private _filePickerBusy = false;
   private _filePickerErrorMessage?: string;
@@ -121,7 +128,7 @@ export default class CopilotAppIntegratorWebPart
         this.properties.htmlFileWebUrl
       ).toString();
 
-      const transformedHtml = new HtmlDocumentBuilder().build(
+      const built = new HtmlDocumentBuilder().build(
         htmlDocument,
         {
           sourceFileUrl,
@@ -132,7 +139,8 @@ export default class CopilotAppIntegratorWebPart
         }
       );
 
-      this.createIframe(transformedHtml, instanceId);
+      this.createIframe(built.html, instanceId);
+      this.addWarnings(built.warnings);
     } catch (error) {
       if (loadVersion !== this._loadVersion) {
         return;
@@ -298,6 +306,14 @@ export default class CopilotAppIntegratorWebPart
       }
 
       if (
+        message?.type === 'spfx-html-host:warning' &&
+        message.instanceId === instanceId &&
+        typeof message.message === 'string'
+      ) {
+        this.addWarnings([message.message]);
+      }
+
+      if (
         message?.type === 'spfx-html-host:error' &&
         message.instanceId === instanceId
       ) {
@@ -309,8 +325,68 @@ export default class CopilotAppIntegratorWebPart
 
     iframe.srcdoc = html;
 
-    this.domElement.replaceChildren(iframe);
+    // The warning host is a sibling of the iframe rather than part of a
+    // re-render, so warnings arriving from the running application can
+    // be shown without reloading it.
+    const warningHost = document.createElement('div');
+    const container = document.createElement('div');
+    container.append(warningHost, iframe);
+
+    this.domElement.replaceChildren(container);
     this._iframe = iframe;
+    this._warningHost = warningHost;
+    this._warnings = [];
+  }
+
+  private addWarnings(messages: string[]): void {
+    for (const message of messages) {
+      if (
+        this._warnings.length >= MAXIMUM_WARNINGS ||
+        this._warnings.indexOf(message) >= 0
+      ) {
+        continue;
+      }
+
+      this._warnings.push(message);
+
+      // Logged whatever the banner setting is, so a page author who
+      // turned the banner off can still diagnose the app.
+      console.warn('Embedded HTML compatibility:', message);
+    }
+
+    this.renderWarnings();
+  }
+
+  private renderWarnings(): void {
+    if (!this._warningHost) {
+      return;
+    }
+
+    if (this.properties.hideCompatibilityWarnings || !this._warnings.length) {
+      this._warningHost.replaceChildren();
+      return;
+    }
+
+    this._warningHost.style.cssText =
+      'font-family:"Segoe UI","Segoe UI Web (West European)",-apple-system,' +
+      'BlinkMacSystemFont,Roboto,sans-serif;font-size:14px;color:#323130;';
+
+    this._warningHost.replaceChildren(
+      this.createMessageBox({
+        role: 'status',
+        background: '#fff4ce',
+        iconSvg:
+          '<svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true">' +
+          '<path d="M10 2.3 19 17.7H1z" fill="#ffb900"/>' +
+          '<rect x="9.1" y="7.4" width="1.8" height="5.6" rx="0.9" fill="#323130"/>' +
+          '<circle cx="10" cy="15.4" r="1.1" fill="#323130"/>' +
+          '</svg>',
+        contentHtml: '',
+        contentTitle: strings.CompatibilityWarningsTitle,
+        contentItems: this._warnings,
+        contentNote: strings.CompatibilityWarningsNote
+      })
+    );
   }
 
   private resizeIframe(
@@ -392,14 +468,18 @@ export default class CopilotAppIntegratorWebPart
 
   /**
    * iconSvg and contentHtml carry only static, developer-authored
-   * markup (localized strings); the runtime error text must go through
-   * contentText, which is assigned via textContent.
+   * markup (localized strings); runtime text must go through
+   * contentText, contentTitle, contentItems or contentNote, all of
+   * which are assigned via textContent.
    */
   private createMessageBox(options: {
     background: string;
     iconSvg: string;
     contentHtml: string;
     contentText?: string;
+    contentTitle?: string;
+    contentItems?: string[];
+    contentNote?: string;
     role?: string;
   }): HTMLElement {
     const box = document.createElement('div');
@@ -420,7 +500,19 @@ export default class CopilotAppIntegratorWebPart
     const content = document.createElement('div');
     content.style.cssText = 'min-width:0;line-height:20px;';
 
-    if (options.contentText !== undefined) {
+    if (options.contentItems) {
+      content.append(
+        this.createTextElement('div', options.contentTitle ?? '', 'font-weight:600;'),
+        ...options.contentItems.map(item =>
+          this.createTextElement('div', item, 'margin-top:4px;')
+        ),
+        this.createTextElement(
+          'div',
+          options.contentNote ?? '',
+          'margin-top:8px;color:#605e5c;'
+        )
+      );
+    } else if (options.contentText !== undefined) {
       content.textContent = options.contentText;
     } else {
       content.innerHTML = options.contentHtml;
@@ -431,6 +523,19 @@ export default class CopilotAppIntegratorWebPart
     return box;
   }
 
+  private createTextElement(
+    tagName: string,
+    text: string,
+    style: string
+  ): HTMLElement {
+    const element = document.createElement(tagName);
+
+    element.textContent = text;
+    element.style.cssText = style;
+
+    return element;
+  }
+
   private disposeIframe(): void {
     if (this._messageHandler) {
       window.removeEventListener('message', this._messageHandler);
@@ -439,6 +544,8 @@ export default class CopilotAppIntegratorWebPart
 
     this._iframe?.remove();
     this._iframe = undefined;
+    this._warningHost = undefined;
+    this._warnings = [];
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
@@ -502,6 +609,14 @@ export default class CopilotAppIntegratorWebPart
                 }),
                 PropertyPaneTextField('htmlFileServerRelativeUrl', {
                   label: strings.HtmlFileServerRelativeUrlFieldLabel
+                }),
+                PropertyPaneToggle('hideCompatibilityWarnings', {
+                  label: strings.HideCompatibilityWarningsFieldLabel,
+                  onText: strings.HideCompatibilityWarningsOnText,
+                  offText: strings.HideCompatibilityWarningsOffText
+                }),
+                PropertyPaneLabel('hideCompatibilityWarningsNote', {
+                  text: strings.HideCompatibilityWarningsDescription
                 })
               ]
             }

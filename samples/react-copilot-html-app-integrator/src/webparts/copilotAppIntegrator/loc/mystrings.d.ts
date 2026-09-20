@@ -25,6 +25,12 @@ declare interface ICopilotAppIntegratorWebPartStrings {
   SetupNote: string;
   OnlyHtmlFilesMessage: string;
   WrongTenantMessage: string;
+  CompatibilityWarningsTitle: string;
+  CompatibilityWarningsNote: string;
+  HideCompatibilityWarningsFieldLabel: string;
+  HideCompatibilityWarningsDescription: string;
+  HideCompatibilityWarningsOnText: string;
+  HideCompatibilityWarningsOffText: string;
 }
 
 declare module 'CopilotAppIntegratorWebPartStrings' {
