@@ -1,0 +1,5 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": { "name": "react-viva-connections-ace-reference-client-side-solution", "id": "6f9d7a1b-5f06-4eaf-9f8d-4c5e9b2a1d77", "version": "1.0.0.0", "includeClientSideAssets": true, "skipFeatureDeployment": true, "isDomainIsolated": false, "developer": { "name": "", "websiteUrl": "", "privacyUrl": "", "termsOfUseUrl": "", "mpnId": "Undefined-1.23.2" }, "metadata": { "shortDescription": { "default": "Viva Connections interaction patterns reference" }, "longDescription": { "default": "A local dashboard-style web part demonstrating card and detail-panel patterns that can be adapted into an Adaptive Card Extension." }, "screenshotPaths": [], "videoUrl": "", "categories": [] }, "features": [{ "title": "Viva Connections ACE Reference Feature", "description": "Installs the reference web part", "id": "c2a8e7d1-6b4f-4f10-9d8c-2a6e5b3f7c11", "version": "1.0.0.0" }] },
+  "paths": { "zippedPackage": "solution/react-viva-connections-ace-reference.sppkg" }
+}
