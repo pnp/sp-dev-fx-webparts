@@ -1,0 +1,5 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": { "name": "react-intranet-announcements-notification-center-client-side-solution", "id": "7a954a0e-8be3-4cfb-ba42-54e1bc792421", "version": "1.0.0.0", "includeClientSideAssets": true, "skipFeatureDeployment": true, "isDomainIsolated": false, "developer": { "name": "Microsoft 365 Platform Community", "websiteUrl": "https://github.com/pnp", "privacyUrl": "", "termsOfUseUrl": "", "mpnId": "m365pnp" } },
+  "paths": { "zippedPackage": "solution/react-intranet-announcements-notification-center.sppkg" }
+}
