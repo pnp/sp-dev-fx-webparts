@@ -1,0 +1,5 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "a7d8e2d4-48e5-4bd5-a0c8-cc1d12a5963d", "alias": "DocumentLifecycleVersionReviewWebPart", "componentType": "WebPart", "version": "1.0.0", "manifestVersion": 2,
+  "preconfiguredEntries": [{ "groupId": "cf066440-0614-43d6-98ae-0b31cf14c7c3", "group": { "default": "Advanced" }, "title": { "default": "Document Lifecycle and Version Review" }, "description": { "default": "Read-only document lifecycle review aid" }, "officeFabricIconFontName": "DocumentSearch", "properties": { "sourcesJson": "[]", "referenceDate": "" } }]
+}
