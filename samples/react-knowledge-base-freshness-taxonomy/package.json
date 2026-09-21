@@ -1,0 +1,37 @@
+{
+  "name": "knowledge-base-freshness-taxonomy",
+  "version": "1.0.0",
+  "private": true,
+  "engines": { "node": ">=22.14.0 <23.0.0" },
+  "scripts": {
+    "test": "node tests/run-tests.js",
+    "verify": "node scripts/verify.js",
+    "build": "gulp bundle --ship",
+    "package": "gulp package-solution --ship",
+    "clean": "gulp clean"
+  },
+  "dependencies": {
+    "@fluentui/react-components": "9.67.0",
+    "@microsoft/sp-component-base": "1.23.2",
+    "@microsoft/sp-core-library": "1.23.2",
+    "@microsoft/sp-http": "1.23.2",
+    "@microsoft/sp-property-pane": "1.23.2",
+    "@microsoft/sp-webpart-base": "1.23.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2",
+    "tslib": "2.8.1"
+  },
+  "devDependencies": {
+    "@microsoft/eslint-config-spfx": "1.23.2",
+    "@microsoft/eslint-plugin-spfx": "1.23.2",
+    "@microsoft/rush-stack-compiler-5.3": "0.1.0",
+    "@microsoft/sp-build-web": "1.23.2",
+    "@microsoft/sp-module-interfaces": "1.23.2",
+    "@rushstack/eslint-config": "4.0.1",
+    "@types/react": "17.0.89",
+    "@types/react-dom": "17.0.26",
+    "@types/webpack-env": "1.18.5",
+    "gulp": "4.0.2",
+    "typescript": "5.3.3"
+  }
+}

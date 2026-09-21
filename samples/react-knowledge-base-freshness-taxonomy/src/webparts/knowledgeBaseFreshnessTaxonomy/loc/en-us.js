@@ -1,0 +1,1 @@
+define([], function() { return { "PropertyPaneDescription": "Configure read-only sources", "BasicGroupName": "Knowledge base", "SourcesFieldLabel": "Sources", "ReferenceDateFieldLabel": "Reference date" }; });

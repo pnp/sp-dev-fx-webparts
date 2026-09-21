@@ -1,0 +1,7 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": { "knowledge-base-freshness-taxonomy-web-part": { "components": [{ "entrypoint": "./lib/webparts/knowledgeBaseFreshnessTaxonomy/KnowledgeBaseFreshnessTaxonomyWebPart.js", "manifest": "./src/webparts/knowledgeBaseFreshnessTaxonomy/KnowledgeBaseFreshnessTaxonomyWebPart.manifest.json" }] } },
+  "externals": {},
+  "localizedResources": { "KnowledgeBaseFreshnessTaxonomyWebPartStrings": "lib/webparts/knowledgeBaseFreshnessTaxonomy/loc/{locale}.js" }
+}
