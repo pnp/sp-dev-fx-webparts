@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.23.2",
+    "nodeVersion": "22.14.0",
+    "libraryName": "react-effective-access-audit",
+    "libraryId": "0c88e7cb-7a7d-4c0e-9a4a-f48d9b2e96bb",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-effective-access-audit",
+    "solutionShortDescription": "Read-only SharePoint direct permission audit",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart",
+    "useGulp": false
+  }
+}
