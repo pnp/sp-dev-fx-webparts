@@ -1,0 +1,164 @@
+.root {
+  display: grid;
+  gap: 16px;
+  min-width: 0;
+  color: #242424;
+}
+
+.heading {
+  margin: 0;
+  color: #242424;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.liveStatus {
+  min-height: 20px;
+  color: #424242;
+  font-size: 14px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  min-width: 0;
+}
+
+.card {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  min-height: 180px;
+  padding: 20px;
+  border: 1px solid #d1d1d1;
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
+.cardTitle {
+  overflow-wrap: anywhere;
+  color: #242424;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 600;
+}
+
+.valueRow {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.value {
+  color: #242424;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 700;
+}
+
+.target {
+  color: #424242;
+  font-size: 13px;
+}
+
+.statusRow,
+.trendRow,
+.updated {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.statusRow,
+.trendRow {
+  color: #424242;
+  font-size: 14px;
+}
+
+.statusMark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+.statusOnTrack {
+  color: #0e700e;
+}
+
+.statusAttention {
+  color: #8a3700;
+}
+
+.statusAtRisk {
+  color: #b10e1e;
+}
+
+.statusUnknown {
+  color: #424242;
+}
+
+.trendUp {
+  color: #0e700e;
+}
+
+.trendDown {
+  color: #b10e1e;
+}
+
+.trendSteady,
+.trendUnknown {
+  color: #424242;
+}
+
+.updated {
+  margin-top: auto;
+  color: #616161;
+  font-size: 12px;
+}
+
+.centered {
+  display: grid;
+  justify-items: center;
+  gap: 12px;
+  padding: 32px 16px;
+  text-align: center;
+}
+
+.setup {
+  display: grid;
+  gap: 12px;
+}
+
+.setupTitle,
+.errorTitle {
+  margin: 0;
+  color: #242424;
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.setupList {
+  margin: 0;
+  padding-inline-start: 24px;
+  color: #424242;
+}
+
+.error {
+  display: grid;
+  gap: 12px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card {
+    scroll-behavior: auto;
+  }
+}
