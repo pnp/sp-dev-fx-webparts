@@ -1,0 +1,39 @@
+.documentLibrary {
+  color: var(--colorNeutralForeground1, #242424);
+  max-width: 1100px;
+  padding: 8px 4px 16px;
+}
+
+.title { margin-bottom: 12px; }
+.liveRegion { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+.breadcrumbs { margin: 4px 0 12px; overflow-x: auto; }
+.breadcrumbs ol { align-items: center; display: flex; list-style: none; margin: 0; padding: 0; white-space: nowrap; }
+.breadcrumbs li { align-items: center; display: flex; gap: 4px; }
+.breadcrumbs svg { color: var(--colorNeutralForeground3, #616161); height: 16px; width: 16px; }
+.currentBreadcrumb { align-items: center; display: inline-flex; gap: 5px; padding: 4px 8px; }
+.contentsToolbar { align-items: center; border-bottom: 1px solid var(--colorNeutralStroke2, #e0e0e0); display: flex; justify-content: space-between; padding: 4px 0 8px; }
+.itemCount, .mutedCell { color: var(--colorNeutralForeground3, #616161); }
+.previewNote { color: var(--colorNeutralForeground3, #616161); font-size: 12px; margin: 8px 0; }
+.table { border: 1px solid var(--colorNeutralStroke2, #e0e0e0); border-radius: 4px; overflow: hidden; }
+.tableHeader, .tableRow { align-items: center; column-gap: 12px; display: grid; grid-template-columns: minmax(220px, 1fr) 90px 125px 90px 80px; min-height: 48px; padding: 0 12px; }
+.tableHeader { background: var(--colorNeutralBackground3, #f5f5f5); color: var(--colorNeutralForeground2, #424242); font-size: 12px; font-weight: 600; }
+.tableRow { border-top: 1px solid var(--colorNeutralStroke2, #e0e0e0); }
+.nameCell { align-items: center; display: flex; gap: 8px; min-width: 0; overflow-wrap: anywhere; }
+.itemIcon { color: var(--colorBrandForeground1, #0f6cbd); flex: 0 0 auto; }
+.folderButton { justify-content: flex-start; min-width: 0; overflow-wrap: anywhere; text-align: left; }
+.actions { align-items: center; display: flex; gap: 4px; justify-content: flex-end; }
+.actionLink { align-items: center; border-radius: 4px; color: var(--colorBrandForeground1, #0f6cbd); display: inline-flex; padding: 6px; }
+.actionLink:focus-visible, .retryButton:focus-visible { outline: 2px solid var(--colorStrokeFocus2, #0f6cbd); outline-offset: 2px; }
+.emptyState, .loadingState, .errorState { border: 1px dashed var(--colorNeutralStroke1, #bdbdbd); border-radius: 4px; margin-top: 12px; padding: 28px 16px; text-align: center; }
+.errorState { color: var(--colorPaletteRedForeground1, #bc2f32); }
+.retryButton { background: transparent; border: 0; color: var(--colorBrandForeground1, #0f6cbd); cursor: pointer; font: inherit; margin-left: 8px; text-decoration: underline; }
+.errorCell { color: var(--colorPaletteRedForeground1, #bc2f32); grid-column: 2 / -1; }
+.visuallyHidden { height: 1px; margin: -1px; overflow: hidden; position: absolute; width: 1px; clip: rect(0 0 0 0); }
+
+@media (max-width: 650px) {
+  .tableHeader { display: none; }
+  .tableRow { align-items: start; grid-template-columns: minmax(0, 1fr) auto; padding: 10px 12px; row-gap: 5px; }
+  .nameCell { grid-column: 1 / -1; }
+  .tableRow > span:nth-child(2), .tableRow > span:nth-child(3), .tableRow > span:nth-child(4) { font-size: 12px; }
+  .actions { grid-column: 2; grid-row: 2; }
+}
