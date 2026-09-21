@@ -1,0 +1,36 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-governance-site-lifecycle-dashboard",
+    "source": "pnp",
+    "title": "Governance and Site Lifecycle Dashboard",
+    "shortDescription": "Read-only SharePoint site governance and lifecycle review signals.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-governance-site-lifecycle-dashboard",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-governance-site-lifecycle-dashboard",
+    "longDescription": [
+      "A bounded read-only review aid for SharePoint site metadata and lifecycle signals."
+    ],
+    "creationDateTime": "2026-08-30",
+    "updateDateTime": "2026-08-30",
+    "products": ["SharePoint"],
+    "metadata": [
+      { "key": "SAMPLE-TYPE", "value": "SPFx-WebPart" },
+      { "key": "CLIENT-SIDE-DEV", "value": "React" },
+      { "key": "SPFX-VERSION", "value": "1.23.2" }
+    ],
+    "thumbnails": [],
+    "authors": [
+      {
+        "gitHubAccount": "vystartasv",
+        "pictureUrl": "https://github.com/vystartasv.png",
+        "name": "vystartasv"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Official Microsoft guidance for SharePoint Framework client-side web parts.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]

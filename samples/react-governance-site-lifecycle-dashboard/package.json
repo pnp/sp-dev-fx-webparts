@@ -1,0 +1,45 @@
+{
+  "name": "governance-site-lifecycle-dashboard",
+  "version": "1.0.0",
+  "private": true,
+  "main": "lib/index.js",
+  "engines": {
+    "node": ">=18.17.1 <23.0.0"
+  },
+  "scripts": {
+    "build": "gulp bundle --ship",
+    "clean": "gulp clean",
+    "test": "tsx --test tests/*.test.ts",
+    "verify": "node scripts/verify-read-only.js",
+    "package": "gulp package-solution --ship"
+  },
+  "dependencies": {
+    "@fluentui/react-components": "9.54.17",
+    "@microsoft/sp-core-library": "1.23.2",
+    "@microsoft/sp-http": "1.23.2",
+    "@microsoft/sp-lodash-subset": "1.23.2",
+    "@microsoft/sp-office-ui-fabric-core": "1.23.2",
+    "@microsoft/sp-property-pane": "1.23.2",
+    "@microsoft/sp-webpart-base": "1.23.2",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "tslib": "2.8.1"
+  },
+  "devDependencies": {
+    "@microsoft/eslint-config-spfx": "1.23.2",
+    "@microsoft/eslint-plugin-spfx": "1.23.2",
+    "@microsoft/rush-stack-compiler-5.3": "0.1.0",
+    "@microsoft/sp-build-web": "1.23.2",
+    "@microsoft/sp-module-interfaces": "1.23.2",
+    "@rushstack/eslint-config": "4.6.5",
+    "@types/node": "22.10.2",
+    "@types/react": "17.0.45",
+    "@types/react-dom": "17.0.17",
+    "@types/webpack-env": "1.18.5",
+    "eslint": "8.57.0",
+    "eslint-plugin-react-hooks": "4.6.2",
+    "gulp": "4.0.2",
+    "tsx": "4.19.2",
+    "typescript": "5.4.5"
+  }
+}
