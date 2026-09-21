@@ -1,0 +1,5 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": { "name": "external-sharing-sensitive-review", "id": "d5d4d9f4-7f80-4fd0-bab1-6f0cbdd0f4c1", "version": "1.0.0.0", "includeClientSideAssets": true, "skipFeatureDeployment": true, "isDomainIsolated": false },
+  "paths": { "zippedPackage": "solution/external-sharing-sensitive-review.sppkg" }
+}

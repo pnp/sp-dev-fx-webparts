@@ -1,0 +1,5 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "bba5faca-f8f5-4e9e-94e8-5a08df3f9b62", "alias": "ExternalSharingSensitiveReviewWebPart", "componentType": "WebPart", "version": "*", "manifestVersion": 2, "supportsThemeVariants": true, "requiresCustomScript": false, "supportedHosts": ["SharePointWebPart", "SharePointFullPage"],
+  "preconfiguredEntries": [{ "groupId": "5c03119e-3074-46fd-976b-c60198311f70", "group": { "default": "Other" }, "title": { "default": "External Sharing and Sensitive Content Review" }, "description": { "default": "Bounded, read-only heuristic review aid" }, "officeFabricIconFontName": "SecurityGroup", "properties": { "sourcePaths": "Shared Documents" } }]
+}
