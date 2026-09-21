@@ -1,0 +1,10 @@
+{
+  "entries": [
+    {
+      "entryPath": "src/webparts/resourceCapacityPlanner/ResourceCapacityPlannerWebPart.manifest.json",
+      "manifest": {
+        "id": "4c02cb70-1f27-4b0f-a9d0-0ca1cf6f46c6"
+      }
+    }
+  ]
+}

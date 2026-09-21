@@ -1,0 +1,34 @@
+{
+  "solution": {
+    "name": "react-resource-capacity-planner",
+    "id": "4c02cb70-1f27-4b0f-a9d0-0ca1cf6f46c6",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "vystartasv",
+      "websiteUrl": "https://github.com/pnp/sp-dev-fx-webparts",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.23.2"
+    },
+    "metadata": {
+      "shortDescription": { "default": "Read-only rooms and shared-resource capacity planner" },
+      "longDescription": { "default": "Plans capacity from bounded SharePoint REST JSON sources without booking mutations." },
+      "screenshotPaths": [],
+      "videoUrl": ""
+    },
+    "features": [
+      {
+        "title": "Resource Capacity Planner",
+        "description": "Installs the read-only resource capacity planner web part.",
+        "id": "e11f4e6b-6b3e-4fb1-9de6-84e3c6a9b63b",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-resource-capacity-planner.sppkg"
+  }
+}

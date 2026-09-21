@@ -1,0 +1,19 @@
+.container {
+  color: #242424;
+  max-width: 100%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.meta { border-bottom: 1px solid #e1dfdd; padding-bottom: 8px; }
+.loading { display: flex; align-items: center; gap: 8px; min-height: 80px; }
+.cards { display: grid; grid-template-columns: repeat(4, minmax(130px, 1fr)); gap: 12px; }
+.metricCard { padding: 14px; display: flex; flex-direction: column; gap: 6px; }
+.stack { display: flex; flex-direction: column; gap: 16px; }
+.stack > *, .container > :global(.fui-Card) { padding: 16px; }
+.caption { text-align: left; padding: 8px 0; color: #616161; }
+@media (max-width: 700px) {
+  .container { padding: 10px; }
+  .cards { grid-template-columns: repeat(2, minmax(120px, 1fr)); }
+}
