@@ -1,0 +1,22 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "c9de8f07-70ae-4d19-b2a5-7ab36a0c6b54",
+  "alias": "MultilingualIntranetSwitcher",
+  "componentType": "WebPart",
+  "version": "1.0.0",
+  "manifestVersion": 2,
+  "supportedHosts": ["SharePointWebPart"],
+  "preconfiguredEntries": [
+    {
+      "groupId": "cf066440-45d4-45b5-98b9-0a1f8d4b4f5d",
+      "group": { "default": "Communication" },
+      "title": { "default": "Multilingual intranet switcher" },
+      "description": { "default": "Read-only, explicitly configured multilingual intranet navigation." },
+      "officeFabricIconFontName": "LocaleLanguage",
+      "properties": {
+        "title": "Intranet languages",
+        "configurationJson": "{\"defaultLocale\":\"en-US\",\"locales\":[{\"code\":\"en-US\",\"displayName\":\"English\",\"items\":[{\"id\":\"home\",\"label\":\"Home\",\"url\":\"/\",\"description\":\"Company home\"}]},{\"code\":\"fr-FR\",\"displayName\":\"Français\",\"items\":[{\"id\":\"home\",\"label\":\"Accueil\",\"url\":\"/\",\"description\":\"Accueil de l’entreprise\"}]}]}"
+      }
+    }
+  ]
+}

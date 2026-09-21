@@ -1,0 +1,47 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-multilingual-intranet-switcher",
+    "source": "pnp",
+    "title": "Multilingual Intranet Switcher",
+    "shortDescription": "A read-only, explicitly configured multilingual SharePoint intranet navigation and content switcher.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-multilingual-intranet-switcher",
+    "longDescription": [
+      "This sample uses bounded local JSON configuration for locale labels, optional descriptions, and same-tenant SharePoint URLs. Browser locale detection only chooses the initial view; it does not translate content or call a translation API."
+    ],
+    "creationDateTime": "2026-08-30",
+    "updateDateTime": "2026-08-30",
+    "products": ["SharePoint"],
+    "metadata": [
+      { "key": "SAMPLE-TYPE", "value": "SPFx-WebPart" },
+      { "key": "CLIENT-SIDE-DEV", "value": "React" },
+      { "key": "SPFX-VERSION", "value": "1.23.2" },
+      { "key": "UI-FRAMEWORK", "value": "Fluent UI v9" }
+    ],
+    "thumbnails": [],
+    "authors": [
+      {
+        "gitHubAccount": "vystartasv",
+        "pictureUrl": "https://github.com/vystartasv.png",
+        "name": "vystartasv"
+      }
+    ],
+    "references": [
+      {
+        "name": "Microsoft Graph localeInfo resource type",
+        "description": "Official Microsoft Graph reference for locale information and language/region concepts.",
+        "url": "https://learn.microsoft.com/graph/api/resources/localeinfo?view=graph-rest-1.0"
+      },
+      {
+        "name": "SharePoint Framework overview",
+        "description": "Official Microsoft documentation for building SharePoint Framework solutions.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview"
+      },
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Official Microsoft tutorial for a SharePoint Framework client-side web part.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ],
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-multilingual-intranet-switcher"
+  }
+]

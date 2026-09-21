@@ -1,0 +1,35 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-multilingual-intranet-switcher",
+    "id": "c9de8f07-70ae-4d19-b2a5-7ab36a0c6b54",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "vystartasv",
+      "websiteUrl": "https://github.com/vystartasv",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.0.0"
+    },
+    "metadata": {
+      "shortDescription": { "default": "Read-only multilingual intranet navigation" },
+      "longDescription": { "default": "A bounded, explicitly configured multilingual SharePoint intranet navigation and content switcher." },
+      "screenshotPaths": [],
+      "categories": ["Collaboration"]
+    },
+    "features": [
+      {
+        "title": "Multilingual intranet switcher",
+        "description": "Deploys the multilingual intranet switcher web part.",
+        "id": "5d26f3f7-46e1-46dd-a9bb-8f27ea5350c0",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/multilingual-intranet-switcher.sppkg"
+  }
+}

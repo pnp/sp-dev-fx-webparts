@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "multilingual-intranet-switcher-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/multilingualIntranetSwitcher/MultilingualIntranetSwitcherWebPart.js",
+          "manifest": "./src/webparts/multilingualIntranetSwitcher/MultilingualIntranetSwitcherWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "MultilingualIntranetSwitcherWebPartStrings": "lib/webparts/multilingualIntranetSwitcher/loc/{locale}.js"
+  }
+}
