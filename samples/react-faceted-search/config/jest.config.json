@@ -1,0 +1,6 @@
+{
+  "extends": "@microsoft/spfx-web-build-rig/profiles/default/config/jest.config.json",
+  "moduleNameMapper": {
+    "^FacetedSearchWebPartStrings$": "<rootDir>/jest.strings.js"
+  }
+}
