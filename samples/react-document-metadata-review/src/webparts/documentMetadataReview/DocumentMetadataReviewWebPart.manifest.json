@@ -1,0 +1,25 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "b12b9dc6-44e4-4c6c-90f8-54a3d3bc1f72",
+  "alias": "DocumentMetadataReviewWebPart",
+  "componentType": "WebPart",
+  "version": "1.0.0",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+  "preconfiguredEntries": [
+    {
+      "groupId": "cd9c45f5-7a97-4f11-9af7-3c6b8a2be9c9",
+      "group": { "default": "Content" },
+      "title": { "default": "Document Metadata Review" },
+      "description": { "default": "Find missing and invalid document metadata." },
+      "officeFabricIconFontName": "ReviewRequest",
+      "properties": {
+        "libraryPath": "/sites/your-site/Shared Documents",
+        "folderPath": "",
+        "metadataFields": "[{\"internalName\":\"Title\",\"displayName\":\"Title\",\"required\":true,\"type\":\"text\"},{\"internalName\":\"DocumentOwner\",\"displayName\":\"Document owner\",\"required\":true,\"type\":\"text\"}]",
+        "maxRows": 100
+      }
+    }
+  ]
+}
