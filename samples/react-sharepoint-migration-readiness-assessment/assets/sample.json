@@ -1,0 +1,18 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-sharepoint-migration-readiness-assessment",
+    "source": "pnp",
+    "creationDateTime": "2026-08-30",
+    "updateDateTime": "2026-08-30",
+    "title": "SharePoint Migration Readiness Assessment",
+    "shortDescription": "Read-only heuristic assessment of SharePoint migration readiness.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sharepoint-migration-readiness-assessment",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-sharepoint-migration-readiness-assessment",
+    "longDescription": ["Read-only SharePoint REST assessment with bounded heuristic signals and no content changes."],
+    "products": ["SharePoint"],
+    "metadata": [{"key":"SAMPLE-TYPE","value":"SPFx-WebPart"},{"key":"CLIENT-SIDE-DEV","value":"React"},{"key":"SPFX-VERSION","value":"1.23.2"}],
+    "thumbnails": [],
+    "authors": [{"gitHubAccount":"vystartasv","pictureUrl":"https://github.com/vystartasv.png","name":"Vilius Vystartas"}],
+    "references": [{"name":"SharePoint Framework overview","description":"Official Microsoft documentation for the SharePoint Framework.","url":"https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview"}]
+  }
+]
