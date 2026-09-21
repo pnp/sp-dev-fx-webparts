@@ -1,0 +1,39 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-cross-site-events",
+    "reponame": "sp-dev-fx-webparts",
+    "source": "pnp",
+    "title": "React Cross-site Events",
+    "shortDescription": "Read-only Microsoft Graph calendar views from bounded SharePoint team-site sources.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-cross-site-events",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-cross-site-events",
+    "longDescription": [
+      "A SharePoint Framework 1.23.2 React 17 web part that aggregates Microsoft 365 group calendarView results, with timezone-safe dates and resilient per-source loading states."
+    ],
+    "creationDateTime": "2026-08-30",
+    "updateDateTime": "2026-08-30",
+    "products": ["SharePoint"],
+    "metadata": [
+      { "key": "SAMPLE-TYPE", "value": "SPFx-WebPart" },
+      { "key": "CLIENT-SIDE-DEV", "value": "React" },
+      { "key": "SPFX-VERSION", "value": "1.23.2" },
+      { "key": "GRAPH", "value": "calendarView" },
+      { "key": "SAMPLE-CATEGORIES", "value": "Web Parts" }
+    ],
+    "thumbnails": [],
+    "authors": [
+      {
+        "gitHubAccount": "vystartasv",
+        "pictureUrl": "https://github.com/vystartasv.png",
+        "name": "Vilius Vystartas"
+      }
+    ],
+    "references": [
+      {
+        "name": "Microsoft Graph calendarView",
+        "description": "List occurrences, exceptions, and single instances in a calendar view.",
+        "url": "https://learn.microsoft.com/graph/api/group-list-calendarview?view=graph-rest-1.0"
+      }
+    ]
+  }
+]

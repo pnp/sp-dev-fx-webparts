@@ -1,0 +1,24 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "93c5c8bf-52c4-4f70-9cbb-86ba0e7a5273",
+  "alias": "ReactCrossSiteEventsWebPart",
+  "componentType": "WebPart",
+  "version": "1.0.0",
+  "manifestVersion": 2,
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [
+    {
+      "groupId": "c3a3b5c0-2f4e-4f5a-b7f5-5c4f8a0b3f84",
+      "group": { "default": "Content" },
+      "title": { "default": "Cross-site events" },
+      "description": { "default": "Read calendar views from bounded team-site sources." },
+      "officeFabricIconFontName": "Calendar",
+      "properties": {
+        "siteUrls": "",
+        "daysBack": 7,
+        "daysAhead": 30,
+        "displayTimeZone": "UTC"
+      }
+    }
+  ]
+}
