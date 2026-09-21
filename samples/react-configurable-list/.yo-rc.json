@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "version": "1.23.2",
+    "nodeVersion": "22.14.0",
+    "libraryName": "react-configurable-list",
+    "libraryId": "3b66efab-2d8f-4e5a-a660-4bf27a8e0d2a",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "react-configurable-list",
+    "solutionShortDescription": "Configurable SharePoint list browser",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart",
+    "useGulp": false
+  }
+}
