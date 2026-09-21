@@ -1,0 +1,18 @@
+{
+  "pageSize": 25,
+  "maxPages": 4,
+  "reviewFields": [
+    { "key": "ReviewStatus", "label": "Review status", "kind": "status" },
+    { "key": "Reviewer", "label": "Reviewer", "kind": "text" },
+    { "key": "ReviewDueDate", "label": "Review due date", "kind": "date" }
+  ],
+  "sources": [
+    {
+      "id": "records-library",
+      "label": "Records library / current folder",
+      "libraryServerRelativeUrl": "/Shared Documents",
+      "folderServerRelativeUrl": "/Shared Documents/Records Review",
+      "enabled": true
+    }
+  ]
+}

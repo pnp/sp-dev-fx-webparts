@@ -1,0 +1,17 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "isDomainIsolated": false,
+    "libraryName": "retention-records-review",
+    "libraryId": "4d7be3c4-4ce2-4b48-b5bb-4f172bf0d781",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "retention-records-review",
+    "skipFeatureDeployment": true,
+    "isCreatingSolution": true,
+    "framework": "react",
+    "componentType": "webpart",
+    "componentName": "RetentionRecordsReview",
+    "componentDescription": "Read-only retention and records review dashboard",
+    "plusFeatures": []
+  }
+}

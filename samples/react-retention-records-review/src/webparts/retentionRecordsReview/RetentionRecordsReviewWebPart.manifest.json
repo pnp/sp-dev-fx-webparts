@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "9bb014f1-c2b7-4d34-92ea-45d2f3b6a5c8",
+  "alias": "RetentionRecordsReviewWebPart",
+  "componentType": "WebPart",
+  "version": "1.0.0",
+  "manifestVersion": 2,
+  "supportsFullBleed": false,
+  "requiresCustomScript": false,
+  "preconfiguredEntries": [
+    {
+      "groupId": "f1e6cc5c-8d7a-4f5e-9c14-b8c8a6d7a7f1",
+      "group": { "default": "Compliance & records" },
+      "title": { "default": "Retention and Records Review" },
+      "description": { "default": "Read-only inventory and review aid for SharePoint content." },
+      "officeFabricIconFontName": "ComplianceAudit",
+      "properties": {}
+    }
+  ]
+}
