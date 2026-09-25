@@ -1,0 +1,49 @@
+{
+  "name": "react-requests-approvals",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": "22.22.2"
+  },
+  "scripts": {
+    "start": "heft start --clean",
+    "lint": "heft lint",
+    "build": "heft build --clean",
+    "test": "heft test",
+    "package": "heft package-solution",
+    "clean": "heft clean"
+  },
+  "dependencies": {
+    "@fluentui/react-components": "9.74.4",
+    "@microsoft/sp-component-base": "1.23.2",
+    "@microsoft/sp-core-library": "1.23.2",
+    "@microsoft/sp-lodash-subset": "1.23.2",
+    "@microsoft/sp-office-ui-fabric-core": "1.23.2",
+    "@microsoft/sp-property-pane": "1.23.2",
+    "@microsoft/sp-webpart-base": "1.23.2",
+    "@pnp/sp": "4.17.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "tslib": "2.3.1"
+  },
+  "devDependencies": {
+    "@microsoft/eslint-config-spfx": "1.23.2",
+    "@microsoft/eslint-plugin-spfx": "1.23.2",
+    "@microsoft/sp-module-interfaces": "1.23.2",
+    "@microsoft/spfx-heft-plugins": "1.23.2",
+    "@microsoft/spfx-web-build-rig": "1.23.2",
+    "@rushstack/heft": "1.2.17",
+    "@types/jest": "30.0.0",
+    "@types/react": "17.0.45",
+    "@types/react-dom": "17.0.17",
+    "@types/webpack-env": "~1.15.2",
+    "eslint": "9.37.0",
+    "typescript": "5.8.3"
+  },
+  "overrides": {
+    "@rushstack/heft": "1.2.17"
+  },
+  "resolutions": {
+    "@types/react": "17.0.45"
+  }
+}
