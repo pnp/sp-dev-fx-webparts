@@ -1,0 +1,15 @@
+.auditor { box-sizing: border-box; max-width: 980px; margin: 0 auto; padding: 20px; color: var(--colorNeutralForeground1); }
+.header { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; margin-bottom: 20px; }
+.configuration { display: grid; gap: 14px; padding: 16px; margin-bottom: 18px; }
+.configGrid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.boundsNote, .summaryNote { color: var(--colorNeutralForeground3); }
+.loading { display: grid; gap: 16px; padding: 20px 0; }
+.skeletonLine { height: 22px; margin: 8px 0; }
+.summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; align-items: stretch; margin: 18px 0; }
+.summary > * { padding: 14px; }
+.summaryNote { grid-column: 1 / -1; padding: 0 2px; }
+.findings { display: grid; gap: 12px; margin-top: 12px; }
+.finding { display: grid; gap: 8px; padding: 14px; }
+.findingHeader { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.emptyState { display: grid; gap: 8px; justify-items: start; padding: 28px 0; }
+@media (max-width: 640px) { .auditor { padding: 14px; } .header { flex-direction: column; } .configGrid, .summary { grid-template-columns: 1fr; } .summaryNote { grid-column: auto; } }

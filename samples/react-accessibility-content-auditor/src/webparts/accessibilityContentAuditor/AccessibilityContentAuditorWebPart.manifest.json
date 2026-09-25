@@ -1,0 +1,26 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "5f211a95-44cb-46a7-9f17-7fe97d8f0cbf",
+  "alias": "AccessibilityContentAuditorWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": {"default": "Other"},
+    "title": {"default": "Accessibility Content Auditor"},
+    "description": {"default": "Read-only heuristic accessibility and content quality audit."},
+    "officeFabricIconFontName": "ComplianceAudit",
+    "properties": {
+      "sourceType": "page",
+      "pagePath": "/SitePages/Home.aspx",
+      "listTitle": "Site Pages",
+      "itemLimit": 25,
+      "contentFields": "Title,Description,CanvasContent1",
+      "requiredFields": "Title"
+    }
+  }]
+}

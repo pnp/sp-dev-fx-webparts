@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "accessibility-content-auditor-client-side-solution",
+    "title": "Accessibility Content Auditor",
+    "id": "2d4e9d93-91c4-4e73-9a8b-a1ef7808fa1c",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "vystartasv",
+      "websiteUrl": "https://github.com/vystartasv",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.23.2"
+    },
+    "metadata": {
+      "shortDescription": {"default": "Read-only heuristic accessibility and content quality audit for SharePoint."},
+      "longDescription": {"default": "Inspects bounded, allow-listed SharePoint page or list content and reports actionable heuristic findings without changing content."},
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": ["Productivity"]
+    },
+    "features": [
+      {
+        "title": "Accessibility Content Auditor",
+        "description": "Deploys the read-only SharePoint content auditor web part.",
+        "id": "0c8a5c26-a171-4a62-b2c8-6bf0e9ba2ee0",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/accessibility-content-auditor.sppkg"
+  }
+}
