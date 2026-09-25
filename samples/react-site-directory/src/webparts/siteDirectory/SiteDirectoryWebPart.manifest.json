@@ -1,0 +1,29 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "b88fdbe2-7fd9-4c0f-86c5-5b6e7ba6c9bd",
+  "alias": "SiteDirectoryWebPart",
+  "componentType": "WebPart",
+  "version": "*",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Advanced" },
+    "title": { "default": "Site Directory" },
+    "description": { "default": "Browse sites from a configured SharePoint list." },
+    "officeFabricIconFontName": "Globe",
+    "properties": {
+      "listTitle": "Site Directory",
+      "title": "Site Directory",
+      "titleField": "Title",
+      "categoryField": "Category",
+      "urlField": "URL",
+      "descriptionField": "Description",
+      "ownerField": "Owner",
+      "logoUrlField": "LogoUrl",
+      "pageSize": 12
+    }
+  }]
+}

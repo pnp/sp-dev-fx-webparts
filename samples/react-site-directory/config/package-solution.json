@@ -1,0 +1,25 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-site-directory-client-side-solution",
+    "id": "a9f8f7fb-45c7-4fa9-8dcb-5fbe69f3c9b7",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "metadata": {
+      "shortDescription": {
+        "default": "A searchable SharePoint site catalogue backed by a configured list."
+      },
+      "longDescription": {
+        "default": "Displays read-only site catalogue entries from a list in the current SharePoint site, with title and description search, category filtering, sorting, and bounded pagination."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": ["Productivity"]
+    }
+  },
+  "paths": {
+    "zippedPackage": "solution/react-site-directory.sppkg"
+  }
+}
