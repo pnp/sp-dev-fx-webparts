@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<List xmlns:ows="Microsoft SharePoint" Title="Flex Forms" FolderCreation="FALSE" Direction="none" Url="Lists/FlexForms" BaseType="0">
+  <MetaData>
+    <Fields>
+      <Field Type="Text" DisplayName="Title" Required="TRUE" MaxLength="255" Name="Title" />
+      <Field Type="Note" DisplayName="Form Definition" Required="TRUE" RichText="FALSE" Name="FF_FormDefinition" />
+      <Field Type="Text" DisplayName="Target List Title" Required="TRUE" MaxLength="255" Name="FF_TargetListTitle" />
+      <Field Type="Boolean" DisplayName="Is Published" Required="TRUE" Default="0" Name="FF_IsPublished" />
+    </Fields>
+  </MetaData>
+</List>
