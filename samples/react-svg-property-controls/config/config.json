@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "svg-ghost-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/svgGhost/SvgGhostWebPart.js",
+          "manifest": "./src/webparts/svgGhost/SvgGhostWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SvgGhostWebPartStrings": "lib/webparts/svgGhost/loc/{locale}.js",
+    "PropertyControlStrings": "./node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}
