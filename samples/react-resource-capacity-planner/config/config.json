@@ -1,0 +1,16 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "resource-capacity-planner-web-part": {
+      "components": [{
+        "entrypoint": "./lib/webparts/resourceCapacityPlanner/ResourceCapacityPlannerWebPart.js",
+        "manifest": "./src/webparts/resourceCapacityPlanner/ResourceCapacityPlannerWebPart.manifest.json"
+      }]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ResourceCapacityPlannerWebPartStrings": "lib/webparts/resourceCapacityPlanner/loc/{locale}.js"
+  }
+}

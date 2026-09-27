@@ -1,0 +1,17 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "4c02cb70-1f27-4b0f-a9d0-0ca1cf6f46c6",
+  "alias": "ResourceCapacityPlannerWebPart",
+  "componentType": "WebPart",
+  "version": "1.0.0",
+  "manifestVersion": 2,
+  "supportsThemeVariants": true,
+  "preconfiguredEntries": [{
+    "groupId": "5c03119d-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Advanced" },
+    "title": { "default": "Resource capacity planner" },
+    "description": { "default": "Read-only room and shared-resource capacity planner" },
+    "officeFabricIconFontName": "Calendar",
+    "properties": { "description": "Read-only capacity overview" }
+  }]
+}
