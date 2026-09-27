@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-kpi-scorecard-client-side-solution",
+    "title": "Operational KPI Scorecard",
+    "id": "6b1b3b8f-7f5d-4f34-8d2d-0b7d9f0d1e21",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Vilius Vystartas",
+      "websiteUrl": "https://github.com/vystartasv",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.23.2"
+    },
+    "metadata": {
+      "shortDescription": { "default": "Read-only operational KPI scorecard" },
+      "longDescription": { "default": "Display current KPI values, targets, statuses, and deterministic trends from a SharePoint list." },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Operational KPI Scorecard Feature",
+        "description": "Adds the Operational KPI Scorecard web part.",
+        "id": "4d6c66de-0d39-4e53-b97e-e42e9974cc5c",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-kpi-scorecard.sppkg"
+  }
+}
