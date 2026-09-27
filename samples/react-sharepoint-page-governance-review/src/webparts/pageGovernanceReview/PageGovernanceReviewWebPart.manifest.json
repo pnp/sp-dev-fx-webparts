@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "b7c0a2ab-60e4-4c5a-a8e7-a0a3b51d55d6",
+  "alias": "PageGovernanceReviewWebPart",
+  "componentType": "WebPart",
+  "version": "1.0.0.0",
+  "manifestVersion": 2,
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart"],
+  "preconfiguredEntries": [{ "groupId": "Media and Content", "group": { "default": "Media and Content" }, "title": { "default": "Page Governance Review" }, "description": { "default": "Bounded read-only review of SharePoint pages." }, "officeFabricIconFontName": "ComplianceAudit", "properties": { "sourcesJson": "[{\"label\":\"Site Pages\",\"path\":\"/SitePages\"}]", "oldModifiedDays": 180, "referenceDate": "", "staleReviewBefore": "" } }]
+}
