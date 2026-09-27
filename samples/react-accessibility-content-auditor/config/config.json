@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "accessibility-content-auditor-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/accessibilityContentAuditor/AccessibilityContentAuditorWebPart.js",
+          "manifest": "./src/webparts/accessibilityContentAuditor/AccessibilityContentAuditorWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "AccessibilityContentAuditorWebPartStrings": "lib/webparts/accessibilityContentAuditor/loc/{locale}.js"
+  }
+}
