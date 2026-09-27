@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-document-library-client-side-solution",
+    "title": "Business Document Library",
+    "id": "4d34a4f1-e54b-45dc-82c5-ea1b0b8ff29f",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "PnP",
+      "websiteUrl": "https://pnp.github.io",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.23.2"
+    },
+    "metadata": {
+      "shortDescription": { "default": "Browse a configured SharePoint document library." },
+      "longDescription": { "default": "A secure, path-by-path SharePoint document library browser." },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Business Document Library",
+        "description": "Adds the Business Document Library web part.",
+        "id": "a6f2d0ed-d5fa-43f3-919f-571cf65391ae",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-document-library.sppkg"
+  }
+}
