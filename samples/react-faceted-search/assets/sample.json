@@ -1,0 +1,51 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-faceted-search",
+    "source": "pnp",
+    "title": "Faceted Search Web Part",
+    "shortDescription": "A React-based SharePoint Framework web part that searches the current SharePoint site with faceted filtering.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-faceted-search",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-faceted-search",
+    "longDescription": [
+      "This sample demonstrates a React-based SharePoint Framework web part that queries the current site through the read-only SharePoint Search REST endpoint (/_api/search/query), displays search results and metadata, and supports refiner-based filtering with loading, empty, error, and retry states."
+    ],
+    "creationDateTime": "2026-08-30",
+    "updateDateTime": "2026-08-30",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.22.2"
+      }
+    ],
+    "thumbnails": [],
+    "authors": [
+      {
+        "gitHubAccount": "vystartasv",
+        "pictureUrl": "https://github.com/vystartasv.png"
+      }
+    ],
+    "references": [
+      {
+        "name": "SharePoint Search REST API overview",
+        "description": "Learn how to add search functionality to client and mobile applications using the SharePoint Search REST service.",
+        "url": "https://learn.microsoft.com/en-us/sharepoint/dev/general-development/sharepoint-search-rest-api-overview"
+      },
+      {
+        "name": "Overview of SharePoint client-side web parts",
+        "description": "Learn about SharePoint client-side web parts, which execute in the browser and can be built with modern client-side development tools and frameworks such as React.",
+        "url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/overview-client-side-web-parts"
+      }
+    ]
+  }
+]

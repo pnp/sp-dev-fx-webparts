@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-faceted-search-client-side-solution",
+    "id": "8b535f2c-6c20-4a6b-bb12-d3b5d8d6e1c1",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "PnP",
+      "websiteUrl": "https://github.com/pnp/sp-dev-fx-webparts",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.24.0-beta.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "A read-only faceted search web part using SharePoint Search REST."
+      },
+      "longDescription": {
+        "default": "Search SharePoint content with bounded query text, result paging, and returned refinement buckets."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Faceted Search Feature",
+        "description": "The feature that activates the Faceted Search web part.",
+        "id": "1f3db8ef-bc4c-4e1f-8fd5-1cd2ca8cf4dd",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-faceted-search.sppkg"
+  }
+}
