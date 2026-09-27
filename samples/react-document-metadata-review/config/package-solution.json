@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-document-metadata-review",
+    "id": "f52c24c7-e0d7-4d74-b4c7-2b2b8b02b7a8",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": false,
+    "developer": {
+      "name": "PnP Community",
+      "websiteUrl": "https://github.com/pnp/sp-dev-fx-webparts",
+      "privacyUrl": "https://privacy.microsoft.com/",
+      "termsOfUseUrl": "https://www.microsoft.com/legal/terms-of-use",
+      "mpnId": "Undefined-1.23.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Review document metadata without changing SharePoint content."
+      },
+      "longDescription": {
+        "default": "Browse a bounded set of document metadata, identify missing or invalid required values, and open documents for remediation."
+      },
+      "screenshotPaths": []
+    },
+    "features": [
+      {
+        "title": "Document Metadata Review",
+        "description": "Activates the Document Metadata Review web part.",
+        "id": "3c5fcf0b-80f0-4d0c-9c33-8fce0540db14",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-document-metadata-review.sppkg"
+  }
+}

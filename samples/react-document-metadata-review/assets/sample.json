@@ -1,0 +1,50 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-document-metadata-review",
+    "source": "pnp",
+    "title": "Document Metadata Review",
+    "shortDescription": "Review document metadata for missing, empty, or invalid values in a SharePoint document library.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-document-metadata-review",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-document-metadata-review",
+    "longDescription": [
+      "This sample reads a bounded set of document items from a configured SharePoint document library, classifies configured metadata fields, filters documents by review state, and opens documents for remediation. It performs read-only SharePoint REST operations."
+    ],
+    "creationDateTime": "2026-08-30",
+    "updateDateTime": "2026-08-30",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.23.2"
+      }
+    ],
+    "thumbnails": [],
+    "authors": [
+      {
+        "gitHubAccount": "vystartasv",
+        "pictureUrl": "https://github.com/vystartasv.png",
+        "name": "Vilius Vystartas"
+      }
+    ],
+    "references": [
+      {
+        "name": "SharePoint REST service",
+        "url": "https://learn.microsoft.com/en-us/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service"
+      },
+      {
+        "name": "SharePoint Framework overview",
+        "url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/sharepoint-framework-overview"
+      }
+    ]
+  }
+]
