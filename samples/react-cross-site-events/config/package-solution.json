@@ -1,0 +1,41 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-cross-site-events",
+    "id": "93c5c8bf-52c4-4f70-9cbb-86ba0e7a5273",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Microsoft 365 Community",
+      "websiteUrl": "https://github.com/pnp/sp-dev-fx-webparts",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.23.2"
+    },
+    "metadata": {
+      "shortDescription": { "default": "Read-only cross-site calendar views." },
+      "longDescription": { "default": "Displays Microsoft 365 group calendar events for bounded SharePoint team-site sources." },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Cross-site events feature",
+        "description": "Activates the Cross-site events web part.",
+        "id": "93c5c8bf-52c4-4f70-9cbb-86ba0e7a5273",
+        "version": "1.0.0.0",
+        "componentIds": ["93c5c8bf-52c4-4f70-9cbb-86ba0e7a5273"]
+      }
+    ],
+    "webApiPermissionRequests": [
+      { "resource": "Microsoft Graph", "scope": "Group.Read.All" },
+      { "resource": "Microsoft Graph", "scope": "Sites.Read.All" }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-cross-site-events.sppkg"
+  }
+}
