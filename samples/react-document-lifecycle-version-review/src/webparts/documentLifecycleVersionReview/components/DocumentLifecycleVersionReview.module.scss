@@ -1,0 +1,9 @@
+.root { font-family: Segoe UI, sans-serif; color: #242424; }
+.heading { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 12px; }
+.heading button { min-height: 32px; padding: 4px 12px; cursor: pointer; }
+.loading { padding: 24px 0; }
+.tableWrap { overflow-x: auto; margin-top: 12px; }
+.tableWrap table { min-width: 1100px; }
+.signal { font-weight: 600; }
+.note { margin-top: 16px; font-size: 12px; color: #616161; }
+@media (max-width: 700px) { .heading { align-items: flex-start; flex-direction: column; } }

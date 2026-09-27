@@ -1,0 +1,35 @@
+{
+  "name": "document-lifecycle-version-review",
+  "version": "1.0.0",
+  "private": true,
+  "engines": { "node": ">=22.14.0 <23.0.0" },
+  "scripts": {
+    "build": "gulp bundle",
+    "test": "node test/run-tests.cjs",
+    "verify": "node scripts/verify-read-only.js",
+    "clean": "gulp clean",
+    "package": "gulp bundle --ship && gulp package-solution --ship"
+  },
+  "dependencies": {
+    "@fluentui/react-components": "9.74.0",
+    "@microsoft/sp-core-library": "1.23.2",
+    "@microsoft/sp-http": "1.23.2",
+    "@microsoft/sp-property-pane": "1.23.2",
+    "@microsoft/sp-webpart-base": "1.23.2",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "tslib": "2.3.1"
+  },
+  "devDependencies": {
+    "@microsoft/eslint-config-spfx": "1.23.2",
+    "@microsoft/eslint-plugin-spfx": "1.23.2",
+    "@microsoft/rush-stack-compiler-4.7": "0.1.0",
+    "@microsoft/sp-build-web": "1.23.2",
+    "@microsoft/sp-module-interfaces": "1.23.2",
+    "@types/react": "17.0.45",
+    "@types/react-dom": "17.0.17",
+    "@types/webpack-env": "1.15.2",
+    "gulp": "4.0.2",
+    "typescript": "4.7.4"
+  }
+}

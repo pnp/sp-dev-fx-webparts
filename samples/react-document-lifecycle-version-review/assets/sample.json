@@ -1,0 +1,63 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-document-lifecycle-version-review",
+    "source": "pnp",
+    "title": "Document Lifecycle and Version Review",
+    "shortDescription": "Read-only document lifecycle review aid",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-document-lifecycle-version-review",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-document-lifecycle-version-review",
+    "longDescription": [
+      "This SPFx React web part provides a bounded, read-only review aid for document-library and list rows.",
+      "It shows file links, source, content type, owner, dates, version details, size, checkout and approval or publish values when SharePoint supplies them, plus stale, major-version and review-state signals.",
+      "All network access uses SharePoint REST GET requests through the SPFx HTTP client. This is a review aid, not an authoritative compliance or records-management report."
+    ],
+    "creationDateTime": "2026-08-30",
+    "updateDateTime": "2026-08-30",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.23.2"
+      },
+      {
+        "key": "UI-FRAMEWORK",
+        "value": "Fluent UI v9"
+      }
+    ],
+    "thumbnails": [],
+    "authors": [
+      {
+        "name": "Vilius Vystartas",
+        "gitHubAccount": "vystartasv",
+        "pictureUrl": "https://github.com/vystartasv.png"
+      }
+    ],
+    "references": [
+      {
+        "name": "SharePoint Framework web parts",
+        "description": "Overview of SharePoint Framework web parts.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/overview"
+      },
+      {
+        "name": "SharePoint REST service",
+        "description": "Learn about the SharePoint REST service.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/sp-add-ins/get-to-know-the-sharepoint-rest-service"
+      },
+      {
+        "name": "SPHttpClient",
+        "description": "Use the SharePoint Framework HTTP client to communicate with SharePoint.",
+        "url": "https://learn.microsoft.com/javascript/api/sp-http/sphttpclient"
+      }
+    ]
+  }
+]
