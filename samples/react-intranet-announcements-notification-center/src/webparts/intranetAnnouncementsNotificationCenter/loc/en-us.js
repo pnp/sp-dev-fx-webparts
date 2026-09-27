@@ -1,0 +1,1 @@
+define([], function() { return { "PropertyPaneDescription": "Configure read-only announcement sources.", "BasicGroupName": "Announcements", "AnnouncementListPathsFieldLabel": "List paths (one per line)", "AudienceFieldLabel": "Current audience label", "ReferenceDateFieldLabel": "Reference date (ISO, optional)" }; });

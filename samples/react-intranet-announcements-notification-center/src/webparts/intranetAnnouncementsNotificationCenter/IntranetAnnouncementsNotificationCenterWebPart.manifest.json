@@ -1,0 +1,5 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "382f4b5a-49b1-4fb0-bf86-82afea505eb4", "alias": "IntranetAnnouncementsNotificationCenter", "componentType": "WebPart", "version": "1.0.0", "manifestVersion": 2,
+  "preconfiguredEntries": [{ "groupId": "c3c5f7a5-8c1f-4a2d-a2b3-1d5b55b6db01", "group": { "default": "Communication" }, "title": { "default": "Intranet Announcements and Targeted Notification Center" }, "description": { "default": "Read-only announcements presentation and review center." }, "officeFabricIconFontName": "Megaphone", "properties": { "announcementListPaths": "/Lists/Announcements", "currentAudienceLabel": "", "referenceDate": "" } }]
+}
