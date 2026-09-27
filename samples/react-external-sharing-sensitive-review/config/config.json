@@ -1,0 +1,7 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": { "external-sharing-sensitive-review-web-part": { "components": [{ "entrypoint": "./lib/webparts/externalSharingSensitiveReview/ExternalSharingSensitiveReviewWebPart.js", "manifest": "./src/webparts/externalSharingSensitiveReview/ExternalSharingSensitiveReviewWebPart.manifest.json" }] } },
+  "externals": {},
+  "localizedResources": { "ExternalSharingSensitiveReviewWebPartStrings": "lib/webparts/externalSharingSensitiveReview/loc/{locale}.js" }
+}
