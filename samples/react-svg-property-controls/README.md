@@ -32,11 +32,9 @@ An SPFx web part that displays a Scalable Vector Graphics (SVG) image using prop
 
 > Get your own free development tenant by subscribing to [Microsoft 365 developer program](http://aka.ms/o365devprogram)
 
-## Solution
+## Contributors
 
-| Solution                     | Author(s)                                                                                                                                                                      |
-| ----------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| react-svg-property-controls | Nader Hadjebi ([LinkedIn](https://www.linkedin.com/in/nader-hadjebi-6a677a87/), [naderhadjebi.com](https://www.naderhadjebi.com), [@nader2015](https://twitter.com/nader2015)) |
+* [Nader Hadjebi](https://github.com/NaderHadjebi)
 
 ## Version history
 
@@ -56,7 +54,7 @@ None specific — a standard SPFx development environment is all that's required
 * From your command line, change your current directory to the directory containing this sample (`react-svg-property-controls`, located under `samples`)
 * In the command line, run:
   * `npm install`
-  * `gulp serve`
+  * `npm run start`
 
 > This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit <https://aka.ms/spfx-devcontainer> for further instructions.
 
