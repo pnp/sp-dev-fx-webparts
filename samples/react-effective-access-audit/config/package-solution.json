@@ -1,0 +1,37 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-effective-access-audit-client-side-solution",
+    "title": "Effective Access Audit",
+    "id": "0c88e7cb-7a7d-4c0e-9a4a-f48d9b2e96bb",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Vilius Vystartas",
+      "websiteUrl": "https://github.com/vystartasv",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.23.2"
+    },
+    "metadata": {
+      "shortDescription": { "default": "Read-only SharePoint direct permission audit" },
+      "longDescription": { "default": "Show direct role assignments on a SharePoint web and optionally a list without changing permissions." },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Effective Access Audit Feature",
+        "description": "Adds the Effective Access Audit web part.",
+        "id": "2b5b7352-3f5c-4b09-a95d-739ffec55be0",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-effective-access-audit.sppkg"
+  }
+}

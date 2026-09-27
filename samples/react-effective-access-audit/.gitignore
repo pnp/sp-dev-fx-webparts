@@ -1,0 +1,23 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Dependencies and build output
+node_modules
+dist
+lib
+lib-dts
+lib-commonjs
+lib-esm
+jest-output
+release
+solution
+temp
+*.sppkg
+.heft
+coverage
+
+# Local files
+.DS_Store
+*.scss.ts

@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "effective-access-audit-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/effectiveAccessAudit/EffectiveAccessAuditWebPart.js",
+          "manifest": "./src/webparts/effectiveAccessAudit/EffectiveAccessAuditWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "EffectiveAccessAuditWebPartStrings": "lib/webparts/effectiveAccessAudit/loc/{locale}.js"
+  }
+}
