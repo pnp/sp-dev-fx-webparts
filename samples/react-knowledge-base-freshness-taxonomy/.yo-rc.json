@@ -1,0 +1,1 @@
+{ "@microsoft/generator-sharepoint": { "version": "1.23.2", "libraryName": "knowledge-base-freshness-taxonomy", "libraryId": "d89c6a8e-2c55-4fbb-a1f0-68832a7f4b7f", "environment": "spo", "packageManager": "npm", "solutionName": "knowledge-base-freshness-taxonomy", "skipFeatureDeployment": true, "isDomainIsolated": false, "componentType": "webpart" } }
