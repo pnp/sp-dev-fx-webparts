@@ -1,0 +1,5 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "6f9d7a1b-5f06-4eaf-9f8d-4c5e9b2a1d77", "alias": "AceReferenceWebPart", "componentType": "WebPart", "version": "*", "manifestVersion": 2, "requiresCustomScript": false, "supportedHosts": ["SharePointWebPart", "SharePointFullPage"], "supportsThemeVariants": true,
+  "preconfiguredEntries": [{ "groupId": "5c03119e-3074-46fd-976b-c60198311f70", "group": { "default": "Advanced" }, "title": { "default": "Viva Connections ACE Reference" }, "description": { "default": "Explore ACE interaction patterns" }, "officeFabricIconFontName": "Tiles", "properties": { "title": "Viva Connections reference", "cardsJson": "[{\"id\":\"welcome\",\"title\":\"Welcome card\",\"summary\":\"A local card that opens a detail panel.\",\"category\":\"Pattern\"}]" } }]
+}

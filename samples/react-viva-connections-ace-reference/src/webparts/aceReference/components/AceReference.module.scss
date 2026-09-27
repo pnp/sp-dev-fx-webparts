@@ -1,0 +1,14 @@
+.root { color: #242424; background: #fff; padding: 24px; font-family: 'Segoe UI', sans-serif; }
+.heading { display: block; margin-bottom: 4px; }
+.intro { color: #424242; margin-bottom: 20px; display: block; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+.card { text-align: left; cursor: pointer; min-height: 150px; border: 1px solid #d1d1d1; border-radius: 8px; padding: 16px; background: #fff; color: #242424; }
+.card:hover { border-color: #0f6cbd; box-shadow: 0 2px 8px rgba(0,0,0,.14); }
+.card:focus-visible { outline: 3px solid #0f6cbd; outline-offset: 3px; }
+.category { color: #0f548c; font-weight: 600; display: block; margin-bottom: 8px; }
+.summary { color: #424242; display: block; margin-top: 8px; line-height: 1.45; }
+.panel { margin-top: 20px; border-left: 4px solid #0f6cbd; padding: 16px; background: #f5f9fd; }
+.panelTitle { display: block; margin-bottom: 8px; }
+.link { display: inline-block; color: #0f548c; font-weight: 600; margin-top: 14px; }
+.empty { color: #424242; }
+@media (max-width: 480px) { .root { padding: 16px; } .grid { grid-template-columns: 1fr; } }
