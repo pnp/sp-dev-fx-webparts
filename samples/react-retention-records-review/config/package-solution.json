@@ -1,0 +1,12 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "retention-records-review-client-side-solution",
+    "id": "4d7be3c4-4ce2-4b48-b5bb-4f172bf0d781",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  },
+  "paths": { "zippedPackage": "solution/retention-records-review.sppkg" }
+}
