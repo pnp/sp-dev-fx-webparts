@@ -81,9 +81,11 @@ Once the npm packages are installed, run the following command to preview your w
 gulp serve
 ```
 
-## Community calls and demos
+## Join the community calls
 
-Join the weekly Copilot, Microsoft 365, and Power Platform community calls at <https://aka.ms/community/calls>. Everyone is welcome. To present a demo, sign up at <https://aka.ms/community/request/demo>.
+Stay up to date with the latest Copilot, Microsoft 365, and Power Platform topics by joining our weekly community calls. Everyone is welcome—come to learn, ask questions, and connect with the community.
+
+[View the call schedule and download the recurring invites](https://aka.ms/community/calls) so you don't miss an upcoming call.
 
 ## Authors
 
