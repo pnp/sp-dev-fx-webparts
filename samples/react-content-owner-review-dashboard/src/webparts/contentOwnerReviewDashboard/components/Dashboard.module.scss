@@ -1,0 +1,9 @@
+.dashboard { font-family: Segoe UI, sans-serif; color: #242424; padding: 12px; max-width: 1100px; margin: auto; }
+.heading, .filters { display: flex; gap: 16px; align-items: end; justify-content: space-between; margin-bottom: 16px; }
+.filters { justify-content: flex-start; flex-wrap: wrap; }
+.filters > * { min-width: 190px; }
+.status { min-height: 32px; padding: 12px 0; }
+.subtle { color: #616161; font-size: 12px; margin-top: 4px; }
+.severity { display: inline-block; font-weight: 600; padding: 2px 6px; border-radius: 4px; }
+.overdue { color: #a4262c; background: #fde7e9; } .dueSoon { color: #8a3700; background: #fff4ce; } .current { color: #107c10; background: #dff6dd; } .notSet, .unknown { color: #605e5c; background: #edebe9; }
+@media (max-width: 650px) { .heading { align-items: flex-start; } .table { overflow-x: auto; } .filters > * { min-width: 100%; } }
