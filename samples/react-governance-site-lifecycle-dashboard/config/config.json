@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "governance-site-lifecycle-dashboard-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/governanceSiteLifecycleDashboard/GovernanceSiteLifecycleDashboardWebPart.js",
+          "manifest": "./src/webparts/governanceSiteLifecycleDashboard/GovernanceSiteLifecycleDashboardWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "GovernanceSiteLifecycleDashboardWebPartStrings": "lib/webparts/governanceSiteLifecycleDashboard/loc/{locale}.js"
+  }
+}
