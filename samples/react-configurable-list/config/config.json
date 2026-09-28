@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "configurable-list-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/configurableList/ConfigurableListWebPart.js",
+          "manifest": "./src/webparts/configurableList/ConfigurableListWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ConfigurableListWebPartStrings": "lib/webparts/configurableList/loc/{locale}.js"
+  }
+}
