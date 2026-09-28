@@ -251,5 +251,5 @@ Finally, if you have an idea for improvement, [make a suggestion](https://github
 
 **THIS CODE IS PROVIDED *AS IS* WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED, INCLUDING ANY IMPLIED WARRANTIES OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, OR NON-INFRINGEMENT.**
 
-<!-- Required by PnP validation. Must be an HTML img tag, not Markdown. -->
+<!-- Required by PnP validation. Keep this as the final line, use an HTML img tag, and make the URL suffix match the repository-relative sample path. -->
 <img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/YOUR-SOLUTION-NAME" />

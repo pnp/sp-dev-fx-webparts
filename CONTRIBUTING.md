@@ -15,8 +15,8 @@ Please do not open GitHub issues for general support questions as the GitHub lis
 
 If you have questions about how to use SharePoint Framework or any of the provided samples, please use the following locations.
 
-* [SharePoint Developer Space](http://aka.ms/SPPnP-Community) at http://techcommunity.microsoft.com
-* [SharePoint Stack Exchange](http://sharepoint.stackexchange.com/) with 'spfx' tag
+* [SharePoint Developer Space](https://aka.ms/SPPnP-Community)
+* [SharePoint Stack Exchange](https://sharepoint.stackexchange.com/) with the `spfx` tag
 * Use our [Discord channel](https://discord.gg/HeAgMk8Y)
 
 ## Typos, Issues, Bugs and contributions
@@ -36,7 +36,7 @@ When you submit a new sample, please follow these guidelines:
 * Each sample must be placed in a folder under the `samples` folder
 * Your sample folder must include the following content:
     - Your solution's source code
-    - An `assets` folder, containing screenshots
+    - An `assets` folder containing screenshots and the `sample.json` metadata file
     - A `README.md` file
     - An `.nvmrc` file
 * You must only submit samples for which you have the rights to share. Make sure that you asked for permission from your employer and/or clients before committing the code to an open-source repository, because once you submit a pull request, the information is public and _cannot be removed_.
@@ -70,7 +70,7 @@ Remember that those using your samples may be new to SPFx, and they may not quit
 
 ### README.md
 
-* You will need to have a `README.md` file for your contribution, which is based on [the provided template](../main/templates/README-template.md) under the `samples` folder. Please copy this template to your project and update it accordingly. Your `README.md` must be named exactly `README.md` -- with capital letters -- as this is the information we use to make your sample public.
+* You will need to have a `README.md` file for your contribution, which is based on [the provided template](./templates/README-template.md). Please copy this template to your sample folder and update it accordingly. Your `README.md` must be named exactly `README.md` -- with capital letters -- as this is the information we use to make your sample public.
 * You will need to have a screenshot picture of your sample in action in the `README.md` file ("pics or it didn't happen"). The preview image must be located in the `assets` folder in the root of your sample folder.
     * All screen shots must be located in the `assets` folder. Do not point to your own repository or any other external source
 
@@ -78,9 +78,8 @@ Remember that those using your samples may be new to SPFx, and they may not quit
 
 #### Visitor stats image
 
-* The README template contains a specific tracking image at the end of the file with an `img` element pointing to `https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/YOUR-SOLUTION-NAME`. This is a transparent image which is used to track how many visits each sample receives in GitHub.
-* Update the image `src` attribute according with the repository name and folder information. For example, if your sample is named `react-todo` in the `samples` folder, you should update the `src` attribute to `https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-todo`
-  * Update the image `src` attribute according with the repository name and folder information.
+* The final line of every sample-root README must be `<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/{sample-path}" />`. This transparent image tracks how many visits each sample receives in GitHub.
+* Replace `{sample-path}` with the repository-relative path to the sample folder. For example, a sample in `samples/react-todo` must end with `<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-todo" />`.
 
 > **⚠️ IMPORTANT:** The automated validation bot checks for an `<img>` HTML element in your README. Using Markdown image syntax like `![Visitor count](...)` will trigger a validation **warning** and may delay your PR. Always use the `<img>` tag format shown in the template above.
 
@@ -137,7 +136,7 @@ Here's a high-level process for submitting new samples or updates to existing on
 3. Create a new branch from the `main` branch for your fork for the contribution
 4. Include your changes to your branch
 5. Commit your changes using descriptive commit message * These are used to track changes on the repositories for monthly communications
-6. Create a pull request in your own fork and target the `main` branch
+6. Open a pull request from your fork's contribution branch to the `main` branch of `pnp/sp-dev-fx-webparts`
 7. Fill up the provided PR template with the requested details
 
 Before you submit your pull request consider the following guidelines:
@@ -162,9 +161,7 @@ Before you submit your pull request consider the following guidelines:
   git checkout -b your-sample-name main
   ```
 
-* Ensure your fork is updated and not behind the upstream **sp-dev-fx-webparts** repo. Refer to these resources for more information on syncing your repo:
-  * [GitHub Help: Syncing a Fork](https://help.github.com/articles/syncing-a-fork/)
-  * [Keep Your Forked Git Repo Updated with Changes from the Original Upstream Repo](http://www.andrewconnell.com/blog/keep-your-forked-git-repo-updated-with-changes-from-the-original-upstream-repo)
+* Ensure your fork is updated and not behind the upstream **sp-dev-fx-webparts** repo. Refer to [GitHub's guidance for syncing a fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/syncing-a-fork).
   * For a quick cheat sheet:
 
     ```shell
