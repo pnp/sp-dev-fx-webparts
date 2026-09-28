@@ -7,6 +7,8 @@ on:
     paths:
       - ".metadata/samples.json"
       - ".metadata/extensions-samples.json"
+      - ".github/pages-overrides/**"
+      - ".github/workflows/generate-all-samples-and-thumbnails.yaml"
   workflow_dispatch:
   schedule:
     - cron: "0 6 * * *" # Daily 06:00 UTC
@@ -42,6 +44,12 @@ jobs:
           ref: Docs
           path: Docs
           fetch-depth: 0
+
+      - name: Apply Pages telemetry override
+        shell: bash
+        run: |
+          mkdir -p Docs/layouts/partials/analytics
+          cp .github/pages-overrides/pnptelemetry.html Docs/layouts/partials/analytics/pnptelemetry.html
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -404,6 +412,18 @@ jobs:
           git ls-tree -d HEAD docs/samples || true
 
           hugo --minify --destination docs --cleanDestinationDir
+
+          legacy_telemetry_files="$(grep -R -l -F "https://pnptelemetry.azurewebsites.net/" docs --include='*.html' || true)"
+          if [[ -n "$legacy_telemetry_files" ]]; then
+            echo "Legacy Pages telemetry was generated in:"
+            echo "$legacy_telemetry_files"
+            exit 1
+          fi
+
+          if ! grep -R -q -F "https://m365-visitor-stats.azurewebsites.net/" docs --include='*.html'; then
+            echo "Expected Pages telemetry was not generated"
+            exit 1
+          fi
 
           echo "Sitemap loc count:"; grep -c "<loc>" docs/sitemap.xml || true
           echo "Sitemap samples entries:"; grep -c "/samples/" docs/sitemap.xml || true
