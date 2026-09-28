@@ -1,0 +1,65 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-availability-calendar",
+    "source": "pnp",
+    "title": "Team Availability Calendar",
+    "shortDescription": "Shows team vacations and absences from a SharePoint list on a month calendar, with multi-day bars, lane stacking for overlaps, an 'Out this week' strip and a per-person details panel. No Microsoft Graph permissions required.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-availability-calendar",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-availability-calendar",
+    "longDescription": [
+      "A SharePoint Framework web part that shows team vacations and absences on a month calendar. Each absence is a coloured bar spanning its days; overlapping absences stack onto separate rows, and a '+N more' button opens the rest of a busy day. An 'Out this week' strip names everyone away in the next seven days, and selecting a bar or a day opens a details panel with the person, absence type, date range, notes and one-click Email and Teams buttons. The web part reads one plain SharePoint list with PnPjs - the list title and every column's internal name are configurable in the property pane - and needs no Microsoft Graph permissions, no tenant-admin API approval and no Azure Function. A 'Use sample data' toggle renders bundled demo absences so the layout can be previewed before the list exists."
+    ],
+    "creationDateTime": "2026-09-07",
+    "updateDateTime": "2026-09-20",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.23.2"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-availability-calendar/assets/screenshot.png",
+        "alt": "Team Availability Calendar showing a month grid with multi-day absence bars, a legend, an 'Out this week' strip and today highlighted"
+      },
+      {
+        "type": "image",
+        "order": 200,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-availability-calendar/assets/screenshot-properties.png",
+        "alt": "The Team Availability Calendar property pane with list, column, view, weekend, capacity and sample-data settings"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "Niacrisss",
+        "pictureUrl": "https://github.com/Niacrisss.png",
+        "name": "Alexandr Abdulca"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "PnPjs - @pnp/sp",
+        "description": "A fluent JavaScript API for consuming SharePoint and Microsoft Graph REST APIs from SPFx and Node.",
+        "url": "https://pnp.github.io/pnpjs/"
+      }
+    ]
+  }
+]

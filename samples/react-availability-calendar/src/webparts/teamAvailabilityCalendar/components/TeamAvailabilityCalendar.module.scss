@@ -1,0 +1,497 @@
+// Fluent renders the details Panel inside a Layer attached to the document body,
+// outside the web part's own DOM. Custom properties inherit down the DOM tree, so
+// the Panel content has to declare the palette for itself -- hence these mixins
+// rather than a single declaration on .teamAvailabilityCalendar.
+//
+// Per-type colours are NOT here: they are computed in absenceTypeVisuals.ts and
+// applied as inline styles, so any custom Choice value gets its own colour.
+@mixin lightPalette {
+  --tac-surface: #ffffff;
+  --tac-border: rgba(0, 0, 0, 0.12);
+  --tac-cell-hover: rgba(0, 0, 0, 0.04);
+  --tac-weekend-bg: rgba(0, 0, 0, 0.035);
+  --tac-muted: #605e5c;
+  --tac-today: #0078d4;
+  --tac-over-bg: rgba(240, 173, 78, 0.16);
+  --tac-over-border: #e0a250;
+  --tac-over-badge: #b06f16;
+}
+
+@mixin darkPalette {
+  --tac-surface: #1f1f1f;
+  --tac-border: rgba(255, 255, 255, 0.16);
+  --tac-cell-hover: rgba(255, 255, 255, 0.06);
+  --tac-weekend-bg: rgba(255, 255, 255, 0.035);
+  --tac-muted: #c8c6c4;
+  --tac-today: #2b88d8;
+  --tac-over-bg: rgba(240, 173, 78, 0.13);
+  --tac-over-border: #b07f3d;
+  --tac-over-badge: #c98a2c;
+}
+
+.teamAvailabilityCalendar {
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+
+  @include lightPalette;
+}
+
+// Two-class selector keeps dark ahead of light regardless of source order.
+.teamAvailabilityCalendar.darkTheme {
+  @include darkPalette;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.monthTitleButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 600;
+  color: inherit;
+  padding: 4px 12px;
+  border-radius: 4px;
+  min-width: 170px;
+
+  &:hover {
+    background-color: var(--tac-cell-hover);
+  }
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px 16px;
+  margin-bottom: 12px;
+}
+
+.legend {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.legendChip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  border: 1px solid var(--tac-border);
+  border-radius: 14px;
+  padding: 3px 10px;
+  background: var(--tac-surface);
+  color: inherit;
+
+  &:hover {
+    background-color: var(--tac-cell-hover);
+  }
+}
+
+.legendChipOff {
+  opacity: 0.5;
+  text-decoration: line-through;
+
+  .legendSwatch {
+    filter: grayscale(1);
+  }
+}
+
+.legendSwatch {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+  border: 1px solid;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.legendIcon {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.toolbarRight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.search {
+  min-width: 170px;
+  max-width: 240px;
+}
+
+.resetFilters {
+  background: none;
+  border: none;
+  color: var(--tac-today);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 12px;
+  text-decoration: underline;
+  padding: 2px 4px;
+}
+
+.outThisWeek {
+  margin-bottom: 14px;
+}
+
+.outThisWeekTitle {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 6px;
+}
+
+.outThisWeekList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.outPill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  border: 1px solid;
+  border-radius: 14px;
+  padding: 3px 10px;
+
+  &:hover {
+    filter: brightness(0.97);
+  }
+}
+
+.outIcon {
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.outWhen {
+  font-weight: 600;
+}
+
+.outSeparator {
+  opacity: 0.5;
+}
+
+// The grid stays on screen while a new period loads, dimmed, so the page does not jump.
+.gridWrap {
+  position: relative;
+}
+
+.gridLoading {
+  opacity: 0.5;
+  pointer-events: none;
+  transition: opacity 0.15s ease-in-out;
+}
+
+.loadingOverlay {
+  position: absolute;
+  top: 48px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1;
+  padding: 6px 14px;
+  border-radius: 6px;
+  background: var(--tac-surface);
+  border: 1px solid var(--tac-border);
+}
+
+.calendar {
+  --tac-cols: 7;
+  --tac-lane-rows: 4;
+}
+
+// One-week view: give the single row more presence.
+.calendarWeek {
+  .dayCell {
+    min-height: calc(72px + var(--tac-lane-rows) * 26px);
+  }
+
+  .weekDays {
+    gap: 6px;
+  }
+}
+
+.weekdayRow {
+  display: grid;
+  grid-template-columns: repeat(var(--tac-cols), 1fr);
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.weekdayCell {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  opacity: 0.7;
+  text-align: center;
+  padding: 4px 0;
+}
+
+.week {
+  position: relative;
+  margin-bottom: 4px;
+}
+
+.weekDays {
+  display: grid;
+  grid-template-columns: repeat(var(--tac-cols), 1fr);
+  gap: 4px;
+}
+
+.dayCell {
+  box-sizing: border-box;
+  position: relative;
+  appearance: none;
+  -webkit-appearance: none;
+  margin: 0;
+  min-height: calc(29px + var(--tac-lane-rows) * 26px);
+  border: 1px solid var(--tac-border);
+  border-radius: 6px;
+  background: var(--tac-surface);
+  padding: 4px 6px;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+  // A <button> centres its content vertically; a top-aligned flex column keeps
+  // the date number at the top, clear of the bars overlaid below it.
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+
+  &:hover {
+    background-color: var(--tac-cell-hover);
+  }
+}
+
+.dayNumber {
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.outsideMonth {
+  opacity: 0.45;
+}
+
+.weekend {
+  background: var(--tac-weekend-bg);
+}
+
+.overCapacity {
+  background: var(--tac-over-bg);
+  border-color: var(--tac-over-border);
+}
+
+.today {
+  border-color: var(--tac-today);
+  border-width: 2px;
+
+  .dayNumber {
+    color: var(--tac-today);
+  }
+}
+
+.capacityBadge {
+  position: absolute;
+  top: 3px;
+  right: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.5;
+  min-width: 16px;
+  text-align: center;
+  padding: 0 4px;
+  border-radius: 8px;
+  background: var(--tac-over-badge);
+  color: #ffffff;
+}
+
+.weekBars {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 23px;
+  bottom: 6px;
+  display: grid;
+  grid-template-columns: repeat(var(--tac-cols), 1fr);
+  grid-auto-rows: 23px;
+  row-gap: 3px;
+  column-gap: 4px;
+  padding: 0 4px;
+  pointer-events: none;
+
+  > * {
+    pointer-events: auto;
+  }
+}
+
+.bar {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  min-width: 0;
+  overflow: hidden;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: left;
+  white-space: nowrap;
+  cursor: pointer;
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 1px 6px;
+
+  &:hover {
+    filter: brightness(0.97);
+  }
+}
+
+.barIcon {
+  flex-shrink: 0;
+  font-size: 11px;
+}
+
+.barLabel {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.barArrow {
+  flex-shrink: 0;
+  font-weight: 700;
+  opacity: 0.7;
+}
+
+.continuesLeft {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left-style: dashed;
+}
+
+.continuesRight {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-right-style: dashed;
+}
+
+.moreButton {
+  align-self: start;
+  justify-self: start;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 600;
+  color: inherit;
+  opacity: 0.8;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  padding: 0 4px;
+  cursor: pointer;
+  text-decoration: underline;
+  white-space: nowrap;
+
+  &:hover {
+    opacity: 1;
+    background-color: var(--tac-cell-hover);
+  }
+}
+
+.bar:focus-visible,
+.dayCell:focus-visible,
+.moreButton:focus-visible,
+.outPill:focus-visible,
+.legendChip:focus-visible,
+.resetFilters:focus-visible,
+.monthTitleButton:focus-visible {
+  outline: 2px solid var(--tac-today);
+  outline-offset: 1px;
+}
+
+// --- Details panel (rendered in a Layer, needs its own palette) ---
+
+.detailsList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  @include lightPalette;
+}
+
+.detailsList.darkTheme {
+  @include darkPalette;
+}
+
+.detailsItem {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--tac-border);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.detailsMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  word-break: break-word;
+}
+
+.detailsTypeTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 600;
+  border: 1px solid;
+  border-radius: 10px;
+  padding: 1px 8px;
+}
+
+.detailsIcon {
+  flex-shrink: 0;
+  opacity: 0.7;
+}
+
+.detailsNotes {
+  margin: 0;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+.detailsActions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}

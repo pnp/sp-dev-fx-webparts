@@ -1,0 +1,22 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "react-availability-calendar",
+    "useGulp": false,
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "Team Availability Calendar",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.22.0",
+    "sdksVersions": {},
+    "version": "1.23.2",
+    "libraryName": "react-availability-calendar",
+    "libraryId": "820dff85-7be9-4e8c-b8d4-d7de2a9c5969",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionShortDescription": "Team vacations and absences on a month or week calendar, read from a SharePoint list.",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  }
+}
