@@ -6,12 +6,6 @@
     "avatarSourceUrl": "https://github.com/Paxol.png"
   },
   {
-    "gitHubAccount": "saiiiiiii",
-    "name": "@saiiiiiii",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/saiiiiiii.b1e132237a67.webp",
-    "avatarSourceUrl": "https://github.com/saiiiiiii.png"
-  },
-  {
     "gitHubAccount": "aakashbhardwaj619",
     "name": "Aakash Bhardwaj",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/aakashbhardwaj619.bf79a729c94b.webp",
@@ -265,7 +259,7 @@
   },
   {
     "gitHubAccount": "Tanddant",
-    "name": "Dan Toft (Code Reviews)",
+    "name": "Dan Toft",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/tanddant.b503735bca0d.webp",
     "avatarSourceUrl": "https://github.com/Tanddant.png"
   },
@@ -907,7 +901,7 @@
   },
   {
     "gitHubAccount": "NishkalankBezawada",
-    "name": "NIshkalank Bezawada",
+    "name": "NIshkalank Bezawada (MVP)",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/nishkalankbezawada.271e437466c3.webp",
     "avatarSourceUrl": "https://github.com/NishkalankBezawada.png"
   },
@@ -1116,6 +1110,12 @@
     "avatarSourceUrl": "https://github.com/sharepointknight.png"
   },
   {
+    "gitHubAccount": "saiiiiiii",
+    "name": "Sai Siva Ram Bandaru",
+    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/saiiiiiii.b1e132237a67.webp",
+    "avatarSourceUrl": "https://avatars.githubusercontent.com/u/46020510?v=4"
+  },
+  {
     "gitHubAccount": "smaity",
     "name": "Sajal Maity",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/smaity.a2a3d77ac713.webp",
@@ -1243,7 +1243,7 @@
   },
   {
     "gitHubAccount": "sudharsank",
-    "name": "Sudharsan K.",
+    "name": "Sudharsan Kesavanarayanan",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/sudharsank.416ed5d2b87f.webp",
     "avatarSourceUrl": "https://github.com/sudharsank.png"
   },
