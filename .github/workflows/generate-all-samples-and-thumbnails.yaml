@@ -7,6 +7,7 @@ on:
     paths:
       - ".metadata/samples.json"
       - ".metadata/extensions-samples.json"
+      - ".github/pages-overrides/**"
   workflow_dispatch:
   schedule:
     - cron: "0 6 * * *" # Daily 06:00 UTC
@@ -42,6 +43,12 @@ jobs:
           ref: Docs
           path: Docs
           fetch-depth: 0
+
+      - name: Apply Pages telemetry override
+        shell: bash
+        run: |
+          mkdir -p Docs/layouts/partials/analytics
+          cp .github/pages-overrides/pnptelemetry.html Docs/layouts/partials/analytics/pnptelemetry.html
 
       - name: Set up Python
         uses: actions/setup-python@v5
