@@ -1,0 +1,22 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "react-content-calendar",
+    "useGulp": false,
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "Content Calendar",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.18.0",
+    "sdksVersions": {},
+    "version": "1.23.0",
+    "libraryName": "react-content-calendar",
+    "libraryId": "4d8ecbb3-e00a-453b-9532-fb9001c8e923",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionShortDescription": "react-content-calendar description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  }
+}
