@@ -8,7 +8,6 @@
  ![Question](assets/Question.png)
  ![Answered](assets/Answered.png)
  ![List](assets/List.png)
- ![Results](assets/Result.png)
 
 ## Compatibility
 
@@ -43,6 +42,7 @@
  |1.0|February 7, 2026|Initial release|
  |1.1|September 12, 2026|Improved layout and visual feedback|
  |1.1.1|September 12, 2026|Updated to SPFx 1.21.1 to fix missing CSS Module styles in production deployments|
+ |1.2.0|October 7, 2026|Support large poll answer lists and retry failed results|
 
 ## Prerequisites
 
@@ -76,6 +76,7 @@
 * **Interactive Voting**: Allows users to select an option and vote.
 * **Immediate Visual Feedback**: Highlights the voter’s selected result with a persistent “Your choice” label.
 * **Real-time Results**: Shows poll results using Fluent UI Progress Indicators immediately after voting.
+* **Large Answer Lists**: Reads all answer pages in batches of 1,000, including lists with more than 5,000 items, and counts the selected poll locally without requiring list schema changes. Results and existing-vote checks scan answers across polls, so larger lists take longer to load. If results retrieval fails, the web part displays an error with a Retry button instead of incomplete totals.
 * **SharePoint Integration**: deeply integrated with SharePoint lists for data storage and user context (Email) for vote tracking.
 * **PnP JS Integration**: Uses PnP JS for efficient SharePoint data operations.
 

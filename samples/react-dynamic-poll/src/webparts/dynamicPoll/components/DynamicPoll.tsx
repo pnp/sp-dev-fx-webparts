@@ -1,6 +1,9 @@
 import {
   ChoiceGroup,
+  DefaultButton,
   IChoiceGroupOption,
+  MessageBar,
+  MessageBarType,
   PrimaryButton,
 } from "@fluentui/react";
 import * as React from "react";
@@ -15,6 +18,7 @@ export interface DynamicPollProps {
   initialUserVote?: string;
   initialPollResults?: PollResult[];
   initialTotalVotes?: number;
+  initialResultsError?: boolean;
 }
 
 export default function DynamicPoll(
@@ -34,16 +38,25 @@ export default function DynamicPoll(
   );
   const [loading, setLoading] = React.useState<boolean>(false);
   const [voteConfirmation, setVoteConfirmation] = React.useState<string>("");
+  const [resultsError, setResultsError] = React.useState<boolean>(
+    props.initialResultsError || false,
+  );
+  const [resultsLoading, setResultsLoading] = React.useState<boolean>(false);
 
   const refreshResults = React.useCallback(async (): Promise<void> => {
     if (!props.pollItem) return;
+    setResultsLoading(true);
     try {
       const { results, totalVotes } =
         await props.sharePointService.getPollResults(props.pollItem);
       setPollResults(results);
       setTotalVotes(totalVotes);
+      setResultsError(false);
     } catch (error) {
+      setResultsError(true);
       console.error("Error refreshing results:", error);
+    } finally {
+      setResultsLoading(false);
     }
   }, [props.pollItem, props.sharePointService]);
 
@@ -113,12 +126,26 @@ export default function DynamicPoll(
             </>
           )}
 
-          <PollResults
-            pollItem={props.pollItem}
-            results={pollResults}
-            totalVotes={totalVotes}
-            votedAnswer={votedAnswer}
-          />
+          {resultsError ? (
+            <MessageBar messageBarType={MessageBarType.error}>
+              Unable to load all poll results. Please try again.
+              <DefaultButton
+                text={resultsLoading ? "Retrying..." : "Retry"}
+                onClick={refreshResults}
+                disabled={resultsLoading || loading}
+              />
+            </MessageBar>
+          ) : (
+            <>
+              {resultsLoading && <p role="status">Updating results...</p>}
+              <PollResults
+                pollItem={props.pollItem}
+                results={pollResults}
+                totalVotes={totalVotes}
+                votedAnswer={votedAnswer}
+              />
+            </>
+          )}
         </div>
       </div>
       <div className={styles.screenReaderOnly} aria-live="polite" aria-atomic="true">
