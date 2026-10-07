@@ -8,7 +8,6 @@
  ![Question](assets/Question.png)
  ![Answered](assets/Answered.png)
  ![List](assets/List.png)
- ![Results](assets/Result.png)
 
 ## Compatibility
 
@@ -43,6 +42,7 @@
  |1.0|February 7, 2026|Initial release|
  |1.1|September 12, 2026|Improved layout and visual feedback|
  |1.1.1|September 12, 2026|Updated to SPFx 1.21.1 to fix missing CSS Module styles in production deployments|
+ |1.2.0|October 7, 2026|Support large poll answer lists and retry failed results|
 
 ## Prerequisites
 
