@@ -1,0 +1,48 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "bd4c6c20-ca21-4232-a72f-3aff50e2a9c9",
+  "alias": "EventsLayoutsWebPart",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "SharePointFullPage", "TeamsTab", "TeamsPersonalApp"],
+  // Receive the section background theme (neutral, soft, strong) through onThemeChanged.
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "75e22ed5-fa14-4829-850a-c890608aca2d", // Communication and collaboration
+    "group": { "default": "Communication and collaboration", "ar-SA": "الاتصال والتعاون" },
+    "title": { "default": "Events Layouts", "ar-SA": "تخطيطات الفعاليات" },
+    "description": {
+      "default": "Show upcoming events from SharePoint Events lists and Microsoft 365 group calendars in six responsive layouts.",
+      "ar-SA": "اعرض الفعاليات القادمة من قوائم فعاليات SharePoint وتقويمات مجموعات Microsoft 365 بستة تخطيطات متجاوبة."
+    },
+    "officeFabricIconFontName": "Calendar",
+    "properties": {
+      "title": "Events",
+      "layout": "agenda",
+      "height": 0,
+      "autoplay": true,
+      "maxEvents": 10,
+      "titleLines": 2,
+      "descriptionLines": 2,
+      "showDescription": true,
+      "showLocation": true,
+      "showOrganizer": false,
+      "showCategory": true,
+      "showImage": true,
+      "showDateFilter": true,
+      "seeAllUrl": "",
+      "sources": [],
+      "dateRange": "upcoming",
+      "direction": "auto",
+      "locale": "",
+      "calendar": "auto",
+      "latinDigits": false
+    }
+  }]
+}

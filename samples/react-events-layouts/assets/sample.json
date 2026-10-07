@@ -1,0 +1,114 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-events-layouts",
+    "source": "pnp",
+    "title": "Events Layouts",
+    "shortDescription": "Show upcoming events from SharePoint Events lists and Microsoft 365 group calendars in six responsive, theme-aware layouts with right-to-left support.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-events-layouts",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-events-layouts",
+    "longDescription": [
+      "Show upcoming events from SharePoint Events lists and Microsoft 365 group calendars in one responsive feed.",
+      "Choose from six layouts: Agenda, Grid, List, Filmstrip, Carousel and Timeline. The web part follows the site theme and section backgrounds, fits any column width, and supports right-to-left languages and the Hijri calendar."
+    ],
+    "creationDateTime": "2026-09-27",
+    "updateDateTime": "2026-09-27",
+    "products": [
+      "SharePoint",
+      "Microsoft Teams"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.23.2"
+      },
+      {
+        "key": "SPFX-TOOLCHAIN",
+        "value": "Heft"
+      },
+      {
+        "key": "MSGRAPHCLIENT",
+        "value": "3"
+      },
+      {
+        "key": "FLUENTUI-REACT",
+        "value": "9"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-events-layouts/assets/agenda.png",
+        "alt": "Agenda layout"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-events-layouts/assets/grid.png",
+        "alt": "Grid layout"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-events-layouts/assets/list.png",
+        "alt": "List layout"
+      },
+      {
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-events-layouts/assets/filmstrip.png",
+        "alt": "Filmstrip layout"
+      },
+      {
+        "type": "image",
+        "order": 104,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-events-layouts/assets/carousel.png",
+        "alt": "Carousel layout"
+      },
+      {
+        "type": "image",
+        "order": 105,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-events-layouts/assets/timeline.png",
+        "alt": "Timeline layout"
+      },
+      {
+        "type": "image",
+        "order": 106,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-events-layouts/assets/filmstrip-rtl.png",
+        "alt": "Filmstrip layout in Arabic"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "zeyadelmaghraby",
+        "pictureUrl": "https://github.com/zeyadelmaghraby.png",
+        "name": "Zeyad Elmaghraby"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Fluent UI React v9",
+        "description": "Fluent UI React v9 components, theming and styling with Griffel.",
+        "url": "https://react.fluentui.dev/"
+      },
+      {
+        "name": "Use Microsoft Graph in your solution",
+        "description": "Connect to Microsoft Graph from SharePoint Framework solutions using MSGraphClientV3.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/use-msgraph"
+      }
+    ]
+  }
+]
