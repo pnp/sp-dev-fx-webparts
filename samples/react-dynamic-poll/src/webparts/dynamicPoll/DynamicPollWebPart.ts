@@ -19,6 +19,7 @@ export default class DynamicPollWebPart extends BaseClientSideWebPart<DynamicPol
   private _pollResults: PollResult[] = [];
   private _userVote: string | undefined = undefined;
   private _totalVotes: number = 0;
+  private _resultsError: boolean = false;
 
   public render(): void {
     const element: React.ReactElement = React.createElement(DynamicPoll, {
@@ -27,6 +28,7 @@ export default class DynamicPollWebPart extends BaseClientSideWebPart<DynamicPol
       initialPollResults: this._pollResults,
       initialUserVote: this._userVote,
       initialTotalVotes: this._totalVotes,
+      initialResultsError: this._resultsError,
     });
 
     ReactDom.render(element, this.domElement);
@@ -50,6 +52,7 @@ export default class DynamicPollWebPart extends BaseClientSideWebPart<DynamicPol
         this._pollResults = results;
         this._totalVotes = totalVotes;
       } catch (err) {
+        this._resultsError = true;
         console.error("Error initializing poll data", err);
       }
     }
