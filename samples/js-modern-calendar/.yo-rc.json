@@ -2,7 +2,7 @@
   "@microsoft/generator-sharepoint": {
     "isCreatingSolution": true,
     "environment": "spo",
-  "version": "1.22.1",
+    "version": "1.24.0-rc.0",
     "libraryName": "modern-calendar",
     "libraryId": "c2a397d3-8c8f-47ab-b731-897178313c15",
     "packageManager": "npm",
@@ -13,6 +13,6 @@
     "@microsoft/teams-js": "2.24.0",
         "@microsoft/microsoft-graph-client": "3.0.2"
       },
-    "nodeVersion": "18.18.0"
+    "nodeVersion": "22.14.0"
     }
 }
