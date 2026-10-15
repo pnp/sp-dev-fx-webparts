@@ -2,8 +2,9 @@ import * as React from 'react';
 import styles from './CopilotRetrivalPreview.module.scss';
 import type { ICopilotRetrivalPreviewProps } from './ICopilotRetrivalPreviewProps';
 import type { IRetrivalResponse, IRetrievalHit } from './IRetrivalResponse';
-import { DetailsList, Dropdown, IColumn, Label, PrimaryButton, TextField } from '@fluentui/react';
+import { DetailsList, Dropdown, IColumn, Label, MessageBar, MessageBarType, PrimaryButton, TextField } from '@fluentui/react';
 import { marked } from 'marked';
+import * as strings from 'CopilotRetrivalPreviewWebPartStrings';
 
 interface ICopilotRetrivalPreviewState {
   loading: boolean;
@@ -11,6 +12,7 @@ filterExpression?: string;
 queryText?: string;
 dataSource?: string;
   response?: IRetrivalResponse;
+  errorMessage?: string;
 maximumNumberOfResults: number;
 }
 
@@ -105,15 +107,20 @@ export default class CopilotRetrivalPreview extends React.Component<ICopilotRetr
               onChange={(e, newValue) => this.setState({ queryText: newValue || '' })}
               label='Search Text'
             />
-            <PrimaryButton onClick={() => this.onRetrival()}>Retrieval</PrimaryButton>
+            <PrimaryButton disabled={this.state.loading} onClick={this.onRetrival}>Retrieval</PrimaryButton>
           </div>
+          { this.state.errorMessage && (
+            <MessageBar messageBarType={MessageBarType.error}>
+              {this.state.errorMessage}
+            </MessageBar>
+          )}
           { this.state.loading && <div>Loading...</div> }
           { !this.state.loading && results && results.length > 0 && (
           <div>
                 <DetailsList items={results} columns={this.columns} setKey="set" selectionMode={0} onItemInvoked={() => { /* no-op */ }} />
                 
           </div>)}
-          { !this.state.loading && (!results || results.length === 0) && (
+          { !this.state.loading && !this.state.errorMessage && (!results || results.length === 0) && (
           <div>
               No Items found.
           </div>)}
@@ -122,49 +129,49 @@ export default class CopilotRetrivalPreview extends React.Component<ICopilotRetr
     );
   }
 
-private onRetrival = ():void  => {
-  this.setState({ loading: true}, 
-    () => this.getRetrivalResult());
-}
+  private onRetrival = (): void => {
+    if (this.state.loading) {
+      return;
+    }
 
+    if (!this.state.queryText?.trim()) {
+      this.setState({ errorMessage: strings.QueryRequired, response: undefined, loading: false });
+      return;
+    }
 
+    this.setState({ loading: true, errorMessage: undefined, response: undefined },
+      this.getRetrivalResult);
+  };
 
-private getRetrivalResult = ():void => {
-  const {wpcontext} = this.props;
-  const {queryText, filterExpression, dataSource, maximumNumberOfResults} = this.state;
+  private getRetrivalResult = async (): Promise<void> => {
+    const { wpcontext } = this.props;
+    const { queryText, filterExpression, dataSource, maximumNumberOfResults } = this.state;
 
-  if (!queryText) {
-    alert('Please enter a query.');
-    return;
-  }
-  wpcontext.msGraphClientFactory.getClient("3").then((client) => {
-      const endpoint = 'https://graph.microsoft.com/beta/copilot/retrieval';
-    const body = {
-      queryString:  queryText,
-      dataSource: dataSource || 'sharePoint',
-      filterExpression: filterExpression || undefined,
-      resourceMetadata:  ['title', 'author'],
-      maximumNumberOfResults: "" + maximumNumberOfResults
-    } as Record<string, unknown>;
-  
-  client.api(endpoint)
-    .post(body)
-    .then((resp) => {
-      
-      console.log("Retrieval API response: ", resp);
-      this.setState({ response: resp as IRetrivalResponse, loading: false });
-    }).catch((error) => {
-      console.error("Error calling Retrieval API: ", error);
-      alert('Error calling Retrieval API. Check console for details.');
-    });
-  
-    
+    try {
+      const client = await wpcontext.msGraphClientFactory.getClient('3');
+      const response: IRetrivalResponse = await client
+        .api('https://graph.microsoft.com/beta/copilot/retrieval')
+        .post({
+          queryString: queryText,
+          dataSource: dataSource || 'sharePoint',
+          filterExpression: filterExpression || undefined,
+          resourceMetadata: ['title', 'author'],
+          maximumNumberOfResults: String(maximumNumberOfResults)
+        });
 
-  }).catch((error) => {
-    console.error("Error getting Graph client: ", error);
-    alert('Error getting Graph client. Check console for details.');
-  });
-
-}
+      this.setState({ response });
+    } catch (error: unknown) {
+      console.error('Error calling Retrieval API:', error);
+      // Graph SDK errors expose message directly; raw API responses nest it under error.
+      const details = typeof error === 'object' && error !== null && 'error' in error
+        ? error.error
+        : error;
+      const message = typeof details === 'object' && details !== null && 'message' in details
+        && typeof details.message === 'string' ? details.message : undefined;
+      this.setState({ errorMessage: message?.trim() || strings.RetrievalFailed });
+    } finally {
+      this.setState({ loading: false });
+    }
+  };
 
 }

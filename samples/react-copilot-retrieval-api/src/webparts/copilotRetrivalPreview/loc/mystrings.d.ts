@@ -1,4 +1,6 @@
 declare interface ICopilotRetrivalPreviewWebPartStrings {
+  QueryRequired: string;
+  RetrievalFailed: string;
   PropertyPaneDescription: string;
   BasicGroupName: string;
   DescriptionFieldLabel: string;
