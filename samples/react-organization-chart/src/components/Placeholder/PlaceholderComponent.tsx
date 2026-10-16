@@ -5,6 +5,7 @@ import { IPartialTheme, ITheme } from '@fluentui/react/lib/Styling';
  *
  */
 export interface IPlaceholderProps {
+  children?: React.ReactNode;
 
   /**
    * Text description or component for the placeholder. Appears bellow the Icon and IconText.
@@ -50,8 +51,7 @@ export interface IPlaceholderState {
 }
 
 
-import { ThemeContext } from '@fluentui/react-theme-provider/lib/ThemeContext';
-import { Theme } from '@fluentui/react-theme-provider/lib/types';
+import { ThemeContext, Theme } from '@fluentui/react/lib/Theme';
 import { PrimaryButton } from '@fluentui/react/lib/Button';
 import { Icon } from '@fluentui/react/lib/Icon';
 import * as React from 'react';
@@ -163,8 +163,8 @@ export class Placeholder extends React.Component<IPlaceholderProps, IPlaceholder
           const styles = getClassNames(themeToApply);
 
           const iconTextClassNames = `${styles.placeholderText} ${(this.state.width && this.state.width <= 380) ? styles.hide : ""}`;
-          const iconTextEl = typeof iconText === 'string' ? <span className={iconTextClassNames}>{this.props.iconText}</span> : iconText(iconTextClassNames);
-          const descriptionEl = typeof description === 'string' ? <span className={styles.placeholderDescriptionText}>{this.props.description}</span> : description(styles.placeholderDescriptionText);
+          const iconTextEl = typeof iconText === 'string' ? <span className={iconTextClassNames}>{iconText}</span> : iconText(iconTextClassNames);
+          const descriptionEl = typeof description === 'string' ? <span className={styles.placeholderDescriptionText}>{description}</span> : description(styles.placeholderDescriptionText);
 
           return (
             <div className={`${styles.placeholder} ${this.props.contentClassName ? this.props.contentClassName : ''}`} ref={this._linkElm}>

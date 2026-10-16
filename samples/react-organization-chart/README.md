@@ -2,7 +2,7 @@
 
 ## Summary
 
-This web part shows an organization chart based on specified user, and user can navigate to show company organization. This web part can be installed on SharePoint Server 2019, and SharePoint Online.
+This web part shows an organization chart based on specified user, and user can navigate to show company organization. This version targets SharePoint Online.
 
 ![Organization Chart](./assets/orgchart_02.jpg)
 
@@ -19,14 +19,23 @@ This web part shows an organization chart based on specified user, and user can 
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.22.1](https://img.shields.io/badge/SPFx-1.22.1-green.svg)
-![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
+![SPFx 1.24.0-rc.0](https://img.shields.io/badge/SPFx-1.24.0--rc.0-orange.svg)
+![Node.js v22, v24, v26](https://img.shields.io/badge/Node.js-v22%20%7C%20v24%20%7C%20v26-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
 ![Local Workbench Unsupported](https://img.shields.io/badge/Local%20Workbench-Unsupported-red.svg "Local workbench is no longer available as of SPFx 1.13 and above")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
+This sample uses the SPFx 1.24.0 release candidate (`1.24.0-rc.0`) with React
+and React DOM 18.3.1. The web part uses the React 18 root API. Node.js 22.14.0
+or later in the 22.x line (pinned in `.nvmrc`), 24.x, and 26.x are supported
+by the SPFx toolchain. Node.js 22.x is recommended for the existing PnP controls.
+The development container uses Node.js 22 and installs the local Heft toolchain.
+Npm overrides align the existing PnP controls to the web part's React and React DOM
+versions and keep React types consistent. SPFx's internal loader retains its own
+React dependencies, as in the reference scaffold.
 
 ## Applies to
 
@@ -60,6 +69,14 @@ No pre-requisites
 - in the command-line run:
   - `npm install`
   - `npm run start`
+
+To validate and package the solution:
+
+```sh
+npm run build -- --production
+npm test -- --production
+npm run package-solution -- --production
+```
 
 >  This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 

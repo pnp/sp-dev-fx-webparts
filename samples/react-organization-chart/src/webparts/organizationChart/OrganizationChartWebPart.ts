@@ -1,5 +1,5 @@
 import * as React from "react";
-import * as ReactDom from "react-dom";
+import { createRoot, type Root } from "react-dom/client";
 import { Version } from "@microsoft/sp-core-library";
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base";
 import {
@@ -30,6 +30,8 @@ export interface IOrganizationChartWebPartProps {
 }
 
 export default class OrganizationChartWebPart extends BaseClientSideWebPart<IOrganizationChartWebPartProps> {
+  private _root: Root | undefined;
+
   public async onInit(): Promise<void> {
     _sp = spfi().using(SPFx(this.context));
     return super.onInit();
@@ -53,11 +55,15 @@ export default class OrganizationChartWebPart extends BaseClientSideWebPart<IOrg
       }
     );
 
-    ReactDom.render(element, this.domElement);
+    if (!this._root) {
+      this._root = createRoot(this.domElement);
+    }
+    this._root.render(element);
   }
 
   protected onDispose(): void {
-    ReactDom.unmountComponentAtNode(this.domElement);
+    this._root?.unmount();
+    this._root = undefined;
   }
 
   protected get dataVersion(): Version {
