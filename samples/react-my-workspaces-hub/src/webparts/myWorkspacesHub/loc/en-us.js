@@ -1,0 +1,32 @@
+define([], function() {
+  return {
+    "PropertyPaneDescription": "Configure the My Workspaces Hub web part",
+    "BasicGroupName": "Group Name",
+    "GeneralGroupName": "General",
+    "FeaturesGroupName": "Features",
+    "FeaturesGroupDescription": "Turn optional surfaces on or off for viewers.",
+    "TitleFieldLabel": "Web part title",
+    "DefaultTabLabel": "Default tab on load",
+    "TabDashboardLabel": "Dashboard",
+    "TabAllSitesLabel": "All sites",
+    "ShowDashboardLabel": "Show Analytics Dashboard tab",
+    "EnableSiteContentLabel": "Lists & libraries action",
+    "EnableRecentFilesLabel": "Recent files button",
+    "EnableFollowLabel": "Follow / Unfollow action",
+    "EnableMembershipLabel": "People (owners & members) action",
+    "EnableTypeFilterLabel": "Column filters",
+    "FollowedStarColorLabel": "Followed site star color",
+    "EnableFullWidthLabel": "Expand web part to full page width",
+    "EnableFullWidthOnText": "Full width",
+    "EnableFullWidthOffText": "Section width",
+    "AppLocalEnvironmentSharePoint": "The app is running on your local environment as SharePoint web part",
+    "AppLocalEnvironmentTeams": "The app is running on your local environment as Microsoft Teams app",
+    "AppLocalEnvironmentOffice": "The app is running on your local environment in office.com",
+    "AppLocalEnvironmentOutlook": "The app is running on your local environment in Outlook",
+    "AppSharePointEnvironment": "The app is running on SharePoint page",
+    "AppTeamsTabEnvironment": "The app is running in Microsoft Teams",
+    "AppOfficeEnvironment": "The app is running in office.com",
+    "AppOutlookEnvironment": "The app is running in Outlook",
+    "UnknownEnvironment": "The app is running in an unknown environment"
+  }
+});

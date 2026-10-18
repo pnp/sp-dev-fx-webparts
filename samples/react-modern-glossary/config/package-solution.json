@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "modern-glossary-client-side-solution",
+    "id": "ebfdb41b-a1d4-42b4-900e-ceea1df878ff",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.24.0-beta.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "modernGlossary description"
+      },
+      "longDescription": {
+        "default": "modernGlossary description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "modern-glossary Feature",
+        "description": "The feature that activates elements of the modern-glossary solution.",
+        "id": "dc8d9fc4-d1eb-4b10-846e-ae72b3ac3fe3",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/modern-glossary.sppkg"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "sp-fx-bday-calendar-view-client-side-solution",
+    "id": "82d3a109-5293-435e-9a5f-88ed8478ef5e",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Alexandr Abdulca",
+      "websiteUrl": "https://github.com/Niacrisss/spfx-webparts",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.23.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Team birthdays on a month calendar"
+      },
+      "longDescription": {
+        "default": "Shows birthdays from a SharePoint list on a month calendar, with person cards showing department, job title and office, and one-click email or Teams greetings."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "sp-fx-bday-calendar-view Feature",
+        "description": "The feature that activates elements of the sp-fx-bday-calendar-view solution.",
+        "id": "6ef4057d-7f12-42cf-a215-6b81cf636662",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/sp-fx-bday-calendar-view.sppkg"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://dev.office.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "js-propertycontrols-svg-client-side-solution",
+    "id": "ff23189c-1771-49b7-b6d9-257b969bf664",
+    "version": "4.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "developer": {
+      "name": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "websiteUrl": "",
+      "mpnId": "Undefined-1.15.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "js-propertycontrols-svg description"
+      },
+      "longDescription": {
+        "default": "js-propertycontrols-svg description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    }
+  },
+  "paths": {
+    "zippedPackage": "solution/js-propertycontrols-svg.sppkg"
+  }
+}

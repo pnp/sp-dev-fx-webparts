@@ -117,3 +117,5 @@ This detailed documentation covers:
 - **[IMPLEMENTATION_DETAILS.md](./IMPLEMENTATION_DETAILS.md)** - Complete technical documentation
 - [SharePoint Framework API Permissions](https://docs.microsoft.com/en-us/sharepoint/dev/spfx/use-aadhttpclient)
 - [Microsoft Graph Files API](https://docs.microsoft.com/en-us/graph/api/resources/driveitem)
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-migrate-settings-approot" />

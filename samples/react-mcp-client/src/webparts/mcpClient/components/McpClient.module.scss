@@ -1,0 +1,98 @@
+@import '~@microsoft/sp-office-ui-fabric-core/dist/sass/SPFabricCore.scss';
+
+.mcpClient {
+  overflow: hidden;
+  padding: 1em;
+  color: '[theme:bodyText, default: #323130]';
+  color: var(--bodyText);
+
+  &.teams {
+    font-family: $ms-font-family-fallbacks;
+  }
+}
+
+.layout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.column {
+  flex: 1 1 320px;
+  min-width: 280px;
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: flex-end;
+  margin-bottom: 12px;
+}
+
+.toolItem {
+  padding: 8px;
+  border: 1px solid '[theme:neutralLight, default: #edebe9]';
+  border-radius: 4px;
+  margin-bottom: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: '[theme:neutralLighter, default: #f3f2f1]';
+  }
+}
+
+.toolItemSelected {
+  border-color: '[theme:themePrimary, default: #0078d4]';
+  border-width: 2px;
+}
+
+.toolName {
+  font-weight: 600;
+}
+
+.muted {
+  font-size: 12px;
+  color: '[theme:neutralSecondary, default: #605e5c]';
+}
+
+.badge {
+  display: inline-block;
+  padding: 1px 6px;
+  margin-left: 6px;
+  border-radius: 10px;
+  font-size: 11px;
+  background-color: '[theme:themeLighter, default: #deecf9]';
+  color: '[theme:themeDarker, default: #004578]';
+}
+
+.trace {
+  font-family: Consolas, 'Courier New', monospace;
+  font-size: 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+  background-color: '[theme:neutralLighterAlt, default: #faf9f8]';
+  border: 1px solid '[theme:neutralLight, default: #edebe9]';
+  border-radius: 4px;
+  padding: 8px;
+  max-height: 320px;
+  overflow: auto;
+}
+
+.traceEntry {
+  border-bottom: 1px solid '[theme:neutralLight, default: #edebe9]';
+  padding: 8px 0;
+}
+
+.traceError {
+  color: '[theme:redDark, default: #a4262c]';
+}
+
+.result {
+  white-space: pre-wrap;
+  word-break: break-word;
+  background-color: '[theme:neutralLighterAlt, default: #faf9f8]';
+  border-radius: 4px;
+  padding: 8px;
+}

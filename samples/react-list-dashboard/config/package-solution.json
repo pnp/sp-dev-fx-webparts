@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-list-dashboard-client-side-solution",
+    "id": "3c4aea2a-2d13-4a06-8c3b-90127297a6dc",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-list-dashboard description"
+      },
+      "longDescription": {
+        "default": "react-list-dashboard description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-list-dashboard Feature",
+        "description": "The feature that activates elements of the react-list-dashboard solution.",
+        "id": "ce464bc6-332e-4d23-b714-7c0ee57c27a8",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-list-dashboard.sppkg"
+  }
+}

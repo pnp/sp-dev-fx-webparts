@@ -105,3 +105,5 @@ The SPFx web part is a SharePoint Framework web part that allows users to view r
 - **Show all bugs assigned to me from a specific project:** This function retrieves all recent bugs that have been assigned to the user from the specified project in Azure DevOps. The bugs are displayed in a list, and the user can click on a bug to view more information about it.
 
 - **Show recent commits in a specific repository under a given project:** This function retrieves all recent commits that have been made to a specific repository under the specified project in Azure DevOps. The commits are displayed in a list, and the user can click on a commit to view more information about it.
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-openai-devops" />

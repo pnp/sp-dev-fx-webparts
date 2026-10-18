@@ -1,0 +1,465 @@
+@import '~@fluentui/react/dist/sass/References.scss';
+
+.modernGlossary {
+  font-family: $ms-font-family-fallbacks;
+  color: $ms-color-neutralPrimary;
+  max-width: 980px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid $ms-color-neutralLighter;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+  color: $ms-color-neutralPrimary;
+  letter-spacing: -0.01em;
+}
+
+.headerControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.searchBox {
+  width: 240px;
+
+  input {
+    border-radius: 4px;
+  }
+}
+
+.manageGearButton {
+  color: $ms-color-neutralSecondary;
+  border-radius: 4px;
+
+  &:hover {
+    color: $ms-color-themePrimary;
+    background: $ms-color-themeLighter;
+  }
+}
+
+.alphabetNav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px;
+  margin-bottom: 20px;
+  background: $ms-color-neutralLighterAlt;
+  border: 1px solid $ms-color-neutralLighter;
+  border-radius: 6px;
+}
+
+.navActionGroup {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.actionPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 30px;
+  padding: 0 14px;
+  border-radius: 15px;
+  border: 1px solid $ms-color-neutralTertiaryAlt;
+  background: $ms-color-white;
+  color: $ms-color-neutralPrimary;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+
+  &:hover:not(:disabled) {
+    background: $ms-color-neutralLighter;
+    border-color: $ms-color-neutralTertiary;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $ms-color-themePrimary;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    color: $ms-color-neutralTertiaryAlt;
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+}
+
+.actionPillActive {
+  background: $ms-color-themePrimary;
+  border-color: $ms-color-themePrimary;
+  color: $ms-color-white;
+
+  &:hover:not(:disabled) {
+    background: $ms-color-themeDark;
+    border-color: $ms-color-themeDark;
+  }
+}
+
+.actionPillIcon {
+  font-size: 13px;
+}
+
+.alphabetDivider {
+  width: 1px;
+  align-self: stretch;
+  background: $ms-color-neutralLight;
+  flex-shrink: 0;
+}
+
+.letterGrid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px;
+  flex: 1 1 auto;
+}
+
+.alphabetLetter {
+  width: 30px;
+  height: 30px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  background: transparent;
+  color: $ms-color-neutralPrimary;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  transition: background-color 0.12s ease, color 0.12s ease;
+
+  &:hover:not(:disabled) {
+    background: $ms-color-white;
+    border-color: $ms-color-neutralTertiaryAlt;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $ms-color-themePrimary;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    color: $ms-color-neutralTertiaryAlt;
+    cursor: not-allowed;
+  }
+}
+
+.alphabetLetterActive {
+  background: $ms-color-themePrimary;
+  color: $ms-color-white;
+
+  &:hover:not(:disabled) {
+    background: $ms-color-themeDark;
+  }
+}
+
+.resultsArea {
+  min-height: 120px;
+}
+
+.letterGroup {
+  margin-bottom: 24px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.letterGroupHeading {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $ms-color-themePrimary;
+  margin: 0 0 8px 0;
+  padding-bottom: 6px;
+  border-bottom: 2px solid $ms-color-themeLighter;
+}
+
+.accordionList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.accordionItem {
+  border: 1px solid $ms-color-neutralLighter;
+  border-radius: 6px;
+  background: $ms-color-white;
+  overflow: hidden;
+  transition: border-color 0.12s ease, box-shadow 0.12s ease;
+
+  &:hover {
+    border-color: $ms-color-neutralTertiaryAlt;
+  }
+}
+
+.accordionHeaderWrapper {
+  margin: 0;
+  font-weight: normal;
+}
+
+.accordionHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  font-size: 14px;
+  color: $ms-color-neutralPrimary;
+
+  &:hover {
+    background: $ms-color-neutralLighterAlt;
+  }
+
+  &:focus-visible {
+    outline: 2px solid $ms-color-themePrimary;
+    outline-offset: -2px;
+  }
+}
+
+.accordionTitle {
+  font-weight: 600;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-right: 12px;
+}
+
+.chevron {
+  font-size: 12px;
+  color: $ms-color-neutralSecondary;
+  transition: transform 0.15s ease;
+  flex: 0 0 auto;
+  margin-left: auto;
+}
+
+.chevronExpanded {
+  transform: rotate(90deg);
+  color: $ms-color-themePrimary;
+}
+
+.accordionPanel {
+  padding: 2px 16px 18px 16px;
+  border-top: 1px solid $ms-color-neutralLighter;
+  background: $ms-color-neutralLighterAlt;
+}
+
+.description {
+  font-size: 13px;
+  line-height: 1.6;
+  color: $ms-color-neutralSecondary;
+  margin: 12px 0 14px 0;
+  white-space: pre-wrap;
+}
+
+.emptyDetail {
+  font-size: 13px;
+  font-style: italic;
+  color: $ms-color-neutralTertiary;
+  margin: 12px 0;
+}
+
+.linkRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+}
+
+.linkField {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.linkFieldLabel {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: $ms-color-neutralTertiary;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  padding: 56px 0;
+}
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 0;
+  color: $ms-color-neutralSecondary;
+  background: $ms-color-neutralLighterAlt;
+  border: 1px dashed $ms-color-neutralLight;
+  border-radius: 6px;
+}
+
+.emptyStateIcon {
+  font-size: 30px;
+  margin-bottom: 10px;
+  color: $ms-color-neutralTertiary;
+}
+
+.managerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-top: 12px;
+}
+
+.managerFormActions {
+  display: flex;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid $ms-color-neutralLighter;
+  margin-top: 4px;
+}
+
+.managerAddButton {
+  margin: 12px 0 16px 0;
+}
+
+.managerItemList {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.managerItemRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 12px;
+  border: 1px solid $ms-color-neutralLighter;
+  border-radius: 6px;
+  transition: border-color 0.12s ease;
+
+  &:hover {
+    border-color: $ms-color-neutralTertiaryAlt;
+  }
+}
+
+.managerItemInfo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.managerItemTitle {
+  font-weight: 600;
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.managerItemLetter {
+  font-size: 11px;
+  color: $ms-color-neutralTertiary;
+  flex-shrink: 0;
+}
+
+.managerBadge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.managerBadgeActive {
+  background: $ms-color-green;
+  color: $ms-color-white;
+}
+
+.managerBadgeInactive {
+  background: $ms-color-neutralTertiary;
+  color: $ms-color-white;
+}
+
+.managerItemActions {
+  display: flex;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+@media (max-width: 600px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .headerControls {
+    justify-content: space-between;
+  }
+
+  .searchBox {
+    width: 100%;
+    flex: 1 1 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .alphabetNav {
+    padding: 12px;
+  }
+
+  .navActionGroup {
+    width: 100%;
+  }
+
+  .actionPill {
+    flex: 1 1 auto;
+    justify-content: center;
+  }
+
+  .alphabetLetter {
+    width: 26px;
+    height: 26px;
+    font-size: 12px;
+  }
+
+  .searchBox {
+    width: 100%;
+  }
+
+  .accordionPanel {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .managerItemRow {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}

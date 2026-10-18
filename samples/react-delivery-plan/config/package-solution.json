@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-delivery-plan-client-side-solution",
+    "id": "a1b2c3d4-e5f6-4890-abcd-ef1234567890",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": { "default": "Gantt-style project delivery plan dashboard" },
+      "longDescription": { "default": "Displays tasks from a SharePoint list as a Gantt timeline, workload heatmap, task list, and phase summary." },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-delivery-plan Feature",
+        "description": "The feature that activates assets associated with the solution.",
+        "id": "c1d2e3f4-a5b6-4890-cdef-123456789012",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-delivery-plan.sppkg"
+  }
+}

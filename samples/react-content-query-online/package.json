@@ -38,7 +38,7 @@
     "handlebars-helpers": "^0.8.4",
     "hoek": ">=4.2.1",
     "is-my-json-valid": ">=2.17.2",
-    "js-yaml": ">=3.13.1",
+    "js-yaml": ">=4.3.2",
     "lodash": ">=4.18.1",
     "lodash.merge": ">=4.6.2",
     "lodash.mergewith": ">=4.6.2",

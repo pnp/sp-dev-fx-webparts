@@ -30,9 +30,11 @@ Node version used:
 
 - [ ] My pull request affects only ONE sample.
 - [ ] My sample builds without any warnings
-- [ ] I have updated the `README.md` file's **Version history**. For new samples, created a new `README.md` file matching [this template](templates/README-template.md)
+- [ ] I have updated the `README.md` file's **Version history**. For new samples, I created a new `README.md` file matching [this template](https://github.com/pnp/sp-dev-fx-webparts/blob/main/templates/README-template.md).
 - [ ] My `README.md` has at least one static high-resolution screenshot (i.e. not a GIF) located in the `assets` folder.
 - [ ] My `README.md` contains complete setup instructions, including pre-requisites and permissions required
+- [ ] My sample includes a complete `assets/sample.json` metadata file.
+- [ ] The final line of my sample-root `README.md` is the required `<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/{sample-path}" />` tracker with the repository-relative sample path.
 - [ ] My solution includes a `.nvmrc` file indicating the version of Node.js
 
 ## Submitter Guidance (DELETE AFTER READING)

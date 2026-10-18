@@ -6,6 +6,7 @@
     "**/.DS_Store": true,
     "**/bower_components": true,
     "**/coverage": true,
+    "**/jest-output": true,
     "**/lib-amd": true,
     "src/**/*.scss.ts": true
   },

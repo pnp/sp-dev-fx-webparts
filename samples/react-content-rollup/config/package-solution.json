@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-content-rollup",
+    "id": "c7af958a-2219-40fd-b952-25a89117232f",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Vijay Gilakattula",
+      "websiteUrl": "https://github.com/gvijaikumar9/spfx-intranet-suite",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Open-source SPFx web parts for modern SharePoint intranets."
+      },
+      "longDescription": {
+        "default": "A suite of practical intranet web parts that fill the gaps in out-of-the-box SharePoint - announcements ticker, tickets, kudos, and more. One package, many web parts."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-content-rollup Feature",
+        "description": "The feature that activates elements of the spfx-intranet-suite solution.",
+        "id": "bd04d694-4c36-40b0-b1b7-64f5eb731a5b",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-content-rollup.sppkg"
+  }
+}

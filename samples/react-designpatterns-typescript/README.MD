@@ -42,4 +42,4 @@ Version|Date|Comments
 3. [Builder](./Builder)
 4. [Singleton](./Singleton)
 
-<img src="https://telemetry.sharepointpnp.com/sp-dev-fx-webparts/samples/react-designpatterns-typescript" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-designpatterns-typescript" />

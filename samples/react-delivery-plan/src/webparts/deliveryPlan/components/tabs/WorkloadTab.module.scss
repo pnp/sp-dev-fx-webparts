@@ -1,0 +1,89 @@
+.container { overflow-x: auto; }
+
+.heading { font-size: 16px; font-weight: 600; margin: 0 0 4px; color: var(--dp-text); }
+.desc { font-size: 13px; color: var(--dp-text-secondary); margin: 0 0 20px; }
+.empty { padding: 40px; text-align: center; color: var(--dp-text-secondary); font-size: 14px; }
+
+.table {
+  border: 1px solid var(--dp-border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.rowHeader {
+  display: flex;
+  background: var(--dp-bg-subtle);
+  border-bottom: 2px solid var(--dp-border);
+}
+
+.row {
+  display: flex;
+  border-bottom: 1px solid var(--dp-border-subtle);
+  &:last-child { border-bottom: none; }
+}
+
+.combinedRow { border-top: 2px solid var(--dp-border); }
+
+.resourceCell {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 160px;
+  padding: 8px 12px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: var(--dp-text-secondary);
+  border-right: 1px solid var(--dp-border);
+  flex-shrink: 0;
+}
+
+.headerCell {
+  flex: 1;
+  min-width: 64px;
+  padding: 8px 4px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: var(--dp-text-secondary);
+  text-align: center;
+  border-right: 1px solid var(--dp-border-subtle);
+}
+
+.cell {
+  flex: 1;
+  min-width: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  border-right: 1px solid var(--dp-border-subtle);
+  transition: background-color 0.1s;
+}
+
+.cellCount { font-size: 16px; font-weight: 700; color: var(--dp-text); }
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.resourceName { font-size: 13px; font-weight: 600; color: var(--dp-text); }
+
+.legend { display: flex; align-items: center; gap: 8px; margin-top: 12px; }
+.legendLabel { font-size: 12px; color: var(--dp-text-secondary); }
+
+.legendGradient {
+  width: 120px;
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(to right, rgba(0, 120, 212, 0.1), rgba(0, 120, 212, 0.85));
+}

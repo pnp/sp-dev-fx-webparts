@@ -1,0 +1,439 @@
+// Fluent renders Callout content inside a Layer attached to the document body, which is
+// outside the web part's own DOM. Custom properties inherit down the DOM tree, so every
+// callout root has to declare the palette for itself -- hence these mixins rather than a
+// single declaration on .birthdayCalendarView.
+@mixin lightPalette {
+  --bcv-pill-from: #fff2d6;
+  --bcv-pill-to: #ffd9ec;
+  --bcv-pill-hover-from: #ffe7b8;
+  --bcv-pill-hover-to: #ffc6e0;
+  --bcv-pill-text: #8a3b6b;
+  --bcv-pill-border: #f5b8d6;
+  --bcv-accent: #e0508a;
+  --bcv-shadow: rgba(214, 82, 148, 0.2);
+  --bcv-shadow-strong: rgba(214, 82, 148, 0.35);
+  --bcv-cell-border: rgba(0, 0, 0, 0.1);
+  --bcv-cell-hover: rgba(0, 0, 0, 0.05);
+  --bcv-day-border: #f6c667;
+  --bcv-day-from: rgba(255, 214, 165, 0.25);
+  --bcv-day-to: rgba(255, 173, 214, 0.18);
+}
+
+@mixin darkPalette {
+  --bcv-pill-from: #4a3a22;
+  --bcv-pill-to: #4a2438;
+  --bcv-pill-hover-from: #5d4829;
+  --bcv-pill-hover-to: #612f49;
+  --bcv-pill-text: #ffd0e7;
+  --bcv-pill-border: #8a5171;
+  --bcv-accent: #ff8ab8;
+  --bcv-shadow: rgba(0, 0, 0, 0.4);
+  --bcv-shadow-strong: rgba(0, 0, 0, 0.55);
+  --bcv-cell-border: rgba(255, 255, 255, 0.18);
+  --bcv-cell-hover: rgba(255, 255, 255, 0.08);
+  --bcv-day-border: #b08a45;
+  --bcv-day-from: rgba(255, 214, 165, 0.12);
+  --bcv-day-to: rgba(255, 173, 214, 0.09);
+}
+
+.birthdayCalendarView {
+  overflow: hidden;
+  padding: 1em;
+  color: "[theme:bodyText, default: #323130]";
+  color: var(--bodyText);
+
+  @include lightPalette;
+}
+
+// The two-class selectors keep dark ahead of light without depending on source order.
+.birthdayCalendarView.darkTheme {
+  @include darkPalette;
+}
+
+// Per-person pill colours. Each variant only redefines the --bcv-pill-* tokens that
+// .birthdayItem and .upcomingPill already consume, so the shape rules stay in one place.
+// A custom property set on the element itself always beats one inherited from an
+// ancestor, so these need no extra specificity. getAccentIndex() in
+// utils/calendarUtils.ts decides which colour a person gets.
+.accent0 {
+  --bcv-pill-from: #fff2d6;
+  --bcv-pill-to: #ffd9ec;
+  --bcv-pill-hover-from: #ffe7b8;
+  --bcv-pill-hover-to: #ffc6e0;
+  --bcv-pill-text: #8a3b6b;
+  --bcv-pill-border: #f5b8d6;
+  --bcv-accent: #e0508a;
+}
+
+.accent1 {
+  --bcv-pill-from: #dceefb;
+  --bcv-pill-to: #d9e7fb;
+  --bcv-pill-hover-from: #c4e2f8;
+  --bcv-pill-hover-to: #c2d9f8;
+  --bcv-pill-text: #1f4e79;
+  --bcv-pill-border: #a9cdea;
+  --bcv-accent: #2b7cd3;
+}
+
+.accent2 {
+  --bcv-pill-from: #e2f5df;
+  --bcv-pill-to: #eaf7d6;
+  --bcv-pill-hover-from: #cdeec8;
+  --bcv-pill-hover-to: #dcf2bb;
+  --bcv-pill-text: #2a5c34;
+  --bcv-pill-border: #aedcae;
+  --bcv-accent: #3f9e52;
+}
+
+.accent3 {
+  --bcv-pill-from: #ece3fb;
+  --bcv-pill-to: #f6e2f8;
+  --bcv-pill-hover-from: #dccdf7;
+  --bcv-pill-hover-to: #efcdf3;
+  --bcv-pill-text: #56397d;
+  --bcv-pill-border: #c7b3e9;
+  --bcv-accent: #8055c8;
+}
+
+.darkTheme {
+  .accent0 {
+    --bcv-pill-from: #4a3a22;
+    --bcv-pill-to: #4a2438;
+    --bcv-pill-hover-from: #5d4829;
+    --bcv-pill-hover-to: #612f49;
+    --bcv-pill-text: #ffd0e7;
+    --bcv-pill-border: #8a5171;
+    --bcv-accent: #ff8ab8;
+  }
+
+  .accent1 {
+    --bcv-pill-from: #1e3247;
+    --bcv-pill-to: #1b2c46;
+    --bcv-pill-hover-from: #274259;
+    --bcv-pill-hover-to: #243a5b;
+    --bcv-pill-text: #c3ddf5;
+    --bcv-pill-border: #4a6f93;
+    --bcv-accent: #6fb2ec;
+  }
+
+  .accent2 {
+    --bcv-pill-from: #243d2a;
+    --bcv-pill-to: #2c4326;
+    --bcv-pill-hover-from: #305234;
+    --bcv-pill-hover-to: #3a5730;
+    --bcv-pill-text: #c8e7c6;
+    --bcv-pill-border: #4f7d54;
+    --bcv-accent: #6dc47d;
+  }
+
+  .accent3 {
+    --bcv-pill-from: #33274a;
+    --bcv-pill-to: #402a4a;
+    --bcv-pill-hover-from: #43335f;
+    --bcv-pill-hover-to: #523560;
+    --bcv-pill-text: #decef5;
+    --bcv-pill-border: #6d5893;
+    --bcv-accent: #ac86e0;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.monthTitle {
+  flex: 1;
+  text-align: center;
+}
+
+.monthTitleButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 20px;
+  font-weight: 600;
+  color: inherit;
+  padding: 4px 12px;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: var(--bcv-cell-hover);
+  }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+  padding: 32px 0;
+}
+
+.upcoming {
+  margin-bottom: 16px;
+}
+
+.upcomingTitle {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  opacity: 0.75;
+  margin-bottom: 6px;
+}
+
+.upcomingList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.upcomingPill {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+  color: var(--bcv-pill-text);
+  background: linear-gradient(135deg, var(--bcv-pill-from) 0%, var(--bcv-pill-to) 100%);
+  border: 1px solid var(--bcv-pill-border);
+  border-radius: 14px;
+  padding: 4px 10px;
+  transition: background 0.1s ease-in-out, border-color 0.1s ease-in-out;
+
+  &:hover {
+    background: linear-gradient(135deg, var(--bcv-pill-hover-from) 0%, var(--bcv-pill-hover-to) 100%);
+    border-color: var(--bcv-accent);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--bcv-accent);
+    outline-offset: 1px;
+  }
+}
+
+.upcomingWhen {
+  font-weight: 600;
+}
+
+.upcomingSeparator {
+  opacity: 0.5;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+}
+
+.weekdayCell {
+  font-weight: 600;
+  font-size: 12px;
+  text-align: center;
+  padding: 6px 0;
+  text-transform: uppercase;
+  opacity: 0.75;
+}
+
+.dayCell {
+  box-sizing: border-box;
+  height: 120px;
+  border: 1px solid var(--bcv-cell-border);
+  border-radius: 6px;
+  padding: 4px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: box-shadow 0.15s ease-in-out;
+}
+
+.outsideMonth {
+  opacity: 0.35;
+}
+
+.today {
+  border-color: "[theme:themePrimary, default:#0078d4]";
+  border-color: var(--link, #0078d4);
+  border-width: 2px;
+}
+
+.hasBirthday {
+  border-color: var(--bcv-day-border);
+  background: linear-gradient(160deg, var(--bcv-day-from) 0%, var(--bcv-day-to) 100%);
+  box-shadow: 0 1px 4px var(--bcv-shadow);
+}
+
+.dayNumber {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.birthdayList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  flex: 1;
+  min-height: 0;
+}
+
+.birthdayListItem {
+  margin-bottom: 3px;
+}
+
+.birthdayItem {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
+  color: var(--bcv-pill-text);
+  background: linear-gradient(135deg, var(--bcv-pill-from) 0%, var(--bcv-pill-to) 100%);
+  border: 1px solid var(--bcv-pill-border);
+  border-radius: 10px;
+  padding: 2px 6px;
+  box-shadow: 0 1px 2px var(--bcv-shadow);
+  transition: background 0.1s ease-in-out, border-color 0.1s ease-in-out, box-shadow 0.1s ease-in-out;
+
+  &:hover {
+    background: linear-gradient(135deg, var(--bcv-pill-hover-from) 0%, var(--bcv-pill-hover-to) 100%);
+    border-color: var(--bcv-accent);
+    box-shadow: 0 1px 5px var(--bcv-shadow-strong);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--bcv-accent);
+    outline-offset: 1px;
+  }
+}
+
+.moreBirthdays {
+  flex-shrink: 0;
+  align-self: flex-start;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.3;
+  color: inherit;
+  opacity: 0.8;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  padding: 1px 4px;
+  cursor: pointer;
+  text-decoration: underline;
+
+  &:hover {
+    opacity: 1;
+    background-color: var(--bcv-cell-hover);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--bcv-accent);
+    outline-offset: 1px;
+  }
+}
+
+.birthdayIcon {
+  flex-shrink: 0;
+  font-size: 13px;
+  color: var(--bcv-accent);
+}
+
+.birthdayName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.calloutBody {
+  padding: 12px 16px;
+  max-width: 260px;
+
+  @include lightPalette;
+}
+
+.calloutBody.darkTheme {
+  @include darkPalette;
+}
+
+.calloutTitle {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.calloutList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.personCard {
+  padding: 16px;
+  width: 280px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  @include lightPalette;
+}
+
+.personCard.darkTheme {
+  @include darkPalette;
+}
+
+.personCardBirthday {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--bcv-pill-text);
+}
+
+.personCardDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.personCardRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  word-break: break-word;
+}
+
+.personCardIcon {
+  flex-shrink: 0;
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.personCardNote {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.personCardActions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}

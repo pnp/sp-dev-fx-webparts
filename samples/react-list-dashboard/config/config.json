@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "list-dashboard-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/listDashboard/ListDashboardWebPart.js",
+          "manifest": "./src/webparts/listDashboard/ListDashboardWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ListDashboardWebPartStrings": "lib/webparts/listDashboard/loc/{locale}.js"
+  }
+}

@@ -1,0 +1,5 @@
+{
+  // The rig directs build tools to the shared SPFx configuration package.
+  "$schema": "https://developer.microsoft.com/json-schemas/rig-package/rig.schema.json",
+  "rigPackageName": "@microsoft/spfx-web-build-rig"
+}

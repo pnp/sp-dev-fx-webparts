@@ -1,0 +1,151 @@
+/* ── Light theme tokens (defaults) ───────────────────────────────────────── */
+.deliveryPlan {
+  --dp-text:           #323130;
+  --dp-text-secondary: #605e5c;
+  --dp-bg-card:        #ffffff;
+  --dp-bg-subtle:      #f8f8f8;
+  --dp-bg-hover:       #faf9f8;
+  --dp-bg-page:        #f3f2f1;
+  --dp-border:         #e0e0e0;
+  --dp-border-subtle:  #f0f0f0;
+  --dp-tab-bar:        #ebebeb;
+  --dp-error-text:     #d83b01;
+  --dp-error-bg:       #fed9cc;
+}
+
+/* ── Dark theme token overrides ──────────────────────────────────────────── */
+.deliveryPlan.dark {
+  --dp-text:           #f3f2f1;
+  --dp-text-secondary: #c8c6c4;
+  --dp-bg-card:        #1b1a19;
+  --dp-bg-subtle:      #252423;
+  --dp-bg-hover:       #292827;
+  --dp-bg-page:        #11100f;
+  --dp-border:         #484644;
+  --dp-border-subtle:  #3b3a39;
+  --dp-tab-bar:        #3b3a39;
+  --dp-error-text:     #ff8c00;
+  --dp-error-bg:       #4d1600;
+}
+
+/* ── Component styles ────────────────────────────────────────────────────── */
+.deliveryPlan {
+  font-family: inherit;
+  padding: 20px;
+  background: var(--dp-bg-page);
+  border-radius: 4px;
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+  }
+
+  .headerText { flex: 1; }
+
+  .title {
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0 0 4px;
+    color: var(--dp-text);
+  }
+
+  .subtitle {
+    font-size: 14px;
+    color: var(--dp-text-secondary);
+    margin: 0;
+  }
+
+  .badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: var(--dp-bg-card);
+    border: 1px solid var(--dp-border);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--dp-text);
+    white-space: nowrap;
+    margin-left: 16px;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #0078d4;
+    }
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 16px;
+    margin-bottom: 16px;
+  }
+
+  .legendChip {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--dp-text);
+  }
+
+  .legendDot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .tabBar {
+    display: flex;
+    gap: 4px;
+    background: var(--dp-tab-bar);
+    border-radius: 8px;
+    padding: 4px;
+    width: fit-content;
+    margin-bottom: 16px;
+  }
+
+  .tabBtn {
+    background: transparent;
+    border: 2px solid transparent;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    color: var(--dp-text);
+    font-family: inherit;
+
+    &:hover { background: var(--dp-bg-hover); }
+  }
+
+  .tabBtnActive {
+    background: var(--dp-bg-card);
+    border-color: var(--dp-text);
+    font-weight: 600;
+  }
+
+  .tabContent {
+    background: var(--dp-bg-card);
+    border-radius: 8px;
+    border: 1px solid var(--dp-border);
+    padding: 20px;
+  }
+
+  .errorBanner {
+    background: var(--dp-error-bg);
+    border: 1px solid var(--dp-error-text);
+    border-radius: 4px;
+    padding: 12px 16px;
+    color: var(--dp-error-text);
+    font-size: 14px;
+  }
+}

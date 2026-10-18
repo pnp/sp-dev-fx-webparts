@@ -1,0 +1,23 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "react-mcp-client",
+    "environment": "spo",
+    "packageManager": "npm",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "useGulp": false,
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "McpClient",
+    "componentDescription": "Connects to a remote Model Context Protocol server, lists its tools and shows the full JSON-RPC trace.",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.23.2",
+    "sdksVersions": {},
+    "version": "1.23.2",
+    "libraryName": "react-mcp-client",
+    "libraryId": "7f7dac1a-8b6b-4f93-943d-15ec9ff79a8a",
+    "solutionShortDescription": "react-mcp-client description"
+  }
+}

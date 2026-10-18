@@ -1,0 +1,77 @@
+.container { overflow-x: auto; }
+
+.heading { font-size: 16px; font-weight: 600; margin: 0 0 4px; color: var(--dp-text); }
+.desc { font-size: 13px; color: var(--dp-text-secondary); margin: 0 0 16px; }
+.empty { padding: 40px; text-align: center; color: var(--dp-text-secondary); font-size: 14px; }
+
+.table { border: 1px solid var(--dp-border); border-radius: 4px; overflow: hidden; }
+
+.thead {
+  display: flex;
+  background: var(--dp-bg-subtle);
+  border-bottom: 2px solid var(--dp-border);
+
+  > div {
+    padding: 10px 12px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--dp-text-secondary);
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    &:hover { background: var(--dp-border-subtle); }
+  }
+}
+
+.tr {
+  display: flex;
+  border-bottom: 1px solid var(--dp-border-subtle);
+  align-items: center;
+  &:last-child { border-bottom: none; }
+  &:hover { background: var(--dp-bg-hover); }
+}
+
+.colResource { width: 160px; flex-shrink: 0; }
+.colTask { flex: 1; min-width: 0; }
+.colPhase { width: 220px; flex-shrink: 0; }
+.colDate { width: 90px; flex-shrink: 0; }
+.colDays { width: 60px; flex-shrink: 0; text-align: right; }
+
+.tdResource { display: flex; align-items: center; gap: 8px; padding: 10px 12px; }
+
+.tdTask {
+  padding: 10px 12px;
+  font-size: 13px;
+  color: var(--dp-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tdPhase { display: flex; align-items: center; gap: 6px; padding: 10px 12px; font-size: 13px; color: var(--dp-text); }
+.tdDate { padding: 10px 12px; font-size: 13px; color: var(--dp-text); }
+.tdDays { padding: 10px 12px; font-size: 13px; font-weight: 600; color: var(--dp-text); text-align: right; }
+
+.avatar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 10px;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.resourceName { font-size: 13px; font-weight: 500; color: var(--dp-text); white-space: nowrap; }
+
+.phaseDot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}

@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-knowledge-source-health-client-side-solution",
+    "id": "1cd6f793-ed38-4d1c-a640-e8e17e486cfe",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.23.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "react-knowledge-source-health description"
+      },
+      "longDescription": {
+        "default": "react-knowledge-source-health description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-knowledge-source-health Feature",
+        "description": "The feature that activates elements of the react-knowledge-source-health solution.",
+        "id": "2b8c0468-d1b2-4036-9fee-048ba050386d",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-knowledge-source-health.sppkg"
+  }
+}

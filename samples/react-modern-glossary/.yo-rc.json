@@ -1,0 +1,19 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": true,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.22.0",
+    "sdksVersions": {},
+    "version": "1.24.0-beta.2",
+    "libraryName": "modern-glossary",
+    "libraryId": "ebfdb41b-a1d4-42b4-900e-ceea1df878ff",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "modernGlossary",
+    "solutionShortDescription": "modernGlossary description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "componentType": "webpart"
+  }
+}

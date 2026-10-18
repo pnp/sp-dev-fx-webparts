@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "modern-glossary-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/modernGlossary/ModernGlossaryWebPart.js",
+          "manifest": "./src/webparts/modernGlossary/ModernGlossaryWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ModernGlossaryWebPartStrings": "lib/webparts/modernGlossary/loc/{locale}.js"
+  }
+}
