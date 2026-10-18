@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "9a86fc15-7b3a-41ba-8fe9-8c8ea12fcdb6",
+  "alias": "ContentCalendarWebPart",
+  "componentType": "WebPart",
+
+  // The "*" signifies that the version should be taken from the package.json
+  "version": "*",
+  "manifestVersion": 2,
+
+  // If true, the component can only be installed on sites where Custom Script is allowed.
+  // Components that allow authors to embed arbitrary script code should set this to true.
+  // https://support.office.com/en-us/article/Turn-scripting-capabilities-on-or-off-1f2c515f-5d7e-448a-9fd7-835da935584f
+  "requiresCustomScript": false,
+  "supportedHosts": [
+    "SharePointWebPart",
+    "TeamsPersonalApp",
+    "TeamsTab",
+    "SharePointFullPage"
+  ],
+  "supportsThemeVariants": true,
+  "supportsFullBleed": true,
+
+  "preconfiguredEntries": [
+    {
+      "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Advanced
+      "group": { "default": "Advanced" },
+      "title": { "default": "Content Calendar" },
+      "description": { "default": "Content Calendar description" },
+      "iconImageUrl": "data:image/svg+xml;utf8, <svg xmlns='http://www.w3.org/2000/svg' width='40px' height='40px' viewBox='0 0 20 20' fill='#000000' stroke='none' stroke-width='0' stroke-linecap='round' stroke-linejoin='round'><path d='M6 2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4c0-1.1.9-2 2-2Zm0 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4a1 1 0 0 0-1-1H6Zm7 3.5a.5.5 0 0 1-.41.5H7.5a.5.5 0 0 1-.09-1h5.09c.28 0 .5.22.5.5Zm0 3.5a.5.5 0 0 1-.41.5H7.5a.5.5 0 0 1-.09-1h5.09c.28 0 .5.22.5.5Zm0 3.5a.5.5 0 0 1-.41.5H7.5a.5.5 0 0 1-.09-1h5.09c.28 0 .5.22.5.5Z",
+      "properties": {
+        "description": "Content Calendar"
+      }
+    }
+  ]
+}
