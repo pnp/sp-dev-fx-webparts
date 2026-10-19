@@ -12,6 +12,7 @@ export interface IContentCalendarProps {
   appMode: AppMode
   title: string
   displayMode: DisplayMode
+  onConfigure: () => void
   updateProperty: (value: string) => void
   // Data layer + resolved settings + locale, injected by the web part shell.
   service: IContentService

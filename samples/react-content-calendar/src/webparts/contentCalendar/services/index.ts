@@ -4,7 +4,6 @@ import { IContentService } from "./IContentService"
 
 export * from "./IContentService"
 export * from "./ContentService"
-export * from "./SampleContentProvider"
 export * from "./PlaceholderStore"
 
 // Single place the web part constructs the data layer. Returns the interface so

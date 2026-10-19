@@ -27,4 +27,7 @@ export interface IContentItem {
   editor?: IPersonRef
   created?: Date
   modified?: Date
+  published?: Date
+  publishedDateText?: string
+  scheduledDateText?: string
 }

@@ -4,6 +4,7 @@ import "@pnp/sp/webs"
 import "@pnp/sp/lists"
 import "@pnp/sp/items"
 import "@pnp/sp/fields"
+import "@pnp/sp/content-types"
 import "@pnp/sp/clientside-pages"
 import "@pnp/sp/comments/clientside-page"
 import { Caching } from "@pnp/queryable"
@@ -16,23 +17,20 @@ import {
   IDateRange,
   IFieldMapping,
   IPersonRef,
+  SITE_PAGE_CONTENT_TYPE_ID,
 } from "../models"
 import { resolveContentType } from "../utils/contentTypeResolver"
 import { IContentService, ICreateItemPayload } from "./IContentService"
-import { SampleContentProvider } from "./SampleContentProvider"
 
 type SpRow = Record<string, unknown>
 
-// Site Pages carry their publish state in these built-in columns. `internal` is
-// the field's InternalName (used to test existence); `select` is the OData
-// EntityPropertyName (leading underscore encoded as OData__) used in $select and
-// row access.
-const STATUS_FIELD_CANDIDATES = [
-  { internal: "_ModerationStatus", select: "OData__ModerationStatus" },
-  { internal: "_PublishStartDate", select: "OData__PublishStartDate" },
-]
-const MODERATION_SELECT = "OData__ModerationStatus"
-const PUBLISH_START_SELECT = "OData__PublishStartDate"
+interface IStatusFields {
+  moderation?: string
+  publishStart?: string
+  firstPublished?: string
+}
+
+const STATUS_FIELD_NAMES = ["_ModerationStatus", "_PublishStartDate", "PublishStartDate", "FirstPublishedDate"]
 // Prefix stamped onto session-cache keys so reads can be invalidated (e.g.
 // after creating a page) without touching unrelated sessionStorage entries.
 const CACHE_KEY_PREFIX = "cc-cache:"
@@ -50,27 +48,44 @@ const AUDIT_SELECT = [
   "Editor/EMail",
 ]
 
-// Live SharePoint data layer (PnPjs). Components never touch this directly —
-// they go through hooks that depend on the IContentService interface, so the
-// sample provider is a drop-in when no list is configured.
+// Live SharePoint data layer (PnPjs). Components access it through IContentService.
 export class ContentService implements IContentService {
   private readonly _sp: SPFI
-  private readonly _sample = new SampleContentProvider()
   // Which status columns actually exist, per list (avoids a 400 on lists that
   // don't expose them). Resolved once per list.
-  private readonly _statusFieldsCache = new Map<string, string[]>()
+  private readonly _statusFieldsCache = new Map<string, IStatusFields>()
 
   constructor(context: WebPartContext) {
     this._sp = spfi().using(SPFx(context))
+  }
+
+  public async getSitePagesListId(): Promise<string> {
+    // Template 119 identifies Site Pages independently of its localized title.
+    const lists = await this._sp.web.lists
+      .select("Id")
+      .filter("BaseTemplate eq 119")
+      .top(1)<{ Id: string }[]>()
+    if (!lists.length) {
+      throw new Error("The current site does not have an accessible Site Pages library.")
+    }
+    return lists[0].Id
+  }
+
+  public async getPageContentTypes(listId: string): Promise<{ key: string; text: string }[]> {
+    const types = await this._sp.web.lists.getById(listId).contentTypes
+      .select("StringId", "Name")<{ StringId: string; Name: string }[]>()
+    return types
+      .filter((type) => type.StringId.toLowerCase().startsWith(SITE_PAGE_CONTENT_TYPE_ID.toLowerCase()))
+      .map((type) => ({ key: type.StringId, text: type.Name }))
+      .sort((a, b) => a.text.localeCompare(b.text))
   }
 
   public async getItems(
     range: IDateRange,
     config: IContentCalendarConfig,
   ): Promise<IContentItem[]> {
-    // First-drop / unconfigured: render demo data instead of an empty grid.
     if (!config.listId) {
-      return this._sample.getItems(range, config)
+      throw new Error("Site Pages is not configured. Open the web part properties to retry loading page content types.")
     }
 
     try {
@@ -88,9 +103,12 @@ export class ContentService implements IContentService {
     payload: ICreateItemPayload,
     config: IContentCalendarConfig,
   ): Promise<IContentItem> {
+    if (!config.listId) {
+      throw new Error("Site Pages is not configured. Open the web part properties before creating an item.")
+    }
     const type = resolveContentType(contentType, config.contentTypes)
     const fm = config.fieldMapping
-    const list = this._sp.web.lists.getById(config.listId as string)
+    const list = this._sp.web.lists.getById(config.listId)
 
     const body: SpRow = { [fm.title]: payload.title, [fm.start]: payload.date.toISOString() }
     if (fm.end && payload.end) body[fm.end] = payload.end.toISOString()
@@ -193,12 +211,24 @@ export class ContentService implements IContentService {
     // Only select status columns that this list actually exposes.
     const statusFields = await this._resolveStatusFields(sp, listId)
     const selects = Array.from(
-      new Set([...this._selectFields(fm), ...statusFields]),
+      new Set([
+        ...this._selectFields(fm),
+        ...Object.values(statusFields),
+        "FieldValuesAsText/Created",
+        ...[statusFields.publishStart, statusFields.firstPublished]
+          .filter((field): field is string => !!field)
+          .map((field) => `FieldValuesAsText/${field}`),
+      ]),
     )
 
+    const contentTypeId = config.contentTypeId || SITE_PAGE_CONTENT_TYPE_ID
+    if (!/^0x[0-9a-f]+$/i.test(contentTypeId) ||
+        !contentTypeId.toLowerCase().startsWith(SITE_PAGE_CONTENT_TYPE_ID.toLowerCase())) {
+      throw new Error("Choose a valid page content type in the web part properties.")
+    }
     const query = list.items
       .select(...selects)
-      .filter(this._effectiveRangeFilter(fm.start, range, statusFields))
+      .filter(`(${this._effectiveRangeFilter(fm.start, range, statusFields)}) and startswith(ContentTypeId,'${contentTypeId}')`)
       .orderBy(fm.start, true)
       .top(config.maxItems)
 
@@ -213,7 +243,7 @@ export class ContentService implements IContentService {
   private _mapRow(
     row: SpRow,
     config: IContentCalendarConfig,
-    statusFields: string[],
+    statusFields: IStatusFields,
   ): IContentItem {
     const fm = config.fieldMapping
     // The built-in Content Type is a navigation property, not a scalar column,
@@ -229,10 +259,14 @@ export class ContentService implements IContentService {
     // otherwise the mapped start (Created). This places scheduled/draft pages on
     // the day they're scheduled for rather than when they were created.
     const scheduled =
-      statusFields.indexOf(PUBLISH_START_SELECT) !== -1
-        ? str(row[PUBLISH_START_SELECT])
+      statusFields.publishStart
+        ? str(row[statusFields.publishStart])
         : undefined
     const startRaw = scheduled ?? str(row[fm.start])
+    const formatted = row.FieldValuesAsText as Record<string, string | undefined> | undefined
+    const publishedRaw = statusFields.firstPublished
+      ? str(row[statusFields.firstPublished])
+      : undefined
 
     return {
       id: (row.Id ?? row.ID) as number,
@@ -253,6 +287,15 @@ export class ContentService implements IContentService {
       editor: extractPerson(row.Editor),
       created: row.Created ? new Date(str(row.Created) as string) : undefined,
       modified: row.Modified ? new Date(str(row.Modified) as string) : undefined,
+      published: publishedRaw
+        ? new Date(publishedRaw)
+        : row.Created ? new Date(str(row.Created) as string) : undefined,
+      publishedDateText: publishedRaw && statusFields.firstPublished
+        ? formatted?.[statusFields.firstPublished]
+        : formatted?.Created,
+      scheduledDateText: statusFields.publishStart
+        ? formatted?.[statusFields.publishStart]
+        : undefined,
     }
   }
 
@@ -261,17 +304,17 @@ export class ContentService implements IContentService {
   // back to a mapped text status column for non-Pages lists.
   private _deriveStatus(
     row: SpRow,
-    statusFields: string[],
+    statusFields: IStatusFields,
     fm: IFieldMapping,
   ): ContentStatus {
-    if (statusFields.indexOf(PUBLISH_START_SELECT) !== -1) {
-      const raw = str(row[PUBLISH_START_SELECT])
+    if (statusFields.publishStart) {
+      const raw = str(row[statusFields.publishStart])
       if (raw && new Date(raw).getTime() > Date.now()) {
         return ContentStatus.Scheduled
       }
     }
-    if (statusFields.indexOf(MODERATION_SELECT) !== -1) {
-      const mod = row[MODERATION_SELECT]
+    if (statusFields.moderation) {
+      const mod = row[statusFields.moderation]
       if (mod !== null && mod !== undefined) {
         // 0 = Approved (Published); anything else (Draft/Pending) = Draft.
         return Number(mod) === 0 ? ContentStatus.Published : ContentStatus.Draft
@@ -280,30 +323,35 @@ export class ContentService implements IContentService {
     return parseStatus(fm.status ? str(row[fm.status]) : undefined)
   }
 
-  // Discovers which status columns the list exposes (cached per list). Failures
-  // degrade to "none" so a missing-field or permission issue never blocks load.
+  // REST entity property names can differ from field internal names.
   private async _resolveStatusFields(
     sp: SPFI,
     listId: string,
-  ): Promise<string[]> {
+  ): Promise<IStatusFields> {
     const cached = this._statusFieldsCache.get(listId)
     if (cached) return cached
 
-    let present: string[] = []
-    try {
-      const filter = STATUS_FIELD_CANDIDATES.map(
-        (c) => `InternalName eq '${c.internal}'`,
-      ).join(" or ")
-      const fields = (await sp.web.lists
-        .getById(listId)
-        .fields.select("InternalName")
-        .filter(filter)()) as { InternalName: string }[]
-      const names = fields.map((f) => f.InternalName)
-      present = STATUS_FIELD_CANDIDATES.filter(
-        (c) => names.indexOf(c.internal) !== -1,
-      ).map((c) => c.select)
-    } catch {
-      present = []
+    const filter = STATUS_FIELD_NAMES.map(
+      (name) => `InternalName eq '${name}'`,
+    ).join(" or ")
+    const fields = await sp.web.lists
+      .getById(listId)
+      .fields.select("InternalName", "EntityPropertyName")
+      .filter(filter)<{ InternalName: string; EntityPropertyName: string }[]>()
+    const present: IStatusFields = {}
+    for (const name of STATUS_FIELD_NAMES) {
+      const field = fields.find((candidate) => candidate.InternalName === name)
+      if (!field) continue
+      if (!field.EntityPropertyName) {
+        throw new Error(`The status field ${name} has no REST entity property name.`)
+      }
+      if (name === "_ModerationStatus") {
+        present.moderation = field.EntityPropertyName
+      } else if (name === "FirstPublishedDate") {
+        present.firstPublished = field.EntityPropertyName
+      } else if (!present.publishStart) {
+        present.publishStart = field.EntityPropertyName
+      }
     }
 
     this._statusFieldsCache.set(listId, present)
@@ -347,7 +395,7 @@ export class ContentService implements IContentService {
   private _expandFields(fm: IFieldMapping): string[] {
     // Author/Editor are person navigation fields and must be expanded for the
     // projected Title/EMail selects above.
-    const expands = ["Author", "Editor"]
+    const expands = ["Author", "Editor", "FieldValuesAsText"]
     if (fm.contentType && this._isContentTypeNav(fm.contentType)) {
       expands.push("ContentType")
     }
@@ -361,17 +409,17 @@ export class ContentService implements IContentService {
   private _effectiveRangeFilter(
     startField: string,
     range: IDateRange,
-    statusFields: string[],
+    statusFields: IStatusFields,
   ): string {
     const s = range.start.toISOString()
     const e = range.end.toISOString()
     const inRange = (field: string): string =>
       `${field} ge datetime'${s}' and ${field} lt datetime'${e}'`
 
-    if (statusFields.indexOf(PUBLISH_START_SELECT) !== -1) {
+    if (statusFields.publishStart) {
       return (
-        `(${inRange(PUBLISH_START_SELECT)}) or ` +
-        `(${PUBLISH_START_SELECT} eq null and ${inRange(startField)})`
+        `(${inRange(statusFields.publishStart)}) or ` +
+        `(${statusFields.publishStart} eq null and ${inRange(startField)})`
       )
     }
     return inRange(startField)

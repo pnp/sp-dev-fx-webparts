@@ -4,6 +4,12 @@ define([], function() {
     "LabelToday": "Today",
     "EmptyStateTitle": "No content scheduled for this period.",
     "LoadingLabel": "Loading content…",
+    "PublishedDateTimeLabel": "Published",
+    "ScheduledDateTimeLabel": "Scheduled for",
+    "ConfigureCalendarTitle": "Configure your content calendar",
+    "ConfigureCalendarDescription": "Choose a page content type from Site Pages in the web part properties to display SharePoint content.",
+    "ConfigureCalendarButtonLabel": "Configure",
+    "ContentListsLoadError": "Unable to load page content types from Site Pages. Check that the library contains page content types and that you have permission to read it, then reopen the property pane to retry.",
 
     // Quick-add + placeholder
     "QuickAddAria": "Add content on",
@@ -22,9 +28,9 @@ define([], function() {
     "DialogCancel": "Cancel",
 
     // Property pane
-    "DataSourcePageDescription": "Choose the list that backs the calendar.",
+    "DataSourcePageDescription": "Choose a page content type from the current site's Site Pages library.",
     "DataSourceGroupName": "Data source",
-    "FieldListLabel": "Content list",
+    "FieldListLabel": "Page content type",
     "ShowStatusLegendLabel": "Show status legend"
   }
 });

@@ -12,7 +12,8 @@ import {
   tokens,
 } from "@fluentui/react-components"
 import { bundleIcon, Open24Filled, Open24Regular } from "@fluentui/react-icons"
-import { IContentItem, IPersonRef } from "../models"
+import { ContentStatus, IContentItem, IPersonRef } from "../models"
+import * as strings from "ContentCalendarWebPartStrings"
 import { statusBadgeColor } from "../utils/statusUtils"
 import { ItemIcon } from "./ItemIcon"
 
@@ -159,6 +160,18 @@ export const EventDetailPopover: React.FC<IEventDetailPopoverProps> = ({
       minute: "2-digit",
     })
 
+  const publicationLabel = item.status === ContentStatus.Scheduled
+    ? strings.ScheduledDateTimeLabel
+    : item.status === ContentStatus.Published && !item.isPlaceholder
+      ? strings.PublishedDateTimeLabel
+      : undefined
+  const publicationDateText = item.status === ContentStatus.Scheduled
+    ? item.scheduledDateText || fmtDateTime(item.start)
+    : fmtDateTime(item.published || item.created || item.start)
+  const publicationValue = item.status === ContentStatus.Published
+    ? item.publishedDateText || publicationDateText
+    : publicationDateText
+
   const hasPeople =
     !!item.author || !!item.editor || !!item.created || !!item.modified
 
@@ -197,6 +210,15 @@ export const EventDetailPopover: React.FC<IEventDetailPopoverProps> = ({
               {endLabel ? "Start" : "Date"}
             </Text>
             <Text size={200}>{startLabel}</Text>
+
+            {publicationLabel && (
+              <>
+                <Text size={200} className={styles.muted}>
+                  {publicationLabel}
+                </Text>
+                <Text size={200}>{publicationValue}</Text>
+              </>
+            )}
 
             {endLabel && (
               <>

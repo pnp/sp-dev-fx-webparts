@@ -4,11 +4,11 @@ import { IFieldMapping } from "./IFieldMapping"
 
 // The full set of persisted/derived web-part settings, resolved (with defaults
 // applied) before being handed to the React tree. The field mapping and content
-// types are fixed internals for the Site Pages source; only the list and legend
-// are user-facing.
+// colors are fixed internals for the Site Pages source.
 export interface IContentCalendarConfig {
   // --- Data source ---
   listId?: string
+  contentTypeId?: string
   webUrl?: string
   fieldMapping: IFieldMapping
 

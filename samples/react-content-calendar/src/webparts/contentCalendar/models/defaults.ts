@@ -3,6 +3,8 @@ import { IContentCalendarConfig } from "./IContentCalendarConfig"
 import { IContentTypeConfig } from "./IContentTypeConfig"
 import { IFieldMapping } from "./IFieldMapping"
 
+export const SITE_PAGE_CONTENT_TYPE_ID = "0x0101009D1CB255DA76424F860D91F20E6C4118"
+
 // The nine content types from the spec, with default colors and icon keys.
 // Colors are user-editable data (Page 2), so hex literals belong here, not in
 // component styles.
@@ -34,8 +36,7 @@ export const DEFAULT_FIELD_MAPPING: IFieldMapping = {
   url: "",
 }
 
-// Every setting has a default so the web part renders usefully before a list is
-// chosen (falls back to sample data — see SampleContentProvider).
+// The web part resolves the site's Site Pages library during initialization.
 export function getDefaultConfig(): IContentCalendarConfig {
   return {
     listId: undefined,

@@ -1,9 +1,11 @@
 import * as React from "react"
 import * as ReactDom from "react-dom"
-import { Version } from "@microsoft/sp-core-library"
+import { Log, Version } from "@microsoft/sp-core-library"
 import {
   type IPropertyPaneConfiguration,
   PropertyPaneToggle,
+  PropertyPaneDropdown,
+  type IPropertyPaneDropdownOption,
 } from "@microsoft/sp-property-pane"
 import { BaseClientSideWebPart } from "@microsoft/sp-webpart-base"
 import { IReadonlyTheme, ThemeProvider } from "@microsoft/sp-component-base"
@@ -17,11 +19,6 @@ import {
   Theme,
   IdPrefixProvider,
 } from "@fluentui/react-components"
-import {
-  PropertyFieldListPicker,
-  PropertyFieldListPickerOrderBy,
-} from "@pnp/spfx-property-controls/lib/PropertyFieldListPicker"
-
 import * as strings from "ContentCalendarWebPartStrings"
 import { App } from "./App"
 import { IContentCalendarProps } from "./interfaces/IContentCalendarProps"
@@ -31,8 +28,9 @@ import { createContentService, IContentService } from "./services"
 
 export interface IContentCalendarWebPartProps {
   title: string
-  // The Site Pages library (or any list) that backs the calendar.
+  // The current site's Site Pages library.
   listId: string
+  contentTypeId?: string
   // Show the Draft / Scheduled / Published status legend.
   showStatusLegend: boolean
 }
@@ -53,6 +51,8 @@ export default class ContentCalendarWebPart extends BaseClientSideWebPart<IConte
   private _appMode: AppMode = AppMode.SharePoint
   private _theme: Theme | undefined
   private _service: IContentService | undefined
+  private _contentTypeOptions: IPropertyPaneDropdownOption[] = []
+  private _contentTypeLoadError: boolean = false
 
   public render(): void {
     const element: React.ReactElement<IContentCalendarProps> =
@@ -64,6 +64,7 @@ export default class ContentCalendarWebPart extends BaseClientSideWebPart<IConte
         appMode: this._appMode,
         title: this.properties.title,
         displayMode: this.displayMode,
+        onConfigure: () => this.context.propertyPane.open(),
         updateProperty: (value: string) => {
           this.properties.title = value
         },
@@ -109,7 +110,7 @@ export default class ContentCalendarWebPart extends BaseClientSideWebPart<IConte
 
   protected async onInit(): Promise<void> {
     this._service = createContentService(this.context)
-    this.applyDefaults()
+    await this.applyDefaults(this._service)
 
     const _l = this.context.isServedFromLocalhost
     if (!!this.context.sdks.microsoftTeams) {
@@ -137,21 +138,48 @@ export default class ContentCalendarWebPart extends BaseClientSideWebPart<IConte
     return super.onInit()
   }
 
-  // Seed the legend toggle on first drop. The field mapping and content types
-  // are fixed internals (see getDefaultConfig), so nothing else is persisted.
-  private applyDefaults(): void {
+  private async applyDefaults(service: IContentService): Promise<void> {
     if (this.properties.showStatusLegend === undefined)
       this.properties.showStatusLegend = true
+    try {
+      this.properties.listId = await service.getSitePagesListId()
+      this._contentTypeOptions = await service.getPageContentTypes(this.properties.listId)
+      if (!this._contentTypeOptions.length) {
+        throw new Error("No page content types are available in the Site Pages library.")
+      }
+      if (!this._contentTypeOptions.some((option) => option.key === this.properties.contentTypeId)) {
+        // The shortest ID is the base Site Page type; custom descendants have longer IDs.
+        this.properties.contentTypeId = this._contentTypeOptions
+          .map((option) => String(option.key))
+          .sort((a, b) => a.length - b.length)[0]
+      }
+      this._contentTypeLoadError = false
+    } catch (error) {
+      this.properties.listId = ""
+      this._contentTypeOptions = []
+      this._contentTypeLoadError = true
+      Log.error(
+        "ContentCalendarWebPart",
+        error instanceof Error ? error : new Error(String(error)),
+      )
+    }
+  }
+
+  protected async onPropertyPaneConfigurationStart(): Promise<void> {
+    if (!this._service) return
+    await this.applyDefaults(this._service)
+    this.context.propertyPane.refresh()
+    this.render()
   }
 
   // Assembles the resolved config the React tree consumes. Field mapping and
-  // content types come from the built-in defaults; only the list and status
-  // legend are user-facing.
+  // colors come from the built-in defaults.
   private buildConfig(): IContentCalendarConfig {
     const d = getDefaultConfig()
     return {
       ...d,
       listId: this.properties.listId || undefined,
+      contentTypeId: this.properties.contentTypeId,
       showStatusLegend: this.properties.showStatusLegend ?? d.showStatusLegend,
     }
   }
@@ -174,22 +202,20 @@ export default class ContentCalendarWebPart extends BaseClientSideWebPart<IConte
     return {
       pages: [
         {
-          header: { description: strings.DataSourcePageDescription },
+          header: {
+            description: this._contentTypeLoadError
+              ? strings.ContentListsLoadError
+              : strings.DataSourcePageDescription,
+          },
           groups: [
             {
               groupName: strings.DataSourceGroupName,
               groupFields: [
-                PropertyFieldListPicker("listId", {
+                PropertyPaneDropdown("contentTypeId", {
                   label: strings.FieldListLabel,
-                  selectedList: this.properties.listId,
-                  includeHidden: false,
-                  orderBy: PropertyFieldListPickerOrderBy.Title,
-                  disabled: false,
-                  onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
-                  properties: this.properties,
-                  context: this.context as never,
-                  deferredValidationTime: 0,
-                  key: "listPickerFieldId",
+                  selectedKey: this.properties.contentTypeId,
+                  options: this._contentTypeOptions,
+                  disabled: this._contentTypeOptions.length === 0,
                 }),
                 PropertyPaneToggle("showStatusLegend", {
                   label: strings.ShowStatusLegendLabel,

@@ -3,6 +3,12 @@ declare interface IContentCalendarWebPartStrings {
   LabelToday: string;
   EmptyStateTitle: string;
   LoadingLabel: string;
+  PublishedDateTimeLabel: string;
+  ScheduledDateTimeLabel: string;
+  ConfigureCalendarTitle: string;
+  ConfigureCalendarDescription: string;
+  ConfigureCalendarButtonLabel: string;
+  ContentListsLoadError: string;
 
   // Quick-add + placeholder
   QuickAddAria: string;
