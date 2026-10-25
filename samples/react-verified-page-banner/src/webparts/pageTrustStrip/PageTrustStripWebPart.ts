@@ -34,6 +34,7 @@ import {
   type IStoredPageOwner
 } from "./logic/pageOwner";
 import { productName } from "./logic/productName";
+import { isSchemaLostError } from "./logic/schemaCache";
 import {
   createPageTrustService,
   type IPersonOption,
@@ -543,14 +544,25 @@ export default class PageTrustStripWebPart extends BaseClientSideWebPart<IPageTr
     if (renderLoading) {
       this.render();
     }
+    let reloadSchema = false;
 
     return withTimeout(this._loadSnapshot(), PAGE_TRUST_LOAD_TIMEOUT_MS, PAGE_TRUST_LOAD_TIMEOUT_MESSAGE).then((snapshot) => {
       if (!this._isCurrentLoad(generation)) {
-        return;
+        return false;
       }
       this._snapshot = snapshot;
       this._loadError = undefined;
       return this._refreshOpenRequests(generation);
+    }).then((schemaLost: boolean | undefined) => {
+      if (!this._isCurrentLoad(generation)) {
+        return;
+      }
+      if (schemaLost) {
+        this._snapshot = undefined;
+        this._openRequestCount = undefined;
+        this._openRequestsUrl = undefined;
+        reloadSchema = true;
+      }
     }).catch((error: unknown) => {
       if (!this._isCurrentLoad(generation)) {
         return;
@@ -563,6 +575,12 @@ export default class PageTrustStripWebPart extends BaseClientSideWebPart<IPageTr
       console.error("[PageTrustStrip] Load failed.", error);
     }).then(() => {
       if (!this._isCurrentLoad(generation)) {
+        return;
+      }
+      if (reloadSchema) {
+        this._load(false).catch((error: unknown) => {
+          console.error("[PageTrustStrip] Load failed.", error);
+        });
         return;
       }
       this._loading = false;
@@ -697,7 +715,7 @@ export default class PageTrustStripWebPart extends BaseClientSideWebPart<IPageTr
     if (!this._service || !listId) {
       throw new Error(`Open a modern site page before setting up ${productName}.`);
     }
-    const message = await this._service.setup(listId);
+    const message = await this._service.setup(listId, this._webAbsoluteUrl());
     console.info("[PageTrustStrip] setup finished.", message);
     await this._load(true);
   }
@@ -711,13 +729,20 @@ export default class PageTrustStripWebPart extends BaseClientSideWebPart<IPageTr
       throw new Error(`A site owner needs to finish ${productName} setup before a page can be flagged.`);
     }
     const currentUser = this._currentUser();
-    await this._service.flagPage({
-      pageUrl: snapshot.pageUrl,
-      pageTitle: snapshot.pageTitle || "Untitled page",
-      note,
-      flaggedById: currentUser.id,
-      flaggedByLogin: currentUser.loginName
-    });
+    try {
+      await this._service.flagPage({
+        pageUrl: snapshot.pageUrl,
+        pageTitle: snapshot.pageTitle || "Untitled page",
+        note,
+        flaggedById: currentUser.id,
+        flaggedByLogin: currentUser.loginName
+      });
+    } catch (error) {
+      if (isSchemaLostError(error)) {
+        await this._load(true);
+      }
+      throw error;
+    }
     try {
       await this._refreshOpenRequests(this._loadGeneration);
       this.render();
@@ -739,12 +764,12 @@ export default class PageTrustStripWebPart extends BaseClientSideWebPart<IPageTr
     });
   }
 
-  private _refreshOpenRequests(generation: number): Promise<void> {
+  private _refreshOpenRequests(generation: number): Promise<boolean> {
     this._openRequestCount = undefined;
     this._openRequestsUrl = undefined;
     const snapshot = this._snapshot;
     if (!this._service || !snapshot || !this._canSeeOpenRequests(snapshot) || !snapshot.pageUrl) {
-      return Promise.resolve();
+      return Promise.resolve(false);
     }
     return this._service.getOpenRequests({
       pageUrl: snapshot.pageUrl,
@@ -753,17 +778,23 @@ export default class PageTrustStripWebPart extends BaseClientSideWebPart<IPageTr
       defaultViewUrl: snapshot.reviewListDefaultViewUrl
     }).then((summary) => {
       if (!this._isCurrentLoad(generation)) {
-        return;
+        return false;
       }
       this._openRequestCount = summary.count;
       this._openRequestsUrl = summary.viewUrl;
+      return false;
     }).catch((error: unknown) => {
       if (!this._isCurrentLoad(generation)) {
-        return;
+        return false;
       }
       this._openRequestCount = undefined;
       this._openRequestsUrl = undefined;
+      if (isSchemaLostError(error)) {
+        console.info("[PageTrustStrip] schema cache cleared.", error.message);
+        return true;
+      }
       console.error("[PageTrustStrip] Couldn't count open review requests.", error);
+      return false;
     });
   }
 

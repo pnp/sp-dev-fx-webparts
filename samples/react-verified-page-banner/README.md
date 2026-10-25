@@ -4,7 +4,7 @@
 
 **Verified Page Banner** sits at the top of a modern SharePoint page and shows whether the page is still current. The page owner, or anyone who can edit the page, selects **Confirm still current**. Readers select **This looks out of date** to add a request to the **Page Review Requests** list. A site owner can let visitors add those requests from the property pane, and can turn that access off again.
 
-The sample is built with SharePoint Framework 1.23.2, the Heft toolchain, React 17, Fluent UI, and PnPjs. It calls the current site only. It does not call Microsoft Graph and it does not request API permissions. The package version is 1.1.3.
+The sample is built with SharePoint Framework 1.23.2, the Heft toolchain, React 17, Fluent UI, and PnPjs. It calls the current site only. It does not call Microsoft Graph and it does not request API permissions. The package version is 1.1.4.
 
 ![Verified Page Banner - Current Status and History](assets/verified-page-banner-current.png)
 
@@ -46,6 +46,7 @@ This sample is optimally compatible with the following environment configuration
 
 |Version|Date|Comments|
 |-------|----|--------|
+|1.1.4|October 25, 2026|Readers cache a ready schema in sessionStorage for 15 minutes. Site owners always recheck.|
 |1.0|October 25, 2026|Initial release|
 
 ## Prerequisites
@@ -104,6 +105,16 @@ The property pane has two groups:
 
 * **Verified Page Banner** holds the review period and the **Page owner** people picker.
 * **Visitors** holds **Let visitors flag pages** and, once that grant exists, **Stop letting visitors flag pages**.
+
+### Schema cache
+
+Each reader load used to look up **Page Review Requests** and inspect fields on that list and on **Site Pages**. On a busy home page that is three extra REST calls for every reader.
+
+When the schema is fully ready (`listReady`, `columnsReady`, no column problem, and a review list id), the web part stores `{ reviewListId, listReady, columnsReady, cachedAt }` in `sessionStorage` for 15 minutes. The key is `verifiedPageBanner:schema:v1`, the schema fingerprint, the site address, and the page library id. The fingerprint is an FNV-1a hash of the list title and each required field's name, type, and schema XML (`schemaVersion` in `schema.ts`). Changing a column changes the hash, so an older entry is ignored.
+
+Readers inside that 15 minutes skip `_reviewList`, `_listHasFields`, and `_inspectFields`. They still read the page item. Site owners (`ManageWeb`) always recheck, so deleting a list or column during a test shows **Set up Verified Page Banner** on the next load. An unconfigured or broken schema is never written.
+
+If the cached page read, the open-request query, or **This looks out of date** fails because a column or list was deleted, the entry is removed and the schema is loaded again. The banner returns to the setup card instead of showing the raw REST error. `sessionStorage` access is wrapped so private browsing or blocked storage still loads the web part. **Set up Verified Page Banner** writes a fresh entry.
 
 ### Page owner while the page is locked
 

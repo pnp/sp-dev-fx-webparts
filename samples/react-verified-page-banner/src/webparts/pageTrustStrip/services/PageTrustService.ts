@@ -78,10 +78,23 @@ import {
   pageTitleField,
   pageTitleSchemaXml,
   reviewListTitle,
+  schemaVersion,
   statusField,
   statusNew,
   statusSchemaXml
 } from "../schema";
+import {
+  browserSessionStorage,
+  clearSchemaCache,
+  isSchemaMissingFailure,
+  readSchemaCache,
+  schemaCacheKey,
+  schemaCacheTtlMs,
+  schemaLostError,
+  writeSchemaCache,
+  type ISchemaCacheEntry,
+  type ISchemaCacheStorage
+} from "../logic/schemaCache";
 
 export interface IPersonOption {
   id?: number;
@@ -193,81 +206,46 @@ interface IRoleDefinitionRow {
   BasePermissions?: IRolePermissionSource;
 }
 
+export interface IPageTrustServiceOptions {
+  storage?: ISchemaCacheStorage;
+  now?: () => number;
+  /** Overrides the fingerprint from schema.ts. Tests pass an older hash to prove the cache key changes. */
+  schemaVersion?: string;
+}
+
 export class PageTrustService {
-  public constructor(private readonly _sp: SPFI) {
+  private readonly _storage: ISchemaCacheStorage;
+  private readonly _now: () => number;
+  private readonly _schemaVersion: string;
+  private _cachedWebUrl: string = "";
+  private _cachedPageListId: string = "";
+
+  public constructor(private readonly _sp: SPFI, options?: IPageTrustServiceOptions) {
+    this._storage = options && options.storage ? options.storage : browserSessionStorage();
+    this._now = options && options.now ? options.now : (): number => Date.now();
+    this._schemaVersion = options && options.schemaVersion ? options.schemaVersion : schemaVersion;
   }
 
   public async load(request: IPageTrustLoadRequest): Promise<IPageTrustSnapshot> {
-    const snapshot: IPageTrustSnapshot = {
-      placedOnPage: false,
-      columnsReady: false,
-      listReady: false,
-      pageKeyReady: false,
-      visitorsCanFlag: false,
-      canManageWeb: false,
-      canEditPage: false,
-      currentUser: request.currentUser
-    };
+    this._rememberLocation(request.webAbsoluteUrl, request.pageListId);
 
     try {
-      snapshot.canManageWeb = await this._hasWebPermission(PermissionKind.ManageWeb);
-      const reviewList = await this._reviewList();
-      const reviewListId = reviewList && reviewList.id;
-      snapshot.reviewListDefaultViewUrl = reviewList && reviewList.defaultViewUrl;
-      snapshot.listReady = await this._listHasFields(reviewListId, reviewFieldSpecs);
-      snapshot.pageKeyReady = await this._safePageKeyReady(reviewListId);
-      if (snapshot.canManageWeb && reviewListId && snapshot.listReady) {
-        snapshot.visitorsCanFlag = await this._safeVisitorsCanFlag(reviewListId);
+      const canManageWeb = await this._hasWebPermission(PermissionKind.ManageWeb);
+      const cached = await this._tryCachedLoad(request, canManageWeb);
+      if (cached) {
+        return cached;
       }
-
-      if (!request.pageListId || request.pageItemId === undefined) {
-        return snapshot;
-      }
-
-      const pageList = await this._sp.web.lists.getById(request.pageListId).select("Id", "BaseTemplate")();
-      if (pageList.BaseTemplate !== pageLibraryTemplate) {
-        return snapshot;
-      }
-
-      snapshot.placedOnPage = true;
-      snapshot.pageListId = request.pageListId;
-      snapshot.pageItemId = request.pageItemId;
-      snapshot.canEditPage = await this._hasItemPermission(request.pageListId, request.pageItemId, PermissionKind.EditListItems);
-
-      const columnCheck = await this._inspectFields(request.pageListId, pageFieldSpecs);
-      snapshot.columnsReady = columnCheck.ready;
-      snapshot.columnProblem = columnCheck.problem;
-      if (!columnCheck.ready) {
-        return snapshot;
-      }
-
-      const item = await this._sp.web.lists.getById(request.pageListId).items.getById(request.pageItemId)
-        .select(
-          "Id",
-          "Title",
-          "FileRef",
-          "Author/Id",
-          "Author/Title",
-          "Author/EMail",
-          "PageOwner/Id",
-          "PageOwner/Title",
-          "PageOwner/EMail",
-          "LastConfirmed"
-        )
-        .expand("Author", "PageOwner")() as IPageItem;
-
-      snapshot.pageTitle = item.Title && item.Title.trim() ? item.Title.trim() : "Untitled page";
-      snapshot.pageUrl = this._pageUrl(request.webAbsoluteUrl, item.FileRef);
-      snapshot.author = this._toPerson(item.Author);
-      snapshot.pageOwner = this._toPerson(item.PageOwner);
-      snapshot.lastConfirmed = item.LastConfirmed;
-      return snapshot;
+      return await this._loadLive(request, canManageWeb);
     } catch (error) {
+      if (error instanceof PageTrustError) {
+        throw error;
+      }
       throw new PageTrustError(toUserMessage(error, `${productName} couldn't load this page.`));
     }
   }
 
-  public async setup(pageListId: string): Promise<string> {
+  public async setup(pageListId: string, webAbsoluteUrl?: string): Promise<string> {
+    this._rememberLocation(webAbsoluteUrl || this._cachedWebUrl, pageListId);
     try {
       const pageList = await this._sp.web.lists.getById(pageListId).select("Id", "BaseTemplate")();
       if (pageList.BaseTemplate !== pageLibraryTemplate) {
@@ -295,6 +273,8 @@ export class PageTrustService {
       if (backfillWarning) {
         warnings.push(backfillWarning);
       }
+      const reviewList = await this._reviewList();
+      this._storeSetupSchema(pageListId, reviewListId, reviewList && reviewList.defaultViewUrl);
       if (warnings.length === 0) {
         return `${productName} is set up.`;
       }
@@ -364,8 +344,12 @@ export class PageTrustService {
   }
 
   public async flagPage(request: IFlagRequest): Promise<void> {
-    const reviewList = await this._reviewList();
+    const cached = this._readRememberedCache();
+    const reviewList = cached
+      ? { id: cached.reviewListId, defaultViewUrl: cached.reviewListDefaultViewUrl }
+      : await this._reviewList();
     if (!reviewList) {
+      this._clearRememberedCache();
       throw new PageTrustError(`A site owner needs to finish ${productName} setup before a page can be flagged.`);
     }
     try {
@@ -393,13 +377,19 @@ export class PageTrustService {
         Note: note,
         Status: statusNew
       };
-      const pageKeyReady = await this._listHasFields(reviewList.id, [pageKeySpec]);
+      const pageKeyReady = cached ? cached.pageKeyReady : await this._listHasFields(reviewList.id, [pageKeySpec]);
       const pageKey = pageKeyReady ? pageKeyFromUrl(request.pageUrl) : undefined;
       if (pageKey) {
         item.PageKey = pageKey;
       }
       await this._sp.web.lists.getById(reviewList.id).items.add(item);
     } catch (error) {
+      if (error instanceof PageTrustError) {
+        throw error;
+      }
+      if (isSchemaMissingFailure(error)) {
+        await this._healAfterSchemaMiss();
+      }
       throw new PageTrustError(toUserMessage(error, "The review request couldn't be saved."));
     }
   }
@@ -411,8 +401,14 @@ export class PageTrustService {
       pageUrl: query.pageUrl,
       pageKeyReady: query.pageKeyReady
     });
-    const reviewList = await this._reviewList();
+    const cached = this._readRememberedCache();
+    const reviewList = cached
+      ? { id: cached.reviewListId, defaultViewUrl: cached.reviewListDefaultViewUrl }
+      : await this._reviewList();
     if (!reviewList) {
+      if (cached) {
+        await this._healAfterSchemaMiss();
+      }
       return { count: 0, viewUrl };
     }
     const plan = planOpenCount(query.pageKeyReady, query.pageUrl);
@@ -420,6 +416,9 @@ export class PageTrustService {
       const rows = await this._loadOpenRows(reviewList.id, plan);
       return { count: countOpenReviewItems(rows, query.pageUrl), viewUrl };
     } catch (firstError) {
+      if (isSchemaMissingFailure(firstError)) {
+        await this._healAfterSchemaMiss();
+      }
       const strict = query.pageKeyReady ? strictOpenCountPlan(query.pageUrl) : undefined;
       if (!strict) {
         throw new PageTrustError(toUserMessage(firstError, "Open review requests couldn't be counted."));
@@ -428,6 +427,9 @@ export class PageTrustService {
         const rows = await this._loadOpenRows(reviewList.id, strict);
         return { count: countOpenReviewItems(rows, query.pageUrl), viewUrl };
       } catch (error) {
+        if (isSchemaMissingFailure(error)) {
+          await this._healAfterSchemaMiss();
+        }
         throw new PageTrustError(toUserMessage(error, "Open review requests couldn't be counted."));
       }
     }
@@ -504,6 +506,274 @@ export class PageTrustService {
       }
       throw new PageTrustError(visitorFlagStopFailureMessage(stage, readSharePointError(error).message, true));
     }
+  }
+
+  private _blankSnapshot(request: IPageTrustLoadRequest, canManageWeb: boolean): IPageTrustSnapshot {
+    return {
+      placedOnPage: false,
+      columnsReady: false,
+      listReady: false,
+      pageKeyReady: false,
+      visitorsCanFlag: false,
+      canManageWeb,
+      canEditPage: false,
+      currentUser: request.currentUser
+    };
+  }
+
+  private async _loadLive(request: IPageTrustLoadRequest, canManageWeb: boolean): Promise<IPageTrustSnapshot> {
+    const snapshot = this._blankSnapshot(request, canManageWeb);
+    const reviewList = await this._reviewList();
+    const reviewListId = reviewList && reviewList.id;
+    const listReady = await this._listHasFields(reviewListId, reviewFieldSpecs);
+    const pageKeyReady = await this._safePageKeyReady(reviewListId);
+    let visitorsCanFlag = false;
+    if (canManageWeb && reviewListId && listReady) {
+      visitorsCanFlag = await this._safeVisitorsCanFlag(reviewListId);
+    }
+    snapshot.reviewListDefaultViewUrl = reviewList && reviewList.defaultViewUrl;
+    snapshot.listReady = listReady;
+    snapshot.pageKeyReady = pageKeyReady;
+    snapshot.visitorsCanFlag = visitorsCanFlag;
+
+    if (!request.pageListId || request.pageItemId === undefined) {
+      return snapshot;
+    }
+
+    if (!reviewListId || !listReady) {
+      this._clearReadyCache(request.webAbsoluteUrl, request.pageListId);
+    }
+
+    let pageList: { BaseTemplate?: number };
+    try {
+      pageList = await this._sp.web.lists.getById(request.pageListId).select("Id", "BaseTemplate")();
+    } catch (error) {
+      if (!isSchemaMissingFailure(error)) {
+        throw error;
+      }
+      this._clearReadyCache(request.webAbsoluteUrl, request.pageListId);
+      return snapshot;
+    }
+    if (pageList.BaseTemplate !== pageLibraryTemplate) {
+      return snapshot;
+    }
+
+    const canEditPage = await this._hasItemPermission(request.pageListId, request.pageItemId, PermissionKind.EditListItems);
+    snapshot.placedOnPage = true;
+    snapshot.pageListId = request.pageListId;
+    snapshot.pageItemId = request.pageItemId;
+    snapshot.canEditPage = canEditPage;
+
+    const columnCheck = await this._inspectFields(request.pageListId, pageFieldSpecs);
+    snapshot.columnsReady = columnCheck.ready;
+    snapshot.columnProblem = columnCheck.problem;
+    if (!columnCheck.ready) {
+      this._clearReadyCache(request.webAbsoluteUrl, request.pageListId);
+      return snapshot;
+    }
+
+    const pageItem = await this._readPageItem(request);
+    snapshot.pageTitle = pageItem.pageTitle;
+    snapshot.pageUrl = pageItem.pageUrl;
+    snapshot.author = pageItem.author;
+    snapshot.pageOwner = pageItem.pageOwner;
+    snapshot.lastConfirmed = pageItem.lastConfirmed;
+    this._storeReaderSchema(request, snapshot, reviewListId, reviewList && reviewList.defaultViewUrl);
+    return snapshot;
+  }
+
+  /**
+   * Readers with a fresh, fully ready cache skip the review-list lookup and both field inspections.
+   * A deleted column or list clears that entry and falls through to a live check.
+   */
+  private async _tryCachedLoad(request: IPageTrustLoadRequest, canManageWeb: boolean): Promise<IPageTrustSnapshot | undefined> {
+    if (canManageWeb || !request.pageListId || request.pageItemId === undefined) {
+      return undefined;
+    }
+    const cached = this._readReadyCache(request.webAbsoluteUrl, request.pageListId);
+    if (!cached) {
+      return undefined;
+    }
+
+    const snapshot = this._blankSnapshot(request, false);
+    snapshot.listReady = true;
+    snapshot.pageKeyReady = cached.pageKeyReady;
+    snapshot.reviewListDefaultViewUrl = cached.reviewListDefaultViewUrl;
+
+    let pageList: { BaseTemplate?: number };
+    try {
+      pageList = await this._sp.web.lists.getById(request.pageListId).select("Id", "BaseTemplate")();
+    } catch (error) {
+      if (!isSchemaMissingFailure(error)) {
+        throw error;
+      }
+      this._clearReadyCache(request.webAbsoluteUrl, request.pageListId);
+      return undefined;
+    }
+    if (pageList.BaseTemplate !== pageLibraryTemplate) {
+      return snapshot;
+    }
+
+    const canEditPage = await this._hasItemPermission(
+      request.pageListId,
+      request.pageItemId,
+      PermissionKind.EditListItems
+    );
+    snapshot.placedOnPage = true;
+    snapshot.pageListId = request.pageListId;
+    snapshot.pageItemId = request.pageItemId;
+    snapshot.columnsReady = true;
+    snapshot.canEditPage = canEditPage;
+
+    try {
+      const pageItem = await this._readPageItem(request);
+      snapshot.pageTitle = pageItem.pageTitle;
+      snapshot.pageUrl = pageItem.pageUrl;
+      snapshot.author = pageItem.author;
+      snapshot.pageOwner = pageItem.pageOwner;
+      snapshot.lastConfirmed = pageItem.lastConfirmed;
+      return snapshot;
+    } catch (error) {
+      if (!isSchemaMissingFailure(error)) {
+        throw error;
+      }
+      this._clearReadyCache(request.webAbsoluteUrl, request.pageListId);
+      return undefined;
+    }
+  }
+
+  private async _readPageItem(request: IPageTrustLoadRequest): Promise<{
+    pageTitle: string;
+    pageUrl?: string;
+    author?: IPersonIdentity;
+    pageOwner?: IPersonIdentity;
+    lastConfirmed?: string;
+  }> {
+    const pageListId = request.pageListId || "";
+    const pageItemId = request.pageItemId === undefined ? 0 : request.pageItemId;
+    const item = await this._sp.web.lists.getById(pageListId).items.getById(pageItemId)
+      .select(
+        "Id",
+        "Title",
+        "FileRef",
+        "Author/Id",
+        "Author/Title",
+        "Author/EMail",
+        "PageOwner/Id",
+        "PageOwner/Title",
+        "PageOwner/EMail",
+        "LastConfirmed"
+      )
+      .expand("Author", "PageOwner")() as IPageItem;
+
+    return {
+      pageTitle: item.Title && item.Title.trim() ? item.Title.trim() : "Untitled page",
+      pageUrl: this._pageUrl(request.webAbsoluteUrl, item.FileRef),
+      author: this._toPerson(item.Author),
+      pageOwner: this._toPerson(item.PageOwner),
+      lastConfirmed: item.LastConfirmed
+    };
+  }
+
+  private _storeReaderSchema(
+    request: IPageTrustLoadRequest,
+    snapshot: IPageTrustSnapshot,
+    reviewListId: string | undefined,
+    defaultViewUrl: string | undefined
+  ): void {
+    if (snapshot.canManageWeb || !request.pageListId || !reviewListId) {
+      return;
+    }
+    if (!snapshot.listReady || !snapshot.columnsReady || snapshot.columnProblem) {
+      return;
+    }
+    const entry: ISchemaCacheEntry = {
+      reviewListId,
+      listReady: true,
+      columnsReady: true,
+      cachedAt: this._now(),
+      pageKeyReady: snapshot.pageKeyReady,
+      reviewListDefaultViewUrl: defaultViewUrl
+    };
+    writeSchemaCache(this._storage, this._key(request.webAbsoluteUrl, request.pageListId), entry);
+  }
+
+  private _storeSetupSchema(pageListId: string, reviewListId: string, defaultViewUrl: string | undefined): void {
+    if (!this._cachedWebUrl || !pageListId || !reviewListId) {
+      return;
+    }
+    writeSchemaCache(this._storage, this._key(this._cachedWebUrl, pageListId), {
+      reviewListId,
+      listReady: true,
+      columnsReady: true,
+      cachedAt: this._now(),
+      pageKeyReady: true,
+      reviewListDefaultViewUrl: defaultViewUrl
+    });
+  }
+
+  private async _healAfterSchemaMiss(): Promise<void> {
+    this._clearRememberedCache();
+    const broken = await this._schemaIsBrokenLive();
+    if (broken) {
+      throw schemaLostError();
+    }
+  }
+
+  private async _schemaIsBrokenLive(): Promise<boolean> {
+    if (!this._cachedPageListId) {
+      return true;
+    }
+    try {
+      const reviewList = await this._reviewList();
+      const reviewListId = reviewList && reviewList.id;
+      const listReady = await this._listHasFields(reviewListId, reviewFieldSpecs);
+      if (!reviewListId || !listReady) {
+        return true;
+      }
+      const columnCheck = await this._inspectFields(this._cachedPageListId, pageFieldSpecs);
+      return !columnCheck.ready || !!columnCheck.problem;
+    } catch (error) {
+      return isSchemaMissingFailure(error);
+    }
+  }
+
+  private _rememberLocation(webAbsoluteUrl: string | undefined, pageListId: string | undefined): void {
+    if (webAbsoluteUrl) {
+      this._cachedWebUrl = webAbsoluteUrl;
+    }
+    if (pageListId) {
+      this._cachedPageListId = pageListId;
+    }
+  }
+
+  private _key(webAbsoluteUrl: string, pageListId: string): string {
+    return schemaCacheKey(webAbsoluteUrl, pageListId, this._schemaVersion);
+  }
+
+  private _readReadyCache(webAbsoluteUrl: string, pageListId: string): ISchemaCacheEntry | undefined {
+    if (!webAbsoluteUrl || !pageListId) {
+      return undefined;
+    }
+    return readSchemaCache(this._storage, this._key(webAbsoluteUrl, pageListId), this._now(), schemaCacheTtlMs);
+  }
+
+  private _readRememberedCache(): ISchemaCacheEntry | undefined {
+    if (!this._cachedWebUrl || !this._cachedPageListId) {
+      return undefined;
+    }
+    return this._readReadyCache(this._cachedWebUrl, this._cachedPageListId);
+  }
+
+  private _clearReadyCache(webAbsoluteUrl: string, pageListId: string): void {
+    if (!webAbsoluteUrl || !pageListId) {
+      return;
+    }
+    clearSchemaCache(this._storage, this._key(webAbsoluteUrl, pageListId));
+  }
+
+  private _clearRememberedCache(): void {
+    this._clearReadyCache(this._cachedWebUrl, this._cachedPageListId);
   }
 
   private async _safePageKeyReady(listId: string | undefined): Promise<boolean> {

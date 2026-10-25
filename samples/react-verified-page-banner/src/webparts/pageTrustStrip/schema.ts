@@ -39,3 +39,58 @@ export const statusSchemaXml: string =
   "<Default>New</Default>" +
   "<CHOICES><CHOICE>New</CHOICE><CHOICE>In review</CHOICE><CHOICE>Resolved</CHOICE></CHOICES>" +
   "</Field>";
+
+/** One column or list field that the banner requires. The fingerprint covers name, type, and XML. */
+export interface ISchemaFingerprint {
+  name: string;
+  type: string;
+  schemaXml: string;
+}
+
+/**
+ * FNV-1a 32-bit. Exported so tests can show that any schema text change produces a new fingerprint.
+ * The result is 8 lowercase hex characters.
+ */
+export function fnv1a32(value: string): string {
+  let hash = 0x811c9dc5;
+  for (let index = 0; index < value.length; index++) {
+    hash ^= value.charCodeAt(index);
+    hash = Math.imul(hash, 0x01000193);
+  }
+  let hex = (hash >>> 0).toString(16);
+  while (hex.length < 8) {
+    hex = `0${hex}`;
+  }
+  return hex;
+}
+
+/**
+ * Hash the review list title plus each required field's name, type, and schema XML.
+ * A later release that adds or renames a column gets a new schemaVersion without a manual bump.
+ */
+export function computeSchemaVersion(listTitle: string, parts: readonly ISchemaFingerprint[]): string {
+  const lines: string[] = [listTitle];
+  for (let index = 0; index < parts.length; index++) {
+    const part = parts[index];
+    lines.push(part.name);
+    lines.push(part.type);
+    lines.push(part.schemaXml);
+  }
+  return fnv1a32(lines.join("\n"));
+}
+
+export function schemaFingerprintParts(): readonly ISchemaFingerprint[] {
+  return [
+    { name: pageOwnerField, type: "User", schemaXml: pageOwnerSchemaXml },
+    { name: lastConfirmedField, type: "DateTime", schemaXml: lastConfirmedSchemaXml },
+    { name: pageTitleField, type: "Text", schemaXml: pageTitleSchemaXml },
+    { name: pageLinkField, type: "Note", schemaXml: pageLinkSchemaXml },
+    { name: pageKeyField, type: "Text", schemaXml: pageKeySchemaXml },
+    { name: flaggedByField, type: "User", schemaXml: flaggedBySchemaXml },
+    { name: noteField, type: "Note", schemaXml: noteSchemaXml },
+    { name: statusField, type: "Choice", schemaXml: statusSchemaXml }
+  ];
+}
+
+/** Fingerprint of the lists and columns this build knows how to provision. */
+export const schemaVersion: string = computeSchemaVersion(reviewListTitle, schemaFingerprintParts());
