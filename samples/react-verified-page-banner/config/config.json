@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "page-trust-strip-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/pageTrustStrip/PageTrustStripWebPart.js",
+          "manifest": "./src/webparts/pageTrustStrip/PageTrustStripWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "PageTrustStripWebPartStrings": "lib/webparts/pageTrustStrip/loc/{locale}.js"
+  }
+}
