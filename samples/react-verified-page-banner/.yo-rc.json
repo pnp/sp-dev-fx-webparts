@@ -1,0 +1,23 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "react-verified-page-banner",
+    "environment": "spo",
+    "packageManager": "npm",
+    "useGulp": false,
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "PageTrustStrip",
+    "componentDescription": "Shows the page owner, when the page was last confirmed current, and lets readers flag a page that looks out of date.",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.23.3",
+    "sdksVersions": {},
+    "version": "1.23.2",
+    "libraryName": "react-verified-page-banner",
+    "libraryId": "e4a70a04-39b5-4a61-bae1-8d4eb8663f0a",
+    "solutionShortDescription": "page-trust-strip description",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  }
+}
