@@ -24,7 +24,7 @@ Use this process to systematically evaluate and optimize your retrieval experien
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.24.0-rc.0](https://img.shields.io/badge/SPFx-1.24.0--rc.0-orange.svg)
+![SPFx 1.24.0](https://img.shields.io/badge/SPFx-1.24.0-green.svg)
 ![React 18.3.1](https://img.shields.io/badge/React-18.3.1-green.svg)
 ![Node.js v22, v24 or v26](https://img.shields.io/badge/Node.js-v22%20%7C%20v24%20%7C%20v26-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
@@ -36,7 +36,7 @@ This sample is optimally compatible with the following environment configuration
 
 ## Applies to
 
-This sample targets the SPFx 1.24.0-rc.0 prerelease and uses React 18.3.1,
+This sample targets SPFx 1.24.0 and uses React 18.3.1,
 TypeScript 5.8, and the Heft build toolchain. Supported Node.js versions are
 22.14.0 or later in the 22.x line, 24.x, and 26.x.
 
@@ -50,7 +50,7 @@ TypeScript 5.8, and the Heft build toolchain. Supported Node.js versions are
 
 |Version|Date|Comments|
 |-------|----|--------|
-|1.1|Oct, 2026|Upgrade to SPFx 1.24.0-rc.0, React 18.3.1, and Heft|
+|1.1|Oct, 2026|Upgrade to SPFx 1.24.0, React 18.3.1, and Heft|
 |1.0|Okt, 2025|Initial release|
 
 ## Minimal Path to Awesome
