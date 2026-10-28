@@ -50,6 +50,7 @@ React dependencies, as in the reference scaffold.
 
 |Version|Date|Comments|
 |-------|----|--------|
+|1.5|Oct, 2026|SPFx 1.24.0|
 |1.4|Dec, 2025|SPFx 1.22.1 + other libs|
 |1.3|Oct, 2025|SPFx 1.21.1 PnPjs upgrade|
 |1.2|Oct, 2024|SPFx 1.20.0|
