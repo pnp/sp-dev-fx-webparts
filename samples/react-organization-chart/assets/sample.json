@@ -10,7 +10,7 @@
       "Can be installed on SharePoint Online."
     ],
     "creationDateTime": "2021-05-03",
-    "updateDateTime": "2025-12-30",
+    "updateDateTime": "2026-10-28",
     "products": [
       "SharePoint"
     ],
@@ -62,7 +62,7 @@
       },
       {
         "gitHubAccount": "petkir",
-        "company": "ACP CUBIDO Digital Solutions GmbH",
+        "company": "KYANIS GmbH",
         "pictureUrl": "https://github.com/petkir.png",
         "name": "Peter Paul Kirschner",
         "twitter": "petkir_at"
