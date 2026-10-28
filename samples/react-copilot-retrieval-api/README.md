@@ -50,7 +50,7 @@ TypeScript 5.8, and the Heft build toolchain. Supported Node.js versions are
 
 |Version|Date|Comments|
 |-------|----|--------|
-|1.1|Oct, 2026|Upgrade to SPFx 1.24.0, React 18.3.1, and Heft|
+|1.1|Oct, 2026|Upgrade to SPFx 1.24.0, React 18.3.1|
 |1.0|Okt, 2025|Initial release|
 
 ## Minimal Path to Awesome
