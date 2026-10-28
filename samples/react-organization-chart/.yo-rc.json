@@ -2,13 +2,13 @@
   "@microsoft/generator-sharepoint": {
     "plusBeta": false,
     "isCreatingSolution": true,
-    "nodeVersion": "22.14.0",
+    "nodeVersion": "24.21.0",
     "sdksVersions": {
       "@microsoft/microsoft-graph-client": "3.0.2",
       "@microsoft/teams-js": "2.24.0"
     },
     "isDomainIsolated": false,
-    "version": "1.24.0-rc.0",
+    "version": "1.24.0",
     "libraryName": "react-organization-chart",
     "libraryId": "0b4a3e5d-123f-41ea-96c4-538c6a19932b",
     "environment": "spo",
