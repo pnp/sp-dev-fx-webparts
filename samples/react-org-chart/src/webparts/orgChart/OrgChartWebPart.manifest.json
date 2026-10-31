@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "9a9667c2-2eda-40f4-99b6-ccc2d4723224",
+  "alias": "OrgChartWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+  "supportsFullBleed": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "cde3bb78-b789-40e6-b6e2-79dec9bbe923",
+    "group": { "default": "Org Chart" },
+    "title": { "default": "Org Chart" },
+    "description": { "default": "Interactive reporting line from your profile: click to drill through the org, start from anyone, email or Teams-chat each person. No admin consent." },
+    "officeFabricIconFontName": "Org",
+    "properties": {
+      "title": "Team",
+      "view": "teams",
+      "layout": "card",
+      "showPhoto": true,
+      "useDemoData": true,
+      "rootPerson": "",
+      "rootPersonLabel": "",
+      "enableActions": true,
+      "maxReports": 12,
+      "showExport": false,
+      "useGraph": false,
+      "showTitle": true,
+      "showBorder": false,
+      "backgroundMode": "transparent",
+      "backgroundColor": "#eef3f8"
+    }
+  }]
+}

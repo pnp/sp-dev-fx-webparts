@@ -1,0 +1,56 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-org-chart",
+    "source": "pnp",
+    "title": "Org Chart",
+    "shortDescription": "An interactive org chart web part - drill through the reporting line, start from anyone, expand reports inline, full-screen explorer, and optional live Teams presence. No admin consent by default.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-org-chart",
+    "longDescription": [
+      "A modern SharePoint org chart web part that reads the reporting line from the user profile service (PeopleManager), so it needs no admin consent. Click any person to re-root the chart, follow a breadcrumb back, and expand a person's team inline (lazy loaded). Start from the signed-in user or pick anyone with a type-ahead people picker. Each card can email, Teams-chat or Teams-call the person and open their profile. A full-screen explorer adds search, zoom and print / save-as-PDF. An optional toggle shows live Teams presence dots via Microsoft Graph (Presence.Read.All, User.ReadBasic.All) - off by default."
+    ],
+    "creationDateTime": "2026-10-31",
+    "updateDateTime": "2026-10-31",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.21.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-org-chart/assets/screenshot.png",
+        "alt": "Org Chart web part, tree view with presence"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-org-chart/assets/screenshot-teams.png",
+        "alt": "Org Chart web part, Teams-style vertical list"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "gvijaikumar9",
+        "name": "Vijay Kumar Gilakattula",
+        "pictureUrl": "https://github.com/gvijaikumar9.png",
+        "company": ""
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      }
+    ]
+  }
+]
