@@ -27,22 +27,21 @@
       {
         "type": "image",
         "order": 100,
-        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-org-chart/assets/screenshot.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-org-chart/assets/screenshot.png",
         "alt": "Org Chart web part, tree view with presence"
       },
       {
         "type": "image",
         "order": 101,
-        "url": "https://raw.githubusercontent.com/pnp/sp-dev-fx-webparts/main/samples/react-org-chart/assets/screenshot-teams.png",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-org-chart/assets/screenshot-teams.png",
         "alt": "Org Chart web part, Teams-style vertical list"
       }
     ],
     "authors": [
       {
         "gitHubAccount": "gvijaikumar9",
-        "name": "Vijay Kumar Gilakattula",
-        "pictureUrl": "https://github.com/gvijaikumar9.png",
-        "company": ""
+        "name": "Vijay Kumar G",
+        "pictureUrl": "https://github.com/gvijaikumar9.png"
       }
     ],
     "references": [
