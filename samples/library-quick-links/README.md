@@ -243,3 +243,6 @@ Additional UI translations are not included.
 - [Working with lists and list items using REST](https://learn.microsoft.com/sharepoint/dev/sp-add-ins/working-with-lists-and-list-items-with-rest)
 - [Microsoft 365 Patterns and Practices](https://aka.ms/m365pnp)
 - [Heft Documentation](https://heft.rushstack.io/)
+
+
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/library-quick-links" />
