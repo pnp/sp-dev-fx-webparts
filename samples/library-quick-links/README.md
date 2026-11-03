@@ -135,6 +135,8 @@ Edit the web part to open the **Document libraries** property-pane group.
 | **Show header** | Off | Show search, library count, and the filter button when metadata is enabled. |
 | **Document libraries to hide** | Shared Documents | Enter one library display name per line. Clear the field to show all eligible libraries. |
 
+![](./assets/tiles.png)
+
 ### Sorting
 
 - **Name (A to Z)** and **Name (Z to A)** compare names using the current SharePoint UI locale, ignoring case.
