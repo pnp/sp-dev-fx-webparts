@@ -1,11 +1,11 @@
 [
   {
-    "name": "pnp-sp-dev-spfx-web-parts-library-quick-links",
+    "name": "pnp-sp-dev-spfx-web-parts-react-library-quick-links",
     "source": "pnp",
     "title": "Library Quick Links Web Part",
     "shortDescription": "Display SharePoint document libraries as tiles or a list with configurable sorting, library visibility, optional metadata, and a search and filter header. Uses the current SharePoint theme.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/library-quick-links",
-    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/library-quick-links",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-library-quick-links",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-library-quick-links",
     "longDescription": [
       "A SharePoint Framework (SPFx) web part that displays document libraries from the current SharePoint site in responsive Tiles or List layouts, using the current SharePoint theme.",
       "Sort libraries alphabetically or by last item-modified date in ascending or descending order. Hide libraries by name; Shared Documents is hidden by default and can be displayed by removing its entry from the hide setting.",

@@ -245,4 +245,4 @@ Additional UI translations are not included.
 - [Heft Documentation](https://heft.rushstack.io/)
 
 
-<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/library-quick-links" />
+<img src="https://m365-visitor-stats.azurewebsites.net/sp-dev-fx-webparts/samples/react-library-quick-links" />
