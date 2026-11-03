@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "library-quick-links-client-side-solution",
+    "id": "85fe9615-3bab-4f4e-8891-60dac43143de",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.24.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "library-quick-links description"
+      },
+      "longDescription": {
+        "default": "library-quick-links description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "library-quick-links Feature",
+        "description": "The feature that activates elements of the library-quick-links solution.",
+        "id": "34ed0a5f-f815-4548-b352-afe1f1e51534",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/library-quick-links.sppkg"
+  }
+}

@@ -1,0 +1,401 @@
+.libraryQuickLinks {
+  padding: 16px;
+  color: "[theme:bodyText, default: #243746]";
+  color: var(--bodyText, #243746);
+  font-family: inherit;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 24px;
+
+  button,
+  input,
+  select {
+    font: inherit;
+  }
+
+  button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    border: 0;
+    border-radius: 10px;
+    color: inherit;
+    background: transparent;
+    cursor: pointer;
+
+    &:hover,
+    &[aria-pressed='true'] {
+      color: "[theme:link, default: #0078d4]";
+      color: var(--link, #0078d4);
+      background: "[theme:themeLighterAlt, default: #eff6fc]";
+      background: var(--accentBackground, #eff6fc);
+    }
+  }
+
+  button:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: -3px;
+  }
+}
+
+.searchBox {
+  display: flex;
+  align-items: center;
+  flex: 1 1 240px;
+  gap: 12px;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0 12px;
+  border: 1px solid;
+  border-color: "[theme:variantBorder, default: #d9d9d9]";
+  border-color: var(--cardBorder, #d9d9d9);
+  border-radius: 12px;
+  background: "[theme:bodyBackground, default: #fff]";
+  background: var(--cardBackground, #fff);
+  color: "[theme:bodySubtext, default: #666]";
+  color: var(--metadataText, #666);
+
+  &:focus-within {
+    outline: 2px solid;
+    outline-color: "[theme:link, default: #0078d4]";
+    outline-color: var(--link, #0078d4);
+    outline-offset: -2px;
+  }
+
+  input {
+    width: 100%;
+    min-width: 0;
+    min-height: 44px;
+    padding: 0;
+    border: 0;
+    outline: none;
+    box-shadow: none;
+    color: inherit;
+    background: transparent;
+
+    &::placeholder {
+      color: inherit;
+      opacity: 1;
+    }
+  }
+}
+
+.libraryCount {
+  margin-left: auto;
+  white-space: nowrap;
+  font-size: 14px;
+}
+
+.toolbar .filterButton {
+  display: inline-flex;
+  flex-shrink: 0;
+  padding: 2px;
+  border: 1px solid;
+  border-color: "[theme:variantBorder, default: #d9d9d9]";
+  border-color: var(--cardBorder, #d9d9d9);
+  border-radius: 12px;
+  background: "[theme:bodyBackground, default: #fff]";
+  background: var(--cardBackground, #fff);
+}
+
+.toolbar .filterButton[aria-pressed='true'],
+.toolbar .filterButton:hover {
+  color: "[theme:link, default: #0078d4]";
+  color: var(--link, #0078d4);
+  background: "[theme:themeLighterAlt, default: #eff6fc]";
+  background: var(--accentBackground, #eff6fc);
+}
+
+.filterPanel {
+  display: flex;
+  justify-content: flex-end;
+  margin: -12px 0 20px;
+
+  label {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  select {
+    max-width: 100%;
+    padding: 8px;
+    border: 1px solid;
+    border-color: "[theme:variantBorder, default: #d9d9d9]";
+    border-color: var(--cardBorder, #d9d9d9);
+    border-radius: 6px;
+    color: inherit;
+    background: "[theme:bodyBackground, default: #fff]";
+    background: var(--cardBackground, #fff);
+    font: inherit;
+  }
+}
+
+.icon {
+  flex: 0 0 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.scrollRegion {
+  max-height: 240px;
+  overflow-y: auto;
+}
+
+.cardScrollRegion {
+  container-type: inline-size;
+  max-height: 560px;
+}
+
+.links {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
+  gap: 8px 24px;
+  list-style: none;
+  margin: 0;
+  padding: 2px;
+}
+
+.libraryLink {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-height: 32px;
+  padding: 4px 0;
+  color: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+
+  span {
+    overflow-wrap: anywhere;
+  }
+
+  &:hover {
+    color: "[theme:linkHovered, default: #014446]";
+    color: var(--linkHovered, #014446);
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: -2px;
+  }
+}
+
+.libraryHeading {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+}
+
+.libraryText {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 0;
+}
+
+.description {
+  color: "[theme:bodySubtext, default: #666]";
+  color: var(--metadataText, #666);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.metadataView {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 24px;
+  padding: 4px;
+}
+
+.metadataCard {
+  box-sizing: border-box;
+  height: 100%;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 28px;
+  padding: 22px;
+  border: 1px solid;
+  border-color: "[theme:variantBorder, default: #d9d9d9]";
+  border-color: var(--cardBorder, #d9d9d9);
+  border-left: 5px solid;
+  border-left-color: "[theme:link, default: #0078d4]";
+  border-left-color: var(--link, #0078d4);
+  border-radius: 16px;
+  background: "[theme:bodyBackground, default: #fff]";
+  background: var(--cardBackground, #fff);
+  box-shadow: var(--cardShadow, none);
+  font-size: 20px;
+
+  .libraryHeading {
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .libraryTitle {
+    line-height: 1.35;
+  }
+
+  .folderBadge {
+    display: inline-flex;
+    flex: 0 0 56px;
+    align-items: center;
+    justify-content: center;
+    height: 56px;
+    border-radius: 14px;
+    color: "[theme:link, default: #0078d4]";
+    color: var(--link, #0078d4);
+    background: "[theme:themeLighterAlt, default: #eff6fc]";
+    background: var(--accentBackground, #eff6fc);
+  }
+
+  .folderIcon {
+    width: 32px;
+    height: 32px;
+  }
+
+  &:hover {
+    text-decoration: none;
+
+    .libraryTitle {
+      text-decoration: underline;
+    }
+  }
+}
+
+.metadata {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 18px;
+  border-top: 1px solid;
+  border-top-color: "[theme:variantBorder, default: #d9d9d9]";
+  border-top-color: var(--cardBorder, #d9d9d9);
+  color: "[theme:bodySubtext, default: #666]";
+  color: var(--metadataText, #666);
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.stat,
+.edited {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.counts {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  white-space: nowrap;
+}
+
+.edited {
+  margin-left: auto;
+}
+
+.openIcon {
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+  margin-left: auto;
+  color: "[theme:bodySubtext, default: #666]";
+  color: var(--metadataText, #888);
+}
+
+.listView {
+  grid-template-columns: minmax(0, 1fr);
+
+  &.metadataView {
+    gap: 0;
+  }
+}
+
+.metadataRow {
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 12px 24px;
+  padding: 14px 8px;
+  border-bottom: 1px solid;
+  border-bottom-color: "[theme:variantBorder, default: #d9d9d9]";
+  border-bottom-color: var(--cardBorder, #d9d9d9);
+  font-size: 16px;
+
+  .libraryHeading {
+    flex: 1 1 240px;
+    width: auto;
+  }
+
+  .folderBadge {
+    display: inline-flex;
+    flex: 0 0 24px;
+    color: "[theme:link, default: #0078d4]";
+    color: var(--link, #0078d4);
+  }
+
+  .libraryText {
+    gap: 4px;
+  }
+
+  .description {
+    font-size: 12px;
+  }
+
+  .metadata {
+    flex: 2 1 400px;
+    min-width: 0;
+    padding-top: 0;
+    border-top: 0;
+  }
+
+  &:hover {
+    text-decoration: none;
+
+    .libraryTitle {
+      text-decoration: underline;
+    }
+  }
+}
+
+.folderIcon {
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+}
+
+@container (min-width: 760px) {
+  .metadataView:not(.listView) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .metadataCard {
+    padding: 16px;
+
+    .libraryHeading {
+      gap: 12px;
+    }
+
+    .folderBadge {
+      flex-basis: 44px;
+      height: 44px;
+    }
+  }
+}
