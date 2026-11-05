@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-copilot-oversharing-readiness-client-side-solution",
     "id": "897b5e61-6697-49d6-9c17-dcd89e238736",
-    "version": "1.3.0.0",
+    "version": "1.3.4.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "developer": {
@@ -29,7 +29,7 @@
         "title": "react-copilot-oversharing-readiness Feature",
         "description": "The feature that activates elements of the react-copilot-oversharing-readiness solution.",
         "id": "e95c7fb4-c237-4dc6-bf20-931302b491e9",
-        "version": "1.3.0.0"
+        "version": "1.3.4.0"
       }
     ],
     "webApiPermissionRequests": [
