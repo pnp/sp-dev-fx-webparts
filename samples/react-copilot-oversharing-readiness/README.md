@@ -10,6 +10,10 @@ Scores are a configurable sample heuristic, not a Microsoft score. Microsoft pub
 
 ![Settings export and import buttons in version 1.3.0.0](assets/screenshot-settings.png)
 
+![Live risk list in Bahasa Indonesia, censored test tenant data](assets/screenshot-id.png)
+
+![Live risk list in Simplified Chinese, censored test tenant data](assets/screenshot-zh.png)
+
 ![Configurable risk model in the property pane](assets/property-pane.png)
 
 ## Compatibility
@@ -47,6 +51,7 @@ This sample is optimally compatible with the following environment configuration
 
 | Version | Date             | Comments        |
 | ------- | ---------------- | --------------- |
+| 1.3.4.0 | November 5, 2026 | Fixed the Graph site-permissions call (the query is now based on the Graph root queryable instead of the GraphFI wrapper, which has no toUrl). Anyone-link and sharing-link counts now resolve live, verified with the Unknown column empty for all 11 sites in the test tenant |
 | 1.3.0.0 | November 4, 2026 | Sensitivity labels from the site object, sharing-link counts from Graph site permissions (Sites.Read.All consent required, otherwise Unknown), attestation Status and SiteUrl columns, settings export, import, and reset |
 | 1.2.0.0 | November 4, 2026 | Localization: English, Bahasa Indonesia, and Simplified Chinese, following the user's display language with English fallback |
 | 1.1.1.0 | November 4, 2026 | Personal-site Search results excluded from the live list, verified live 11 of 11 sites |
@@ -100,7 +105,7 @@ A Microsoft 365 developer tenant or a tenant where you can deploy to the app cat
 ## Known limitations
 
 - SharePoint Search is not a complete site inventory. In the test tenant, Search lists 11 sites while the admin center lists 12 active sites: two admin sites return no Search results, so they are not listed by this web part, and the Search result titled Team Site is the content type hub, which does not appear in the admin active-sites list. Sites that are not indexed are not reviewed.
-- Anyone-link and sharing-link counts read from Graph site permissions. In the test tenant (verified live with version 1.3.0.0) those signals still report as Unknown even though API access shows Microsoft Graph Sites.Read.All as approved and pre-authorized, so the Graph route needs further debugging and must not be read as zero links.
+- Anyone-link and sharing-link counts read from Graph site permissions. In the test tenant, verified live with version 1.3.4.0, those signals now resolve and the Unknown column is empty for all 11 sites. (Version 1.3.0.0 still reported them as Unknown because the Graph call passed the GraphFI wrapper as the queryable base; that is fixed in 1.3.4.0.)
 - Attestation columns Status and SiteUrl are created on the first attestation save after upgrade. A list created by an older version reads its legacy Title-encoded rows until then.
 
 ## References
