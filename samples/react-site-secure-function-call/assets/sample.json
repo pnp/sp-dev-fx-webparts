@@ -4,7 +4,7 @@
     "source": "pnp",
     "title": "Site Secure Function Call",
     "shortDescription": "This combined SharePoint Framework and Azure Function solution is to provide the potentially most secure access from SharePoint Framework to any kind of third party API or Microsoft Graph.",
-    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-office-offer-creation",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-site-secure-function-call",
     "longDescription": [
       "This combined SharePoint Framework and Azure Function solution is to provide the potentially most secure access from SharePoint Framework to any kind of third party API, in fact here Microsoft Graph. It shows that AadHttpClient should be preferred over MSGraphClient."
     ],

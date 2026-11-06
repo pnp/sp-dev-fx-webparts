@@ -1,0 +1,56 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-js-teams-meeting-app",
+    "source": "pnp",
+    "title": "SPFx web part in Teams Meetings App",
+    "shortDescription": "A minimal SharePoint Framework web part demonstrating use as a Microsoft Teams meetings app.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-teams-meeting-app",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-teams-meeting-app",
+    "longDescription": [
+      "A minimal SharePoint Framework web part demonstrating use as a Microsoft Teams meetings app."
+    ],
+    "creationDateTime": "2021-04-27",
+    "updateDateTime": "2021-04-27",
+    "products": [
+      "SharePoint",
+      "Teams"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "TypeScript"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.12.1-rc.3"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "preview.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/js-teams-meeting-app/assets/preview.png",
+        "alt": "SPFx web part used as a Microsoft Teams meetings app"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "andrewconnell",
+        "name": "Andrew Connell",
+        "pictureUrl": "https://github.com/andrewconnell.png"
+      }
+    ],
+    "references": [
+      {
+        "name": "Sample documentation",
+        "description": "Summary, contributors, version history, and usage instructions.",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/js-teams-meeting-app/README.md"
+      }
+    ]
+  }
+]

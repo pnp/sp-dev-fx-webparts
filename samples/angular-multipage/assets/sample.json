@@ -24,7 +24,11 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "drop5"
+        "value": "0.5.0"
+      },
+      {
+        "key": "SPFX-VERSION-SOURCE",
+        "value": "Declared minimum of @microsoft/sp-client-preview ~0.5.0; no compatible committed lockfile."
       }
     ],
     "thumbnails": [

@@ -1,0 +1,55 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-wellbeing-tracker",
+    "source": "pnp",
+    "title": "React Wellbeing Tracker",
+    "shortDescription": "Track personal wellbeing and engagement habits in SharePoint with daily activity completion, progress bars, and week or month views.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-wellbeing-tracker",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-wellbeing-tracker",
+    "longDescription": [
+      "Log daily activities, filter by category, view consistency progress, add activities inline, and switch between light and dark modes in a responsive interface built with Fluent UI and PnPjs."
+    ],
+    "creationDateTime": "2026-05-01",
+    "updateDateTime": "2026-05-06",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.20.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "screenshot.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-wellbeing-tracker/assets/screenshot.png",
+        "alt": "React Wellbeing Tracker activity tracking view"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "sudeepghatak",
+        "name": "Sudeep Ghatak",
+        "pictureUrl": "https://github.com/sudeepghatak.png"
+      }
+    ],
+    "references": [
+      {
+        "name": "Sample documentation",
+        "description": "Summary, contributors, version history, and usage instructions.",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-wellbeing-tracker/README.md"
+      }
+    ]
+  }
+]

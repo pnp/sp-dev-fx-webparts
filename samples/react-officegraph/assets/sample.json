@@ -3,10 +3,10 @@
     "name": "pnp-sp-dev-spfx-web-parts-react-officegraph",
     "source": "pnp",
     "title": "Office Graph Web Part samples",
-    "shortDescription": "",
+    "shortDescription": "Sample SharePoint Framework client-side web parts built using React showing interaction with the Office Graph.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-officegraph",
     "longDescription": [
-      ""
+      "Sample SharePoint Framework client-side web parts built using React showing interaction with the Office Graph."
     ],
     "creationDateTime": "2017-05-31",
     "updateDateTime": "2017-05-31",
@@ -24,7 +24,11 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "GA"
+        "value": "1.0.0"
+      },
+      {
+        "key": "SPFX-VERSION-SOURCE",
+        "value": "Declared minimum of @microsoft/sp-webpart-base ~1.0.0; no compatible committed lockfile."
       }
     ],
     "thumbnails": [

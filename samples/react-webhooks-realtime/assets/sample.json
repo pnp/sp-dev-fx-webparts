@@ -24,7 +24,11 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "GA"
+        "value": "1.3.0"
+      },
+      {
+        "key": "SPFX-VERSION-SOURCE",
+        "value": "Declared minimum of @microsoft/sp-webpart-base ~1.3.0; no compatible committed lockfile."
       }
     ],
     "thumbnails": [
