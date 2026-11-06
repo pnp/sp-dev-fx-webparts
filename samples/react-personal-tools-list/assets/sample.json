@@ -97,7 +97,8 @@
                 "name": "video-demo1.mp4",
                 "type": "video",
                 "order": 109,
-                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-personal-tools-list/assets/video-demo1.mp4"
+                "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-personal-tools-list/assets/video-demo1.mp4",
+                "alt": "Demo video for the Personal tools list web part, which lets users select and save personalized tool links."
             }
         ],
         "authors": [

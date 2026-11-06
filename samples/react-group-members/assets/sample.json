@@ -1,0 +1,49 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-group-members",
+    "source": "pnp",
+    "title": "Group Members",
+    "shortDescription": "List Microsoft 365 group members using Microsoft Graph and display person cards with PnP property controls.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-group-members",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-group-members",
+    "longDescription": [
+      "List Microsoft 365 group members using Microsoft Graph and display person cards with PnP property controls."
+    ],
+    "creationDateTime": "2022-03-30",
+    "updateDateTime": "2022-03-30",
+    "products": [
+      "SharePoint",
+      "Teams",
+      "Microsoft Graph"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.14.0"
+      }
+    ],
+    "thumbnails": [],
+    "authors": [
+      {
+        "gitHubAccount": "techienickb",
+        "name": "Nick Brown",
+        "pictureUrl": "https://github.com/techienickb.png"
+      }
+    ],
+    "references": [
+      {
+        "name": "Sample documentation",
+        "description": "Summary, contributors, version history, and usage instructions.",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-group-members/README.md"
+      }
+    ]
+  }
+]

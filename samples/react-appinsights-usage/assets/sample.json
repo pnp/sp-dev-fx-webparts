@@ -31,10 +31,6 @@
       {
         "key": "SPFX-FULLPAGEAPP",
         "value": "true"
-      },
-      {
-        "key": "PNPCONTROLS",
-        "value": ""
       }
     ],
     "thumbnails": [

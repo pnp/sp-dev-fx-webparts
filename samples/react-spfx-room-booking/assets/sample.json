@@ -1,0 +1,76 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-spfx-room-booking",
+    "source": "pnp",
+    "title": "Room Booking",
+    "shortDescription": "Discover meeting rooms, check availability, and manage Outlook calendar bookings with Microsoft Graph and SharePoint.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-spfx-room-booking",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-spfx-room-booking",
+    "longDescription": [
+      "This SharePoint Framework web part discovers rooms through the Microsoft Graph Places API, checks availability with getSchedule, manages Outlook bookings, and synchronizes booking metadata to a SharePoint list using PnPjs."
+    ],
+    "creationDateTime": "2026-03-22",
+    "updateDateTime": "2026-03-22",
+    "products": [
+      "SharePoint",
+      "Teams",
+      "Microsoft Graph"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.22.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "img-book-a-room.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-spfx-room-booking/assets/img-book-a-room.png",
+        "alt": "Room Booking room selection view"
+      },
+      {
+        "name": "img-admin-view.png",
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-spfx-room-booking/assets/img-admin-view.png",
+        "alt": "Room Booking administration view"
+      },
+      {
+        "name": "img-my-bookings.png",
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-spfx-room-booking/assets/img-my-bookings.png",
+        "alt": "Room Booking personal bookings view"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "swaminawale",
+        "name": "Swami Nawale",
+        "pictureUrl": "https://github.com/swaminawale.png"
+      },
+      {
+        "gitHubAccount": "divyanshubarania",
+        "name": "Divyanshu Barania",
+        "pictureUrl": "https://github.com/divyanshubarania.png"
+      }
+    ],
+    "references": [
+      {
+        "name": "Sample documentation",
+        "description": "Summary, contributors, version history, and usage instructions.",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-spfx-room-booking/README.md"
+      }
+    ]
+  }
+]

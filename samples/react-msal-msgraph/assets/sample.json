@@ -3,10 +3,10 @@
     "name": "pnp-sp-dev-spfx-web-parts-react-msal-msgraph",
     "source": "pnp",
     "title": "Microsoft Authentication Library (MSAL JS) authentication sample",
-    "shortDescription": "",
+    "shortDescription": "Sample SharePoint Framework web part which uses the Microsoft Authentication Library (MSAL JS) to call the Microsoft Graph.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-msal-msgraph",
     "longDescription": [
-      ""
+      "Sample SharePoint Framework web part which uses the Microsoft Authentication Library (MSAL JS) to call the Microsoft Graph."
     ],
     "creationDateTime": "2017-03-17",
     "updateDateTime": "2017-03-17",
@@ -24,7 +24,11 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "GA"
+        "value": "1.1.1"
+      },
+      {
+        "key": "SPFX-VERSION-SOURCE",
+        "value": "Declared minimum of @microsoft/sp-webpart-base ~1.1.1; no compatible committed lockfile."
       }
     ],
     "thumbnails": [

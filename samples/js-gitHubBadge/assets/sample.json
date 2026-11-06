@@ -3,10 +3,10 @@
     "name": "pnp-sp-dev-spfx-web-parts-js-githubbadge",
     "source": "pnp",
     "title": "GitHub Badge Web Part",
-    "shortDescription": "",
+    "shortDescription": "Displays information from GitHub for a specified user.",
     "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/js-gitHubBadge",
     "longDescription": [
-      ""
+      "Displays information from GitHub for a specified user."
     ],
     "creationDateTime": "2019-04-18",
     "updateDateTime": "2019-04-18",

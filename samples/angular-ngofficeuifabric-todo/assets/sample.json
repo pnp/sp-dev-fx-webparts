@@ -25,7 +25,11 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "drop2"
+        "value": "0.2.0"
+      },
+      {
+        "key": "SPFX-VERSION-SOURCE",
+        "value": "README version history 1.1: SPFx v0.2.0; sample source package is not present."
       }
     ],
     "thumbnails": [

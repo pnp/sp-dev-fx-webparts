@@ -1,0 +1,62 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-staff-directory-sp2019",
+    "source": "pnp",
+    "title": "Staff Directory (Search Directory) Version 2019",
+    "shortDescription": "Show the current user's colleagues, search the directory, and configure the properties displayed on expanded user cards.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-staff-directory-sp2019",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-staff-directory-sp2019",
+    "longDescription": [
+      "Show the current user's colleagues, search the directory, and configure the properties displayed on expanded user cards."
+    ],
+    "creationDateTime": "2021-05-22",
+    "updateDateTime": "2021-05-22",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.4.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "staffdirectory_OnPrem.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-staff-directory-sp2019/assets/staffdirectory_OnPrem.png",
+        "alt": "Staff directory on SharePoint Server"
+      },
+      {
+        "name": "staffdirectory_online.png",
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-staff-directory-sp2019/assets/staffdirectory_online.png",
+        "alt": "Staff directory on SharePoint Online"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "joaojmendes",
+        "name": "João Mendes",
+        "pictureUrl": "https://github.com/joaojmendes.png"
+      }
+    ],
+    "references": [
+      {
+        "name": "Sample documentation",
+        "description": "Summary, contributors, version history, and usage instructions.",
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-staff-directory-sp2019/README.md"
+      }
+    ]
+  }
+]

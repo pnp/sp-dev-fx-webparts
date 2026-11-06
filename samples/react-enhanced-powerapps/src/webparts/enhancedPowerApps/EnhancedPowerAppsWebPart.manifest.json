@@ -19,8 +19,8 @@
     "description": { "default": "Embed Power Apps in a SharePoint page, and add theme supports and dynamic properties" },
     "officeFabricIconFontName": "PowerApps",
     "properties": {
-      "layout": 'AspectRatio',
-      "aspectratio": '16:9',
+      "layout": "AspectRatio",
+      "aspectratio": "16:9",
       "isWebPartHiddenOnSmallDevices":false
     }
   }]
