@@ -21,5 +21,5 @@ The purpose of this web part sample is to render M365 Group Plan tasks in a time
 **Open this sample in the gallery (popup panel)**:
 [Open in gallery](/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-web-parts-react-m365-planner-timeline)
 
-Source: https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-m365-planner-timeline
+Source: https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-M365-Planner-Timeline
 

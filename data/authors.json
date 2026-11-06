@@ -1,11 +1,5 @@
 [
   {
-    "gitHubAccount": "Paxol",
-    "name": "",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/paxol.964951359a63.webp",
-    "avatarSourceUrl": "https://github.com/Paxol.png"
-  },
-  {
     "gitHubAccount": "aakashbhardwaj619",
     "name": "Aakash Bhardwaj",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/aakashbhardwaj619.bf79a729c94b.webp",
@@ -15,7 +9,7 @@
     "gitHubAccount": "Abderahman88",
     "name": "Abderahman Moujahid",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/abderahman88.beeaab590de7.webp",
-    "avatarSourceUrl": "https://github.com/Abderahman88.png"
+    "avatarSourceUrl": "https://avatars.githubusercontent.com/u/36161889?s=460&u=afdd5f6681bc375ee3811482dec79824c12d8170&v=4"
   },
   {
     "gitHubAccount": "AbhishekGarg",
@@ -94,6 +88,12 @@
     "name": "André Lage",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/aaclage.f224864df00b.webp",
     "avatarSourceUrl": "https://github.com/aaclage.png"
+  },
+  {
+    "gitHubAccount": "andrewconnell",
+    "name": "Andrew Connell",
+    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/andrewconnell.0d56e9c52df6.webp",
+    "avatarSourceUrl": "https://github.com/andrewconnell.png"
   },
   {
     "gitHubAccount": "koltyakov",
@@ -360,6 +360,12 @@
     "avatarSourceUrl": "https://github.com/divya-akula.png"
   },
   {
+    "gitHubAccount": "divyanshubarania",
+    "name": "Divyanshu Barania",
+    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/divyanshubarania.9e4c13dbdf2e.webp",
+    "avatarSourceUrl": "https://github.com/divyanshubarania.png"
+  },
+  {
     "gitHubAccount": "DmitryVorobyov",
     "name": "Dmitry Vorobyov",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/dmitryvorobyov.c3731bb4f65d.webp",
@@ -577,7 +583,7 @@
   },
   {
     "gitHubAccount": "jtlivio",
-    "name": "João Livio",
+    "name": "Joao Livio",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/jtlivio.969fe0dcec53.webp",
     "avatarSourceUrl": "https://github.com/jtlivio.png"
   },
@@ -604,6 +610,12 @@
     "name": "Jonas Bjerke Hansen",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/jonasbjerke89.0e928c931b8c.webp",
     "avatarSourceUrl": "https://github.com/JonasBjerke89.png"
+  },
+  {
+    "gitHubAccount": "blayderunner123",
+    "name": "Jonathan Adcox",
+    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/blayderunner123.7c71e94986c4.webp",
+    "avatarSourceUrl": "https://github.com/blayderunner123.png"
   },
   {
     "gitHubAccount": "jquintozamora",
@@ -928,6 +940,12 @@
     "name": "Paolo Pialorsi",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/paolopia.0f852deb050e.webp",
     "avatarSourceUrl": "https://github.com/PaoloPia.png"
+  },
+  {
+    "gitHubAccount": "Paxol",
+    "name": "Passoli Mirko",
+    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/paxol.964951359a63.webp",
+    "avatarSourceUrl": "https://github.com/Paxol.png"
   },
   {
     "gitHubAccount": "patrick-rodgers",
@@ -1258,6 +1276,12 @@
     "name": "Sven Sieverding",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/365knoten.1ee549dff02f.webp",
     "avatarSourceUrl": "https://github.com/365knoten.png"
+  },
+  {
+    "gitHubAccount": "swaminawale",
+    "name": "Swami Nawale",
+    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/swaminawale.47551bbc6ecd.webp",
+    "avatarSourceUrl": "https://github.com/swaminawale.png"
   },
   {
     "gitHubAccount": "Swaminathan-Sriram",

@@ -1,6 +1,6 @@
 ---
 title: "Office Graph Web Part samples"
-description: ""
+description: "Sample SharePoint Framework client-side web parts built using React showing interaction with the Office Graph."
 type: "sample-panel"
 slug: "pnp-sp-dev-spfx-web-parts-react-officegraph"
 sampleName: "pnp-sp-dev-spfx-web-parts-react-officegraph"
@@ -16,6 +16,7 @@ redirect_to_gallery: false
 ![Office Graph Web Part samples](/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-officegraph.webp)
 
 
+Sample SharePoint Framework client-side web parts built using React showing interaction with the Office Graph.
 
 **Open this sample in the gallery (popup panel)**:
 [Open in gallery](/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-web-parts-react-officegraph)

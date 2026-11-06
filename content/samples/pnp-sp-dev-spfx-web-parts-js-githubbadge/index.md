@@ -1,6 +1,6 @@
 ---
 title: "GitHub Badge Web Part"
-description: ""
+description: "Displays information from GitHub for a specified user."
 type: "sample-panel"
 slug: "pnp-sp-dev-spfx-web-parts-js-githubbadge"
 sampleName: "pnp-sp-dev-spfx-web-parts-js-githubbadge"
@@ -16,6 +16,7 @@ redirect_to_gallery: false
 ![GitHub Badge Web Part](/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-js-githubbadge.webp)
 
 
+Displays information from GitHub for a specified user.
 
 **Open this sample in the gallery (popup panel)**:
 [Open in gallery](/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-web-parts-js-githubbadge)

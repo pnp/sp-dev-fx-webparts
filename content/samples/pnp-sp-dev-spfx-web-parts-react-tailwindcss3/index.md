@@ -21,5 +21,5 @@ This project showcases an integration of Tailwind CSS into an SPFx project.
 **Open this sample in the gallery (popup panel)**:
 [Open in gallery](/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-web-parts-react-tailwindcss3)
 
-Source: https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tailwindcss
+Source: https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-tailwindcss3
 

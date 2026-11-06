@@ -21,5 +21,5 @@ This combined SharePoint Framework and Azure Function solution is to provide the
 **Open this sample in the gallery (popup panel)**:
 [Open in gallery](/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-web-parts-react-site-secure-function-call)
 
-Source: https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-office-offer-creation
+Source: https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-site-secure-function-call
 

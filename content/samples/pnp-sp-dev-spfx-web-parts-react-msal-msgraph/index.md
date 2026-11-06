@@ -1,6 +1,6 @@
 ---
 title: "Microsoft Authentication Library (MSAL JS) authentication sample"
-description: ""
+description: "Sample SharePoint Framework web part which uses the Microsoft Authentication Library (MSAL JS) to call the Microsoft Graph."
 type: "sample-panel"
 slug: "pnp-sp-dev-spfx-web-parts-react-msal-msgraph"
 sampleName: "pnp-sp-dev-spfx-web-parts-react-msal-msgraph"
@@ -16,6 +16,7 @@ redirect_to_gallery: false
 ![Microsoft Authentication Library (MSAL JS) authentication sample](/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-web-parts-react-msal-msgraph.webp)
 
 
+Sample SharePoint Framework web part which uses the Microsoft Authentication Library (MSAL JS) to call the Microsoft Graph.
 
 **Open this sample in the gallery (popup panel)**:
 [Open in gallery](/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-web-parts-react-msal-msgraph)
