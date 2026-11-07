@@ -1,0 +1,46 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "Events Layouts",
+    "id": "a9117c2d-f1e6-4cc4-adf1-d1f6a40d2147",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Group.Read.All"
+      }
+    ],
+    "developer": {
+      "name": "Zeyad Elmaghraby",
+      "websiteUrl": "https://github.com/zeyadelmaghraby",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.23.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Upcoming events from SharePoint Events lists and Microsoft 365 group calendars in six responsive layouts."
+      },
+      "longDescription": {
+        "default": "Events Layouts aggregates events from SharePoint Events lists and Microsoft 365 group calendars and displays them as an agenda, grid, list, filmstrip, carousel or timeline. It follows the site theme and section backgrounds, adapts to any section width and supports right-to-left languages and the Hijri calendar."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "Events Layouts",
+        "description": "Deploys the Events Layouts web part.",
+        "id": "9a0fd99c-3052-4914-a2de-85d9241fb95a",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-events-layouts.sppkg"
+  }
+}

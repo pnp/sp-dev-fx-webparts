@@ -1,0 +1,23 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "react-events-layouts",
+    "environment": "spo",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "useGulp": false,
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "EventsLayouts",
+    "componentDescription": "Displays upcoming events from SharePoint Events lists and Microsoft 365 group calendars in six responsive layouts.",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.22.2",
+    "sdksVersions": {},
+    "version": "1.23.2",
+    "libraryName": "react-events-layouts",
+    "libraryId": "a9117c2d-f1e6-4cc4-adf1-d1f6a40d2147",
+    "packageManager": "npm",
+    "solutionShortDescription": "react-events-layouts description"
+  }
+}
