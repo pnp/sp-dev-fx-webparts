@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-availability-calendar-client-side-solution",
+    "id": "820dff85-7be9-4e8c-b8d4-d7de2a9c5969",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Alexandr Abdulca",
+      "websiteUrl": "https://github.com/Niacrisss/spfx-webparts",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.23.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Team vacations and absences on a month calendar"
+      },
+      "longDescription": {
+        "default": "Shows team vacations and absences from a SharePoint list on a month calendar, with multi-day bars, lane stacking for overlaps, an 'Out this week' strip and a per-person details panel with Email and Teams links. Reads a plain list and needs no Microsoft Graph permissions."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-availability-calendar Feature",
+        "description": "The feature that activates elements of the react-availability-calendar solution.",
+        "id": "903f948e-e2b1-4a30-a553-448179f59848",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-availability-calendar.sppkg"
+  }
+}
