@@ -1,0 +1,44 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-org-chart-client-side-solution",
+    "id": "2e1def1c-3758-48d6-99a0-ed416027e648",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      { "resource": "Microsoft Graph", "scope": "Presence.Read.All" },
+      { "resource": "Microsoft Graph", "scope": "User.ReadBasic.All" }
+    ],
+    "developer": {
+      "name": "Vijay Gilakattula",
+      "websiteUrl": "https://github.com/gvijaikumar9/react-org-chart",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.21.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "An interactive SharePoint org chart web part, no admin consent required."
+      },
+      "longDescription": {
+        "default": "A modern org chart web part that reads the reporting line from the user profile service. Drill through the org, start from anyone with a people picker, expand reports inline, open a full-screen explorer with search and zoom, email or Teams-chat each person, and optionally show live Teams presence."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-org-chart Feature",
+        "description": "Activates the Org Chart web part.",
+        "id": "7660140c-5b56-48af-b5d0-732c7543ef06",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-org-chart.sppkg"
+  }
+}

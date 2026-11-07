@@ -1,0 +1,44 @@
+// Shared layout variants for every Intranet Suite web part.
+// Each class only sets CSS custom properties, applied as a modifier class on the
+// component root. Every web part's SCSS reads these variables, so one dropdown
+// changes the whole look without forking the component.
+
+.layoutCard {
+  --wp-card-bg: rgba(255, 255, 255, 0.6);
+  --wp-card-border: 1px solid rgba(128, 128, 128, 0.25);
+  --wp-card-radius: 10px;
+  --wp-card-pad: 20px;
+  --wp-card-shadow: none;
+  --wp-heading-size: 20px;
+  --wp-heading-weight: 600;
+}
+
+.layoutMinimal {
+  --wp-card-bg: transparent;
+  --wp-card-border: none;
+  --wp-card-radius: 0;
+  --wp-card-pad: 0;
+  --wp-card-shadow: none;
+  --wp-heading-size: 18px;
+  --wp-heading-weight: 600;
+}
+
+.layoutBold {
+  --wp-card-bg: color-mix(in srgb, var(--accent, #0f6cbd) 9%, transparent);
+  --wp-card-border: none;
+  --wp-card-radius: 14px;
+  --wp-card-pad: 24px;
+  --wp-card-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  --wp-heading-size: 22px;
+  --wp-heading-weight: 700;
+}
+
+.layoutCompact {
+  --wp-card-bg: rgba(255, 255, 255, 0.55);
+  --wp-card-border: 1px solid rgba(128, 128, 128, 0.22);
+  --wp-card-radius: 8px;
+  --wp-card-pad: 12px;
+  --wp-card-shadow: none;
+  --wp-heading-size: 16px;
+  --wp-heading-weight: 600;
+}
