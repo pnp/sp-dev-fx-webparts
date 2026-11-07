@@ -1,0 +1,71 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-verified-page-banner",
+    "source": "pnp",
+    "title": "Verified Page Banner",
+    "shortDescription": "Displays a live verification banner on SharePoint pages with one-click owner confirmation, a review period, open review requests, and visitor out-of-date flagging backed by a SharePoint list.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-verified-page-banner",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-verified-page-banner",
+    "longDescription": [
+      "Verified Page Banner is a SharePoint Framework (SPFx 1.23.2, Heft toolchain, React 17) web part that makes page freshness visible to every reader. Page owners and editors confirm a page is still current, assign a page owner from site users, and see how many review requests are still open. A site owner can let visitors flag out-of-date pages by granting the Visitors group add and view rights on the Page Review Requests list only. The web part does not call Microsoft Graph and does not request tenant admin API permissions."
+    ],
+    "creationDateTime": "2026-10-25",
+    "updateDateTime": "2026-10-25",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.23.2"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-verified-page-banner/assets/verified-page-banner-current.png",
+        "alt": "Verified Page Banner showing current status and verification history"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-verified-page-banner/assets/verified-page-banner-out-of-date.png",
+        "alt": "Verified Page Banner showing out of date state and visitor flagging"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-verified-page-banner/assets/verified-page-banner-setup.png",
+        "alt": "Verified Page Banner one-click setup and property pane configuration"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "anandragav",
+        "pictureUrl": "https://github.com/anandragav.png",
+        "name": "Anand Vijayaragavan"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework.",
+        "url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "SharePoint Framework (SPFx) 1.23 release notes",
+        "description": "Learn about the Heft-based toolchain and updates in SharePoint Framework 1.23.",
+        "url": "https://learn.microsoft.com/en-us/sharepoint/dev/spfx/release-1.23"
+      }
+    ]
+  }
+]

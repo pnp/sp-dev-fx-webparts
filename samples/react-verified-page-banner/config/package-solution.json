@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-verified-page-banner-client-side-solution",
+    "id": "e4a70a04-39b5-4a61-bae1-8d4eb8663f0a",
+    "version": "1.1.4.0",
+    "iconPath": "page-trust-icon.png",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "Anand Vijayaragavan",
+      "websiteUrl": "https://anandvijayaragavan.substack.com/",
+      "privacyUrl": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-verified-page-banner/PRIVACY.md",
+      "termsOfUseUrl": "https://github.com/pnp/sp-dev-fx-webparts/blob/main/samples/react-verified-page-banner/TERMS.md",
+      "mpnId": "Undefined-1.23.2"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Shows the page owner, last confirmed date, and open review requests."
+      },
+      "longDescription": {
+        "default": "Verified Page Banner shows who owns a modern page and when it was last confirmed current. Owners and editors can confirm the page and see how many review requests are still open. Readers can flag a page when they can add items to the Page Review Requests list. A site owner can optionally let visitors add requests. The web part does not call Microsoft Graph and does not request API permissions."
+      },
+      "screenshotPaths": [
+        "page-trust-screenshot.png"
+      ],
+      "videoUrl": "",
+      "categories": [
+        "Content management"
+      ]
+    },
+    "features": [
+      {
+        "title": "Verified Page Banner",
+        "description": "Activates Verified Page Banner on this site.",
+        "id": "b454d35c-082a-441c-b7e6-33de715743e8",
+        "version": "1.1.4.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-verified-page-banner.sppkg"
+  }
+}
