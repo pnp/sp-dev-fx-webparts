@@ -21,5 +21,5 @@ SPFx application search driven navigation and permission side panel.
 **Open this sample in the gallery (popup panel)**:
 [Open in gallery](/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-application-nav-search-driven)
 
-Source: https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-qna-chat
+Source: https://github.com/pnp/sp-dev-fx-extensions/tree/main/samples/react-application-nav-search-driven
 

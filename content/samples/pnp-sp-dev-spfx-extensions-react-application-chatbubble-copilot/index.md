@@ -4,7 +4,8 @@ description: "This solution integrates a chatbot within SharePoint Online using 
 type: "sample-panel"
 slug: "pnp-sp-dev-spfx-extensions-react-application-chatbubble-copilot"
 sampleName: "pnp-sp-dev-spfx-extensions-react-application-chatbubble-copilot"
-images: []
+thumbnail: "/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-application-chatbubble-copilot.webp"
+images: ["/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-application-chatbubble-copilot.webp"]
 thumbnailAlt: "Chatbot Integration for SharePoint Online"
 lastmod: "2025-01-08T00:00:00.000Z"
 tags: []
@@ -12,6 +13,9 @@ categories: ["SPFX-APPLICATION-EXTENSION"]
 openInGalleryUrl: "/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-application-chatbubble-copilot"
 redirect_to_gallery: false
 ---
+![Chatbot Integration for SharePoint Online](/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-application-chatbubble-copilot.webp)
+
+
 This solution integrates a chatbot within SharePoint Online using a Tenant App Catalog and Azure AD App Registration. It provides a seamless way to enhance user engagement on SharePoint sites by embedding a customizable chatbot interface. You have a per site agent by creating it in a SharePoint list or a global one by adding json to TWE
 
 **Open this sample in the gallery (popup panel)**:

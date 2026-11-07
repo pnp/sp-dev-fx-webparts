@@ -1,6 +1,6 @@
 ---
 title: "Unique permissions on list items"
-description: "This sample demonstrates how to use field customizer to handle unique permissions on list items. "
+description: "This sample demonstrates how to use field customizer to handle unique permissions on list items."
 type: "sample-panel"
 slug: "pnp-sp-dev-spfx-extensions-react-field-unique-permissions"
 sampleName: "pnp-sp-dev-spfx-extensions-react-field-unique-permissions"
@@ -16,7 +16,7 @@ redirect_to_gallery: false
 ![Unique permissions on list items](/sp-dev-fx-webparts/images/thumbnails/pnp-sp-dev-spfx-extensions-react-field-unique-permissions.webp)
 
 
-This sample demonstrates how to use field customizer to handle unique permissions on list items. 
+This sample demonstrates how to use field customizer to handle unique permissions on list items.
 
 **Open this sample in the gallery (popup panel)**:
 [Open in gallery](/sp-dev-fx-webparts/?sample=pnp-sp-dev-spfx-extensions-react-field-unique-permissions)

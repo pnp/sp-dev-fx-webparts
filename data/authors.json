@@ -36,12 +36,6 @@
     "avatarSourceUrl": "https://github.com/ahmad-jad-alhak.png"
   },
   {
-    "gitHubAccount": "https://github.com/ahmad-jad-alhak",
-    "name": "Ahmad Jad Alhak",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/ahmad-jad-alhak.5d2730987f4b.webp",
-    "avatarSourceUrl": "https://github.com/ahmad-jad-alhak.png"
-  },
-  {
     "gitHubAccount": "a1mery",
     "name": "Aimery Thomas",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/a1mery.74b01cb838c6.webp",
@@ -103,12 +97,6 @@
   },
   {
     "gitHubAccount": "anoopt",
-    "name": "Anoop Tatti",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/anoopt.1ab4e05a217d.webp",
-    "avatarSourceUrl": "https://avatars.githubusercontent.com/u/9694225?s=460&u=fbb4b27ed944935800d5f6dbc91e71911ce0d4ec&v=4"
-  },
-  {
-    "gitHubAccount": "Anoop Tatti",
     "name": "anoopt",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/anoopt.1ab4e05a217d.webp",
     "avatarSourceUrl": "https://github.com/anoopt.png"
@@ -259,7 +247,7 @@
   },
   {
     "gitHubAccount": "Tanddant",
-    "name": "Dan Toft",
+    "name": "Dan Toft (Code Reviews)",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/tanddant.b503735bca0d.webp",
     "avatarSourceUrl": "https://github.com/Tanddant.png"
   },
@@ -379,12 +367,6 @@
   },
   {
     "gitHubAccount": "ejazhussain",
-    "name": "Ejaz Hussain",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/ejazhussain.1f40dda40472.webp",
-    "avatarSourceUrl": "https://github.com/ejazhussain.png"
-  },
-  {
-    "gitHubAccount": "https://github.com/ejazhussain",
     "name": "Ejaz Hussain",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/ejazhussain.1f40dda40472.webp",
     "avatarSourceUrl": "https://github.com/ejazhussain.png"
@@ -510,12 +492,6 @@
     "avatarSourceUrl": "https://github.com/HarminderSethi.png"
   },
   {
-    "gitHubAccount": "https://github.com/HarminderSethi",
-    "name": "Harminder Singh",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/harmindersethi.1d1b349b140b.webp",
-    "avatarSourceUrl": "https://github.com/HarminderSethi.png"
-  },
-  {
     "gitHubAccount": "Harsh24491",
     "name": "Harsh Bhavsar",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/harsh24491.6b5a8da3403d.webp",
@@ -589,12 +565,6 @@
   },
   {
     "gitHubAccount": "joaojmendes",
-    "name": "João Mendes",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/joaojmendes.27bf35a0f6fc.webp",
-    "avatarSourceUrl": "https://github.com/joaojmendes.png"
-  },
-  {
-    "gitHubAccount": "https://github.com/joaojmendes",
     "name": "João Mendes",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/joaojmendes.27bf35a0f6fc.webp",
     "avatarSourceUrl": "https://github.com/joaojmendes.png"
@@ -721,12 +691,6 @@
   },
   {
     "gitHubAccount": "maschroeder-z",
-    "name": "Marc André Schröder-Zhou",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/maschroeder-z.ee3d256a07e0.webp",
-    "avatarSourceUrl": "https://github.com/maschroeder-z.png"
-  },
-  {
-    "gitHubAccount": "https://github.com/maschroeder-z",
     "name": "Marc André Schröder-Zhou",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/maschroeder-z.ee3d256a07e0.webp",
     "avatarSourceUrl": "https://github.com/maschroeder-z.png"
@@ -888,22 +852,16 @@
     "avatarSourceUrl": "https://github.com/techienickb.png"
   },
   {
+    "gitHubAccount": "NicolasKheirallah",
+    "name": "Nico",
+    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/nicolaskheirallah.50f81b9fb5b9.webp",
+    "avatarSourceUrl": "https://github.com/NicolasKheirallah.png"
+  },
+  {
     "gitHubAccount": "nicodecleyre",
     "name": "Nico De Cleyre",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/nicodecleyre.6b802f23b157.webp",
     "avatarSourceUrl": "https://github.com/nicodecleyre.png"
-  },
-  {
-    "gitHubAccount": "NicolasKheirallah",
-    "name": "Nicolas Kheirallah",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/nicolaskheirallah.50f81b9fb5b9.webp",
-    "avatarSourceUrl": "https://github.com/NicolasKheirallah.png"
-  },
-  {
-    "gitHubAccount": "https://github.com/NicolasKheirallah",
-    "name": "Nicolas Kheirallah",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/nicolaskheirallah.50f81b9fb5b9.webp",
-    "avatarSourceUrl": "https://github.com/NicolasKheirallah.png"
   },
   {
     "gitHubAccount": "ICTNiklasWilhelm",
@@ -913,7 +871,7 @@
   },
   {
     "gitHubAccount": "NishkalankBezawada",
-    "name": "NIshkalank Bezawada (MVP)",
+    "name": "Nishkalank Bezawada",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/nishkalankbezawada.271e437466c3.webp",
     "avatarSourceUrl": "https://github.com/NishkalankBezawada.png"
   },
@@ -1074,6 +1032,12 @@
     "avatarSourceUrl": "https://github.com/reshmee011.png"
   },
   {
+    "gitHubAccount": "rwenz02",
+    "name": "Rick Wenz",
+    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/rwenz02.50a63b6647b0.webp",
+    "avatarSourceUrl": "https://github.com/rwenz02.png"
+  },
+  {
     "gitHubAccount": "rishabhshukla12",
     "name": "Rishabh Shukla",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/rishabhshukla12.66073334546a.webp",
@@ -1155,13 +1119,7 @@
     "gitHubAccount": "Sandeep-FED",
     "name": "Sandeep P S",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/sandeep-fed.6784dfb80995.webp",
-    "avatarSourceUrl": "https://github.com/Sandeep-FED.png"
-  },
-  {
-    "gitHubAccount": "https://github.com/Sandeep-FED",
-    "name": "Sandeep P S",
-    "pictureUrl": "/sp-dev-fx-webparts/images/avatars/sandeep-fed.6784dfb80995.webp",
-    "avatarSourceUrl": "https://github.com/Sandeep-FED.png"
+    "avatarSourceUrl": "https://github.com/sandeep-fed.png"
   },
   {
     "gitHubAccount": "SandeepDev365",
@@ -1261,7 +1219,7 @@
   },
   {
     "gitHubAccount": "sudharsank",
-    "name": "Sudharsan Kesavanarayanan",
+    "name": "Sudharsan K.",
     "pictureUrl": "/sp-dev-fx-webparts/images/avatars/sudharsank.416ed5d2b87f.webp",
     "avatarSourceUrl": "https://github.com/sudharsank.png"
   },
