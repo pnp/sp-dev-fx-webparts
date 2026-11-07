@@ -7,6 +7,13 @@ import { Poll, PollResult } from "../webparts/dynamicPoll/models/Poll";
 
 const POLLS_LIST_NAME = "Polls";
 const POLL_ANSWERS_LIST_NAME = "Poll Answers";
+const ANSWERS_PAGE_SIZE = 1000;
+
+interface PollAnswer {
+  PollId: number;
+  Answer: string;
+  Title?: string;
+}
 
 export class SharePointService {
   private _sp: SPFI;
@@ -47,14 +54,19 @@ export class SharePointService {
   public async getUserVote(pollId: number): Promise<string | undefined> {
     try {
       const currentUserEmail = this._context.pageContext.user.email;
-      const votes = await this._sp.web.lists
+      const pages = this._sp.web.lists
         .getByTitle(POLL_ANSWERS_LIST_NAME)
-        .items.filter(
-          `PollId eq ${pollId} and Title eq '${currentUserEmail}'`,
-        )();
+        .items.select("PollId", "Title", "Answer")
+        .orderBy("Id", true)
+        .top(ANSWERS_PAGE_SIZE);
 
-      if (votes.length > 0) {
-        return votes[0].Answer;
+      // Avoid lookup/text filters that can hit the large-list threshold.
+      for await (const page of pages) {
+        for (const item of page as PollAnswer[]) {
+          if (item.PollId === pollId && item.Title === currentUserEmail) {
+            return item.Answer;
+          }
+        }
       }
       return undefined;
     } catch (error) {
@@ -81,27 +93,29 @@ export class SharePointService {
     pollItem: Poll,
   ): Promise<{ results: PollResult[]; totalVotes: number }> {
     try {
-      const items = await this._sp.web.lists
+      const pages = this._sp.web.lists
         .getByTitle(POLL_ANSWERS_LIST_NAME)
-        .items.filter(`PollId eq ${pollItem.Id}`)
-        .select("Answer")();
+        .items.select("PollId", "Answer")
+        .orderBy("Id", true)
+        .top(ANSWERS_PAGE_SIZE);
 
-      const counts: { [key: string]: number } = {};
+      const counts: { [key: string]: number } = Object.create(null);
       let total = 0;
 
       // Initialize counts with 0 for all options to show empty bars
       pollItem.Options.forEach((opt) => (counts[opt.trim()] = 0));
 
-      items.forEach((item: { Answer: string }) => {
-        const answer = item.Answer;
-        if (counts[answer] !== undefined) {
-          counts[answer]++;
-        } else {
-          // Handle cases where answer might not match exactly or is legacy
-          counts[answer] = 1;
-        }
-        total++;
-      });
+      // Follow every continuation page, including when the list exceeds 5,000
+      // items. Filter locally: indexing a lookup does not avoid the threshold.
+      // Aggregate per page so the full list never needs to be held in memory.
+      for await (const page of pages) {
+        (page as PollAnswer[]).forEach((item) => {
+          if (item.PollId !== pollItem.Id) return;
+          const answer = item.Answer;
+          counts[answer] = (counts[answer] || 0) + 1;
+          total++;
+        });
+      }
 
       const results = Object.keys(counts).map((key) => ({
         Answer: key,
@@ -112,7 +126,8 @@ export class SharePointService {
       return { results, totalVotes: total };
     } catch (error) {
       console.error("Error fetching poll results:", error);
-      return { results: [], totalVotes: 0 };
+      // Never present failed or partially retrieved results as a complete total.
+      throw error;
     }
   }
 }
