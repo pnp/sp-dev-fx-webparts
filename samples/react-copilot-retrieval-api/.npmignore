@@ -1,7 +1,7 @@
 !dist
 config
 
-gulpfile.js
+eslint.config.js
 
 release
 src
@@ -9,6 +9,11 @@ temp
 
 tsconfig.json
 tslint.json
+lib-commonjs
+lib-dts
+lib-esm
+jest-output
+.heft
 
 *.log
 

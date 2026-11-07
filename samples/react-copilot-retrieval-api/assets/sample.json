@@ -10,7 +10,7 @@
       "This SPFx sample shows how to integrate a Copilot retrieval API into an SPFx web part and provides a hands‑on workflow to evaluate and tune search relevance."
     ],
     "creationDateTime": "2025-01-01",
-    "updateDateTime": "2025-01-01",
+    "updateDateTime": "2026-10-28",
     "products": [
       "SharePoint"
     ],
@@ -25,7 +25,7 @@
       },
       {
         "key": "SPFX-VERSION",
-        "value": "1.21.1"
+        "value": "1.24.0"
       }
     ],
     "thumbnails": [
@@ -54,8 +54,10 @@
     "authors": [
       {
         "gitHubAccount": "petkir",
+        "company": "KYANIS GmbH",
         "pictureUrl": "https://github.com/petkir.png",
-        "name": "Peter Paul Kirschner"
+        "name": "Peter Paul Kirschner",
+        "twitter": "petkir_at"
       }
     ],
     "references": [

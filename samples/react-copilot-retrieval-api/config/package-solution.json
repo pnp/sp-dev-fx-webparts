@@ -3,7 +3,7 @@
   "solution": {
     "name": "react-copilot-retrieval-api-client-side-solution",
     "id": "1a3f7c99-b38a-4564-9f6f-63ff144d71b2",
-    "version": "1.0.0.0",
+    "version": "1.1.0.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
@@ -12,7 +12,7 @@
       "websiteUrl": "",
       "privacyUrl": "",
       "termsOfUseUrl": "",
-      "mpnId": "Undefined-1.21.1"
+      "mpnId": "Undefined-1.24.0-rc.0"
     },
     "metadata": {
       "shortDescription": {
@@ -30,7 +30,7 @@
         "title": "react-copilot-retrieval-api Feature",
         "description": "The feature that activates elements of the react-copilot-retrieval-api solution.",
         "id": "a8012597-534c-40e8-88a1-afd9bc709ce9",
-        "version": "1.0.0.0"
+        "version": "1.1.0.0"
       }
     ],
   "webApiPermissionRequests": [

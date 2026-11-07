@@ -9,6 +9,10 @@ node_modules
 # Build generated files
 dist
 lib
+lib-dts
+lib-commonjs
+lib-esm
+jest-output
 release
 solution
 temp
@@ -32,3 +36,7 @@ obj
 
 # Styles Generated Code
 *.scss.ts
+
+# Development certificates
+*.cer
+*.pem

@@ -24,8 +24,9 @@ Use this process to systematically evaluate and optimize your retrieval experien
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
-![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
+![SPFx 1.24.0](https://img.shields.io/badge/SPFx-1.24.0-green.svg)
+![React 18.3.1](https://img.shields.io/badge/React-18.3.1-green.svg)
+![Node.js v22, v24 or v26](https://img.shields.io/badge/Node.js-v22%20%7C%20v24%20%7C%20v26-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -34,6 +35,10 @@ This sample is optimally compatible with the following environment configuration
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
 
 ## Applies to
+
+This sample targets SPFx 1.24.0 and uses React 18.3.1,
+TypeScript 5.8, and the Heft build toolchain. Supported Node.js versions are
+22.14.0 or later in the 22.x line, 24.x, and 26.x.
 
 - [SharePoint Framework](https://aka.ms/spfx)
 
@@ -45,6 +50,7 @@ This sample is optimally compatible with the following environment configuration
 
 |Version|Date|Comments|
 |-------|----|--------|
+|1.1|Oct, 2026|Upgrade to SPFx 1.24.0, React 18.3.1|
 |1.0|Okt, 2025|Initial release|
 
 ## Minimal Path to Awesome
@@ -53,11 +59,29 @@ This sample is optimally compatible with the following environment configuration
 - Ensure that you are at the solution folder
 - in the command-line run:
   - `npm install`
-  - `gulp serve`
+  - `npx heft trust-dev-cert` (first run only)
+  - `npm start`
+
+Set the tenant URL in `config/serve.json` or configure the `SPFX_SERVE_TENANT_DOMAIN`
+environment variable before starting the hosted workbench.
+
+Build and package for deployment with `npm run build`. This runs the production
+build and test pipeline and creates the `.sppkg` in `sharepoint/solution`.
+Use `npm test` to run the development build/test pipeline, `npm run lint` for
+ESLint, and `npm run clean` to remove generated build output.
+
+In VS Code, use **TypeScript: Select TypeScript Version > Use Workspace Version**
+to match the project's TypeScript 5.8 compiler rather than a newer editor version.
 
 > This sample can also be opened with [VS Code Remote Development](https://code.visualstudio.com/docs/remote/remote-overview). Visit https://aka.ms/spfx-devcontainer for further instructions.
 
 ## Features
+
+Retrieval failures are shown inline, including API messages such as
+`Authorization Failed - User does not have valid license`. For that error, ask
+your administrator to verify that the signed-in user has a valid license for
+the Copilot Retrieval API. Failed requests stop the loading indicator and can
+be retried; empty queries are validated before sending a request.
 
 This sample demonstrates how to wire a retrieval/search API into an SPFx React.
 This sample demonstrates how to integrate a retrieval/search API (Copilot Retrieval) into an SPFx React web part.

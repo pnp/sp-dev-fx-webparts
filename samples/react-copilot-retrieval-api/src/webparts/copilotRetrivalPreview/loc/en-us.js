@@ -1,5 +1,7 @@
 define([], function() {
   return {
+    "QueryRequired": "Please enter a query.",
+    "RetrievalFailed": "Unable to retrieve results. Please try again. If the problem persists, contact your administrator.",
     "PropertyPaneDescription": "Description",
     "BasicGroupName": "Group Name",
     "DescriptionFieldLabel": "Description Field",
