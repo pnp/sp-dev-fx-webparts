@@ -15,7 +15,7 @@ This is a modern web part built using the [SharePoint Framework](https://dev.off
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.22.1](https://img.shields.io/badge/SPFx-1.22.1-green.svg) 
+![SPFx 1.24.0](https://img.shields.io/badge/SPFx-1.24.0-green.svg)
 ![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg) 
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -23,6 +23,10 @@ This is a modern web part built using the [SharePoint Framework](https://dev.off
 ![Local Workbench Incompatible](https://img.shields.io/badge/Local%20Workbench-Incompatible-red.svg "The solution requires access to a calendar list hosted in SharePoint")
 ![Hosted Workbench Compatible](https://img.shields.io/badge/Hosted%20Workbench-Compatible-green.svg)
 ![Compatible with Remote Containers](https://img.shields.io/badge/Remote%20Containers-Compatible-green.svg)
+
+This sample targets SPFx 1.24.0, TypeScript 5.8, and the Heft build toolchain. Supported Node.js versions are
+22.14.0 or later in the 22.x line, 24.x, and 26.x.
+The web part uses TypeScript and jQuery, not React.
 
 ## Applies to
 
@@ -51,6 +55,7 @@ Version|Date|Comments|
 1.0.4.0|October 05, 2024|Upgraded to SPFx 1.20 and fixed issues with dependencies eslint|
 1.0.5.0|October 16, 2025|Upgraded to SPFx 1.21.1 |
 1.0.6.0|December 30, 2025|Upgraded to SPFx 1.22.1 |
+1.0.7.0|October 15, 2026|Upgraded to SPFx 1.24.0, Heft 1.3.2, and ESLint 9 |
 
 ## Minimal Path to Awesome
 
@@ -67,6 +72,16 @@ Version|Date|Comments|
   - Choose site
   - List
   - Start, End, Title and Details fields
+
+### Build and package
+
+- `npm run build` compiles, lints, and bundles the web part.
+- `npm run build -- --production` creates a production build.
+- `npm run package-solution -- --production` packages the production build for deployment.
+- `npm run trust-dev-cert` trusts the development certificate before using `npm run start`.
+
+The development container installs the project's local toolchain rather than a
+globally installed SPFx generator or Gulp.
   
 
 ## Features

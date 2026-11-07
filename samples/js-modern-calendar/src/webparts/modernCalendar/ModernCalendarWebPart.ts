@@ -124,7 +124,7 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
 
       this._getListColumns(this.properties.listTitle, this.properties.site).then((response3) => {
         const col: IPropertyPaneDropdownOption[] = [];
-        for (const _innerKey in response3.value) {
+        for (const _innerKey of Object.keys(response3.value)) {
           col.push({
             key: response3.value[_innerKey]["InternalName"],
             text: response3.value[_innerKey]["Title"],
@@ -138,7 +138,7 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
           this.domElement
         );
         this.render();
-      });
+      }).catch((error: unknown) => this._handleConfigurationError(error));
     }
 
     if (!this.properties.other) {
@@ -159,14 +159,14 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
         "Configuration"
       );
       this._getSiteRootWeb().then((response0) => {
-        this._getSites(response0["Url"]).then((response) => {
+        return this._getSites(response0["Url"]).then((response) => {
           const sites: IPropertyPaneDropdownOption[] = [];
           sites.push({
             key: this.context.pageContext.web.absoluteUrl,
             text: "This Site",
           });
           sites.push({ key: "other", text: "Other Site (Specify Url)" });
-          for (const _key in response.value) {
+          for (const _key of Object.keys(response.value)) {
             if (
               this.context.pageContext.web.absoluteUrl !=
               response.value[_key]["Url"]
@@ -179,7 +179,7 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
           }
           this._siteOptions = sites;
           if (this.properties.site) {
-            this._getListTitles(this.properties.site).then((response2) => {
+            return this._getListTitles(this.properties.site).then((response2) => {
               this._dropdownOptions = response2.value.map((list: ISPList) => {
                 return {
                   key: list.Title,
@@ -187,12 +187,12 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
                 };
               });
               this._log('debug', 'this.properties.site', { site: this.properties.site });
-              this._getListColumns(
+              return this._getListColumns(
                 this.properties.listTitle!,
                 this.properties.site
               ).then((response3) => {
                 const col: IPropertyPaneDropdownOption[] = [];
-                for (const _innerKey in response3.value) {
+                for (const _innerKey of Object.keys(response3.value)) {
                   col.push({
                     key: response3.value[_innerKey]["InternalName"],
                     text: response3.value[_innerKey]["Title"],
@@ -210,7 +210,7 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
             });
           }
         });
-      });
+      }).catch((error: unknown) => this._handleConfigurationError(error));
     } else {
       this._getSitesAsync();
     }
@@ -273,7 +273,7 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
   this._log('debug', 'siteUrl', { siteUrl });
       this._getListColumns(newValue, siteUrl).then((response) => {
         const col: IPropertyPaneDropdownOption[] = [];
-        for (const _key in response.value) {
+        for (const _key of Object.keys(response.value)) {
           col.push({
             key: response.value[_key]["InternalName"],
             text: response.value[_key]["Title"],
@@ -284,7 +284,7 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
         this.context.propertyPane.refresh();
         this.context.statusRenderer.clearLoadingIndicator(this.domElement);
         this.render();
-      });
+      }).catch((error: unknown) => this._handleConfigurationError(error));
     } else {
       //Handle other fields here
       this.render();
@@ -362,6 +362,14 @@ export default class ModernCalendarWebPart extends BaseClientSideWebPart<IModern
   private _dropdownOptions: IPropertyPaneDropdownOption[] = [];
   private _columnOptions: IPropertyPaneDropdownOption[] = [];
 
+  private _handleConfigurationError(error: unknown): void {
+    this._log('error', 'Error loading calendar configuration', error);
+    this.context.statusRenderer.clearLoadingIndicator(this.domElement);
+    this.context.statusRenderer.renderError(
+      this.domElement,
+      "There was an error loading the calendar configuration. Please verify the selected site and list."
+    );
+  }
 
 
   private _getSiteRootWeb(): Promise<any> {
@@ -466,6 +474,8 @@ const calendar = new Calendar(calendarEl, {
       html: eventDetail, 
       icon: 'info',
 
+    }).catch((error: unknown) => {
+      this._log('error', 'Error displaying calendar event', error);
     });
     
   },
@@ -491,14 +501,14 @@ calendar.render();
 
   private _getSitesAsync(): void {
     this._getSiteRootWeb().then((response) => {
-      this._getSites(response["Url"]).then((response1) => {
+      return this._getSites(response["Url"]).then((response1) => {
         const sites: IPropertyPaneDropdownOption[] = [];
         sites.push({
           key: this.context.pageContext.web.absoluteUrl,
           text: "This Site",
         });
         sites.push({ key: "other", text: "Other Site (Specify Url)" });
-        for (const _key in response1.value) {
+        for (const _key of Object.keys(response1.value)) {
           sites.push({
             key: response1.value[_key]["Url"],
             text: response1.value[_key]["Title"],
@@ -510,7 +520,7 @@ calendar.render();
         if (this.properties.other && this.properties.siteOther) {
           siteUrl = this.properties.siteOther
         }
-        this._getListTitles(siteUrl).then((response2) => {
+        return this._getListTitles(siteUrl).then((response2) => {
           this._dropdownOptions = response2.value.map((list: ISPList) => {
             return {
               key: list.Title,
@@ -520,12 +530,12 @@ calendar.render();
           this.context.propertyPane.refresh();
           if (this.properties.listTitle) {
               this._log('debug', 'this.properties.site', { site: this.properties.site });
-            this._getListColumns(
+            return this._getListColumns(
               this.properties.listTitle,
               this.properties.site
             ).then((response3) => {
               const col: IPropertyPaneDropdownOption[] = [];
-              for (const _innerKey in response3.value) {
+              for (const _innerKey of Object.keys(response3.value)) {
                 col.push({
                   key: response3.value[_innerKey]["InternalName"],
                   text: response3.value[_innerKey]["Title"],
@@ -543,7 +553,7 @@ calendar.render();
           }
         });
       });
-    });
+    }).catch((error: unknown) => this._handleConfigurationError(error));
   }
 
   private _renderListAsync(): void {
