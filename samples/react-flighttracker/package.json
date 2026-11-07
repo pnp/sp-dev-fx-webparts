@@ -16,7 +16,7 @@
     "@microsoft/sp-office-ui-fabric-core": "1.15.2",
     "@microsoft/sp-property-pane": "1.15.2",
     "@microsoft/sp-webpart-base": "1.15.2",
-    "@pnp/spfx-controls-react": "^3.11.0",
+    "@pnp/spfx-controls-react": "^3.21.0",
     "axios": "^1.16.0",
     "date-fns": "^2.29.2",
     "jotai": "^1.9.2",
