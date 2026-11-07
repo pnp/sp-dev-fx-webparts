@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-non-null-assertion */
+ 
 import { SPFI } from "@pnp/sp";
 import "@pnp/sp/profiles";
 import "@pnp/sp/batching";

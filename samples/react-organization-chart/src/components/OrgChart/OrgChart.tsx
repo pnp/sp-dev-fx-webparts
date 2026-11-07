@@ -178,7 +178,7 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
         }
         const profileResponse = await getUserProfile(sp, startFromUserId);
         const wCurrentUser: IUserInfo = await manpingUserProperties(
-          // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+           
           profileResponse!.currentUserProfile
         );
         dispatch({
@@ -289,7 +289,7 @@ export const OrgChart: React.FunctionComponent<IOrgChartProps> = (
           {renderManagers}
           <PersonCard
             key={`current-${currentUser?.id}`}
-            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+             
             userInfo={currentUser!}
             onUserSelected={onUserSelected}
             selectedUser={currentUser}
