@@ -1,0 +1,9 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "noEmit": true,
+    "types": ["node", "webpack-env"]
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "preview/**/*.tsx", "tests/**/*.ts", "tests/**/*.tsx", "playwright.config.ts"]
+}

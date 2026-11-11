@@ -1,0 +1,39 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "smart-support-request-client-side-solution",
+    "id": "b79a640f-5611-4226-a379-4ae768319225",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.24.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Smart Support Request: mock IT support with WebMCP draft filling."
+      },
+      "longDescription": {
+        "default": "An IT support form with optional browser WebMCP draft filling, explicit human review, and in-memory mock receipts. No real requests are sent."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "smart-support-request Feature",
+        "description": "The feature that activates elements of the smart-support-request solution.",
+        "id": "3e9a5ad3-8545-4acf-b6e2-2e598b321cbe",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/smart-support-request.sppkg"
+  }
+}

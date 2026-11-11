@@ -1,0 +1,22 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "smart-support-request",
+    "environment": "spo",
+    "packageManager": "npm",
+    "skipFeatureDeployment": true,
+    "useGulp": false,
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "SmartSupportRequest",
+    "componentDescription": "Mock IT support form with human-reviewed WebMCP autofill",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.18.0",
+    "sdksVersions": {},
+    "version": "1.24.1",
+    "libraryName": "smart-support-request",
+    "libraryId": "b79a640f-5611-4226-a379-4ae768319225",
+    "solutionShortDescription": "smart-support-request description"
+  }
+}
