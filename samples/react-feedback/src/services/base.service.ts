@@ -1,6 +1,17 @@
-import { HttpRequestError } from '@pnp/odata';
+import { HttpRequestError } from '@pnp/queryable';
 import { LogHelper } from "../utilities";
 
+interface IPnPODataError extends Error {
+    data?: {
+        responseBody?: {
+            error?: {
+                message?: {
+                    value?: string;
+                };
+            };
+        };
+    };
+}
 
 export class BaseService {
     constructor() {
@@ -10,11 +21,11 @@ export class BaseService {
         this.logError(methodName, error);
     }
 
-    public logError(methodName: string, error: Error) {
+    public logError(methodName: string, error: Error): void {
         LogHelper.exception(this.constructor.name, methodName, error);
     }
 
-    public logPnpError(methodName: string, error: HttpRequestError | any): string {
+    public logPnpError(methodName: string, error: HttpRequestError | IPnPODataError): string {
         let msg: string;
         if (error instanceof HttpRequestError) {
             if (error.message) {
@@ -25,7 +36,7 @@ export class BaseService {
                 LogHelper.exception(this.constructor.name, methodName, error);
             }
         }
-        else if (error.data != null && error.data.responseBody && error.data.responseBody.error && error.data.responseBody.error.message) {
+        else if (error.data !== null && error.data.responseBody && error.data.responseBody.error && error.data.responseBody.error.message) {
             // for email exceptions they weren't coming in as "instanceof HttpRequestError"
             msg = error.data.responseBody.error.message.value;
             LogHelper.error(this.constructor.name, methodName, msg);
