@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Drive } from "@microsoft/microsoft-graph-types";
 import { MSGraphClientV3 } from "@microsoft/sp-http-msgraph";
 import { WebPartContext } from "@microsoft/sp-webpart-base";
