@@ -1,0 +1,13 @@
+!dist
+config
+
+release
+src
+temp
+
+tsconfig.json
+
+*.log
+
+.yo-rc.json
+.vscode

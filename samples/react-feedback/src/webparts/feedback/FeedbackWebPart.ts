@@ -1,5 +1,4 @@
 import { Version } from '@microsoft/sp-core-library';
-import "@pnp/polyfill-ie11";
 import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import { ThemeProvider, IReadonlyTheme, ThemeChangedEventArgs } from '@microsoft/sp-component-base';
@@ -11,7 +10,6 @@ import {
   PropertyPaneToggle
 } from '@microsoft/sp-webpart-base';
 
-import styles from './FeedbackWebPart.module.scss';
 import * as strings from 'FeedbackWebPartStrings';
 import BaseWebPart from '../BaseWebPart';
 import {Container} from './components/Container/Container';
@@ -43,7 +41,7 @@ export default class FeedbackWebPart extends BaseWebPart<IFeedbackWebPartProps> 
   }
 
   public async render(): Promise<void> {
-    var showCategory = escape(this.properties.showCategory.toString()) == "false" ? false : true;
+    const showCategory = escape(this.properties.showCategory.toString()) === "false" ? false : true;
     const element: React.ReactElement<IContainerProps> = React.createElement(
       Container,
       {
@@ -60,7 +58,7 @@ export default class FeedbackWebPart extends BaseWebPart<IFeedbackWebPartProps> 
 
   private handleThemeChangedEvent(args: ThemeChangedEventArgs): void {
     this.themeVariant = args.theme;
-    this.render();
+    this.render().catch(() => undefined);
   }
 
   protected get dataVersion(): Version {

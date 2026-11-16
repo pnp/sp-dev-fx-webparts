@@ -5,6 +5,10 @@ export interface IContainerProps {
     showCategory: boolean;
     listitemid: number;
     selectedCategory: string;
-    currentUser: any;
+    currentUser: {
+        displayName: string;
+        email: string;
+        loginName?: string;
+    };
     themeVariant: IReadonlyTheme;
 }

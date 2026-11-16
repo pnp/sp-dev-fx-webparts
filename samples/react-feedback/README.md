@@ -13,8 +13,8 @@ This is an application that supports Feedback through a web part that can be use
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node.|
 |Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility.   |
 
-![SPFx 1.11](https://img.shields.io/badge/SPFx-1.11.0-green.svg)
-![Node.js v10](https://img.shields.io/badge/Node.js-v10-green.svg)
+![SPFx 1.23](https://img.shields.io/badge/SPFx-1.23.0-green.svg)
+![Node.js v22](https://img.shields.io/badge/Node.js-v22.14.0-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
 ![Does not work with SharePoint 2016 (Feature Pack 2)](https://img.shields.io/badge/SharePoint%20Server%202016%20(Feature%20Pack%202)-Incompatible-red.svg "SharePoint Server 2016 Feature Pack 2 requires SPFx 1.1")
@@ -34,6 +34,8 @@ This is an application that supports Feedback through a web part that can be use
 * SharePoint Framework [development environment](https://learn.microsoft.com/sharepoint/dev/spfx/set-up-your-development-environment) set up
 * **Feedback Owners** SharePoint group (see below)
 
+> **Note:** Because the SharePoint `SP.Utilities.Utility.SendEmail` API has been retired, this solution sends email through Microsoft Graph (`POST /me/sendMail`). It therefore requests the delegated Microsoft Graph **`Mail.Send`** permission. After deploying the package, a SharePoint or Global administrator must approve this permission request in the **SharePoint admin center > Advanced > API access**. Emails are sent on behalf of the current (signed-in) user.
+
 ## Contributors
 
 * [Perry Kankam](https://github.com/perr124)
@@ -45,6 +47,7 @@ Version|Date|Comments
 -------|----|--------
 1.0.0|December 15, 2020|Initial release
 1.0.1|March 3, 2021|Fix undefined listItem
+1.0.2|November 12, 2026|Upgraded to SPFx 1.23.0 and replaced retired SharePoint SendEmail API with Microsoft Graph sendMail (requires Mail.Send permission)
 
 ## Minimal Path to Awesome
 
@@ -55,11 +58,10 @@ Version|Date|Comments
 * Clone this repository
 * in the command line run:
   * `npm install`
-  * `gulp serve`
+  * `npm run start`
 * Add **Feedback Owners** SharePoint group. This is where you'll add all users who should receive this feedback.
-* Run one of the following custom commands to clean, build, bundle and package the solution.
-    * If you want to be able to debug using your local code using gulp serve
-    `gulp package`
+* Run the following command to clean, build, bundle and package the solution:
+    * `npm run build`
 * Navigate to the output `feedback-webpart.sppkg` (found in the `/sharepoint/solution` folder)
 * Upload it to an application catalog (either a tenant or site collection one)
 * In your site collection go to **Site Contents** and click **New** > **App**
@@ -67,12 +69,11 @@ Version|Date|Comments
     * wait for it to finish installing and activating features on the **Site Contents** page
 * Go to a site page like home, edit the page and find and add the **Feedback** web part
     * If you deployed a shippable (SharePoint Online) version you don't need to do anything else
-    * If you deployed a debug (http://localhost:4321) version you'll need to ensure gulp serve is running
+    * If you deployed a debug (http://localhost:4321) version you'll need to ensure `npm run start` is running
 
 ## Features
 
 This sample illustrates the following concepts:
-- Used [@pnp/polyfill-ie11](https://pnp.github.io/pnpjs/concepts/polyfill/)
 - Used [PnP](https://pnp.github.io/pnpjs/) for communication with SharePoint.
 - Used [@pnp/logging](https://pnp.github.io/pnpjs/logging/)
 
