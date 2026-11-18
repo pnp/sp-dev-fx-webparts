@@ -1,0 +1,22 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "user-provisioning-center",
+    "useGulp": false,
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "ProvisioningCenter",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "22.18.0",
+    "sdksVersions": {},
+    "version": "1.24.1",
+    "libraryName": "user-provisioning-center",
+    "libraryId": "a21f5f9a-c403-49cf-acc3-dcbf79f5c633",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionShortDescription": "Employee onboarding, transfer and offboarding in Microsoft 365",
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx/client-side-web-part-manifest.schema.json",
+  "id": "dc6a94e2-b841-4796-ad85-34472fe6972d",
+  "alias": "ProvisioningCenterWebPart",
+  "componentType": "WebPart",
+
+  "version": "*",
+  "manifestVersion": 2,
+
+  "requiresCustomScript": false,
+  "supportedHosts": ["SharePointWebPart", "TeamsPersonalApp", "TeamsTab", "SharePointFullPage"],
+  "supportsThemeVariants": true,
+
+  "preconfiguredEntries": [{
+    "groupId": "5c03119e-3074-46fd-976b-c60198311f70",
+    "group": { "default": "Business Process" },
+    "title": { "default": "User Provisioning Center" },
+    "description": { "default": "Onboard, transfer and offboard employees in Microsoft 365 using Microsoft Graph and SharePoint lists, with no custom backend." },
+    "officeFabricIconFontName": "PeopleAdd",
+    "properties": {
+      "description": "User Provisioning Center"
+    }
+  }]
+}
