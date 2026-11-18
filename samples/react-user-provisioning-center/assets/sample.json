@@ -34,42 +34,42 @@
         "name": "Dashboard.png",
         "type": "image",
         "order": 100,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-user-provisioning-center/assets/Dashboard.png",
+        "url": "https://raw.githubusercontent.com/NicolasKheirallah/sp-dev-fx-webparts/react-UserProvisioningCenter/samples/react-user-provisioning-center/assets/Dashboard.png",
         "alt": "Dashboard job grid with filters and inline approve"
       },
       {
         "name": "Dashboard2.png",
         "type": "image",
         "order": 200,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-user-provisioning-center/assets/Dashboard2.png",
+        "url": "https://raw.githubusercontent.com/NicolasKheirallah/sp-dev-fx-webparts/react-UserProvisioningCenter/samples/react-user-provisioning-center/assets/Dashboard2.png",
         "alt": "Dashboard with KPI tiles and charts on a SharePoint page"
       },
       {
         "name": "NewUser.png",
         "type": "image",
         "order": 300,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-user-provisioning-center/assets/NewUser.png",
+        "url": "https://raw.githubusercontent.com/NicolasKheirallah/sp-dev-fx-webparts/react-UserProvisioningCenter/samples/react-user-provisioning-center/assets/NewUser.png",
         "alt": "Onboarding wizard, Personal step"
       },
       {
         "name": "Panel.png",
         "type": "image",
         "order": 400,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-user-provisioning-center/assets/Panel.png",
+        "url": "https://raw.githubusercontent.com/NicolasKheirallah/sp-dev-fx-webparts/react-UserProvisioningCenter/samples/react-user-provisioning-center/assets/Panel.png",
         "alt": "Job details drawer with step progress and retry"
       },
       {
         "name": "BulkImport.png",
         "type": "image",
         "order": 500,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-user-provisioning-center/assets/BulkImport.png",
+        "url": "https://raw.githubusercontent.com/NicolasKheirallah/sp-dev-fx-webparts/react-UserProvisioningCenter/samples/react-user-provisioning-center/assets/BulkImport.png",
         "alt": "Bulk import with validated rows"
       },
       {
         "name": "Template.png",
         "type": "image",
         "order": 600,
-        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-user-provisioning-center/assets/Template.png",
+        "url": "https://raw.githubusercontent.com/NicolasKheirallah/sp-dev-fx-webparts/react-UserProvisioningCenter/samples/react-user-provisioning-center/assets/Template.png",
         "alt": "Department template editor"
       }
     ],
