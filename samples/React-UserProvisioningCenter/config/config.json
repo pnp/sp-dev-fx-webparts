@@ -1,0 +1,19 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "provisioning-center-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/provisioningCenter/ProvisioningCenterWebPart.js",
+          "manifest": "./src/webparts/provisioningCenter/ProvisioningCenterWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "ProvisioningCenterWebPartStrings": "lib/webparts/provisioningCenter/loc/{locale}.js",
+    "UpcStrings": "lib/loc/{locale}.js"
+  }
+}

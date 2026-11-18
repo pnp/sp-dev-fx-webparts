@@ -1,0 +1,106 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-user-provisioning-center",
+    "source": "pnp",
+    "title": "User Provisioning Center",
+    "shortDescription": "Client-only SPFx web part for employee onboarding, transfer and offboarding in Microsoft 365, with no Azure Functions and no custom backend. Runs as a SharePoint web part, a Teams tab and a Teams personal app.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-user-provisioning-center",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-user-provisioning-center",
+    "longDescription": [
+      "User Provisioning Center runs employee onboarding, transfers and offboarding out of Microsoft 365 with no Azure Functions and no custom backend. Every operation is a delegated Microsoft Graph call made from the browser under the signed-in operator's own permissions; job state, tasks, templates and the audit trail live in SharePoint lists. Anything Graph genuinely can't do from a client context is routed to a service-desk task instead of failing the job silently."
+    ],
+    "creationDateTime": "2026-07-04",
+    "updateDateTime": "2026-11-18",
+    "products": [
+      "SharePoint",
+      "Microsoft Teams"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.24.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "Dashboard.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-user-provisioning-center/assets/Dashboard.png",
+        "alt": "Dashboard job grid with filters and inline approve"
+      },
+      {
+        "name": "Dashboard2.png",
+        "type": "image",
+        "order": 200,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-user-provisioning-center/assets/Dashboard2.png",
+        "alt": "Dashboard with KPI tiles and charts on a SharePoint page"
+      },
+      {
+        "name": "NewUser.png",
+        "type": "image",
+        "order": 300,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-user-provisioning-center/assets/NewUser.png",
+        "alt": "Onboarding wizard, Personal step"
+      },
+      {
+        "name": "Panel.png",
+        "type": "image",
+        "order": 400,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-user-provisioning-center/assets/Panel.png",
+        "alt": "Job details drawer with step progress and retry"
+      },
+      {
+        "name": "BulkImport.png",
+        "type": "image",
+        "order": 500,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-user-provisioning-center/assets/BulkImport.png",
+        "alt": "Bulk import with validated rows"
+      },
+      {
+        "name": "Template.png",
+        "type": "image",
+        "order": 600,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-user-provisioning-center/assets/Template.png",
+        "alt": "Department template editor"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "NicolasKheirallah",
+        "pictureUrl": "https://github.com/NicolasKheirallah.png",
+        "name": "Nicolas Kheirallah"
+      }
+    ],
+    "references": [
+      {
+        "name": "Build your first SharePoint client-side web part",
+        "description": "Client-side web parts are client-side components that run in the context of a SharePoint page. Client-side web parts can be deployed to SharePoint environments that support the SharePoint Framework. You can also use modern JavaScript web frameworks, tools, and libraries to build them.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/build-a-hello-world-web-part"
+      },
+      {
+        "name": "Use Microsoft Graph in your solution",
+        "description": "How to call Microsoft Graph from an SPFx web part using the built-in MSGraphClient.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/web-parts/get-started/using-microsoft-graph-apis"
+      },
+      {
+        "name": "Build for Microsoft Teams using SharePoint Framework",
+        "description": "Use SharePoint Framework to build a tab or personal app for Microsoft Teams.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/build-for-teams"
+      },
+      {
+        "name": "PnPJS",
+        "description": "Fluent API for SharePoint and Microsoft Graph, used here for list access and provisioning.",
+        "url": "https://pnp.github.io/pnpjs/"
+      }
+    ]
+  }
+]

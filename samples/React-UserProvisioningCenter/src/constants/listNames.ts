@@ -1,0 +1,11 @@
+export const LIST_DEPARTMENT_TEMPLATES: string = 'UPC_DepartmentTemplates';
+export const LIST_PROVISIONING_JOBS: string = 'UPC_ProvisioningJobs';
+export const LIST_AUDIT_LOG: string = 'UPC_AuditLog';
+export const LIST_APPLICATION_CATALOG: string = 'UPC_ApplicationCatalog';
+export const LIST_ROLES: string = 'UPC_Roles';
+export const LIST_TEAMS_CATALOG: string = 'UPC_TeamsCatalog';
+export const LIST_SITE_CATALOG: string = 'UPC_SiteCatalog';
+export const LIST_LICENSE_COST_TABLE: string = 'UPC_LicenseCostTable';
+export const LIST_TASKS: string = 'UPC_Tasks';
+export const LIST_SETTINGS: string = 'UPC_Settings';
+export const LIST_APPROVAL_DELEGATIONS: string = 'UPC_ApprovalDelegations';

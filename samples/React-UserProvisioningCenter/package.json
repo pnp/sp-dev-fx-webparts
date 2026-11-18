@@ -1,0 +1,57 @@
+{
+  "name": "user-provisioning-center",
+  "version": "0.0.1",
+  "private": true,
+  "engines": {
+    "node": ">=22.14.0 <23.0.0 || ^24.0.0 || ^26.0.0"
+  },
+  "scripts": {
+    "build": "heft build --production && heft package-solution --production",
+    "clean": "heft clean",
+    "eject-webpack": "heft eject-webpack",
+    "start": "heft start --clean",
+    "trust-dev-cert": "heft trust-dev-cert",
+    "untrust-dev-cert": "heft untrust-dev-cert"
+  },
+  "dependencies": {
+    "@fluentui/react-components": "^9.75.2",
+    "@fluentui/react-icons": "^2.0.332",
+    "@hookform/resolvers": "^3.9.0",
+    "@microsoft/sp-component-base": "1.24.1",
+    "@microsoft/sp-core-library": "1.24.1",
+    "@microsoft/sp-http": "1.24.1",
+    "@microsoft/sp-lodash-subset": "1.24.1",
+    "@microsoft/sp-office-ui-fabric-core": "1.24.1",
+    "@microsoft/sp-property-pane": "1.24.1",
+    "@microsoft/sp-webpart-base": "1.24.1",
+    "@pnp/queryable": "^4.23.0",
+    "@pnp/sp": "^4.23.0",
+    "@tanstack/react-query": "^4.36.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "react-hook-form": "^7.81.0",
+    "recharts": "^3.9.2",
+    "scheduler": "^0.23.2",
+    "tslib": "2.3.1",
+    "yup": "^1.4.0"
+  },
+  "devDependencies": {
+    "@microsoft/eslint-config-spfx": "1.24.1",
+    "@microsoft/eslint-plugin-spfx": "1.24.1",
+    "@microsoft/microsoft-graph-types": "^2.43.1",
+    "@microsoft/sp-module-interfaces": "1.24.1",
+    "@microsoft/spfx-heft-plugins": "1.24.1",
+    "@microsoft/spfx-web-build-rig": "1.24.1",
+    "@rushstack/heft": "1.2.17",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "@types/webpack-env": "~1.18.8",
+    "css-loader": "~7.1.2",
+    "eslint": "9.37.0",
+    "eslint-plugin-react-hooks": "5.2.0",
+    "typescript": "~5.8.0"
+  },
+  "overrides": {
+    "@rushstack/heft": "1.2.17"
+  }
+}

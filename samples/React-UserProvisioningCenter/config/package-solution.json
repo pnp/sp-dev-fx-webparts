@@ -1,0 +1,50 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "user-provisioning-center-client-side-solution",
+    "id": "a21f5f9a-c403-49cf-acc3-dcbf79f5c633",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "webApiPermissionRequests": [
+      { "resource": "Microsoft Graph", "scope": "User.ReadWrite.All" },
+      { "resource": "Microsoft Graph", "scope": "GroupMember.ReadWrite.All" },
+      { "resource": "Microsoft Graph", "scope": "Organization.Read.All" },
+      { "resource": "Microsoft Graph", "scope": "Directory.Read.All" },
+      { "resource": "Microsoft Graph", "scope": "UserAuthenticationMethod.ReadWrite.All" },
+      { "resource": "Microsoft Graph", "scope": "Mail.Send" },
+      { "resource": "Microsoft Graph", "scope": "User.Invite.All" },
+      { "resource": "Microsoft Graph", "scope": "TeamMember.ReadWrite.All" }
+    ],
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.24.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Client-only SPFx web part for employee onboarding, transfer and offboarding in Microsoft 365, backed by Microsoft Graph and SharePoint lists."
+      },
+      "longDescription": {
+        "default": "User Provisioning Center runs employee onboarding, transfers and offboarding out of Microsoft 365 with no Azure Functions and no custom backend. Every operation is a delegated Microsoft Graph call made from the browser under the signed-in operator's own permissions; job state, tasks, templates and the audit trail live in SharePoint lists. Ships as a SharePoint web part, a Teams tab and a Teams personal app."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": ["Productivity"]
+    },
+    "features": [
+      {
+        "title": "user-provisioning-center Feature",
+        "description": "The feature that activates elements of the user-provisioning-center solution.",
+        "id": "3623d6e9-b7ef-4d9d-923d-6f29cd016735",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/user-provisioning-center.sppkg"
+  }
+}
