@@ -112,8 +112,8 @@ export class TimelineTab extends React.Component<ITabProps, ITimelineTabState> {
     const totalMs = gridEnd.getTime() - gridStart.getTime();
 
     const weeks: Date[] = [];
-    const cur = new Date(gridStart.getTime());
-    while (cur <= gridEnd) { weeks.push(new Date(cur.getTime())); cur.setDate(cur.getDate() + 7); }
+    let cur = new Date(gridStart.getTime());
+    while (cur <= gridEnd) { weeks.push(cur); cur = new Date(cur.getFullYear(), cur.getMonth(), cur.getDate() + 7); }
 
     const resourceOrder: string[] = [];
     const byResource = new Map<string, IDeliveryPlanTask[]>();

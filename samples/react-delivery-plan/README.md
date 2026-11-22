@@ -37,8 +37,9 @@ Phases are auto-coloured from a 10-colour palette based on the unique values in 
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node. |
 | Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility. |
 
-![SPFx 1.20.2](https://img.shields.io/badge/SPFx-1.20.2-green.svg)
+![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
 ![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
+![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
 ![Does not work with SharePoint 2016](https://img.shields.io/badge/SharePoint%20Server%202016-Incompatible-red.svg)
@@ -78,6 +79,7 @@ Use the included PowerShell script to create the list and columns automatically 
 |---|---|---|
 | 1.0 | 26 August 2026 | Initial release |
 | 1.1 | 20 October 2026 | Added zoom to the Timeline view |
+| 1.2 | 22 November 2026 | Upgraded to SPFx 1.21.1 (TypeScript 5.3, Node.js 22 support); fixed week gridlines drifting across daylight-saving changes in the Timeline and Weekly workload views |
 
 ## Minimal Path to Awesome
 
@@ -106,7 +108,7 @@ npm run trust-dev-cert
 npm run serve
 ```
 
-- Open the hosted workbench at `https://<your-tenant>.sharepoint.com/sites/<your-site>/_layouts/15/workbench.aspx`, add the **Delivery Plan** web part, and configure the list name in the property pane.
+- Open the local workbench at `https://localhost:4321/workbench` (or the hosted workbench at `https://<your-tenant>.sharepoint.com/sites/<your-site>/_layouts/15/workbench.aspx`), add the **Delivery Plan** web part, and configure the list name in the property pane.
 
 ### Build for production
 

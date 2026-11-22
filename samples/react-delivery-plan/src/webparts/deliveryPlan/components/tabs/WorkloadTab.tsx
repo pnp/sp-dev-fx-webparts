@@ -19,11 +19,10 @@ function fmtWeek(d: Date): string {
 
 function getMondays(start: Date, end: Date): Date[] {
   const result: Date[] = [];
-  const cur = new Date(start.getTime());
-  cur.setHours(0, 0, 0, 0);
-  const day = cur.getDay();
-  cur.setDate(cur.getDate() + (day === 0 ? -6 : 1 - day));
-  while (cur <= end) { result.push(new Date(cur.getTime())); cur.setDate(cur.getDate() + 7); }
+  const first = new Date(start.getFullYear(), start.getMonth(), start.getDate());
+  const day = first.getDay();
+  let cur = new Date(first.getFullYear(), first.getMonth(), first.getDate() + (day === 0 ? -6 : 1 - day));
+  while (cur <= end) { result.push(cur); cur = new Date(cur.getFullYear(), cur.getMonth(), cur.getDate() + 7); }
   return result;
 }
 

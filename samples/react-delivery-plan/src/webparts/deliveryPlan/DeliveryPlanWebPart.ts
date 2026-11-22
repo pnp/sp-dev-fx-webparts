@@ -60,7 +60,7 @@ export default class DeliveryPlanWebPart extends BaseClientSideWebPart<IDelivery
         } as IDeliveryPlanTask;
       });
       this._errorMessage = '';
-    } catch (err) {
+    } catch {
       this._tasks = [];
       this._errorMessage = `Unable to load list "${listName}". Check the list name and your permissions.`;
     }
