@@ -27,7 +27,7 @@ import {
   ImageIcon,
   css,
   TooltipHost,
-} from "office-ui-fabric-react";
+} from "@fluentui/react";
 
 
 const _siteLogoSP: string =
@@ -129,7 +129,7 @@ export const SiteTile: React.FunctionComponent<ISiteTileProps> = (
 
   // Use Effect on Mounting
   React.useEffect(() => {
-    (async () => {
+    void (async () => {
       if (ModifiedById && LastModifiedTime) {
         const _modifiedBySplit = ModifiedById.split("|");
         _activityUserEmail = _modifiedBySplit[0].trim();

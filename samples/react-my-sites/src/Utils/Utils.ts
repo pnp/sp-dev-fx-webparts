@@ -10,7 +10,7 @@ const PROFILE_IMAGE_URL: string = '/_layouts/15/userphoto.aspx?size=M&accountnam
    * @param userId
    * @returns user photo
    */
-  export const getUserPhoto = async (userId): Promise<string> =>  {
+  export async function getUserPhoto(userId: string): Promise<string> {
     const personaImgUrl = PROFILE_IMAGE_URL + userId;
     console.log(personaImgUrl);
     // tslint:disable-next-line: no-use-before-declare
@@ -23,16 +23,15 @@ const PROFILE_IMAGE_URL: string = '/_layouts/15/userphoto.aspx?size=M&accountnam
     } else {
       return 'undefined';
     }
-  };
+  }
 
   /**
    * Get MD5Hash for the image url to verify whether user has default image or custom image
    * @param url
    */
-  export const  getMd5HashForUrl = async (url: string) => {
-    return new Promise(async (resolve, reject) => {
-      // tslint:disable-next-line: no-use-before-declare
-      const library: any = await loadSPComponentById(MD5_MODULE_ID);
+  export function getMd5HashForUrl(url: string): Promise<string> {
+    return new Promise<string>((resolve, reject) => {
+      loadSPComponentById(MD5_MODULE_ID).then((library: any) => {
       try {
         const md5Hash = library.Md5Hash;
         if (md5Hash) {
@@ -42,14 +41,15 @@ const PROFILE_IMAGE_URL: string = '/_layouts/15/userphoto.aspx?size=M&accountnam
       } catch (error) {
         resolve(url);
       }
+      }, reject);
     });
-  };
+  }
 
   /**
    * Load SPFx component by id, SPComponentLoader is used to load the SPFx components
    * @param componentId - componentId, guid of the component library
    */
-  export const loadSPComponentById = async (componentId: string) => {
+  export function loadSPComponentById(componentId: string): Promise<any> {
     return new Promise((resolve, reject) => {
       SPComponentLoader.loadComponentById(componentId)
         .then((component: any) => {
@@ -57,13 +57,13 @@ const PROFILE_IMAGE_URL: string = '/_layouts/15/userphoto.aspx?size=M&accountnam
         })
         .catch(error => {});
     });
-  };
+  }
   /**
    * Gets image base64
    * @param pictureUrl
    * @returns image base64
    */
-  export const getImageBase64 =  async (pictureUrl: string): Promise<string> => {
+  export async function getImageBase64(pictureUrl: string): Promise<string> {
     console.log(pictureUrl);
     return new Promise((resolve, reject) => {
       let image = new Image();
@@ -81,4 +81,4 @@ const PROFILE_IMAGE_URL: string = '/_layouts/15/userphoto.aspx?size=M&accountnam
       });
       image.src = pictureUrl;
     });
-  };
+  }

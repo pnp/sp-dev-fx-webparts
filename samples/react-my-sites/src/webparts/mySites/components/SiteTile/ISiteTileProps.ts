@@ -1,8 +1,8 @@
 
 import { IReadonlyTheme } from '@microsoft/sp-component-base';
-import { MSGraphClient, AadTokenProvider } from "@microsoft/sp-http";
+import { MSGraphClientV3, AadTokenProvider } from "@microsoft/sp-http";
 export interface ISiteTileProps {
-  msGraphClient:MSGraphClient;
+  msGraphClient:MSGraphClientV3;
   site:any;
   themeVariant: IReadonlyTheme | undefined;
   locale:string;

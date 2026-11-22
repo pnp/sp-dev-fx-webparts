@@ -1,4 +1,4 @@
-import { MSGraphClient, AadTokenProvider } from "@microsoft/sp-http";
+import { MSGraphClientV3, AadTokenProvider } from "@microsoft/sp-http";
 import { Filters } from "../Entities/EnumFilters";
 import { sp } from "@pnp/sp";
 import "@pnp/sp/sites";
@@ -26,7 +26,7 @@ export const useUserSites = () => {
 
   const checkGroupHasTeam = async (
     groupId: string,
-    msGraphClient: MSGraphClient
+    msGraphClient: MSGraphClientV3
   ): Promise<boolean> => {
     // Check if value alreqdy cached
     const cachedValue:string = storage.local.get(groupId);
@@ -227,7 +227,7 @@ const getUserGroups = async (
 
 
 
-  const getUserTeams = async (userId:string,msGraphClient:MSGraphClient):Promise<ITeam[]> =>  {
+  const getUserTeams = async (userId:string,msGraphClient:MSGraphClientV3):Promise<ITeam[]> =>  {
 
  
     const cachedListTeamsValue:ITeam[] = storage.local.get(userId);

@@ -3,10 +3,32 @@
   "solution": {
     "name": "react-my-sites-client-side-solution",
     "id": "ad28b382-886b-4b2a-9646-92de8a0b1d13",
-    "version": "1.0.2.0",
+    "version": "1.0.3.0",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,
+    "metadata": {
+      "shortDescription": {
+        "default": "My Sites web part"
+      },
+      "longDescription": {
+        "default": "Displays SharePoint sites, Microsoft 365 groups, OneDrive sites, and app sites the current user can access."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-my-sites MySitesWebPart Feature",
+        "description": "The feature that activates MySitesWebPart from the react-my-sites solution.",
+        "id": "07c6a242-bf1b-4ba4-bf1b-7d0533cd65fd",
+        "version": "1.0.3.0",
+        "componentIds": [
+          "07c6a242-bf1b-4ba4-bf1b-7d0533cd65fd"
+        ]
+      }
+    ],
     "developer": {
       "name": "",
       "websiteUrl": "",
