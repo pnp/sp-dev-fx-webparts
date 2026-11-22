@@ -7,7 +7,7 @@ A project delivery dashboard web part that reads tasks from a SharePoint list an
 
 | View | Description |
 | --- | --- |
-| **Timeline** | Gantt chart grouped by resource — tasks appear as colour-coded bars positioned by start date and duration, with week gridlines and a today marker |
+| **Timeline** | Gantt chart grouped by resource — tasks appear as colour-coded bars positioned by start date and duration, with week gridlines, a today marker and zoom controls |
 | **Weekly workload** | Heat-map grid showing how many tasks each resource has running concurrently per week — darker cells mean more concurrent work |
 | **Task list** | Sortable table of all tasks with resource, phase, start date, end date and duration |
 | **Phase summary** | Horizontal bars spanning each phase's earliest start to latest end, with contributing resources and task count |
@@ -37,8 +37,9 @@ Phases are auto-coloured from a 10-colour palette based on the unique values in 
 | Every SPFx version is only compatible with specific version(s) of Node.js. In order to be able to build this sample, please ensure that the version of Node on your workstation matches one of the versions listed in this section. This sample will not work on a different version of Node. |
 | Refer to <https://aka.ms/spfx-matrix> for more information on SPFx compatibility. |
 
-![SPFx 1.20.2](https://img.shields.io/badge/SPFx-1.20.2-green.svg)
+![SPFx 1.21.1](https://img.shields.io/badge/SPFx-1.21.1-green.svg)
 ![Node.js v18](https://img.shields.io/badge/Node.js-v18-green.svg)
+![Node.js v22](https://img.shields.io/badge/Node.js-v22-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg)
 ![Does not work with SharePoint 2016](https://img.shields.io/badge/SharePoint%20Server%202016-Incompatible-red.svg)
@@ -77,6 +78,8 @@ Use the included PowerShell script to create the list and columns automatically 
 | Version | Date | Comments |
 |---|---|---|
 | 1.0 | 26 August 2026 | Initial release |
+| 1.1 | 20 October 2026 | Added zoom to the Timeline view |
+| 1.2 | 22 November 2026 | Upgraded to SPFx 1.21.1 (TypeScript 5.3, Node.js 22 support); fixed week gridlines drifting across daylight-saving changes in the Timeline and Weekly workload views |
 
 ## Minimal Path to Awesome
 
@@ -105,7 +108,7 @@ npm run trust-dev-cert
 npm run serve
 ```
 
-- Open the hosted workbench at `https://<your-tenant>.sharepoint.com/sites/<your-site>/_layouts/15/workbench.aspx`, add the **Delivery Plan** web part, and configure the list name in the property pane.
+- Open the local workbench at `https://localhost:4321/workbench` (or the hosted workbench at `https://<your-tenant>.sharepoint.com/sites/<your-site>/_layouts/15/workbench.aspx`), add the **Delivery Plan** web part, and configure the list name in the property pane.
 
 ### Build for production
 
@@ -157,6 +160,19 @@ Install-Module PnP.PowerShell -Scope CurrentUser
 Tasks are grouped into per-resource lanes. Within each lane, each task appears as a coloured bar whose horizontal position and width correspond exactly to its start date and duration in calendar days. The colour is determined by the task's phase.
 
 The lane header shows the resource's avatar (initials, colour-coded by name), total task count, and cumulative person-days. A red vertical line marks today's date when it falls within the plan window.
+
+#### Zoom
+
+By default the timeline fits the whole plan to the width of the web part. Use the toolbar above the timeline to zoom in for more detail on shorter tasks:
+
+| Control | Action |
+| --- | --- |
+| **−** / **+** | Zoom out / in through 100%, 150%, 200%, 300%, 400%, 600% and 800% |
+| **Fit** | Return to 100% so the whole plan fits the width |
+| **Today** | Scroll so today's date is centred (shown when today falls within the plan window) |
+| **Ctrl / ⌘ + mouse wheel** | Zoom around the date under the cursor |
+
+When zoomed in, scroll horizontally to move through the plan. The task column and lane headers stay pinned on the left, so you can always see which task and resource each bar belongs to.
 
 ### Weekly workload — concurrent task heat-map
 

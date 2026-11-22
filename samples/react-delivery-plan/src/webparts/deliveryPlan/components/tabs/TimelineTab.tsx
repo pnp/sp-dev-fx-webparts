@@ -33,9 +33,75 @@ function snapToSunday(d: Date): Date {
   return c;
 }
 
-export class TimelineTab extends React.Component<ITabProps> {
+const INFO_WIDTH = 220;
+const ZOOM_LEVELS = [1, 1.5, 2, 3, 4, 6, 8];
+
+interface ITimelineTabState {
+  zoomIndex: number;
+}
+
+export class TimelineTab extends React.Component<ITabProps, ITimelineTabState> {
+  private _scrollRef = React.createRef<HTMLDivElement>();
+  // Fraction of the timeline (0-1) to keep at a given viewport x after a zoom change
+  private _pendingAnchor: { fraction: number; viewportX: number } | undefined;
+
+  constructor(props: ITabProps) {
+    super(props);
+    this.state = { zoomIndex: 0 };
+  }
+
+  public componentDidMount(): void {
+    this._scrollRef.current?.addEventListener('wheel', this._onWheel, { passive: false });
+  }
+
+  public componentWillUnmount(): void {
+    this._scrollRef.current?.removeEventListener('wheel', this._onWheel);
+  }
+
+  public componentDidUpdate(_prevProps: ITabProps, prevState: ITimelineTabState): void {
+    const el = this._scrollRef.current;
+    if (!el || !this._pendingAnchor || prevState.zoomIndex === this.state.zoomIndex) return;
+    const { fraction, viewportX } = this._pendingAnchor;
+    this._pendingAnchor = undefined;
+    el.scrollLeft = fraction * this._timelineWidth(el) + INFO_WIDTH - viewportX;
+  }
+
+  private _timelineWidth(el: HTMLDivElement): number {
+    return (el.clientWidth - INFO_WIDTH) * ZOOM_LEVELS[this.state.zoomIndex];
+  }
+
+  private _setZoom(zoomIndex: number, viewportX?: number): void {
+    const el = this._scrollRef.current;
+    const next = Math.max(0, Math.min(ZOOM_LEVELS.length - 1, zoomIndex));
+    if (!el || next === this.state.zoomIndex) return;
+    // Default anchor: centre of the visible timeline area
+    const x = viewportX !== undefined ? viewportX : INFO_WIDTH + (el.clientWidth - INFO_WIDTH) / 2;
+    const fraction = (el.scrollLeft + x - INFO_WIDTH) / this._timelineWidth(el);
+    this._pendingAnchor = { fraction: Math.max(0, Math.min(1, fraction)), viewportX: x };
+    this.setState({ zoomIndex: next });
+  }
+
+  private _onWheel = (e: WheelEvent): void => {
+    if (!e.ctrlKey && !e.metaKey) return;
+    const el = this._scrollRef.current;
+    if (!el) return;
+    e.preventDefault();
+    const x = e.clientX - el.getBoundingClientRect().left;
+    if (x < INFO_WIDTH) return;
+    this._setZoom(this.state.zoomIndex + (e.deltaY < 0 ? 1 : -1), x);
+  };
+
+  private _scrollToFraction(fraction: number): void {
+    const el = this._scrollRef.current;
+    if (!el) return;
+    const visible = el.clientWidth - INFO_WIDTH;
+    el.scrollLeft = fraction * this._timelineWidth(el) - visible / 2;
+  }
+
   public render(): React.ReactElement {
     const { tasks, phaseColours, planStart, planEnd } = this.props;
+    const { zoomIndex } = this.state;
+    const zoom = ZOOM_LEVELS[zoomIndex];
 
     if (!tasks.length) {
       return <div className={styles.empty}>No tasks found.</div>;
@@ -46,8 +112,8 @@ export class TimelineTab extends React.Component<ITabProps> {
     const totalMs = gridEnd.getTime() - gridStart.getTime();
 
     const weeks: Date[] = [];
-    const cur = new Date(gridStart.getTime());
-    while (cur <= gridEnd) { weeks.push(new Date(cur.getTime())); cur.setDate(cur.getDate() + 7); }
+    let cur = new Date(gridStart.getTime());
+    while (cur <= gridEnd) { weeks.push(cur); cur = new Date(cur.getFullYear(), cur.getMonth(), cur.getDate() + 7); }
 
     const resourceOrder: string[] = [];
     const byResource = new Map<string, IDeliveryPlanTask[]>();
@@ -69,56 +135,100 @@ export class TimelineTab extends React.Component<ITabProps> {
     };
 
     return (
-      <div className={styles.container}>
+      <div>
         <h3 className={styles.heading}>Timeline by resource</h3>
         <p className={styles.desc}>
           Every task, positioned by its start date and duration. Grouped into lanes — one per resource — with week gridlines.
         </p>
 
-        <div className={styles.headerRow}>
-          <div className={styles.taskInfoHeader}>TASK</div>
-          <div className={styles.weekHeaders} style={{ gridTemplateColumns: `repeat(${weeks.length}, 1fr)` }}>
-            {weeks.map((w, i) => <div key={i} className={styles.weekLabel}>{fmt(w)}</div>)}
-          </div>
+        <div className={styles.toolbar}>
+          <button
+            type="button"
+            className={styles.zoomButton}
+            onClick={() => this._setZoom(zoomIndex - 1)}
+            disabled={zoomIndex === 0}
+            title="Zoom out"
+            aria-label="Zoom out"
+          >&minus;</button>
+          <span className={styles.zoomLevel} aria-live="polite">{Math.round(zoom * 100)}%</span>
+          <button
+            type="button"
+            className={styles.zoomButton}
+            onClick={() => this._setZoom(zoomIndex + 1)}
+            disabled={zoomIndex === ZOOM_LEVELS.length - 1}
+            title="Zoom in"
+            aria-label="Zoom in"
+          >+</button>
+          <button
+            type="button"
+            className={styles.textButton}
+            onClick={() => this._setZoom(0)}
+            disabled={zoomIndex === 0}
+          >Fit</button>
+          {showToday && (
+            <button
+              type="button"
+              className={styles.textButton}
+              onClick={() => this._scrollToFraction(todayPct / 100)}
+              disabled={zoomIndex === 0}
+            >Today</button>
+          )}
+          <span className={styles.zoomHint}>Ctrl / &#8984; + scroll to zoom</span>
         </div>
 
-        {resourceOrder.map(resource => {
-          const laneTasks = byResource.get(resource)!;
-          const personDays = laneTasks.reduce((s, t) => s + t.durationDays, 0);
-          return (
-            <div key={resource} className={styles.lane}>
-              <div className={styles.laneHeader}>
-                <span className={styles.avatar} style={{ backgroundColor: hashColour(resource) }}>
-                  {getInitials(resource)}
-                </span>
-                <span className={styles.resourceName}>{resource}</span>
-                <span className={styles.laneMeta}>{laneTasks.length} tasks &middot; {personDays} person-days</span>
+        <div className={styles.container} ref={this._scrollRef}>
+          <div
+            className={styles.inner}
+            style={{ width: `calc(${INFO_WIDTH}px + (100% - ${INFO_WIDTH}px) * ${zoom})`, ['--tl-zoom' as string]: zoom } as React.CSSProperties}
+          >
+            <div className={styles.headerRow}>
+              <div className={styles.taskInfoHeader}>TASK</div>
+              <div className={styles.weekHeaders} style={{ gridTemplateColumns: `repeat(${weeks.length}, 1fr)` }}>
+                {weeks.map((w, i) => <div key={i} className={styles.weekLabel}>{fmt(w)}</div>)}
               </div>
-              {laneTasks.map(task => (
-                <div key={task.id} className={styles.taskRow}>
-                  <div className={styles.taskInfo}>
-                    <div className={styles.taskTitle}>{task.title}</div>
-                    <div className={styles.taskMeta}>{fmt(task.startDate)} &rarr; {fmt(task.endDate)} &middot; {task.durationDays}d</div>
-                  </div>
-                  <div className={styles.barArea}>
-                    {showToday && <div className={styles.todayLine} style={{ left: `${todayPct}%` }} />}
-                    <div
-                      className={styles.bar}
-                      style={{
-                        left: `${barLeft(task.startDate)}%`,
-                        width: `${barWidth(task)}%`,
-                        backgroundColor: phaseColours.get(task.phase) || '#0078d4'
-                      }}
-                      title={`${task.title} (${task.phase})`}
-                    >
-                      <span className={styles.barLabel}>{task.title}</span>
+            </div>
+
+            {resourceOrder.map(resource => {
+              const laneTasks = byResource.get(resource)!;
+              const personDays = laneTasks.reduce((s, t) => s + t.durationDays, 0);
+              return (
+                <div key={resource} className={styles.lane}>
+                  <div className={styles.laneHeader}>
+                    <div className={styles.laneHeaderInner}>
+                      <span className={styles.avatar} style={{ backgroundColor: hashColour(resource) }}>
+                        {getInitials(resource)}
+                      </span>
+                      <span className={styles.resourceName}>{resource}</span>
+                      <span className={styles.laneMeta}>{laneTasks.length} tasks &middot; {personDays} person-days</span>
                     </div>
                   </div>
+                  {laneTasks.map(task => (
+                    <div key={task.id} className={styles.taskRow}>
+                      <div className={styles.taskInfo}>
+                        <div className={styles.taskTitle}>{task.title}</div>
+                        <div className={styles.taskMeta}>{fmt(task.startDate)} &rarr; {fmt(task.endDate)} &middot; {task.durationDays}d</div>
+                      </div>
+                      <div className={styles.barArea}>
+                        {showToday && <div className={styles.todayLine} style={{ left: `${todayPct}%` }} />}
+                        <div
+                          className={styles.bar}
+                          style={{
+                            left: `${barLeft(task.startDate)}%`,
+                            width: `${barWidth(task)}%`,
+                            backgroundColor: phaseColours.get(task.phase) || '#0078d4'
+                          }}
+                          title={`${task.title} (${task.phase})`}
+                        >
+                          <span className={styles.barLabel}>{task.title}</span>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
-          );
-        })}
+              );
+            })}
+          </div>
+        </div>
       </div>
     );
   }
