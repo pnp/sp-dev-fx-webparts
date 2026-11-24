@@ -13,3 +13,4 @@ Completed exercise code for the SharePoint Framework training modules on Microso
 | [mslearn-module-get-started](mslearn-module-get-started/README.md) | [Configure a SharePoint Framework development environment](https://learn.microsoft.com/training/modules/sharepoint-spfx-get-started/) |
 | [mslearn-module-web-parts](mslearn-module-web-parts/README.md) | [Develop web parts with the SharePoint Framework](https://learn.microsoft.com/training/modules/sharepoint-spfx-web-parts/) |
 | [mslearn-module-web-part-property-pane](mslearn-module-web-part-property-pane/README.md) | [Enable SharePoint Framework web part configuration with property panes](https://learn.microsoft.com/training/modules/sharepoint-spfx-web-part-property-pane/) |
+| [mslearn-module-spcontent](mslearn-module-spcontent/README.md) | [Work with SharePoint Content using the SharePoint Framework](https://learn.microsoft.com/training/modules/sharepoint-spfx-spcontent/) |

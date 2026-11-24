@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "26.13.1",
+    "sdksVersions": {},
+    "version": "1.24.1",
+    "libraryName": "file-upload",
+    "libraryId": "a487e67a-6dff-4f2d-a0bb-21cf06d9f1bf",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "FileUpload",
+    "solutionShortDescription": "FileUpload description",
+    "skipFeatureDeployment": true,
+    "componentType": "webpart"
+  }
+}

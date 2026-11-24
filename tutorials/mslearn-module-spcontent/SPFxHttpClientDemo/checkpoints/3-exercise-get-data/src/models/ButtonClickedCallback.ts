@@ -1,0 +1,1 @@
+export type ButtonClickedCallback = () => void;
