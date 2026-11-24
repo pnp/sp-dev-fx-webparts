@@ -1,0 +1,18 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "useGulp": false,
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "26.13.1",
+    "sdksVersions": {},
+    "version": "1.24.1",
+    "libraryName": "deployment-demo",
+    "libraryId": "9adf8e60-ef61-4d31-8c84-83878ccc10f1",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionName": "DeploymentDemo",
+    "solutionShortDescription": "DeploymentDemo description",
+    "skipFeatureDeployment": true,
+    "componentType": "webpart"
+  }
+}
