@@ -14,7 +14,7 @@ import { BaseClientSideWebPart, PropertyPaneToggle, PropertyPaneCheckbox } from 
 import * as strings from 'MySitesWebPartStrings';
 import { MySites } from './components/MySites/MySites';
 import { IMySitesProps } from './components/MySites/IMySitesProps';
-import { loadTheme } from "office-ui-fabric-react";
+import { loadTheme } from "@fluentui/react";
 import { DisplayMode } from '@microsoft/sp-core-library';
 import { ThemeProvider, ThemeChangedEventArgs, IReadonlyTheme } from '@microsoft/sp-component-base';
 import { sp } from "@pnp/sp";
@@ -29,9 +29,9 @@ export interface IPropertyControlsTestWebPartProps {
 import { graph } from "@pnp/graph";
 import { ITeam } from '../../Entities/ITeam';
 
-const teamsDefaultTheme = require("../../common/TeamsDefaultTheme.json");
-const teamsDarkTheme = require("../../common/TeamsDarkTheme.json");
-const teamsContrastTheme = require("../../common/TeamsContrastTheme.json");
+import teamsDefaultTheme from "../../Common/TeamsDefaultTheme.json";
+import teamsDarkTheme from "../../Common/TeamsDarkTheme.json";
+import teamsContrastTheme from "../../Common/TeamsContrastTheme.json";
 
 
 export interface IMySitesWebPartProps {
@@ -53,12 +53,20 @@ export default class MySitesWebPart extends BaseClientSideWebPart<IMySitesWebPar
  
   protected async onInit(): Promise<void> {
 
+    const spfxContext = {
+      ...this.context,
+      pageContext: this.context.pageContext,
+      msGraphClientFactory: {
+        getClient: () => this.context.msGraphClientFactory.getClient("3")
+      }
+    };
+
     sp.setup({
-      spfxContext: this.context
+      spfxContext
     });
 
     graph.setup({
-      spfxContext: this.context
+      spfxContext
     });
 
     this._themeProvider = this.context.serviceScope.consume(ThemeProvider.serviceKey);
@@ -160,7 +168,7 @@ export default class MySitesWebPart extends BaseClientSideWebPart<IMySitesWebPar
 
 protected async  onPropertyPaneConfigurationStart() {
   const { getUserTeams } =  useUserSites();
-  const _msGraphClient =  await this.context.msGraphClientFactory.getClient(); 
+  const _msGraphClient =  await this.context.msGraphClientFactory.getClient("3");
   const _userTeams:ITeam[] = await getUserTeams(this.context.pageContext.user.loginName, _msGraphClient);
  
   for (const _team of _userTeams) {

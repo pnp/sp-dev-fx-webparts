@@ -1,4 +1,4 @@
-import { IContextualMenuProps } from "office-ui-fabric-react";
+import { IContextualMenuProps } from "@fluentui/react";
 
 export interface IMySitesState {
   sites: any[];

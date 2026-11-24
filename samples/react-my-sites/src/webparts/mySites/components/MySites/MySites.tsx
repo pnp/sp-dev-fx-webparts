@@ -19,7 +19,7 @@ import {
   FontIcon,
   Label,
   ContextualMenuItemType,
-} from "office-ui-fabric-react";
+} from "@fluentui/react";
 import { WebPartTitle } from "@pnp/spfx-controls-react";
 import { useUserSites } from "../../../../Hooks/useUserSites";
 import { IMySitesState } from "./IMySitesState";
@@ -29,10 +29,10 @@ import { toInteger } from "lodash";
 import Pagination from "@material-ui/lab/Pagination";
 import strings from "MySitesWebPartStrings";
 import _ from "lodash";
-import { MSGraphClient } from "@microsoft/sp-http";
+import { MSGraphClientV3 } from "@microsoft/sp-http";
 
 let _searchResults: SearchResults = null;
-let _msGraphClient: MSGraphClient = undefined;
+let _msGraphClient: MSGraphClientV3 = undefined;
 let _filterMenuProps: IContextualMenuProps = undefined;
 
 // Get Hook functions
@@ -147,8 +147,8 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
 
   // useEffect component did mount or modified
   React.useEffect(() => {
-    (async () => {
-      _msGraphClient = await props.context.msGraphClientFactory.getClient();
+    void (async () => {
+      _msGraphClient = await props.context.msGraphClientFactory.getClient("3");
        
       const _sitesWithSubSties = await getUserWebs();
       
@@ -171,7 +171,7 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
                 | React.KeyboardEvent<HTMLElement>,
               item: IContextualMenuItem
             ) => {
-              _Filtersites(item.text);
+              void _Filtersites(item.text);
             },
           },
         ],
@@ -190,7 +190,7 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
                 | React.KeyboardEvent<HTMLElement>,
               item: IContextualMenuItem
             ) => {
-              _Filtersites(item.text);
+              void _Filtersites(item.text);
             }
           }       
           );
@@ -207,7 +207,7 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
               | React.KeyboardEvent<HTMLElement>,
             item: IContextualMenuItem
           ) => {
-            _Filtersites(item.text);
+            void _Filtersites(item.text);
           }
         }       
         );
@@ -249,7 +249,7 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
             item: IContextualMenuItem
           ) => {
             // tslint:disable-next-line: no-use-before-declare
-            _Filtersites(item.text, item.key);
+            void _Filtersites(item.text, item.key);
           },
         });
       }
@@ -375,11 +375,10 @@ export const MySites: React.FunctionComponent<IMySitesProps> = (
                     siblingCount={0}
                     onChange={async (event: any, page: number) => {
                       const rs = await _searchResults.getPage(page);
-                      _searchResults = rs;
                       setState({
                         ...state,
                         currentPage: page,
-                        sites: _searchResults.PrimarySearchResults,
+                        sites: rs.PrimarySearchResults,
                       });
                     }}
                   />

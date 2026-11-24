@@ -7,7 +7,6 @@
       "msgraph",
       "@pnp/pnpjs",
       "@pnp/spfx-property-controls",
-      "spfx-uifabric-themes",
       "lodash",
       "@pnp/spfx-controls-react",
       "ouifr@7",
@@ -24,11 +23,17 @@
     "environment": "spo",
     "framework": "react",
     "isCreatingSolution": true,
-    "version": "1.11.0",
+    "version": "1.24.1",
     "libraryName": "react-my-sites",
     "libraryId": "ad28b382-886b-4b2a-9646-92de8a0b1d13",
     "packageManager": "npm",
     "isDomainIsolated": false,
-    "componentType": "webpart"
+    "componentType": "webpart",
+    "useGulp": false,
+    "nodeVersion": "22.23.4",
+    "sdkVersions": {
+      "@microsoft/teams-js": "2.24.0",
+      "@microsoft/microsoft-graph-client": "3.0.2"
+    }
   }
 }

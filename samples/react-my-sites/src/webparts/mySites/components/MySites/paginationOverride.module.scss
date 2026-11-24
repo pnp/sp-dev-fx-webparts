@@ -1,6 +1,6 @@
-@import "~office-ui-fabric-react/dist/sass/References.scss";
-@import "./node_modules/spfx-uifabric-themes/office.theme";
-@import "~office-ui-fabric-react/dist/sass/semanticSlots";
+@import 'pkg:@fluentui/react/dist/sass/References.scss';
+
+$ms-themePrimary: "[theme:themePrimary, default: #0078d7]";
 
 
 /*}*/
