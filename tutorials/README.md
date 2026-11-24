@@ -16,3 +16,4 @@ Completed exercise code for the SharePoint Framework training modules on Microso
 | [mslearn-module-spcontent](mslearn-module-spcontent/README.md) | [Work with SharePoint Content using the SharePoint Framework](https://learn.microsoft.com/training/modules/sharepoint-spfx-spcontent/) |
 | [mslearn-module-graph-3rd-party-apis](mslearn-module-graph-3rd-party-apis/README.md) | [Use Microsoft Graph and non-Microsoft APIs in SharePoint Framework solutions](https://learn.microsoft.com/training/modules/sharepoint-spfx-graph-3rd-party-apis/) |
 | [mslearn-module-deployment](mslearn-module-deployment/README.md) | [Deploy SharePoint Framework components to production](https://learn.microsoft.com/training/modules/sharepoint-spfx-deployment/) |
+| [mslearn-module-teams-dev](mslearn-module-teams-dev/README.md) | [Build Microsoft Teams customization using the SharePoint Framework](https://learn.microsoft.com/training/modules/sharepoint-spfx-teams-dev/) |

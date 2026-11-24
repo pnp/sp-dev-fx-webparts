@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "sp-fx-teams-together-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/spFxTeamsTogether/SpFxTeamsTogetherWebPart.js",
+          "manifest": "./src/webparts/spFxTeamsTogether/SpFxTeamsTogetherWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "SpFxTeamsTogetherWebPartStrings": "lib/webparts/spFxTeamsTogether/loc/{locale}.js"
+  }
+}
