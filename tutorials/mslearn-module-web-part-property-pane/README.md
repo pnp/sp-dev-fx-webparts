@@ -4,7 +4,7 @@
 
 SharePoint Framework (SPFx) client-side web parts that users configure with the web part property pane: built-in fields, a custom field control, and the PnP reusable property pane controls. This tutorial contains the completed code for the exercises in the Microsoft Learn module [Enable SharePoint Framework web part configuration with property panes](https://learn.microsoft.com/training/modules/sharepoint-spfx-web-part-property-pane/).
 
-Each exercise in the module builds its own project. Each project folder contains the completed solution for its exercise. When an exercise builds on an earlier one, the `checkpoints` folder in the project contains the code as it was at the end of that earlier exercise.
+Each project folder contains the completed solution of the exercise that builds it. When an exercise continues a project from an earlier exercise, the `checkpoints` folder in the project contains the code as it was at the end of that earlier exercise.
 
 | Folder | Microsoft Learn exercise | What it shows |
 |---|---|---|
@@ -61,7 +61,7 @@ This tutorial is optimally compatible with the following environment configurati
 * Clone this repository, or [download this tutorial as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/tutorials/mslearn-module-web-part-property-pane) and unzip it.
 * From your command line, change to the folder of the project you want to run, under `tutorials/mslearn-module-web-part-property-pane`.
 * Ensure that you're using a supported Node.js version. If you use nvm, run `nvm use`.
-* In `config/serve.json`, replace the page URL (`initialPage`, or `pageUrl` for extensions) with a page in a site you can test on. Set the `SPFX_SERVE_TENANT_DOMAIN` environment variable to your SharePoint Online domain, for example `contoso.sharepoint.com`.
+* Set the `SPFX_SERVE_TENANT_DOMAIN` environment variable to your SharePoint Online domain, for example `contoso.sharepoint.com`. If `config/serve.json` contains `<site-name>` or a site path, change it to a site you can test on.
 * In the command line, run:
   * `npm install`
   * `npm run start`

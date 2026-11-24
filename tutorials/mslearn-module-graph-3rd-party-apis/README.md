@@ -4,7 +4,7 @@
 
 SharePoint Framework (SPFx) client-side web parts that call an anonymous REST API, a REST API secured with Microsoft Entra ID, and Microsoft Graph. This tutorial contains the completed code for the exercises in the Microsoft Learn module [Use Microsoft Graph and non-Microsoft APIs in SharePoint Framework solutions](https://learn.microsoft.com/training/modules/sharepoint-spfx-graph-3rd-party-apis/).
 
-Each exercise in the module builds its own project. Each project folder contains the completed solution for its exercise. When an exercise builds on an earlier one, the `checkpoints` folder in the project contains the code as it was at the end of that earlier exercise.
+Each project folder contains the completed solution of the exercise that builds it.
 
 | Folder | Microsoft Learn exercise | What it shows |
 |---|---|---|
@@ -72,7 +72,7 @@ For the **MSGraphSPFx** project:
 * Clone this repository, or [download this tutorial as a .ZIP file](https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/tutorials/mslearn-module-graph-3rd-party-apis) and unzip it.
 * From your command line, change to the folder of the project you want to run, under `tutorials/mslearn-module-graph-3rd-party-apis`.
 * Ensure that you're using a supported Node.js version. If you use nvm, run `nvm use`.
-* In `config/serve.json`, replace the page URL (`initialPage`, or `pageUrl` for extensions) with a page in a site you can test on. Set the `SPFX_SERVE_TENANT_DOMAIN` environment variable to your SharePoint Online domain, for example `contoso.sharepoint.com`.
+* Set the `SPFX_SERVE_TENANT_DOMAIN` environment variable to your SharePoint Online domain, for example `contoso.sharepoint.com`. If `config/serve.json` contains `<site-name>` or a site path, change it to a site you can test on.
 * In the command line, run:
   * `npm install`
   * `npm run start`
