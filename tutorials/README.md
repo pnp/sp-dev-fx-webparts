@@ -11,3 +11,4 @@ Completed exercise code for the SharePoint Framework training modules on Microso
 | Tutorial | Microsoft Learn module |
 |---|---|
 | [mslearn-module-get-started](mslearn-module-get-started/README.md) | [Configure a SharePoint Framework development environment](https://learn.microsoft.com/training/modules/sharepoint-spfx-get-started/) |
+| [mslearn-module-web-parts](mslearn-module-web-parts/README.md) | [Develop web parts with the SharePoint Framework](https://learn.microsoft.com/training/modules/sharepoint-spfx-web-parts/) |
