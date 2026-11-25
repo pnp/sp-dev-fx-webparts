@@ -1,0 +1,60 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-mslearn-module-get-started",
+    "source": "pnp",
+    "title": "Configure a SharePoint Framework development environment",
+    "shortDescription": "A SharePoint Framework (SPFx) client-side web part created with the Yeoman generator for the SharePoint Framework, and tested on a modern SharePoint Online page from your local web server.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/tutorials/mslearn-module-get-started",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/tutorials/mslearn-module-get-started",
+    "longDescription": [
+      "A SharePoint Framework (SPFx) client-side web part created with the Yeoman generator for the SharePoint Framework, and tested on a modern SharePoint Online page from your local web server.",
+      "This tutorial contains the completed code for the exercises in the Microsoft Learn module Configure a SharePoint Framework development environment."
+    ],
+    "creationDateTime": "2026-11-25",
+    "updateDateTime": "2026-11-25",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "Javascript"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.24.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/tutorials/mslearn-module-get-started/assets/preview.png",
+        "alt": "HelloWorld web part on a SharePoint page with its property pane open"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "andrewconnell",
+        "pictureUrl": "https://github.com/andrewconnell.png",
+        "name": "Andrew Connell"
+      }
+    ],
+    "references": [
+      {
+        "name": "Microsoft Learn: Configure a SharePoint Framework development environment",
+        "description": "The Microsoft Learn training module whose exercises build the code in this tutorial.",
+        "url": "https://learn.microsoft.com/training/modules/sharepoint-spfx-get-started/"
+      },
+      {
+        "name": "Overview of the SharePoint Framework",
+        "description": "The SharePoint Framework (SPFx) is a page and web part model that provides full support for client-side SharePoint development, easy integration with SharePoint data, and extending Microsoft Teams, Microsoft Viva, Outlook, and Microsoft 365.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview"
+      }
+    ]
+  }
+]

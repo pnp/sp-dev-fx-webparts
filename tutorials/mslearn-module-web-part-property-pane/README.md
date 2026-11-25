@@ -44,13 +44,12 @@ This tutorial is optimally compatible with the following environment configurati
 ## Contributors
 
 * [Andrew Connell](https://github.com/andrewconnell)
-* [Andrew Connell](https://github.com/andrewconnell-msft3)
 
 ## Version history
 
 |Version|Date|Comments|
 |-------|----|--------|
-|1.0|November 24, 2026|Initial release|
+|1.0|November 25, 2026|Initial release|
 
 ## Prerequisites
 
@@ -86,11 +85,11 @@ You can try looking at [issues related to this tutorial](https://github.com/pnp/
 
 You can also try looking at [discussions related to this tutorial](https://github.com/pnp/sp-dev-fx-webparts/discussions?discussions_q=mslearn-module-web-part-property-pane) and see what the community is saying.
 
-If you encounter any issues using this tutorial, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20mslearn-module-web-part-property-pane&template=bug-report.yml&sample=mslearn-module-web-part-property-pane&authors=@andrewconnell%20@andrewconnell-msft3&title=mslearn-module-web-part-property-pane%20-%20).
+If you encounter any issues using this tutorial, [create a new issue](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Abug-suspected%2Csample%3A%20mslearn-module-web-part-property-pane&template=bug-report.yml&sample=mslearn-module-web-part-property-pane&authors=@andrewconnell&title=mslearn-module-web-part-property-pane%20-%20).
 
-For questions regarding this tutorial, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20mslearn-module-web-part-property-pane&template=question.yml&sample=mslearn-module-web-part-property-pane&authors=@andrewconnell%20@andrewconnell-msft3&title=mslearn-module-web-part-property-pane%20-%20).
+For questions regarding this tutorial, [create a new question](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aquestion%2Csample%3A%20mslearn-module-web-part-property-pane&template=question.yml&sample=mslearn-module-web-part-property-pane&authors=@andrewconnell&title=mslearn-module-web-part-property-pane%20-%20).
 
-Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20mslearn-module-web-part-property-pane&template=suggestion.yml&sample=mslearn-module-web-part-property-pane&authors=@andrewconnell%20@andrewconnell-msft3&title=mslearn-module-web-part-property-pane%20-%20).
+Finally, if you have an idea for improvement, [make a suggestion](https://github.com/pnp/sp-dev-fx-webparts/issues/new?assignees=&labels=Needs%3A+Triage+%3Amag%3A%2Ctype%3Aenhancement%2Csample%3A%20mslearn-module-web-part-property-pane&template=suggestion.yml&sample=mslearn-module-web-part-property-pane&authors=@andrewconnell&title=mslearn-module-web-part-property-pane%20-%20).
 
 ## Disclaimer
 
