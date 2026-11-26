@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "ms-graph-sp-fx-client-side-solution",
+    "id": "ce05322d-e0e8-4d81-8e98-973652742b3b",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "User.ReadBasic.All"
+      }
+    ],
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.24.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "MSGraphSPFx description"
+      },
+      "longDescription": {
+        "default": "MSGraphSPFx description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "ms-graph-sp-fx Feature",
+        "description": "The feature that activates elements of the ms-graph-sp-fx solution.",
+        "id": "4c6c4ccb-ab5d-423f-bfe4-2eb86c4f4435",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/ms-graph-sp-fx.sppkg"
+  }
+}

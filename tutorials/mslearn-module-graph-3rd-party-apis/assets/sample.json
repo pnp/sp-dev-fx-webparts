@@ -1,0 +1,73 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-mslearn-module-graph-3rd-party-apis",
+    "source": "pnp",
+    "title": "Use Microsoft Graph and non-Microsoft APIs in SharePoint Framework solutions",
+    "shortDescription": "SharePoint Framework (SPFx) client-side web parts that call an anonymous REST API, a REST API secured with Microsoft Entra ID, and Microsoft Graph.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/tutorials/mslearn-module-graph-3rd-party-apis",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/tutorials/mslearn-module-graph-3rd-party-apis",
+    "longDescription": [
+      "SharePoint Framework (SPFx) client-side web parts that call an anonymous REST API, a REST API secured with Microsoft Entra ID, and Microsoft Graph.",
+      "This tutorial contains the completed code for the exercises in the Microsoft Learn module Use Microsoft Graph and non-Microsoft APIs in SharePoint Framework solutions."
+    ],
+    "creationDateTime": "2026-11-25",
+    "updateDateTime": "2026-11-25",
+    "products": [
+      "SharePoint",
+      "Microsoft Graph"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.24.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/tutorials/mslearn-module-graph-3rd-party-apis/assets/preview-spfxhttpclient.png",
+        "alt": "SPFxHttpClient web part showing an Apollo 4 image from the NASA Image REST API"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/tutorials/mslearn-module-graph-3rd-party-apis/assets/preview-spfxaadhttpclient.png",
+        "alt": "SPFxAadHttpClient web part listing users from Microsoft Graph"
+      },
+      {
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/tutorials/mslearn-module-graph-3rd-party-apis/assets/preview-msgraphspfx.png",
+        "alt": "GraphPersona web part showing the current user in a Persona card"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "andrewconnell",
+        "pictureUrl": "https://github.com/andrewconnell.png",
+        "name": "Andrew Connell"
+      }
+    ],
+    "references": [
+      {
+        "name": "Microsoft Learn: Use Microsoft Graph and non-Microsoft APIs in SharePoint Framework solutions",
+        "description": "The Microsoft Learn training module whose exercises build the code in this tutorial.",
+        "url": "https://learn.microsoft.com/training/modules/sharepoint-spfx-graph-3rd-party-apis/"
+      },
+      {
+        "name": "Overview of the SharePoint Framework",
+        "description": "The SharePoint Framework (SPFx) is a page and web part model that provides full support for client-side SharePoint development, easy integration with SharePoint data, and extending Microsoft Teams, Microsoft Viva, Outlook, and Microsoft 365.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview"
+      }
+    ]
+  }
+]

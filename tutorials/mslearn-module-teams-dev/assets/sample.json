@@ -1,0 +1,65 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-mslearn-module-teams-dev",
+    "source": "pnp",
+    "title": "Build Microsoft Teams customization using the SharePoint Framework",
+    "shortDescription": "A SharePoint Framework (SPFx) client-side web part that runs both on a SharePoint page and as a tab in Microsoft Teams.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/tutorials/mslearn-module-teams-dev",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/tutorials/mslearn-module-teams-dev",
+    "longDescription": [
+      "A SharePoint Framework (SPFx) client-side web part that runs both on a SharePoint page and as a tab in Microsoft Teams.",
+      "This tutorial contains the completed code for the exercises in the Microsoft Learn module Build Microsoft Teams customization using the SharePoint Framework."
+    ],
+    "creationDateTime": "2026-11-25",
+    "updateDateTime": "2026-11-25",
+    "products": [
+      "SharePoint",
+      "Teams"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "Javascript"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.24.1"
+      },
+      {
+        "key": "SPFX-TEAMSTAB",
+        "value": "true"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/tutorials/mslearn-module-teams-dev/assets/preview.png",
+        "alt": "SPFx Teams Together web part running as a tab in Microsoft Teams"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "andrewconnell",
+        "pictureUrl": "https://github.com/andrewconnell.png",
+        "name": "Andrew Connell"
+      }
+    ],
+    "references": [
+      {
+        "name": "Microsoft Learn: Build Microsoft Teams customization using the SharePoint Framework",
+        "description": "The Microsoft Learn training module whose exercises build the code in this tutorial.",
+        "url": "https://learn.microsoft.com/training/modules/sharepoint-spfx-teams-dev/"
+      },
+      {
+        "name": "Overview of the SharePoint Framework",
+        "description": "The SharePoint Framework (SPFx) is a page and web part model that provides full support for client-side SharePoint development, easy integration with SharePoint data, and extending Microsoft Teams, Microsoft Viva, Outlook, and Microsoft 365.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview"
+      }
+    ]
+  }
+]

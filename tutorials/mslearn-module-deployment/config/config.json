@@ -1,0 +1,36 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "deployment-demo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/deploymentDemo/DeploymentDemoWebPart.js",
+          "manifest": "./src/webparts/deploymentDemo/DeploymentDemoWebPart.manifest.json"
+        }
+      ]
+    },
+    "second-deployment-demo-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/secondDeploymentDemo/SecondDeploymentDemoWebPart.js",
+          "manifest": "./src/webparts/secondDeploymentDemo/SecondDeploymentDemoWebPart.manifest.json"
+        }
+      ]
+    },
+    "third-deployment-demo-command-set": {
+      "components": [
+        {
+          "entrypoint": "./lib/extensions/thirdDeploymentDemo/ThirdDeploymentDemoCommandSet.js",
+          "manifest": "./src/extensions/thirdDeploymentDemo/ThirdDeploymentDemoCommandSet.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "DeploymentDemoWebPartStrings": "lib/webparts/deploymentDemo/loc/{locale}.js",
+    "SecondDeploymentDemoWebPartStrings": "lib/webparts/secondDeploymentDemo/loc/{locale}.js",
+    "ThirdDeploymentDemoCommandSetStrings": "lib/extensions/thirdDeploymentDemo/loc/{locale}.js"
+  }
+}

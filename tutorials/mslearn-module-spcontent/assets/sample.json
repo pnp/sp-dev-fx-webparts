@@ -1,0 +1,66 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-mslearn-module-spcontent",
+    "source": "pnp",
+    "title": "Work with SharePoint Content using the SharePoint Framework",
+    "shortDescription": "SharePoint Framework (SPFx) client-side web parts that read and write SharePoint list items and upload files with the SharePoint REST API.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/tutorials/mslearn-module-spcontent",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/tutorials/mslearn-module-spcontent",
+    "longDescription": [
+      "SharePoint Framework (SPFx) client-side web parts that read and write SharePoint list items and upload files with the SharePoint REST API.",
+      "This tutorial contains the completed code for the exercises in the Microsoft Learn module Work with SharePoint Content using the SharePoint Framework."
+    ],
+    "creationDateTime": "2026-11-25",
+    "updateDateTime": "2026-11-25",
+    "products": [
+      "SharePoint"
+    ],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.24.1"
+      }
+    ],
+    "thumbnails": [
+      {
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/tutorials/mslearn-module-spcontent/assets/preview-spfxhttpclientdemo.png",
+        "alt": "SPFxHttpClientDemo web part with buttons to get, add, update, and delete list items"
+      },
+      {
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/tutorials/mslearn-module-spcontent/assets/preview-fileupload.png",
+        "alt": "FileUpload web part with Choose File and Upload buttons"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "andrewconnell",
+        "pictureUrl": "https://github.com/andrewconnell.png",
+        "name": "Andrew Connell"
+      }
+    ],
+    "references": [
+      {
+        "name": "Microsoft Learn: Work with SharePoint Content using the SharePoint Framework",
+        "description": "The Microsoft Learn training module whose exercises build the code in this tutorial.",
+        "url": "https://learn.microsoft.com/training/modules/sharepoint-spfx-spcontent/"
+      },
+      {
+        "name": "Overview of the SharePoint Framework",
+        "description": "The SharePoint Framework (SPFx) is a page and web part model that provides full support for client-side SharePoint development, easy integration with SharePoint data, and extending Microsoft Teams, Microsoft Viva, Outlook, and Microsoft 365.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview"
+      }
+    ]
+  }
+]

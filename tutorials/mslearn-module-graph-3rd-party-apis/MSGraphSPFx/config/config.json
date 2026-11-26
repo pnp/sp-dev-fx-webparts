@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "graph-persona-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/graphPersona/GraphPersonaWebPart.js",
+          "manifest": "./src/webparts/graphPersona/GraphPersonaWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "GraphPersonaWebPartStrings": "lib/webparts/graphPersona/loc/{locale}.js"
+  }
+}
