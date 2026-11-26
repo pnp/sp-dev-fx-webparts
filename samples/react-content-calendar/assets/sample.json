@@ -1,0 +1,95 @@
+[
+  {
+    "name": "pnp-sp-dev-spfx-web-parts-react-content-calendar",
+    "source": "pnp",
+    "title": "React Content Calendar",
+    "shortDescription": "Plan and track SharePoint Site Pages in month, week, and list views with publishing status, scheduled publication details, and local placeholders.",
+    "url": "https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-content-calendar",
+    "downloadUrl": "https://pnp.github.io/download-partial/?url=https://github.com/pnp/sp-dev-fx-webparts/tree/main/samples/react-content-calendar",
+    "longDescription": [
+      "A SharePoint Framework web part built with React, Fluent UI 9, and PnPjs that gives content authors a central calendar for the current site's Site Pages library.",
+      "Review pages in month, week, or list views, filter by publishing status, and choose Site Page or a custom page content type from the property pane.",
+      "View scheduled or first-published date and time, author and editor details, and links to pages. Create draft Site Pages directly from the calendar or reserve dates with placeholders stored locally in the browser."
+    ],
+    "creationDateTime": "2026-10-19",
+    "updateDateTime": "2026-10-19",
+    "products": ["SharePoint"],
+    "metadata": [
+      {
+        "key": "SAMPLE-TYPE",
+        "value": "SPFx-WebPart"
+      },
+      {
+        "key": "CLIENT-SIDE-DEV",
+        "value": "React"
+      },
+      {
+        "key": "SPFX-VERSION",
+        "value": "1.23.0"
+      }
+    ],
+    "thumbnails": [
+      {
+        "name": "screenshot1.png",
+        "type": "image",
+        "order": 100,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-content-calendar/assets/screenshot1.png",
+        "alt": "Month view showing draft, scheduled, published, and placeholder content"
+      },
+      {
+        "name": "screenshot2.png",
+        "type": "image",
+        "order": 101,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-content-calendar/assets/screenshot2.png",
+        "alt": "Scheduled page details with publication date and time and author information"
+      },
+      {
+        "name": "screenshot3.png",
+        "type": "image",
+        "order": 102,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-content-calendar/assets/screenshot3.png",
+        "alt": "Quick-add menu for creating content or reserving a date with a placeholder"
+      },
+      {
+        "name": "screenshot4.png",
+        "type": "image",
+        "order": 103,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-content-calendar/assets/screenshot4.png",
+        "alt": "Create placeholder dialog with title and optional notes"
+      },
+      {
+        "name": "screenshot5.png",
+        "type": "image",
+        "order": 104,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-content-calendar/assets/screenshot5.png",
+        "alt": "Week view showing content and placeholders grouped by day"
+      },
+      {
+        "name": "screenshot6.png",
+        "type": "image",
+        "order": 105,
+        "url": "https://github.com/pnp/sp-dev-fx-webparts/raw/main/samples/react-content-calendar/assets/screenshot6.png",
+        "alt": "List view showing content grouped by date with publishing status badges"
+      }
+    ],
+    "authors": [
+      {
+        "gitHubAccount": "Sandeep-FED",
+        "pictureUrl": "https://github.com/Sandeep-FED.png",
+        "name": "Sandeep P S"
+      }
+    ],
+    "references": [
+      {
+        "name": "SharePoint Framework overview",
+        "description": "Learn about building client-side web parts and extensions with the SharePoint Framework.",
+        "url": "https://learn.microsoft.com/sharepoint/dev/spfx/sharepoint-framework-overview"
+      },
+      {
+        "name": "PnP React Controls",
+        "description": "Reusable React controls for SharePoint Framework solutions.",
+        "url": "https://pnp.github.io/sp-dev-fx-controls-react/"
+      }
+    ]
+  }
+]
