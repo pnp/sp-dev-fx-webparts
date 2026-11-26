@@ -1,0 +1,45 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "react-copilot-oversharing-readiness-client-side-solution",
+    "id": "897b5e61-6697-49d6-9c17-dcd89e238736",
+    "version": "1.3.4.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "developer": {
+      "name": "Muhamad Fahrurrozi",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.24.1"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "Read-only Copilot oversharing readiness review: site risk signals, owner attestation, and CSV export for audit."
+      },
+      "longDescription": {
+        "default": "Read-only SharePoint web part that reviews site sharing risk before Microsoft 365 Copilot rollout. Mock data is the default for demonstration and screenshots; live mode lists sites from SharePoint Search and writes owner attestations to a SharePoint list. It does not change site permissions or sharing links."
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "react-copilot-oversharing-readiness Feature",
+        "description": "The feature that activates elements of the react-copilot-oversharing-readiness solution.",
+        "id": "e95c7fb4-c237-4dc6-bf20-931302b491e9",
+        "version": "1.3.4.0"
+      }
+    ],
+    "webApiPermissionRequests": [
+      {
+        "resource": "Microsoft Graph",
+        "scope": "Sites.Read.All"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/react-copilot-oversharing-readiness.sppkg"
+  }
+}

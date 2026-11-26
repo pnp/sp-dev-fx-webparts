@@ -1,0 +1,21 @@
+{
+  "@microsoft/generator-sharepoint": {
+    "whichFolder": "subdir",
+    "solutionName": "react-copilot-oversharing-readiness",
+    "useGulp": false,
+    "componentType": "webpart",
+    "template": "react",
+    "componentName": "CopilotOversharingReadiness",
+    "plusBeta": false,
+    "isCreatingSolution": true,
+    "nodeVersion": "24.22.1",
+    "sdksVersions": {},
+    "version": "1.24.1",
+    "libraryName": "react-copilot-oversharing-readiness",
+    "libraryId": "897b5e61-6697-49d6-9c17-dcd89e238736",
+    "environment": "spo",
+    "packageManager": "npm",
+    "solutionShortDescription": "react-copilot-oversharing-readiness description",
+    "skipFeatureDeployment": true
+  }
+}
