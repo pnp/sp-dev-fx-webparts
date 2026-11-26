@@ -32,8 +32,8 @@ The implementation uses SharePoint APIs and PnPjs only.
 
 This sample is optimally compatible with the following environment configuration:
 
-![SPFx 1.22.2](https://img.shields.io/badge/SPFx-1.22.2-green.svg)
-![Node.js >=22.14.0 <23.0.0](https://img.shields.io/badge/Node.js-%3E%3D22.14.0%20%3C23.0.0-green.svg)
+![SPFx 1.24.1](https://img.shields.io/badge/SPFx-1.24.1-green.svg)
+![Node.js >=22.14.0 <23.0.0 || >=24.0.0 <25.0.0 || >=26.0.0 <27.0.0](https://img.shields.io/badge/Node.js-%3E%3D22.14.0%20%3C23.0.0%20%7C%7C%20%3E%3D24.0.0%20%3C25.0.0%20%7C%7C%20%3E%3D26.0.0%20%3C27.0.0-green.svg)
 ![Toolchain: Heft](https://img.shields.io/badge/Toolchain-Heft-green.svg)
 ![Compatible with SharePoint Online](https://img.shields.io/badge/SharePoint%20Online-Compatible-green.svg)
 ![Does not work with SharePoint 2019](https://img.shields.io/badge/SharePoint%20Server%202019-Incompatible-red.svg "SharePoint Server 2019 requires SPFx 1.4.1 or lower")
@@ -72,6 +72,7 @@ This sample is optimally compatible with the following environment configuration
 | Version | Date | Comments |
 | ------- | ---- | -------- |
 | 1.0.0 | April 13, 2026 | First Version |
+| 1.1.0 | November 14, 2026 | SPFx version upgrade |
 
 ## Minimal Path to Awesome
 
